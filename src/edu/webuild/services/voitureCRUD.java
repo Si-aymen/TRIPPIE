@@ -22,8 +22,9 @@ import java.util.List;
 public class voitureCRUD implements InterfaceCRUD{
     Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
+    
     @Override
-    public void ajouterPersonne(voiture v) {
+    public void ajoutervoiture(voiture v) {
         try {
             String req = "INSERT INTO `voiture`(`matricule`,`marque`,`puissance`,`prix_jours`) VALUES ('"+v.getMatricule()+"','"+v.getMarque()+"','"+v.getPuissance()+"','"+v.getPrix_jours()+"')";
             ste = conn.createStatement();
@@ -74,8 +75,9 @@ public class voitureCRUD implements InterfaceCRUD{
         }   
     }
 */
+
     @Override
-    public List<voiture> affichervoiture() {
+    public List<voiture> affichervoitures() {
        List<voiture> list = new ArrayList<>();
         try {
             String req = "Select * from voiture";
@@ -98,6 +100,32 @@ public class voitureCRUD implements InterfaceCRUD{
 
         return list;
     }
+        @Override
+    public List<voiture> filtrer1(int id) {
+       List<voiture> list = new ArrayList<>();
+        try {
+            String req = "Select * from voiture  WHERE `id` = " + id;
+            Statement st = conn.createStatement();
+           
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+             voiture v = new voiture();
+             v.setId(RS.getInt(1));
+                v.setMatricule(RS.getString(2));
+                v.setMarque(RS.getString(3));
+                v.setPuissance(RS.getString(4));    
+                v.setPrix_jours(RS.getInt(5));
+             
+             list.add(v);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+
+   
 
    
 
