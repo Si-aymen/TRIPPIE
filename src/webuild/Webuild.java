@@ -14,7 +14,7 @@ import edu.webuild.services.utilisateurCRUD;
 
 /**
  *
- * @author manou
+ * @author aymen
  */
 public class Webuild {
 
@@ -41,8 +41,9 @@ public class Webuild {
           //uc.ajouterUtilisateur(u2);
          // uc.ajouterUtilisateur(u3);
          
-          uc.modifierUtilisateur(u2);
-          
+        //  uc.modifierUtilisateur(u2);
+         // System.out.println(uc.afficherUtilisateur());
+        //  System.out.println(rc.afficherRole());
           
           
           

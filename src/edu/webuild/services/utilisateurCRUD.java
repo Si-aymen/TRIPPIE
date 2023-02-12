@@ -65,7 +65,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
     public List<Utilisateur> afficherUtilisateur() {
        List<Utilisateur> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM utilisateur";//"SELECT utilisateur. *, role.libelle FROM utilisateur INNER JOIN role ON utilisateur.role = role.id_role";
+            String req = "SELECT * FROM `utilisateur`";//"SELECT utilisateur. *, role.libelle FROM utilisateur INNER JOIN role ON utilisateur.role = role.id_role";
             Statement st = conn.createStatement();
             ResultSet RS= st.executeQuery(req);
             while(RS.next()){

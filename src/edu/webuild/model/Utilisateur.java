@@ -67,13 +67,14 @@ public class Utilisateur {
     this.role = role;
   }
 
-
-
     @Override
     public String toString() {
         return "Utilisateur{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", role=" + role + '}';
     }
 
+
+
+    
    
 
     

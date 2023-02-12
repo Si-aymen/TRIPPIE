@@ -5,8 +5,6 @@
  */
 package edu.webuild.model;
 
-import java.util.List;
-
 /**
  *
  * @author aymen
@@ -45,6 +43,11 @@ public class Role  {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" + "id_role=" + id_role + ", libelle=" + libelle + '}';
     }
 
    

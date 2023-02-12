@@ -3,19 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/edu/webuild/services/reservationCRUD.java</file>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/edu/webuild/services/voitureCRUD.java</file>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/edu/webuild/model/reservation.java</file>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/edu/webuild/model/Role.java</file>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/edu/webuild/model/voiture.java</file>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/edu/webuild/model/Utilisateur.java</file>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/edu/webuild/services/roleCRUD.java</file>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/edu/webuild/interfaces/InterfaceUserCRUD.java</file>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/edu/webuild/interfaces/InterfaceCRUD.java</file>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/edu/webuild/interfaces/InterfaceRoleCRUD.java</file>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/edu/webuild/services/utilisateurCRUD.java</file>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/webuild/Webuild.java</file>
-            <file>file:/C:/Users/aymen/Desktop/allocation/allocation/src/edu/webuild/interfaces/InterfaceCRUD2.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceRoleCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/roleCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/utilisateurCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/webuild/Webuild.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Utilisateur.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Role.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceUserCRUD.java</file>
         </group>
     </open-files>
 </project-private>
