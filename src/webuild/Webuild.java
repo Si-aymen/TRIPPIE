@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 //import edu.webuild.utils.MyConnection;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -99,11 +100,25 @@ System.out.println(pcd.afficher());
 pd.modifier(c);*/
 System.out.println(pd.displayCadeau());
        
-           System.out.println("les donnes concernat votre rechercher est ");
-       System.out.println( pd.filter(26));
+         
+         //System.out.println(pd.rech(24));
         
+        /// System.out.println(pd.filtercadeau("nom_cadeau", "covoiturage"));
+         
+        // System.out.println(pd.filtercadeau("recurrence", "5"));  
         
-        
-        
+       
+         
+   /*List<cadeau> result = Filter_cadeau("id_cadeau", "1");
+    for (cadeau c : result) {
+        System.out.println("id_cadeau: " + c.getId_cadeau());
+        System.out.println("nom_cadeau: " + c.getNom_cadeau());
+        System.out.println("recurrence: " + c.getRecurrence());*/
+   
+   
+   
     }
 }
+
+
+

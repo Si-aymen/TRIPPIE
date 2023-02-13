@@ -6,14 +6,14 @@
 package edu.webuild.services;
 
 import edu.webuild.model.cadeau;
-import edu.webuild.model.coupon;
+//import edu.webuild.model.coupon;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
+//import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -125,19 +125,21 @@ public class cadeauCrud {
     
 }
     }  
-       
+      
+ 
 
- /*public List<cadeau> filter(cadeau id1) {
+   
+public List<cadeau> rech(int id ) {
     List<cadeau> cadeauList = new ArrayList<>();
     try {
-        String query = "SELECT * FROM cadeau where id_cadeau ='"+id1+"'" ;
+        String query = "SELECT * FROM cadeau WHERE id_cadeau= " + id ;
         Statement stmt = cnx2.createStatement();
-        ResultSet rs1 = stmt.executeQuery(query);
+        ResultSet rs = stmt.executeQuery(query);
 
-        while (rs1.next()) {
-            int id = rs1.getInt("id_cadeau");
-            String nom = rs1.getString("nom_cadeau");
-            int recurrence = rs1.getInt("recurrence");
+        while (rs.next()) {
+            int id1 = rs.getInt("id_cadeau");
+            String nom = rs.getString("nom_cadeau");
+            int recurrence = rs.getInt("recurrence");
 
             cadeau c = new cadeau(id, nom, recurrence);
             cadeauList.add(c);
@@ -146,10 +148,34 @@ public class cadeauCrud {
         System.err.println(e.getMessage());
     }
     return cadeauList;
-}*/
+}
+
+    
+
+/*public List<cadeau> filterCadeau(String column, String value) {
+        List<cadeau> filteredGifts = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM cadeau WHERE " + column + " = ";
+            if (column.equals("id_cadeau") || column.equals("recurrence")) {
+                query += Integer.parseInt(value);
+            } else {
+                query += "\"" + value + "\"";
+            }
+            Statement statement = cnx2.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                cadeau gift = new cadeau();
+                gift.setId_cadeau(resultSet.getInt("id_cadeau"));
+                gift.setNom_cadeau(resultSet.getString("nom_cadeau"));
+                gift.setRecurrence(resultSet.getInt("recurrence"));
+                filteredGifts.add(gift);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error in filtering gifts: " + ex.getMessage());
+        }
+        return filteredGifts;
+    }
+*/
  
 
-    
-
-    
 }

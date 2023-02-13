@@ -25,6 +25,12 @@ public class cadeau {
         this.recurrence = recurrence;
     }
 
+    public cadeau() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+
     public int getId_cadeau() {
         return id_cadeau;
     }
