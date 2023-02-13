@@ -5,7 +5,9 @@
  */
 package webuild;
 
+import edu.webuild.model.cadeau;
 import edu.webuild.model.coupon;
+import edu.webuild.services.cadeauCrud;
 import edu.webuild.services.couponCrud;
 
 import java.text.ParseException;
@@ -73,6 +75,35 @@ System.out.println(pcd.afficher());
        
    
        
+       
+       
+       cadeauCrud pd= new cadeauCrud();
+      // pd.ajoutercadeau();
+       /*cadeau k1 = new cadeau("location",2);
+       pd.ajoutercadeau2(k1);
+       */
+       
+       
+       System.out.println(pd.displayCadeau());
+       
+       
+       
+        /*int id=23;
+       pd.Supprimer(id);
+        System.out.println(pd.displayCadeau());*/
+      
+              /*  System.out.println("---------------- partie cadeau -----------------------------");
+         
+           cadeau c = new cadeau("covoiturage",5);
+              c.setId_cadeau(24); // id de la personne à modifier
+pd.modifier(c);*/
+System.out.println(pd.displayCadeau());
+       
+           System.out.println("les donnes concernat votre rechercher est ");
+       System.out.println( pd.filter(26));
+        
+        
+        
         
     }
 }
