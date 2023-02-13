@@ -12,23 +12,19 @@ package edu.webuild.model;
 public class Role  {
     private int id_role;
     private String libelle;
+    
  
 
     public Role() {
     }
-    
-    
-      public Role(int id_role,String libelle) {
-          this.id_role=id_role;
-        this.libelle = libelle;
-    }
-    
 
-    public Role(String libelle) {
+    public Role(int id_role, String libelle) {
+        this.id_role = id_role;
         this.libelle = libelle;
     }
 
-   
+    
+
     public int getId_role() {
         return id_role;
     }
@@ -49,6 +45,15 @@ public class Role  {
     public String toString() {
         return "Role{" + "id_role=" + id_role + ", libelle=" + libelle + '}';
     }
+
+   
+
+    
+
+    
+   
+
+   
 
    
 

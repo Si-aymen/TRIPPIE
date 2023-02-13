@@ -6,6 +6,7 @@
 package edu.webuild.interfaces;
 
 import edu.webuild.model.Client;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,7 @@ import edu.webuild.model.Client;
  */
 public interface InterfaceClientCRUD {
     public void ajouterClient(Client cl);
+    public void modifierClient(Client cl);
+    public void supprimerClient(int id_client);
+    public List<Client> afficherClient();
 }

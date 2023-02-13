@@ -39,38 +39,53 @@ public class Webuild {
          
      /*-----------------------------Role--------------------------------------------*/    
           Role r1=new Role(1,"Client");
-          Role r2=new Role(2,"Locateur");
-          Role r3=new Role(3,"Chauffeur");
-          
-          
-          
-     /*------------------------------Utilisateur-------------------------------------------------------------------------------*/     
-          Utilisateur u1= new Utilisateur("12345678","Zouari","Aymen",23,1);
-          Utilisateur u2= new Utilisateur("12345677","aaa","aa",24,2);
-          Utilisateur u3= new Utilisateur("12345679","Zouari","Aymen",25,3);
-          
-     /*---------------------------------Chauffeur----------------------------------------------------------------------------*/     
-          Chauffeur c1=new Chauffeur(1, 3, "12345678", "Ford", "Bleu", "172TUNIS1234", "aymen.zouari@esprit.tn", "12345");
-          Chauffeur c2=new Chauffeur(2, 3, "13335678", "Ford", "Bleu", "132TUNIS1244", "aymen.zouari@esprit.tn", "12345");
-     /*----------------------------------Client-------------------------------------------------------------------------------*/     
-          Client cli1=new Client(1,1,"iheb.khemiri@esprit.tn","12345"); 
-          
-     /*----------------------------------Locateur-------------------------------------------------------------------------------*/      
-          Locateur l1=new Locateur(1, 2, "TravelToDo","zouari.aymen@traveltodo.tn","12345");
-           //rc.ajouterRole(r1);
+          Role r2=new Role(2,"Chauffeur");
+          Role r3=new Role(3,"Locateur");
+          //rc.ajouterRole(r1);
           //rc.ajouterRole(r2);
           //rc.ajouterRole(r3);
+          //rc.modifierRole(r3);
+          System.out.println(rc.afficherRole());
+          //rc.supprimerRole(1);
+          
+     /*------------------------------Utilisateur-------------------------------------------------------------------------------*/     
+          Utilisateur u1= new Utilisateur("12345678","Zouari","Aymen","Homme", 44, 1);
+          Utilisateur u2= new Utilisateur(5,"12345677","zwaaaw","zzaa","Femme",24,2);
+          Utilisateur u3= new Utilisateur("22245679","Zouari","Aymen","Homme",25,3);
+          
+           // uc.ajouterUtilisateur(u1);
+           // uc.ajouterUtilisateur(u2);
+           //uc.ajouterUtilisateur(u3);
+           //uc.modifierUtilisateur(u2);
+           //uc.supprimerUtilisateurByCin("22245679");
+           //System.out.println(uc.afficherUtilisateur());
+     /*---------------------------------Chauffeur----------------------------------------------------------------------------*/     
+          Chauffeur c1=new Chauffeur(1,2,5,"12345678", "Ford", "Bleu", "172TUNIS1234", "aymen.zouari@esprit.tn", "12345");
+         // cc.ajouterChauffeur(c1);
+         System.out.println(cc.afficherChauffeur());
+     /*----------------------------------Client-------------------------------------------------------------------------------*/     
+          Client cli1=new Client(1,1,4,"azeae", "aaa"); 
+         // clc.ajouterClient(cli1);
+     /*----------------------------------Locateur-------------------------------------------------------------------------------*/      
+          Locateur l1=new Locateur(1,3,6, "TravelToDo","zouari.aymen@traveltodo.tn","12345");
+          System.out.println(l.afficherLocateur());
+          //l.ajouterLocateur(l1);
+          
+          
          
-          //uc.ajouterUtilisateur(u1);
-          //uc.ajouterUtilisateur(u2);
-          //uc.ajouterUtilisateur(u3);
-          //cc.ajouterChauffeur(c1);
+         
+         
+         
+          
+         // uc.ajouterUtilisateur(u2);
+         // uc.ajouterUtilisateur(u3);
+         // cc.ajouterChauffeur(c1);
         //  uc.modifierUtilisateur(u2);
          // System.out.println(uc.afficherUtilisateur());
         //  System.out.println(rc.afficherRole());
-          //cc.ajouterChauffeur(c2);
-         // clc.ajouterClient(cli1);
-          l.ajouterLocateur(l1);
+        //  
+          //
+         // 
           
        
     }

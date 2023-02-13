@@ -27,12 +27,14 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
    @Override
     public void ajouterUtilisateur(Utilisateur u) {
         try {
-             String req = "INSERT INTO `utilisateur`( `cin` , `nom`, `prenom` , `age`, `role`) VALUES ('"+u.getCin()+"','"+u.getNom()+"','"+u.getPrenom()+"','"+u.getAge()+"','"+u.getRole()+"')";
+             String req = "INSERT INTO `utilisateur`(`cin` , `nom`, `prenom` , `sexe` , `age`, `role`) VALUES ('"+u.getCin()+"','"+u.getNom()+"','"+u.getPrenom()+"','"+u.getSexe()+"','"+u.getAge()+"','"+u.getRole()+"')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Utilisateur ajouté!!!");
         } catch (SQLException ex) {
             System.out.println("Utilisateur non ajouté");
+            
+            System.out.println(ex);
                       }
  }
     
@@ -40,19 +42,32 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
     @Override
     public void modifierUtilisateur(Utilisateur u) {
         try {
-            String req = "UPDATE `utilisateur` SET `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() + "', `age` = '" + u.getAge() + "' WHERE `utilisateur`.`cin` = " + u.getCin();
+            String req = "UPDATE `utilisateur` SET `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() + "', `sexe` = '" + u.getSexe() + "', `age` = '" + u.getAge() + "' WHERE `utilisateur`.`id_user` = " + u.getId_user();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Utilisateur updated !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            
         }
     }
    
     @Override
-    public void supprimerUtilisateur(String cin) {
+    public void supprimerUtilisateurByCin(String cin) {
         try {
             String req = "DELETE FROM `utilisateur` WHERE cin = " + cin;
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("Utilisateur deleted !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+     @Override
+    public void supprimerUtilisateurById(int id_user) {
+        try {
+            String req = "DELETE FROM `utilisateur` WHERE id_user = " + id_user;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Utilisateur deleted !");
@@ -70,11 +85,13 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
             ResultSet RS= st.executeQuery(req);
             while(RS.next()){
              Utilisateur u = new Utilisateur();
-             u.setCin(RS.getString(1));
-             u.setNom(RS.getString(2));
-             u.setPrenom(RS.getString(3));
-             u.setAge(RS.getInt(4));
-             u.setRole(RS.getInt(5));
+             u.setId_user(RS.getInt(1));
+             u.setCin(RS.getString(2));
+             u.setNom(RS.getString(3));
+             u.setPrenom(RS.getString(4));
+             u.setSexe(RS.getString(5));
+             u.setAge(RS.getInt(6));
+             u.setRole(RS.getInt(7));
             
              
              

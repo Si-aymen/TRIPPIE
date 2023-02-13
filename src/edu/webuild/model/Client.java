@@ -10,25 +10,21 @@ package edu.webuild.model;
  * @author aymen
  */
 public class Client {
-    int id_client;
-    int id_role;
+    int id_client,id_user,id_role;
     String email;
     String password;
+    
 
     public Client() {
     }
 
-    public Client(int id_role, String email, String password) {
-        this.id_role = id_role;
-        this.email = email;
-        this.password = password;
-    }
-
-    public Client(int id_client, int id_role, String email, String password) {
+    public Client(int id_client ,int id_role, int id_user, String email, String password) {
         this.id_client = id_client;
         this.id_role = id_role;
+        this.id_user = id_user;
         this.email = email;
         this.password = password;
+     
     }
 
     public int getId_client() {
@@ -37,6 +33,14 @@ public class Client {
 
     public void setId_client(int id_client) {
         this.id_client = id_client;
+    }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
     }
 
     public int getId_role() {
@@ -63,10 +67,15 @@ public class Client {
         this.password = password;
     }
 
+   
+
     @Override
     public String toString() {
-        return "Client{" + "id_client=" + id_client + ", id_role=" + id_role + ", email=" + email + ", password=" + password + '}';
+        return "Client{" + "id_client=" + id_client + ",id_role=" + id_role + ", id_user=" + id_user + ",  email=" + email + ", password=" + password +  '}';
     }
+
+   
+   
     
     
 }

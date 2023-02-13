@@ -15,9 +15,10 @@ import java.util.List;
 public interface InterfaceUserCRUD {
     
     public void ajouterUtilisateur(Utilisateur u);
-   public void modifierUtilisateur(Utilisateur u);
-   public void supprimerUtilisateur(String cin) ;
-   public List<Utilisateur> afficherUtilisateur();
+    public void modifierUtilisateur(Utilisateur u);
+    public void supprimerUtilisateurByCin(String cin) ;
+    public void supprimerUtilisateurById(int id_user);
+    public List<Utilisateur> afficherUtilisateur();
   
     
     

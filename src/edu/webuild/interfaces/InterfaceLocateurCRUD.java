@@ -6,6 +6,7 @@
 package edu.webuild.interfaces;
 
 import edu.webuild.model.Locateur;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,8 @@ import edu.webuild.model.Locateur;
  */
 public interface InterfaceLocateurCRUD {
       public void ajouterLocateur(Locateur l);
+      
+   public void modifierLocateur(Locateur loc);
+   public void supprimerLocateur(int id_loc);
+   public List<Locateur> afficherLocateur();
 }
