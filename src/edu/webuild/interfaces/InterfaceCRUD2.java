@@ -5,6 +5,7 @@
  */
 package edu.webuild.interfaces;
 import edu.webuild.model.reservation;
+import java.sql.SQLException;
 
 import java.util.List;
 
@@ -19,5 +20,7 @@ public void ajouterreservation(reservation r);
     public void modifierreservation(reservation r , int id);
    public void supprimerreservation(int id) ;
    public List<reservation> afficherreservations();
-    public List<reservation> filtrer2(int id);
+  public reservation getUserByIDre(int id ) throws SQLException;
+  public List<reservation> trierReservation();
+  public List<reservation> Filter_reservation(String S, String SS);
 }

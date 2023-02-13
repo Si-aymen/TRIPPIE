@@ -100,11 +100,29 @@ public class voitureCRUD implements InterfaceCRUD{
 
         return list;
     }
-        @Override
-    public List<voiture> filtrer1(int id) {
+    @Override
+      public voiture getUserByID(int id ) throws SQLException {
+       String querry="SELECT *  FROM voiture WHERE `id`="+id;
+       Statement stm=conn.createStatement();
+       ResultSet RS=stm.executeQuery(querry);
+       
+       voiture v=new voiture ();
+        while (RS.next()) {            
+            
+           v.setId(RS.getInt(1));
+                v.setMatricule(RS.getString(2));
+                v.setMarque(RS.getString(3));
+                v.setPuissance(RS.getString(4));    
+                v.setPrix_jours(RS.getInt(5));
+            
+        }
+    return v;
+    }
+       @Override
+    public List<voiture> triervoiture() {
        List<voiture> list = new ArrayList<>();
         try {
-            String req = "Select * from voiture  WHERE `id` = " + id;
+            String req = "Select * from voiture order by Prix_jours ASC";
             Statement st = conn.createStatement();
            
             ResultSet RS= st.executeQuery(req);
@@ -124,11 +142,47 @@ public class voitureCRUD implements InterfaceCRUD{
 
         return list;
     }
-
    
+   @Override
+    public List<voiture> Filter_voiture(String S, String SS) {
+        List<voiture> list = new ArrayList<>();
+        try {
+            if (S.equals("id") ) {
+                int temp = Integer.parseInt(SS);
+                String req = "SELECT * FROM `voiture` WHERE " + S + " =" + temp;
+                Statement st = conn.createStatement();
+                ResultSet RS = st.executeQuery(req);
+                while (RS.next()) {
+                    voiture v = new voiture();
+                v.setId(RS.getInt(1));
+                v.setMatricule(RS.getString(2));
+                v.setMarque(RS.getString(3));
+                v.setPuissance(RS.getString(4));    
+                v.setPrix_jours(RS.getInt(5));
 
-   
+                    list.add(v);
+                }
+            } else {
+                String req = "SELECT * FROM `voiture` WHERE " + S + " =" + "\"" + SS + "\"";
+                Statement st = conn.createStatement();
+                ResultSet RS = st.executeQuery(req);
+                while (RS.next()) {
+                   voiture v = new voiture();
+                v.setId(RS.getInt(1));
+                v.setMatricule(RS.getString(2));
+                v.setMarque(RS.getString(3));
+                v.setPuissance(RS.getString(4));    
+                v.setPrix_jours(RS.getInt(5));
 
+                    list.add(v);
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
   
 
    

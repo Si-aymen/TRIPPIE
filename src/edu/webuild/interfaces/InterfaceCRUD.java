@@ -5,6 +5,7 @@
  */
 package edu.webuild.interfaces;
 import edu.webuild.model.voiture;
+import java.sql.SQLException;
 import java.util.List;
 public interface InterfaceCRUD {
     
@@ -13,8 +14,9 @@ public interface InterfaceCRUD {
     public void modifiervoiture(voiture v , int id);
    public void supprimervoiture(int id) ;
    public List<voiture> affichervoitures();
-      public List<voiture> filtrer1(int id);
-
+    public voiture getUserByID(int id ) throws SQLException;
+    public List<voiture> triervoiture();
+     public List<voiture> Filter_voiture(String S, String SS);
     
     
 }
