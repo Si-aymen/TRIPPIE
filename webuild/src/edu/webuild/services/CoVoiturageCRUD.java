@@ -7,7 +7,6 @@ package edu.webuild.services;
 
 import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.model.CoVoiturage;
-import edu.webuild.model.Personne;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,7 +34,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
         try {
             String req;
             //req = "INSERT INTO `CoVoiturage`(`depart`,`destination`,'date_dep','nmbrplace') VALUES('"+v.getDepart() )+"','"+v.getDestinaion()+"','"+v.getDate_dep()+"','"+v.getNmbr_place()+"') ";
-            req = "INSERT INTO `co_voiturage`( `depart`, `destination`, `date_dep`, `nmbr_place`) VALUES ('" + v.getDepart() + "','" + v.getDestinaion() + "','" + v.getDate_dep() + "','" + v.getNmbr_place() + "')";
+            req = "INSERT INTO `co_voiturage`( `depart`, `destination`, `date_dep`, `nmbr_place`) VALUES ('" + v.getDepart() + "','" + v.getDestination() + "','" + v.getDate_dep() + "','" + v.getNmbr_place() + "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Co Voiturage  ajouté!!!");
@@ -55,7 +54,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
             PreparedStatement ps = conn.prepareStatement(req);
 
             ps.setString(1, v.getDepart());
-            ps.setString(2, v.getDestinaion());
+            ps.setString(2, v.getDestination());
             ps.setString(3, v.getDate_dep());
             ps.setInt(4, v.getNmbr_place());
 
@@ -78,7 +77,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
                 CoVoiturage v = new CoVoiturage();
                 v.setId_co(RS.getInt(1));
                 v.setDepart(RS.getString(2));
-                v.setDestinaion(RS.getString(3));
+                v.setDestination(RS.getString(3));
                 v.setDate_dep(RS.getString(4));
                 v.setNmbr_place(RS.getInt("nmbr_place"));
 
@@ -90,7 +89,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
 
         return list;
     }
-
+            
     @Override
     public void supprimerCoVoiturage(int id) {
         try {
@@ -108,13 +107,38 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
         try {
             //String req = "UPDATE `co_voiturage` SET `nom` = '" + p.getNom() + "', `prenom` = '" + p.getPrenom() + "' WHERE `personne`.`id` = " + p.getId();
             //UPDATE `co_voiturage` SET `id_co`='[value-1]',`depart`='[value-2]',`destination`='[value-3]',`date_dep`='[value-4]',`nmbr_place`='[value-5]' WHERE
-            String req = "UPDATE `co_voiturage` SET `depart`='"+v.getDepart()+"',`destination`='"+v.getDestinaion()+"',`date_dep`='"+v.getDate_dep()+"',`nmbr_place`='"+v.getNmbr_place()+"' WHERE  `id_co`= " +id  ;
+            String req = "UPDATE `co_voiturage` SET `depart`='"+v.getDepart()+"',`destination`='"+v.getDestination()+"',`date_dep`='"+v.getDate_dep()+"',`nmbr_place`='"+v.getNmbr_place()+"' WHERE  `id_co`= " +id  ;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("co voiturage updated !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            
         }
     }
+    
+        @Override
+public List<CoVoiturage> rechCoVoiturage(int id) {
+    List<CoVoiturage> list = new ArrayList<>();
+    try {
+        String req =  "SELECT * FROM `co_voiturage` WHERE id_co= " + id;
+        Statement st = conn.createStatement();
+        ResultSet RS = st.executeQuery(req);
+        while (RS.next()) {
+            CoVoiturage v = new CoVoiturage();
+            v.setId_co(RS.getInt("id_co"));
+            v.setDepart(RS.getString("depart"));
+            v.setDestination(RS.getString("destination"));
+            v.setDate_dep(RS.getString("date_dep"));
+            v.setNmbr_place(RS.getInt("nmbr_place"));
+
+            list.add(v);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+
+    return list;
+}
 
 }

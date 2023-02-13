@@ -20,4 +20,5 @@ public interface InterfaceCoVoiturage {
     public void modifierCoVoiturage(CoVoiturage v, int id);
     public void supprimerCoVoiturage(int id) ;
     public List<CoVoiturage> afficherCoVoiturage();
+    public List<CoVoiturage> rechCoVoiturage(int id) ;
 }
