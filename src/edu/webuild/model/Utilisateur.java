@@ -16,6 +16,7 @@ import java.util.List;
 public class Utilisateur {
     private String cin;
     private String nom,prenom;
+    private int age;
     private int role;
    
 
@@ -25,10 +26,11 @@ public class Utilisateur {
     
     //constructur parametre 
 
-    public Utilisateur(String cin, String nom, String prenom, int role) {
+    public Utilisateur(String cin, String nom, String prenom,int age , int role) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
+        this.age=age;
         this.role = role;
     }
 
@@ -67,10 +69,22 @@ public class Utilisateur {
     this.role = role;
   }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
-        return "Utilisateur{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", role=" + role + '}';
+        return "Utilisateur{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age + ", role=" + role + '}';
     }
+  
+  
+
+   
 
 
 
