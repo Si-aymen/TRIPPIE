@@ -22,6 +22,7 @@ import java.util.List;
  */
 public class Webuild {
     public static void main(String[] args){
+     
          SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         
        //MyConnection mc= new MyConnection();
@@ -40,7 +41,7 @@ public class Webuild {
             
        }
     */
-       
+          System.out.println("---------------- partie coupon -----------------------------");
        
        
        
@@ -73,10 +74,23 @@ System.out.println(pcd.afficher());
             e.printStackTrace();
             
        }
+        /*System.out.println("voici votre recherch");
+        System.out.println(pcd.rech(3));*/
+        
+        
+        System.out.println("voici le tri");
+        String columncoupon = "id_coupon";
+         String ordercoupon = "ASC";
+        
+        System.out.println(pcd.sortCoupons(columncoupon, ordercoupon));
+       
+         
+        
+        
        
    
        
-       
+        System.out.println("---------------- partie cadeau -----------------------------");
        
        cadeauCrud pd= new cadeauCrud();
       // pd.ajoutercadeau();
@@ -93,15 +107,17 @@ System.out.println(pcd.afficher());
        pd.Supprimer(id);
         System.out.println(pd.displayCadeau());*/
       
-              /*  System.out.println("---------------- partie cadeau -----------------------------");
+               
          
-           cadeau c = new cadeau("covoiturage",5);
+           /*cadeau c = new cadeau("covoiturage",5);
               c.setId_cadeau(24); // id de la personne à modifier
 pd.modifier(c);*/
-System.out.println(pd.displayCadeau());
-       
-         
-         //System.out.println(pd.rech(24));
+//System.out.println(pd.displayCadeau());
+    
+
+
+          System.out.println("voici votre recherch");
+        System.out.println(pd.rech(24));
         
         /// System.out.println(pd.filtercadeau("nom_cadeau", "covoiturage"));
          
@@ -114,7 +130,11 @@ System.out.println(pd.displayCadeau());
         System.out.println("id_cadeau: " + c.getId_cadeau());
         System.out.println("nom_cadeau: " + c.getNom_cadeau());
         System.out.println("recurrence: " + c.getRecurrence());*/
-   
+    System.out.println("voici le tri");
+        String columncadeau = "nom_cadeau";
+         String ordercadeau = "ASC";
+        
+        System.out.println(pd.sortCoupons(columncadeau, ordercadeau));
    
    
     }

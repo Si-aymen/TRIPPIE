@@ -6,6 +6,7 @@
 package edu.webuild.services;
 
 import edu.webuild.model.cadeau;
+import edu.webuild.model.coupon;
 //import edu.webuild.model.coupon;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 //import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -176,6 +178,33 @@ public List<cadeau> rech(int id ) {
         return filteredGifts;
     }
 */
+
+
+
+//triiiiii 
+public List<cadeau> sortCoupons(String column, String order) {
+    List<cadeau> cadeauList = new ArrayList<>();
+    try {
+        String query = "SELECT * FROM cadeau ORDER BY " + column + " " + order;
+        Statement stmt = cnx2.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            int id_cadeau = rs.getInt("id_cadeau");
+           
+           
+            String nom_cadeau = rs.getString("nom_cadeau");
+            int recurrence = rs.getInt("recurrence");
+            
+
+            cadeau c = new cadeau (id_cadeau,  nom_cadeau, recurrence);
+            cadeauList.add(c);
+        }
+    } catch (SQLException e) {
+        System.err.println(e.getMessage());
+    }
+    return cadeauList;
+}
  
 
 }

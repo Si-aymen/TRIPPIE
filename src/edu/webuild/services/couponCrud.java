@@ -5,16 +5,19 @@
  */
 package edu.webuild.services;
 
+
+import edu.webuild.model.cadeau;
 import edu.webuild.model.coupon;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -135,17 +138,63 @@ public class couponCrud {
         System.out.println("Erreur lors de la modification de la personne: " + ex.getMessage());
     
 }
-    } 
+    }
     
     
     
     
+    public List<coupon> rech(int id ) {
+    List<coupon> couponList = new ArrayList<>();
+    try {
+        String query = "SELECT * FROM coupon WHERE id_coupon= " + id ;
+        Statement stmt = cnx2.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            int id_coupon = rs.getInt("id_coupon");
+            Date  date_debut = rs.getDate("date_debut");
+        Date date_experation = rs.getDate("date_experation");
+        int taux_reduction = rs.getInt("taux_reduction");
+        String code_coupon = rs.getString("code_coupon");
+        int nbr_utilisation = rs.getInt("nbr_utilisation");
+        String type = rs.getString("type");
+        
+           
+            coupon c = new coupon(id_coupon, date_debut, date_experation,taux_reduction, code_coupon, nbr_utilisation, type);
+        couponList.add(c);
+        }
+    } catch (SQLException e) {
+        System.err.println(e.getMessage());
+    }
+    return couponList;
+}
     
-    
-    
-    
-    
-  
+  //triiii
+    public List<coupon> sortCoupons(String column, String order) {
+    List<coupon> couponList = new ArrayList<>();
+    try {
+        String query = "SELECT * FROM coupon ORDER BY " + column + " " + order;
+        Statement stmt = cnx2.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            int id_coupon = rs.getInt("id_coupon");
+            Date date_debut = rs.getDate("date_debut");
+            Date date_experation = rs.getDate("date_experation");
+            int taux_reduction = rs.getInt("taux_reduction");
+            String code_coupon = rs.getString("code_coupon");
+            int nbr_utilisation = rs.getInt("nbr_utilisation");
+            String type = rs.getString("type");
+
+            coupon c = new coupon(id_coupon, date_debut, date_experation, taux_reduction, code_coupon, nbr_utilisation, type);
+            couponList.add(c);
+        }
+    } catch (SQLException e) {
+        System.err.println(e.getMessage());
+    }
+    return couponList;
+}
+
         
     }
 
