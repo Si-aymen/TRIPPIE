@@ -206,5 +206,18 @@ public List<cadeau> sortCoupons(String column, String order) {
     return cadeauList;
 }
  
+public boolean validatecadeau(cadeau cadeau) {
 
+    if (cadeau.getNom_cadeau().length() == 0) {
+        System.out.println("Le nom de ceadeau  ne peut pas être vide.");
+        return false;
+    }
+
+     if (cadeau.getRecurrence()< 0 || cadeau.getRecurrence()>= 10) {
+        System.out.println("La reccurence  doit être compris entre 0 et 10.");
+   return false;     
+    }
+       
+  return true;
+}
 }

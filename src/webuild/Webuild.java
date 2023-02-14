@@ -117,9 +117,7 @@ System.out.println(pcd.afficher());
        
        cadeauCrud pd= new cadeauCrud();
       // pd.ajoutercadeau();
-       /*cadeau k1 = new cadeau("location",2);
-       pd.ajoutercadeau2(k1);
-       */
+      
        
        
        System.out.println(pd.displayCadeau());
@@ -153,13 +151,30 @@ pd.modifier(c);*/
         System.out.println("id_cadeau: " + c.getId_cadeau());
         System.out.println("nom_cadeau: " + c.getNom_cadeau());
         System.out.println("recurrence: " + c.getRecurrence());*/
+   
+   
+   
+   
+   
+   //triiiiiii
     System.out.println("voici le tri");
         String columncadeau = "nom_cadeau";
          String ordercadeau = "ASC";
         
         System.out.println(pd.sortCoupons(columncadeau, ordercadeau));
+       
    
-   
+   //////controle saisie 
+    cadeau k1 = new cadeau("abonnement2",1);
+       
+     if(pd.validatecadeau(k1))
+             {
+                  System.out.println("cadeau valide");
+                 pd.ajoutercadeau2(k1);
+             }
+             else {
+        System.out.println("Coupon non valide");
+    }
     }
 }
 
