@@ -78,14 +78,36 @@ System.out.println(pcd.afficher());
         System.out.println(pcd.rech(3));*/
         
         
-        System.out.println("voici le tri");
+       /* System.out.println("voici le tri");
         String columncoupon = "id_coupon";
          String ordercoupon = "ASC";
         
-        System.out.println(pcd.sortCoupons(columncoupon, ordercoupon));
+        System.out.println(pcd.sortCoupons(columncoupon, ordercoupon));*/
+       
+       
+       
+       
+       
        
          
-        
+         try{
+           Date date_debut = dateFormat.parse("2022-01-14");
+            Date date_experation = dateFormat.parse("2025-01-14");
+           coupon c1 = new coupon(date_debut,date_experation,40,"valentin",2,"vip");
+             pcd.ajouterpersonne2(c1);
+             if(pcd.validateCoupon(c1))
+             {
+                  System.out.println("Coupon valide");
+             }
+             else {
+        System.out.println("Coupon non valide");
+    }
+       }catch(ParseException e)
+       {
+            e.printStackTrace();
+            
+       }
+    
         
        
    

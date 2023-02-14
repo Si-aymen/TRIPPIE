@@ -194,6 +194,50 @@ public class couponCrud {
     }
     return couponList;
 }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //controle saisie 
+    public boolean validateCoupon(coupon coupon) {
+
+
+    if (coupon.getDate_debut().after(coupon.getDate_experation())) {
+        System.out.println("La date de début doit être antérieure à la date d'expiration.");
+        return false;
+    }
+
+    if (coupon.getTaux_reducton()< 0 || coupon.getTaux_reducton()>= 100) {
+        System.out.println("Le taux de réduction doit être compris entre 0 et 100.");
+        return false;
+    }
+
+    if (coupon.getCode_coupon().length() == 0) {
+        System.out.println("Le code coupon ne peut pas être vide.");
+        return false;
+    }
+
+    if (coupon.getNbr_utilisation() < 0) {
+        System.out.println("Le nombre d'utilisation doit être un entier positif.");
+        return false;
+    }
+
+    if (coupon.getType().length() == 0) {
+        System.out.println("Le type ne peut pas être vide.");
+        return false;
+    }
+
+    return true;
+}
+
 
         
     }
