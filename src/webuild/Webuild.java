@@ -93,11 +93,12 @@ System.out.println(pcd.afficher());
          try{
            Date date_debut = dateFormat.parse("2022-01-14");
             Date date_experation = dateFormat.parse("2025-01-14");
-           coupon c1 = new coupon(date_debut,date_experation,40,"valentin",2,"vip");
-             pcd.ajouterpersonne2(c1);
+           coupon c1 = new coupon(date_debut,date_experation,400,"valentin",2,"vip");
+             
              if(pcd.validateCoupon(c1))
              {
                   System.out.println("Coupon valide");
+                  pcd.ajouterpersonne2(c1);
              }
              else {
         System.out.println("Coupon non valide");
