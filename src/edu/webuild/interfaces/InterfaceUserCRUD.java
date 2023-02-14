@@ -19,6 +19,9 @@ public interface InterfaceUserCRUD {
     public void supprimerUtilisateurByCin(String cin) ;
     public void supprimerUtilisateurById(int id_user);
     public List<Utilisateur> afficherUtilisateur();
+    public List<Utilisateur> getById(int id_user);
+    public List<Utilisateur> FiltrerUtilisateur(String f1, String f2);
+     public List<Utilisateur> trierUtilisateur();
   
     
     

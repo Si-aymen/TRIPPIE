@@ -104,6 +104,118 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
         return list;
     }
     
+@Override
+    public List<Utilisateur> getById(int id_user) {
+       List<Utilisateur> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `utilisateur` WHERE id_user = " + id_user;//"SELECT utilisateur. *, role.libelle FROM utilisateur INNER JOIN role ON utilisateur.role = role.id_role";
+            Statement st = conn.createStatement();
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+             Utilisateur u = new Utilisateur();
+             u.setId_user(RS.getInt(1));
+             u.setCin(RS.getString(2));
+             u.setNom(RS.getString(3));
+             u.setPrenom(RS.getString(4));
+             u.setSexe(RS.getString(5));
+             u.setAge(RS.getInt(6));
+             u.setRole(RS.getInt(7));
+            
+             
+             
+             list.add(u);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            
+            
+        }
+
+        return list;
+    }
+    
+    
+    @Override
+    public List<Utilisateur> FiltrerUtilisateur(String f1, String f2) {
+       List<Utilisateur> list = new ArrayList<>();
+        try {
+            if (f1.equals("id") ) {
+            int temp = Integer.parseInt(f2);
+            String req = "SELECT * FROM `utilisateur` WHERE " + f1 + "=" + temp;
+            Statement st = conn.createStatement();
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+             Utilisateur u = new Utilisateur();
+             u.setId_user(RS.getInt(1));
+             u.setCin(RS.getString(2));
+             u.setNom(RS.getString(3));
+             u.setPrenom(RS.getString(4));
+             u.setSexe(RS.getString(5));
+             u.setAge(RS.getInt(6));
+             u.setRole(RS.getInt(7));
+            
+             
+             
+             list.add(u);
+            }
+            }else{
+                     String req = "SELECT * FROM `utilisateur` WHERE " + f1 + " =" + "\"" + f2 + "\"";
+                Statement st = conn.createStatement();
+                ResultSet RS = st.executeQuery(req);
+                    
+            while(RS.next()){
+             Utilisateur u = new Utilisateur();
+             u.setId_user(RS.getInt(1));
+             u.setCin(RS.getString(2));
+             u.setNom(RS.getString(3));
+             u.setPrenom(RS.getString(4));
+             u.setSexe(RS.getString(5));
+             u.setAge(RS.getInt(6));
+             u.setRole(RS.getInt(7));
+             
+             
+                          list.add(u);
+
+            }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            
+            
+        }
+
+        return list;
+    }
+    
+    
+     @Override
+    public List<Utilisateur> trierUtilisateur() {
+       List<Utilisateur> list = new ArrayList<>();
+        try {
+            String req = "Select * from utilisateur order by nom  DESC";
+            Statement st = conn.createStatement();
+           
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+             Utilisateur u = new Utilisateur();
+             u.setId_user(RS.getInt(1));
+             u.setCin(RS.getString(2));
+             u.setNom(RS.getString(3));
+             u.setPrenom(RS.getString(4));
+             u.setSexe(RS.getString(5));
+             u.setAge(RS.getInt(6));
+             u.setRole(RS.getInt(7));
+             
+             list.add(u);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+
+
 
 
 }
