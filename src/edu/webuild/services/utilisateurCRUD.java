@@ -6,6 +6,10 @@
 package edu.webuild.services;
 
 import edu.webuild.interfaces.InterfaceUserCRUD;
+import edu.webuild.model.Chauffeur;
+import edu.webuild.model.Client;
+import edu.webuild.model.Locateur;
+import edu.webuild.model.Role;
 import edu.webuild.model.Utilisateur;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
@@ -192,7 +196,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
     public List<Utilisateur> trierUtilisateur() {
        List<Utilisateur> list = new ArrayList<>();
         try {
-            String req = "Select * from utilisateur order by nom  DESC";
+            String req = "Select * from utilisateur order by nom DESC";
             Statement st = conn.createStatement();
            
             ResultSet RS= st.executeQuery(req);
@@ -214,8 +218,5 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
 
         return list;
     }
-
-
-
 
 }

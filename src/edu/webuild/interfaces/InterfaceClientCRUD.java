@@ -17,4 +17,7 @@ public interface InterfaceClientCRUD {
     public void modifierClient(Client cl);
     public void supprimerClient(int id_client);
     public List<Client> afficherClient();
+    public List<Client> getById(int id_client);
+    public List<Client> FiltrerClient(String f1, String f2);
+     public List<Client> trierClient();
 }

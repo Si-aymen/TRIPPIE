@@ -62,7 +62,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
     public List<Client> afficherClient() {
        List<Client> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM `client`";//"SELECT utilisateur. *, role.libelle FROM utilisateur INNER JOIN role ON utilisateur.role = role.id_role";
+            String req = "SELECT * FROM `client`";//"SELECT client. *, role.libelle FROM client INNER JOIN role ON client.role = role.id_role";
             Statement st = conn.createStatement();
             ResultSet RS= st.executeQuery(req);
             while(RS.next()){
@@ -84,5 +84,109 @@ public class ClientCRUD implements InterfaceClientCRUD {
 
         return list;
     }
+    
+    @Override
+    public List<Client> getById(int id_client) {
+       List<Client> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `client` WHERE id_client = " + id_client;//"SELECT client. *, role.libelle FROM client INNER JOIN role ON client.role = role.id_role";
+            Statement st = conn.createStatement();
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+              Client cl = new Client();
+             cl.setId_client(RS.getInt(1));
+             cl.setId_role(RS.getInt(2));
+             cl.setId_user(RS.getInt(3));
+             cl.setEmail(RS.getString(4));
+             cl.setPassword(RS.getString(5));
+            
+             
+             
+             list.add(cl);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            
+            
+        }
+
+        return list;
+    }
+    
+    
+    @Override
+    public List<Client> FiltrerClient(String f1, String f2) {
+       List<Client> list = new ArrayList<>();
+        try {
+            if (f1.equals("id") ) {
+            int temp = Integer.parseInt(f2);
+            String req = "SELECT * FROM `client` WHERE " + f1 + "=" + temp;
+            Statement st = conn.createStatement();
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+              Client cl = new Client();
+             cl.setId_client(RS.getInt(1));
+             cl.setId_role(RS.getInt(2));
+             cl.setId_user(RS.getInt(3));
+             cl.setEmail(RS.getString(4));
+             cl.setPassword(RS.getString(5));
+            
+             
+             
+             list.add(cl);
+            }
+            }else{
+                     String req = "SELECT * FROM `client` WHERE " + f1 + " =" + "\"" + f2 + "\"";
+                Statement st = conn.createStatement();
+                ResultSet RS = st.executeQuery(req);
+                    
+            while(RS.next()){
+             Client cl = new Client();
+             cl.setId_client(RS.getInt(1));
+             cl.setId_role(RS.getInt(2));
+             cl.setId_user(RS.getInt(3));
+             cl.setEmail(RS.getString(4));
+             cl.setPassword(RS.getString(5));
+             
+             
+                          list.add(cl);
+
+            }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            
+            
+        }
+
+        return list;
+    }
+    
+    
+     @Override
+    public List<Client> trierClient() {
+       List<Client> list = new ArrayList<>();
+        try {
+            String req = "Select * from client order by nom  DESC";
+            Statement st = conn.createStatement();
+           
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+              Client cl = new Client();
+             cl.setId_client(RS.getInt(1));
+             cl.setId_role(RS.getInt(2));
+             cl.setId_user(RS.getInt(3));
+             cl.setEmail(RS.getString(4));
+             cl.setPassword(RS.getString(5));
+             
+             list.add(cl);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+
     
 }

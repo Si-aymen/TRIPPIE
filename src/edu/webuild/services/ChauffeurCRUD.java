@@ -69,7 +69,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
     public List<Chauffeur> afficherChauffeur() {
        List<Chauffeur> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM chauffeur";//"SELECT utilisateur. *, role.libelle FROM utilisateur INNER JOIN role ON utilisateur.role = role.id_role";
+            String req = "SELECT * FROM chauffeur";//"SELECT chauffeur. *, role.libelle FROM chauffeur INNER JOIN role ON chauffeur.role = role.id_role";
             Statement st = conn.createStatement();
             ResultSet RS= st.executeQuery(req);
             while(RS.next()){
@@ -83,6 +83,8 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
              ch.setImmatriculation(RS.getString(7));
              ch.setEmail(RS.getString(8));
              ch.setPassword(RS.getString(9));
+                          list.add(ch);
+
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -91,4 +93,124 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         return list;
     }
 
+    @Override
+    public List<Chauffeur> getById(int id_ch) {
+       List<Chauffeur> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `chauffeur` WHERE id_ch = " + id_ch;//"SELECT chauffeur. *, role.libelle FROM chauffeur INNER JOIN role ON chauffeur.role = role.id_role";
+            Statement st = conn.createStatement();
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+              Chauffeur ch = new Chauffeur();
+             ch.setId_ch(RS.getInt(1));
+             ch.setId_role(RS.getInt(2));
+             ch.setId_user(RS.getInt(3));
+             ch.setNum_permis(RS.getString(4));
+             ch.setMarque_voiture(RS.getString(5));
+             ch.setCouleur_voiture(RS.getString(6));
+             ch.setImmatriculation(RS.getString(7));
+             ch.setEmail(RS.getString(8));
+             ch.setPassword(RS.getString(9));
+            
+             
+             
+             list.add(ch);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            
+            
+        }
+
+        return list;
+    }
+    
+    
+    @Override
+    public List<Chauffeur> FiltrerChauffeur(String f1, String f2) {
+       List<Chauffeur> list = new ArrayList<>();
+        try {
+            if (f1.equals("id") ) {
+            int temp = Integer.parseInt(f2);
+            String req = "SELECT * FROM `chauffeur` WHERE " + f1 + "=" + temp;
+            Statement st = conn.createStatement();
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+              Chauffeur ch = new Chauffeur();
+             ch.setId_ch(RS.getInt(1));
+             ch.setId_role(RS.getInt(2));
+             ch.setId_user(RS.getInt(3));
+             ch.setNum_permis(RS.getString(4));
+             ch.setMarque_voiture(RS.getString(5));
+             ch.setCouleur_voiture(RS.getString(6));
+             ch.setImmatriculation(RS.getString(7));
+             ch.setEmail(RS.getString(8));
+             ch.setPassword(RS.getString(9));
+            
+             
+             
+             list.add(ch);
+            }
+            }else{
+                     String req = "SELECT * FROM `chauffeur` WHERE " + f1 + " =" + "\"" + f2 + "\"";
+                Statement st = conn.createStatement();
+                ResultSet RS = st.executeQuery(req);
+                    
+            while(RS.next()){
+              Chauffeur ch = new Chauffeur();
+             ch.setId_ch(RS.getInt(1));
+             ch.setId_role(RS.getInt(2));
+             ch.setId_user(RS.getInt(3));
+             ch.setNum_permis(RS.getString(4));
+             ch.setMarque_voiture(RS.getString(5));
+             ch.setCouleur_voiture(RS.getString(6));
+             ch.setImmatriculation(RS.getString(7));
+             ch.setEmail(RS.getString(8));
+             ch.setPassword(RS.getString(9));
+             
+             
+                          list.add(ch);
+
+            }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            
+            
+        }
+
+        return list;
+    }
+    
+    
+     @Override
+    public List<Chauffeur> trierChauffeur() {
+       List<Chauffeur> list = new ArrayList<>();
+        try {
+            String req = "Select * from chauffeur order by nom  DESC";
+            Statement st = conn.createStatement();
+           
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+              Chauffeur ch = new Chauffeur();
+             ch.setId_ch(RS.getInt(1));
+             ch.setId_role(RS.getInt(2));
+             ch.setId_user(RS.getInt(3));
+             ch.setNum_permis(RS.getString(4));
+             ch.setMarque_voiture(RS.getString(5));
+             ch.setCouleur_voiture(RS.getString(6));
+             ch.setImmatriculation(RS.getString(7));
+             ch.setEmail(RS.getString(8));
+             ch.setPassword(RS.getString(9));
+             
+             list.add(ch);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+
+    
 }

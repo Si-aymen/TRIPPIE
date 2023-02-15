@@ -22,6 +22,7 @@ public interface InterfaceUserCRUD {
     public List<Utilisateur> getById(int id_user);
     public List<Utilisateur> FiltrerUtilisateur(String f1, String f2);
      public List<Utilisateur> trierUtilisateur();
+     
   
     
     

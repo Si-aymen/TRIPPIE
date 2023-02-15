@@ -81,11 +81,12 @@ public class Webuild {
            //System.out.println(uc.afficherUtilisateur());
            //System.out.println(uc.getById(6));
            //System.out.println(uc.FiltrerUtilisateur("sexe","Femme"));
-           System.out.println(uc.trierUtilisateur());
+          // System.out.println(uc.trierUtilisateur());
+           //System.out.println((uc.afficherUtilisateur()));
      /*---------------------------------Chauffeur----------------------------------------------------------------------------*/     
           Chauffeur c1=new Chauffeur(1,2,5,"12345678", "Ford", "Bleu", "172TUNIS1234", "aymen.zouari@esprit.tn", "12345");
          // cc.ajouterChauffeur(c1);
-        // System.out.println(cc.afficherChauffeur());
+         System.out.println(cc.afficherChauffeur());
      /*----------------------------------Client-------------------------------------------------------------------------------*/     
           Client cli1=new Client(1,1,4,"azeae", "aaa"); 
          // clc.ajouterClient(cli1);
