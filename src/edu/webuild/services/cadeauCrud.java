@@ -31,7 +31,7 @@ public class cadeauCrud {
   public void ajoutercadeau(){
         
         try {
-            String requete="INSERT INTO cadeau (nom_cadeau,recurrence)"+ "values ('abonnement','10')" ;
+            String requete="INSERT INTO cadeau (nom_cadeau,recurrence,id_coupon)"+ "values ('location','10','15')" ;
             Statement st = cnx2.createStatement();
             st.executeUpdate(requete);
             System.out.println("cadeau  ajoutee aves success ");
@@ -47,17 +47,13 @@ public class cadeauCrud {
         
         
         try { 
-            String requete2="INSERT INTO cadeau (nom_cadeau,recurrence)"+ "values (?,?)" ;
+            String requete2="INSERT INTO cadeau (nom_cadeau,recurrence,id_coupon ) "+ "values (?,?,?)" ;
             PreparedStatement pst = cnx2.prepareStatement(requete2);
-               
-             
-         
-         
           
                pst.setString(1,c.getNom_cadeau());
                
-                pst.setInt(2,c.getRecurrence());
-                
+              pst.setInt(2,c.getRecurrence());
+            pst.setInt(3,c.getId_coupon() );
                 
              
               pst.executeUpdate();
@@ -81,8 +77,8 @@ public class cadeauCrud {
             int id = rs.getInt("id_cadeau");
             String nom = rs.getString("nom_cadeau");
             int recurrence = rs.getInt("recurrence");
-
-            cadeau c = new cadeau(id, nom, recurrence);
+ int id_coupon = rs.getInt("id_coupon");
+            cadeau c = new cadeau(id, nom, recurrence,id_coupon);
             cadeauList.add(c);
         }
     } catch (SQLException e) {
@@ -142,8 +138,8 @@ public List<cadeau> rech(int id ) {
             int id1 = rs.getInt("id_cadeau");
             String nom = rs.getString("nom_cadeau");
             int recurrence = rs.getInt("recurrence");
-
-            cadeau c = new cadeau(id, nom, recurrence);
+ int id_coupon = rs.getInt("id_coupon");
+            cadeau c = new cadeau(id, nom, recurrence,id_coupon);
             cadeauList.add(c);
         }
     } catch (SQLException e) {
@@ -195,9 +191,10 @@ public List<cadeau> sortCoupons(String column, String order) {
            
             String nom_cadeau = rs.getString("nom_cadeau");
             int recurrence = rs.getInt("recurrence");
+            int id_coupon = rs.getInt("id_coupon");
             
 
-            cadeau c = new cadeau (id_cadeau,  nom_cadeau, recurrence);
+            cadeau c = new cadeau (id_cadeau,  nom_cadeau, recurrence,id_coupon);
             cadeauList.add(c);
         }
     } catch (SQLException e) {

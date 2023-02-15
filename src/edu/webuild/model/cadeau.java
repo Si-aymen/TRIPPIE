@@ -13,11 +13,33 @@ public class cadeau {
     private int id_cadeau;
     private String nom_cadeau;
     private int recurrence;
+     private int id_coupon;
 
-    public cadeau(int id_cadeau, String nom_cadeau, int recurrence) {
+    public cadeau(String nom_cadeau, int recurrence, int id_coupon) {
+        this.nom_cadeau = nom_cadeau;
+        this.recurrence = recurrence;
+        this.id_coupon = id_coupon;
+    }
+
+    
+
+    public cadeau(int id_cadeau, String nom_cadeau, int recurrence, int id_coupon) {
         this.id_cadeau = id_cadeau;
         this.nom_cadeau = nom_cadeau;
         this.recurrence = recurrence;
+        this.id_coupon = id_coupon;
+    }
+
+    public cadeau(int id, String nom, int recurrence) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setId_coupon(int id_coupon) {
+        this.id_coupon = id_coupon;
+    }
+
+    public int getId_coupon() {
+        return id_coupon;
     }
 
     public cadeau(String nom_cadeau, int recurrence) {
@@ -61,7 +83,8 @@ public class cadeau {
 
     @Override
     public String toString() {
-        return "cadeau{" + "id_cadeau=" + id_cadeau + ", nom_cadeau=" + nom_cadeau + ", recurrence=" + recurrence + '}';
+        return "cadeau{" + "id_cadeau=" + id_cadeau + ", nom_cadeau=" + nom_cadeau + ", recurrence=" + recurrence + ", id_coupon=" + id_coupon + '}';
     }
-    
+
+   
 }

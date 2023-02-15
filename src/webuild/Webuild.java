@@ -26,7 +26,7 @@ public class Webuild {
          SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         
        //MyConnection mc= new MyConnection();
-       couponCrud pcd= new couponCrud();
+     couponCrud pcd= new couponCrud();
        //pcd.ajoutercoupon();
        
        
@@ -39,13 +39,13 @@ public class Webuild {
        {
             e.printStackTrace();
             
-       }
-    */
+       }*/
+    
           System.out.println("---------------- partie coupon -----------------------------");
        
        
        
-       System.out.println(pcd.afficher());
+       //System.out.println(pcd.afficher());
        
        /*int id=1;
        pcd.Supprimer(id);
@@ -62,7 +62,7 @@ public class Webuild {
        
        
        
-       try{
+      /* try{
            Date date_debut = dateFormat.parse("2025-01-14");
             Date date_experation = dateFormat.parse("2025-01-14");
            coupon c = new coupon(date_debut,date_experation,30,"rimouta",5,"simple");
@@ -90,7 +90,7 @@ System.out.println(pcd.afficher());
        
        
          
-         try{
+        /* try{
            Date date_debut = dateFormat.parse("2022-01-14");
             Date date_experation = dateFormat.parse("2025-01-14");
            coupon c1 = new coupon(date_debut,date_experation,400,"valentin",2,"vip");
@@ -108,7 +108,7 @@ System.out.println(pcd.afficher());
             e.printStackTrace();
             
        }
-    
+    */
         
        
    
@@ -116,11 +116,14 @@ System.out.println(pcd.afficher());
         System.out.println("---------------- partie cadeau -----------------------------");
        
        cadeauCrud pd= new cadeauCrud();
-      // pd.ajoutercadeau();
-      
+      //pd.ajoutercadeau
+        int id_coupon = 18;
        
+    
+        cadeau c2 = new cadeau("ok",2,id_coupon);
+       pd.ajoutercadeau2(c2);
        
-       System.out.println(pd.displayCadeau());
+      System.out.println(pd.displayCadeau());
        
        
        
@@ -129,16 +132,18 @@ System.out.println(pcd.afficher());
         System.out.println(pd.displayCadeau());*/
       
                
-         
-           /*cadeau c = new cadeau("covoiturage",5);
-              c.setId_cadeau(24); // id de la personne à modifier
-pd.modifier(c);*/
-//System.out.println(pd.displayCadeau());
+         /*
+           cadeau c = new cadeau("covoiturage",5);
+              c.setId_cadeau(34); // id de la personne à modifier
+pd.modifier(c);
+System.out.println(pd.displayCadeau());
     
 
 
           System.out.println("voici votre recherch");
-        System.out.println(pd.rech(24));
+        System.out.println(pd.rech(34));*/
+         
+         
         
         /// System.out.println(pd.filtercadeau("nom_cadeau", "covoiturage"));
          
@@ -165,6 +170,8 @@ pd.modifier(c);*/
        
    
    //////controle saisie 
+   
+   
     cadeau k1 = new cadeau("abonnement2",1);
        
      if(pd.validatecadeau(k1))
