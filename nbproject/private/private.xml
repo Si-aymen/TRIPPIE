@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+<<<<<<< HEAD
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
@@ -38,6 +39,13 @@
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/webuild/Webuild.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceUserCRUD.java</file>
 >>>>>>> 70c1c72e40620f46713297789c4fc1366bfebe22
+=======
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promo/src/edu/webuild/model/coupon.java</file>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promo/src/edu/webuild/utils/MyConnection.java</file>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promo/src/webuild/Webuild.java</file>
+>>>>>>> 9ab7669f4e1438d6365a3c9737114424dee9e11c
         </group>
     </open-files>
 </project-private>
