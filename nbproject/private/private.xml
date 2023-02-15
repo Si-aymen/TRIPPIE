@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/interfaces/InterfaceCRUD.java</file>
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/services/voitureCRUD.java</file>
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/model/voiture.java</file>
@@ -10,6 +11,14 @@
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/model/reservation.java</file>
             <file>file:/C:/Users/khmir/Desktop/allocation/src/webuild/Webuild.java</file>
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/interfaces/InterfaceCRUD2.java</file>
+=======
+            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/interfaces/InterfaceCoVoiturage.java</file>
+            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/webuild/Webuild.java</file>
+            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/interfaces/InterfaceParticipation.java</file>
+            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/services/CoVoiturageCRUD.java</file>
+            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/model/CoVoiturage.java</file>
+            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/services/ParticipationCrud.java</file>
+>>>>>>> 1a369414b902b253d0c5a9cadf39cc600108e84c
         </group>
     </open-files>
 </project-private>

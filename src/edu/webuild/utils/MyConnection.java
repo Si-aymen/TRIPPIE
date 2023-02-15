@@ -5,8 +5,16 @@
  */
 package edu.webuild.utils;
 
+<<<<<<< HEAD
 import java.sql.*;
 
+=======
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+>>>>>>> 1a369414b902b253d0c5a9cadf39cc600108e84c
 
 /**
  *
