@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/interfaces/InterfaceCRUD.java</file>
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/services/voitureCRUD.java</file>
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/model/voiture.java</file>
@@ -19,6 +20,24 @@
             <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/model/CoVoiturage.java</file>
             <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/services/ParticipationCrud.java</file>
 >>>>>>> 1a369414b902b253d0c5a9cadf39cc600108e84c
+=======
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/ClientCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceLocateurCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Chauffeur.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Locateur.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/roleCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/utilisateurCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Utilisateur.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Role.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/ChauffeurCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceClientCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceRoleCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Client.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/LocateurCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceChauffeurCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/webuild/Webuild.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceUserCRUD.java</file>
+>>>>>>> 70c1c72e40620f46713297789c4fc1366bfebe22
         </group>
     </open-files>
 </project-private>
