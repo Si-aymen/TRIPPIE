@@ -13,24 +13,27 @@ public class reclamation {
     private int id_rec;
     private String type_rec;
     private String commentaire;
+    private String etat;
 
     public reclamation() {
     }
 
-    public reclamation(String type_rec, String commentaire) {
+    public reclamation(String type_rec, String commentaire, String etat) {
         this.type_rec = type_rec;
         this.commentaire = commentaire;
+        this.etat = etat;
     }
 
-    public reclamation(int id_rec, String type_rec, String commentaire) {
+    public reclamation(int id_rec, String type_rec, String commentaire, String etat) {
         this.id_rec = id_rec;
         this.type_rec = type_rec;
         this.commentaire = commentaire;
+        this.etat = etat;
     }
 
     @Override
     public String toString() {
-        return "reclamation{" + "id_rec=" + id_rec + ", type_rec=" + type_rec + ", commentaire=" + commentaire + '}';
+        return "reclamation{" + "id_rec=" + id_rec + ", type_rec=" + type_rec + ", commentaire=" + commentaire + ", etat=" + etat + '}';
     }
 
     public int getId_rec() {
@@ -56,10 +59,16 @@ public class reclamation {
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
     }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
     
     
-   
 
     
-
 }

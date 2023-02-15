@@ -27,7 +27,7 @@ public class reclamationCRUD implements InterfaceReclamation{
     @Override
     public void ajouterReclamation(reclamation r) {
         try {
-            String req = "INSERT INTO `reclamation`(`type_rec`,`commentaire`) VALUES ('"+r.getType_rec()+"','"+r.getCommentaire()+"')";
+            String req = "INSERT INTO `reclamation`(`type_rec`,`commentaire`,`etat`) VALUES ('"+r.getType_rec()+"','"+r.getCommentaire()+"','non traité')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Reclamation ajouté!!!");
@@ -73,6 +73,7 @@ public class reclamationCRUD implements InterfaceReclamation{
              r.setId_rec(RS.getInt(1));
              r.setType_rec(RS.getString(2));
              r.setCommentaire(RS.getString(3));
+             r.setEtat(RS.getString(4));
              
              list.add(r);
             }

@@ -6,7 +6,9 @@
 package webuild;
 
 import edu.webuild.model.reclamation;
+import edu.webuild.model.reponse;
 import edu.webuild.services.reclamationCRUD;
+import edu.webuild.services.reponseCRUD;
 
 
 /**
@@ -22,17 +24,27 @@ public class Webuild {
      */
     public static void main(String[] args) {
      /// MyConnection conn = MyConnection.getInstance();
-        reclamation v1 = new reclamation("testtt","testt");
-        reclamation v2 = new reclamation("technique","technique");
-        reclamation v4 = new reclamation("taher","taher");
-        reclamation v3 = new reclamation("tech","tech");
+        reclamation v1 = new reclamation("testtt","testt","");
+        reclamation v2 = new reclamation("technique","technique","non traité");
+        reclamation v3 = new reclamation("tech","tech","");
+        
+        reponse r1 = new reponse("frfz", 16, 1);
+        
         reclamationCRUD rc = new reclamationCRUD();
         
-        //rc.ajouterReclamation(v3);
-        //rc.modifierReclamation(v1,3);
-        //rc.supprimerReclamation(4);
+        reponseCRUD rpc = new reponseCRUD();
+        
+        //rc.ajouterReclamation(v1);
+        //rc.modifierReclamation(v2,8);
+        //rc.supprimerReclamation(14);
+        
+        //rpc.ajouterReponse(r1);
+        //rpc.modifierReponse(r1, 1);
+        //rpc.supprimerReponse(4);
        
         System.out.println(rc.afficherReclamation());
+        
+        System.out.println(rpc.afficherReponse());
        
         
          

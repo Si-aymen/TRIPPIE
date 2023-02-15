@@ -6,7 +6,6 @@
 package edu.webuild.services;
 
 import edu.webuild.interfaces.InterfaceReponse;
-import edu.webuild.model.reclamation;
 import edu.webuild.model.reponse;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
@@ -28,12 +27,14 @@ public class reponseCRUD implements InterfaceReponse{
     @Override
     public void ajouterReponse(reponse r) {
         try {
-            String req = "INSERT INTO `reponse`(`reponse`) VALUES ('"+r.getReponse()+"')";
+            String req = "INSERT INTO `reponse`(`reponse`,`id_rec`,`etat`) VALUES ('"+r.getReponse()+"','"+r.getId_rec()+"','1')";
+            String req2 = "UPDATE `reclamation` SET `etat` = 'traité'  WHERE `reclamation`.`id_rec` = " +r.getId_rec();
             ste = conn.createStatement();
             ste.executeUpdate(req);
+            ste.executeUpdate(req2);
             System.out.println("Reponse ajouté!!!");
         } catch (SQLException ex) {
-            System.out.println("Reponse non ajouté");
+            System.out.println(ex.getMessage());
                       }
     }
 
@@ -73,6 +74,8 @@ public class reponseCRUD implements InterfaceReponse{
              reponse r = new reponse();
              r.setId_rep(RS.getInt(1));
              r.setReponse(RS.getString(2));
+             r.setId_rec(RS.getInt(3));
+             r.setEtat(1);
              
              list.add(r);
             }

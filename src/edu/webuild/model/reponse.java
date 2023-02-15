@@ -10,24 +10,30 @@ package edu.webuild.model;
  * @author guerf
  */
 public class reponse {
-    int id_rep;
-    String reponse;
+    private int id_rep;
+    private String reponse;
+    private int id_rec;
+    private int etat;
 
     public reponse() {
     }
 
-    public reponse(String reponse) {
+    public reponse(String reponse, int id_rec, int etat) {
         this.reponse = reponse;
+        this.id_rec = id_rec;
+        this.etat = etat;
     }
 
-    public reponse(int id_rep, String reponse) {
+    public reponse(int id_rep, String reponse, int id_rec, int etat) {
         this.id_rep = id_rep;
         this.reponse = reponse;
+        this.id_rec = id_rec;
+        this.etat = etat;
     }
 
     @Override
     public String toString() {
-        return "reponse{" + "id_rep=" + id_rep + ", reponse=" + reponse + '}';
+        return "reponse{" + "id_rep=" + id_rep + ", reponse=" + reponse + ", id_rec=" + id_rec + ", etat=" + etat + '}';
     }
 
     public int getId_rep() {
@@ -45,6 +51,22 @@ public class reponse {
     public void setReponse(String reponse) {
         this.reponse = reponse;
     }
-    
+
+    public int getId_rec() {
+        return id_rec;
+    }
+
+    public void setId_rec(int id_rec) {
+        this.id_rec = id_rec;
+    }
+
+    public int getEtat() {
+        return etat;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
+    }
+
     
 }
