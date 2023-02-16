@@ -11,13 +11,15 @@ import java.util.List;
  *
  * @author mtirn
  */
-public interface InterfaceCRUD {
+public interface InterfaceAbonnementCRUD {
     
     public void ajouterAbonnement(Abonnement A);
     public void ajouterAbonnement2(Abonnement A);
     public void modifierAbonnement(Abonnement A);
-    public void supprimerAbonnement(int id) ;
+    public void supprimerAbonnement(int idA) ;
     public List<Abonnement> afficherAbonnement();
+    public List<Abonnement> rechAbonnement(int idA);
+
     
     
 }

@@ -22,6 +22,8 @@ public class webuild {
         
        /// MyConnection conn = MyConnection.getInstance();
         Abonnement A1 = new Abonnement("gold","9dt", "22/01/2023","22/03/2023");
+        Abonnement A2 = new Abonnement("gold","9dt", "22/01/2023","22/03/2023");
+
         AbonnementCRUD Ab = new AbonnementCRUD();
         
         //per.ajouterAbonnement(A1);

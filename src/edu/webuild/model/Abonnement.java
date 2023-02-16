@@ -10,7 +10,7 @@ package edu.webuild.model;
  * @author mtirn
  */
 public class Abonnement {
-    private int id;
+    private int idA;
     private String type,prix,dateAchat,dateExpiration;
 
     //constructeur par defaut
@@ -19,8 +19,8 @@ public class Abonnement {
     
     //constructur parametre 
 
-    public Abonnement(int id, String type, String prix, String dateAchat, String dateExpiration) {
-        this.id = id;
+    public Abonnement(int idA, String type, String prix, String dateAchat, String dateExpiration) {
+        this.idA = idA;
         this.type = type;
         this.prix = prix;
         this.dateAchat = dateAchat;
@@ -34,8 +34,8 @@ public class Abonnement {
         this.dateExpiration = dateExpiration;
     }
 
-    public int getId() {
-        return id;
+    public int getIdA() {
+        return idA;
     }
 
     public String getType() {
@@ -54,8 +54,8 @@ public class Abonnement {
         return dateExpiration;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdA(int idA) {
+        this.idA = idA;
     }
 
     public void setType(String type) {
@@ -76,7 +76,7 @@ public class Abonnement {
 
     @Override
     public String toString() {
-        return "Abonnement{" + "id=" + id + ", type=" + type + ", prix=" + prix + ", dateAchat=" + dateAchat + ", dateExpiration=" + dateExpiration + '}';
+        return "Abonnement{" + "idA=" + idA + ", type=" + type + ", prix=" + prix + ", dateAchat=" + dateAchat + ", dateExpiration=" + dateExpiration + '}';
     }
 
    

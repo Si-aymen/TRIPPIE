@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package edu.webuild.services;
-import edu.webuild.interfaces.InterfaceCRUD;
+
+import edu.webuild.interfaces.InterfaceAbonnementCRUD;
 import edu.webuild.model.Abonnement;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
@@ -17,13 +18,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
  *
  * @author mtirn
  */
-public class AbonnementCRUD implements InterfaceCRUD{
+public class AbonnementCRUD implements InterfaceAbonnementCRUD{
     Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
+    
     @Override
     public void ajouterAbonnement(Abonnement A) {
         try {
@@ -39,7 +42,7 @@ public class AbonnementCRUD implements InterfaceCRUD{
     @Override
     public void modifierAbonnement(Abonnement A) {
         try {
-            String req = "UPDATE `Abonnement` SET `type` = '"+A.getType()+"','"+A.getPrix()+"','"+A.getDateAchat()+"','"+A.getDateExpiration()+"' WHERE `Abonnement`.`id` = " + A.getId();
+            String req = "UPDATE `Abonnement` SET `type` = '"+A.getType()+"','"+A.getPrix()+"','"+A.getDateAchat()+"','"+A.getDateExpiration()+"' WHERE `Abonnement`.`id` = " + A.getIdA();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Abonnement updated !");
@@ -49,9 +52,9 @@ public class AbonnementCRUD implements InterfaceCRUD{
     }
     
   @Override
-    public void supprimerAbonnement(int id) {
+    public void supprimerAbonnement(int idA) {
         try {
-            String req = "DELETE FROM `Abonnement` WHERE id = " + id;
+            String req = "DELETE FROM `Abonnement` WHERE idA = " + idA;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Abonnement deleted !");
@@ -87,11 +90,11 @@ public class AbonnementCRUD implements InterfaceCRUD{
             ResultSet RS= st.executeQuery(req);
             while(RS.next()){
              Abonnement A = new Abonnement();
-             A.setType(RS.getString("type"));
-             A.setPrix(RS.getString("prix"));
-             A.setDateAchat(RS.getString("dateAchat"));
-             A.setDateExpiration(RS.getString("dateExpiration"));
-             A.setId(RS.getInt(1));
+             A.setType(RS.getString(2));
+             A.setPrix(RS.getString(3));
+             A.setDateAchat(RS.getString(4));
+             A.setDateExpiration(RS.getString(5));
+             A.setIdA(RS.getInt(1));
              list.add(A);
             }
         } catch (SQLException ex) {
@@ -101,5 +104,46 @@ public class AbonnementCRUD implements InterfaceCRUD{
         return list;
     }
 
+    @Override
+    public List<Abonnement> rechAbonnement(int idA) {
+        List<Abonnement> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `Abonnement` WHERE idA= " + idA;
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                Abonnement Ab = new Abonnement();
+               Ab.setType(RS.getString("type"));
+             Ab.setPrix(RS.getString("prix"));
+             Ab.setDateAchat(RS.getString("dateAchat"));
+             Ab.setDateExpiration(RS.getString("dateExpiration"));
+             Ab.setIdA(RS.getInt("idA"));
+
+                list.add(Ab);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
     
-}
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
