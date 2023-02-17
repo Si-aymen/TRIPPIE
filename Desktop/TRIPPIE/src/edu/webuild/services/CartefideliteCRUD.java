@@ -24,7 +24,7 @@ public class CartefideliteCRUD implements InterfaceCarte {
     @Override
     public void ajoutercarte(cartefidelite cf) {
         try {
-            String req = "INSERT INTO `cartefidelite`(`pointMerci`,`dateExpiration`,`idA`) VALUES ('"+cf.getPointMerci()+"','"+cf.getPointMerci()+"','"+cf.getIdA()+"')";
+            String req = "INSERT INTO `cartefidelite`(`pointMerci`,`dateExpiration`,`idA`) VALUES ('"+cf.getPointMerci()+"','"+cf.getDateExpiration()+"','"+cf.getIdA()+"')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("cartefidelite ajouté!!!");
