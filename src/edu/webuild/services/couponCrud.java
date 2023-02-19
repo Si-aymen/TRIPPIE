@@ -237,8 +237,50 @@ public class couponCrud {
 
     return true;
 }
+    
+    public List<coupon> Filter_Coupon(String S, String SS) {
+        List<coupon> list = new ArrayList<>();
+        try {
+            if (S.equals("type") || S.equals("code_coupon")) {
+                int temp = Integer.parseInt(SS);
+                String req = "SELECT * FROM `coupon` WHERE " + S + " =" + temp;
+                Statement st = cnx2.createStatement();
+                ResultSet RS = st.executeQuery(req);
+                while (RS.next()) {
+                    coupon v = new coupon();
+                    v.setId_coupn(RS.getInt("id_coupon"));
+                    v.setDate_debut(RS.getDate("date_debut"));
+                    v.setDate_experation(RS.getDate("date_experation"));
+                    v.setTaux_reducton(RS.getInt("taux_reduction"));
+                    v.setCode_coupon(RS.getString("code_coupon"));
+                    v.setNbr_utilisation(RS.getInt("nbr_utilisation"));
+                    v.setType(RS.getString("type"));
+                    list.add(v);
+                }
+            } else {
+                String req = "SELECT * FROM `coupon` WHERE " + S + " =" + "\"" + SS + "\"";
+                Statement st = cnx2.createStatement();
+                ResultSet RS = st.executeQuery(req);
+                while (RS.next()) {
+                    coupon v = new coupon();
+                     v.setId_coupn(RS.getInt("id_coupon"));
+                    v.setDate_debut(RS.getDate("date_debut"));
+                    v.setDate_experation(RS.getDate("date_experation"));
+                    v.setTaux_reducton(RS.getInt("taux_reduction"));
+                    v.setCode_coupon(RS.getString("code_coupon"));
+                    v.setNbr_utilisation(RS.getInt("nbr_utilisation"));
+                    v.setType(RS.getString("type"));
+
+                    list.add(v);
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
 
 
         
-    }
+    }}
 

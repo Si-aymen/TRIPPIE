@@ -6,7 +6,7 @@
 package edu.webuild.services;
 
 import edu.webuild.model.cadeau;
-import edu.webuild.model.coupon;
+
 //import edu.webuild.model.coupon;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 //import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 /**
@@ -106,7 +106,7 @@ public class cadeauCrud {
        
           try {
         
-        String requete = "UPDATE cadeau SET nom_cadeau=?,recurrence=? WHERE id_cadeau =?";
+        String requete = "UPDATE cadeau SET nom_cadeau=?,recurrence=?, id_coupon=? WHERE id_cadeau =?";
         PreparedStatement st = cnx2.prepareStatement(requete);
      
        
@@ -114,7 +114,8 @@ public class cadeauCrud {
                 
                  st.setInt(2,c.getRecurrence());
                
-                st.setInt(3, c.getId_cadeau());
+                st.setInt(3, c.getId_coupon());
+                 st.setInt(4, c.getId_cadeau());
         st.executeUpdate();
         System.out.println("cadeau modifiée avec succès !");
         
@@ -150,30 +151,8 @@ public List<cadeau> rech(int id ) {
 
     
 
-/*public List<cadeau> filterCadeau(String column, String value) {
-        List<cadeau> filteredGifts = new ArrayList<>();
-        try {
-            String query = "SELECT * FROM cadeau WHERE " + column + " = ";
-            if (column.equals("id_cadeau") || column.equals("recurrence")) {
-                query += Integer.parseInt(value);
-            } else {
-                query += "\"" + value + "\"";
-            }
-            Statement statement = cnx2.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                cadeau gift = new cadeau();
-                gift.setId_cadeau(resultSet.getInt("id_cadeau"));
-                gift.setNom_cadeau(resultSet.getString("nom_cadeau"));
-                gift.setRecurrence(resultSet.getInt("recurrence"));
-                filteredGifts.add(gift);
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error in filtering gifts: " + ex.getMessage());
-        }
-        return filteredGifts;
-    }
-*/
+
+
 
 
 
@@ -217,4 +196,6 @@ public boolean validatecadeau(cadeau cadeau) {
        
   return true;
 }
-}
+
+    }
+

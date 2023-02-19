@@ -27,30 +27,34 @@ public class Webuild {
         
        //MyConnection mc= new MyConnection();
      couponCrud pcd= new couponCrud();
+       
+    
+          System.out.println("---------------- partie coupon -----------------------------");
+       
+       
        //pcd.ajoutercoupon();
        
-       
-       /*try{
-           Date date_debut = dateFormat.parse("2024-01-14");
-            Date date_experation = dateFormat.parse("2022-01-14");
-           coupon c1 = new coupon(date_debut,date_experation,40,"hiiii",5,"vip");
+     
+     /*  try{
+           Date date_debut = dateFormat.parse("2025-01-14");
+            Date date_experation = dateFormat.parse("2026-01-14");
+           coupon c1 = new coupon(date_debut,date_experation,40,"rim20",5,"vip");
              pcd.ajouterpersonne2(c1);
        }catch(ParseException e)
        {
             e.printStackTrace();
             
        }*/
-    
-          System.out.println("---------------- partie coupon -----------------------------");
-       
-       
-       
-       //System.out.println(pcd.afficher());
-       
-       /*int id=1;
-       pcd.Supprimer(id);
-        System.out.println(pcd.afficher());*/
+       System.out.println(pcd.afficher());
+         /*System.out.println(pcd.Filter_Coupon("14", ""));
+         System.out.println(pcd.afficher());*/
+
       
+       
+      /* int id=20;
+       pcd.Supprimer(id);
+        System.out.println(pcd.afficher());
+      */
        
        
        
@@ -90,10 +94,10 @@ System.out.println(pcd.afficher());
        
        
          
-        /* try{
+      /*  try{
            Date date_debut = dateFormat.parse("2022-01-14");
             Date date_experation = dateFormat.parse("2025-01-14");
-           coupon c1 = new coupon(date_debut,date_experation,400,"valentin",2,"vip");
+           coupon c1 = new coupon(date_debut,date_experation,40,"valentin",2,"vip");
              
              if(pcd.validateCoupon(c1))
              {
@@ -107,8 +111,8 @@ System.out.println(pcd.afficher());
        {
             e.printStackTrace();
             
-       }
-    */
+       }*/
+    
         
        
    
@@ -117,10 +121,10 @@ System.out.println(pcd.afficher());
        
        cadeauCrud pd= new cadeauCrud();
       //pd.ajoutercadeau
-        int id_coupon = 18;
+       
        
     
-        cadeau c2 = new cadeau("ok",2,id_coupon);
+        cadeau c2 = new cadeau("carte fidelite",1,18);
        pd.ajoutercadeau2(c2);
        
       System.out.println(pd.displayCadeau());
@@ -132,17 +136,17 @@ System.out.println(pcd.afficher());
         System.out.println(pd.displayCadeau());*/
       
                
-         /*
-           cadeau c = new cadeau("covoiturage",5);
-              c.setId_cadeau(34); // id de la personne à modifier
+         
+          /* cadeau c = new cadeau("hiiiiiiiii",5,16);
+              c.setId_cadeau(47); // id de la personne à modifier
 pd.modifier(c);
-System.out.println(pd.displayCadeau());
+System.out.println(pd.displayCadeau());*/
     
 
 
-          System.out.println("voici votre recherch");
-        System.out.println(pd.rech(34));*/
-         
+          /*System.out.println("voici votre recherch");
+        System.out.println(pd.rech(34));
+         */
          
         
         /// System.out.println(pd.filtercadeau("nom_cadeau", "covoiturage"));
@@ -162,17 +166,17 @@ System.out.println(pd.displayCadeau());
    
    
    //triiiiiii
-    System.out.println("voici le tri");
+   /* System.out.println("voici le tri");
         String columncadeau = "nom_cadeau";
          String ordercadeau = "ASC";
         
-        System.out.println(pd.sortCoupons(columncadeau, ordercadeau));
+        System.out.println(pd.sortCoupons(columncadeau, ordercadeau));*/
        
    
    //////controle saisie 
    
    
-    cadeau k1 = new cadeau("abonnement2",1);
+  /*  cadeau k1 = new cadeau("abonnement2",1);
        
      if(pd.validatecadeau(k1))
              {
@@ -181,7 +185,7 @@ System.out.println(pd.displayCadeau());
              }
              else {
         System.out.println("Coupon non valide");
-    }
+    }*/
     }
 }
 
