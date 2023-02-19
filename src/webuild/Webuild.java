@@ -87,7 +87,7 @@ System.out.println(pcd.afficher());
        try{
            Date date_debut = dateFormat.parse("2022-01-14");
             Date date_experation = dateFormat.parse("2025-01-14");
-           coupon c1 = new coupon(date_debut,date_experation,40000,"valentin",200,"vip");
+           coupon c1 = new coupon(date_debut,date_experation,40,"valentin",200,"vip");
              
              if(pcd.validateCoupon(c1))
              {

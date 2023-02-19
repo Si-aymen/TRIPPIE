@@ -5,6 +5,7 @@
  */
 package edu.webuild.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -42,6 +43,14 @@ public class coupon {
     }
 
     public coupon() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public coupon(LocalDate date_debut, LocalDate date_expiration, int taux_reducton, String code_coupon, int nbr_utilisation, String type) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public coupon(java.sql.Date valueOf, LocalDate date_expiration, int taux_reducton, String code_coupon, int nbr_utilisation, String type) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
