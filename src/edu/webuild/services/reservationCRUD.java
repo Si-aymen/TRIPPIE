@@ -25,11 +25,13 @@ public class reservationCRUD implements InterfaceCRUD2 {
     public void ajouterreservation(reservation r) {
         try {
             String req = "INSERT INTO `reservation`(`date_debut`,`date_fin`,`id_voiture`) VALUES ('"+r.getDate_debut()+"','"+r.getDate_debut()+"','"+r.getId_voiture()+"')";
+           // String req2 = "UPDATE `reservation` SET `etat` = 'reservé' WHERE `id_voiture` = " +r.getId_voiture();
             ste = conn.createStatement();
             ste.executeUpdate(req);
-            System.out.println("reservation ajouté!!!");
+           // ste.executeUpdate(req2);
+            System.out.println("reservation  ajouté!!!");
         } catch (SQLException ex) {
-            System.out.println("reservation non ajouté");
+            System.out.println("reservation non  ajouté");
                       }
  }
      @Override
@@ -43,8 +45,8 @@ public class reservationCRUD implements InterfaceCRUD2 {
             while(RS.next()){
              reservation r = new reservation();
              r.setId(RS.getInt(1));
-                r.setDate_debut(RS.getString(2));
-                r.setDate_fin(RS.getString(3));
+                r.setDate_debut(RS.getDate(2));
+                r.setDate_fin(RS.getDate(3));
                 r.setId_voiture(RS.getInt(4));
              
              list.add(r);
@@ -68,9 +70,9 @@ public class reservationCRUD implements InterfaceCRUD2 {
         }
     }
        @Override
-    public void modifierreservation(reservation r ,int id) {
+    public void modifierreservation(reservation r ) {
         try {
-            String req = "UPDATE `reservation` SET `date_debut` = '" + r.getDate_debut() + "', `date_fin` = '" + r.getDate_fin() + "' WHERE `id` = " + id;
+            String req = "UPDATE `reservation` SET `date_debut` = '" + r.getDate_debut() + "', `date_fin` = '" + r.getDate_fin() + "' WHERE `id` = " + r.getId();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("reservation updated !");
@@ -89,8 +91,8 @@ public class reservationCRUD implements InterfaceCRUD2 {
         while (RS.next()) {            
             
           r.setId(RS.getInt(1));
-          r.setDate_debut(RS.getString(2));
-          r.setDate_fin(RS.getString(3));
+          r.setDate_debut(RS.getDate(2));
+          r.setDate_fin(RS.getDate(3));
             
         }
     return r;
@@ -106,8 +108,8 @@ public class reservationCRUD implements InterfaceCRUD2 {
             while(RS.next()){
              reservation r = new reservation();
              r.setId(RS.getInt(1));
-                r.setDate_debut(RS.getString(2));
-                r.setDate_fin(RS.getString(3));
+                r.setDate_debut(RS.getDate(2));
+                r.setDate_fin(RS.getDate(3));
                 r.setId_voiture(RS.getInt(4));
              
              list.add(r);
@@ -120,36 +122,21 @@ public class reservationCRUD implements InterfaceCRUD2 {
     }
     
      @Override
-    public List<reservation> Filter_reservation(String S, String SS) {
+   public List<reservation> Filter_reservation(String S, String SS) {
         List<reservation> list = new ArrayList<>();
         try {
-            if (S.equals("id") ) {
-                int temp = Integer.parseInt(SS);
-                String req = "SELECT * FROM `reservation` WHERE " + S + " =" + temp;
-                Statement st = conn.createStatement();
-                ResultSet RS = st.executeQuery(req);
-                while (RS.next()) {
-                    reservation r = new reservation();
-               r.setId(RS.getInt(1));
-                r.setDate_debut(RS.getString(2));
-                r.setDate_fin(RS.getString(3));
-               r.setId_voiture(RS.getInt(4));
-
-                    list.add(r);
-                }
-            } else {
-                String req = "SELECT * FROM `reservation` WHERE " + S + " =" + "\"" + SS + "\"";
-                Statement st = conn.createStatement();
-                ResultSet RS = st.executeQuery(req);
-                while (RS.next()) {
+            int temp = Integer.parseInt(SS);
+            String req = "SELECT * FROM `reservation` WHERE " + S + " =" + temp;
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
                 reservation r = new reservation();
-               r.setId(RS.getInt(1));
-                r.setDate_debut(RS.getString(2));
-                r.setDate_fin(RS.getString(3));
+             r.setId(RS.getInt(1));
+                r.setDate_debut(RS.getDate(2));
+                r.setDate_fin(RS.getDate(3));
                 r.setId_voiture(RS.getInt(4));
-
-                    list.add(r);
-                }
+             
+             list.add(r);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -157,8 +144,6 @@ public class reservationCRUD implements InterfaceCRUD2 {
 
         return list;
     }
-  
-
     
     
 }

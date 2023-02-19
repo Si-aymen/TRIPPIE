@@ -3,13 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/interfaces/InterfaceCRUD.java</file>
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/services/voitureCRUD.java</file>
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/model/voiture.java</file>
+            <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/gui/location_voiture.fxml</file>
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/services/reservationCRUD.java</file>
+            <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/gui/Ajouter_voitureController.java</file>
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/model/reservation.java</file>
             <file>file:/C:/Users/khmir/Desktop/allocation/src/webuild/Webuild.java</file>
+            <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/gui/interfacemodulelocation.java</file>
+            <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/gui/Location_voitureController.java</file>
+            <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/interfaces/InterfaceCRUD.java</file>
+            <file>file:/C:/Users/khmir/Desktop/allocation/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/gui/modifiervoiture.fxml</file>
+            <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/gui/ModifiervoitureController.java</file>
+            <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/gui/crud_voiture.fxml</file>
+            <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/gui/Afficher_voitureController.java</file>
+            <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/utils/MyConnection.java</file>
             <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/interfaces/InterfaceCRUD2.java</file>
+            <file>file:/C:/Users/khmir/Desktop/allocation/src/edu/webuild/gui/Crud_voitureController.java</file>
         </group>
     </open-files>
 </project-private>

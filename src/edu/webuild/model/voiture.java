@@ -5,33 +5,39 @@
  */
 package edu.webuild.model;
 
+import edu.webuild.interfaces.InterfaceCRUD;
+
 /**
  *
  * @author belkn
  */
 public class voiture {
-    private int id ;
-    private String matricule, marque , puissance ;
-private int prix_jours;
+
+    private int id;
+    private String matricule, marque, puissance/*,etat*/;
+    private int prix_jours;
+
     //constructeur par defaut
     public voiture() {
     }
-    
-    //constructur parametre 
 
-    public voiture(int id, String matricule, String marque, String puissance, int prix_jours) {
+    //constructur parametre 
+    public voiture(int id, String matricule, String marque, String puissance, int prix_jours/*
+            ,String etat*/) {
         this.id = id;
         this.matricule = matricule;
         this.marque = marque;
         this.puissance = puissance;
         this.prix_jours = prix_jours;
+        //  this.etat=etat;
     }
 
-    public voiture(String matricule, String marque, String puissance, int prix_jours) {
+    public voiture(String matricule, String marque, String puissance, int prix_jours/*,String etat*/) {
         this.matricule = matricule;
         this.marque = marque;
         this.puissance = puissance;
         this.prix_jours = prix_jours;
+        // this.etat=etat;
     }
 
     public int getId() {
@@ -76,19 +82,7 @@ private int prix_jours;
 
     @Override
     public String toString() {
-        return "voiture{" + "id=" + id + ", matricule=" + matricule + ", marque=" + marque + ", puissance=" + puissance + ", prix_jours=" + prix_jours + '}'+"\n";
+        return "voiture{" + "id=" + id + ", matricule=" + matricule + ", marque=" + marque + ", puissance=" + puissance + ", prix_jours=" + prix_jours +/*", etat=" + etat + '}'+*/ "\n";
     }
-
-  
-    
-    
-
- 
-    
-    
-
-   
-
-    
 
 }

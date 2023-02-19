@@ -5,19 +5,21 @@
  */
 package edu.webuild.model;
 
+import java.sql.Date;
+
 /**
  *
  * @author belkn
  */
 public class reservation {
     private int id ;
-    private String date_debut, date_fin ;
+    private Date date_debut, date_fin ;
     private int id_voiture;
     //constructeur par defaut
     public reservation() {
     }
 
-    public reservation(String date_debut, String date_fin, int id_voiture) {
+    public reservation(Date date_debut, Date date_fin, int id_voiture) {
         this.date_debut = date_debut;
         this.date_fin = date_fin;
         this.id_voiture = id_voiture;
@@ -27,17 +29,26 @@ public class reservation {
     
     //constructur parametre 
 
-    public reservation(int id, String date_debut, String date_fin) {
+    public reservation(int id, Date date_debut, Date date_fin) {
         this.id = id;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
    
     }
 
-    public reservation(String date_debut, String date_fin) {
+    public reservation(Date date_debut, Date date_fin) {
         this.date_debut = date_debut;
         this.date_fin = date_fin;
     }
+
+    public reservation(int id, Date date_debut, Date date_fin, int id_voiture) {
+        this.id = id;
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.id_voiture = id_voiture;
+    }
+
+    
 
     public int getId() {
         return id;
@@ -47,19 +58,19 @@ public class reservation {
         this.id = id;
     }
 
-    public String getDate_debut() {
+    public Date getDate_debut() {
         return date_debut;
     }
 
-    public void setDate_debut(String date_debut) {
+    public void setDate_debut(Date date_debut) {
         this.date_debut = date_debut;
     }
 
-    public String getDate_fin() {
+    public Date getDate_fin() {
         return date_fin;
     }
 
-    public void setDate_fin(String date_fin) {
+    public void setDate_fin(Date date_fin) {
         this.date_fin = date_fin;
     }
 

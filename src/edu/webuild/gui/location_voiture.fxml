@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.gui.Location_voitureController">
+   <children>
+      <Button fx:id="location_voiture" layoutX="238.0" layoutY="97.0" mnemonicParsing="false" onAction="#location_voiture" text="voiture" />
+      <Button fx:id="reservation_voiture" layoutX="239.0" layoutY="210.0" mnemonicParsing="false" onAction="#reservation_voiture" text="reservation" />
+   </children>
+</AnchorPane>

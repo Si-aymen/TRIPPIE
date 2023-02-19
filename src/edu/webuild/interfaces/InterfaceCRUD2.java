@@ -17,10 +17,10 @@ public interface InterfaceCRUD2 {
     
 public void ajouterreservation(reservation r);
   // public void ajouterPersonne2(Personne p);
-    public void modifierreservation(reservation r , int id);
+    public void modifierreservation(reservation r);
    public void supprimerreservation(int id) ;
    public List<reservation> afficherreservations();
   public reservation getUserByIDre(int id ) throws SQLException;
-  public List<reservation> trierReservation();
+  public List<reservation> trierReservation(); 
   public List<reservation> Filter_reservation(String S, String SS);
 }

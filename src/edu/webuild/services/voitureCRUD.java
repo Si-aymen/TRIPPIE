@@ -36,12 +36,12 @@ public class voitureCRUD implements InterfaceCRUD{
  }
  
     @Override
-    public void modifiervoiture(voiture v ,int id) {
+    public void modifiervoiture(voiture v ) {
         try {
-            String req = "UPDATE `voiture` SET `matricule` = '" + v.getMatricule() + "', `marque` = '" + v.getMarque() +"',`puissance` = '" + v.getPuissance()+ "',`prix_jours` = '" + v.getPrix_jours()+ "' WHERE `id` = " + id;
+            String req = "UPDATE `voiture` SET `matricule` = '" + v.getMatricule() + "', `marque` = '" + v.getMarque() +"',`puissance` = '" + v.getPuissance()+ "',`prix_jours` = '" + v.getPrix_jours()+ "' WHERE `id` = " + v.getId();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
-            System.out.println("Personne updated !");
+            System.out.println("voiture updated !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -59,22 +59,6 @@ public class voitureCRUD implements InterfaceCRUD{
             System.out.println(ex.getMessage());
         }
     }
-/*
-    @Override
-    public void ajouterPersonne2(voiture p) {
- try {
-            String req = "INSERT INTO `personne` (`nom`, `prenom`) VALUES (?,?)";
-            PreparedStatement ps=conn.prepareStatement(req);
-          
-            ps.setString(1, p.getNom());
-            ps.setString(2, p.getPrenom());
-             ps.executeUpdate();
-            System.out.println("Personne ajouté!!!");
-        } catch (SQLException ex) {
-            ex.printStackTrace();                    
-        }   
-    }
-*/
 
     @Override
     public List<voiture> affichervoitures() {
@@ -91,6 +75,7 @@ public class voitureCRUD implements InterfaceCRUD{
                 v.setMarque(RS.getString(3));
                 v.setPuissance(RS.getString(4));    
                 v.setPrix_jours(RS.getInt(5));
+                //  v.setEtat(RS.getString(6)); 
              
              list.add(v);
             }
@@ -159,6 +144,7 @@ public class voitureCRUD implements InterfaceCRUD{
                 v.setMarque(RS.getString(3));
                 v.setPuissance(RS.getString(4));    
                 v.setPrix_jours(RS.getInt(5));
+            //     v.setEtat(RS.getString(6)); 
 
                     list.add(v);
                 }
@@ -173,7 +159,7 @@ public class voitureCRUD implements InterfaceCRUD{
                 v.setMarque(RS.getString(3));
                 v.setPuissance(RS.getString(4));    
                 v.setPrix_jours(RS.getInt(5));
-
+//   v.setEtat(RS.getString(6)); 
                     list.add(v);
                 }
             }
