@@ -5,6 +5,7 @@
  */
 package edu.webuild.interfaces;
 
+import edu.webuild.model.reclamation;
 import edu.webuild.model.reponse;
 import java.util.List;
 
@@ -12,8 +13,14 @@ import java.util.List;
  *
  * @author guerf
  */
-public interface InterfaceReponse {
+public interface InterfaceCRUD {
     
+   public void ajouterReclamation(reclamation r);
+   public void modifierReclamation(reclamation r , int id);
+   public void supprimerReclamation(int id) ;
+   public List<reclamation> afficherReclamation();
+   //public List<reclamation> filtrer1(int id);
+   
    public void ajouterReponse(reponse r);
    public void modifierReponse(reponse r , int id);
    public void supprimerReponse(int id) ;

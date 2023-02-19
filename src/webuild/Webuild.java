@@ -30,11 +30,11 @@ public class Webuild {
         
         reponse r1 = new reponse("frfz", 16, 1);
         
-        reclamationCRUD rc = new reclamationCRUD();
+        reclamationCRUD rc = new reclamationCRUD() {};
         
         reponseCRUD rpc = new reponseCRUD();
         
-        //rc.ajouterReclamation(v1);
+        rc.ajouterReclamation(v1);
         //rc.modifierReclamation(v2,8);
         //rc.supprimerReclamation(14);
         
@@ -44,7 +44,7 @@ public class Webuild {
        
         System.out.println(rc.afficherReclamation());
         
-        System.out.println(rpc.afficherReponse());
+        //System.out.println(rpc.afficherReponse());
        
         
          

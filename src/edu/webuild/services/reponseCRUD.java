@@ -5,7 +5,8 @@
  */
 package edu.webuild.services;
 
-import edu.webuild.interfaces.InterfaceReponse;
+import edu.webuild.interfaces.InterfaceCRUD;
+import edu.webuild.model.reclamation;
 import edu.webuild.model.reponse;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
@@ -19,7 +20,7 @@ import java.util.List;
  *
  * @author guerf
  */
-public class reponseCRUD implements InterfaceReponse{
+public class reponseCRUD implements InterfaceCRUD{
     
     Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
@@ -84,6 +85,26 @@ public class reponseCRUD implements InterfaceReponse{
         }
 
         return list;
+    }
+
+    @Override
+    public void ajouterReclamation(reclamation r) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modifierReclamation(reclamation r, int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void supprimerReclamation(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<reclamation> afficherReclamation() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

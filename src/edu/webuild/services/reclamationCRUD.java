@@ -13,13 +13,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import edu.webuild.interfaces.InterfaceReclamation;
+import edu.webuild.interfaces.InterfaceCRUD;
+import edu.webuild.model.reponse;
 
 /**
  *
  * @author belkn
  */
-public class reclamationCRUD implements InterfaceReclamation{
+public class reclamationCRUD implements InterfaceCRUD{
     
     Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
@@ -82,6 +83,26 @@ public class reclamationCRUD implements InterfaceReclamation{
         }
 
         return list;
+    }
+
+    @Override
+    public void ajouterReponse(reponse r) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modifierReponse(reponse r, int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void supprimerReponse(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<reponse> afficherReponse() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    

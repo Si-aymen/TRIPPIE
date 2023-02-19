@@ -5,11 +5,21 @@
         <group>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/services/reclamationCRUD.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/model/reponse.java</file>
-            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/model/reclamation.java</file>
-            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/interfaces/InterfaceReclamation.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/modifier_rec.fxml</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/Home.fxml</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/MainView.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/webuild/Webuild.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Supprimer_recController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/services/reponseCRUD.java</file>
-            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/interfaces/InterfaceReponse.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Ajouter_recController.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/afficher_rec.fxml</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/supprimer_rec.fxml</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Modifier_recController.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/interfaces/InterfaceCRUD.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/model/reclamation.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/HomeController.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/ajouter_rec.fxml</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Afficher_recController.java</file>
         </group>
     </open-files>
 </project-private>
