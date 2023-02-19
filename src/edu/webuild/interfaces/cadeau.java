@@ -6,14 +6,18 @@
 package edu.webuild.interfaces;
 
 import java.util.List;
-
 /**
  *
  * @author HP
  */
 public interface cadeau {
-     public void ajoutercadeau();
-      public void ajoutercadeau2(cadeau c);
+    
+ public void ajoutercadeau();
+ public void ajoutercadeau2(cadeau c);
+ public List<cadeau> displayCadeau();  
+ public  int Supprimer(int id ); 
+public List<cadeau> rech(int id );
+public List<cadeau> sortCoupons(String column, String order);
+public boolean validatecadeau(cadeau cadeau);
 
-    public List<cadeau> displayCadeau();
 }
