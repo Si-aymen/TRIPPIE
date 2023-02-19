@@ -35,17 +35,7 @@ public class Webuild {
        //pcd.ajoutercoupon();
        
      
-     /*  try{
-           Date date_debut = dateFormat.parse("2025-01-14");
-            Date date_experation = dateFormat.parse("2026-01-14");
-           coupon c1 = new coupon(date_debut,date_experation,40,"rim20",5,"vip");
-             pcd.ajouterpersonne2(c1);
-       }catch(ParseException e)
-       {
-            e.printStackTrace();
-            
-       }*/
-       System.out.println(pcd.afficher());
+  
         /* System.out.println(pcd.Filter_Coupon("code_coupon", "oo"));
          System.out.println(pcd.afficher());*/
 
@@ -94,10 +84,10 @@ System.out.println(pcd.afficher());
        
        
          
-      /*  try{
+       try{
            Date date_debut = dateFormat.parse("2022-01-14");
             Date date_experation = dateFormat.parse("2025-01-14");
-           coupon c1 = new coupon(date_debut,date_experation,40,"valentin",2,"vip");
+           coupon c1 = new coupon(date_debut,date_experation,40000,"valentin",200,"vip");
              
              if(pcd.validateCoupon(c1))
              {
@@ -111,7 +101,7 @@ System.out.println(pcd.afficher());
        {
             e.printStackTrace();
             
-       }*/
+       }
     
         
        

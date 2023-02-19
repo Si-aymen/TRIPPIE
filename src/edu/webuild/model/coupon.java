@@ -20,8 +20,7 @@ public class coupon {
      private int nbr_utilisation;
      private String type;
 
-    public coupon() {
-    }
+   
 
     public coupon(int id_coupn, Date date_debut, Date date_experation, int taux_reducton, String code_coupon, int nbr_utilisation, String type) {
         this.id_coupn = id_coupn;
@@ -42,14 +41,11 @@ public class coupon {
         this.type = type;
     }
 
-    public coupon(int i, int i0, String string) {
+    public coupon() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public coupon(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
     
 
   
