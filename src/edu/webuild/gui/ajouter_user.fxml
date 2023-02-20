@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controllers.AjoutController">
+   <children>
+      <VBox layoutX="40.0" layoutY="43.0" prefHeight="200.0" prefWidth="55.0" spacing="15.0">
+         <children>
+            <Label text="Cin">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Nom">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Prenom">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Sexe">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Age">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="95.0" layoutY="43.0" prefHeight="200.0" prefWidth="196.0" spacing="9.0">
+         <children>
+            <TextField fx:id="fxcin" />
+            <TextField fx:id="fxnom" />
+            <TextField fx:id="fxprenom" />
+            <TextField fx:id="fxsexe" />
+            <TextField fx:id="fxage" />
+         </children>
+      </VBox>
+      <Button fx:id="btnajout" layoutX="455.0" layoutY="282.0" mnemonicParsing="false" onAction="#adduser" text="Ajouter" />
+   </children>
+</AnchorPane>

@@ -18,7 +18,7 @@ public class Utilisateur {
     private String cin;
     private String nom,prenom,sexe;
     private int age;
-    private int role;
+  
    
 
     //constructeur par defaut
@@ -27,24 +27,25 @@ public class Utilisateur {
     
     //constructur parametre 
 
-    public Utilisateur(int id_user, String cin, String nom, String prenom, String sexe, int age, int role) {
+    public Utilisateur(int id_user, String cin, String nom, String prenom, String sexe, int age) {
         this.id_user = id_user;
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
         this.age = age;
-        this.role = role;
+        
     }
 
-    public Utilisateur(String cin, String nom, String prenom, String sexe, int age, int role) {
+    public Utilisateur(String cin, String nom, String prenom, String sexe, int age) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
         this.age = age;
-        this.role = role;
+      
     }
+
     
 
     public int getId_user() {
@@ -95,17 +96,11 @@ public class Utilisateur {
         this.age = age;
     }
 
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
-    }
+ 
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "id_user=" + id_user + ", cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", age=" + age + ", role=" + role + '}';
+        return "Utilisateur{" + "id_user=" + id_user + ", cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", age=" + age + '}';
     }
 
    

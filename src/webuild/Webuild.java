@@ -38,29 +38,32 @@ public class Webuild {
          LocateurCRUD l=new LocateurCRUD();
          
      /*-----------------------------Role--------------------------------------------*/    
-          Role r1=new Role(1,"Client");
-          Role r2=new Role(2,"Chauffeur");
-          Role r3=new Role(3,"Locateur");
-          //rc.ajouterRole(r1);
-          //rc.ajouterRole(r2);
-          //rc.ajouterRole(r3);
+       
+           Role r1 = new Role(1,"Client",27);
+         Role r2=new Role(2,"Chauffeur",26);
+          Role r3=new Role(3,"Locateur",25);
+          //rc.affecterUser(r1, u);
+         //System.out.println(rc.afficherRole());
+         rc.ajouterRole(r1);
+         rc.ajouterRole(r2);
+         rc.ajouterRole(r3);
           //rc.modifierRole(r3);
           //System.out.println(rc.afficherRole());
           //rc.supprimerRole(1);
           
      /*------------------------------Utilisateur-------------------------------------------------------------------------------*/     
-          Utilisateur u1= new Utilisateur("12345678","Zouari","Aymen","Homme", 44, 1);
-          Utilisateur u2= new Utilisateur(5,"12345677","zwaaaw","zzaa","Femme",24,2);
-          Utilisateur u3= new Utilisateur("22245679","Zouari","Aymen","Homme",25,3);
-          Utilisateur u4 = new Utilisateur("23456789", "Saidi", "Fatma", "Femme", 28, 2);
-          Utilisateur u5 = new Utilisateur("34567890", "Boudali", "Ali", "Homme", 35, 1);
-          Utilisateur u6 = new Utilisateur("45678901", "Ghazi", "Nour", "Femme", 22, 2);
-          Utilisateur u7 = new Utilisateur("56789012", "Hamdi", "Karim", "Homme", 31, 3);
-          Utilisateur u8 = new Utilisateur("67890123", "Fakhfakh", "Nada", "Femme", 26, 2);
-          Utilisateur u9 = new Utilisateur("78901234", "Ben Hamouda", "Marwen", "Homme", 29, 1);
-          Utilisateur u10 = new Utilisateur("89012345", "Moussa", "Hela", "Femme", 37, 3);
-          Utilisateur u11 = new Utilisateur("90123456", "Kouki", "Samir", "Homme", 41, 3);
-          Utilisateur u12 = new Utilisateur("01234567", "Ben Ammar", "Safa", "Femme", 24, 2);
+          Utilisateur u1= new Utilisateur("12345678","Zouari","Aymen","Homme", 44);
+          Utilisateur u2= new Utilisateur("12345677","zwaaaw","zzaa","Femme",24);
+          Utilisateur u3= new Utilisateur("22245679","Zouari","Aymen","Homme",25);
+          Utilisateur u4 = new Utilisateur("23456789", "Saidi", "Fatma", "Femme", 28);
+          Utilisateur u5 = new Utilisateur("34567890", "Boudali", "Ali", "Homme", 35);
+          Utilisateur u6 = new Utilisateur("45678901", "Ghazi", "Nour", "Femme", 22);
+          Utilisateur u7 = new Utilisateur("56789012", "Hamdi", "Karim", "Homme", 31);
+          Utilisateur u8 = new Utilisateur("67890123", "Fakhfakh", "Nada", "Femme", 26);
+          Utilisateur u9 = new Utilisateur("78901234", "Ben Hamouda", "Marwen", "Homme", 29);
+          Utilisateur u10 = new Utilisateur("89012345", "Moussa", "Hela", "Femme", 37);
+          Utilisateur u11 = new Utilisateur("90123456", "Kouki", "Samir", "Homme", 41);
+          Utilisateur u12 = new Utilisateur("01234567", "Ben Ammar", "Safa", "Femme", 24);
           //uc.ajouterUtilisateur(u1);
           //uc.ajouterUtilisateur(u2);
           //uc.ajouterUtilisateur(u3);

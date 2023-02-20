@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.AfficheController">
+   <children>
+      <ListView fx:id="afficheruser" layoutX="31.0" layoutY="40.0" prefHeight="322.0" prefWidth="541.0" />
+      <Button fx:id="btnsupp" layoutX="264.0" layoutY="388.0" mnemonicParsing="false" onAction="#supprimer_user" text="Supprimer" />
+   </children>
+</AnchorPane>

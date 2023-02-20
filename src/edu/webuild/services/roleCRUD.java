@@ -7,8 +7,10 @@ package edu.webuild.services;
 
 import edu.webuild.interfaces.InterfaceRoleCRUD;
 import edu.webuild.model.Role;
+import edu.webuild.model.Utilisateur;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,7 +28,7 @@ public class roleCRUD implements InterfaceRoleCRUD {
      @Override
     public void ajouterRole(Role r) {
         try {
-             String req = "INSERT INTO `role`( `id_role`,`libelle`) VALUES ('"+r.getId_role()+"','"+r.getLibelle()+"')"; 
+             String req = "INSERT INTO `role`( `id_role`,`libelle`,id_user) VALUES ('"+r.getId_role()+"','"+r.getLibelle()+"','"+r.getId_user()+"')"; 
              ste = conn.createStatement();
             ste.executeUpdate(req);
              System.out.println("Role ajouté!!!");
@@ -64,13 +66,13 @@ public class roleCRUD implements InterfaceRoleCRUD {
     public List<Role> afficherRole() {
        List<Role> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM role";//"SELECT role. *, role.libelle FROM role INNER JOIN role ON role.role = role.id_role";
+            String req = "SELECT libelle FROM role";//"SELECT role. *, role.libelle FROM role INNER JOIN role ON role.role = role.id_role";
             Statement st = conn.createStatement();
             ResultSet RS= st.executeQuery(req);
             while(RS.next()){
              Role r = new Role();
-             r.setId_role(RS.getInt(1));
-             r.setLibelle(RS.getString(2));
+            // r.setId_role(RS.getInt(1));
+             r.setLibelle(RS.getString(1));
              list.add(r);
             }
         } catch (SQLException ex) {
@@ -166,5 +168,21 @@ public class roleCRUD implements InterfaceRoleCRUD {
 
         return list;
     }
+    
+     @Override
+    public void affecterUser(Role r, Utilisateur u) {
+        try {
+            String req ="UPDATE `role` SET `utilisateur`= ? WHERE id_role = ?";
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setInt(1, u.getId_user());
+            ps.setInt(2, r.getId_role());
+             ps.executeUpdate();
+            System.out.println("Player updated successfully!");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+    
 
 }

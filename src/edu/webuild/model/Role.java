@@ -12,16 +12,31 @@ package edu.webuild.model;
 public class Role  {
     private int id_role;
     private String libelle;
+    private int id_user;
     
  
 
     public Role() {
     }
 
+    public Role(String libelle) {
+        this.libelle = libelle;
+    }
+
+    
     public Role(int id_role, String libelle) {
         this.id_role = id_role;
         this.libelle = libelle;
+         
     }
+
+    public Role(int id_role, String libelle, int id_user) {
+        this.id_role = id_role;
+        this.libelle = libelle;
+        this.id_user = id_user;
+    }
+    
+    
 
     
 
@@ -41,9 +56,18 @@ public class Role  {
         this.libelle = libelle;
     }
 
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+    
+
     @Override
     public String toString() {
-        return "Role{" + "id_role=" + id_role + ", libelle=" + libelle + '}';
+        return "Role{" + "id_role=" + id_role + ", libelle=" + libelle +", id_user=" + id_user + '}';
     }
 
    

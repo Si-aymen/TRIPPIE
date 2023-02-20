@@ -6,6 +6,7 @@
 package edu.webuild.interfaces;
 
 import edu.webuild.model.Role;
+import edu.webuild.model.Utilisateur;
 import java.util.List;
 
 /**
@@ -21,6 +22,7 @@ public interface InterfaceRoleCRUD {
     public List<Role> getById(int id_role);
     public List<Role> FiltrerRole(String f1, String f2);
      public List<Role> trierRole();
+      public void affecterUser(Role r, Utilisateur u) ;
 }
 
 

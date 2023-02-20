@@ -31,7 +31,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
    @Override
     public void ajouterUtilisateur(Utilisateur u) {
         try {
-             String req = "INSERT INTO `utilisateur`(`cin` , `nom`, `prenom` , `sexe` , `age`, `role`) VALUES ('"+u.getCin()+"','"+u.getNom()+"','"+u.getPrenom()+"','"+u.getSexe()+"','"+u.getAge()+"','"+u.getRole()+"')";
+             String req = "INSERT INTO `utilisateur`(`cin` , `nom`, `prenom` , `sexe` , `age`) VALUES ('"+u.getCin()+"','"+u.getNom()+"','"+u.getPrenom()+"','"+u.getSexe()+"','"+u.getAge()+"')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Utilisateur ajouté!!!");
@@ -55,6 +55,20 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
             
         }
     }
+    
+      @Override
+    public void modifierUtilisateur(Utilisateur u,int id_user) {
+        try {
+            String req = "UPDATE `utilisateur` SET `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() + "', `sexe` = '" + u.getSexe() + "', `age` = '" + u.getAge() + "' WHERE `utilisateur`.`id_user` = " + u.getId_user();
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("Utilisateur updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            
+        }
+    }
+   
    
     @Override
     public void supprimerUtilisateurByCin(String cin) {
@@ -95,7 +109,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
              u.setPrenom(RS.getString(4));
              u.setSexe(RS.getString(5));
              u.setAge(RS.getInt(6));
-             u.setRole(RS.getInt(7));
+          
             
              
              
@@ -123,7 +137,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
              u.setPrenom(RS.getString(4));
              u.setSexe(RS.getString(5));
              u.setAge(RS.getInt(6));
-             u.setRole(RS.getInt(7));
+           
             
              
              
@@ -156,7 +170,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
              u.setPrenom(RS.getString(4));
              u.setSexe(RS.getString(5));
              u.setAge(RS.getInt(6));
-             u.setRole(RS.getInt(7));
+         
             
              
              
@@ -175,7 +189,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
              u.setPrenom(RS.getString(4));
              u.setSexe(RS.getString(5));
              u.setAge(RS.getInt(6));
-             u.setRole(RS.getInt(7));
+             
              
              
                           list.add(u);
@@ -208,7 +222,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
              u.setPrenom(RS.getString(4));
              u.setSexe(RS.getString(5));
              u.setAge(RS.getInt(6));
-             u.setRole(RS.getInt(7));
+             
              
              list.add(u);
             }

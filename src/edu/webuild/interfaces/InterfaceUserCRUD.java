@@ -16,6 +16,7 @@ public interface InterfaceUserCRUD {
     
     public void ajouterUtilisateur(Utilisateur u);
     public void modifierUtilisateur(Utilisateur u);
+     public void modifierUtilisateur(Utilisateur u,int id_user) ;
     public void supprimerUtilisateurByCin(String cin) ;
     public void supprimerUtilisateurById(int id_user);
     public List<Utilisateur> afficherUtilisateur();
