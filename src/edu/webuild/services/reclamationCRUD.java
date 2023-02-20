@@ -20,27 +20,27 @@ import edu.webuild.model.reponse;
  *
  * @author belkn
  */
-public class reclamationCRUD implements InterfaceCRUD{
-    
+public class reclamationCRUD implements InterfaceCRUD {
+
     Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
 
     @Override
     public void ajouterReclamation(reclamation r) {
         try {
-            String req = "INSERT INTO `reclamation`(`type_rec`,`commentaire`,`etat`) VALUES ('"+r.getType_rec()+"','"+r.getCommentaire()+"','non traité')";
+            String req = "INSERT INTO `reclamation`(`type_rec`,`commentaire`,`etat`) VALUES ('" + r.getType_rec() + "','" + r.getCommentaire() + "','non traité')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Reclamation ajouté!!!");
         } catch (SQLException ex) {
             System.out.println("Reclamation non ajouté");
-                      }
+        }
     }
 
     @Override
     public void modifierReclamation(reclamation r, int id) {
         try {
-            String req = "UPDATE `reclamation` SET `type_rec` = '" +r.getType_rec()+ "', `commentaire` = '" + r.getCommentaire()+ "' WHERE `reclamation`.`id_rec` = " +id;
+            String req = "UPDATE `reclamation` SET `type_rec` = '" + r.getType_rec() + "', `commentaire` = '" + r.getCommentaire() + "' WHERE `reclamation`.`id_rec` = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Reclamation updated !");
@@ -67,22 +67,44 @@ public class reclamationCRUD implements InterfaceCRUD{
         try {
             String req = "Select * from reclamation";
             Statement st = conn.createStatement();
-           
-            ResultSet RS= st.executeQuery(req);
-            while(RS.next()){
-             reclamation r = new reclamation();
-             r.setId_rec(RS.getInt(1));
-             r.setType_rec(RS.getString(2));
-             r.setCommentaire(RS.getString(3));
-             r.setEtat(RS.getString(4));
-             
-             list.add(r);
+
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                reclamation r = new reclamation();
+                r.setId_rec(RS.getInt(1));
+                r.setType_rec(RS.getString(2));
+                r.setCommentaire(RS.getString(3));
+                r.setEtat(RS.getString(4));
+
+                list.add(r);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
         return list;
+    }
+
+    @Override
+    public reclamation detailsReclamation(int id) {
+
+        reclamation r = new reclamation();
+
+        try {
+            String req = "Select * from reclamation where id_rec = " + id;
+            Statement st = conn.createStatement();
+
+            ResultSet RS = st.executeQuery(req);
+            r.setId_rec(RS.getInt(1));
+            r.setType_rec(RS.getString(2));
+            r.setCommentaire(RS.getString(3));
+            r.setEtat(RS.getString(4));
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return r;
     }
 
     @Override
@@ -105,13 +127,9 @@ public class reclamationCRUD implements InterfaceCRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
+    @Override
+    public reponse detailsReponse(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-   
-
-  
-
-   
-   
-    
 }

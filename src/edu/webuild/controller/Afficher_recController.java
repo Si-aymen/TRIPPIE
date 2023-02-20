@@ -31,6 +31,8 @@ public class Afficher_recController implements Initializable {
     private TextField id_rec;
     @FXML
     private Button btn_afficher;
+    @FXML
+    private TextField aff_etat;
 
     /**
      * Initializes the controller class.
@@ -42,6 +44,15 @@ public class Afficher_recController implements Initializable {
 
     @FXML
     private void afficher_rec(ActionEvent event) {
+        
+        int id = Integer.parseInt(id_rec.getText());
+        
+        reclamationCRUD rc = new reclamationCRUD();
+        
+        reclamation r = rc.detailsReclamation(id);
+        
+        aff_type.setText(r.getType_rec());
+        aff_commentaire.setText(r.getCommentaire());
         
     }
     

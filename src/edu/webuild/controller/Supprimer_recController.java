@@ -5,9 +5,14 @@
  */
 package edu.webuild.controller;
 
+import edu.webuild.model.reclamation;
+import edu.webuild.services.reclamationCRUD;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -16,6 +21,9 @@ import javafx.fxml.Initializable;
  */
 public class Supprimer_recController implements Initializable {
 
+    @FXML
+    private TextField supp_id;
+
     /**
      * Initializes the controller class.
      */
@@ -23,5 +31,15 @@ public class Supprimer_recController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void supprimer_rec(ActionEvent event) {
+        
+        int id = Integer.parseInt(supp_id.getText());
+        
+        reclamationCRUD rc = new reclamationCRUD();
+        
+        rc.supprimerReclamation(id);
+    }
     
 }

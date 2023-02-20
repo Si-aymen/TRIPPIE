@@ -53,13 +53,13 @@ public class HomeController implements Initializable {
 
     @FXML
     private void lancer_modifier(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_rec.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/modifier_rec.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     private void lancer_supprimer(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_rec.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/supprimer_rec.fxml"));
         rootPane.getChildren().setAll(pane);
     }
     

@@ -86,6 +86,11 @@ public class reponseCRUD implements InterfaceCRUD{
 
         return list;
     }
+    
+    @Override
+    public reponse detailsReponse(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     @Override
     public void ajouterReclamation(reclamation r) {
@@ -106,5 +111,12 @@ public class reponseCRUD implements InterfaceCRUD{
     public List<reclamation> afficherReclamation() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public reclamation detailsReclamation(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 }

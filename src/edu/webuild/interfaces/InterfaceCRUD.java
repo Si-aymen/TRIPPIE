@@ -19,11 +19,13 @@ public interface InterfaceCRUD {
    public void modifierReclamation(reclamation r , int id);
    public void supprimerReclamation(int id) ;
    public List<reclamation> afficherReclamation();
+   public reclamation detailsReclamation(int id);
    //public List<reclamation> filtrer1(int id);
    
    public void ajouterReponse(reponse r);
    public void modifierReponse(reponse r , int id);
    public void supprimerReponse(int id) ;
    public List<reponse> afficherReponse();
+   public reponse detailsReponse(int id);
    //public List<reclamation> filtrer2(int id);
 }
