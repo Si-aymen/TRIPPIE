@@ -16,8 +16,8 @@
       <TextField fx:id="depart_TF" layoutX="226.0" layoutY="91.0" />
       <TextField fx:id="destination_TF" layoutX="227.0" layoutY="143.0" />
       <TextField fx:id="nmbr_place_TF" layoutX="227.0" layoutY="196.0" />
-      <Button fx:id="add_CoVoiturage_btn" layoutX="389.0" layoutY="332.0" mnemonicParsing="false" onAction="#add_CoVoiturage" text="Ajouter Co_Voiturage" />
       <DatePicker fx:id="ok" layoutX="153.0" layoutY="319.0" />
       <TextField fx:id="date_dep_TF" layoutX="225.0" layoutY="252.0" />
+      <Button layoutX="453.0" layoutY="332.0" mnemonicParsing="false" onAction="#add_CoVoiturage" text="ajouter" />
    </children>
 </AnchorPane>

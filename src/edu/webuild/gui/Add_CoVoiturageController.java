@@ -36,8 +36,6 @@ public class Add_CoVoiturageController implements Initializable {
     @FXML
     private TextField nmbr_place_TF;
     @FXML
-    private Button add_CoVoiturage_btn;
-    @FXML
     private DatePicker ok;
 
     /**
@@ -56,13 +54,39 @@ public class Add_CoVoiturageController implements Initializable {
         int nmbr_place = Integer.parseInt(nmbr_place_TF.getText());
         CoVoiturage v = new CoVoiturage(depart, destination, date_dep, nmbr_place);
         InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
-        inter_co.ajouterCoVoiturage(v);
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("voiture insérée avec succés!");
-        alert.show();
+        if (nmbr_place > 7 || nmbr_place == 0 || nmbr_place < 0) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("la nmbr des place est incorrect ");
+            alert.show();
 
+        } else if (depart.length() == 0) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("label de depart est vide ");
+            alert.show();
+        } else if (destination.length() == 0) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("label de destination est vide ");
+            alert.show();
+        } else if (date_dep.length() == 0) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("label du date est vide ");
+            alert.show();
+        } else {
+            inter_co.ajouterCoVoiturage(v);
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("voiture insérée avec succés!");
+            alert.show();
+        }
     }
 
 }

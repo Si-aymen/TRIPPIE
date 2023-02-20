@@ -98,6 +98,7 @@ public class Show_CoVoiturageController implements Initializable {
         destination = V.getDestination();
         date_dep = V.getDate_dep();
         nmbr_place = Integer.toString(V.getNmbr_place());
+        
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("modif.fxml"));

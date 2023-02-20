@@ -43,6 +43,7 @@ public class CoVoiturage_Main extends Application {
             Scene scene = new Scene(root);
 
             primaryStage.setTitle("Hello World!");
+
             primaryStage.setScene(scene);
             primaryStage.show();
 
