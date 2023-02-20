@@ -22,16 +22,17 @@ import edu.webuild.interfaces.InterfaceAbonnement;
 public class AbonnementCRUD implements InterfaceAbonnement{
     Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
+
     
     @Override
     public void ajouterabonnement(abonnement A) {
         try {
-            String req = "INSERT INTO `abonnement`(`type`,`dateExpiration`,`dateAchat`,`prix`) VALUES ('"+A.getType()+"','"+A.getDateExpiration()+"','"+A.getDateAchat()+"','"+A.getPrix()+"')";
+            String req = "INSERT INTO `abonnement`(`type`,`dateExpiration`,`dateAchat`,`prix`) VALUES ('"+A.getType()+"','"+A.getDateExpiration()+"','"+A.getDateAchat()+"',"+A.getPrix()+")";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Abonnement ajouté!!!");
         } catch (SQLException ex) {
-            System.out.println("Abonnement non ajouté");
+            System.out.println("Abonnement non ajouté!!!");
                       }
  }
  

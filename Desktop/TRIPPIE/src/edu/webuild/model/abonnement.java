@@ -33,6 +33,23 @@ public class abonnement {
         this.dateAchat = dateAchat;
     }
 
+    public abonnement(String type, String dateAchat, int prix) {
+        this.type = type;
+        this.dateAchat = dateAchat;
+        this.prix = prix;
+    }
+
+    public abonnement(String type, String dateExpiration, String dateAchat, int prix) {
+        this.type = type;
+        this.dateExpiration = dateExpiration;
+        this.dateAchat = dateAchat;
+        this.prix = prix;
+    }
+
+  
+
+   
+
     public int getIdA() {
         return idA;
     }

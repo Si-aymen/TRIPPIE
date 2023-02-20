@@ -14,6 +14,7 @@ public class cartefidelite {
     private String pointMerci, dateExpiration ;
     private int idA;
     //constructeur par defaut
+    
 
     public cartefidelite(int id_cf, String pointMerci, String dateExpiration, int idA) {
         this.id_cf = id_cf;
@@ -22,6 +23,12 @@ public class cartefidelite {
         this.idA = idA;
     }
 
+        public cartefidelite(String pointMerci, String dateExpiration, int idA) {
+        this.pointMerci = pointMerci;
+        this.dateExpiration = dateExpiration;
+        this.idA = idA;
+    }
+        
     public cartefidelite(String pointMerci, String dateExpiration) {
         this.pointMerci = pointMerci;
         this.dateExpiration = dateExpiration;

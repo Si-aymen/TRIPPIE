@@ -16,7 +16,7 @@ import java.util.List;
 public interface InterfaceCarte {
     
 public void ajoutercarte(cartefidelite cf);
-  // public void ajouterPersonne2(Personne p);
+
     public void modifiercarte(cartefidelite cf , int id_cf);
    public void supprimercarte(int id_cf);
    public List<cartefidelite> affichercarte();
