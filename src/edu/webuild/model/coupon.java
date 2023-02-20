@@ -7,12 +7,21 @@ package edu.webuild.model;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  *
  * @author HP
  */
 public class coupon {
+
+    public static void remove(coupon selectedCoupon) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static Iterator<coupon> iterator() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
      private int id_coupon;
     private Date date_debut;
     private Date date_experation;

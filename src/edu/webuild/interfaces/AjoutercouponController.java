@@ -18,6 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -27,8 +28,6 @@ import javafx.scene.layout.AnchorPane;
  */
 public class AjoutercouponController implements Initializable {
 
-    @FXML
-    private Button txaddc;
     @FXML
     private AnchorPane txdatec1;
     @FXML
@@ -50,11 +49,11 @@ public class AjoutercouponController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
+    }  
+    
     @FXML
-    private void addc(ActionEvent event) {
-    LocalDate date_debut = txdatec.getValue();
+    private void add(MouseEvent event) {
+        LocalDate date_debut = txdatec.getValue();
     LocalDate date_expiration = datec2.getValue();
 
     if (date_debut == null || date_expiration == null) {
@@ -138,10 +137,10 @@ public class AjoutercouponController implements Initializable {
     alert.setHeaderText("Coupon ajouté avec succès");
     alert.setContentText("Le coupon " + code_coupon + " a été ajouté à la base de données.");
     alert.showAndWait();
-}
+          
+    }    
+
+    @FXML
+    private void clean(MouseEvent event) {
     }
-
-        
-    
-    
-
+}
