@@ -72,31 +72,4 @@ stage.show();
 Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE,null, ex);
 
 
-} 
-        
-        
-        
-        
-        
-    }
-
-    @FXML
-    private void modifier_voiture(ActionEvent event) {
-        
-         try {
-
-Parent page1 =
-FXMLLoader.load(getClass().getResource("modifiervoiture.fxml"));
-Scene scene = new Scene(page1);
-Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-stage.setScene(scene);
-stage.show();
-} catch (IOException ex) {
-Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE,null, ex);
-
-
-} 
-        
-    }
-    
-}
+}}}

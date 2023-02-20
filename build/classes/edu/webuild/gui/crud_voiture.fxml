@@ -7,6 +7,5 @@
    <children>
       <Button fx:id="affichervoiture" layoutX="267.0" layoutY="79.0" mnemonicParsing="false" onAction="#affichervoiture" text="afficher" />
       <Button fx:id="ajouter_voiture" layoutX="268.0" layoutY="200.0" mnemonicParsing="false" onAction="#ajouter_voiture" text="ajouter" />
-      <Button layoutX="267.0" layoutY="290.0" mnemonicParsing="false" onAction="#modifier_voiture" text="modifier" />
    </children>
 </AnchorPane>

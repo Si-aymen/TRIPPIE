@@ -49,6 +49,44 @@ public class Ajouter_voitureController implements Initializable {
         String marque = fx_marque.getText();
         String puissance = fx_puissance.getText();
         int prix_jours = Integer.parseInt(fx_prix_jours.getText());
+         if(prix_jours<0){
+             Alert alert = new Alert(AlertType.INFORMATION);
+           alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("erreur le prix est negatif");
+        alert.show();
+        }else if(marque.length()==0){
+            Alert alert = new Alert(AlertType.INFORMATION);
+           alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("erreur donner une marque");
+        alert.show();
+        }else if (matricule.indexOf("tunis")==-1){
+             Alert alert = new Alert(AlertType.INFORMATION);
+           alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("erreur il faut contenir tunis");
+        alert.show();
+        }else if (puissance.indexOf("ch")==-1){
+             Alert alert = new Alert(AlertType.INFORMATION);
+           alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("erreur il faut contenir ch");
+        alert.show();
+        }else if (marque.length()<0){
+             Alert alert = new Alert(AlertType.INFORMATION);
+           alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("la marque est vide !");
+        alert.show();
+        }else if (puissance.length()<0){
+             Alert alert = new Alert(AlertType.INFORMATION);
+           alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("la puissance est vide !");
+        alert.show();
+        }
+         else {
         voiture v = new voiture(matricule, marque, puissance, prix_jours);
         voitureCRUD voit = new voitureCRUD();
         voit.ajoutervoiture(v);
@@ -58,6 +96,7 @@ public class Ajouter_voitureController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("voiture insérée avec succés!");
         alert.show();
+    }
     }
 
 }
