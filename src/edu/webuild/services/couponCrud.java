@@ -6,7 +6,7 @@
 package edu.webuild.services;
 
 
-import edu.webuild.model.cadeau;
+
 import edu.webuild.model.coupon;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
@@ -55,7 +55,7 @@ public class couponCrud {
             String date_experation = dateFormat.format(c.getDate_experation());
             pst.setString(2,date_experation);
           
-               pst.setInt(3,c.getTaux_reducton());
+               pst.setInt(3,c.getTaux_reduction());
                
                 pst.setString(4,c.getCode_coupon());
                 
@@ -69,7 +69,7 @@ public class couponCrud {
         
     
   }
-    public List<coupon> afficher() {
+    /*public List<coupon> afficher() {
 
             List<coupon> myList = new ArrayList<>();
        
@@ -94,7 +94,32 @@ public class couponCrud {
         }
       
        return myList; 
+    }*/
+    
+    public List<coupon> displayCoupon() {
+    List<coupon> couponList = new ArrayList<>();
+    try {
+        String query = "SELECT * FROM coupon";
+        Statement stmt = cnx2.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            int id_coupon = rs.getInt("id_coupon");
+            Date date_debut = rs.getDate("date_debut");
+             Date date_experation = rs.getDate("date_experation");
+            int taux_reduction = rs.getInt("taux_reduction");
+            String code_coupon= rs.getString("code_coupon");
+ int nbr_utilisation = rs.getInt("nbr_utilisation");
+   String type= rs.getString("type");
+            coupon k = new coupon(id_coupon, date_debut, date_experation,taux_reduction,code_coupon,nbr_utilisation,type);
+            couponList.add(k);
+        }
+    } catch (SQLException e) {
+        System.err.println(e.getMessage());
     }
+    return couponList;
+}
+
         
     
     public  int Supprimer(int id ){
@@ -125,13 +150,13 @@ public class couponCrud {
             
         String date_experation = dateFormat.format(c.getDate_experation());
             st.setString(2,date_experation);
-        st.setInt(3,c.getTaux_reducton());
+        st.setInt(3,c.getTaux_reduction());
                
                 st.setString(4,c.getCode_coupon());
                 
                  st.setInt(5,c.getNbr_utilisation());
                 st.setString(6,c.getType());
-                st.setInt(7, c.getId_coupn());
+                st.setInt(7, c.getId_coupon());
         st.executeUpdate();
         System.out.println("coupon modifiée avec succès !");
     } catch (SQLException ex) {
@@ -215,7 +240,7 @@ public class couponCrud {
         return false;
     }
 
-    if (coupon.getTaux_reducton()< 0 || coupon.getTaux_reducton()>= 100) {
+    if (coupon.getTaux_reduction()< 0 || coupon.getTaux_reduction()>= 100) {
         System.out.println("Le taux de réduction doit être compris entre 0 et 100.");
         return false;
     }

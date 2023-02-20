@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="txdatec1" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.interfaces.AjoutercouponController">
+   <children>
+      <Label layoutX="131.0" layoutY="37.0" text="date_debut" />
+      <Label layoutX="128.0" layoutY="67.0" text="date_experation" />
+      <Label layoutX="122.0" layoutY="101.0" text="taux_reduction" />
+      <Label layoutX="125.0" layoutY="132.0" text="code_coupon" />
+      <Label layoutX="124.0" layoutY="170.0" text="nbr_utilisation" />
+      <Label layoutX="149.0" layoutY="200.0" text="type" />
+      <DatePicker fx:id="txdatec" layoutX="206.0" layoutY="33.0" />
+      <DatePicker fx:id="datec2" layoutX="206.0" layoutY="63.0" />
+      <TextField fx:id="fxtaux" layoutX="206.0" layoutY="97.0" />
+      <TextField fx:id="fccode" layoutX="206.0" layoutY="128.0" />
+      <TextField fx:id="fxnbr" layoutX="206.0" layoutY="166.0" />
+      <TextField fx:id="fxtype" layoutX="206.0" layoutY="205.0" />
+      <Button fx:id="txaddc" layoutX="61.0" layoutY="290.0" mnemonicParsing="false" onAction="#addc" text="Add" />
+   </children>
+</AnchorPane>

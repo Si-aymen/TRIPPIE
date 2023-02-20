@@ -5,6 +5,8 @@
  */
 package edu.webuild.model;
 
+import java.util.Date;
+
 /**
  *
  * @author HP
@@ -34,6 +36,11 @@ public class cadeau {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public cadeau(int id_coupon, Date date_debut, Date date_experation, int taux_reduction, String code_coupon, int nbr_utilisation, String type) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     public void setId_coupon(int id_coupon) {
         this.id_coupon = id_coupon;
     }

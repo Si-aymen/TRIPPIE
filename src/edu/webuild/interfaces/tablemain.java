@@ -22,20 +22,22 @@ import javafx.stage.Stage;
  *
  * @author HP
  */
-public class CouponWindow extends Application {
+public class tablemain extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        
+       
         try {
-          Parent  root = FXMLLoader.load(getClass().getResource("couponAjout.fxml"));
-          Scene scene = new Scene(root);
+           Parent   root = FXMLLoader.load(getClass().getResource("table1.fxml"));
+            Scene scene = new Scene(root);
+        
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ex.getMessage());
+            Logger.getLogger(tablemain.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         
     }
 

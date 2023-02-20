@@ -13,30 +13,30 @@ import java.util.Date;
  * @author HP
  */
 public class coupon {
-     private int id_coupn;
+     private int id_coupon;
     private Date date_debut;
     private Date date_experation;
-    private int taux_reducton;
+    private int taux_reduction;
     private String code_coupon;
      private int nbr_utilisation;
      private String type;
-
+   
    
 
-    public coupon(int id_coupn, Date date_debut, Date date_experation, int taux_reducton, String code_coupon, int nbr_utilisation, String type) {
-        this.id_coupn = id_coupn;
+    public coupon(int id_coupon, Date date_debut, Date date_experation, int taux_reduction, String code_coupon, int nbr_utilisation, String type) {
+        this.id_coupon = id_coupon;
         this.date_debut = date_debut;
         this.date_experation = date_experation;
-        this.taux_reducton = taux_reducton;
+        this.taux_reduction = taux_reduction;
         this.code_coupon = code_coupon;
         this.nbr_utilisation = nbr_utilisation;
         this.type = type;
     }
 
-    public coupon(Date date_debut, Date date_experation, int taux_reducton, String code_coupon, int nbr_utilisation, String type) {
+    public coupon(Date date_debut, Date date_experation, int taux_reduction, String code_coupon, int nbr_utilisation, String type) {
         this.date_debut = date_debut;
         this.date_experation = date_experation;
-        this.taux_reducton = taux_reducton;
+        this.taux_reduction = taux_reduction;
         this.code_coupon = code_coupon;
         this.nbr_utilisation = nbr_utilisation;
         this.type = type;
@@ -46,20 +46,11 @@ public class coupon {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public coupon(LocalDate date_debut, LocalDate date_expiration, int taux_reducton, String code_coupon, int nbr_utilisation, String type) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public coupon(java.sql.Date valueOf, LocalDate date_expiration, int taux_reducton, String code_coupon, int nbr_utilisation, String type) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-   
     
 
-  
-    public int getId_coupn() {
-        return id_coupn;
+   
+    public int getId_coupon() {
+        return id_coupon;
     }
 
     public Date getDate_debut() {
@@ -70,8 +61,8 @@ public class coupon {
         return date_experation;
     }
 
-    public int getTaux_reducton() {
-        return taux_reducton;
+    public int getTaux_reduction() {
+        return taux_reduction;
     }
 
     public String getCode_coupon() {
@@ -86,8 +77,8 @@ public class coupon {
         return type;
     }
 
-    public void setId_coupn(int id_coupn) {
-        this.id_coupn = id_coupn;
+    public void setId_coupn(int id_coupon) {
+        this.id_coupon = id_coupon;
     }
 
     public void setDate_debut(Date date_debut) {
@@ -98,8 +89,8 @@ public class coupon {
         this.date_experation = date_experation;
     }
 
-    public void setTaux_reducton(int taux_reducton) {
-        this.taux_reducton = taux_reducton;
+    public void setTaux_reducton(int taux_reduction) {
+        this.taux_reduction = taux_reduction;
     }
 
     public void setCode_coupon(String code_coupon) {
@@ -116,7 +107,7 @@ public class coupon {
 
     @Override
     public String toString() {
-        return "coupon{" + "id_coupn=" + id_coupn + ", date_debut=" + date_debut + ", date_experation=" + date_experation + ", taux_reducton=" + taux_reducton + ", code_coupon=" + code_coupon + ", nbr_utilisation=" + nbr_utilisation + ", type=" + type + '}';
+        return "coupon{" + "id_coupon=" + id_coupon + ", date_debut=" + date_debut + ", date_experation=" + date_experation + ", taux_reduction=" + taux_reduction + ", code_coupon=" + code_coupon + ", nbr_utilisation=" + nbr_utilisation + ", type=" + type + '}';
     }
 
 
