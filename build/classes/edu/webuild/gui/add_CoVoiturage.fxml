@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.gui.Add_CoVoiturageController">
+   <children>
+      <Label layoutX="80.0" layoutY="29.0" text="Ajouter une Co_Voiturage interface" />
+      <Label layoutX="94.0" layoutY="95.0" text="place de depart" />
+      <Label layoutX="94.0" layoutY="147.0" text="destination" />
+      <Label layoutX="84.0" layoutY="256.0" text="date du depart" />
+      <Label layoutX="96.0" layoutY="200.0" text="nombre de places" />
+      <TextField fx:id="depart_TF" layoutX="226.0" layoutY="91.0" />
+      <TextField fx:id="destination_TF" layoutX="227.0" layoutY="143.0" />
+      <TextField fx:id="nmbr_place_TF" layoutX="227.0" layoutY="196.0" />
+      <Button fx:id="add_CoVoiturage_btn" layoutX="389.0" layoutY="332.0" mnemonicParsing="false" onAction="#add_CoVoiturage" text="Ajouter Co_Voiturage" />
+      <DatePicker fx:id="ok" layoutX="153.0" layoutY="319.0" />
+      <TextField fx:id="date_dep_TF" layoutX="225.0" layoutY="252.0" />
+   </children>
+</AnchorPane>

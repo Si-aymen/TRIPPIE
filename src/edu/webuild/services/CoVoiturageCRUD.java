@@ -112,6 +112,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
             st.executeUpdate(req);
             System.out.println("co voiturage updated !");
         } catch (SQLException ex) {
+            System.out.println("co voiturage  not updated !");
             System.out.println(ex.getMessage());
 
         }
