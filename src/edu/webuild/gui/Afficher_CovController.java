@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,11 +21,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -35,12 +32,16 @@ import javafx.util.Callback;
  *
  * @author manou
  */
-public class Show_CoVoiturageController implements Initializable {
+public class Afficher_CovController implements Initializable {
 
     @FXML
-    private ListView<CoVoiturage> listView;
+    private Button cov_btu;
     @FXML
     private Button modify_cov;
+    @FXML
+    private Button delete_cov;
+    @FXML
+    private ListView<CoVoiturage> listView;
 
     static String id_co;
     static String depart;
@@ -50,10 +51,8 @@ public class Show_CoVoiturageController implements Initializable {
 
     /**
      * Initializes the controller class.
-     *
-     * @param url
-     * @param rb
      */
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         ListView list2 = listView;
         CoVoiturage V = new CoVoiturage();
@@ -88,20 +87,10 @@ public class Show_CoVoiturageController implements Initializable {
     }
 
     @FXML
-    private void modify_cov(ActionEvent event) {
-        ListView<CoVoiturage> list = listView; // assuming listView is a ListView<CoVoiturage>
-        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
-        int selectedID = list.getSelectionModel().getSelectedIndex();
-        CoVoiturage V = list.getSelectionModel().getSelectedItem(); // use getSelectedItem() to get the selected item, not getSelectedItems()*
-        id_co = Integer.toString(V.getId_co());
-        depart = V.getDepart();
-        destination = V.getDestination();
-        date_dep = V.getDate_dep();
-        nmbr_place = Integer.toString(V.getNmbr_place());
-        
+    private void cov_btu(ActionEvent event) {
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("modif.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("Menu_Cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -112,17 +101,34 @@ public class Show_CoVoiturageController implements Initializable {
         }
     }
 
-    public CoVoiturage select_co() {
+    @FXML
+    private void modify_cov(ActionEvent event) {
         ListView<CoVoiturage> list = listView; // assuming listView is a ListView<CoVoiturage>
         InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
         int selectedID = list.getSelectionModel().getSelectedIndex();
         CoVoiturage V = list.getSelectionModel().getSelectedItem(); // use getSelectedItem() to get the selected item, not getSelectedItems()*
-        return V;
+        id_co = Integer.toString(V.getId_co());
+        depart = V.getDepart();
+        destination = V.getDestination();
+        date_dep = V.getDate_dep();
+        nmbr_place = Integer.toString(V.getNmbr_place());
 
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("Mod_Cov.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
     @FXML
     private void delete_cov(ActionEvent event) {
+
         ListView<CoVoiturage> list = listView; // assuming listView is a ListView<CoVoiturage>
         InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
         int selectedID = list.getSelectionModel().getSelectedIndex();

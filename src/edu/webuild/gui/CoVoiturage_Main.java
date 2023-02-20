@@ -39,10 +39,10 @@ public class CoVoiturage_Main extends Application {
         // tackPane root = new StackPane();
         //root.getChildren().add(btn);
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Menu_CoVoiturage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Menu_Cov.fxml"));
             Scene scene = new Scene(root);
 
-            primaryStage.setTitle("Hello World!");
+            primaryStage.setTitle("Trippie");
 
             primaryStage.setScene(scene);
             primaryStage.show();

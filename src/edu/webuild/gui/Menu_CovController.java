@@ -25,12 +25,14 @@ import javafx.stage.Stage;
  *
  * @author manou
  */
-public class Menu_CoVoiturageController implements Initializable {
+public class Menu_CovController implements Initializable {
 
     @FXML
-    private Button afficher_btn;
+    private Button cov_btu;
     @FXML
-    private Button ajouter_btn;
+    private Button afficher_coc;
+    @FXML
+    private Button ajouter_cov;
 
     /**
      * Initializes the controller class.
@@ -38,6 +40,21 @@ public class Menu_CoVoiturageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }
+
+    @FXML
+    private void cov_btu(ActionEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("Menu_Cov.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
     @FXML
