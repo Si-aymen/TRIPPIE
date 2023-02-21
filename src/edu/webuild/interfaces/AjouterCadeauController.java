@@ -9,7 +9,13 @@ import edu.webuild.model.cadeau;
 import edu.webuild.model.coupon;
 import edu.webuild.services.cadeauCrud;
 import edu.webuild.services.couponCrud;
+import edu.webuild.utils.MyConnection;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -17,6 +23,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -41,13 +48,22 @@ public class AjouterCadeauController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         
-      couponCrud serviceCoupon = new couponCrud();
-        List<coupon> coupons = serviceCoupon.displayCoupon();
+        Connection cnx2;
+        cnx2= MyConnection.getinstance().getcnx();
+        // Récupération des id_coupon depuis la base de données
         ObservableList<Integer> choixIdCoupons = FXCollections.observableArrayList();
-        for (coupon c : coupons) {
-            choixIdCoupons.add(c.getId_coupon());
+        try {
+            Statement stmt = cnx2.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT id_coupon FROM coupon where type= 'vip' ");
+            while (rs.next()) {
+                choixIdCoupons.add(rs.getInt("id_coupon"));
+            }
+            stmt.close();
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        // Ajout des id_coupon au ChoiceBox
         idcoupon.setItems(choixIdCoupons);
     
     }
@@ -56,24 +72,18 @@ public class AjouterCadeauController implements Initializable {
     private void savecadeau(ActionEvent event) {
          
      
-       
-  String nom_cadeau = nomc.getText();
-     int recurrence = Integer.parseInt(reccu.getText());
-     
-     // Récupérer l'ID du coupon sélectionné
-     int selectedCouponId = idcoupon.getValue();
-     
-     // Créer un objet coupon à partir de l'ID récupéré
-     coupon c1 = new coupon();
-     c1.setId_coupn(selectedCouponId);
-     
-     // Créer un objet cadeau avec les données saisies
-     cadeau c2 = new cadeau(nom_cadeau, recurrence);
-     c2.setId_coupon(c1);
-     
-     // Ajouter le cadeau à la base de données
-     cadeauCrud cad = new cadeauCrud();
-     cad.ajoutercadeau2(c2);
+        int selectedCouponId = idcoupon.getValue();
+    String giftName = nomc.getText();
+    int received = Integer.parseInt(reccu.getText());
+    //ajouter cadeau 
+    cadeau c1 = new cadeau(giftName,received,selectedCouponId);
+    cadeauCrud c5 = new cadeauCrud();
+   
+  c5.ajoutercadeau2(c1);
+  Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setHeaderText("Coupon ajouté avec succès");
+    alert.setContentText("Le coupon " + selectedCouponId + " a été ajouté à la base de données.");
+    alert.showAndWait();
 }
 
 

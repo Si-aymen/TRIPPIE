@@ -79,14 +79,14 @@ public class couponCrud {
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {
-            int id_coupon = rs.getInt("id_coupon");
+           
             Date date_debut = rs.getDate("date_debut");
              Date date_experation = rs.getDate("date_experation");
             int taux_reduction = rs.getInt("taux_reduction");
             String code_coupon= rs.getString("code_coupon");
  int nbr_utilisation = rs.getInt("nbr_utilisation");
    String type= rs.getString("type");
-            coupon k = new coupon(id_coupon, date_debut, date_experation,taux_reduction,code_coupon,nbr_utilisation,type);
+            coupon k = new coupon( date_debut, date_experation,taux_reduction,code_coupon,nbr_utilisation,type);
             couponList.add(k);
         }
     } catch (SQLException e) {

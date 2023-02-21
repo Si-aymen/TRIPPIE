@@ -74,11 +74,11 @@ public class cadeauCrud {
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {
-            int id = rs.getInt("id_cadeau");
+          
             String nom = rs.getString("nom_cadeau");
             int recurrence = rs.getInt("recurrence");
  int id_coupon = rs.getInt("id_coupon");
-            cadeau c = new cadeau(id, nom, recurrence,id_coupon);
+            cadeau c = new cadeau( nom, recurrence,id_coupon);
             cadeauList.add(c);
         }
     } catch (SQLException e) {

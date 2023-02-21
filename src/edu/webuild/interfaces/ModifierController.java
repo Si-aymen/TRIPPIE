@@ -45,6 +45,8 @@ public class ModifierController implements Initializable {
 
     @FXML
     private void update(MouseEvent event) {
+        
+        
     }
 
     @FXML

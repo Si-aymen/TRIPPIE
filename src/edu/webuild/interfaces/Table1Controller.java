@@ -5,12 +5,12 @@
  */
 package edu.webuild.interfaces;
 
+import edu.webuild.inter.interfacecoupon;
 import edu.webuild.model.coupon;
 import edu.webuild.services.couponCrud;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -35,22 +36,9 @@ import javafx.stage.StageStyle;
  */
 public class Table1Controller implements Initializable {
 
+
     @FXML
-    private TableView<coupon> table;
-    @FXML
-    private TableColumn<coupon, Integer> txid;
-    @FXML
-    private TableColumn<coupon, Date> txnom;
-    @FXML
-    private TableColumn<coupon, Date> txdate;
-    @FXML
-    private TableColumn<coupon, Integer> txtaux;
-    @FXML
-    private TableColumn<coupon, String> txcode;
-    @FXML
-    private TableColumn<coupon, Integer> txnbr;
-    @FXML
-    private TableColumn<coupon, String> txtype;
+    private ListView<coupon> afficher;
 
     /**
      * Initializes the controller class.
@@ -58,18 +46,15 @@ public class Table1Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        txid.setCellValueFactory(new PropertyValueFactory<>("id_coupon"));
-        txnom.setCellValueFactory(new PropertyValueFactory<>("date_debut"));
-        txdate.setCellValueFactory(new PropertyValueFactory<>("date_experation"));
-         txtaux.setCellValueFactory(new PropertyValueFactory<>("taux_reduction"));
-          txcode.setCellValueFactory(new PropertyValueFactory<>("code_coupon"));
-           txnbr.setCellValueFactory(new PropertyValueFactory<>("nbr_utilisation"));
-               txtype.setCellValueFactory(new PropertyValueFactory<>("type"));
+        
+        
      
         couponCrud crud = new couponCrud();
         List<coupon>coupon = crud.displayCoupon();
-        table.getItems().setAll(coupon);
-    }    
+       afficher.getItems().setAll(coupon);
+      
+       
+     }   
 
    
 
@@ -100,23 +85,19 @@ public class Table1Controller implements Initializable {
        
     couponCrud crud = new couponCrud();
     List<coupon>coupon = crud.displayCoupon();
-    table.getItems().setAll(coupon);
+    afficher.getItems().setAll(coupon);
     }
 
     @FXML
     private void delete(MouseEvent event) {
-     coupon selectedCoupon = table.getSelectionModel().getSelectedItem();
+     coupon selectedCoupon = afficher.getSelectionModel().getSelectedItem();
      couponCrud couponService=new couponCrud();
     int id = selectedCoupon.getId_coupon();
     couponService.Supprimer(id);
     
-  table.refresh();
+  afficher.refresh();
     }
 
-    @FXML
-    private void getSelected(MouseEvent event) {
-        
-    }
 
     @FXML
     private void MODIFIER(MouseEvent event) {
@@ -132,5 +113,6 @@ public class Table1Controller implements Initializable {
             Logger.getLogger(Table1Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
 }
