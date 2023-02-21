@@ -28,8 +28,11 @@ public class Webuild {
 
         voiture mod = new voiture( "polo", "xd", "5ch", 280);
         voitureCRUD voi = new voitureCRUD();
+     
+       
+      //  voi.ajoutervoiture(v1);
 
-        voi.modifiervoiture(mod);
+      //  voi.modifiervoiture(mod);
         // System.out.println("les donnes concernat votre rechercher est ");
         // System.out.println(voi.getUserByID(88)); 
         //  System.out.println(voi.triervoiture());
@@ -38,11 +41,15 @@ public class Webuild {
         //System.out.println( voi.affichervoitures());
         //------------------------------------------------------------------------------------/
         //    System.out.println("---------------- partie reservation -----------------------------");
-        reservation r1 = new reservation(Date.valueOf("2023-1-10"), Date.valueOf("2023-1-10"), 88);
-        reservation mod1 = new reservation(88, Date.valueOf("2023-1-10"), Date.valueOf("2023-1-10"));
+        reservation r1 = new reservation(Date.valueOf("2023-1-10"), Date.valueOf("2023-1-10"),new voiture(200,"polo", "xd", "5ch", 280));
         reservationCRUD rev = new reservationCRUD();
-        //  rev.ajouterreservation(r1);
-        //  System.out.println( rev.afficherreservations());
+      // rev.ajouterreservation(r1);
+     //  System.out.println( rev.afficherreservations());
+       
+      /*  reservation mod1 = new reservation(88, Date.valueOf("2023-1-10"), Date.valueOf("2023-1-10"));
+        
+          
+          System.out.println( rev.afficherreservations());
         // rev.supprimerreservation(86);
         //     System.out.println( rev.afficherreservations());          
         rev.modifierreservation(mod1);
@@ -53,6 +60,7 @@ public class Webuild {
         //   System.out.println(rev.trierReservation());
         //     System.out.println("filtration");
         //   System.out.println(rev.Filter_reservation("id_voiture","67"));
+*/
     }
 
 }

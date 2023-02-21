@@ -6,8 +6,11 @@
 package edu.webuild.gui;
 
 import edu.webuild.interfaces.InterfaceCRUD;
+import edu.webuild.interfaces.InterfaceCRUD2;
 import edu.webuild.model.voiture;
+import edu.webuild.model.reservation;
 import edu.webuild.services.voitureCRUD;
+import edu.webuild.services.reservationCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -48,6 +51,8 @@ public class Afficher_voitureController implements Initializable {
     static String marque;
     static String Puissence;
     static String Prix_jour;
+    @FXML
+    private Button reservervoiture;
 
     /**
      * Initializes the controller class.
@@ -97,6 +102,27 @@ public class Afficher_voitureController implements Initializable {
 
             Parent page1
                     = FXMLLoader.load(getClass().getResource("modifiervoiture.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void reservervoiture(ActionEvent event) {
+          ListView<voiture> list = affichervoiture;
+        InterfaceCRUD inter = new voitureCRUD();
+        int selectedIndex = list.getSelectionModel().getSelectedIndex();
+        voiture v = list.getSelectionModel().getSelectedItem();
+        id=v.getId();
+        try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("ajouterreservation.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

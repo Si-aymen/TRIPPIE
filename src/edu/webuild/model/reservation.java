@@ -14,39 +14,28 @@ import java.sql.Date;
 public class reservation {
     private int id ;
     private Date date_debut, date_fin ;
-    private int id_voiture;
+    private voiture v ;
+
+    
     //constructeur par defaut
     public reservation() {
-    }
-
-    public reservation(Date date_debut, Date date_fin, int id_voiture) {
-        this.date_debut = date_debut;
-        this.date_fin = date_fin;
-        this.id_voiture = id_voiture;
-    }
-    
-    
-    
+    }   
     //constructur parametre 
 
-    public reservation(int id, Date date_debut, Date date_fin) {
+    public reservation(int id, Date date_debut, Date date_fin, voiture v) {
         this.id = id;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
+        this.v = v;
+    }
+
+    public reservation(Date date_debut, Date date_fin, voiture v) {
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.v = v;
+    }
+
    
-    }
-
-    public reservation(Date date_debut, Date date_fin) {
-        this.date_debut = date_debut;
-        this.date_fin = date_fin;
-    }
-
-    public reservation(int id, Date date_debut, Date date_fin, int id_voiture) {
-        this.id = id;
-        this.date_debut = date_debut;
-        this.date_fin = date_fin;
-        this.id_voiture = id_voiture;
-    }
 
     
 
@@ -74,20 +63,20 @@ public class reservation {
         this.date_fin = date_fin;
     }
 
-    public int getId_voiture() {
-        return id_voiture;
+    public voiture getV() {
+        return v;
     }
 
-    public void setId_voiture(int id_voiture) {
-        this.id_voiture = id_voiture;
+    public void setV(voiture v) {
+        this.v = v;
     }
-
-  
 
     @Override
     public String toString() {
-        return "reservation{" + "id=" + id + ", date_debut=" + date_debut + ", date_fin=" + date_fin +", id_voiture=" + id_voiture + '}'+"\n";
+        return "reservation{" + "id=" + id + ", date_debut=" + date_debut + ", date_fin=" + date_fin + ", v=" + v + '}';
     }
+
+ 
     
 
    

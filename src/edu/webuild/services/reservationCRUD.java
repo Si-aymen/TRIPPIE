@@ -6,8 +6,10 @@
 package edu.webuild.services;
 import edu.webuild.interfaces.InterfaceCRUD2;
 import edu.webuild.model.reservation;
+import edu.webuild.model.voiture;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,19 +23,26 @@ import java.util.List;
 public class reservationCRUD implements InterfaceCRUD2 {
      Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
-    @Override
-    public void ajouterreservation(reservation r) {
-        try {
-            String req = "INSERT INTO `reservation`(`date_debut`,`date_fin`,`id_voiture`) VALUES ('"+r.getDate_debut()+"','"+r.getDate_debut()+"','"+r.getId_voiture()+"')";
-           // String req2 = "UPDATE `reservation` SET `etat` = 'reservé' WHERE `id_voiture` = " +r.getId_voiture();
-            ste = conn.createStatement();
-            ste.executeUpdate(req);
-           // ste.executeUpdate(req2);
-            System.out.println("reservation  ajouté!!!");
-        } catch (SQLException ex) {
-            System.out.println("reservation non  ajouté");
-                      }
- }
+     @Override
+public void ajouterreservation(reservation r) {
+    String query = "INSERT INTO reservation (date_debut, date_fin, id_voiture) VALUES (?, ?, ?)";
+    try (PreparedStatement ps = conn.prepareStatement(query)) {
+        ps.setDate(1, r.getDate_debut());
+        ps.setDate(2, r.getDate_fin());
+        ps.setInt(3, r.getV().getId());
+        int rowsAffected = ps.executeUpdate();
+        if (rowsAffected > 0) {
+            System.out.println("Reservation ajoutée!");
+        } else {
+            System.out.println("Erreur: la réservation n'a pas été ajoutée.");
+        }
+    } catch (SQLException ex) {
+        System.out.println("Erreur: " + ex.getMessage());
+    }
+}
+
+
+    
      @Override
     public List<reservation> afficherreservations() {
        List<reservation> list = new ArrayList<>();
@@ -47,9 +56,17 @@ public class reservationCRUD implements InterfaceCRUD2 {
              r.setId(RS.getInt(1));
                 r.setDate_debut(RS.getDate(2));
                 r.setDate_fin(RS.getDate(3));
+                /*
                 r.setId_voiture(RS.getInt(4));
-             
-             list.add(r);
+             */
+                voitureCRUD voit = new voitureCRUD();
+                int user_id = RS.getInt(4);
+                voiture v = voit.getUserByID(user_id);
+                r.setV(v);
+                list.add(r);
+                
+                
+           
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -80,7 +97,7 @@ public class reservationCRUD implements InterfaceCRUD2 {
             System.out.println(ex.getMessage());
         }
     }
-    
+    /*
     @Override
       public reservation getUserByIDre(int id ) throws SQLException {
        String querry="SELECT *  FROM reservation WHERE `id`="+id;
@@ -145,5 +162,5 @@ public class reservationCRUD implements InterfaceCRUD2 {
         return list;
     }
     
-    
+    */
 }

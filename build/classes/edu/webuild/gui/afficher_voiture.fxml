@@ -9,5 +9,6 @@
       <ListView fx:id="affichervoiture" layoutX="42.0" layoutY="27.0" prefHeight="278.0" prefWidth="496.0" />
       <Button fx:id="supprimer" layoutX="42.0" layoutY="333.0" mnemonicParsing="false" onAction="#supprimer_voiture" text="supprimer" />
       <Button fx:id="mod" layoutX="181.0" layoutY="333.0" mnemonicParsing="false" onAction="#mod" text="modifier" />
+      <Button fx:id="reservervoiture" layoutX="329.0" layoutY="333.0" mnemonicParsing="false" onAction="#reservervoiture" text="reserver" />
    </children>
 </AnchorPane>

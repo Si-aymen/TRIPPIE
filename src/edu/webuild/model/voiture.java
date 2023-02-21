@@ -22,14 +22,14 @@ public class voiture {
     }
 
     //constructur parametre 
-    public voiture(int id, String matricule, String marque, String puissance, int prix_jours/*
-            ,String etat*/) {
+    public voiture(int id, String matricule, String marque, String puissance, int prix_jours
+           ) {
         this.id = id;
         this.matricule = matricule;
         this.marque = marque;
         this.puissance = puissance;
         this.prix_jours = prix_jours;
-        //  this.etat=etat;
+  
     }
 
     public voiture(String matricule, String marque, String puissance, int prix_jours/*,String etat*/) {

@@ -27,7 +27,7 @@ public class interfacemodulelocation extends Application {
        
         Parent root;
         try {
-            root=FXMLLoader.load(getClass().getResource("crud_voiture.fxml"));
+            root=FXMLLoader.load(getClass().getResource("location_voiture.fxml"));
              Scene scene = new Scene(root);
         
         primaryStage.setTitle("trippie");

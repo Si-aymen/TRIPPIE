@@ -20,7 +20,9 @@ public void ajouterreservation(reservation r);
     public void modifierreservation(reservation r);
    public void supprimerreservation(int id) ;
    public List<reservation> afficherreservations();
+   /*
   public reservation getUserByIDre(int id ) throws SQLException;
   public List<reservation> trierReservation(); 
   public List<reservation> Filter_reservation(String S, String SS);
+*/
 }
