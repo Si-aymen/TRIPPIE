@@ -69,32 +69,7 @@ public class couponCrud {
         
     
   }
-    /*public List<coupon> afficher() {
-
-            List<coupon> myList = new ArrayList<>();
-       
-        try {
-       String requete3= "Select * from coupon";
-       Statement  st1 = cnx2.createStatement();
-       ResultSet rs= st1.executeQuery(requete3);
-       while(rs.next()){
-           coupon c1 =  new coupon();
-           c1.setId_coupn(rs.getInt(1));
-           c1.setDate_debut(rs.getDate(2));
-           c1.setDate_experation(rs.getDate(3));
-           c1.setTaux_reducton(rs.getInt(4));
-           c1.setCode_coupon(rs.getString(5));
-           c1.setNbr_utilisation(rs.getInt(6));
-           c1.setType(rs.getString(7));
-           myList.add(c1);
-       }
-           
-        } catch (SQLException ex) {
-           System.err.println("ex.getMessge()");
-        }
-      
-       return myList; 
-    }*/
+   
     
     public List<coupon> displayCoupon() {
     List<coupon> couponList = new ArrayList<>();

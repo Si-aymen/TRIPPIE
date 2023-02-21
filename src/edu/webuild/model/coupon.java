@@ -8,6 +8,7 @@ package edu.webuild.model;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  *
@@ -119,6 +120,11 @@ public class coupon {
         return "coupon{" + "id_coupon=" + id_coupon + ", date_debut=" + date_debut + ", date_experation=" + date_experation + ", taux_reduction=" + taux_reduction + ", code_coupon=" + code_coupon + ", nbr_utilisation=" + nbr_utilisation + ", type=" + type + '}';
     }
 
+    public List<coupon> afficherCoupon() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 
      
 }
