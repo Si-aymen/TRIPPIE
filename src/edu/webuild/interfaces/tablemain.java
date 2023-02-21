@@ -28,7 +28,7 @@ public class tablemain extends Application {
     public void start(Stage primaryStage) {
        
         try {
-           Parent   root = FXMLLoader.load(getClass().getResource("table1.fxml"));
+           Parent   root = FXMLLoader.load(getClass().getResource("main.fxml"));
             Scene scene = new Scene(root);
         
         primaryStage.setTitle("Hello World!");

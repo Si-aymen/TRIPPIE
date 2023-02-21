@@ -32,5 +32,6 @@
       </Text>
       <FontAwesomeIconView glyphName="CLOSE" layoutX="589.0" layoutY="23.0" onMouseClicked="#close" size="20" />
       <FontAwesomeIconView fill="#0b7211" glyphName="REFRESH" layoutX="66.0" layoutY="91.0" onMouseClicked="#refresh" size="30" />
+      <FontAwesomeIconView glyphName="PENCIL" layoutX="148.0" layoutY="91.0" onMouseClicked="#MODIFIER" size="30" />
    </children>
 </AnchorPane>

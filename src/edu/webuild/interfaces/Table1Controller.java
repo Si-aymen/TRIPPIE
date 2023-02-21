@@ -118,4 +118,19 @@ public class Table1Controller implements Initializable {
         
     }
 
+    @FXML
+    private void MODIFIER(MouseEvent event) {
+        try {
+            Parent root=FXMLLoader.load(getClass().getResource("modifier.fxml"));
+            Scene scene  = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Table1Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
