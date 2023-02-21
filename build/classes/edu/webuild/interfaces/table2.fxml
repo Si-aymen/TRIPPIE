@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.interfaces.Table2Controller">
    <children>
-      <TableView fx:id="tablecadeau" layoutX="102.0" layoutY="77.0" prefHeight="200.0" prefWidth="303.0">
+      <TableView fx:id="tablecadeau" layoutY="125.0" prefHeight="211.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0">
         <columns>
-          <TableColumn fx:id="idcadeau" prefWidth="75.0" text="id_cadeau" />
-          <TableColumn fx:id="nomcade" prefWidth="75.0" text="nom_cadeau" />
-            <TableColumn fx:id="reccu" prefWidth="75.0" text="reccurence" />
-            <TableColumn fx:id="idc" prefWidth="75.0" text="id_coupon" />
+          <TableColumn fx:id="idcadeau" prefWidth="139.0" text="id_cadeau" />
+          <TableColumn fx:id="nomcade" prefWidth="144.0" text="nom_cadeau" />
+            <TableColumn fx:id="reccu" prefWidth="152.0" text="reccurence" />
+            <TableColumn fx:id="idc" prefWidth="164.0" text="id_coupon" />
         </columns>
       </TableView>
+      <FontAwesomeIconView fill="#ff0c0c" glyphName="TRASH" layoutX="112.0" layoutY="110.0" onMouseClicked="#deleteC" size="30" />
+      <FontAwesomeIconView fill="#160086" glyphName="USER_PLUS" layoutX="20.0" layoutY="110.0" onMouseClicked="#ADDC" size="30" wrappingWidth="37.14285659790039" />
+      <FontAwesomeIconView fill="#0b7211" glyphName="REFRESH" layoutX="70.0" layoutY="110.0" onMouseClicked="#refreshC" size="30" />
+      <FontAwesomeIconView glyphName="PENCIL" layoutX="151.0" layoutY="110.0" onMouseClicked="#MODIFIERC" size="30" />
+      <Pane layoutX="1.0" layoutY="48.0" prefHeight="6.0" prefWidth="618.0" style="-fx-background-color: black;" />
+      <Text layoutX="10.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadeau List" wrappingWidth="306.015625">
+         <font>
+            <Font name="Bodoni MT" size="36.0" />
+         </font>
+      </Text>
+      <FontAwesomeIconView glyphName="CLOSE" layoutX="599.0" layoutY="33.0" onMouseClicked="#closeC" size="20" />
    </children>
 </AnchorPane>
