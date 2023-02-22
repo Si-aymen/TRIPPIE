@@ -5,13 +5,17 @@
         <group>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_chauffeurController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_locateurController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/style.css</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_roleController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Modifier_roleController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Utilisateur.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Role.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/AfficheController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_roleController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Client.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/LocateurCRUD.java</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/SupprimerController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceUserCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/modifier_role.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/ClientCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceLocateurCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/AjoutController.java</file>
@@ -20,16 +24,13 @@
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Locateur.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/roleCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/utilisateurCRUD.java</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ajouter_locateur.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_clientController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/ChauffeurCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceClientCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/FirstWindow.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceRoleCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceChauffeurCRUD.java</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ajouter_client.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/webuild/Webuild.java</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ajouter_chauffeur.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/utils/MyConnection.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/HomeController.java</file>
         </group>

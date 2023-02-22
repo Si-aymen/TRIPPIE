@@ -24,7 +24,7 @@ public class FirstWindow extends Application {
     public void start(Stage primaryStage) {
         
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Chart.fxml"));
             
             Scene scene = new Scene(root);
             

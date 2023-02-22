@@ -10,7 +10,9 @@ package edu.webuild.model;
  * @author aymen
  */
 public class Locateur {
-    int id_loc,id_user,id_role;
+    int id_loc;
+    int id_user;
+    int id_role;
     String nom_agence;
     String email;
     String password;

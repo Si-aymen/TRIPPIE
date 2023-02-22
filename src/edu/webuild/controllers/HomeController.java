@@ -57,5 +57,11 @@ public class HomeController implements Initializable {
         rootPane.getChildren().setAll(pane);
     }
 
+    @FXML
+    private void lancer_afficherrole(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Affiche_role.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
     
 }

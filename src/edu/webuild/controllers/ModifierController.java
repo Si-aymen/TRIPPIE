@@ -13,14 +13,20 @@ import java.net.URL;
 import static java.util.Collections.list;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -54,7 +60,7 @@ public class ModifierController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
          
-          fxid.setText(String.valueOf(AfficheController.id_user));
+       
         fxCin.setText(String.valueOf(AfficheController.cin));
         fxnom.setText(String.valueOf(AfficheController.nom));
         fxprenom.setText(String.valueOf(AfficheController.prenom));
@@ -64,19 +70,28 @@ public class ModifierController implements Initializable {
     
     @FXML
      private void modifier_user(ActionEvent event) {
-        int id_user = Integer.parseInt(fxid.getText());
+       InterfaceUserCRUD inter = new utilisateurCRUD();
+        String cin = fxCin.getText();        
         String nom = fxnom.getText();
         String prenom = fxprenom.getText();
-        String cin = fxCin.getText();
         String sexe = fxsexe.getText();
         int age = Integer.parseInt(fxage.getText());
-        System.out.println(Integer.parseInt(AfficheController.id_user));
-        Utilisateur u = new Utilisateur(cin, nom, prenom, sexe, age);
-        utilisateurCRUD uc = new utilisateurCRUD();
-        uc.modifierUtilisateur(u,Integer.parseInt(AfficheController.id_user));
+        Utilisateur u = new Utilisateur(AfficheController.id_user,cin, nom, prenom, sexe,age);
+        inter.modifierUtilisateur(u);
          
+try {
 
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/afficher_user.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
          }
+     
         
     
      

@@ -19,6 +19,7 @@
               <MenuItem mnemonicParsing="false" onAction="#lancer_ajouter" text="Ajouter un utilisateur" />
                   <MenuItem mnemonicParsing="false" onAction="#lancer_afficher" text="Consulter utilisateur" />
                   <MenuItem mnemonicParsing="false" onAction="#lancer_modifier" text="Modifier utilisateur" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherrole" text="Afficher role" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

@@ -5,6 +5,7 @@
  */
 package edu.webuild.controllers;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
 import edu.webuild.model.Role;
 import edu.webuild.model.Utilisateur;
 import edu.webuild.services.roleCRUD;
@@ -84,21 +85,22 @@ public class AjoutController implements Initializable {
     
     @FXML
     private void adduser(ActionEvent event) throws IOException { 
-        btnajout.setOnAction(e -> {
-           
+       
+       //ajout de L'utilisateur    
         String nom = fxnom.getText();
         String prenom = fxprenom.getText();
         String cin = fxcin.getText();
         String sexe = fxsexe.getText();
         int age = Integer.parseInt(fxage.getText());
-        if(age<=18){
-             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        if(cin.length() != 8){
+        
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
            alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("erreur +18 ");
+        alert.setContentText("erreur le cin doit etre 8 chiffres");
         alert.show();
         }
-        else if(Character.isLowerCase(nom.charAt(0))){
+         else if(Character.isLowerCase(nom.charAt(0))){
         
           Alert alert = new Alert(Alert.AlertType.INFORMATION);
            alert.setTitle("Information Dialog");
@@ -116,21 +118,32 @@ public class AjoutController implements Initializable {
         alert.show();
         
         }
-        else if(cin.length() != 8){
-        
-          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        else if (sexe!="Homme" || sexe!="Femme" || sexe!="H" || sexe!="F"){
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
            alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("erreur le cin doit etre 8 chiffres");
+        alert.setContentText("il faut que saisir H=Homme ou bien F=Femme ");
         alert.show();
-        
         }
+        else if(age<=18){
+             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+           alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("erreur +18 ");
+        alert.show();
+        }
+       
+        
         else{
-        Utilisateur u = new Utilisateur( cin, nom, prenom, sexe, age);
+        
+        Utilisateur u = new Utilisateur(cin, nom, prenom, sexe, age);
         utilisateurCRUD uc = new utilisateurCRUD();
         uc.ajouterUtilisateur(u);
+        //role
+            
         
-          try {
+             try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_role.fxml"));
             Scene scene = new Scene(page1);
@@ -141,17 +154,21 @@ public class AjoutController implements Initializable {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
-       }
+      
+        
+          
+         
         
        
     }
-        );
+       
+   
     
-    
-    
+        }
     
     }
-}
+
+
        
 
         

@@ -5,18 +5,11 @@
  */
 package edu.webuild.controllers;
 
-
-//import static edu.webuild.controllers.AfficheController.id_user;
+import edu.webuild.interfaces.InterfaceRoleCRUD;
 import edu.webuild.model.Role;
-import edu.webuild.model.Utilisateur;
 import edu.webuild.services.roleCRUD;
-import edu.webuild.services.utilisateurCRUD;
 import java.io.IOException;
 import java.net.URL;
-import java.time.Clock;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,32 +22,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-
-
-
 
 /**
  * FXML Controller class
  *
  * @author aymen
  */
-public class Ajouter_roleController implements Initializable {
+public class Modifier_roleController implements Initializable {
 
     @FXML
     private RadioButton fxclient;
     @FXML
-    private Button fxbtn;
-    @FXML
     private RadioButton fxch;
     @FXML
     private RadioButton fxloc;
-
-    private String cin;
     @FXML
-    private TextField fxid;
+    private Button btn;
 
     /**
      * Initializes the controller class.
@@ -62,25 +46,19 @@ public class Ajouter_roleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-       
+         fxch.setText(String.valueOf(Affiche_roleController.libelle));
+         fxclient.setText(String.valueOf(Affiche_roleController.libelle));
+        fxloc.setText(String.valueOf(Affiche_roleController.libelle));
     }    
-   
-        
-    
 
     @FXML
     private void confirm(ActionEvent event) {
-       Utilisateur u=new Utilisateur();
-       utilisateurCRUD uc=new utilisateurCRUD();
-        int id_user = Integer.parseInt(fxid.getText());
-      
-        if(fxclient.isSelected()){
+         InterfaceRoleCRUD inter = new roleCRUD();
+          if(fxclient.isSelected()){
             String libelle=fxclient.getText();
-           
-            u.setId_user(id_user);
-             Role r=new Role();
+            Role r=new Role(Affiche_roleController.id_role,libelle);
              r.setLibelle("Client");
-            uc.affecterClient(r, u);
+             inter.modifierRole(r);
              try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_client.fxml"));
@@ -95,12 +73,9 @@ public class Ajouter_roleController implements Initializable {
         }
         else if(fxch.isSelected()){
             String libelle=fxch.getText();
-            
-            
-           u.setId_user(id_user);
-             Role r=new Role();
+             Role r=new Role(Affiche_roleController.id_role,libelle);
              r.setLibelle("Chauffeur");
-            uc.affecterChauffeur(r, u);
+            inter.modifierRole(r);
              try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_chauffeur.fxml"));
@@ -116,12 +91,9 @@ public class Ajouter_roleController implements Initializable {
         else{
             fxloc.isSelected();
          String libelle=fxloc.getText();
-            
-            
-            u.setId_user(id_user);
-             Role r=new Role();
+            Role r=new Role(Affiche_roleController.id_role,libelle);
              r.setLibelle("Locateur");
-            uc.affecterLocateur(r, u);
+            inter.modifierRole(r);
              try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_locateur.fxml"));
@@ -134,10 +106,10 @@ public class Ajouter_roleController implements Initializable {
 
         }
         }
-       
-                }
-        
-        }
-    
+          
+    }
+      
+
+    }
     
 

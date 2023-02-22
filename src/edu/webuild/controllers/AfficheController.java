@@ -6,6 +6,7 @@
 package edu.webuild.controllers;
 
 import edu.webuild.interfaces.InterfaceUserCRUD;
+import edu.webuild.model.Role;
 import edu.webuild.model.Utilisateur;
 import edu.webuild.services.utilisateurCRUD;
 import java.io.IOException;
@@ -42,7 +43,7 @@ import javafx.util.Callback;
 public class AfficheController implements Initializable {
 
     
-    static String id_user;
+    static int id_user;
     static String cin;
     static String nom;
     static String prenom;
@@ -68,6 +69,7 @@ public class AfficheController implements Initializable {
                  ListView list2 = listView;
 
         Utilisateur u = new Utilisateur();
+        Role r=new Role();
         InterfaceUserCRUD inter = new utilisateurCRUD();
         List<Utilisateur> list = inter.afficherUtilisateur();
         for (int i = 0; i < list.size(); i++) {
@@ -80,17 +82,18 @@ public class AfficheController implements Initializable {
             @Override
             public ListCell<Utilisateur> call(ListView<Utilisateur> listView) {
                 return new ListCell<Utilisateur>() {
-                    @Override
                     protected void updateItem(Utilisateur user, boolean empty) {
                         super.updateItem(user, empty);
                         if (user != null && !empty) {
                             // Affiche les informations du covoiturage dans la cellule
-                            setText(String.format("%s - %s - %s - %s - %d ans",
+                            setText(String.format("CIN:%s - Nom:%s - Prenom:%s - Genre:%s - Age:%d ans ",
                                     user.getCin(),
                                     user.getNom(),
                                     user.getPrenom(),
                                     user.getSexe(),
-                                    user.getAge()));
+                                    user.getAge()
+                                    
+                            ));
                         } else {
                             setText(null);
                         }
@@ -124,7 +127,7 @@ public class AfficheController implements Initializable {
         InterfaceUserCRUD inter = new utilisateurCRUD();
         int selectedID = list.getSelectionModel().getSelectedIndex();
         Utilisateur u = list.getSelectionModel().getSelectedItem(); // use getSelectedItem() to get the selected item, not getSelectedItems()*
-        id_user = Integer.toString(u.getId_user());
+        id_user=u.getId_user();
         cin = u.getCin();
         nom = u.getNom();
         prenom = u.getPrenom();

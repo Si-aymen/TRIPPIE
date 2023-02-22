@@ -25,6 +25,8 @@ public interface InterfaceUserCRUD {
     public List<Utilisateur> FiltrerUtilisateur(String f1, String f2);
     public List<Utilisateur> trierUtilisateur();
     public void affecterClient(Role r, Utilisateur u) ;
+    public void affecterChauffeur(Role r, Utilisateur u) ;
+    public void affecterLocateur(Role r, Utilisateur u) ;
   
     
     

@@ -14,7 +14,7 @@ import java.util.List;
  * @author aymen
  */
 public class Utilisateur {
-    private int id_user;
+    public int id_user;
     private String cin;
     private String nom,prenom,sexe;
     private int age;

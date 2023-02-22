@@ -32,18 +32,27 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
    @Override
     public void ajouterUtilisateur(Utilisateur u) {
         try {
-             String req = "INSERT INTO `utilisateur`(`cin` , `nom`, `prenom` , `sexe` , `age`) VALUES ('"+u.getCin()+"','"+u.getNom()+"','"+u.getPrenom()+"','"+u.getSexe()+"','"+u.getAge()+"')";
-            ste = conn.createStatement();
-            ste.executeUpdate(req);
-            System.out.println("Utilisateur ajouté!!!");
-        } catch (SQLException ex) {
-            System.out.println("Utilisateur non ajouté");
-            
-            System.out.println(ex);
-                      }
- }
-    
- 
+        String req = "INSERT INTO `utilisateur`(`cin`, `nom`, `prenom`, `sexe`, `age`) VALUES ('" + u.getCin() + "','" + u.getNom() + "','" + u.getPrenom() + "','" + u.getSexe() + "','" + u.getAge() + "')";
+        ste = conn.createStatement();
+
+        ste.executeUpdate(req, Statement.RETURN_GENERATED_KEYS);
+
+        // Récupérer l'ID auto-incrémenté généré lors de l'insertion
+        ResultSet generatedKeys = ste.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            int id_user = generatedKeys.getInt(1);
+            System.out.println("ID auto-incrémenté généré lors de l'insertion: " + id_user);
+        } else {
+            throw new SQLException("L'ajout a échoué, aucun ID auto-incrémenté généré.");
+        }
+
+        System.out.println("Utilisateur ajouté!!!");
+    } catch (SQLException ex) {
+        System.out.println("Utilisateur non ajouté");
+        System.out.println(ex);
+    }
+}
+
     @Override
     public void modifierUtilisateur(Utilisateur u) {
         try {
@@ -64,6 +73,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Utilisateur updated !");
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             
@@ -99,17 +109,23 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
     public List<Utilisateur> afficherUtilisateur() {
        List<Utilisateur> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM `utilisateur`";//"SELECT utilisateur. *, role.libelle FROM utilisateur INNER JOIN role ON utilisateur.role = role.id_role";
+            String req = "SELECT u1.id_user,u1.cin,u1.nom,u1.prenom,u1.sexe,u1.age,u2.id_role,u2.id_user"
+                    + " FROM `utilisateur` u1 "
+                    + "INNER JOIN role u2 "
+                    + "ON u1.id_user=u2.id_user";//"SELECT utilisateur. *, role.libelle FROM utilisateur INNER JOIN role ON utilisateur.role = role.id_role";
             Statement st = conn.createStatement();
             ResultSet RS= st.executeQuery(req);
             while(RS.next()){
              Utilisateur u = new Utilisateur();
+             Role r=new Role();
              u.setId_user(RS.getInt(1));
              u.setCin(RS.getString(2));
              u.setNom(RS.getString(3));
              u.setPrenom(RS.getString(4));
              u.setSexe(RS.getString(5));
              u.setAge(RS.getInt(6));
+             r.setId_role(RS.getInt(7));
+             
           
             
              
@@ -238,10 +254,12 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
      @Override
     public void affecterClient(Role r, Utilisateur u) {
         try {
+            
             String req ="INSERT INTO `role` (`libelle`,id_user) VALUES ('Client',?)" ;
             PreparedStatement ps = conn.prepareStatement(req);
-             ps.setInt(1, u.getId_user());
-             int id_user = u.getId_user();
+           
+             
+             ps.setInt(1, u.getId_user()); 
              ps.executeUpdate();
              
             System.out.println("Client ajouté!");
@@ -251,5 +269,39 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
 
     }
     
+     @Override
+    public void affecterChauffeur(Role r, Utilisateur u) {
+        try {
+            
+            String req ="INSERT INTO `role` (`libelle`,id_user) VALUES ('Chauffeur',?)" ;
+            PreparedStatement ps = conn.prepareStatement(req);
+           
+             
+             ps.setInt(1, u.getId_user()); 
+             ps.executeUpdate();
+             
+            System.out.println("Chauffeur ajouté!");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
 
+    }
+
+     @Override
+    public void affecterLocateur(Role r, Utilisateur u) {
+        try {
+            
+            String req ="INSERT INTO `role` (`libelle`,id_user) VALUES ('Locateur',?)" ;
+            PreparedStatement ps = conn.prepareStatement(req);
+           
+             
+             ps.setInt(1, u.getId_user()); 
+             ps.executeUpdate();
+             
+            System.out.println("Locateur ajouté!");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+    }
 }

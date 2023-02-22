@@ -36,9 +36,12 @@ public class Role  {
         this.id_user = id_user;
     }
 
-    public Role(String libelle, String id_user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Role(String libelle, Utilisateur id_user) {
+        this.libelle = libelle;
+        this.id_user = id_user;
     }
+
+    
     
     
 

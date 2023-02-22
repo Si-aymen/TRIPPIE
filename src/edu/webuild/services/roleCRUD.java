@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -66,7 +66,7 @@ public class roleCRUD implements InterfaceRoleCRUD {
     public List<Role> afficherRole() {
        List<Role> list = new ArrayList<>();
         try {
-            String req = "SELECT libelle FROM role";//"SELECT role. *, role.libelle FROM role INNER JOIN role ON role.role = role.id_role";
+            String req = "SELECT libelle FROM role ";//"SELECT role. *, role.libelle FROM role INNER JOIN role ON role.role = role.id_role";
             Statement st = conn.createStatement();
             ResultSet RS= st.executeQuery(req);
             while(RS.next()){
@@ -170,12 +170,10 @@ public class roleCRUD implements InterfaceRoleCRUD {
     }
     
      @Override
-    public void affecterUser(Role r, Utilisateur u) {
+    public void affecterClient(Role r) {
         try {
-            String req ="UPDATE `role` SET `utilisateur`= ? WHERE id_role = ?";
+            String req ="INSERT INTO `role`  (`libelle`,id_user) VALUES ('Client',?)";
             PreparedStatement ps = conn.prepareStatement(req);
-            ps.setInt(1, u.getId_user());
-            ps.setInt(2, r.getId_role());
              ps.executeUpdate();
             System.out.println("User updated successfully!");
         } catch (SQLException ex) {
