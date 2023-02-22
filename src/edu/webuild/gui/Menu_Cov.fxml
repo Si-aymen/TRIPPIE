@@ -118,5 +118,6 @@
         </AnchorPane>
       <Button fx:id="afficher_coc" layoutX="341.0" layoutY="325.0" mnemonicParsing="false" onAction="#afficher_cov" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Afficher Co_Voiturage" />
       <Button fx:id="ajouter_cov" layoutX="341.0" layoutY="210.0" mnemonicParsing="false" onAction="#ajouter_cov" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Ajouter Co_Voiturage" />
+      <Button fx:id="afficher_Part" layoutX="341.0" layoutY="440.0" mnemonicParsing="false" onAction="#afficher_Part" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Afficher Co_Voiturage" />
     </children>
 </AnchorPane>

@@ -8,6 +8,7 @@ package webuild;
 import edu.webuild.model.CoVoiturage;
 import edu.webuild.model.Participation;
 import edu.webuild.services.*;
+import java.sql.Date;
 
 /**
  *
@@ -21,11 +22,11 @@ public class Webuild {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        CoVoiturage v1 = new CoVoiturage("rades", "Esprit", "11/02/2023", 4);
-        CoVoiturage v2 = new CoVoiturage("manzah", "boumhal", "10/12/2022", 4);
-        CoVoiturage v3 = new CoVoiturage("ariena", "naser", "18/02/2022", 2);
-        CoVoiturage v4 = new CoVoiturage("naser", "ariena", "18/02/2022", 4);
-        CoVoiturage v5 = new CoVoiturage("ben aarouse", "ariena", "30/02/2022", 4);
+        CoVoiturage v1 = new CoVoiturage("rades", "Esprit", Date.valueOf("11/02/2023"), 4);
+        CoVoiturage v2 = new CoVoiturage("manzah", "boumhal", Date.valueOf("11/02/2023"), 4);
+        CoVoiturage v3 = new CoVoiturage("ariena", "naser", Date.valueOf("11/02/2023"), 2);
+        CoVoiturage v4 = new CoVoiturage("naser", "ariena",Date.valueOf("11/02/2023"), 4);
+        CoVoiturage v5 = new CoVoiturage("ben aarouse", "ariena", Date.valueOf("11/02/2023"), 4);
 
         Participation p1 = new Participation(2, 9);
         Participation p2 = new Participation(2, 10);

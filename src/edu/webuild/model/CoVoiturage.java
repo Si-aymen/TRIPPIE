@@ -5,6 +5,8 @@
  */
 package edu.webuild.model;
 
+import java.util.Date;
+
 /**
  *
  * @author manou
@@ -14,10 +16,10 @@ public class CoVoiturage {
     private int id_co;
     private String depart;
     private String destination;
-    private String date_dep;
+    private Date date_dep;
     private int nmbr_place;
 
-    public CoVoiturage(int id_co, String depart, String destinaion, String date_dep, int nmbr_place) {
+    public CoVoiturage(int id_co, String depart, String destinaion, Date date_dep, int nmbr_place) {
         this.id_co = id_co;
         this.depart = depart;
         this.destination = destinaion;
@@ -25,7 +27,7 @@ public class CoVoiturage {
         this.nmbr_place = nmbr_place;
     }
 
-    public CoVoiturage(String depart, String destinaion, String date_dep, int nmbr_place) {
+    public CoVoiturage(String depart, String destinaion, Date date_dep, int nmbr_place) {
         this.depart = depart;
         this.destination = destinaion;
         this.date_dep = date_dep;
@@ -60,11 +62,11 @@ public class CoVoiturage {
         this.destination = destination;
     }
 
-    public String getDate_dep() {
+    public Date getDate_dep() {
         return date_dep;
     }
 
-    public void setDate_dep(String date_dep) {
+    public void setDate_dep(Date date_dep) {
         this.date_dep = date_dep;
     }
 

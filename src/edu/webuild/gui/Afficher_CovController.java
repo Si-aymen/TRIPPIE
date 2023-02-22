@@ -6,10 +6,13 @@
 package edu.webuild.gui;
 
 import edu.webuild.interfaces.InterfaceCoVoiturage;
+import edu.webuild.interfaces.InterfaceParticipation;
 import edu.webuild.model.CoVoiturage;
 import edu.webuild.services.CoVoiturageCRUD;
+import edu.webuild.services.ParticipationCrud;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -46,8 +49,13 @@ public class Afficher_CovController implements Initializable {
     static String id_co;
     static String depart;
     static String destination;
-    static String date_dep;
+    static Date date_dep;
     static String nmbr_place;
+
+    static String id_part;
+
+    @FXML
+    private Button part_btn;
 
     /**
      * Initializes the controller class.
@@ -136,6 +144,31 @@ public class Afficher_CovController implements Initializable {
         System.out.println(V.getId_co());
         inter_co.supprimerCoVoiturage(V.getId_co()); // assuming CoVoiturage has a method getId() to retrieve the unique ID of the object
         list.getItems().remove(selectedID);
+    }
+
+    @FXML
+    private void part(ActionEvent event) {
+
+        ListView<CoVoiturage> list = listView; // assuming listView is a ListView<CoVoiturage>
+        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+        InterfaceParticipation inter_part = new ParticipationCrud();
+        int selectedID = list.getSelectionModel().getSelectedIndex();
+        CoVoiturage V = list.getSelectionModel().getSelectedItem(); // use getSelectedItem() to get the selected item, not getSelectedItems()*
+        id_co = Integer.toString(V.getId_co());
+        nmbr_place = Integer.toString(V.getNmbr_place());
+
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("Add_Part.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
     }
 
 }

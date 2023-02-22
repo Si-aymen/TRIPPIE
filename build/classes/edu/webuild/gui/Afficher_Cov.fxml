@@ -118,7 +118,8 @@
             </children>
         </AnchorPane>
       <ListView fx:id="listView" layoutX="249.0" layoutY="106.0" prefHeight="350.0" prefWidth="564.0" />
-      <Button fx:id="modify_cov" layoutX="380.0" layoutY="526.0" mnemonicParsing="false" onAction="#modify_cov" text="modifier" />
-      <Button fx:id="delete_cov" layoutX="574.0" layoutY="526.0" mnemonicParsing="false" onAction="#delete_cov" text="supprimer" />
+      <Button fx:id="modify_cov" layoutX="301.0" layoutY="526.0" mnemonicParsing="false" onAction="#modify_cov" text="modifier" />
+      <Button fx:id="delete_cov" layoutX="453.0" layoutY="526.0" mnemonicParsing="false" onAction="#delete_cov" text="supprimer" />
+      <Button fx:id="part_btn" layoutX="628.0" layoutY="526.0" mnemonicParsing="false" onAction="#part" text="Participer" />
     </children>
 </AnchorPane>

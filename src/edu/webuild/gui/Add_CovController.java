@@ -8,8 +8,11 @@ package edu.webuild.gui;
 import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.model.CoVoiturage;
 import edu.webuild.services.CoVoiturageCRUD;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,8 +25,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * FXML Controller class
@@ -41,9 +49,11 @@ public class Add_CovController implements Initializable {
     @FXML
     private TextField nmbr_place_TF;
     @FXML
-    private TextField date_dep_TF;
-    @FXML
     private TextField depart_TF;
+    @FXML
+    private DatePicker date_pk;
+    @FXML
+    private ImageView lab_image;
 
     /**
      * Initializes the controller class.
@@ -55,7 +65,7 @@ public class Add_CovController implements Initializable {
 
     @FXML
     private void cov_btu(ActionEvent event) {
-                try {
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("Menu_Cov.fxml"));
             Scene scene = new Scene(page1);
@@ -72,7 +82,7 @@ public class Add_CovController implements Initializable {
     private void bu_add(ActionEvent event) {
         String depart = depart_TF.getText();
         String destination = destination_TF.getText();
-        String date_dep = date_dep_TF.getText();
+        Date date_dep = java.sql.Date.valueOf(date_pk.getValue());
         int nmbr_place = Integer.parseInt(nmbr_place_TF.getText());
         CoVoiturage v = new CoVoiturage(depart, destination, date_dep, nmbr_place);
         InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
@@ -95,12 +105,6 @@ public class Add_CovController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("label de destination est vide ");
             alert.show();
-        } else if (date_dep.length() == 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("label du date est vide ");
-            alert.show();
         } else {
             inter_co.ajouterCoVoiturage(v);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -111,4 +115,8 @@ public class Add_CovController implements Initializable {
         }
     }
 
+    @FXML
+    private void add_image(ActionEvent event) {
+
+    }
 }

@@ -9,6 +9,7 @@ import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.model.CoVoiturage;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -55,7 +56,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
 
             ps.setString(1, v.getDepart());
             ps.setString(2, v.getDestination());
-            ps.setString(3, v.getDate_dep());
+            ps.setDate(3, (Date) v.getDate_dep());
             ps.setInt(4, v.getNmbr_place());
 
             ps.executeUpdate();
@@ -78,7 +79,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
                 v.setId_co(RS.getInt(1));
                 v.setDepart(RS.getString(2));
                 v.setDestination(RS.getString(3));
-                v.setDate_dep(RS.getString(4));
+                v.setDate_dep(RS.getDate(4));
                 v.setNmbr_place(RS.getInt("nmbr_place"));
 
                 list.add(v);
@@ -130,7 +131,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
                 v.setId_co(RS.getInt("id_co"));
                 v.setDepart(RS.getString("depart"));
                 v.setDestination(RS.getString("destination"));
-                v.setDate_dep(RS.getString("date_dep"));
+                v.setDate_dep(RS.getDate("date_dep"));
                 v.setNmbr_place(RS.getInt("nmbr_place"));
 
                 list.add(v);
@@ -156,7 +157,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
                     v.setId_co(RS.getInt("id_co"));
                     v.setDepart(RS.getString("depart"));
                     v.setDestination(RS.getString("destination"));
-                    v.setDate_dep(RS.getString("date_dep"));
+                    v.setDate_dep(RS.getDate("date_dep"));
                     v.setNmbr_place(RS.getInt("nmbr_place"));
 
                     list.add(v);
@@ -170,7 +171,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
                     v.setId_co(RS.getInt("id_co"));
                     v.setDepart(RS.getString("depart"));
                     v.setDestination(RS.getString("destination"));
-                    v.setDate_dep(RS.getString("date_dep"));
+                    v.setDate_dep(RS.getDate("date_dep"));
                     v.setNmbr_place(RS.getInt("nmbr_place"));
 
                     list.add(v);
