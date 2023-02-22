@@ -29,8 +29,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class ModifierController implements Initializable {
     private AnchorPane rootPane;
-    @FXML
-    private TextField fxcin;
+   
     @FXML
     private TextField fxnom;
     @FXML
@@ -41,12 +40,12 @@ public class ModifierController implements Initializable {
     private TextField fxage;
     @FXML
     private Button btnmod;
-    private ListView<Utilisateur> afficheruser;
+   
     
-    @FXML
     private TextField fxid;
     @FXML
-    private Button btnaff;
+    private TextField fxCin;
+  
 
     /**
      * Initializes the controller class.
@@ -55,30 +54,31 @@ public class ModifierController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
          
-        
+          fxid.setText(String.valueOf(AfficheController.id_user));
+        fxCin.setText(String.valueOf(AfficheController.cin));
+        fxnom.setText(String.valueOf(AfficheController.nom));
+        fxprenom.setText(String.valueOf(AfficheController.prenom));
+        fxsexe.setText(String.valueOf(AfficheController.sexe));
+        fxage.setText(String.valueOf(AfficheController.age));
     }    
     
     @FXML
      private void modifier_user(ActionEvent event) {
-         ListView<Utilisateur> listu = afficheruser;
         int id_user = Integer.parseInt(fxid.getText());
         String nom = fxnom.getText();
         String prenom = fxprenom.getText();
-        String cin = fxcin.getText();
+        String cin = fxCin.getText();
         String sexe = fxsexe.getText();
         int age = Integer.parseInt(fxage.getText());
-        
-        Utilisateur u = new Utilisateur(id_user,cin,nom,prenom,sexe,age);
+        System.out.println(Integer.parseInt(AfficheController.id_user));
+        Utilisateur u = new Utilisateur(cin, nom, prenom, sexe, age);
         utilisateurCRUD uc = new utilisateurCRUD();
-        uc.modifierUtilisateur(u,id_user);
+        uc.modifierUtilisateur(u,Integer.parseInt(AfficheController.id_user));
+         
+
          }
         
-     @FXML
-     private void refresh() throws IOException{
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/afficher_user.fxml"));
-        rootPane.getChildren().setAll(pane);
-        }
-     
+    
      
      }
            

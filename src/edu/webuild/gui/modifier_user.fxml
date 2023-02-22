@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controllers.ModifierController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.ModifierController">
    <children>
-      <VBox layoutX="47.0" layoutY="119.0" prefHeight="200.0" prefWidth="55.0" spacing="15.0">
+      <VBox layoutX="59.0" layoutY="59.0" prefHeight="200.0" prefWidth="55.0" spacing="27.0">
          <children>
+            <Label text="Cin" />
             <Label text="Nom">
                <font>
                   <Font size="14.0" />
@@ -34,18 +34,16 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="102.0" layoutY="78.0" prefHeight="200.0" prefWidth="196.0" spacing="9.0">
+      <VBox layoutX="161.0" layoutY="59.0" prefHeight="200.0" prefWidth="196.0" spacing="20.0">
          <children>
-            <TextField fx:id="fxcin" visible="false" />
+            <TextField fx:id="fxCin" prefHeight="26.0" prefWidth="196.0" />
             <TextField fx:id="fxnom" />
             <TextField fx:id="fxprenom" />
             <TextField fx:id="fxsexe" />
             <TextField fx:id="fxage" />
+            <TextField fx:id="fxcin" visible="false" />
          </children>
       </VBox>
-      <Button fx:id="btnmod" layoutX="466.0" layoutY="246.0" mnemonicParsing="false" onAction="#modifier_user" text="Modifier" />
-      <Label layoutX="414.0" layoutY="119.0" text="L'id à modifier" />
-      <TextField fx:id="fxid" layoutX="378.0" layoutY="170.0" />
-      <Button fx:id="btnaff" layoutX="378.0" layoutY="246.0" mnemonicParsing="false" onAction="#refresh" text="Afficher" />
+      <Button fx:id="btnmod" layoutX="493.0" layoutY="330.0" mnemonicParsing="false" onAction="#modifier_user" text="Modifier" />
    </children>
 </AnchorPane>

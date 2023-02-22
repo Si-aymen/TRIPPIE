@@ -24,6 +24,11 @@ public class Utilisateur {
     //constructeur par defaut
     public Utilisateur() {
     }
+
+    public Utilisateur(int id_user) {
+        this.id_user = id_user;
+    }
+    
     
     //constructur parametre 
 

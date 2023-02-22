@@ -34,6 +34,10 @@ public class Chauffeur {
         this.password = password;
     }
 
+    public Chauffeur(String num_permis, String marque_voiture, String couleur_voiture, String email, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getId_ch() {
         return id_ch;
     }

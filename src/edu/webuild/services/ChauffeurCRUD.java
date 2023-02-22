@@ -36,6 +36,21 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
             System.out.println("Chauffeur non ajouté");
                       }
  }
+    
+    
+     @Override
+    public void ajouterChauffeur2(Chauffeur c) {
+        try {
+             String req = "INSERT INTO `chauffeur`(`num_permis`,`marque_voiture`,`couleur_voiture`,`immatriculation`,`email`,`password`)"
+                     + " VALUES ('"+c.getNum_permis()+"','"+c.getMarque_voiture()+"','"+c.getCouleur_voiture()+"','"+c.getImmatriculation()+"',"
+                     + "'"+c.getEmail()+"','"+c.getPassword()+"')"; 
+             ste = conn.createStatement();
+            ste.executeUpdate(req);
+             System.out.println("Chauffeur ajouté!!!");
+        } catch (SQLException ex) {
+            System.out.println("Chauffeur non ajouté");
+                      }
+ }
    
     
  

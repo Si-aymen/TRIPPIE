@@ -24,6 +24,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
@@ -31,6 +32,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -39,16 +41,20 @@ import javafx.stage.Stage;
  */
 public class AfficheController implements Initializable {
 
-    @FXML
-    private ListView<Utilisateur> afficheruser;
-    static int id_user;
+    
+    static String id_user;
     static String cin;
     static String nom;
     static String prenom;
     static String sexe;
-    static int age;
+    static String age;
+    
     @FXML
     private Button btnsupp;
+    @FXML
+    private Button modifbtn;
+    @FXML
+    private ListView<Utilisateur> listView;
 
   /**
      * Initializes the controller class.
@@ -59,19 +65,45 @@ public class AfficheController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-          ListView<Utilisateur> listu = afficheruser;
-        InterfaceUserCRUD inter = new utilisateurCRUD();
-        List<Utilisateur> list2 = inter.afficherUtilisateur();
-        for (int i = 0; i < list2.size(); i++) {
-            Utilisateur u = list2.get(i);
-            listu.getItems().add(u);
+                 ListView list2 = listView;
 
+        Utilisateur u = new Utilisateur();
+        InterfaceUserCRUD inter = new utilisateurCRUD();
+        List<Utilisateur> list = inter.afficherUtilisateur();
+        for (int i = 0; i < list.size(); i++) {
+            Utilisateur user = list.get(i);
+            list2.getItems().add(user);
         }
-    }   
+        
+        
+         list2.setCellFactory(new Callback<ListView<Utilisateur>, ListCell<Utilisateur>>() {
+            @Override
+            public ListCell<Utilisateur> call(ListView<Utilisateur> listView) {
+                return new ListCell<Utilisateur>() {
+                    @Override
+                    protected void updateItem(Utilisateur user, boolean empty) {
+                        super.updateItem(user, empty);
+                        if (user != null && !empty) {
+                            // Affiche les informations du covoiturage dans la cellule
+                            setText(String.format("%s - %s - %s - %s - %d ans",
+                                    user.getCin(),
+                                    user.getNom(),
+                                    user.getPrenom(),
+                                    user.getSexe(),
+                                    user.getAge()));
+                        } else {
+                            setText(null);
+                        }
+                    }
+                };
+            }
+        });
+    }
+       
     
      @FXML
     private void supprimer_user(ActionEvent event) {
-        ListView<Utilisateur> list = afficheruser;
+        ListView<Utilisateur> list = listView;
         InterfaceUserCRUD inter = new utilisateurCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
@@ -80,7 +112,35 @@ public class AfficheController implements Initializable {
             inter.supprimerUtilisateurById(u.getId_user());
             list.getItems().remove(selectedIndex);
         } else {
-            System.out.println("Veuillez sélectionner une voiture à supprimer.");
+            System.out.println("Veuillez sélectionner un utilisateur à supprimer.");
+        }
+    }
+
+    
+
+    @FXML
+    private void modifyuser(ActionEvent event) {
+         ListView<Utilisateur> list = listView; // assuming listView is a ListView<CoVoiturage>
+        InterfaceUserCRUD inter = new utilisateurCRUD();
+        int selectedID = list.getSelectionModel().getSelectedIndex();
+        Utilisateur u = list.getSelectionModel().getSelectedItem(); // use getSelectedItem() to get the selected item, not getSelectedItems()*
+        id_user = Integer.toString(u.getId_user());
+        cin = u.getCin();
+        nom = u.getNom();
+        prenom = u.getPrenom();
+        sexe = u.getSexe();
+        age = Integer.toString(u.getAge());
+
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/modifier_user.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+
         }
     }
     

@@ -31,22 +31,36 @@ public class Webuild {
      */
     public static void main(String[] args) {
     /*-------------------------------Instance CRUD--------------------------------------------------------------------*/
-         utilisateurCRUD uc = new utilisateurCRUD();
-         roleCRUD rc = new roleCRUD();
+         //utilisateurCRUD uc = new utilisateurCRUD();
+         //roleCRUD rc = new roleCRUD();
          ChauffeurCRUD cc= new ChauffeurCRUD();
          ClientCRUD clc=new ClientCRUD();
          LocateurCRUD l=new LocateurCRUD();
          
      /*-----------------------------Role--------------------------------------------*/    
+        // service init
+        utilisateurCRUD ps = new utilisateurCRUD();
+        
+        //player init
+         Utilisateur p = new Utilisateur();
+        //p.setCin("15015203");
+        //p.setNom("Sadio");
+       // p.setPrenom("Mane");
+        //p.setSexe("Homme");
+        //p.setAge(28);
+//        
+//        //add action
+        //ps.ajouterUtilisateur(p);
+        
+        //select
+        //System.out.println(ps.fetchPlayers());
        
-           Role r1 = new Role(1,"Client",27);
-         Role r2=new Role(2,"Chauffeur",26);
-          Role r3=new Role(3,"Locateur",25);
+        p.setId_user(43);
+        Role t = new Role();      
+        ps.affecterClient(t, p);
           //rc.affecterUser(r1, u);
          //System.out.println(rc.afficherRole());
-         rc.ajouterRole(r1);
-         rc.ajouterRole(r2);
-         rc.ajouterRole(r3);
+        
           //rc.modifierRole(r3);
           //System.out.println(rc.afficherRole());
           //rc.supprimerRole(1);

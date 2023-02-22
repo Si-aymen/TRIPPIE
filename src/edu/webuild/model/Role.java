@@ -12,7 +12,7 @@ package edu.webuild.model;
 public class Role  {
     private int id_role;
     private String libelle;
-    private int id_user;
+    private Utilisateur id_user;
     
  
 
@@ -30,10 +30,14 @@ public class Role  {
          
     }
 
-    public Role(int id_role, String libelle, int id_user) {
+    public Role(int id_role, String libelle, Utilisateur id_user) {
         this.id_role = id_role;
         this.libelle = libelle;
         this.id_user = id_user;
+    }
+
+    public Role(String libelle, String id_user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
@@ -56,11 +60,11 @@ public class Role  {
         this.libelle = libelle;
     }
 
-    public int getId_user() {
+    public Utilisateur getId_user() {
         return id_user;
     }
 
-    public void setId_user(int id_user) {
+    public void setId_user(Utilisateur id_user) {
         this.id_user = id_user;
     }
     

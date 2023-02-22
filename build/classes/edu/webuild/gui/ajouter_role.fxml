@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controllers.Ajouter_roleController">
+   <children>
+      <RadioButton layoutX="285.0" layoutY="123.0" mnemonicParsing="false" onAction="#ajoutcli" text="Client" />
+      <RadioButton layoutX="285.0" layoutY="174.0" mnemonicParsing="false" onAction="#ajoutchauff" text="Chauffeur" />
+      <RadioButton layoutX="285.0" layoutY="227.0" mnemonicParsing="false" onAction="#ajoutloc" text="Locateur" />
+   </children>
+</AnchorPane>

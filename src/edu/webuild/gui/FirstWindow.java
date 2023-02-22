@@ -28,7 +28,7 @@ public class FirstWindow extends Application {
             
             Scene scene = new Scene(root);
             
-            primaryStage.setTitle("WeBuild");
+            primaryStage.setTitle("Trippie");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {

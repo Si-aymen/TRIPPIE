@@ -177,7 +177,7 @@ public class roleCRUD implements InterfaceRoleCRUD {
             ps.setInt(1, u.getId_user());
             ps.setInt(2, r.getId_role());
              ps.executeUpdate();
-            System.out.println("Player updated successfully!");
+            System.out.println("User updated successfully!");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

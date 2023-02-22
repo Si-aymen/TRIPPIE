@@ -13,6 +13,7 @@ import edu.webuild.model.Role;
 import edu.webuild.model.Utilisateur;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -59,7 +60,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
       @Override
     public void modifierUtilisateur(Utilisateur u,int id_user) {
         try {
-            String req = "UPDATE `utilisateur` SET `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() + "', `sexe` = '" + u.getSexe() + "', `age` = '" + u.getAge() + "' WHERE `utilisateur`.`id_user` = " + u.getId_user();
+            String req = "UPDATE `utilisateur` SET `cin`='" +u.getCin()+"', `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() + "', `sexe` = '" + u.getSexe() + "', `age` = '" + u.getAge() + "' WHERE `utilisateur`.`id_user` = " + u.getId_user();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Utilisateur updated !");
@@ -232,5 +233,23 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
 
         return list;
     }
+    
+    
+     @Override
+    public void affecterClient(Role r, Utilisateur u) {
+        try {
+            String req ="INSERT INTO `role` (`libelle`,id_user) VALUES ('Client',?)" ;
+            PreparedStatement ps = conn.prepareStatement(req);
+             ps.setInt(1, u.getId_user());
+             int id_user = u.getId_user();
+             ps.executeUpdate();
+             
+            System.out.println("Client ajouté!");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+    
 
 }
