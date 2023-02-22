@@ -51,6 +51,7 @@ public class Afficher_voitureController implements Initializable {
     static String marque;
     static String Puissence;
     static String Prix_jour;
+    static voiture voiture;
     @FXML
     private Button reservervoiture;
 
@@ -92,11 +93,11 @@ public class Afficher_voitureController implements Initializable {
         InterfaceCRUD inter = new voitureCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         voiture v = list.getSelectionModel().getSelectedItem();
-        id=v.getId();
-        matricule= v.getMatricule(); 
-        marque =v.getMarque(); 
-        Puissence=v.getPuissance(); 
-        Prix_jour= Integer.toString(v.getPrix_jours()) ;
+        id = v.getId();
+        matricule = v.getMatricule();
+        marque = v.getMarque();
+        Puissence = v.getPuissance();
+        Prix_jour = Integer.toString(v.getPrix_jours());
 
         try {
 
@@ -114,11 +115,12 @@ public class Afficher_voitureController implements Initializable {
 
     @FXML
     private void reservervoiture(ActionEvent event) {
-          ListView<voiture> list = affichervoiture;
+        ListView<voiture> list = affichervoiture;
         InterfaceCRUD inter = new voitureCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         voiture v = list.getSelectionModel().getSelectedItem();
-        id=v.getId();
+        voiture = v;
+
         try {
 
             Parent page1

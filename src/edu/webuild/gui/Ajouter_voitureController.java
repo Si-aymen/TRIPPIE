@@ -55,7 +55,7 @@ public class Ajouter_voitureController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("erreur le prix est negatif");
         alert.show();
-        }else if(marque.length()==0){
+        }else if(marque.isEmpty()){
             Alert alert = new Alert(AlertType.INFORMATION);
            alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
@@ -73,13 +73,13 @@ public class Ajouter_voitureController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("erreur il faut contenir ch");
         alert.show();
-        }else if (marque.length()<0){
+        }else if (marque.isEmpty()){
              Alert alert = new Alert(AlertType.INFORMATION);
            alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
         alert.setContentText("la marque est vide !");
         alert.show();
-        }else if (puissance.length()<0){
+        }else if (puissance.isEmpty()){
              Alert alert = new Alert(AlertType.INFORMATION);
            alert.setTitle("Information Dialog");
         alert.setHeaderText(null);

@@ -5,9 +5,13 @@
  */
 package edu.webuild.gui;
 
+import edu.webuild.interfaces.InterfaceCRUD;
+import edu.webuild.interfaces.InterfaceCRUD2;
 import edu.webuild.model.reservation;
 import edu.webuild.services.reservationCRUD;
+import edu.webuild.services.voitureCRUD;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 /**
@@ -27,26 +32,27 @@ public class AjouterreservationController implements Initializable {
     @FXML
     private Button ajouter_reservation;
     @FXML
-    private TextField fx_debut;
+    private DatePicker date_debut_pk;
     @FXML
-    private TextField fx_fin;
+    private DatePicker date_fin_pk1;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         // TODO
-    }    
+    }
 
     @FXML
     private void ajouter_reservation(ActionEvent event) {
-        String date_debut = fx_debut.getText();
-        String date_fin = fx_fin.getText();
-     //   reservation r = new reservation(date_debut, date_fin,Afficher_voitureController.id);
-        reservationCRUD res = new reservationCRUD();
-   //     res.ajouterreservation(r);
-       
+
+        Date date_debut = java.sql.Date.valueOf(date_debut_pk.getValue());
+        Date date_fin = java.sql.Date.valueOf(date_fin_pk1.getValue());
+        reservation res = new reservation(date_debut, date_fin, Afficher_voitureController.voiture);
+        InterfaceCRUD2 inter = new reservationCRUD();
+        inter.ajouterreservation(res);
         Alert alert = new Alert(AlertType.INFORMATION);
 
         alert.setTitle("Information Dialog");
@@ -54,5 +60,5 @@ public class AjouterreservationController implements Initializable {
         alert.setContentText("voiture insérée avec succés!");
         alert.show();
     }
-    
+
 }
