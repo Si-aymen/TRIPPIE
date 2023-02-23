@@ -6,7 +6,9 @@
 package edu.webuild.controllers;
 
 import edu.webuild.model.Chauffeur;
+import edu.webuild.model.Role;
 import edu.webuild.services.ChauffeurCRUD;
+import edu.webuild.services.roleCRUD;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,7 +24,7 @@ import javafx.scene.control.TextField;
  * @author aymen
  */
 public class Ajouter_chauffeurController implements Initializable {
-
+    
     @FXML
     private TextField fxperm;
     @FXML
@@ -37,6 +39,8 @@ public class Ajouter_chauffeurController implements Initializable {
     private TextField fxpass;
     @FXML
     private Button btn;
+    @FXML
+    private TextField fxid;
 
     /**
      * Initializes the controller class.
@@ -47,18 +51,21 @@ public class Ajouter_chauffeurController implements Initializable {
     }    
     
     @FXML
-    private void addch(ActionEvent event)  { 
+    private void addch(ActionEvent event) {        
+        Role r = new Role();
+        roleCRUD rc = new roleCRUD();
+        int id_role = Integer.parseInt(fxid.getText());
         String num_permis = fxperm.getText();
         String marque_voiture = fxmarque.getText();
         String couleur_voiture = fxcoul.getText();
         String email = fxmail.getText();
-        String password=fxpass.getText();
-        String immatriculation=fxmat.getText();
+        String password = fxpass.getText();
+        String immatriculation = fxmat.getText();
         
-        Chauffeur ch = new Chauffeur(num_permis,marque_voiture,couleur_voiture,email,password);
-        ChauffeurCRUD ch1 = new ChauffeurCRUD();
-        ch1.ajouterChauffeur(ch);
-       }
-   
+        r.setId_role(id_role);
+        Chauffeur ch = new Chauffeur(r, num_permis, marque_voiture, couleur_voiture, immatriculation, email, password);
+        rc.affecterRole(ch, r);
+        
+    }
     
 }

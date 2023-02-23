@@ -11,8 +11,7 @@ package edu.webuild.model;
  */
 public class Locateur {
     int id_loc;
-    int id_user;
-    int id_role;
+    Role id_role;
     String nom_agence;
     String email;
     String password;
@@ -20,14 +19,22 @@ public class Locateur {
     public Locateur() {
     }
 
-    public Locateur(int id_loc, int id_role, int id_user,String nom_agence, String email, String password) {
+    public Locateur(int id_loc, Role id_role,String nom_agence, String email, String password) {
         this.id_loc = id_loc;
-        this.id_user = id_user;
         this.id_role = id_role;
         this.nom_agence = nom_agence;
         this.email = email;
         this.password = password;
     }
+
+    public Locateur(Role id_role, String nom_agence, String email, String password) {
+        this.id_role = id_role;
+        this.nom_agence = nom_agence;
+        this.email = email;
+        this.password = password;
+    }
+    
+    
 
     public int getId_loc() {
         return id_loc;
@@ -37,19 +44,13 @@ public class Locateur {
         this.id_loc = id_loc;
     }
 
-    public int getId_user() {
-        return id_user;
-    }
+   
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
-    }
-
-    public int getId_role() {
+    public Role getId_role() {
         return id_role;
     }
 
-    public void setId_role(int id_role) {
+    public void setId_role(Role id_role) {
         this.id_role = id_role;
     }
 
@@ -79,7 +80,7 @@ public class Locateur {
 
     @Override
     public String toString() {
-        return "Locateur{" + "id_loc=" + id_loc + ", id_user=" + id_user + ", id_role=" + id_role + ", nom_agence=" + nom_agence + ", email=" + email + ", password=" + password + '}';
+        return "Locateur{" + "id_loc=" + id_loc + ", id_role=" + id_role + ", nom_agence=" + nom_agence + ", email=" + email + ", password=" + password + '}';
     }
 
    

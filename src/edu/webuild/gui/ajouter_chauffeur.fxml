@@ -5,10 +5,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Ajouter_chauffeurController">
    <children>
-      <VBox layoutX="68.0" layoutY="35.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+      <VBox layoutX="68.0" layoutY="168.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
          <children>
             <Label text="Numero Permis" />
             <Label text="Marque Voiture" />
@@ -18,7 +22,7 @@
             <Label text="Password" />
          </children>
       </VBox>
-      <VBox layoutX="168.0" layoutY="35.0" prefHeight="200.0" prefWidth="198.0" spacing="10.0">
+      <VBox layoutX="168.0" layoutY="168.0" prefHeight="200.0" prefWidth="198.0" spacing="10.0">
          <children>
             <TextField fx:id="fxperm" />
             <TextField fx:id="fxmarque" />
@@ -29,5 +33,28 @@
          </children>
       </VBox>
       <Button fx:id="btn" layoutX="500.0" layoutY="332.0" mnemonicParsing="false" onAction="#addch" text="Confirmer" />
+      <Label layoutX="76.0" layoutY="94.0" text="Veuiller entrer votre id affiché dans le console:" />
+      <TextField fx:id="fxid" layoutX="398.0" layoutY="89.0" prefHeight="26.0" prefWidth="58.0" />
+      <Label layoutX="158.0" layoutY="14.0" text="Inscrivez-vous (3/3)">
+         <font>
+            <Font size="33.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8216511011123657" green="0.48222222924232483" blue="0.9789473414421082" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
    </children>
 </AnchorPane>

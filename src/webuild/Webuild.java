@@ -36,7 +36,7 @@ public class Webuild {
          ChauffeurCRUD cc= new ChauffeurCRUD();
          ClientCRUD clc=new ClientCRUD();
          LocateurCRUD l=new LocateurCRUD();
-         
+         //System.out.println(cc.afficherChauffeur());
      /*-----------------------------Role--------------------------------------------*/    
         // service init
         utilisateurCRUD ps = new utilisateurCRUD();
@@ -101,11 +101,11 @@ public class Webuild {
           // System.out.println(uc.trierUtilisateur());
            //System.out.println((uc.afficherUtilisateur()));
      /*---------------------------------Chauffeur----------------------------------------------------------------------------*/     
-          Chauffeur c1=new Chauffeur(1,2,5,"12345678", "Ford", "Bleu", "172TUNIS1234", "aymen.zouari@esprit.tn", "12345");
+     // Chauffeur c1=new Chauffeur(1,2,5,"12345678", "Ford", "Bleu", "172TUNIS1234", "aymen.zouari@esprit.tn", "12345");
          // cc.ajouterChauffeur(c1);
          System.out.println(cc.afficherChauffeur());
      /*----------------------------------Client-------------------------------------------------------------------------------*/     
-          Client cli1=new Client(1,1,4,"azeae", "aaa"); 
+       //   Client cli1=new Client(1,1,4,"azeae", "aaa"); 
          // clc.ajouterClient(cli1);
      /*----------------------------------Locateur-------------------------------------------------------------------------------*/      
      // Locateur l1=new Locateur(1,3,6, "TravelToDo","zouari.aymen@traveltodo.tn","12345");

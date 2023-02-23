@@ -8,10 +8,12 @@
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/style.css</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_roleController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Modifier_roleController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/affiche_cl.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Utilisateur.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Role.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/AfficheController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_roleController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_clController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Client.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/LocateurCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceUserCRUD.java</file>
@@ -25,10 +27,15 @@
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/roleCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/utilisateurCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_clientController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_locController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ajouter_locateur.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/ChauffeurCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceClientCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/Affiche_ch.fxml</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_chController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/FirstWindow.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceRoleCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/Affiche_loc.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceChauffeurCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/webuild/Webuild.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/utils/MyConnection.java</file>

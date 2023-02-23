@@ -7,6 +7,7 @@ package edu.webuild.services;
 
 import edu.webuild.interfaces.InterfaceLocateurCRUD;
 import edu.webuild.model.Locateur;
+import edu.webuild.model.Role;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -26,9 +27,10 @@ public class LocateurCRUD implements InterfaceLocateurCRUD{
      @Override
     public void ajouterLocateur(Locateur l) {
         try {
-            String req = "INSERT INTO `locateur`(`id_loc`, `id_role`,`id_user`,`nom_agence`,`email`,`password`) VALUES ('"+l.getId_loc()+"','"+l.getId_role()+"','"+l.getId_user()+"','"+l.getNom_agence()+"','"+l.getEmail()+"','"+l.getPassword()+"')"; 
+            String req = "INSERT INTO `locateur`(`id_loc`, `id_role`,`nom_agence`,`email`,`password`) VALUES ('"+l.getId_loc()+"','"+l.getId_role()+"','"+l.getNom_agence()+"','"+l.getEmail()+"','"+l.getPassword()+"')"; 
              ste = conn.createStatement();
             ste.executeUpdate(req);
+          
              System.out.println("Locateur ajouté!!!");
         } catch (SQLException ex) {
             System.out.println("Locateur non ajouté");
@@ -63,17 +65,18 @@ public class LocateurCRUD implements InterfaceLocateurCRUD{
     public List<Locateur> afficherLocateur() {
        List<Locateur> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM `locateur`";//"SELECT locateur. *, role.libelle FROM locateur INNER JOIN role ON locateur.role = role.id_role";
+             String req = "SELECT locateur.*, role.libelle FROM locateur INNER JOIN role ON locateur.id_role = role.id_role";//"SELECT locateur. *, role.libelle FROM locateur INNER JOIN role ON locateur.role = role.id_role";
             Statement st = conn.createStatement();
             ResultSet RS= st.executeQuery(req);
             while(RS.next()){
              Locateur loc = new Locateur();
              loc.setId_loc(RS.getInt(1));
-             loc.setId_role(RS.getInt(2));
-             loc.setId_user(RS.getInt(3));
-             loc.setNom_agence(RS.getString(4));
-             loc.setEmail(RS.getString(5));
-             loc.setPassword(RS.getString(6));
+             loc.setNom_agence(RS.getString(2));
+             loc.setEmail(RS.getString(3));
+             loc.setPassword(RS.getString(4));
+               Role role = new Role();
+               loc.setId_role(role);
+            role.setLibelle(RS.getString(5));
              
             
              
@@ -97,11 +100,9 @@ public class LocateurCRUD implements InterfaceLocateurCRUD{
             while(RS.next()){
            Locateur loc = new Locateur();
              loc.setId_loc(RS.getInt(1));
-             loc.setId_role(RS.getInt(2));
-             loc.setId_user(RS.getInt(3));
-             loc.setNom_agence(RS.getString(4));
-             loc.setEmail(RS.getString(5));
-             loc.setPassword(RS.getString(6));
+             loc.setNom_agence(RS.getString(2));
+             loc.setEmail(RS.getString(3));
+             loc.setPassword(RS.getString(4));
             
              
              
@@ -129,11 +130,9 @@ public class LocateurCRUD implements InterfaceLocateurCRUD{
             while(RS.next()){
              Locateur loc = new Locateur();
              loc.setId_loc(RS.getInt(1));
-             loc.setId_role(RS.getInt(2));
-             loc.setId_user(RS.getInt(3));
-             loc.setNom_agence(RS.getString(4));
-             loc.setEmail(RS.getString(5));
-             loc.setPassword(RS.getString(6));
+             loc.setNom_agence(RS.getString(2));
+             loc.setEmail(RS.getString(3));
+             loc.setPassword(RS.getString(4));
             
              
              
@@ -148,11 +147,9 @@ public class LocateurCRUD implements InterfaceLocateurCRUD{
              Locateur u = new Locateur();
              Locateur loc = new Locateur();
              loc.setId_loc(RS.getInt(1));
-             loc.setId_role(RS.getInt(2));
-             loc.setId_user(RS.getInt(3));
-             loc.setNom_agence(RS.getString(4));
-             loc.setEmail(RS.getString(5));
-             loc.setPassword(RS.getString(6));
+             loc.setNom_agence(RS.getString(2));
+             loc.setEmail(RS.getString(3));
+             loc.setPassword(RS.getString(4));
              
              
                           list.add(loc);
@@ -180,11 +177,9 @@ public class LocateurCRUD implements InterfaceLocateurCRUD{
             while(RS.next()){
              Locateur loc = new Locateur();
              loc.setId_loc(RS.getInt(1));
-             loc.setId_role(RS.getInt(2));
-             loc.setId_user(RS.getInt(3));
-             loc.setNom_agence(RS.getString(4));
-             loc.setEmail(RS.getString(5));
-             loc.setPassword(RS.getString(6));
+             loc.setNom_agence(RS.getString(2));
+             loc.setEmail(RS.getString(3));
+             loc.setPassword(RS.getString(4));
              
              list.add(loc);
             }

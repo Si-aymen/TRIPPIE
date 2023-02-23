@@ -6,6 +6,7 @@
 package edu.webuild.interfaces;
 
 import edu.webuild.model.Chauffeur;
+import edu.webuild.model.Role;
 import java.util.List;
 
 /**
@@ -21,4 +22,5 @@ public interface InterfaceChauffeurCRUD {
     public List<Chauffeur> FiltrerChauffeur(String f1, String f2);
      public List<Chauffeur> trierChauffeur();
      public void ajouterChauffeur2(Chauffeur c);
+    
 }

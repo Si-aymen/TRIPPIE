@@ -5,24 +5,50 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controllers.Ajouter_locateurController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Ajouter_locateurController">
    <children>
-      <VBox layoutX="64.0" layoutY="43.0" prefHeight="200.0" prefWidth="100.0" spacing="50.0">
+      <VBox layoutX="149.0" layoutY="172.0" prefHeight="200.0" prefWidth="100.0" spacing="50.0">
          <children>
             <Label text="Nom d'agence" />
             <Label text="Email" />
             <Label text="Password" />
          </children>
       </VBox>
-      <VBox layoutX="164.0" layoutY="43.0" prefHeight="200.0" prefWidth="183.0" spacing="40.0">
+      <VBox layoutX="249.0" layoutY="172.0" prefHeight="200.0" prefWidth="183.0" spacing="40.0">
          <children>
             <TextField fx:id="fxagence" />
             <TextField fx:id="fxmail" />
             <TextField fx:id="fxpass" />
          </children>
       </VBox>
-      <Button layoutX="473.0" layoutY="328.0" mnemonicParsing="false" text="Ajouter" />
+      <Button fx:id="btn" layoutX="509.0" layoutY="337.0" mnemonicParsing="false" onAction="#addloc" text="Ajouter" />
+      <Label layoutX="75.0" layoutY="94.0" text="Veuiller entrer votre id affiché dans le console:" />
+      <TextField fx:id="fxid" layoutX="397.0" layoutY="89.0" prefHeight="26.0" prefWidth="58.0" />
+      <Label layoutX="157.0" layoutY="14.0" text="Inscrivez-vous (3/3)">
+         <font>
+            <Font size="33.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8216511011123657" green="0.48222222924232483" blue="0.9789473414421082" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
    </children>
 </AnchorPane>

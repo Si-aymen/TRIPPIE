@@ -10,7 +10,8 @@ package edu.webuild.model;
  * @author aymen
  */
 public class Chauffeur {
-    int id_ch,id_user,id_role;
+    int id_ch;
+    Role   id_role;
     String num_permis;
     String marque_voiture;
     String couleur_voiture;
@@ -21,10 +22,10 @@ public class Chauffeur {
     public Chauffeur() {
     }
 
-    public Chauffeur(int id_ch,  int id_role,int id_user, String num_permis, String marque_voiture, String couleur_voiture, String immatriculation, String email, String password) {
+    public Chauffeur(int id_ch,  Role id_role, String num_permis, String marque_voiture, String couleur_voiture, String immatriculation, String email, String password) {
         this.id_ch = id_ch;
         this.id_role = id_role;
-        this.id_user = id_user;
+       
         
         this.num_permis = num_permis;
         this.marque_voiture = marque_voiture;
@@ -34,9 +35,17 @@ public class Chauffeur {
         this.password = password;
     }
 
-    public Chauffeur(String num_permis, String marque_voiture, String couleur_voiture, String email, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Chauffeur(Role id_role, String num_permis, String marque_voiture, String couleur_voiture, String immatriculation, String email, String password) {
+        this.id_role = id_role;
+        this.num_permis = num_permis;
+        this.marque_voiture = marque_voiture;
+        this.couleur_voiture = couleur_voiture;
+        this.immatriculation = immatriculation;
+        this.email = email;
+        this.password = password;
     }
+
+  
 
     public int getId_ch() {
         return id_ch;
@@ -46,19 +55,12 @@ public class Chauffeur {
         this.id_ch = id_ch;
     }
 
-    public int getId_user() {
-        return id_user;
-    }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
-    }
-
-    public int getId_role() {
+    public Role getId_role() {
         return id_role;
     }
 
-    public void setId_role(int id_role) {
+    public void setId_role(Role id_role) {
         this.id_role = id_role;
     }
 
@@ -112,7 +114,7 @@ public class Chauffeur {
 
     @Override
     public String toString() {
-        return "Chauffeur{" + "id_ch=" + id_ch + ", id_role=" + id_role + ", id_user=" + id_user + ", num_permis=" + num_permis + ", marque_voiture=" + marque_voiture + ", couleur_voiture=" + couleur_voiture + ", immatriculation=" + immatriculation + ", email=" + email + ", password=" + password + '}';
+        return "Chauffeur{" + "id_ch=" + id_ch + ", id_role=" + id_role + ", num_permis=" + num_permis + ", marque_voiture=" + marque_voiture + ", couleur_voiture=" + couleur_voiture + ", immatriculation=" + immatriculation + ", email=" + email + ", password=" + password + '}';
     }
 
    

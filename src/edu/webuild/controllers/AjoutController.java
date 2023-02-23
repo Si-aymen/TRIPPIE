@@ -118,14 +118,14 @@ public class AjoutController implements Initializable {
         alert.show();
         
         }
-        else if (sexe!="Homme" || sexe!="Femme" || sexe!="H" || sexe!="F"){
-            
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-           alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("il faut que saisir H=Homme ou bien F=Femme ");
-        alert.show();
-        }
+//        else if (sexe !="Homme" || sexe !="Femme" || sexe !="H" || sexe !="F"){
+//            
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//           alert.setTitle("Information Dialog");
+//        alert.setHeaderText(null);
+//        alert.setContentText("il faut que saisir H=Homme ou bien F=Femme ");
+//        alert.show();
+//        }
         else if(age<=18){
              Alert alert = new Alert(Alert.AlertType.INFORMATION);
            alert.setTitle("Information Dialog");

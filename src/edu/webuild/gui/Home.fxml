@@ -5,7 +5,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.HomeController">
    <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
@@ -19,7 +19,10 @@
               <MenuItem mnemonicParsing="false" onAction="#lancer_ajouter" text="Ajouter un utilisateur" />
                   <MenuItem mnemonicParsing="false" onAction="#lancer_afficher" text="Consulter utilisateur" />
                   <MenuItem mnemonicParsing="false" onAction="#lancer_modifier" text="Modifier utilisateur" />
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherrole" text="Afficher role" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherrole" text="Consulter role" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherch" text="Consulter chauffeurs" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_affichercli" text="Consulter clients" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherloc" text="Consulter locateur" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

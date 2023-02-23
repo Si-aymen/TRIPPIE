@@ -63,5 +63,23 @@ public class HomeController implements Initializable {
         rootPane.getChildren().setAll(pane);
     }
 
+    @FXML
+    private void lancer_afficherch(ActionEvent event) throws IOException {
+          AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Affiche_ch.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void lancer_affichercli(ActionEvent event) throws IOException {
+          AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/affiche_cl.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void lancer_afficherloc(ActionEvent event) throws IOException {
+           AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Affiche_loc.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
     
 }
