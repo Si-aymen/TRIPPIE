@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
 import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.model.CoVoiturage;
@@ -67,7 +67,7 @@ public class Add_CovController implements Initializable {
     private void cov_btu(ActionEvent event) {
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("Menu_Cov.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_Cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -118,5 +118,20 @@ public class Add_CovController implements Initializable {
     @FXML
     private void add_image(ActionEvent event) {
 
+    }
+
+    @FXML
+    private void stats(ActionEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Piechart.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 }

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
+import edu.webuild.controllers.Menu_CoVoiturageController;
 import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.interfaces.InterfaceParticipation;
 import edu.webuild.model.CoVoiturage;
@@ -46,11 +47,11 @@ public class Afficher_CovController implements Initializable {
     @FXML
     private ListView<CoVoiturage> listView;
 
-    static String id_co;
-    static String depart;
-    static String destination;
-    static Date date_dep;
-    static String nmbr_place;
+    static public String id_co;
+    static public String depart;
+    static public String destination;
+    static public Date date_dep;
+    static public String nmbr_place;
 
     static String id_part;
 
@@ -98,7 +99,7 @@ public class Afficher_CovController implements Initializable {
     private void cov_btu(ActionEvent event) {
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("Menu_Cov.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_Cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -123,7 +124,7 @@ public class Afficher_CovController implements Initializable {
 
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("Mod_Cov.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Mod_Cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -159,7 +160,7 @@ public class Afficher_CovController implements Initializable {
 
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("Add_Part.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Add_Part.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -169,6 +170,21 @@ public class Afficher_CovController implements Initializable {
 
         }
 
+    }
+
+    @FXML
+    private void stats(ActionEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Piechart.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
 }

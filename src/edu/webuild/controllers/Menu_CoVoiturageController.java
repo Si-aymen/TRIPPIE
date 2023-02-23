@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,7 +44,7 @@ public class Menu_CoVoiturageController implements Initializable {
     private void afficher_cov(ActionEvent event) {
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("Afficher_Cov.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Afficher_Cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -59,7 +59,7 @@ public class Menu_CoVoiturageController implements Initializable {
     private void ajouter_cov(ActionEvent event) {
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("Add_Cov.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Add_Cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

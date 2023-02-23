@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
 import edu.webuild.interfaces.InterfaceParticipation;
 import edu.webuild.model.Participation;
@@ -43,6 +43,8 @@ public class Afficher_PartController implements Initializable {
     private TextField Attribut_TF;
     @FXML
     private TextField Data_TF;
+    @FXML
+    private Button cov_btu1;
 
     /**
      * Initializes the controller class.
@@ -65,7 +67,7 @@ public class Afficher_PartController implements Initializable {
 
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("Menu_Cov.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_Cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -75,7 +77,6 @@ public class Afficher_PartController implements Initializable {
 
         }
     }
-
 
     @FXML
     private void delete_Part(ActionEvent event) {
@@ -106,6 +107,21 @@ public class Afficher_PartController implements Initializable {
 
     @FXML
     private void Print_pdf(ActionEvent event) {
+    }
+
+    @FXML
+    private void stats(ActionEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Piechart.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
 }

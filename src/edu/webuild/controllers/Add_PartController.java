@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
 import edu.webuild.interfaces.InterfaceParticipation;
 import edu.webuild.model.Participation;
@@ -36,11 +36,9 @@ public class Add_PartController implements Initializable {
     @FXML
     private TextField nmbr_place_part;
     @FXML
-    private Button part_btu;
-    @FXML
-    private Button Cov_btu;
-    @FXML
     private Label nmbr_place_Lab;
+    @FXML
+    private Button cov_btu;
 
     /**
      * Initializes the controller class.
@@ -57,33 +55,61 @@ public class Add_PartController implements Initializable {
         System.out.println(Integer.parseInt(Afficher_CovController.id_co));
         InterfaceParticipation inter_part = new ParticipationCrud();
         Participation part = new Participation(nmbr_place_prat, Integer.parseInt(Afficher_CovController.id_co));
+        int nmbr_place_cov = Integer.parseInt(Afficher_CovController.nmbr_place);
 
-        if (Integer.parseInt(nmbr_place_part.getText()) > Integer.parseInt(Afficher_CovController.nmbr_place)) {
+        if (nmbr_place_prat > nmbr_place_cov) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("la nmbr des place est incorrect ");
             alert.show();
-        } else if(Integer.parseInt(nmbr_place_part.getText()) < Integer.parseInt(Afficher_CovController.nmbr_place))  {
+        } else if ((nmbr_place_prat < nmbr_place_cov) || (nmbr_place_prat > 0)) {
+            inter_part.ajouterParticipation(part);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Participation insérée avec succés!");
+            alert.show();
+
         }
-        inter_part.ajouterParticipation(part);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("Participation insérée avec succés!");
-        alert.show();
 
     }
 
-    @FXML
-    private void part_btu(ActionEvent event) {
-    }
 
-    @FXML
     private void Cov_btu(ActionEvent event) {
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("Menu_Cov.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_Cov.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void cov_btu(ActionEvent event) {
+                try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_Cov.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void stats(ActionEvent event) {
+                try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Piechart.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

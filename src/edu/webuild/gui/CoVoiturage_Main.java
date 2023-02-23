@@ -6,12 +6,9 @@
 package edu.webuild.gui;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -40,7 +37,7 @@ public class CoVoiturage_Main extends Application {
         //root.getChildren().add(btn);
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Menu_Cov.fxml"));
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root,1400,800);
 
             primaryStage.setTitle("Trippie");
 
