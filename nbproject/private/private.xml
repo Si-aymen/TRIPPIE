@@ -7,14 +7,15 @@
             <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/controllers/Add_CovController.java</file>
             <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/gui/Add_Part.fxml</file>
             <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/gui/Afficher_Cov.fxml</file>
-            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/gui/Add_Cov.fxml</file>
             <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/controllers/Mod_CovController.java</file>
+            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/gui/CoVoiturage_Main.java</file>
             <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/controllers/PiechartController.java</file>
-            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/controllers/Menu_CovController.java</file>
             <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/controllers/Menu_CoVoiturageController.java</file>
             <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/controllers/Afficher_PartController.java</file>
-            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/gui/Mod_Cov.fxml</file>
             <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/controllers/Add_PartController.java</file>
+            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/gui/Add_Cov.fxml</file>
+            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/controllers/Menu_CovController.java</file>
+            <file>file:/C:/Users/manou/Desktop/test_JavaFX/webuild/src/edu/webuild/gui/Mod_Cov.fxml</file>
         </group>
     </open-files>
 </project-private>

@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: #fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.PiechartController">
     <children>
-        <Text fill="#878787" layoutX="453.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="www.Trippie.tn" wrappingWidth="138.40000000000003" />
+        <Text fill="#878787" layoutX="703.0" layoutY="760.0" strokeType="OUTSIDE" strokeWidth="0.0" text="www.Trippie.tn" wrappingWidth="138.40000000000003" />
         <AnchorPane layoutX="221.0" layoutY="-56.0" prefHeight="127.0" prefWidth="1192.0" style="-fx-background-color: #ebd3cb;">
             <children>
                 <Text fill="#fcfafa" layoutX="14.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" /home/CoVoiturage">
@@ -111,6 +111,6 @@
       <Button fx:id="cov_btu" layoutX="51.0" layoutY="371.0" mnemonicParsing="false" onAction="#cov_btu" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Co_Voiturage" />
       <Button layoutX="51.0" layoutY="426.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Participation Co_Voiturage" />
       <Button layoutX="51.0" layoutY="487.0" mnemonicParsing="false" onAction="#stats" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Stats" />
-      <PieChart fx:id="pie2" layoutX="772.0" layoutY="171.0" />
+      <PieChart fx:id="pie2" layoutX="772.0" layoutY="145.0" />
     </children>
 </AnchorPane>

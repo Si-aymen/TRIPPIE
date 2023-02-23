@@ -12,6 +12,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -29,6 +31,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -54,6 +57,8 @@ public class Add_CovController implements Initializable {
     private DatePicker date_pk;
     @FXML
     private ImageView lab_image;
+
+    static String url_image;
 
     /**
      * Initializes the controller class.
@@ -116,8 +121,66 @@ public class Add_CovController implements Initializable {
     }
 
     @FXML
+//private void add_image(ActionEvent event) {
+//    ImageView imageView = lab_image;
+//
+//    // Create a FileChooser
+//    FileChooser fileChooser = new FileChooser();
+//
+//    // Add a filter to only show image files
+//    fileChooser.getExtensionFilters().addAll(
+//            new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif")
+//    );
+//
+//    // Get the primary stage from the image view
+//    Stage primaryStage = (Stage) imageView.getScene().getWindow();
+//
+//    // Show the file chooser dialog
+//    File file = fileChooser.showOpenDialog(primaryStage);
+//
+//    if (file != null) {
+//        // Load the selected image into the image view
+//        Image image = new Image(file.toURI().toString());
+//        url_image = file.toURI().toString();
+//        System.out.println(file.toURI().toString());
+//        imageView.setImage(image);
+//    }
+//}
     private void add_image(ActionEvent event) {
+        ImageView imageView = lab_image;
 
+        // Create a FileChooser
+        FileChooser fileChooser = new FileChooser();
+
+        // Add a filter to only show image files
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif")
+        );
+
+        // Get the primary stage from the image view
+        Stage primaryStage = (Stage) imageView.getScene().getWindow();
+
+        // Show the file chooser dialog
+        File file = fileChooser.showOpenDialog(primaryStage);
+
+        if (file != null) {
+            // Load the selected image into the image view
+            Image image = new Image(file.toURI().toString());
+            //url_image = file.toURI().toString();
+            System.out.println(file.toURI().toString());
+            imageView.setImage(image);
+
+            // Create a new file in the destination directory
+            File destinationFile = new File("C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName());
+            url_image = "C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName();
+
+            try {
+                // Copy the selected file to the destination file
+                Files.copy(file.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML

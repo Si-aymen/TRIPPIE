@@ -94,7 +94,7 @@ public class Menu_CovController implements Initializable {
 
     @FXML
     private void afficher_Part(ActionEvent event) {
-                try {
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Afficher_Part.fxml"));
             Scene scene = new Scene(page1);
@@ -109,7 +109,7 @@ public class Menu_CovController implements Initializable {
 
     @FXML
     private void stats(ActionEvent event) {
-                try {
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Piechart.fxml"));
             Scene scene = new Scene(page1);

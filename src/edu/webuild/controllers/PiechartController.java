@@ -9,7 +9,6 @@ import edu.webuild.utils.MyConnection;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,7 +26,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -46,21 +44,23 @@ public class PiechartController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         PieChart pieChart = pie;
         PieChart pieChart2 = pie2;
+                    Connection conn = MyConnection.getInstance().getConn();
+
         // Retrieve data from the database
         List<PieChart.Data> data = new ArrayList<>();
         try {
-            Connection conn = MyConnection.getInstance().getConn();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT depart, COUNT(*) as count FROM co_voiturage GROUP BY depart");
             while (rs.next()) {
                 data.add(new PieChart.Data(rs.getString("depart"), rs.getInt("count")));
             }
-            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -71,12 +71,9 @@ public class PiechartController implements Initializable {
         // Set the title of the pie chart
         pieChart.setTitle("Departure Locations");
         
-
-        
         // Retrieve data from the database
         List<PieChart.Data> data2 = new ArrayList<>();
         try {
-            Connection conn = MyConnection.getInstance().getConn();
             Statement stmt = conn.createStatement();
             ResultSet rs2 = stmt.executeQuery("SELECT destination, COUNT(*) as count FROM co_voiturage GROUP BY destination");
             while (rs2.next()) {
