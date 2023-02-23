@@ -5,6 +5,9 @@
  */
 package edu.webuild.model;
 
+
+
+
 /**
  *
  * @author mtirn
@@ -48,6 +51,12 @@ public class abonnement {
 
   
 
+       
+ 
+    
+    
+    
+    
    
 
     public int getIdA() {
@@ -89,14 +98,23 @@ public class abonnement {
     public void setPrix(int prix) {
         this.prix = prix;
     }
+    
+    
+    
+    
 
     @Override
     public String toString() {
         return "abonnement{" + "idA=" + idA + ", type=" + type + ", dateExpiration=" + dateExpiration + ", dateAchat=" + dateAchat + ", prix=" + prix + '}';
     }
+    
+    
+    
+      
+       
+ 
+}
 
-    
-    
 
  
     
@@ -106,4 +124,3 @@ public class abonnement {
 
     
 
-}

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import edu.webuild.interfaces.InterfaceAbonnement;
 
+
 /**
  *
  * @author mtirn
@@ -178,7 +179,6 @@ public class AbonnementCRUD implements InterfaceAbonnement{
     }
   
 
-   
-   
+ 
     
 }

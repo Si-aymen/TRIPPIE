@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import edu.webuild.interfaces.InterfaceCarte;
 
+
 /**
  *
  * @author mtirn
@@ -29,7 +30,12 @@ public class CartefideliteCRUD implements InterfaceCarte {
             ste.executeUpdate(req);
             System.out.println("cartefidelite ajouté!!!");
         } catch (SQLException ex) {
-            System.out.println("cartefidelite non ajouté");
+            
+           
+          System.out.println("cartefidelite non ajouté");
+          
+                
+
                       }
  }
      @Override
@@ -165,6 +171,5 @@ public class CartefideliteCRUD implements InterfaceCarte {
     }
   
 
-    
     
 }

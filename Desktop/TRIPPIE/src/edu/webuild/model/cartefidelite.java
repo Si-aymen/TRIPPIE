@@ -5,6 +5,10 @@
  */
 package edu.webuild.model;
 
+
+
+
+
 /**
  *
  * @author mtirn
@@ -34,9 +38,20 @@ public class cartefidelite {
         this.dateExpiration = dateExpiration;
     }
 
-    public cartefidelite() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public cartefidelite(int id_cf, String pointMerci, String dateExpiration) {
+        this.id_cf = id_cf;
+        this.pointMerci = pointMerci;
+        this.dateExpiration = dateExpiration;
     }
+
+    public cartefidelite() {
+    }
+
+  
+
+   
+
+    
 
     public int getId_cf() {
         return id_cf;
@@ -76,5 +91,6 @@ public class cartefidelite {
     }
    
     
-
 }
+
+
