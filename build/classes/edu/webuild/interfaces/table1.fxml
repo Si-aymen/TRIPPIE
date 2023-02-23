@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.interfaces.Table1Controller">
    <children>
-      <FontAwesomeIconView fill="#ff0c0c" glyphName="TRASH" layoutX="108.0" layoutY="91.0" onMouseClicked="#delete" size="30" />
+      <FontAwesomeIconView fx:id="delete" fill="#ff0c0c" glyphName="TRASH" layoutX="108.0" layoutY="91.0" onMouseClicked="#delete" size="30" />
       <AnchorPane layoutX="250.0" layoutY="73.0" prefHeight="0.0" prefWidth="50.0" />
       <Pane layoutX="-9.0" layoutY="45.0" prefHeight="11.0" prefWidth="618.0" style="-fx-background-color: black;" />
       <FontAwesomeIconView fill="#160086" glyphName="USER_PLUS" layoutX="14.0" layoutY="89.0" onMouseClicked="#ADD" size="30" wrappingWidth="37.14285659790039" />
@@ -19,8 +19,8 @@
          </font>
       </Text>
       <FontAwesomeIconView glyphName="CLOSE" layoutX="589.0" layoutY="23.0" onMouseClicked="#close" size="20" />
-      <FontAwesomeIconView fill="#0b7211" glyphName="REFRESH" layoutX="66.0" layoutY="91.0" onMouseClicked="#refresh" size="30" />
-      <FontAwesomeIconView glyphName="PENCIL" layoutX="148.0" layoutY="91.0" onMouseClicked="#MODIFIER" size="30" />
+      <FontAwesomeIconView fill="#0b7211" glyphName="REFRESH" layoutX="66.0" layoutY="91.0" onMouseClicked="#refrech" size="30" />
+      <FontAwesomeIconView glyphName="PENCIL" layoutX="148.0" layoutY="91.0" onMouseClicked="#update" size="30" />
       <ListView fx:id="afficher" layoutX="20.0" layoutY="109.0" prefHeight="144.0" prefWidth="556.0" />
    </children>
 </AnchorPane>

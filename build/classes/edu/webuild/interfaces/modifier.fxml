@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="454.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.interfaces.ModifierController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.interfaces.ModifierController">
    <children>
       <Label layoutX="52.0" layoutY="74.0" text="date_debut">
          <font>
@@ -46,13 +45,7 @@
       <TextField fx:id="fxcodem" layoutX="264.0" layoutY="162.0" prefHeight="25.0" prefWidth="174.0" />
       <TextField fx:id="fxnbrm" layoutX="24.0" layoutY="230.0" prefHeight="25.0" prefWidth="174.0" />
       <TextField fx:id="fxtypem" layoutX="277.0" layoutY="229.0" />
-      <Button layoutX="55.0" layoutY="288.0" mnemonicParsing="false" onMouseClicked="#update" prefHeight="31.0" prefWidth="141.0" style="-fx-background-color: #5de874;" text="Update" textFill="#030303" />
+      <Button fx:id="update" layoutX="55.0" layoutY="288.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="141.0" style="-fx-background-color: #5de874;" text="Update" textFill="#030303" />
       <Button layoutX="228.0" layoutY="289.0" mnemonicParsing="false" onMouseClicked="#cleanm" prefHeight="31.0" prefWidth="141.0" style="-fx-background-color: #cd3a3a;" text="Clean" />
-      <Label layoutX="66.0" layoutY="30.0" text="id_coupon">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="fxid_coup" layoutX="21.0" layoutY="50.0" prefHeight="25.0" prefWidth="174.0" />
    </children>
 </AnchorPane>

@@ -16,13 +16,9 @@ import java.util.List;
  */
 public class coupon {
 
-    public static void remove(coupon selectedCoupon) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
-    public static Iterator<coupon> iterator() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
      private int id_coupon;
     private Date date_debut;
     private Date date_experation;
@@ -117,7 +113,7 @@ public class coupon {
 
     @Override
     public String toString() {
-        return "coupon{" + "id_coupon=" + id_coupon + ", date_debut=" + date_debut + ", date_experation=" + date_experation + ", taux_reduction=" + taux_reduction + ", code_coupon=" + code_coupon + ", nbr_utilisation=" + nbr_utilisation + ", type=" + type + '}';
+        return "" + "   date_debut=" + date_debut + "  date_experation=" + date_experation + "   taux_reduction=" + taux_reduction + " code_coupon=" + code_coupon + "  nbr_utilisation=" + nbr_utilisation + "   type=" + type ;
     }
 
     public List<coupon> afficherCoupon() {

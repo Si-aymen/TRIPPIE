@@ -87,7 +87,7 @@ public class cadeau {
 
     @Override
     public String toString() {
-        return "cadeau{" + "id_cadeau=" + id_cadeau + ", nom_cadeau=" + nom_cadeau + ", recurrence=" + recurrence + ", id_coupon=" + id_coupon + '}';
+        return ""+ " nom_cadeau=" + nom_cadeau + ", recurrence=" + recurrence + ", id_coupon=" + id_coupon ;
     }
 
     public void setId_coupon(coupon c1) {

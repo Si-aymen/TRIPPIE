@@ -113,11 +113,11 @@ System.out.println(pcd.afficher());
       //pd.ajoutercadeau
        
        
-    
+    /*
         cadeau c2 = new cadeau("carte fidelite",1,18);
        pd.ajoutercadeau2(c2);
        
-      System.out.println(pd.displayCadeau());
+      System.out.println(pd.displayCadeau());*/
        
        
        
@@ -127,11 +127,11 @@ System.out.println(pcd.afficher());
       
                
          
-          /* cadeau c = new cadeau("hiiiiiiiii",5,16);
-              c.setId_cadeau(47); // id de la personne à modifier
+          /*cadeau c = new cadeau("hello",5,47);
+              c.setId_cadeau(65); // id de la personne à modifier
 pd.modifier(c);
-System.out.println(pd.displayCadeau());*/
-    
+System.out.println(pd.displayCadeau());
+    */
 
 
           /*System.out.println("voici votre recherch");

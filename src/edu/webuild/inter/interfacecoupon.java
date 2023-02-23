@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package edu.webuild.inter;
+import edu.webuild.model.coupon;
 import java.util.List;
 
 /**
@@ -12,17 +13,17 @@ import java.util.List;
  */
 public interface interfacecoupon {
     public void ajoutercoupon();
-    public void ajouterpersonne2(interfacecoupon c);
-     public List<interfacecoupon> displayCoupon(); 
+    public void ajouterpersonne2(coupon c);
+    public List<coupon> displayCoupon() ;
      public  int Supprimer(int id );
-      public void modifier(interfacecoupon c );
-      
+      public void modifier(coupon c );
+       
+    public List<coupon> rech(int id );
     
-    public List<interfacecoupon> rech(int id );
+    public List<coupon> sortCoupons(String column, String order);
     
-    public List<interfacecoupon> sortCoupons(String column, String order);
-    
-    public List<interfacecoupon> Filter_Coupon(String S, String SS);
+    public List<coupon> Filter_Coupon(String S, String SS);
+   
      
     
 }

@@ -7,9 +7,11 @@ package edu.webuild.services;
 
 
 
+import edu.webuild.inter.interfacecoupon;
 import edu.webuild.model.coupon;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
+import java.sql.DriverManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,11 +26,13 @@ import java.util.List;
  *
  * @author HP
  */
-public class couponCrud {
+public  class couponCrud  implements interfacecoupon  {
  Connection cnx2;
   public couponCrud(){
         cnx2= MyConnection.getinstance().getcnx();
     }
+
+ @Override
   public void ajoutercoupon(){
         
         try {
@@ -40,6 +44,7 @@ public class couponCrud {
             System.err.println(ex.getMessage());
         }
 }
+ @Override
   public void ajouterpersonne2(coupon c){
        
         
@@ -71,6 +76,8 @@ public class couponCrud {
   }
    
     
+
+ @Override
     public List<coupon> displayCoupon() {
     List<coupon> couponList = new ArrayList<>();
     try {
@@ -79,7 +86,6 @@ public class couponCrud {
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {
-           
             Date date_debut = rs.getDate("date_debut");
              Date date_experation = rs.getDate("date_experation");
             int taux_reduction = rs.getInt("taux_reduction");
@@ -93,23 +99,34 @@ public class couponCrud {
         System.err.println(e.getMessage());
     }
     return couponList;
+    
+    
+   
+    
 }
 
         
     
-    public  int Supprimer(int id ){
+    public  int Supprimer(String codecoupon ){
           
-        try {
-             String requete4= "delete from coupon where id_coupon ='"+id+"'";   
-            PreparedStatement pst = cnx2.prepareStatement(requete4);
-             pst.executeUpdate(requete4);
-            System.out.println("coupon supprimer aves success ");
-        } catch (SQLException ex) {
-              System.err.println("ex.getMessge()");
+       try {
+        
+        String sql = "DELETE FROM coupon WHERE code_coupon = ?";
+        PreparedStatement pstmt = cnx2.prepareStatement(sql);
+        pstmt.setString(1, codecoupon);
+        int rowsDeleted = pstmt.executeUpdate();
+        if (rowsDeleted > 0) {
+            System.out.println("Le coupon a été supprimé avec succès.");
+        } else {
+            System.out.println("Aucun coupon n'a été supprimé.");
         }
-        return 0;
+    } catch (SQLException ex) {
+        System.out.println("Une erreur s'est produite lors de la suppression du coupon : " + ex.getMessage());
+    }return 0;
+}
        
-   } 
+    
+ @Override
     public void modifier(coupon c ){
        
        
@@ -117,21 +134,22 @@ public class couponCrud {
         
         String requete = "UPDATE coupon SET date_debut=?, date_experation=?,taux_reduction=?,code_coupon=?,nbr_utilisation=?,type=? WHERE id_coupon =?";
         PreparedStatement st = cnx2.prepareStatement(requete);
+        st.setInt(1, c.getId_coupon());
        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String date_Debut = dateFormat.format(c.getDate_debut());
-            st.setString(1,date_Debut);
+            st.setString(2,date_Debut);
             
             
-            
+       
         String date_experation = dateFormat.format(c.getDate_experation());
-            st.setString(2,date_experation);
-        st.setInt(3,c.getTaux_reduction());
+        st.setString(3,date_experation);
+        st.setInt(4,c.getTaux_reduction());
                
-                st.setString(4,c.getCode_coupon());
+        st.setString(5,c.getCode_coupon());
                 
-                 st.setInt(5,c.getNbr_utilisation());
-                st.setString(6,c.getType());
-                st.setInt(7, c.getId_coupon());
+        st.setInt(6,c.getNbr_utilisation());
+        st.setString(7,c.getType());
+               
         st.executeUpdate();
         System.out.println("coupon modifiée avec succès !");
     } catch (SQLException ex) {
@@ -143,6 +161,7 @@ public class couponCrud {
     
     
     
+ @Override
     public List<coupon> rech(int id ) {
     List<coupon> couponList = new ArrayList<>();
     try {
@@ -170,6 +189,7 @@ public class couponCrud {
 }
     
   //triiii
+ @Override
     public List<coupon> sortCoupons(String column, String order) {
     List<coupon> couponList = new ArrayList<>();
     try {
@@ -238,6 +258,7 @@ public class couponCrud {
     return true;
 }
     
+ @Override
     public List<coupon> Filter_Coupon(String S, String SS) {
         List<coupon> list = new ArrayList<>();
         try {
@@ -282,5 +303,15 @@ public class couponCrud {
 
 
         
-    }}
+    }
+
+    
+
+    @Override
+    public int Supprimer(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+}
 
