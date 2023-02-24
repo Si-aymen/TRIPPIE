@@ -26,6 +26,10 @@ import java.util.List;
  */
 public class utilisateurCRUD implements InterfaceUserCRUD {
 
+    static List<Utilisateur> getAllUtilisateurs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
 

@@ -7,11 +7,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.ModifierController">
-   <children>
+<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: #fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.ModifierController">
+   
+    <children>
       <VBox layoutX="59.0" layoutY="59.0" prefHeight="200.0" prefWidth="55.0" spacing="27.0">
          <children>
-            <Label text="Cin"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+            <Label text="Cin" />
             <Label text="Nom">
                <font>
                   <Font size="14.0" />
@@ -37,13 +38,13 @@
       <VBox layoutX="161.0" layoutY="59.0" prefHeight="200.0" prefWidth="196.0" spacing="20.0">
          <children>
             <TextField fx:id="fxCin" prefHeight="26.0" prefWidth="196.0" />
-            <TextField fx:id="fxnom"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
-            <TextField fx:id="fxprenom"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
-            <TextField fx:id="fxsexe"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
-            <TextField fx:id="fxage"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+            <TextField fx:id="fxnom" />
+            <TextField fx:id="fxprenom" />
+            <TextField fx:id="fxsexe" />
+            <TextField fx:id="fxage" />
             <TextField fx:id="fxcin" visible="false" />
          </children>
       </VBox>
-      <Button fx:id="btnmod" layoutX="493.0" layoutY="330.0" mnemonicParsing="false" onAction="#modifier_user" text="Modifier"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+      <Button fx:id="btnmod" layoutX="493.0" layoutY="330.0" mnemonicParsing="false" onAction="#modifier_user" text="Modifier" />
    </children>
 </AnchorPane>

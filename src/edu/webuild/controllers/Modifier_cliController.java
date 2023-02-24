@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -55,6 +56,18 @@ public class Modifier_cliController implements Initializable {
           InterfaceClientCRUD inter = new ClientCRUD();
         String email = fxmail.getText();
         String password = fxpass.getText();
+         // Définir la regex pour valider l'adresse e-mail
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+
+// Vérifier que la chaîne saisie correspond à la regex
+        if (!email.matches(regex)) {
+            // Afficher un message d'erreur si la saisie est invalide
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir une adresse e-mail valide.");
+            alert.showAndWait();
+        } else {
         Client cli=new Client(Affiche_clController.id_client, email, password);
         inter.modifierClient(cli);
          
@@ -70,5 +83,5 @@ try {
 
         }
     }
-    
+    } 
 }

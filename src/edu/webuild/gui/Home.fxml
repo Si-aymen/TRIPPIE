@@ -5,33 +5,39 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.HomeController">
-   <children>
+<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: #fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.HomeController">
+ 
+    <children>
+                                  <AnchorPane layoutY="-15.0" prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;"></AnchorPane>
+
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#quitter" text="Close"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+              <MenuItem mnemonicParsing="false" onAction="#quitter" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Utilisateur">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#lancer_ajouter" text="Ajouter un utilisateur"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;" />
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficher" text="Consulter utilisateur"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_modifier" text="Modifier utilisateur"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherrole" text="Consulter role"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherch" text="Consulter chauffeurs"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_affichercli" text="Consulter clients"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherloc" text="Consulter locateur"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+              <MenuItem mnemonicParsing="false" onAction="#lancer_ajouter" text="Ajouter un utilisateur" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficher" text="Consulter utilisateur" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_modifier" text="Modifier utilisateur" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherrole" text="Consulter role" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherch" text="Consulter chauffeurs" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_affichercli" text="Consulter clients" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherloc" text="Consulter locateur" />
             </items>
           </Menu>
+
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;" />
+              <MenuItem mnemonicParsing="false" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
+
       <AnchorPane fx:id="rootPane" layoutY="69.0" prefHeight="450.0" prefWidth="600.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.399999999999977" />
-   </children>
+      
+    </children>
 </AnchorPane>

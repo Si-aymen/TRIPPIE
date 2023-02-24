@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -70,7 +71,25 @@ public class Modifier_chController implements Initializable {
         String email = fxmail.getText();
         String password = fxpass.getText();
         String immatriculation = fxmat.getText();
+        
+         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+        if (num_permis.isEmpty() || marque_voiture.isEmpty() || couleur_voiture.isEmpty() || immatriculation.isEmpty()|| email.isEmpty()|| password.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.show();
 
+        }
+        else if (!email.matches(regex)) {
+            // Afficher un message d'erreur si la saisie est invalide
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir une adresse e-mail valide.");
+            alert.showAndWait();
+        } 
+        else {
         Chauffeur u = new Chauffeur(Affiche_chController.id_ch, num_permis, marque_voiture, couleur_voiture, immatriculation, email, password);
         inter.modifierChauffeur(u);
 
@@ -86,5 +105,5 @@ public class Modifier_chController implements Initializable {
 
         }
     }
-
+    }
 }

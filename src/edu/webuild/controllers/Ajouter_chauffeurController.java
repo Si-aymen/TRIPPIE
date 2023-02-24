@@ -69,10 +69,29 @@ public class Ajouter_chauffeurController implements Initializable {
         String email = fxmail.getText();
         String password = fxpass.getText();
         String immatriculation = fxmat.getText();
-        
         r.setId_role(id_role);
+        // Définir la regex pour valider l'adresse e-mail
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+        if (num_permis.isEmpty() || marque_voiture.isEmpty() || couleur_voiture.isEmpty() || immatriculation.isEmpty()|| email.isEmpty()|| password.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.show();
+
+        }
+        if (!email.matches(regex)) {
+            // Afficher un message d'erreur si la saisie est invalide
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir une adresse e-mail valide.");
+            alert.showAndWait();
+        } 
+        else{
         Chauffeur ch = new Chauffeur(r, num_permis, marque_voiture, couleur_voiture, immatriculation, email, password);
         rc.affecterRole(ch, r);
+        
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Affiche_ch.fxml"));
@@ -85,5 +104,5 @@ public class Ajouter_chauffeurController implements Initializable {
 
         }
     }
-    
+    }
 }

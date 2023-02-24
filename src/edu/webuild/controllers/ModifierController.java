@@ -22,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -76,6 +77,66 @@ public class ModifierController implements Initializable {
         String prenom = fxprenom.getText();
         String sexe = fxsexe.getText();
         int age = Integer.parseInt(fxage.getText());
+        if (cin.isEmpty() || nom.isEmpty() || prenom.isEmpty() || sexe.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.show();
+
+        }
+        else  if (age==0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.show();
+        }
+       else if(cin.length() != 8){
+        
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+           alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("erreur le cin doit etre 8 chiffres");
+        alert.show();
+        }
+         else if(Character.isLowerCase(nom.charAt(0))){
+        
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+           alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("erreur le nom doit commence par majuscule");
+        alert.show();
+        
+        }
+        else if(Character.isLowerCase(prenom.charAt(0))){
+        
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+           alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("erreur le prenom doit commence par majuscule");
+        alert.show();
+        
+        }
+//        else if (sexe !="Homme" || sexe !="Femme" || sexe !="H" || sexe !="F"){
+//            
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//           alert.setTitle("Information Dialog");
+//        alert.setHeaderText(null);
+//        alert.setContentText("il faut que saisir H=Homme ou bien F=Femme ");
+//        alert.show();
+//        }
+        else if(age<=18){
+             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+           alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("erreur +18 ");
+        alert.show();
+        }
+       
+        
+        else{
+
         Utilisateur u = new Utilisateur(AfficheController.id_user,cin, nom, prenom, sexe,age);
         inter.modifierUtilisateur(u);
          
@@ -91,11 +152,12 @@ try {
 
         }
          }
-     
+     }
+}
         
     
      
-     }
+     
            
            
             

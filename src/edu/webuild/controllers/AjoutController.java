@@ -48,7 +48,6 @@ import javafx.stage.Stage;
  */
 public class AjoutController implements Initializable {
 
-   
     @FXML
     private TextField fxcin;
     @FXML
@@ -61,117 +60,101 @@ public class AjoutController implements Initializable {
     private TextField fxage;
     @FXML
     private Button btnajout;
-    
-   
-    
-   
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-     
+
     }
 
-
-    
-    
-    
     @FXML
-    private void adduser(ActionEvent event) throws IOException { 
-       
-       //ajout de L'utilisateur    
+    private void adduser(ActionEvent event) throws IOException {
+
+        //ajout de L'utilisateur    
         String nom = fxnom.getText();
         String prenom = fxprenom.getText();
         String cin = fxcin.getText();
         String sexe = fxsexe.getText();
         int age = Integer.parseInt(fxage.getText());
-        if(cin.length() != 8){
-        
-          Alert alert = new Alert(Alert.AlertType.INFORMATION);
-           alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("erreur le cin doit etre 8 chiffres");
-        alert.show();
-        }
-         else if(Character.isLowerCase(nom.charAt(0))){
-        
-          Alert alert = new Alert(Alert.AlertType.INFORMATION);
-           alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("erreur le nom doit commence par majuscule");
-        alert.show();
-        
-        }
-        else if(Character.isLowerCase(prenom.charAt(0))){
-        
-          Alert alert = new Alert(Alert.AlertType.INFORMATION);
-           alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("erreur le prenom doit commence par majuscule");
-        alert.show();
-        
-        }
-//        else if (sexe !="Homme" || sexe !="Femme" || sexe !="H" || sexe !="F"){
-//            
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//           alert.setTitle("Information Dialog");
-//        alert.setHeaderText(null);
-//        alert.setContentText("il faut que saisir H=Homme ou bien F=Femme ");
-//        alert.show();
-//        }
-        else if(age<=18){
-             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-           alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("erreur +18 ");
-        alert.show();
-        }
-       
-        
-        else{
-        
-        Utilisateur u = new Utilisateur(cin, nom, prenom, sexe, age);
-        utilisateurCRUD uc = new utilisateurCRUD();
-        uc.ajouterUtilisateur(u);
-        //role
-            
-        
-             try {
-
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_role.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        if (cin.isEmpty() || nom.isEmpty() || prenom.isEmpty() || sexe.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.show();
 
         }
-      
-        
-          
+        else  if (age==0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.show();
          
-        
-       
-    }
-       
-   
-    
+        } else if (cin.length() != 8) {
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("erreur le cin doit etre 8 chiffres");
+            alert.show();
+        } else if (Character.isLowerCase(nom.charAt(0))) {
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("erreur le nom doit commence par majuscule");
+            alert.show();
+
+        } else if (Character.isLowerCase(prenom.charAt(0))) {
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("erreur le prenom doit commence par majuscule");
+            alert.show();
+
+        } //        else if (sexe !="Homme" || sexe !="Femme" || sexe !="H" || sexe !="F"){
+        //            
+        //            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        //           alert.setTitle("Information Dialog");
+        //        alert.setHeaderText(null);
+        //        alert.setContentText("il faut que saisir H=Homme ou bien F=Femme ");
+        //        alert.show();
+        //        }
+        else if (age <= 18) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("erreur +18 ");
+            alert.show();
+        } else {
+
+            Utilisateur u = new Utilisateur(cin, nom, prenom, sexe, age);
+            utilisateurCRUD uc = new utilisateurCRUD();
+            uc.ajouterUtilisateur(u);
+            //role
+
+            try {
+
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_role.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+
         }
-    
+
     }
 
-
-       
-
-        
-    
-
-
+}

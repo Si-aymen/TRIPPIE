@@ -11,8 +11,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Ajouter_roleController">
+<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: #fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Ajouter_roleController">
    <children>
+        <AnchorPane layoutY="-15.0" prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;"></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" />
       <Button fx:id="fxbtn" layoutX="525.0" layoutY="348.0" mnemonicParsing="false" onAction="#confirm" text="Suivant" />
       <Label layoutX="66.0" layoutY="136.0" text="Veuiller entrer votre id affiché dans le console:" />

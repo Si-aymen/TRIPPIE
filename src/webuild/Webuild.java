@@ -37,7 +37,7 @@ public class Webuild {
          ClientCRUD clc=new ClientCRUD();
          LocateurCRUD l=new LocateurCRUD();
          //System.out.println(cc.afficherChauffeur());
-         System.out.println(clc.afficherClient());
+         System.out.println(rc.afficherRole());
      /*-----------------------------Role--------------------------------------------*/    
         // service init
         utilisateurCRUD ps = new utilisateurCRUD();

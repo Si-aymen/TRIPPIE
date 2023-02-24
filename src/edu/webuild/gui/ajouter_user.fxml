@@ -10,11 +10,15 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.AjoutController">
+<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: #fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.AjoutController">
    <children>
+       
       <Button fx:id="btnajout" layoutX="455.0" layoutY="282.0" mnemonicParsing="false" onAction="#adduser" text="Suivant" />
+      
       <VBox layoutX="49.0" layoutY="95.0" prefHeight="200.0" prefWidth="55.0" spacing="15.0">
+          
          <children>
+             
             <Label text="Cin">
                <font>
                   <Font size="14.0" />
