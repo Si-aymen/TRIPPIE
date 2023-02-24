@@ -11,7 +11,7 @@ package edu.webuild.model;
  */
 public class Client {
     int id_client;
-          Role  id_role;
+    Role  id_role;
     String email;
     String password;
     
@@ -30,6 +30,12 @@ public class Client {
 
     public Client(Role id_role, String email, String password) {
         this.id_role = id_role;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Client(int id_client, String email, String password) {
+        this.id_client = id_client;
         this.email = email;
         this.password = password;
     }

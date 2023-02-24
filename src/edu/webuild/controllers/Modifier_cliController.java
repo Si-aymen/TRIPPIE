@@ -5,9 +5,10 @@
  */
 package edu.webuild.controllers;
 
+import static edu.webuild.controllers.Affiche_chController.couleur_voiture;
+import edu.webuild.interfaces.InterfaceClientCRUD;
 import edu.webuild.model.Client;
-import edu.webuild.model.Role;
-import edu.webuild.services.roleCRUD;
+import edu.webuild.services.ClientCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,16 +30,14 @@ import javafx.stage.Stage;
  *
  * @author aymen
  */
-public class Ajouter_clientController implements Initializable {
+public class Modifier_cliController implements Initializable {
 
     @FXML
     private TextField fxmail;
     @FXML
     private TextField fxpass;
     @FXML
-    private Button fxbtn;
-    @FXML
-    private TextField fxid;
+    private Button btnmod;
 
     /**
      * Initializes the controller class.
@@ -46,19 +45,20 @@ public class Ajouter_clientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        fxmail.setText(String.valueOf(Affiche_clController.email));
+        fxpass.setText(String.valueOf(Affiche_clController.password));
     }    
 
     @FXML
-    private void addcli(ActionEvent event) {
-        Role r = new Role();
-        roleCRUD rc = new roleCRUD();
-        int id_role = Integer.parseInt(fxid.getText());
+    private void modifier_user(ActionEvent event) {
+          InterfaceClientCRUD inter = new ClientCRUD();
         String email = fxmail.getText();
         String password = fxpass.getText();
-         r.setId_role(id_role);
-        Client cli = new Client(r, email, password);
-        rc.affecterRole2(cli, r);
-        try {
+        Client cli=new Client(Affiche_clController.id_client, email, password);
+        inter.modifierClient(cli);
+         
+try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/affiche_cl.fxml"));
             Scene scene = new Scene(page1);
@@ -69,7 +69,6 @@ public class Ajouter_clientController implements Initializable {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
-        
     }
     
 }

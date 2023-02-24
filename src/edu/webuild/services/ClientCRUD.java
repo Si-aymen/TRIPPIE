@@ -28,7 +28,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
     @Override
     public void ajouterClient(Client cl) {
         try {
-            String req = "INSERT INTO `client`(`id_client` ,`id_role`,`id_user`,`email`,`password`) VALUES ('" + cl.getId_client() + "','" + cl.getId_role() + "','" + cl.getEmail() + "','" + cl.getPassword() + "')";
+            String req = "INSERT INTO `client`(`id_client` ,`id_role`,`email`,`password`) VALUES ('" + cl.getId_client() + "','" + cl.getId_role() + "','" + cl.getEmail() + "','" + cl.getPassword() + "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Client ajouté!!!");
@@ -38,25 +38,25 @@ public class ClientCRUD implements InterfaceClientCRUD {
         }
     }
 
-    @Override
+   @Override
     public void modifierClient(Client cl) {
         try {
-            String req = "UPDATE `role` SET `email` = '" + cl.getEmail() + "',`password` = '" + cl.getPassword() + "' WHERE `client`.`id_client` = " + cl.getId_client();
+            String req = "UPDATE `client` SET `email` = '" + cl.getEmail() + "', `password` = '" + cl.getPassword()+  "' WHERE `client`.`id_client` = " + cl.getId_client();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
-            System.out.println("Role updated !");
+            System.out.println("Client updated !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+
         }
     }
-
     @Override
     public void supprimerClient(int id_client) {
         try {
             String req = "DELETE FROM `client` WHERE id_client = " + id_client;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
-            System.out.println("Role deleted !");
+            System.out.println("Client deleted !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -72,11 +72,11 @@ public class ClientCRUD implements InterfaceClientCRUD {
             while (RS.next()) {
                 Client cl = new Client();
                 cl.setId_client(RS.getInt(1));
-                cl.setEmail(RS.getString(2));
-                cl.setPassword(RS.getString(3));
-                 Role role = new Role();
-               cl.setId_role(role);
-            role.setLibelle(RS.getString(4));
+                Role role = new Role();
+                cl.setId_role(role);
+                role.setLibelle(RS.getString(2));
+                cl.setEmail(RS.getString(3));
+                cl.setPassword(RS.getString(4));
 
                 list.add(cl);
             }

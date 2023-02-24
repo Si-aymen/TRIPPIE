@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controllers.Modifier_locController">
+   <children>
+      <VBox layoutX="158.0" layoutY="100.0" prefHeight="200.0" prefWidth="100.0" spacing="50.0">
+         <children>
+            <Label text="Nom d'agence" style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;" />
+            <Label text="Email"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+            <Label text="Password"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+         </children>
+      </VBox>
+      <VBox layoutX="258.0" layoutY="100.0" prefHeight="200.0" prefWidth="183.0" spacing="40.0">
+         <children>
+            <TextField fx:id="fxagence"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+            <TextField fx:id="fxmail" style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;" />
+            <PasswordField fx:id="fxpass" style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;" />
+         </children>
+      </VBox>
+      <Button fx:id="btnmod" layoutX="513.0" layoutY="350.0" mnemonicParsing="false" onAction="#modifier_user" text="Modifier" style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;" />
+   </children>
+</AnchorPane>

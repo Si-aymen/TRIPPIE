@@ -11,23 +11,23 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#quitter" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#quitter" text="Close"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Utilisateur">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#lancer_ajouter" text="Ajouter un utilisateur" />
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficher" text="Consulter utilisateur" />
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_modifier" text="Modifier utilisateur" />
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherrole" text="Consulter role" />
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherch" text="Consulter chauffeurs" />
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_affichercli" text="Consulter clients" />
-                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherloc" text="Consulter locateur" />
+              <MenuItem mnemonicParsing="false" onAction="#lancer_ajouter" text="Ajouter un utilisateur"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;" />
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficher" text="Consulter utilisateur"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_modifier" text="Modifier utilisateur"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherrole" text="Consulter role"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherch" text="Consulter chauffeurs"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_affichercli" text="Consulter clients"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+                  <MenuItem mnemonicParsing="false" onAction="#lancer_afficherloc" text="Consulter locateur"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" text="About" style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;" />
             </items>
           </Menu>
         </menus>

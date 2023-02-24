@@ -41,10 +41,10 @@ public class LocateurCRUD implements InterfaceLocateurCRUD{
       @Override
     public void modifierLocateur(Locateur loc) {
         try {
-            String req = "UPDATE `role` SET `nom_agence` = '" + loc.getNom_agence()+ "',`email` = '" + loc.getEmail() + "',`password` = '" + loc.getPassword()+ "' WHERE `locateur`.`id_locateur` = " + loc.getId_loc();
+            String req = "UPDATE `locateur` SET `nom_agence` = '" + loc.getNom_agence()+ "',`email` = '" + loc.getEmail() + "',`password` = '" + loc.getPassword()+ "' WHERE `locateur`.`id_loc` = " + loc.getId_loc();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
-            System.out.println("Role updated !");
+            System.out.println("Locateur updated !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -62,33 +62,32 @@ public class LocateurCRUD implements InterfaceLocateurCRUD{
     }
     
     @Override
-    public List<Locateur> afficherLocateur() {
-       List<Locateur> list = new ArrayList<>();
-        try {
-             String req = "SELECT locateur.*, role.libelle FROM locateur INNER JOIN role ON locateur.id_role = role.id_role";//"SELECT locateur. *, role.libelle FROM locateur INNER JOIN role ON locateur.role = role.id_role";
-            Statement st = conn.createStatement();
-            ResultSet RS= st.executeQuery(req);
-            while(RS.next()){
-             Locateur loc = new Locateur();
-             loc.setId_loc(RS.getInt(1));
-             loc.setNom_agence(RS.getString(2));
-             loc.setEmail(RS.getString(3));
-             loc.setPassword(RS.getString(4));
-               Role role = new Role();
-               loc.setId_role(role);
-            role.setLibelle(RS.getString(5));
-             
+public List<Locateur> afficherLocateur() {
+    List<Locateur> list = new ArrayList<>();
+  
+    try {
+        String req = "SELECT locateur.*, role.libelle FROM locateur INNER JOIN role ON locateur.id_role = role.id_role";
+        Statement st = conn.createStatement();
+        ResultSet RS = st.executeQuery(req);
+        while (RS.next()) {
+            Locateur ch = new Locateur();
+            ch.setId_loc(RS.getInt(1));
+            Role role = new Role();
+            ch.setId_role(role);
+            role.setLibelle(RS.getString(2));
+            ch.setNom_agence(RS.getString(3));
+            ch.setEmail(RS.getString(4));
+            ch.setPassword(RS.getString(5));
             
-             
-             
-             list.add(loc);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+           
+            list.add(ch);
         }
-
-        return list;
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
     }
+
+    return list;
+}
     
     @Override
     public List<Locateur> getById(int id_loc) {

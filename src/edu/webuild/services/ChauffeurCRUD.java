@@ -59,7 +59,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         try {
             String req = "UPDATE `chauffeur` SET `num_permis` = '" + ch.getNum_permis() + "',`marque_voiture` = '" + ch.getMarque_voiture() + "',`couleur_voiture` = '"
                     + ch.getCouleur_voiture() + "',`immatriculation` = '" + ch.getImmatriculation() + "',"
-                    + "`email` = '" + ch.getEmail() + "',`password` = '" + ch.getPassword() + "' WHERE `client`.`id_client` = " + ch.getId_ch();
+                    + "`email` = '" + ch.getEmail() + "',`password` = '" + ch.getPassword() + "' WHERE `chauffeur`.`id_ch` = " + ch.getId_ch();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Chauffeur updated !");

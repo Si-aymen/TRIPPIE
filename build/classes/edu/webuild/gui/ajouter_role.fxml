@@ -5,6 +5,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -12,9 +13,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Ajouter_roleController">
    <children>
-      <RadioButton fx:id="fxclient" layoutX="285.0" layoutY="219.0" mnemonicParsing="false" text="Client" />
-      <RadioButton fx:id="fxch" layoutX="285.0" layoutY="270.0" mnemonicParsing="false" text="Chauffeur" />
-      <RadioButton fx:id="fxloc" layoutX="285.0" layoutY="323.0" mnemonicParsing="false" text="Locateur" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" />
       <Button fx:id="fxbtn" layoutX="525.0" layoutY="348.0" mnemonicParsing="false" onAction="#confirm" text="Suivant" />
       <Label layoutX="66.0" layoutY="136.0" text="Veuiller entrer votre id affiché dans le console:" />
@@ -40,5 +38,12 @@
             </LinearGradient>
          </textFill>
       </Label>
+      <VBox layoutX="250.0" layoutY="200.0" prefHeight="62.0" prefWidth="100.0" spacing="20.0">
+         <children>
+            <RadioButton fx:id="fxclient" mnemonicParsing="false" text="Client" />
+            <RadioButton fx:id="fxch" mnemonicParsing="false" text="Chauffeur" />
+            <RadioButton fx:id="fxloc" mnemonicParsing="false" text="Locateur" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

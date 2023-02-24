@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -14,12 +15,12 @@
    <children>
       <VBox layoutX="68.0" layoutY="168.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
          <children>
-            <Label text="Numero Permis" />
-            <Label text="Marque Voiture" />
-            <Label text="Couleur Voiture" />
-            <Label text="Matricule" />
-            <Label text="Email" />
-            <Label text="Password" />
+            <Label text="Numero Permis" style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;" />
+            <Label text="Marque Voiture" style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;" />
+            <Label text="Couleur Voiture"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+            <Label text="Matricule"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+            <Label text="Email"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+            <Label text="Password"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
          </children>
       </VBox>
       <VBox layoutX="168.0" layoutY="168.0" prefHeight="200.0" prefWidth="198.0" spacing="10.0">
@@ -29,11 +30,11 @@
             <TextField fx:id="fxcoul" />
             <TextField fx:id="fxmat" />
             <TextField fx:id="fxmail" />
-            <TextField fx:id="fxpass" />
+            <PasswordField fx:id="fxpass" />
          </children>
       </VBox>
-      <Button fx:id="btn" layoutX="500.0" layoutY="332.0" mnemonicParsing="false" onAction="#addch" text="Confirmer" />
-      <Label layoutX="76.0" layoutY="94.0" text="Veuiller entrer votre id affiché dans le console:" />
+      <Button fx:id="btn" layoutX="500.0" layoutY="332.0" mnemonicParsing="false" onAction="#addch" text="Confirmer"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
+      <Label layoutX="76.0" layoutY="94.0" text="Veuiller entrer votre id affiché dans le console:"  style="-fx-text-fill: #727272; -fx-font-size: 15; -fx-font-weight: BOLD;"/>
       <TextField fx:id="fxid" layoutX="398.0" layoutY="89.0" prefHeight="26.0" prefWidth="58.0" />
       <Label layoutX="158.0" layoutY="14.0" text="Inscrivez-vous (3/3)">
          <font>

@@ -45,6 +45,16 @@ public class Chauffeur {
         this.password = password;
     }
 
+    public Chauffeur(int id_ch, String num_permis, String marque_voiture, String couleur_voiture, String immatriculation, String email, String password) {
+        this.id_ch = id_ch;
+        this.num_permis = num_permis;
+        this.marque_voiture = marque_voiture;
+        this.couleur_voiture = couleur_voiture;
+        this.immatriculation = immatriculation;
+        this.email = email;
+        this.password = password;
+    }
+
   
 
     public int getId_ch() {

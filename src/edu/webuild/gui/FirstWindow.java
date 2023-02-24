@@ -26,7 +26,7 @@ public class FirstWindow extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
             
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root,800,600);
             
             primaryStage.setTitle("Trippie");
             primaryStage.setScene(scene);

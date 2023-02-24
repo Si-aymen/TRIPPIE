@@ -33,6 +33,13 @@ public class Locateur {
         this.email = email;
         this.password = password;
     }
+
+    public Locateur(int id_loc, String nom_agence, String email, String password) {
+        this.id_loc = id_loc;
+        this.nom_agence = nom_agence;
+        this.email = email;
+        this.password = password;
+    }
     
     
 

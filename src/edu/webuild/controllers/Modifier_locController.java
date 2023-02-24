@@ -5,9 +5,9 @@
  */
 package edu.webuild.controllers;
 
-import edu.webuild.model.Client;
-import edu.webuild.model.Role;
-import edu.webuild.services.roleCRUD;
+import edu.webuild.interfaces.InterfaceLocateurCRUD;
+import edu.webuild.model.Locateur;
+import edu.webuild.services.LocateurCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,16 +29,16 @@ import javafx.stage.Stage;
  *
  * @author aymen
  */
-public class Ajouter_clientController implements Initializable {
+public class Modifier_locController implements Initializable {
 
+    @FXML
+    private TextField fxagence;
     @FXML
     private TextField fxmail;
     @FXML
     private TextField fxpass;
     @FXML
-    private Button fxbtn;
-    @FXML
-    private TextField fxid;
+    private Button btnmod;
 
     /**
      * Initializes the controller class.
@@ -46,21 +46,26 @@ public class Ajouter_clientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        fxagence.setText(String.valueOf(Affiche_locController.nom_agence));
+        fxmail.setText(String.valueOf(Affiche_locController.email));
+        fxpass.setText(String.valueOf(Affiche_locController.password));
     }    
 
     @FXML
-    private void addcli(ActionEvent event) {
-        Role r = new Role();
-        roleCRUD rc = new roleCRUD();
-        int id_role = Integer.parseInt(fxid.getText());
+    private void modifier_user(ActionEvent event) {
+        InterfaceLocateurCRUD inter = new LocateurCRUD();
+        
+        String nom_agence = fxagence.getText();
         String email = fxmail.getText();
         String password = fxpass.getText();
-         r.setId_role(id_role);
-        Client cli = new Client(r, email, password);
-        rc.affecterRole2(cli, r);
-        try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/affiche_cl.fxml"));
+        Locateur u = new Locateur(Affiche_locController.id_loc, nom_agence, email, password);
+        inter.modifierLocateur(u);
+         
+try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Affiche_loc.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -69,7 +74,7 @@ public class Ajouter_clientController implements Initializable {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
-        
+    }
     }
     
-}
+

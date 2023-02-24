@@ -5,10 +5,9 @@
  */
 package edu.webuild.controllers;
 
+import edu.webuild.interfaces.InterfaceChauffeurCRUD;
 import edu.webuild.model.Chauffeur;
-import edu.webuild.model.Role;
 import edu.webuild.services.ChauffeurCRUD;
-import edu.webuild.services.roleCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +20,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -31,8 +29,8 @@ import javafx.stage.Stage;
  *
  * @author aymen
  */
-public class Ajouter_chauffeurController implements Initializable {
-    
+public class Modifier_chController implements Initializable {
+
     @FXML
     private TextField fxperm;
     @FXML
@@ -46,9 +44,7 @@ public class Ajouter_chauffeurController implements Initializable {
     @FXML
     private TextField fxpass;
     @FXML
-    private Button btn;
-    @FXML
-    private TextField fxid;
+    private Button btnmod;
 
     /**
      * Initializes the controller class.
@@ -56,23 +52,28 @@ public class Ajouter_chauffeurController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+
+        fxperm.setText(String.valueOf(Affiche_chController.num_permis));
+        fxmarque.setText(String.valueOf(Affiche_chController.marque_voiture));
+        fxcoul.setText(String.valueOf(Affiche_chController.couleur_voiture));
+        fxmat.setText(String.valueOf(Affiche_chController.immatriculation));
+        fxmail.setText(String.valueOf(Affiche_chController.email));
+        fxpass.setText(String.valueOf(Affiche_chController.password));
+    }
+
     @FXML
-    private void addch(ActionEvent event) {        
-        Role r = new Role();
-        roleCRUD rc = new roleCRUD();
-        int id_role = Integer.parseInt(fxid.getText());
+    private void modifier_user(ActionEvent event) {
+        InterfaceChauffeurCRUD inter = new ChauffeurCRUD();
         String num_permis = fxperm.getText();
         String marque_voiture = fxmarque.getText();
         String couleur_voiture = fxcoul.getText();
         String email = fxmail.getText();
         String password = fxpass.getText();
         String immatriculation = fxmat.getText();
-        
-        r.setId_role(id_role);
-        Chauffeur ch = new Chauffeur(r, num_permis, marque_voiture, couleur_voiture, immatriculation, email, password);
-        rc.affecterRole(ch, r);
+
+        Chauffeur u = new Chauffeur(Affiche_chController.id_ch, num_permis, marque_voiture, couleur_voiture, immatriculation, email, password);
+        inter.modifierChauffeur(u);
+
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Affiche_ch.fxml"));
@@ -85,5 +86,5 @@ public class Ajouter_chauffeurController implements Initializable {
 
         }
     }
-    
+
 }
