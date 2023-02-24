@@ -11,6 +11,7 @@ import edu.webuild.services.cadeauCrud;
 import edu.webuild.services.couponCrud;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -22,9 +23,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -39,7 +37,12 @@ public class Table2Controller implements Initializable {
    
     @FXML
     private ListView<cadeau> affichCadeau;
-
+static int id_cadeau;
+    
+   
+    static String nom_cadeau;
+    static int reccurence;
+   
     /**
      * Initializes the controller class.
      */
@@ -77,8 +80,18 @@ public class Table2Controller implements Initializable {
     List<cadeau>cadeau = crud.displayCadeau();
     affichCadeau.getItems().setAll(cadeau);
     }
+    
+    
  @FXML
     private void deleteC(MouseEvent event) {
+        cadeau selectedcadeau = affichCadeau.getSelectionModel().getSelectedItem();
+     cadeauCrud couponService=new cadeauCrud();
+    String nom = selectedcadeau.getNom_cadeau();
+    couponService.Supprimer(nom);
+    affichCadeau.refresh();
+  
+    List<cadeau>cadeau = couponService.displayCadeau();
+    affichCadeau.getItems().setAll(cadeau);
         
         
     }

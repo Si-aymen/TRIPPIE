@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 package edu.webuild.model;
-
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -83,9 +80,12 @@ public class coupon {
         return type;
     }
 
-    public void setId_coupn(int id_coupon) {
+   /* public void setId_coupn(int id_coupon) {
         this.id_coupon = id_coupon;
-    }
+    }*/
+    public void setId_coupon(int id_coupon) {
+    this.id_coupon = id_coupon;
+}
 
     public void setDate_debut(Date date_debut) {
         this.date_debut = date_debut;

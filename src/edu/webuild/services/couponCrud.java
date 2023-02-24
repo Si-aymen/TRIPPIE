@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,8 +49,9 @@ public  class couponCrud  implements interfacecoupon  {
   public void ajouterpersonne2(coupon c){
        
         
-        
+        //interdit de faire la meme code_coupon dans l'ajout on a fait dans bd  alter table coupon ADD CONSTRAINT uniq_code_coupon UNIQUE (code_coupon);
         try { 
+            
             String requete2="INSERT INTO coupon (date_debut,date_experation,taux_reduction,code_coupon,nbr_utilisation,type)"+ "values (?,?,?,?,?,?)" ;
             PreparedStatement pst = cnx2.prepareStatement(requete2);
                
@@ -69,7 +71,7 @@ public  class couponCrud  implements interfacecoupon  {
               pst.executeUpdate();
               System.out.println("votre coupon est ajouteessss ");
         } catch (SQLException ex) {
-           System.err.println(ex.getMessage());
+           System.err.println("Le code_coupon est déjà utilisé !");
         }
         
     
@@ -82,6 +84,7 @@ public  class couponCrud  implements interfacecoupon  {
     List<coupon> couponList = new ArrayList<>();
     try {
         String query = "SELECT * FROM coupon";
+        
         Statement stmt = cnx2.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
@@ -134,21 +137,22 @@ public  class couponCrud  implements interfacecoupon  {
         
         String requete = "UPDATE coupon SET date_debut=?, date_experation=?,taux_reduction=?,code_coupon=?,nbr_utilisation=?,type=? WHERE id_coupon =?";
         PreparedStatement st = cnx2.prepareStatement(requete);
-        st.setInt(1, c.getId_coupon());
+        
        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String date_Debut = dateFormat.format(c.getDate_debut());
-            st.setString(2,date_Debut);
+            st.setString(1,date_Debut);
             
-            
+        
        
         String date_experation = dateFormat.format(c.getDate_experation());
-        st.setString(3,date_experation);
-        st.setInt(4,c.getTaux_reduction());
+        st.setString(2,date_experation);
+        st.setInt(3,c.getTaux_reduction());
                
-        st.setString(5,c.getCode_coupon());
+        st.setString(4,c.getCode_coupon());
                 
-        st.setInt(6,c.getNbr_utilisation());
-        st.setString(7,c.getType());
+        st.setInt(5,c.getNbr_utilisation());
+        st.setString(6,c.getType());
+        st.setInt(7, c.getId_coupon());
                
         st.executeUpdate();
         System.out.println("coupon modifiée avec succès !");
@@ -165,7 +169,7 @@ public  class couponCrud  implements interfacecoupon  {
     public List<coupon> rech(int id ) {
     List<coupon> couponList = new ArrayList<>();
     try {
-        String query = "SELECT * FROM coupon WHERE id_coupon= " + id ;
+        String query = "SELECT * FROM coupon WHERE code_coupon= " + id ;
         Statement stmt = cnx2.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
@@ -269,7 +273,7 @@ public  class couponCrud  implements interfacecoupon  {
                 ResultSet RS = st.executeQuery(req);
                 while (RS.next()) {
                     coupon v = new coupon();
-                    v.setId_coupn(RS.getInt("id_coupon"));
+                    v.setId_coupon(RS.getInt("id_coupon"));
                     v.setDate_debut(RS.getDate("date_debut"));
                     v.setDate_experation(RS.getDate("date_experation"));
                     v.setTaux_reducton(RS.getInt("taux_reduction"));
@@ -284,7 +288,7 @@ public  class couponCrud  implements interfacecoupon  {
                 ResultSet RS = st.executeQuery(req);
                 while (RS.next()) {
                     coupon v = new coupon();
-                     v.setId_coupn(RS.getInt("id_coupon"));
+                     v.setId_coupon(RS.getInt("id_coupon"));
                     v.setDate_debut(RS.getDate("date_debut"));
                     v.setDate_experation(RS.getDate("date_experation"));
                     v.setTaux_reducton(RS.getInt("taux_reduction"));

@@ -17,12 +17,14 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -40,30 +42,33 @@ public class Table1Controller implements Initializable {
     private ListView<coupon> afficher;
     @FXML
     private FontAwesomeIconView delete;
-        static int id_coupon;
+    static int id_coupon;
     static Date date_deb;
     static Date date_exper;
     static int taux;
     static String code;
     static int nbr;
     static String type;
+    @FXML
+    private Button cadeau;
 
     /**
      * Initializes the controller class.
      */
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      
-     /* couponCrud crud = new couponCrud();
-        List<coupon>coupon = crud.displayCoupon();
-       afficher.getItems().setAll(coupon);*/
+     
      couponCrud crud = new couponCrud();
-List<coupon> coupons = crud.displayCoupon();
-for (coupon c : coupons) {
+     List<coupon> coupons = crud.displayCoupon();
+     for (coupon c : coupons) {
     afficher.getItems().add(c);
-}
-       
-    }
+}}
+    
+    
 
     @FXML
     private void ADD(MouseEvent event) {
@@ -93,27 +98,21 @@ for (coupon c : coupons) {
      couponCrud couponService=new couponCrud();
     String code = selectedCoupon.getCode_coupon();
     couponService.Supprimer(code);
-    
-  afficher.refresh();
-  couponCrud crud = new couponCrud();
+    afficher.refresh();
+    couponCrud crud = new couponCrud();
     List<coupon>coupon = crud.displayCoupon();
     afficher.getItems().setAll(coupon);
 }
-
-    
-
     @FXML
     private void refrech(MouseEvent event) {
-        couponCrud crud = new couponCrud();
+    couponCrud crud = new couponCrud();
     List<coupon>coupon = crud.displayCoupon();
     afficher.getItems().setAll(coupon);
     }
 
     @FXML
     private void update(MouseEvent event) {
-        
-        
-      ListView<coupon> list = afficher;
+        ListView<coupon> list = afficher;
         interfacecoupon inter = new couponCrud();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         coupon c = list.getSelectionModel().getSelectedItem();
@@ -121,12 +120,10 @@ for (coupon c : coupons) {
         date_deb = c.getDate_debut();
         date_exper = c.getDate_experation();
         taux = c.getTaux_reduction();
-       
         code = c.getCode_coupon();
         nbr =c.getNbr_utilisation();
         type=c.getType();
- 
-        
+
         try {
             Parent root=FXMLLoader.load(getClass().getResource("modifier.fxml"));
             Scene scene  = new Scene(root);
@@ -138,8 +135,26 @@ for (coupon c : coupons) {
             Logger.getLogger(Table1Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-}
 
+    @FXML
+    private void cadeau(ActionEvent event) {
+        
+        
+         try {
+            Parent root=FXMLLoader.load(getClass().getResource("ajouterCadeau.fxml"));
+            Scene scene  = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Table1Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
+
+}
 
 
 

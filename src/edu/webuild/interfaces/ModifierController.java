@@ -5,9 +5,6 @@
  */
 package edu.webuild.interfaces;
 
-import edu.webuild.inter.interfacecoupon;
-import static edu.webuild.interfaces.Table1Controller.code;
-import static edu.webuild.interfaces.Table1Controller.taux;
 import edu.webuild.model.coupon;
 import edu.webuild.services.couponCrud;
 import java.net.URL;
@@ -19,14 +16,11 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -55,12 +49,13 @@ public class ModifierController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-
+      fxdatem.setValue(new java.sql.Date(Table1Controller.date_deb.getTime()).toLocalDate());
+   fxdatem2.setValue(new java.sql.Date(Table1Controller.date_exper.getTime()).toLocalDate());
+          
         fxtauxm.setText(String.valueOf(Table1Controller.taux));
         fxcodem.setText(String.valueOf(Table1Controller.code));
         fxnbrm.setText(String.valueOf(Table1Controller.nbr));
-           fxtypem.setText(String.valueOf(Table1Controller.type));
+        fxtypem.setText(String.valueOf(Table1Controller.type));
     }    
 
 
@@ -72,10 +67,10 @@ public class ModifierController implements Initializable {
     private void update(ActionEvent event) {
         
    
-            int id;
+           int id;
             id = Integer.parseInt(String.valueOf(Table1Controller.id_coupon));
             
-              LocalDate localDate = fxdatem.getValue();
+    LocalDate localDate = fxdatem.getValue();
     Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
     Date date_debut = Date.from(instant);
     
@@ -89,12 +84,12 @@ public class ModifierController implements Initializable {
             int nbr =Integer.parseInt(fxnbrm.getText());
             String type =fxtypem.getText();
             
-            coupon r = new coupon(date_debut, date_expe,tauxm,code,nbr,type);
+            coupon c = new coupon(Table1Controller.id_coupon,date_debut, date_expe,tauxm,code,nbr,type);
             
             couponCrud rc = new couponCrud();
             
-            rc.modifier(r);
-            
+            rc.modifier(c);
+          
             
         
 }

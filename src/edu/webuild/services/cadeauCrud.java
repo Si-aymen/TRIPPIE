@@ -5,6 +5,7 @@
  */
 package edu.webuild.services;
 
+import edu.webuild.inter.interfacecadeau;
 import edu.webuild.model.cadeau;
 
 //import edu.webuild.model.coupon;
@@ -23,11 +24,12 @@ import java.util.List;
  *
  * @author HP
  */
-public class cadeauCrud {
+public class cadeauCrud  implements interfacecadeau{
     Connection cnx2;
   public cadeauCrud(){
         cnx2= MyConnection.getinstance().getcnx();
     }
+    @Override
   public void ajoutercadeau(){
         
         try {
@@ -42,12 +44,13 @@ public class cadeauCrud {
   
   
   
+    @Override
    public void ajoutercadeau2(cadeau c){
        
         
         
         try { 
-            String requete2="INSERT INTO cadeau (nom_cadeau,recurrence,id_coupon ) "+ "values (?,?,?)" ;
+            String requete2="INSERT INTO cadeau (nom_cadeau,recurrence,id_coupon) "+ "values (?,?,?)" ;
             PreparedStatement pst = cnx2.prepareStatement(requete2);
           
                pst.setString(1,c.getNom_cadeau());
@@ -66,6 +69,7 @@ public class cadeauCrud {
   }
    
    
+    @Override
    public List<cadeau> displayCadeau() {
     List<cadeau> cadeauList = new ArrayList<>();
     try {
@@ -77,8 +81,8 @@ public class cadeauCrud {
           
             String nom = rs.getString("nom_cadeau");
             int recurrence = rs.getInt("recurrence");
- int id_coupon = rs.getInt("id_coupon");
-            cadeau c = new cadeau( nom, recurrence,id_coupon);
+ //int id_coupon = rs.getInt("id_coupon");
+            cadeau c = new cadeau( nom, recurrence);
             cadeauList.add(c);
         }
     } catch (SQLException e) {
@@ -88,10 +92,11 @@ public class cadeauCrud {
 }
 
 
- public  int Supprimer(int id ){
+    @Override
+ public  int Supprimer(String cadeau ){
           
         try {
-             String requete4= "delete from cadeau where id_cadeau ='"+id+"'";   
+             String requete4= "delete from cadeau where nom_cadeau ='"+cadeau+"'";   
             PreparedStatement pst = cnx2.prepareStatement(requete4);
              pst.executeUpdate(requete4);
             System.out.println("cadeau supprimer aves success ");
@@ -101,6 +106,7 @@ public class cadeauCrud {
         return 0;
        
    } 
+    @Override
  public void modifier(cadeau c ){
        
        
@@ -128,7 +134,8 @@ public class cadeauCrud {
  
 
    
-public List<cadeau> rech(int id ) {
+    @Override
+    public List<cadeau> rech(int id ) {
     List<cadeau> cadeauList = new ArrayList<>();
     try {
         String query = "SELECT * FROM cadeau WHERE id_cadeau= " + id ;
@@ -182,7 +189,7 @@ public List<cadeau> sortCoupons(String column, String order) {
     return cadeauList;
 }
  
-public boolean validatecadeau(cadeau cadeau) {
+/*public boolean validatecadeau(cadeau cadeau) {
 
     if (cadeau.getNom_cadeau().length() == 0) {
         System.out.println("Le nom de ceadeau  ne peut pas être vide.");
@@ -195,7 +202,7 @@ public boolean validatecadeau(cadeau cadeau) {
     }
        
   return true;
-}
+}*/
 
     }
 

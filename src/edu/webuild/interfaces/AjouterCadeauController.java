@@ -54,7 +54,7 @@ public class AjouterCadeauController implements Initializable {
         ObservableList<Integer> choixIdCoupons = FXCollections.observableArrayList();
         try {
             Statement stmt = cnx2.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT id_coupon FROM coupon where type= 'vip' ");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM coupon c LEFT JOIN cadeau ca ON c.id_coupon = ca.id_coupon WHERE c.type = 'vip'; ");
             while (rs.next()) {
                 choixIdCoupons.add(rs.getInt("id_coupon"));
             }
