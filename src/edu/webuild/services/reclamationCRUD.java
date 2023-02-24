@@ -86,6 +86,30 @@ public class reclamationCRUD implements InterfaceCRUD {
     }
     
     @Override
+    public List<reclamation> filtrer1(int id) {
+        List<reclamation> list = new ArrayList<>();
+        try {
+            String req = "Select * from reponse  WHERE `id_rec` = " + id;
+            Statement st = conn.createStatement();
+
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                reclamation r = new reclamation();
+                r.setId_rec(RS.getInt(1));
+                r.setType_rec(RS.getString(2));
+                r.setCommentaire(RS.getString(3));
+                r.setEtat(RS.getString(4));
+
+                list.add(r);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+    
+    @Override
     public void traite(reclamation r) {
         try {
             String req = "UPDATE `reclamation` SET `etat` = 'traité'  WHERE `reclamation`.`id_rec` = " +r.getId_rec();
@@ -143,6 +167,13 @@ public class reclamationCRUD implements InterfaceCRUD {
     public reponse detailsReponse(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<reponse> filtrer_rep(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 
 
 }

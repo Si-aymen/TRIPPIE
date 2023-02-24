@@ -145,8 +145,28 @@ public class AdminReclamationController implements Initializable {
     
     @FXML
     private void lancer_afficher(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_rec.fxml"));
-        rootPane.getChildren().setAll(pane);
+        ListView<reclamation> list = liste_reclamation;
+        
+        reclamationCRUD rec = new reclamationCRUD();
+        
+        int selectedID = list.getSelectionModel().getSelectedIndex();
+        
+        reclamation r = list.getSelectionModel().getSelectedItem();
+        
+        id = r.getId_rec();
+        id_rec = Integer.toString(r.getId_rec());
+        type_rec = r.getType_rec();
+        commentaire_rec = r.getCommentaire();
+        etat_rec = r.getEtat();
+
+        try {
+
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/AfficheReponse.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (IOException ex) {
+            
+
+        }
     }
     
 }

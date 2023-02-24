@@ -4,23 +4,29 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/services/reclamationCRUD.java</file>
-            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/modifierAdmin.fxml</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/adminRepondre.fxml</file>
-            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/model/reponse.java</file>
-            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/modifier_rec.fxml</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/MainView.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/webuild/Webuild.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/ReclamationController.java</file>
-            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/services/reponseCRUD.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Ajouter_recController.java</file>
-            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/AdminRepondreController.java</file>
-            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Modifier_recController.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Ajouter_reponseController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/interfaces/InterfaceCRUD.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/ModifierAdminController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/model/reclamation.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/Reclamation.fxml</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Modifier_reponseController.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/modifierAdmin.fxml</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/model/reponse.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/modifier_rec.fxml</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/ajouter_reponse.fxml</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/services/reponseCRUD.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/AdminRepondreController.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/AfficheReponseController.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Modifier_recController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/AdminReclamationController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/ajouter_rec.fxml</file>
-            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/Reclamation.fxml</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/afficheReponse.fxml</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/modifier_reponse.fxml</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/adminReclamation.fxml</file>
         </group>
     </open-files>

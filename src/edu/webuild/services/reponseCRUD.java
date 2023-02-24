@@ -20,29 +20,29 @@ import java.util.List;
  *
  * @author guerf
  */
-public class reponseCRUD implements InterfaceCRUD{
-    
+public class reponseCRUD implements InterfaceCRUD {
+
     Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
 
     @Override
     public void ajouterReponse(reponse r) {
         try {
-            String req = "INSERT INTO `reponse`(`reponse`,`id_rec`,`etat`) VALUES ('"+r.getReponse()+"','"+r.getId_rec()+"','1')";
-            String req2 = "UPDATE `reclamation` SET `etat` = 'en cours de traitement'  WHERE `reclamation`.`id_rec` = " +r.getId_rec();
+            String req = "INSERT INTO `reponse`(`reponse`,`id_rec`,`etat`) VALUES ('" + r.getReponse() + "','" + r.getId_rec() + "','1')";
+            String req2 = "UPDATE `reclamation` SET `etat` = 'en cours de traitement'  WHERE `reclamation`.`id_rec` = " + r.getId_rec();
             ste = conn.createStatement();
             ste.executeUpdate(req);
             ste.executeUpdate(req2);
             System.out.println("Reponse ajouté!!!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-                      }
+        }
     }
 
     @Override
     public void modifierReponse(reponse r, int id) {
         try {
-            String req = "UPDATE `reponse` SET `reponse` = '" +r.getReponse()+ "'  WHERE `reponse`.`id_rep` = " +id;
+            String req = "UPDATE `reponse` SET `reponse` = '" + r.getReponse() + "'  WHERE `reponse`.`id_rep` = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Reponse updated !");
@@ -69,16 +69,16 @@ public class reponseCRUD implements InterfaceCRUD{
         try {
             String req = "Select * from reponse";
             Statement st = conn.createStatement();
-           
-            ResultSet RS= st.executeQuery(req);
-            while(RS.next()){
-             reponse r = new reponse();
-             r.setId_rep(RS.getInt(1));
-             r.setReponse(RS.getString(2));
-             r.setId_rec(RS.getInt(3));
-             r.setEtat(1);
-             
-             list.add(r);
+
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                reponse r = new reponse();
+                r.setId_rep(RS.getInt(1));
+                r.setReponse(RS.getString(2));
+                r.setId_rec(RS.getInt(3));
+                r.setEtat(1);
+
+                list.add(r);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -86,8 +86,31 @@ public class reponseCRUD implements InterfaceCRUD{
 
         return list;
     }
-    
-    
+
+    @Override
+    public List<reponse> filtrer_rep(int id) {
+        List<reponse> list = new ArrayList<>();
+        try {
+            String req = "Select * from reponse  WHERE `id_rec` = " + id;
+            Statement st = conn.createStatement();
+
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                reponse r = new reponse();
+                r.setId_rep(RS.getInt(1));
+                r.setReponse(RS.getString(2));
+                r.setId_rec(RS.getInt(3));
+                r.setEtat(RS.getInt(4));
+
+                list.add(r);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+
     @Override
     public reponse detailsReponse(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -123,8 +146,9 @@ public class reponseCRUD implements InterfaceCRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
+    @Override
+    public List<reclamation> filtrer1(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    
-    
 }

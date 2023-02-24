@@ -34,7 +34,7 @@
                      </menus>
                   </MenuBar>
                   <ListView fx:id="liste_reclamation" layoutX="32.0" layoutY="86.0" prefHeight="239.0" prefWidth="520.0" />
-                  <Button layoutX="202.0" layoutY="341.0" mnemonicParsing="false" onAction="#lancer_afficher" text="Afficher toutes les réponses" />
+                  <Button layoutX="173.0" layoutY="341.0" mnemonicParsing="false" onAction="#lancer_afficher" text="Afficher les réponses de cette récalmation" />
                   <FontAwesomeIconView glyphName="PLUS" layoutX="47.0" layoutY="68.0" onMouseClicked="#ajouter" size="35" />
                   <FontAwesomeIconView glyphName="PENCIL" layoutX="88.0" layoutY="68.0" onMouseClicked="#modifier" size="35" />
                   <FontAwesomeIconView glyphName="TRASH" layoutX="134.0" layoutY="68.0" onMouseClicked="#supprimer" size="35" />
