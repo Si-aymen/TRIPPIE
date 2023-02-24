@@ -5,6 +5,9 @@
  */
 package edu.webuild.interfaces;
 
+import edu.webuild.inter.interfacecadeau;
+import edu.webuild.inter.interfacecoupon;
+import static edu.webuild.interfaces.Table1Controller.id_coupon;
 import edu.webuild.model.cadeau;
 import edu.webuild.model.coupon;
 import edu.webuild.services.cadeauCrud;
@@ -97,7 +100,26 @@ static int id_cadeau;
     }
     @FXML
     private void MODIFIERC(MouseEvent event) {
-        
+         ListView<cadeau> list = affichCadeau;
+        interfacecadeau inter = new cadeauCrud();
+        int selectedIndex = list.getSelectionModel().getSelectedIndex();
+        cadeau c = list.getSelectionModel().getSelectedItem();
+        id_cadeau = c.getId_cadeau();
+      
+        nom_cadeau = c.getNom_cadeau();
+        reccurence = c.getRecurrence();
+       
+
+        try {
+            Parent root=FXMLLoader.load(getClass().getResource("modifiercadeau.fxml"));
+            Scene scene  = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Table1Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

@@ -112,7 +112,7 @@ public class cadeauCrud  implements interfacecadeau{
        
           try {
         
-        String requete = "UPDATE cadeau SET nom_cadeau=?,recurrence=?, id_coupon=? WHERE id_cadeau =?";
+        String requete = "UPDATE cadeau SET nom_cadeau=?,recurrence=? WHERE id_cadeau =?";
         PreparedStatement st = cnx2.prepareStatement(requete);
      
        
@@ -120,8 +120,8 @@ public class cadeauCrud  implements interfacecadeau{
                 
                  st.setInt(2,c.getRecurrence());
                
-                st.setInt(3, c.getId_coupon());
-                 st.setInt(4, c.getId_cadeau());
+                //st.setInt(3, c.getId_coupon());
+                 st.setInt(3, c.getId_cadeau());
         st.executeUpdate();
         System.out.println("cadeau modifiée avec succès !");
         

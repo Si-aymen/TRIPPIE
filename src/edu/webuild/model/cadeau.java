@@ -6,6 +6,7 @@
 package edu.webuild.model;
 
 import java.util.Date;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -33,6 +34,10 @@ public class cadeau {
     }
 
     public cadeau(int id, String nom, int recurrence) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public cadeau(int id_cadeau, String nom_cadeau, TextField reccuuM) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

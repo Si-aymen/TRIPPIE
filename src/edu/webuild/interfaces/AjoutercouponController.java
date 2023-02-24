@@ -10,12 +10,9 @@ import edu.webuild.services.couponCrud;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -131,6 +128,13 @@ public class AjoutercouponController implements Initializable {
     coupon c = new coupon(java.sql.Date.valueOf(date_debut), java.sql.Date.valueOf(date_expiration), taux_reduction, code_coupon, nbr_utilisation, type);
     couponCrud coupon = new couponCrud();
     coupon.ajouterpersonne2(c);
+// réinitialiser les champs
+        txdatec.setValue(null);
+        fxtaux.setText("");
+        fccode.setText("");
+        fxnbr.setText("");
+        fxtype.setText("");
+        datec2.setValue(null);
 
     // Afficher une alerte de confirmation
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -142,5 +146,13 @@ public class AjoutercouponController implements Initializable {
 
     @FXML
     private void clean(MouseEvent event) {
+        // réinitialiser la valeur de Date
+        txdatec.setValue(null); 
+ // vider le champ de texte taux
+fxtaux.setText(""); 
+fccode.setText(""); 
+fxnbr.setText(""); 
+fxtype.setText(""); 
+datec2.setValue(null); 
     }
 }
