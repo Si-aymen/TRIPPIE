@@ -21,6 +21,7 @@ public interface InterfaceCRUD {
    public List<reclamation> afficherReclamation();
    public reclamation detailsReclamation(int id);
    //public List<reclamation> filtrer1(int id);
+   public void traite(reclamation r);
    
    public void ajouterReponse(reponse r);
    public void modifierReponse(reponse r , int id);
@@ -28,4 +29,5 @@ public interface InterfaceCRUD {
    public List<reponse> afficherReponse();
    public reponse detailsReponse(int id);
    //public List<reclamation> filtrer2(int id);
+   
 }

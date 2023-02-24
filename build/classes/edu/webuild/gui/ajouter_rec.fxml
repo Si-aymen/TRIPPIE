@@ -6,12 +6,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controller.Ajouter_recController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controller.Ajouter_recController">
    <children>
       <Label layoutX="40.0" layoutY="90.0" prefHeight="18.0" prefWidth="150.0" text="Type de la réclamation :" />
       <Label layoutX="40.0" layoutY="145.0" prefHeight="18.0" prefWidth="150.0" text="Commentaire :" />
       <TextField fx:id="tf_type" layoutX="262.0" layoutY="87.0" />
       <TextArea fx:id="tf_commentaire" layoutX="151.0" layoutY="138.0" prefHeight="158.0" prefWidth="330.0" />
       <Button fx:id="btn_ajouter" layoutX="274.0" layoutY="333.0" mnemonicParsing="false" onAction="#ajouter_rec" text="Ajouter" />
+      <Button layoutX="40.0" layoutY="14.0" mnemonicParsing="false" onAction="#Retour_reclamation" text="Retour" />
    </children>
 </AnchorPane>

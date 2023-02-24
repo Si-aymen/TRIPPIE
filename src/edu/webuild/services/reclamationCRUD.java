@@ -70,7 +70,7 @@ public class reclamationCRUD implements InterfaceCRUD {
 
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
-                reclamation r = new reclamation();
+                reclamation r = new reclamation(RS.getString(2), RS.getString(3), RS.getString(4));
                 r.setId_rec(RS.getInt(1));
                 r.setType_rec(RS.getString(2));
                 r.setCommentaire(RS.getString(3));
@@ -83,6 +83,18 @@ public class reclamationCRUD implements InterfaceCRUD {
         }
 
         return list;
+    }
+    
+    @Override
+    public void traite(reclamation r) {
+        try {
+            String req = "UPDATE `reclamation` SET `etat` = 'traité'  WHERE `reclamation`.`id_rec` = " +r.getId_rec();
+            ste = conn.createStatement();
+            ste.executeUpdate(req);
+            System.out.println("Reponse traité!!!");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+                      }
     }
 
     @Override
@@ -131,5 +143,6 @@ public class reclamationCRUD implements InterfaceCRUD {
     public reponse detailsReponse(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 
 }

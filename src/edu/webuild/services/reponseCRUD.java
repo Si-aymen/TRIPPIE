@@ -29,7 +29,7 @@ public class reponseCRUD implements InterfaceCRUD{
     public void ajouterReponse(reponse r) {
         try {
             String req = "INSERT INTO `reponse`(`reponse`,`id_rec`,`etat`) VALUES ('"+r.getReponse()+"','"+r.getId_rec()+"','1')";
-            String req2 = "UPDATE `reclamation` SET `etat` = 'traité'  WHERE `reclamation`.`id_rec` = " +r.getId_rec();
+            String req2 = "UPDATE `reclamation` SET `etat` = 'en cours de traitement'  WHERE `reclamation`.`id_rec` = " +r.getId_rec();
             ste = conn.createStatement();
             ste.executeUpdate(req);
             ste.executeUpdate(req2);
@@ -87,6 +87,7 @@ public class reponseCRUD implements InterfaceCRUD{
         return list;
     }
     
+    
     @Override
     public reponse detailsReponse(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -116,6 +117,13 @@ public class reponseCRUD implements InterfaceCRUD{
     public reclamation detailsReclamation(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void traite(reclamation r) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 
     
     

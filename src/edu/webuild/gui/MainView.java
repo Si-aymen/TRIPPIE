@@ -23,9 +23,12 @@ public class MainView extends Application {
         
         
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("adminReclamation.fxml"));
             
             Scene scene = new Scene(root);
+            
+            /*String css = this.getClass().getResource("/edu/webuild/gui/style.css").toExternalForm();
+            scene.getStylesheets().add(css);*/
             
             primaryStage.setTitle("Webuild");
             primaryStage.setScene(scene);

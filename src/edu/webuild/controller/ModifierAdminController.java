@@ -10,8 +10,6 @@ import edu.webuild.services.reclamationCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,29 +23,25 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author guerf
  */
-public class Modifier_recController implements Initializable {
+public class ModifierAdminController implements Initializable {
 
-    
-    @FXML
-    private TextField modif_type;
-    @FXML
-    private TextArea modif_comm;
     @FXML
     private AnchorPane rootPane;
     @FXML
+    private TextField modif_type;
+    @FXML
     private TextField modif_etat;
+    @FXML
+    private TextArea modif_comm;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        modif_type.setText(String.valueOf(ReclamationController.type_rec));
-        modif_comm.setText(String.valueOf(ReclamationController.commentaire_rec));
-        modif_etat.setText(String.valueOf(ReclamationController.etat_rec));
-        
+        modif_type.setText(String.valueOf(AdminReclamationController.type_rec));
+        modif_comm.setText(String.valueOf(AdminReclamationController.commentaire_rec));
+        modif_etat.setText(String.valueOf(AdminReclamationController.etat_rec));
     }    
 
     @FXML
@@ -55,27 +49,27 @@ public class Modifier_recController implements Initializable {
         
         try {
             int id;
-            id = Integer.parseInt(String.valueOf(ReclamationController.id_rec));
+            id = Integer.parseInt(String.valueOf(AdminReclamationController.id_rec));
             String type = modif_type.getText();
             String commentaire = modif_comm.getText();
+            String etat = modif_etat.getText();
             
-            reclamation r = new reclamation(type, commentaire, "non traité");
+            reclamation r = new reclamation(type, commentaire, etat);
             
             reclamationCRUD rc = new reclamationCRUD();
             
             rc.modifierReclamation(r, id);
             
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Reclamation.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
             rootPane.getChildren().setAll(pane);
         } catch (IOException ex) {
-            Logger.getLogger(Modifier_recController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
-        
     }
 
     @FXML
     private void retour_reclamation(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Reclamation.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
         rootPane.getChildren().setAll(pane);
     }
     

@@ -33,7 +33,7 @@ public class reclamation {
 
     @Override
     public String toString() {
-        return "reclamation{" + "id_rec=" + id_rec + ", type_rec=" + type_rec + ", commentaire=" + commentaire + ", etat=" + etat + '}';
+        return "Type : " + type_rec + " || Commentaire : " + commentaire + " || Etat : " + etat;
     }
 
     public int getId_rec() {
