@@ -13,18 +13,18 @@ public class reponse {
     private int id_rep;
     private String reponse;
     private int id_rec;
-    private int etat;
+    private String etat;
 
     public reponse() {
     }
 
-    public reponse(String reponse, int id_rec, int etat) {
+    public reponse(String reponse, int id_rec, String etat) {
         this.reponse = reponse;
         this.id_rec = id_rec;
         this.etat = etat;
     }
 
-    public reponse(int id_rep, String reponse, int id_rec, int etat) {
+    public reponse(int id_rep, String reponse, int id_rec, String etat) {
         this.id_rep = id_rep;
         this.reponse = reponse;
         this.id_rec = id_rec;
@@ -60,11 +60,11 @@ public class reponse {
         this.id_rec = id_rec;
     }
 
-    public int getEtat() {
+    public String getEtat() {
         return etat;
     }
 
-    public void setEtat(int etat) {
+    public void setEtat(String etat) {
         this.etat = etat;
     }
 

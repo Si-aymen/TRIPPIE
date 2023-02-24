@@ -5,9 +5,7 @@
  */
 package edu.webuild.controller;
 
-import edu.webuild.model.reclamation;
 import edu.webuild.model.reponse;
-import edu.webuild.services.reclamationCRUD;
 import edu.webuild.services.reponseCRUD;
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -65,12 +64,20 @@ public class Modifier_reponseController implements Initializable {
         try {
             int id = AfficheReponseController.id_rep;
             String repo = tf_reponse.getText();
+            String etat = tf_etat.getText();
             
-            reponse r = new reponse(repo, id, 1);
+            reponse r = new reponse(repo, id, etat);
             
             reponseCRUD rc = new reponseCRUD();
             
             rc.modifierReponse(r, id);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Cette reponse est modifié avec succés");
+            alert.showAndWait();
+            
             
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/AfficheReponse.fxml"));
             rootPane.getChildren().setAll(pane);

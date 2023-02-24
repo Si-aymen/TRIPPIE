@@ -5,6 +5,11 @@
  */
 package edu.webuild.controller;
 
+import static edu.webuild.controller.AdminReclamationController.commentaire_rec;
+import static edu.webuild.controller.AdminReclamationController.etat_rec;
+import static edu.webuild.controller.AdminReclamationController.id;
+import static edu.webuild.controller.AdminReclamationController.id_rec;
+import static edu.webuild.controller.AdminReclamationController.type_rec;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
 import java.io.IOException;
@@ -31,6 +36,7 @@ public class ReclamationController implements Initializable {
     @FXML
     private ListView<reclamation> liste_reclamation;
     
+    static public int id;
     static public String id_rec;
     static public String type_rec;
     static public String commentaire_rec;
@@ -57,9 +63,24 @@ public class ReclamationController implements Initializable {
 
 
     @FXML
-    private void lancer_suivre(ActionEvent event) {
-        //AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/suivre_rec.fxml"));
-        //rootPane.getChildren().setAll(pane);
+    private void lancer_suivre(ActionEvent event) throws IOException {
+        
+        ListView<reclamation> list = liste_reclamation;
+        
+        reclamationCRUD rec = new reclamationCRUD();
+        
+        int selectedID = list.getSelectionModel().getSelectedIndex();
+        
+        reclamation r = list.getSelectionModel().getSelectedItem();
+        
+        id = r.getId_rec();
+        id_rec = Integer.toString(r.getId_rec());
+        type_rec = r.getType_rec();
+        commentaire_rec = r.getCommentaire();
+        etat_rec = r.getEtat();
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/suivre_rec.fxml"));
+        rootPane.getChildren().setAll(pane);
     }
 
     @FXML

@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -59,6 +60,13 @@ public class ModifierAdminController implements Initializable {
             reclamationCRUD rc = new reclamationCRUD();
             
             rc.modifierReclamation(r, id);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Cette réclamation est modifié avec succés");
+            alert.showAndWait();
+            
             
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
             rootPane.getChildren().setAll(pane);

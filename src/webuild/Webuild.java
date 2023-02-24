@@ -28,7 +28,7 @@ public class Webuild {
         reclamation v2 = new reclamation("technique","technique","non traité");
         reclamation v3 = new reclamation("tech","tech","");
         
-        reponse r1 = new reponse("frfz", 16, 1);
+        reponse r1 = new reponse("frfz", 16, "non traité");
         
         reclamationCRUD rc = new reclamationCRUD() {};
         

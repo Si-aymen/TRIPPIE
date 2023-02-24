@@ -66,6 +66,7 @@ public class Ajouter_recController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Cette réclamation est ajoutée avec succés");
             alert.showAndWait();
+            
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Reclamation.fxml"));
             rootPane.getChildren().setAll(pane);
         } catch (IOException ex) {

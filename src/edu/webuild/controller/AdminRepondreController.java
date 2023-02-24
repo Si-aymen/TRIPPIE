@@ -5,9 +5,7 @@
  */
 package edu.webuild.controller;
 
-import edu.webuild.model.reclamation;
 import edu.webuild.model.reponse;
-import edu.webuild.services.reclamationCRUD;
 import edu.webuild.services.reponseCRUD;
 import java.io.IOException;
 import java.net.URL;
@@ -62,9 +60,9 @@ public class AdminRepondreController implements Initializable {
         int id_rec = AdminReclamationController.id; 
         
         try {
-            String reponse = tf_reponse.getText();
+            String reponse = "(Admin): "+tf_reponse.getText();
 
-            reponse r1 = new reponse(reponse, id_rec, 1);
+            reponse r1 = new reponse(reponse, id_rec, "en cours de traitement");
 
             reponseCRUD rc = new reponseCRUD();
 

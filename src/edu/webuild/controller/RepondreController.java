@@ -5,9 +5,7 @@
  */
 package edu.webuild.controller;
 
-import edu.webuild.model.reclamation;
 import edu.webuild.model.reponse;
-import edu.webuild.services.reclamationCRUD;
 import edu.webuild.services.reponseCRUD;
 import java.io.IOException;
 import java.net.URL;
@@ -29,14 +27,12 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author guerf
  */
-public class Ajouter_reponseController implements Initializable {
+public class RepondreController implements Initializable {
 
     @FXML
     private TextField tf_type;
     @FXML
     private TextArea tf_commentaire;
-    @FXML
-    private TextField tf_etat;
     @FXML
     private TextArea tf_reponse;
     @FXML
@@ -47,39 +43,39 @@ public class Ajouter_reponseController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        tf_type.setText(String.valueOf(AdminReclamationController.type_rec));
-        tf_commentaire.setText(String.valueOf(AdminReclamationController.commentaire_rec));
-        tf_etat.setText(String.valueOf(AdminReclamationController.etat_rec));
+        tf_type.setText(String.valueOf(ReclamationController.type_rec));
+        tf_commentaire.setText(String.valueOf(ReclamationController.commentaire_rec));
     }    
 
     @FXML
     private void retour(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/afficheReponse.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/suivre_rec.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void ajouter(ActionEvent event) {
+    private void repondre(ActionEvent event) {
+        
+        int id_rec = ReclamationController.id; 
         
         try {
-            String rep = "(Admin): "+tf_reponse.getText();
-            String etat = tf_etat.getText();
+            String reponse = "(Utilisateur): "+tf_reponse.getText();
 
-            reponse r = new reponse(rep, AdminReclamationController.id, etat);
+            reponse r1 = new reponse(reponse, id_rec, "en cours de traitement");
 
             reponseCRUD rc = new reponseCRUD();
 
-            rc.ajouterReponse(r);
+            rc.ajouterReponse(r1);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText(null);
-            alert.setContentText("Cette réponse est ajoutée avec succés");
+            alert.setContentText("Cette reponse est ajoutée avec succés");
             alert.showAndWait();
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/afficheReponse.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/suivre_rec.fxml"));
             rootPane.getChildren().setAll(pane);
         } catch (IOException ex) {
-            Logger.getLogger(Ajouter_recController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminRepondreController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

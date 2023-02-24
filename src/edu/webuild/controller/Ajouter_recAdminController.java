@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -26,65 +27,53 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author guerf
  */
-public class Modifier_recController implements Initializable {
+public class Ajouter_recAdminController implements Initializable {
 
-    
     @FXML
-    private TextField modif_type;
+    private TextField tf_type;
     @FXML
-    private TextArea modif_comm;
+    private TextArea tf_commentaire;
     @FXML
     private AnchorPane rootPane;
-    @FXML
-    private TextField modif_etat;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        modif_type.setText(String.valueOf(ReclamationController.type_rec));
-        modif_comm.setText(String.valueOf(ReclamationController.commentaire_rec));
-        modif_etat.setText(String.valueOf(ReclamationController.etat_rec));
-        
+        // TODO
     }    
 
     @FXML
-    private void modifier_rec(ActionEvent event) {
+    private void retour(MouseEvent event) throws IOException {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void ajouter(ActionEvent event) {
         
         try {
-            int id;
-            id = Integer.parseInt(String.valueOf(ReclamationController.id_rec));
-            String type = modif_type.getText();
-            String commentaire = modif_comm.getText();
-            
+            String type = tf_type.getText();
+            String commentaire = tf_commentaire.getText();
+
             reclamation r = new reclamation(type, commentaire, "non traité");
-            
+
             reclamationCRUD rc = new reclamationCRUD();
-            
-            rc.modifierReclamation(r, id);
+
+            rc.ajouterReclamation(r);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText(null);
-            alert.setContentText("Cette réclamation est modifié avec succés");
+            alert.setContentText("Cette réclamation est ajoutée avec succés");
             alert.showAndWait();
-            
-            
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Reclamation.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
             rootPane.getChildren().setAll(pane);
         } catch (IOException ex) {
-            Logger.getLogger(Modifier_recController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ajouter_recController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }
-
-    @FXML
-    private void retour_reclamation(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Reclamation.fxml"));
-        rootPane.getChildren().setAll(pane);
     }
     
 }
