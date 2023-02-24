@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controller.Ajouter_recAdminController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff2e2;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controller.Ajouter_recAdminController">
    <children>
       <FontAwesomeIconView glyphName="ARROW_CIRCLE_LEFT" layoutX="51.0" layoutY="52.0" onMouseClicked="#retour" size="35" />
       <Label layoutX="63.0" layoutY="81.0" text="Type de la réclamation :" />

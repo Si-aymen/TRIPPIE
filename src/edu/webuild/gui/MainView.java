@@ -23,7 +23,7 @@ public class MainView extends Application {
         
         
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("adminReclamation.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Reclamation.fxml"));
             
             Scene scene = new Scene(root);
             
