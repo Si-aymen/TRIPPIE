@@ -44,7 +44,7 @@ public class MainController implements Initializable {
     private void coupon(ActionEvent event) {
          try {
             Parent root=FXMLLoader.load(getClass().getResource("table1.fxml"));
-            Scene scene  = new Scene(root);
+            Scene scene  = new Scene(root,700,700);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.initStyle(StageStyle.UTILITY);
@@ -59,7 +59,7 @@ public class MainController implements Initializable {
     private void cadeau(ActionEvent event) {
          try {
             Parent root=FXMLLoader.load(getClass().getResource("table2.fxml"));
-            Scene scene  = new Scene(root);
+            Scene scene  = new Scene(root,700,700);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.initStyle(StageStyle.UTILITY);

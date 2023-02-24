@@ -35,7 +35,7 @@ public class ModifiercadeauController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            nomcadM.setText(String.valueOf(Table2Controller.nom_cadeau));
+        nomcadM.setText(String.valueOf(Table2Controller.nom_cadeau));
         reccuuM.setText(String.valueOf(Table2Controller.reccurence));
         
     }    

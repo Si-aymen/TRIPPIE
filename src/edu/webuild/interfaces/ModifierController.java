@@ -5,10 +5,11 @@
  */
 package edu.webuild.interfaces;
 
+import edu.webuild.inter.interfacecoupon;
+import static edu.webuild.interfaces.Table1Controller.id_coupon;
 import edu.webuild.model.coupon;
 import edu.webuild.services.couponCrud;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -19,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -29,6 +31,7 @@ import javafx.scene.input.MouseEvent;
  */
 public class ModifierController implements Initializable {
 
+    private ListView<coupon> afficher;
     @FXML
     private DatePicker fxdatem;
     @FXML
@@ -43,21 +46,22 @@ public class ModifierController implements Initializable {
     private TextField fxtypem;
     @FXML
     private Button update;
+    static int id;
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      fxdatem.setValue(new java.sql.Date(Table1Controller.date_deb.getTime()).toLocalDate());
-   fxdatem2.setValue(new java.sql.Date(Table1Controller.date_exper.getTime()).toLocalDate());
-          
+
+        fxdatem.setValue(new java.sql.Date(Table1Controller.date_deb.getTime()).toLocalDate());
+        fxdatem2.setValue(new java.sql.Date(Table1Controller.date_exper.getTime()).toLocalDate());
         fxtauxm.setText(String.valueOf(Table1Controller.taux));
         fxcodem.setText(String.valueOf(Table1Controller.code));
         fxnbrm.setText(String.valueOf(Table1Controller.nbr));
         fxtypem.setText(String.valueOf(Table1Controller.type));
-    }    
-
+    }
 
     @FXML
     private void cleanm(MouseEvent event) {
@@ -65,8 +69,8 @@ public class ModifierController implements Initializable {
 
     @FXML
     private void update(ActionEvent event) {
-        
-   
+
+        /*
            int id;
             id = Integer.parseInt(String.valueOf(Table1Controller.id_coupon));
             
@@ -84,14 +88,32 @@ public class ModifierController implements Initializable {
             int nbr =Integer.parseInt(fxnbrm.getText());
             String type =fxtypem.getText();
             
-            coupon c = new coupon(Table1Controller.id_coupon,date_debut, date_expe,tauxm,code,nbr,type);
+            coupon c = new coupon(id,date_debut, date_expe,tauxm,code,nbr,type);
             
             couponCrud rc = new couponCrud();
             
-            rc.modifier(c);
-          
-            
+            rc.modifier(c);*/
+        interfacecoupon inter = new couponCrud();
+
+        LocalDate localDate = fxdatem.getValue();
+        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+        Date date_debut = Date.from(instant);
+
+        LocalDate localDate2 = fxdatem2.getValue();
+        Instant instant2 = Instant.from(localDate2.atStartOfDay(ZoneId.systemDefault()));
+        Date date_expe = Date.from(instant2);
+
+        int taux = Integer.parseInt(fxtauxm.getText());
+        String code = fxcodem.getText();
+
+        int nbr = Integer.parseInt(fxnbrm.getText());
+        String type = fxtypem.getText();
         
-}
+        
+
+        coupon v = new coupon(Table1Controller.id_coupon,date_debut, date_expe, taux, code, nbr, type);
+        inter.modifier(v);
+        //inter.modifier(v);
+
     }
-  
+}

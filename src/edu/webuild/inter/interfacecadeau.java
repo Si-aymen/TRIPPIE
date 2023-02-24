@@ -13,14 +13,19 @@ import java.util.List;
  * @author HP
  */
 public interface interfacecadeau {
-      public void ajoutercadeau();
-      public void ajoutercadeau2(cadeau c);
-        public List<cadeau> displayCadeau();
-        
- public  int Supprimer(String cadeau );
-  public void modifier(cadeau c );
-  public List<cadeau> rech(int id );
-  public List<cadeau> sortCoupons(String column, String order);
-  
-    
+
+    public void ajoutercadeau();
+
+    public void ajoutercadeau2(cadeau c);
+
+    public List<cadeau> displayCadeau();
+
+    public int Supprimer(String cadeau);
+
+    public void modifier(cadeau c);
+
+    public List<cadeau> rech(int id);
+
+    public List<cadeau> sortCoupons(String column, String order);
+
 }

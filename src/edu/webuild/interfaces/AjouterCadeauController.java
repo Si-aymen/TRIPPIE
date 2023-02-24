@@ -71,7 +71,7 @@ public class AjouterCadeauController implements Initializable {
     @FXML
     private void savecadeau(ActionEvent event) {
          
-     
+     /*
         int selectedCouponId = idcoupon.getValue();
     String giftName = nomc.getText();
     int received = Integer.parseInt(reccu.getText());
@@ -83,12 +83,47 @@ public class AjouterCadeauController implements Initializable {
   Alert alert = new Alert(Alert.AlertType.INFORMATION);
     alert.setHeaderText("Coupon ajouté avec succès");
     alert.setContentText("Le coupon " + selectedCouponId + " a été ajouté à la base de données.");
+    alert.showAndWait();*/
+      // Vérification de la validité de la saisie pour le champ nomc
+    if (nomc.getText().isEmpty()) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText("Champ vide");
+        alert.setContentText("Veuillez saisir un nom pour le cadeau.");
+        alert.showAndWait();
+        return;
+    }
+    // Vérification de la validité de la saisie pour le champ reccu
+    if (!reccu.getText().matches("\\d+")) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText("Valeur invalide");
+        alert.setContentText("Le champ 'reçu' doit être un entier positif");
+        alert.showAndWait();
+        return;
+    }
+    int selectedCouponId = idcoupon.getValue();
+    String giftName = nomc.getText();
+    int received = Integer.parseInt(reccu.getText());
+    //ajouter cadeau 
+    cadeau c1 = new cadeau(giftName,received,selectedCouponId);
+    cadeauCrud c = new cadeauCrud();
+   
+    c.ajoutercadeau2(c1);
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setHeaderText("Cadeau ajouté avec succès");
+    alert.setContentText("Le cadeau '" + giftName + "' a été ajouté à la base de données.");
     alert.showAndWait();
 }
 
 
+
     @FXML
     private void cleancadeau(MouseEvent event) {
+         
+        
+
+nomc.setText(""); 
+reccu.setText(""); 
+
     }
 
     private int c1() {

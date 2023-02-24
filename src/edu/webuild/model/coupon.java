@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package edu.webuild.model;
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,18 +14,13 @@ import java.util.List;
  */
 public class coupon {
 
-   
-
-    
-     private int id_coupon;
+    private int id_coupon;
     private Date date_debut;
     private Date date_experation;
     private int taux_reduction;
     private String code_coupon;
-     private int nbr_utilisation;
-     private String type;
-   
-   
+    private int nbr_utilisation;
+    private String type;
 
     public coupon(int id_coupon, Date date_debut, Date date_experation, int taux_reduction, String code_coupon, int nbr_utilisation, String type) {
         this.id_coupon = id_coupon;
@@ -49,9 +45,6 @@ public class coupon {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-
-   
     public int getId_coupon() {
         return id_coupon;
     }
@@ -80,12 +73,12 @@ public class coupon {
         return type;
     }
 
-   /* public void setId_coupn(int id_coupon) {
+    /* public void setId_coupn(int id_coupon) {
         this.id_coupon = id_coupon;
     }*/
     public void setId_coupon(int id_coupon) {
-    this.id_coupon = id_coupon;
-}
+        this.id_coupon = id_coupon;
+    }
 
     public void setDate_debut(Date date_debut) {
         this.date_debut = date_debut;
@@ -113,14 +106,11 @@ public class coupon {
 
     @Override
     public String toString() {
-        return "" + "   date_debut=" + date_debut + "  date_experation=" + date_experation + "   taux_reduction=" + taux_reduction + " code_coupon=" + code_coupon + "  nbr_utilisation=" + nbr_utilisation + "   type=" + type ;
+        return "" + "   date_debut=" + date_debut + "  date_experation=" + date_experation + "   taux_reduction=" + taux_reduction + " code_coupon=" + code_coupon + "  nbr_utilisation=" + nbr_utilisation + "   type=" + type;
     }
 
     public List<coupon> afficherCoupon() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-
-     
 }

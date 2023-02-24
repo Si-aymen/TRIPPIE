@@ -55,12 +55,12 @@ public class Webuild {
        
        
        
-       
-      /* try{
+    /*   
+      try{
            Date date_debut = dateFormat.parse("2025-01-14");
             Date date_experation = dateFormat.parse("2025-01-14");
-           coupon c = new coupon(date_debut,date_experation,30,"rimouta",5,"simple");
-              c.setId_coupn(53); // id de la personne à modifier
+           coupon c = new coupon(date_debut,date_experation,30,"rimout",5,"simple");
+              c.setId_coupon(56);// id de la personne à modifier
 pcd.modifier(c);
 System.out.println(pcd.displayCoupon());
        }catch(ParseException e)

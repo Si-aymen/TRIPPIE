@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -24,7 +22,5 @@
       <FontAwesomeIconView fill="#0b7211" glyphName="REFRESH" layoutX="66.0" layoutY="91.0" onMouseClicked="#refrech" size="30" />
       <FontAwesomeIconView glyphName="PENCIL" layoutX="148.0" layoutY="91.0" onMouseClicked="#update" size="30" />
       <ListView fx:id="afficher" layoutX="20.0" layoutY="109.0" prefHeight="144.0" prefWidth="556.0" />
-      <Button fx:id="cadeau" layoutX="25.0" layoutY="348.0" mnemonicParsing="false" onAction="#cadeau" text="Cadeau " />
-      <TextField fx:id="rech" layoutX="184.0" layoutY="68.0" />
    </children>
 </AnchorPane>

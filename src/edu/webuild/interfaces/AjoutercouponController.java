@@ -45,11 +45,12 @@ public class AjoutercouponController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       txdatec.setValue(LocalDate.now());
     }  
     
     @FXML
     private void add(MouseEvent event) {
+        // localdate classe du package java.time qui permet de représenter une date
         LocalDate date_debut = txdatec.getValue();
     LocalDate date_expiration = datec2.getValue();
 
@@ -124,6 +125,9 @@ public class AjoutercouponController implements Initializable {
         alert.showAndWait();
         return;
     }
+    //java.sql.Date.valueOf() est utilisée pou
+//qui est utilisé pour stocker des dates dans une base de données relationnelle.
+
 
     coupon c = new coupon(java.sql.Date.valueOf(date_debut), java.sql.Date.valueOf(date_expiration), taux_reduction, code_coupon, nbr_utilisation, type);
     couponCrud coupon = new couponCrud();
