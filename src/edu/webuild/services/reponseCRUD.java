@@ -88,7 +88,7 @@ public class reponseCRUD implements InterfaceCRUD {
     }
 
     @Override
-    public List<reponse> filtrer_rep(int id) {
+    public List<reponse> getById_rep(int id) {
         List<reponse> list = new ArrayList<>();
         try {
             String req = "Select * from reponse  WHERE `id_rec` = " + id;
@@ -147,7 +147,7 @@ public class reponseCRUD implements InterfaceCRUD {
     }
 
     @Override
-    public List<reclamation> filtrer1(int id) {
+    public reclamation getById_rec(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

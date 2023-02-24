@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controller.Ajouter_reponseController">
-    
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controller.Ajouter_reponseController">
+   <children>
+      <FontAwesomeIconView glyphName="ARROW_CIRCLE_LEFT" layoutX="24.0" layoutY="54.0" onMouseClicked="#retour" size="35" />
+      <Label layoutX="54.0" layoutY="77.0" text="Type de la réclamation :" />
+      <Label layoutX="78.0" layoutY="122.0" text="Commentaire :" />
+      <Label layoutX="104.0" layoutY="222.0" text="Etat :" />
+      <Label layoutX="91.0" layoutY="275.0" text="Reponse :" />
+      <TextField fx:id="tf_type" editable="false" layoutX="193.0" layoutY="73.0" />
+      <TextArea fx:id="tf_commentaire" editable="false" layoutX="193.0" layoutY="115.0" prefHeight="77.0" prefWidth="200.0" />
+      <TextField fx:id="tf_etat" editable="false" layoutX="193.0" layoutY="218.0" />
+      <TextArea fx:id="tf_reponse" layoutX="193.0" layoutY="253.0" prefHeight="78.0" prefWidth="200.0" />
+      <Button layoutX="262.0" layoutY="351.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+   </children>
 </AnchorPane>

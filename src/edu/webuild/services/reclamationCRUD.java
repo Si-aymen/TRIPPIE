@@ -84,41 +84,40 @@ public class reclamationCRUD implements InterfaceCRUD {
 
         return list;
     }
-    
+
     @Override
-    public List<reclamation> filtrer1(int id) {
-        List<reclamation> list = new ArrayList<>();
+    public reclamation getById_rec(int id) {
+        reclamation r = new reclamation();
         try {
-            String req = "Select * from reponse  WHERE `id_rec` = " + id;
+            String req = "Select * from reclamation  WHERE `id_rec` = " + id;
             Statement st = conn.createStatement();
 
             ResultSet RS = st.executeQuery(req);
-            while (RS.next()) {
-                reclamation r = new reclamation();
-                r.setId_rec(RS.getInt(1));
-                r.setType_rec(RS.getString(2));
-                r.setCommentaire(RS.getString(3));
-                r.setEtat(RS.getString(4));
 
-                list.add(r);
+            while (RS.next()) {   
+            r.setId_rec(RS.getInt(1));
+            r.setType_rec(RS.getString(2));
+            r.setCommentaire(RS.getString(3));
+            r.setEtat(RS.getString(4));
             }
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
-        return list;
+        return r;
     }
-    
+
     @Override
     public void traite(reclamation r) {
         try {
-            String req = "UPDATE `reclamation` SET `etat` = 'traité'  WHERE `reclamation`.`id_rec` = " +r.getId_rec();
+            String req = "UPDATE `reclamation` SET `etat` = 'traité'  WHERE `reclamation`.`id_rec` = " + r.getId_rec();
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Reponse traité!!!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-                      }
+        }
     }
 
     @Override
@@ -169,11 +168,8 @@ public class reclamationCRUD implements InterfaceCRUD {
     }
 
     @Override
-    public List<reponse> filtrer_rep(int id) {
+    public List<reponse> getById_rep(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    
-
 
 }

@@ -33,7 +33,7 @@ public class reponse {
 
     @Override
     public String toString() {
-        return "reponse{" + "id_rep=" + id_rep + ", reponse=" + reponse + ", id_rec=" + id_rec + ", etat=" + etat + '}';
+        return "Reponse : " + reponse + " || Etat=" + etat;
     }
 
     public int getId_rep() {
