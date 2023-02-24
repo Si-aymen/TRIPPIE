@@ -45,7 +45,7 @@ public class RepondreController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         tf_type.setText(String.valueOf(ReclamationController.type_rec));
         tf_commentaire.setText(String.valueOf(ReclamationController.commentaire_rec));
-    }    
+    }
 
     @FXML
     private void retour(MouseEvent event) throws IOException {
@@ -54,12 +54,21 @@ public class RepondreController implements Initializable {
     }
 
     @FXML
-    private void repondre(ActionEvent event) {
-        
-        int id_rec = ReclamationController.id; 
-        
-        try {
-            String reponse = "(Utilisateur): "+tf_reponse.getText();
+    private void repondre(ActionEvent event) throws IOException {
+
+        String rep = tf_reponse.getText();
+
+        if (rep.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Reponse manquante");
+            alert.showAndWait();
+        } else {
+
+            int id_rec = ReclamationController.id;
+
+            String reponse = "(Utilisateur): " + tf_reponse.getText();
 
             reponse r1 = new reponse(reponse, id_rec, "en cours de traitement");
 
@@ -74,9 +83,7 @@ public class RepondreController implements Initializable {
             alert.showAndWait();
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/suivre_rec.fxml"));
             rootPane.getChildren().setAll(pane);
-        } catch (IOException ex) {
-            Logger.getLogger(AdminRepondreController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

@@ -52,12 +52,29 @@ public class Ajouter_recAdminController implements Initializable {
     }
 
     @FXML
-    private void ajouter(ActionEvent event) {
+    private void ajouter(ActionEvent event) throws IOException {
         
-        try {
+        
             String type = tf_type.getText();
             String commentaire = tf_commentaire.getText();
-
+            
+            if (type.isEmpty())
+            {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Type manquant");
+            alert.showAndWait();
+            }
+            else if(commentaire.isEmpty())
+            {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Commentaire manquant");
+            alert.showAndWait();
+            }
+            else{
             reclamation r = new reclamation(type, commentaire, "non traité");
 
             reclamationCRUD rc = new reclamationCRUD();
@@ -69,11 +86,13 @@ public class Ajouter_recAdminController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Cette réclamation est ajoutée avec succés");
             alert.showAndWait();
+            
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
             rootPane.getChildren().setAll(pane);
-        } catch (IOException ex) {
-            Logger.getLogger(Ajouter_recController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            
+            }
+        
+        
     }
     
 }

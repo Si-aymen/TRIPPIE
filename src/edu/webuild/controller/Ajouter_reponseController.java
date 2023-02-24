@@ -59,12 +59,26 @@ public class Ajouter_reponseController implements Initializable {
     }
 
     @FXML
-    private void ajouter(ActionEvent event) {
+    private void ajouter(ActionEvent event) throws IOException {
         
-        try {
-            String rep = "(Admin): "+tf_reponse.getText();
-            String etat = tf_etat.getText();
-
+        String rep = tf_reponse.getText();
+        String etat = tf_etat.getText();
+        
+        if (rep.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Reponse manquante");
+            alert.showAndWait();
+        } else if (etat.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Etat manquant");
+            alert.showAndWait();
+        } else {
+            
+            rep = "(Admin): "+tf_reponse.getText();
             reponse r = new reponse(rep, AdminReclamationController.id, etat);
 
             reponseCRUD rc = new reponseCRUD();
@@ -78,8 +92,6 @@ public class Ajouter_reponseController implements Initializable {
             alert.showAndWait();
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/afficheReponse.fxml"));
             rootPane.getChildren().setAll(pane);
-        } catch (IOException ex) {
-            Logger.getLogger(Ajouter_recController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

@@ -55,11 +55,20 @@ public class AdminRepondreController implements Initializable {
     }
 
     @FXML
-    private void repondre(ActionEvent event) {
+    private void repondre(ActionEvent event) throws IOException {
+        
+        String rep = tf_reponse.getText();
+        
+        if (rep.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Reponse manquante");
+            alert.showAndWait();
+        } else {
         
         int id_rec = AdminReclamationController.id; 
         
-        try {
             String reponse = "(Admin): "+tf_reponse.getText();
 
             reponse r1 = new reponse(reponse, id_rec, "en cours de traitement");
@@ -75,8 +84,6 @@ public class AdminRepondreController implements Initializable {
             alert.showAndWait();
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/AdminReclamation.fxml"));
             rootPane.getChildren().setAll(pane);
-        } catch (IOException ex) {
-            Logger.getLogger(AdminRepondreController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
