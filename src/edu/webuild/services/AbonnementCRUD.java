@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.webuild.interfaces.InterfaceAbonnement;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 
 /**
@@ -36,16 +38,28 @@ public class AbonnementCRUD implements InterfaceAbonnement{
     @Override
     public void ajouterabonnement(abonnement A) {
         
+        
         try {
         PreparedStatement ps = conn.prepareStatement("INSERT INTO abonnement (type,prix,dateAchat,dateExpiration) VALUES (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-          
+          // Set values for the insert statement
             ps.setString(1, A.getType());
-           ps.setInt(2, A.getPrix());
+            ps.setInt(2, A.getPrix());
             ps.setDate(3, Date.valueOf(A.getDateAchat().toString())); // convert LocalDate to java.sql.Date
+             ps.setDate(4, Date.valueOf(A.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
+          
 
-            ps.setDate(4, Date.valueOf(A.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
-            int affectedRows = ps.executeUpdate();
-                    System.out.println("Abonnement ajoutée!");
+
+// Date validation
+          
+        if (A.getDateAchat().compareTo(A.getDateExpiration()) >= 0) {
+            throw new IllegalArgumentException("La date d'achat doit être antérieure à la date d'expiration.");
+        }
+
+           
+                
+            // Execute the insert statement
+             int affectedRows = ps.executeUpdate();
+            System.out.println("Abonnement ajoutée!");
 
         if (affectedRows == 0) {
             throw new SQLException("Creating abonnement failed, no rows affected.");
@@ -78,12 +92,13 @@ public class AbonnementCRUD implements InterfaceAbonnement{
         try {
             String req = "UPDATE `abonnement` SET `type` = ?, `dateExpiration` = ?, `dateAchat` = ?, `prix` = ? WHERE `idA` = ?";
             PreparedStatement ps = conn.prepareStatement(req);
-            ps.setString(1, A.getType());
-             ps.setInt(2, A.getPrix());
-            ps.setDate(3, Date.valueOf(A.getDateAchat().toString())); // convert LocalDate to java.sql.Date
+              ps.setInt(1, idA);
+            ps.setString(2, A.getType());
+             ps.setInt(3, A.getPrix());
+            ps.setDate(4, Date.valueOf(A.getDateAchat().toString())); // convert LocalDate to java.sql.Date
 
-            ps.setDate(4, Date.valueOf(A.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
-            ps.setInt(5, idA);
+            ps.setDate(5, Date.valueOf(A.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
+          
             ps.executeUpdate();
             System.out.println(" updated !");
         } catch (SQLException ex) {
@@ -99,6 +114,11 @@ public class AbonnementCRUD implements InterfaceAbonnement{
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("abonnement deleted !");
+            // Delete associated cartefidelite record
+        CartefideliteCRUD cartefideliteCRUD = new CartefideliteCRUD();
+        cartefideliteCRUD.supprimercarte(idA);
+       // System.out.println("cartefidelite deleted !");
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

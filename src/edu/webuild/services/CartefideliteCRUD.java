@@ -68,13 +68,6 @@ public class CartefideliteCRUD implements InterfaceCarte {
                 cf.setDateExpiration(RS.getDate(3));
                 cf.setIdA(RS.getInt(4));
              
-       
-               
-               
-               
-                
-                
-                
              list.add(cf);
             }
         } catch (SQLException ex) {
@@ -96,26 +89,20 @@ public class CartefideliteCRUD implements InterfaceCarte {
         }
     }
     
-       @Override
-    public void modifiercarte(cartefidelite cf ,int id_cf) {
-        try {
-          String req = "UPDATE `cartefidelite` SET `pointMerci` = ?, `dateExpiration` = ?, ` WHERE `id_cf` = ?";
-
-            PreparedStatement ps = conn.prepareStatement(req);
-                ps.setString(1, cf.getPointMerci());
-                 ps.setDate(2, Date.valueOf(cf.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
-
-                ps.setInt(3, cf.getId_cf());
-                ps.executeUpdate();
-            
-            
-            
-          
-            System.out.println("cartefidelite updated !");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+      @Override
+public void modifiercarte(cartefidelite cf, int id_cf) {
+    try {
+        String req = "UPDATE `cartefidelite` SET `pointMerci` = ? WHERE `id_cf` = ?";
+        PreparedStatement ps = conn.prepareStatement(req);
+        ps.setString(1, cf.getPointMerci());
+        ps.setInt(2, id_cf);
+        ps.executeUpdate();
+        System.out.println("Carte Fidelite updated!");
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
     }
+}
+
     
     
     @Override

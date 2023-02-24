@@ -26,6 +26,10 @@ public class cartefidelite {
     public cartefidelite(int idA) {
         this.idA = idA;
     }
+
+    public cartefidelite(String pointMerci) {
+        this.pointMerci = pointMerci;
+    }
     
 
     public cartefidelite(int id_cf, String pointMerci, Date dateExpiration, int idA) {
