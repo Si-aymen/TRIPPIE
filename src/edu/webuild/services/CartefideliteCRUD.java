@@ -5,6 +5,7 @@
  */
 package edu.webuild.services;
 import edu.webuild.model.cartefidelite;
+import edu.webuild.model.AbonnementCarteFidelite;
 import edu.webuild.utils.MyConnection;
 
 import edu.webuild.interfaces.InterfaceCarte;
@@ -28,14 +29,14 @@ public class CartefideliteCRUD implements InterfaceCarte {
      Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
     @Override
-    public void ajoutercarte(cartefidelite cf) {
-      String query = "INSERT INTO cartefidelite(pointMerci,dateExpiration,idA) VALUES (?, ?, ?)";
+    public void ajoutercarte(cartefidelite cf, int idA) {
+      String query = "INSERT INTO cartefidelite(idA,pointMerci,dateExpiration) VALUES (?, ?, ?)";
 
         try(PreparedStatement ps = conn.prepareStatement(query)) {
-            
-            ps.setString(1, cf.getPointMerci());
-            ps.setDate(2, Date.valueOf(cf.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
-            ps.setInt(3, cf.getIdA());
+            ps.setInt(1, idA);
+            ps.setString(2, cf.getPointMerci());
+            ps.setDate(3, Date.valueOf(cf.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
+           
             int rowsAffected = ps.executeUpdate();
             
             if (rowsAffected > 0) {
@@ -205,7 +206,39 @@ public class CartefideliteCRUD implements InterfaceCarte {
 
         return list;
     }
+
+    @Override
+    public List<AbonnementCarteFidelite> getAllCarteFideliteWithAbonnement() {
+      
+         List<AbonnementCarteFidelite> cartesFidelitesAbonnements = new ArrayList<>();
+    String query = "SELECT * FROM abonnement JOIN cartefidelite ON abonnement.idA = cartefidelite.idA";
+    try (
+         PreparedStatement ps = conn.prepareStatement(query);
+         ResultSet rs = ps.executeQuery()) {
+        while (rs.next()) {
+            int idA = rs.getInt("idA");
+            String type = rs.getString("type");
+            Date dateExpiration = rs.getDate("dateExpiration");
+            Date dateAchat = rs.getDate("dateAchat");
+            double prix = rs.getDouble("prix");
+            int id_cf = rs.getInt("id_cf");
+            int pointMerci = rs.getInt("pointMerci");
+            
+            AbonnementCarteFidelite cfa = new AbonnementCarteFidelite(idA, type, dateExpiration, dateAchat, prix, id_cf, pointMerci);
+            cartesFidelitesAbonnements.add(cfa);
+        }
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
+    }
+    return cartesFidelitesAbonnements;
+        
+        
+        
+        
+        
+        
+    }
   
 
-    
-}
+    }
+

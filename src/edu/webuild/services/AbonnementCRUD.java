@@ -7,6 +7,10 @@ package edu.webuild.services;
 
 import edu.webuild.model.abonnement;
 import edu.webuild.utils.MyConnection;
+import edu.webuild.model.cartefidelite;
+import edu.webuild.services.CartefideliteCRUD;
+
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -31,20 +35,40 @@ public class AbonnementCRUD implements InterfaceAbonnement{
     
     @Override
     public void ajouterabonnement(abonnement A) {
-        String query = "INSERT INTO abonnement (type, dateExpiration, dateAchat, prix) VALUES (?, ?, ?, ?)";
-
-        try (PreparedStatement ps = conn.prepareStatement(query)) {
+        
+        try {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO abonnement (type,prix,dateAchat,dateExpiration) VALUES (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
           
             ps.setString(1, A.getType());
-            ps.setDate(2, Date.valueOf(A.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
+           ps.setInt(2, A.getPrix());
             ps.setDate(3, Date.valueOf(A.getDateAchat().toString())); // convert LocalDate to java.sql.Date
-            ps.setInt(4, A.getPrix());
-            int rowsAffected = ps.executeUpdate();
-        if (rowsAffected > 0) {
-            System.out.println("Abonnement ajoutée!");
-        } else {
-            System.out.println("Erreur: Abonnement non ajouté.");
+
+            ps.setDate(4, Date.valueOf(A.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
+            int affectedRows = ps.executeUpdate();
+                    System.out.println("Abonnement ajoutée!");
+
+        if (affectedRows == 0) {
+            throw new SQLException("Creating abonnement failed, no rows affected.");
         }
+            
+        
+       
+            // get the generated idA value
+        ResultSet rs = ps.getGeneratedKeys();
+        int idA = 0;
+        if (rs.next()) {
+            idA = rs.getInt(1);
+        }
+       
+        // create a new cartefidelite record with 0 pointMerci
+        CartefideliteCRUD cartefideliteCRUD = new CartefideliteCRUD();
+        cartefidelite cartefidelite = new cartefidelite();
+        cartefidelite.setPointMerci("0");
+        cartefidelite.setDateExpiration(A.getDateExpiration());
+      
+        cartefideliteCRUD.ajoutercarte(cartefidelite,idA);
+        
+        
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -55,9 +79,10 @@ public class AbonnementCRUD implements InterfaceAbonnement{
             String req = "UPDATE `abonnement` SET `type` = ?, `dateExpiration` = ?, `dateAchat` = ?, `prix` = ? WHERE `idA` = ?";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1, A.getType());
-            ps.setDate(2, Date.valueOf(A.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
+             ps.setInt(2, A.getPrix());
             ps.setDate(3, Date.valueOf(A.getDateAchat().toString())); // convert LocalDate to java.sql.Date
-            ps.setInt(4, A.getPrix());
+
+            ps.setDate(4, Date.valueOf(A.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
             ps.setInt(5, idA);
             ps.executeUpdate();
             System.out.println(" updated !");
@@ -182,9 +207,9 @@ public class AbonnementCRUD implements InterfaceAbonnement{
                  A.setIdA(RS.getInt(1));
                 A.setType(RS.getString(2));
                 A.setPrix(RS.getInt(3));
+                A.setDateAchat(RS.getDate(4));    
 
-                A.setDateExpiration(RS.getDate(4));
-                A.setDateAchat(RS.getDate(5));    
+                A.setDateExpiration(RS.getDate(5));
 
                     list.add(A);
                 }

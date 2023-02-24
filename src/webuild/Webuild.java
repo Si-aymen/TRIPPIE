@@ -7,9 +7,12 @@ package webuild;
 
 import edu.webuild.model.cartefidelite;
 import edu.webuild.model.abonnement;
+import edu.webuild.model.AbonnementCarteFidelite;
 import edu.webuild.services.CartefideliteCRUD;
 import edu.webuild.services.AbonnementCRUD;
 import java.sql.SQLException;
+import java.util.List;
+
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -28,8 +31,14 @@ public class Webuild {
      */
     public static void main(String[] args) throws SQLException {
      /// MyConnection conn = MyConnection.getInstance();
+     /*_________________________Jointure_____________________________________*/
         
-      
+      CartefideliteCRUD carteFideliteCRUD = new CartefideliteCRUD();
+        List<AbonnementCarteFidelite> cartesFidelitesAbonnements = carteFideliteCRUD.getAllCarteFideliteWithAbonnement();
+        for (AbonnementCarteFidelite cfa : cartesFidelitesAbonnements) {
+            System.out.println(cfa);
+        }
+
  
   
 
@@ -40,19 +49,19 @@ public class Webuild {
       
 // ---------------Create a new Abonnement object--------------
    
-    //AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
-        //    Date dateAchat = Date.valueOf("2023-01-10");
-        //        Date dateExpiration = Date.valueOf("2024-12-12");
-        //        abonnement abonnement = new abonnement("plat",dateExpiration, dateAchat, 50 );
-        
+//    AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
+//            Date dateAchat = Date.valueOf("2023-02-24");
+//               Date dateExpiration = Date.valueOf("2024-02-24");
+//              abonnement abonnement = new abonnement("Premium", 200, dateAchat ,dateExpiration);
+//        
         
 // -------------Add the new Abonnement object to the database-----------
-        //        abonnementCRUD.ajouterabonnement(abonnement);
+//               abonnementCRUD.ajouterabonnement(abonnement);
 
     
 
     // -------------display the objects in the database---------------------------------
-       // System.out.println( abonnementCRUD.afficherabonnement());
+//       System.out.println( abonnementCRUD.afficherabonnement());
 
  // --------------Get the Abonnement with id 2 from the database-------------------------
            
