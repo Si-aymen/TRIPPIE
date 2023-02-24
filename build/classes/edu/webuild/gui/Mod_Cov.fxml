@@ -129,5 +129,7 @@
       <Button fx:id="cov_btu1" layoutX="61.0" layoutY="381.0" mnemonicParsing="false" onAction="#cov_btu" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Co_Voiturage" />
       <Button layoutX="61.0" layoutY="436.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Participation Co_Voiturage" />
       <Button layoutX="61.0" layoutY="497.0" mnemonicParsing="false" onAction="#stats" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Stats" />
+      <ImageView fx:id="imageView" fitHeight="335.0" fitWidth="389.0" layoutX="698.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="1196.0" layoutY="396.0" mnemonicParsing="false" onAction="#img_btu" text="Button" />
     </children>
 </AnchorPane>

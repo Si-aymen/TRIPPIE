@@ -52,11 +52,13 @@ public class Afficher_CovController implements Initializable {
     static public String destination;
     static public Date date_dep;
     static public String nmbr_place;
-
-    static String id_part;
+    static public String id_part;
+    static public String url_img;
 
     @FXML
     private Button part_btn;
+    @FXML
+    private Button details_btn;
 
     /**
      * Initializes the controller class.
@@ -112,15 +114,18 @@ public class Afficher_CovController implements Initializable {
 
     @FXML
     private void modify_cov(ActionEvent event) {
-        ListView<CoVoiturage> list = listView; // assuming listView is a ListView<CoVoiturage>
+        ListView<CoVoiturage> list = listView;
         InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
         int selectedID = list.getSelectionModel().getSelectedIndex();
-        CoVoiturage V = list.getSelectionModel().getSelectedItem(); // use getSelectedItem() to get the selected item, not getSelectedItems()*
+        CoVoiturage V = list.getSelectionModel().getSelectedItem();
         id_co = Integer.toString(V.getId_co());
         depart = V.getDepart();
         destination = V.getDestination();
         date_dep = V.getDate_dep();
         nmbr_place = Integer.toString(V.getNmbr_place());
+        System.out.println(id_co);
+//        url_img = V.getCov_img(); 
+//        System.out.println(url_img);
 
         try {
 
@@ -177,6 +182,34 @@ public class Afficher_CovController implements Initializable {
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Piechart.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void details(ActionEvent event) {
+
+        ListView<CoVoiturage> list = listView;
+        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+        int selectedID = list.getSelectionModel().getSelectedIndex();
+        CoVoiturage V = list.getSelectionModel().getSelectedItem();
+        id_co = Integer.toString(V.getId_co());
+        depart = V.getDepart();
+        destination = V.getDestination();
+        date_dep = V.getDate_dep();
+        nmbr_place = Integer.toString(V.getNmbr_place());
+        url_img = V.getCov_img(); 
+        System.out.println(V.getCov_img());
+
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/details.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

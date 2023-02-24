@@ -18,6 +18,23 @@ public class CoVoiturage {
     private String destination;
     private Date date_dep;
     private int nmbr_place;
+    private String cov_img; 
+
+    public String getCov_img() {
+        return cov_img;
+    }
+
+    public void setCov_img(String cov_img) {
+        this.cov_img = cov_img;
+    }
+
+    public CoVoiturage(String depart, String destination, Date date_dep, int nmbr_place, String cov_img) {
+        this.depart = depart;
+        this.destination = destination;
+        this.date_dep = date_dep;
+        this.nmbr_place = nmbr_place;
+        this.cov_img = cov_img;
+    }
 
     public CoVoiturage(int id_co, String depart, String destinaion, Date date_dep, int nmbr_place) {
         this.id_co = id_co;

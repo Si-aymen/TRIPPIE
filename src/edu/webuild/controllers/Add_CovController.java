@@ -89,7 +89,9 @@ public class Add_CovController implements Initializable {
         String destination = destination_TF.getText();
         Date date_dep = java.sql.Date.valueOf(date_pk.getValue());
         int nmbr_place = Integer.parseInt(nmbr_place_TF.getText());
-        CoVoiturage v = new CoVoiturage(depart, destination, date_dep, nmbr_place);
+        String cov_img = url_image;
+        //CoVoiturage v = new CoVoiturage(depart, destination, date_dep, nmbr_place);
+        CoVoiturage v = new CoVoiturage(depart, destination, date_dep, nmbr_place, cov_img);
         InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
         if (nmbr_place > 7 || nmbr_place == 0 || nmbr_place < 0) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -111,12 +113,15 @@ public class Add_CovController implements Initializable {
             alert.setContentText("label de destination est vide ");
             alert.show();
         } else {
-            inter_co.ajouterCoVoiturage(v);
+            //inter_co.ajouterCoVoiturage(v);
+            inter_co.ajouterCoV(v);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("voiture insérée avec succés!");
             alert.show();
+            System.out.println(url_image);
+
         }
     }
 

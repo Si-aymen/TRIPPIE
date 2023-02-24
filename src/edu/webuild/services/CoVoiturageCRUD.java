@@ -43,6 +43,19 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
             System.out.println("Co voiturage non ajouté");
         }
     }
+    @Override
+        public void ajouterCoV(CoVoiturage v) {
+        try {
+            String req;
+            req = "INSERT INTO `co_voiturage`( `depart`, `destination`, `date_dep`, `nmbr_place`,`cov_img`) VALUES ('" + v.getDepart() + "','" + v.getDestination() + "','" + v.getDate_dep() + "','" + v.getNmbr_place() + "','"+v.getCov_img()+"')";
+            ste = conn.createStatement();
+            ste.executeUpdate(req);
+            System.out.println("Co Voiturage  ajouté!!!");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            System.out.println("Co voiturage non ajouté");
+        }
+    }
 
     /**
      *

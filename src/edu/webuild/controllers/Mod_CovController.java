@@ -25,6 +25,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -50,19 +52,27 @@ public class Mod_CovController implements Initializable {
     private DatePicker Date_PK;
     @FXML
     private Button cov_btu1;
+    @FXML
+    private ImageView imageView;
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
 
+    public void initialize(URL url, ResourceBundle rb) {
+        //System.out.println(Afficher_CovController.url_img);
         id_co_TF.setText(String.valueOf(Afficher_CovController.id_co));
         depart_TF.setText(String.valueOf(Afficher_CovController.depart));
         destination_TF.setText(String.valueOf(Afficher_CovController.destination));
-        //date_dep_TF.setText(String.valueOf(Afficher_CovController.date_dep));
         Date_PK.setPromptText(Afficher_CovController.date_dep.toString());
         nmbr_place_TF.setText(String.valueOf(Afficher_CovController.nmbr_place));
+        /* //imageView.setImage(new Image(Afficher_CovController.url_img));
+        Image i = new Image(Afficher_CovController.url_img);
+        imageView.setImage(i);*/
 
     }
 
@@ -91,8 +101,10 @@ public class Mod_CovController implements Initializable {
         int nmbr_place = Integer.parseInt(nmbr_place_TF.getText());
         System.out.println(Integer.parseInt(Afficher_CovController.id_co));
         InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
-        CoVoiturage co = new CoVoiturage(depart, destination, date_dep, nmbr_place);
-        inter_co.modifierCoVoiturage(co, Integer.parseInt(Afficher_CovController.id_co));
+        //CoVoiturage co = new CoVoiturage(depart, destination, date_dep, nmbr_place);
+        CoVoiturage cov = new CoVoiturage(depart, destination, date_dep, nmbr_place);
+        System.out.println("ok ");
+        inter_co.modifierCoVoiturage(cov, Integer.parseInt(Afficher_CovController.id_co));
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Afficher_Cov.fxml"));
@@ -120,6 +132,10 @@ public class Mod_CovController implements Initializable {
             Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+    }
+
+    @FXML
+    private void img_btu(ActionEvent event) {
     }
 
 }

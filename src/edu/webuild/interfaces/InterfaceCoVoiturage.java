@@ -27,4 +27,7 @@ public interface InterfaceCoVoiturage {
     public List<CoVoiturage> rechCoVoiturage(int id);
 
     public List<CoVoiturage> Filter_CoVoiturage(String S, String SS);
+
+    public void ajouterCoV(CoVoiturage v);
+
 }
