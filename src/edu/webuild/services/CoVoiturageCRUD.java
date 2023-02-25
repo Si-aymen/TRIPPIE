@@ -94,6 +94,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
                 v.setDestination(RS.getString(3));
                 v.setDate_dep(RS.getDate(4));
                 v.setNmbr_place(RS.getInt("nmbr_place"));
+                v.setCov_img(RS.getString(6));
 
                 list.add(v);
             }

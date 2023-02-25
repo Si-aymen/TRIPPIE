@@ -27,6 +27,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -48,24 +49,33 @@ public class Add_CovController implements Initializable {
     @FXML
     private Button bu_add;
     @FXML
-    private TextField destination_TF;
-    @FXML
-    private TextField nmbr_place_TF;
-    @FXML
-    private TextField depart_TF;
-    @FXML
     private DatePicker date_pk;
     @FXML
     private ImageView lab_image;
 
     static String url_image;
+    @FXML
+    private ChoiceBox<String> depart_box;
+    private final String[] places_dep = {"Rades", "Ezzahra", "manzah", "naser"};
+    @FXML
+    private ChoiceBox<String> destination_box;
+    private final String[] places_dest = {"Rades", "Ezzahra", "manzah", "naser"};
+
+    @FXML
+    private ChoiceBox<Integer> nmbr_place_box;
+    private final Integer[] nmbr_place_list = {1, 2, 3, 4, 5, 6};
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        depart_box.getItems().addAll(places_dep);
+        destination_box.getItems().addAll(places_dest);
+        nmbr_place_box.getItems().addAll(nmbr_place_list);
     }
 
     @FXML
@@ -85,10 +95,13 @@ public class Add_CovController implements Initializable {
 
     @FXML
     private void bu_add(ActionEvent event) {
-        String depart = depart_TF.getText();
-        String destination = destination_TF.getText();
+        //String depart = depart_TF.getText();
+        String depart = depart_box.getValue();
+        //String destination = destination_TF.getText();
+        String destination = destination_box.getValue();
         Date date_dep = java.sql.Date.valueOf(date_pk.getValue());
-        int nmbr_place = Integer.parseInt(nmbr_place_TF.getText());
+        //int nmbr_place = Integer.parseInt(nmbr_place_TF.getText());
+        int nmbr_place = nmbr_place_box.getValue();
         String cov_img = url_image;
         //CoVoiturage v = new CoVoiturage(depart, destination, date_dep, nmbr_place);
         CoVoiturage v = new CoVoiturage(depart, destination, date_dep, nmbr_place, cov_img);
@@ -123,34 +136,22 @@ public class Add_CovController implements Initializable {
             System.out.println(url_image);
 
         }
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Afficher_Cov.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
     }
 
     @FXML
-//private void add_image(ActionEvent event) {
-//    ImageView imageView = lab_image;
-//
-//    // Create a FileChooser
-//    FileChooser fileChooser = new FileChooser();
-//
-//    // Add a filter to only show image files
-//    fileChooser.getExtensionFilters().addAll(
-//            new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif")
-//    );
-//
-//    // Get the primary stage from the image view
-//    Stage primaryStage = (Stage) imageView.getScene().getWindow();
-//
-//    // Show the file chooser dialog
-//    File file = fileChooser.showOpenDialog(primaryStage);
-//
-//    if (file != null) {
-//        // Load the selected image into the image view
-//        Image image = new Image(file.toURI().toString());
-//        url_image = file.toURI().toString();
-//        System.out.println(file.toURI().toString());
-//        imageView.setImage(image);
-//    }
-//}
+
     private void add_image(ActionEvent event) {
         ImageView imageView = lab_image;
 
@@ -171,13 +172,15 @@ public class Add_CovController implements Initializable {
         if (file != null) {
             // Load the selected image into the image view
             Image image = new Image(file.toURI().toString());
+
             //url_image = file.toURI().toString();
             System.out.println(file.toURI().toString());
             imageView.setImage(image);
 
             // Create a new file in the destination directory
             File destinationFile = new File("C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName());
-            url_image = "C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName();
+            // url_image = "C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName();
+            url_image = file.getName();
 
             try {
                 // Copy the selected file to the destination file

@@ -5,6 +5,7 @@
  */
 package edu.webuild.controllers;
 
+import static edu.webuild.controllers.Add_CovController.url_image;
 import edu.webuild.controllers.Menu_CoVoiturageController;
 import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.model.CoVoiturage;
@@ -22,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -70,9 +72,6 @@ public class Mod_CovController implements Initializable {
         destination_TF.setText(String.valueOf(Afficher_CovController.destination));
         Date_PK.setPromptText(Afficher_CovController.date_dep.toString());
         nmbr_place_TF.setText(String.valueOf(Afficher_CovController.nmbr_place));
-        /* //imageView.setImage(new Image(Afficher_CovController.url_img));
-        Image i = new Image(Afficher_CovController.url_img);
-        imageView.setImage(i);*/
 
     }
 
@@ -96,25 +95,49 @@ public class Mod_CovController implements Initializable {
         int id_co = Integer.parseInt(id_co_TF.getText());
         String depart = depart_TF.getText();
         String destination = destination_TF.getText();
-
         Date date_dep = java.sql.Date.valueOf(Date_PK.getValue());
         int nmbr_place = Integer.parseInt(nmbr_place_TF.getText());
         System.out.println(Integer.parseInt(Afficher_CovController.id_co));
         InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+
         //CoVoiturage co = new CoVoiturage(depart, destination, date_dep, nmbr_place);
-        CoVoiturage cov = new CoVoiturage(depart, destination, date_dep, nmbr_place);
-        System.out.println("ok ");
-        inter_co.modifierCoVoiturage(cov, Integer.parseInt(Afficher_CovController.id_co));
-        try {
+        if (nmbr_place > 7 || nmbr_place == 0 || nmbr_place < 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("la nmbr des place est incorrect ");
+            alert.show();
+        } else if (depart.length() == 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("label de depart est vide ");
+            alert.show();
+        } else if (destination.length() == 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("label de destination est vide ");
+            alert.show();
+        } else {
+            CoVoiturage cov = new CoVoiturage(depart, destination, date_dep, nmbr_place);
+            inter_co.modifierCoVoiturage(cov, Integer.parseInt(Afficher_CovController.id_co));
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Co_voiturage updated!");
+            alert.show();
+            try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Afficher_Cov.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Afficher_Cov.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
+            }
         }
 
     }

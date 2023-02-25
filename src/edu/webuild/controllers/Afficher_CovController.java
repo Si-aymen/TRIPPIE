@@ -28,6 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -59,6 +60,10 @@ public class Afficher_CovController implements Initializable {
     private Button part_btn;
     @FXML
     private Button details_btn;
+    @FXML
+    private TextField attribue;
+    @FXML
+    private TextField valuee;
 
     /**
      * Initializes the controller class.
@@ -204,12 +209,12 @@ public class Afficher_CovController implements Initializable {
         destination = V.getDestination();
         date_dep = V.getDate_dep();
         nmbr_place = Integer.toString(V.getNmbr_place());
-        url_img = V.getCov_img(); 
-        System.out.println(V.getCov_img());
+        url_img = V.getCov_img();
+        //System.out.println(V.getCov_img());
 
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/details.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/details_Cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -218,6 +223,22 @@ public class Afficher_CovController implements Initializable {
             Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+    }
+
+    @FXML
+    private void filtre(ActionEvent event) {
+        String attribut = attribue.getText();
+        String value = valuee.getText();
+        ListView list2 = listView;
+        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+        CoVoiturage v = new CoVoiturage();
+        list2.getItems().clear();
+        List<CoVoiturage> list = inter_co.Filter_CoVoiturage(attribut, value);
+        for (int i = 0; i < list.size(); i++) {
+            CoVoiturage covoiturage = list.get(i);
+            list2.getItems().add(covoiturage);
+        }
+
     }
 
 }
