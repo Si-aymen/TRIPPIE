@@ -8,6 +8,7 @@ package edu.webuild.controllers;
 import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.model.CoVoiturage;
 import edu.webuild.services.CoVoiturageCRUD;
+import edu.webuild.services.EmailSender;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -56,14 +57,16 @@ public class Add_CovController implements Initializable {
     static String url_image;
     @FXML
     private ChoiceBox<String> depart_box;
-    private final String[] places_dep = {"Rades", "Ezzahra", "manzah", "naser"};
+    private final String[] places_dep = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba"};
     @FXML
     private ChoiceBox<String> destination_box;
-    private final String[] places_dest = {"Rades", "Ezzahra", "manzah", "naser"};
+    private final String[] places_dest = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba"};
 
     @FXML
     private ChoiceBox<Integer> nmbr_place_box;
     private final Integer[] nmbr_place_list = {1, 2, 3, 4, 5, 6};
+    @FXML
+    private TextField email;
 
     /**
      * Initializes the controller class.
@@ -136,6 +139,28 @@ public class Add_CovController implements Initializable {
             System.out.println(url_image);
 
         }
+        String message = "Dear [Client's Name],\n"
+                + "\n"
+                + "I am writing this email to confirm your Co_voiturage reservation for the following details:\n"
+                + "\n"
+                + "Place of departure: [Enter departure location]\n" + depart + "\n"
+                + "Destination: [Enter destination location]\n" + destination + "\n"
+                + "Date of departure: [Enter departure date]\n" + date_dep + "\n"
+                + "Number of available seats: \n" + nmbr_place + "\n"
+                + "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
+                + "\n"
+                + "Please note that the departure time is " + depart + ". We kindly ask you to arrive at the pickup location 15 minutes before departure time to avoid any delays.\n"
+                + "\n"
+                + "In case of any changes or cancellations, please let us know at least 24 hours before the departure time. You can contact us through the contact details provided at the end of this email.\n"
+                + "\n"
+                + "We hope you have a pleasant journey with our Co_voiturage service. Thank you for choosing us for your travel needs.\n"
+                + "\n"
+                + "Best regards,";
+
+        String emailto = email.getText();
+
+        EmailSender.sendEmail_add(emailto,message);
+
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Afficher_Cov.fxml"));

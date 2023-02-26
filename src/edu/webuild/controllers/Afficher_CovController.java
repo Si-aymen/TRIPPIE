@@ -13,11 +13,17 @@ import edu.webuild.services.CoVoiturageCRUD;
 import edu.webuild.services.ParticipationCrud;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,9 +31,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -55,6 +63,7 @@ public class Afficher_CovController implements Initializable {
     static public String nmbr_place;
     static public String id_part;
     static public String url_img;
+    static public CoVoiturage covt1, covt2;
 
     @FXML
     private Button part_btn;
@@ -119,6 +128,7 @@ public class Afficher_CovController implements Initializable {
 
     @FXML
     private void modify_cov(ActionEvent event) {
+
         ListView<CoVoiturage> list = listView;
         InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
         int selectedID = list.getSelectionModel().getSelectedIndex();
@@ -129,8 +139,7 @@ public class Afficher_CovController implements Initializable {
         date_dep = V.getDate_dep();
         nmbr_place = Integer.toString(V.getNmbr_place());
         System.out.println(id_co);
-//        url_img = V.getCov_img(); 
-//        System.out.println(url_img);
+
 
         try {
 
@@ -144,6 +153,47 @@ public class Afficher_CovController implements Initializable {
 
         }
     }
+
+//    private void modify_cov(ActionEvent event) {
+//        ListView<CoVoiturage> list = listView;
+//        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+//        int selectedID = list.getSelectionModel().getSelectedIndex();
+//        CoVoiturage V = list.getSelectionModel().getSelectedItem();
+//        id_co = Integer.toString(V.getId_co());
+//        depart = V.getDepart();
+//        destination = V.getDestination();
+//        Date date_dep = V.getDate_dep();
+//        nmbr_place = Integer.toString(V.getNmbr_place());
+//        System.out.println(id_co);
+//
+//        // Date actuelle
+//        LocalDateTime date2 = LocalDateTime.now();
+//        LocalDateTime date_dep_local = date_dep.toInstant().atZone(ZoneId.of("Tunis")).toLocalDateTime();
+//
+//        // Calcul de la durée en secondes
+//        ZonedDateTime zdt = date_dep_local.atZone(ZoneId.systemDefault());
+//        Duration duration = Duration.between(zdt, date2.atZone(ZoneId.systemDefault()));
+//        long seconds = duration.getSeconds();
+//        System.out.println("La durée entre la date donnée en argument et le temps actuel est de " + seconds + " secondes.");
+//
+//        // Calcul de la durée en heures, minutes et secondes
+//        long hours = duration.toHours();
+//        long minutes = duration.toMinutes() % 60;
+//        long seconds2 = duration.getSeconds() % 60;
+//        System.out.printf("La durée entre la date donnée en argument et le temps actuel est de %d heures, %d minutes et %d secondes.%n", hours, minutes, seconds2);
+//
+//        try {
+//            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Mod_Cov.fxml"));
+//            Scene scene = new Scene(page1);
+//            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            stage.setScene(scene);
+//            stage.show();
+//        } catch (IOException ex) {
+//            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+
+
 
     @FXML
     private void delete_cov(ActionEvent event) {
@@ -237,6 +287,47 @@ public class Afficher_CovController implements Initializable {
         for (int i = 0; i < list.size(); i++) {
             CoVoiturage covoiturage = list.get(i);
             list2.getItems().add(covoiturage);
+        }
+
+    }
+
+    @FXML
+    private void Compare(ActionEvent event) {
+
+        ListView<CoVoiturage> list = listView;
+        list.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+
+        // Get the selected items
+        ObservableList<CoVoiturage> selectedItems = list.getSelectionModel().getSelectedItems();
+
+        // Make sure exactly 2 items are selected
+        if (selectedItems.size() != 2) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Selection Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select exactly 2 items to compare");
+            alert.showAndWait();
+            return;
+        }
+
+        // Get the selected items as CoVoiturage objects
+        covt1 = selectedItems.get(0);
+        covt2 = selectedItems.get(1);
+
+        System.out.println(covt1);
+        System.out.println(covt2);
+
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/compare_Cov.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
         }
 
     }

@@ -16,6 +16,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -43,11 +45,12 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
             System.out.println("Co voiturage non ajouté");
         }
     }
+
     @Override
-        public void ajouterCoV(CoVoiturage v) {
+    public void ajouterCoV(CoVoiturage v) {
         try {
             String req;
-            req = "INSERT INTO `co_voiturage`( `depart`, `destination`, `date_dep`, `nmbr_place`,`cov_img`) VALUES ('" + v.getDepart() + "','" + v.getDestination() + "','" + v.getDate_dep() + "','" + v.getNmbr_place() + "','"+v.getCov_img()+"')";
+            req = "INSERT INTO `co_voiturage`( `depart`, `destination`, `date_dep`, `nmbr_place`,`cov_img`) VALUES ('" + v.getDepart() + "','" + v.getDestination() + "','" + v.getDate_dep() + "','" + v.getNmbr_place() + "','" + v.getCov_img() + "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Co Voiturage  ajouté!!!");
@@ -198,4 +201,22 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
         return list;
     }
 
+    public int count_CoVoiturage() {
+        int count = 0;
+        try {
+            String req = "SELECT count(*) FROM `co_voiturage` ";
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                count = RS.getInt(1);
+            }
+            RS.close();
+            st.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return count;
+    }
 }

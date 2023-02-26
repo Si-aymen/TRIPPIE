@@ -5,6 +5,8 @@
  */
 package edu.webuild.controllers;
 
+import edu.webuild.interfaces.InterfaceCoVoiturage;
+import edu.webuild.services.CoVoiturageCRUD;
 import edu.webuild.utils.MyConnection;
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +28,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -41,17 +44,28 @@ public class PiechartController implements Initializable {
     private Button cov_btu;
     @FXML
     private PieChart pie2;
+    @FXML
+    private Label nmbr_cov;
+    @FXML
+    private Label nmbr_part;
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+//        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+//        System.out.println(inter_co.count_CoVoiturage());
+//        String nb_cov = Integer.toString(inter_co.count_CoVoiturage());
+//        System.out.println("nb_cov = " + nb_cov);
+//        nmbr_cov.setText(nb_cov);
         PieChart pieChart = pie;
         PieChart pieChart2 = pie2;
-                    Connection conn = MyConnection.getInstance().getConn();
+        Connection conn = MyConnection.getInstance().getConn();
 
         // Retrieve data from the database
         List<PieChart.Data> data = new ArrayList<>();
@@ -61,6 +75,7 @@ public class PiechartController implements Initializable {
             while (rs.next()) {
                 data.add(new PieChart.Data(rs.getString("depart"), rs.getInt("count")));
             }
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -70,7 +85,7 @@ public class PiechartController implements Initializable {
 
         // Set the title of the pie chart
         pieChart.setTitle("Departure Locations");
-        
+
         // Retrieve data from the database
         List<PieChart.Data> data2 = new ArrayList<>();
         try {
@@ -79,7 +94,7 @@ public class PiechartController implements Initializable {
             while (rs2.next()) {
                 data2.add(new PieChart.Data(rs2.getString("destination"), rs2.getInt("count")));
             }
-            conn.close();
+            //conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

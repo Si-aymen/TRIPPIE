@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -123,6 +124,7 @@
         <ChoiceBox fx:id="depart_box" layoutX="520.0" layoutY="169.0" prefWidth="150.0" />
       <ChoiceBox fx:id="destination_box" layoutX="520.0" layoutY="248.0" prefWidth="150.0" />
       <ChoiceBox fx:id="nmbr_place_box" layoutX="520.0" layoutY="330.0" prefWidth="150.0" />
+      <TextField fx:id="email" layoutX="534.0" layoutY="540.0" promptText="just testing the email" />
 
     </children>
 </AnchorPane>
