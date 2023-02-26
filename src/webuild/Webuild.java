@@ -5,6 +5,8 @@
  */
 package webuild;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
 import edu.webuild.model.CoVoiturage;
 import edu.webuild.model.Participation;
 import edu.webuild.services.*;
@@ -21,6 +23,8 @@ public class Webuild {
     /**
      * @param args the command line arguments
      */
+
+
     public static void main(String[] args) {
         // TODO code application logic here
 //
@@ -70,12 +74,9 @@ public class Webuild {
 //
 ////aficher le table participation 
 //        System.out.println(part.afficherParticipation());
+SmS_Cov send = new  SmS_Cov(); 
+send.send_message("+21692554097","test the msg 10th time");
 
-        // EmailSender.sendEmail_add("manouch2001.ra@gmail.com");
-        Set<String> zoneIds = ZoneId.getAvailableZoneIds();
-        for (String zoneId : zoneIds) {
-            System.out.println(zoneId);
-        }
 
     }
 

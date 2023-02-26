@@ -58,14 +58,11 @@ public class PiechartController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-//        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
-//        System.out.println(inter_co.count_CoVoiturage());
-//        String nb_cov = Integer.toString(inter_co.count_CoVoiturage());
-//        System.out.println("nb_cov = " + nb_cov);
-//        nmbr_cov.setText(nb_cov);
         PieChart pieChart = pie;
         PieChart pieChart2 = pie2;
         Connection conn = MyConnection.getInstance().getConn();
+        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+        nmbr_cov.setText(inter_co.count_CoVoiturage());
 
         // Retrieve data from the database
         List<PieChart.Data> data = new ArrayList<>();
@@ -75,7 +72,7 @@ public class PiechartController implements Initializable {
             while (rs.next()) {
                 data.add(new PieChart.Data(rs.getString("depart"), rs.getInt("count")));
             }
-            conn.close();
+            // conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -90,6 +87,7 @@ public class PiechartController implements Initializable {
         List<PieChart.Data> data2 = new ArrayList<>();
         try {
             Statement stmt = conn.createStatement();
+            System.out.println("ok");
             ResultSet rs2 = stmt.executeQuery("SELECT destination, COUNT(*) as count FROM co_voiturage GROUP BY destination");
             while (rs2.next()) {
                 data2.add(new PieChart.Data(rs2.getString("destination"), rs2.getInt("count")));
@@ -104,6 +102,8 @@ public class PiechartController implements Initializable {
 
         // Set the title of the pie chart
         pieChart2.setTitle("Destination Locations");
+
+        System.out.println(inter_co.count_CoVoiturage());
 
     }
 

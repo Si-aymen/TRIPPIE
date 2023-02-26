@@ -30,6 +30,6 @@ public interface InterfaceCoVoiturage {
 
     public void ajouterCoV(CoVoiturage v);
 
-    public int count_CoVoiturage();
+    public String count_CoVoiturage();
 
 }

@@ -201,7 +201,8 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
         return list;
     }
 
-    public int count_CoVoiturage() {
+    @Override
+    public String count_CoVoiturage() {
         int count = 0;
         try {
             String req = "SELECT count(*) FROM `co_voiturage` ";
@@ -212,11 +213,11 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
             }
             RS.close();
             st.close();
-            conn.close();
+            //conn.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
-        return count;
+        return Integer.toString(count) ;
     }
 }

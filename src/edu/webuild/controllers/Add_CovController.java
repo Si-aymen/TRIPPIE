@@ -9,6 +9,7 @@ import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.model.CoVoiturage;
 import edu.webuild.services.CoVoiturageCRUD;
 import edu.webuild.services.EmailSender;
+import edu.webuild.services.SmS_Cov;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -98,6 +99,7 @@ public class Add_CovController implements Initializable {
 
     @FXML
     private void bu_add(ActionEvent event) {
+        SmS_Cov send = new SmS_Cov();
         //String depart = depart_TF.getText();
         String depart = depart_box.getValue();
         //String destination = destination_TF.getText();
@@ -143,9 +145,9 @@ public class Add_CovController implements Initializable {
                 + "\n"
                 + "I am writing this email to confirm your Co_voiturage reservation for the following details:\n"
                 + "\n"
-                + "Place of departure: [Enter departure location]\n" + depart + "\n"
-                + "Destination: [Enter destination location]\n" + destination + "\n"
-                + "Date of departure: [Enter departure date]\n" + date_dep + "\n"
+                + "Place of departure: " + depart + "\n"
+                + "Destination: " + destination + "\n"
+                + "Date of departure: " + date_dep + "\n"
                 + "Number of available seats: \n" + nmbr_place + "\n"
                 + "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
                 + "\n"
@@ -158,8 +160,9 @@ public class Add_CovController implements Initializable {
                 + "Best regards,";
 
         String emailto = email.getText();
-
         EmailSender.sendEmail_add(emailto,message);
+        send.send_message("+21692554097", message);
+        
 
         try {
 
