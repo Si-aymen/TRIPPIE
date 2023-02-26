@@ -48,26 +48,32 @@ public class Ajouter_roleController implements Initializable {
     private RadioButton fxloc;
 
     private String cin;
-    @FXML
-    private TextField fxid;
+    
+    private int id_user ;
 
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-
+//fxid.setText(id_user+"");
+//System.out.println(fxid.getText());
     }
 
     @FXML
     private void confirm(ActionEvent event) {
         Utilisateur u = new Utilisateur();
         utilisateurCRUD uc = new utilisateurCRUD();
-        int id_user = Integer.parseInt(fxid.getText());
+//        int ID = Integer.parseInt(fxid.getText());
 
         if (fxclient.isSelected()) {
             String libelle = fxclient.getText();
+            System.out.println(id_user);
 
             u.setId_user(id_user);
             Role r = new Role();

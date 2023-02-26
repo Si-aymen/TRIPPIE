@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: #fff2e2;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controllers.Modifier_roleController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff2e2;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controllers.Modifier_roleController">
    <children>
       <RadioButton fx:id="fxclient" layoutX="257.0" layoutY="140.0" mnemonicParsing="false" text="Client" />
       <RadioButton fx:id="fxch" layoutX="257.0" layoutY="191.0" mnemonicParsing="false" text="Chauffeur" />

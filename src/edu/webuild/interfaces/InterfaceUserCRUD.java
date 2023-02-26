@@ -27,6 +27,8 @@ public interface InterfaceUserCRUD {
     public void affecterClient(Role r, Utilisateur u) ;
     public void affecterChauffeur(Role r, Utilisateur u) ;
     public void affecterLocateur(Role r, Utilisateur u) ;
+        public Utilisateur getByCin(String cin) ;
+
   
     
     

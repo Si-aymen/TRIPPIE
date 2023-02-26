@@ -26,10 +26,6 @@ import java.util.List;
  */
 public class utilisateurCRUD implements InterfaceUserCRUD {
 
-    static List<Utilisateur> getAllUtilisateurs() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
 
@@ -116,7 +112,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                     + " FROM `utilisateur` u1 "
                     + "INNER JOIN role u2 "
                     + "ON u1.id_user=u2.id_user";//"SELECT utilisateur. *, role.libelle FROM utilisateur INNER JOIN role ON utilisateur.role = role.id_role";
-         
+
             Statement st = conn.createStatement();
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
@@ -137,6 +133,31 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
         }
 
         return list;
+    }
+
+    @Override
+    public Utilisateur getByCin(String cin) {
+        Utilisateur u = new Utilisateur();
+
+        try {
+            String req = "SELECT * FROM `utilisateur` WHERE cin = '" + cin + "'";//"SELECT utilisateur. *, role.libelle FROM utilisateur INNER JOIN role ON utilisateur.role = role.id_role";
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                u.setId_user(RS.getInt(1));
+                u.setCin(RS.getString(2));
+                u.setNom(RS.getString(3));
+                u.setPrenom(RS.getString(4));
+                u.setSexe(RS.getString(5));
+                u.setAge(RS.getInt(6));
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+        return u;
     }
 
     @Override
@@ -243,6 +264,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
 
             String req = "INSERT INTO `role` (`libelle`,id_user) VALUES ('Client',?)";
             PreparedStatement ps = conn.prepareStatement(req);
+
             ps.setInt(1, u.getId_user());
             ps.executeUpdate();
             // Exécute la requête SELECT pour récupérer l'id_role auto-incrémenté
@@ -252,8 +274,8 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
             int id_role = 0;
             if (rs.next()) {
                 id_role = rs.getInt(1);
-                 System.out.println("ID auto-incrémenté généré lors de l'insertion: " + id_role);
-                
+                System.out.println("ID auto-incrémenté généré lors de l'insertion: " + id_role);
+
             }
             System.out.println("Client ajouté!");
         } catch (SQLException ex) {
@@ -268,20 +290,19 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
 
             String req = "INSERT INTO `role` (`libelle`,id_user) VALUES ('Chauffeur',?)";
             PreparedStatement ps = conn.prepareStatement(req);
-            
+
             ps.setInt(1, u.getId_user());
             ps.executeUpdate();
-             // Exécute la requête SELECT pour récupérer l'id_role auto-incrémenté
+            // Exécute la requête SELECT pour récupérer l'id_role auto-incrémenté
             ResultSet rs = ps.executeQuery("SELECT LAST_INSERT_ID()");
 
             // Récupère l'id_role à partir du résultat de la requête SELECT
             int id_role = 0;
             if (rs.next()) {
                 id_role = rs.getInt(1);
-                 System.out.println("ID auto-incrémenté généré lors de l'insertion: " + id_role);
-                
-            }
+                System.out.println("ID auto-incrémenté généré lors de l'insertion: " + id_role);
 
+            }
 
             System.out.println("Chauffeur ajouté!");
         } catch (SQLException ex) {
@@ -299,17 +320,16 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
 
             ps.setInt(1, u.getId_user());
             ps.executeUpdate();
-             // Exécute la requête SELECT pour récupérer l'id_role auto-incrémenté
+            // Exécute la requête SELECT pour récupérer l'id_role auto-incrémenté
             ResultSet rs = ps.executeQuery("SELECT LAST_INSERT_ID()");
 
             // Récupère l'id_role à partir du résultat de la requête SELECT
             int id_role = 0;
             if (rs.next()) {
                 id_role = rs.getInt(1);
-                 System.out.println("ID auto-incrémenté généré lors de l'insertion: " + id_role);
-                
-            }
+                System.out.println("ID auto-incrémenté généré lors de l'insertion: " + id_role);
 
+            }
 
             System.out.println("Locateur ajouté!");
         } catch (SQLException ex) {
@@ -317,4 +337,6 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
         }
 
     }
+    
+    
 }

@@ -11,10 +11,14 @@ import edu.webuild.model.Role;
 import java.sql.Connection;
 import java.sql.Statement;
 import edu.webuild.utils.MyConnection;
+import java.net.URL;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import static javax.mail.Flags.Flag.USER;
 
 /**
  *
@@ -85,6 +89,28 @@ public class ClientCRUD implements InterfaceClientCRUD {
         }
 
         return list;
+    }
+    
+    @Override
+    public Role getRole(int id_role) {
+        Role r = new Role();
+
+        try {
+            String req = "SELECT libelle FROM `role` WHERE id_role = '" + id_role + "'";//"SELECT utilisateur. *, role.libelle FROM utilisateur INNER JOIN role ON utilisateur.role = role.id_role";
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+               
+                r.setLibelle(RS.getString(1));
+               
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+        return r;
     }
 
     @Override
@@ -172,5 +198,80 @@ public class ClientCRUD implements InterfaceClientCRUD {
 
         return list;
     }
+    
+    public boolean FoundUser(String email, String password) throws SQLException {
+        String query = "SELECT COUNT(*) FROM client WHERE email = ? AND password = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+
+        pstmt.setString(1, email);
+        pstmt.setString(2, password);
+
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            int count = rs.getInt(1);
+            return count > 0;
+        }
+
+        return false;
+    }
+    
+    
+  
+    
+    public Client getByIdRole(int id_role) {
+    String query = "SELECT * FROM client WHERE id_role = ?";
+
+    try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+        preparedStatement.setInt(1, id_role);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            int idClient = resultSet.getInt("id_client");
+            int idRoleClient = resultSet.getInt("id_role");
+            String email = resultSet.getString("email");
+            String password = resultSet.getString("password");
+
+            roleCRUD roleCRUD = new roleCRUD();
+            Role role = (Role) roleCRUD.getById(idRoleClient);
+
+            return new Client(idClient, role, email, password);
+        }
+
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
+    }
+
+    return null;
+}
+    
+   public void afficherProfilClient(String email, String password) {
+    String query = "SELECT utilisateur.nom, utilisateur.prenom " +
+                   "FROM utilisateur " +
+                   "INNER JOIN role ON utilisateur.id_user = role.id_user " +
+                   "INNER JOIN client ON role.id_role = client.id_role " +
+                   "WHERE client.email = ? AND client.password = ?";
+    
+    try {
+       
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, email);
+        ps.setString(2, password);
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            String nom = rs.getString("nom");
+            String prenom = rs.getString("prenom");
+            System.out.println(nom + " " + prenom);
+        } else {
+            System.out.println("Adresse email ou mot de passe incorrect.");
+        }
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+    
 
 }

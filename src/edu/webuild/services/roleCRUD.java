@@ -114,6 +114,8 @@ public class roleCRUD implements InterfaceRoleCRUD {
 
         return list;
     }
+    
+    
 
     @Override
     public List<Role> FiltrerRole(String f1, String f2) {
@@ -182,7 +184,7 @@ public class roleCRUD implements InterfaceRoleCRUD {
         try {
 
             String req = "INSERT INTO `chauffeur`  (`num_permis`,marque_voiture,couleur_voiture,immatriculation,email,password,id_role) VALUES (?,?,?,?,?,?,?)";
-            PreparedStatement ps = conn.prepareStatement(req);
+            PreparedStatement ps = conn.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, ch.getNum_permis());
             ps.setString(2, ch.getMarque_voiture());
             ps.setString(3, ch.getCouleur_voiture());
@@ -238,5 +240,28 @@ public class roleCRUD implements InterfaceRoleCRUD {
         }
 
     }
+    
+    public Role getById_role(int id_role) {
+    String query = "SELECT * FROM role WHERE id_role = ?";
+
+    try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+        preparedStatement.setInt(1, id_role);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            int id_Role = resultSet.getInt("id_role");
+            int id_User = resultSet.getInt("id_user");
+            String libelle = resultSet.getString("libelle");
+
+            return new Role(id_Role, id_User, libelle);
+        }
+
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
+    }
+
+    return null;
+}
 
 }

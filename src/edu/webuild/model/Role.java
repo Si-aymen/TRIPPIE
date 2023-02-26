@@ -19,6 +19,7 @@ public class Role  {
     public Role() {
     }
 
+    
     public Role(String libelle) {
         this.libelle = libelle;
     }
@@ -39,6 +40,10 @@ public class Role  {
     public Role(String libelle, Utilisateur id_user) {
         this.libelle = libelle;
         this.id_user = id_user;
+    }
+
+    public Role(int id_Role, int id_User, String libelle) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

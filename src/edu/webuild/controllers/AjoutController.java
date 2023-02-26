@@ -48,6 +48,8 @@ import javafx.stage.Stage;
  */
 public class AjoutController implements Initializable {
 
+    
+
     @FXML
     private TextField fxcin;
     @FXML
@@ -60,6 +62,7 @@ public class AjoutController implements Initializable {
     private TextField fxage;
     @FXML
     private Button btnajout;
+   public static int id_user;
 
     /**
      * Initializes the controller class.
@@ -82,31 +85,25 @@ public class AjoutController implements Initializable {
         String cin = fxcin.getText();
         String sexe = fxsexe.getText();
         int age = Integer.parseInt(fxage.getText());
+
         if (cin.isEmpty() || nom.isEmpty() || prenom.isEmpty() || sexe.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
+            // Afficher un message d'erreur si la saisie est invalide
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Erreur de saisie");
             alert.setHeaderText(null);
             alert.setContentText("Veuillez remplir tous les champs.");
             alert.show();
 
-        }
-        else  if (age==0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("Veuillez remplir tous les champs.");
-            alert.show();
-         
         } else if (cin.length() != 8) {
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("erreur le cin doit etre 8 chiffres");
             alert.show();
         } else if (Character.isLowerCase(nom.charAt(0))) {
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("erreur le nom doit commence par majuscule");
@@ -114,7 +111,7 @@ public class AjoutController implements Initializable {
 
         } else if (Character.isLowerCase(prenom.charAt(0))) {
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("erreur le prenom doit commence par majuscule");
@@ -129,7 +126,7 @@ public class AjoutController implements Initializable {
         //        alert.show();
         //        }
         else if (age <= 18) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("erreur +18 ");
@@ -142,7 +139,12 @@ public class AjoutController implements Initializable {
             //role
 
             try {
-
+                Ajouter_roleController rc = new Ajouter_roleController();
+                int id_user = uc.getByCin(cin).getId_user();
+                        System.out.println(id_user);
+                rc.setId_user(id_user);
+//                rc.setFxid(id_user+"");
+                System.out.println("cbon");
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_role.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

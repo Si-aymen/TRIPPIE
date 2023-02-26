@@ -80,37 +80,35 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         }
     }
 
-   @Override
-public List<Chauffeur> afficherChauffeur() {
-    List<Chauffeur> list = new ArrayList<>();
-  
-    try {
-        String req = "SELECT chauffeur.*, role.libelle FROM chauffeur INNER JOIN role ON chauffeur.id_role = role.id_role";
-        Statement st = conn.createStatement();
-        ResultSet RS = st.executeQuery(req);
-        while (RS.next()) {
-            Chauffeur ch = new Chauffeur();
-            ch.setId_ch(RS.getInt(1));
-            ch.setNum_permis(RS.getString(2));
-            ch.setMarque_voiture(RS.getString(3));
-            ch.setCouleur_voiture(RS.getString(4));
-            ch.setImmatriculation(RS.getString(5));
-            ch.setEmail(RS.getString(6));
-            ch.setPassword(RS.getString(7));
-            Role role = new Role();
-            ch.setId_role(role);
-            role.setLibelle(RS.getString(9));
-           
-            list.add(ch);
+    @Override
+    public List<Chauffeur> afficherChauffeur() {
+        List<Chauffeur> list = new ArrayList<>();
+
+        try {
+            String req = "SELECT chauffeur.*, role.libelle FROM chauffeur INNER JOIN role ON chauffeur.id_role = role.id_role";
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                Chauffeur ch = new Chauffeur();
+                ch.setId_ch(RS.getInt(1));
+                ch.setNum_permis(RS.getString(2));
+                ch.setMarque_voiture(RS.getString(3));
+                ch.setCouleur_voiture(RS.getString(4));
+                ch.setImmatriculation(RS.getString(5));
+                ch.setEmail(RS.getString(6));
+                ch.setPassword(RS.getString(7));
+                Role role = new Role();
+                ch.setId_role(role);
+                role.setLibelle(RS.getString(9));
+
+                list.add(ch);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
+
+        return list;
     }
-
-    return list;
-}
-
-
 
     @Override
     public List<Chauffeur> getById(int id_ch) {
@@ -214,7 +212,54 @@ public List<Chauffeur> afficherChauffeur() {
         return list;
     }
 
+    public boolean FoundUser(String email, String password) throws SQLException {
+        String query = "SELECT COUNT(*) FROM chauffeur WHERE email = ? AND password = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
 
-   
+        pstmt.setString(1, email);
+        pstmt.setString(2, password);
+
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            int count = rs.getInt(1);
+            return count > 0;
+        }
+
+        return false;
+    }
+
+    public void resetPass(Chauffeur ch) {
+
+        try {
+            String req = "UPDATE `chauffeur` SET `password`=? WHERE email=? ";
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("Chauffeur updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    public boolean emailExiste(String email) {
+
+        boolean existe = false;
+        try {
+            String requete = "SELECT * FROM utilisateur WHERE email = ?";
+            try (PreparedStatement statement = conn.prepareStatement(requete)) {
+                statement.setString(1, email);
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    if (resultSet.next()) {
+// email exists in the database
+                        existe = true;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+// handle exception
+        }
+        return existe;
+    }
 
 }

@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: #fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Ajouter_chauffeurController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Ajouter_chauffeurController">
    <children>
       <VBox layoutX="68.0" layoutY="168.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
          <children>
@@ -33,7 +33,7 @@
             <PasswordField fx:id="fxpass" />
          </children>
       </VBox>
-      <Button fx:id="btn" layoutX="500.0" layoutY="332.0" mnemonicParsing="false" onAction="#addch" text="Confirmer" />
+      <Button fx:id="btn" layoutX="500.0" layoutY="332.0"  mnemonicParsing="false" onAction="#addch" text="Confirmer" />
       <Label layoutX="76.0" layoutY="94.0" text="Veuiller entrer votre id affiché dans le console:" />
       <TextField fx:id="fxid" layoutX="398.0" layoutY="89.0" prefHeight="26.0" prefWidth="58.0" />
       <Label layoutX="158.0" layoutY="14.0" text="Inscrivez-vous (3/3)">

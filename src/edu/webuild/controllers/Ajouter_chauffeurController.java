@@ -80,7 +80,7 @@ public class Ajouter_chauffeurController implements Initializable {
             alert.show();
 
         }
-        if (!email.matches(regex)) {
+        else if (!email.matches(regex)) {
             // Afficher un message d'erreur si la saisie est invalide
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");

@@ -9,36 +9,48 @@ import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
- * @author guerf
+ * @author hoxha
  */
 public class FirstWindow extends Application {
-    
+   private Stage primaryStage;
+   
+
     @Override
     public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage; // connect primary stage
         
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-            
-            Scene scene = new Scene(root,800,600);
-            
-            primaryStage.setTitle("Trippie");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
+        mainWindow();
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    // main window
+    public void mainWindow() {
+        try {
+            // view
+            FXMLLoader loader = new FXMLLoader(FirstWindow.class.getResource("Login.fxml"));
+            AnchorPane pane = loader.load();
+
+            // controller
+            LoginController mainWindowController = loader.getController();
+            mainWindowController.setMain(this);
+
+            // scene on stage
+            Scene scene = new Scene(pane);
+            primaryStage.setScene(scene);
+            primaryStage.initStyle(StageStyle.UNDECORATED);
+            primaryStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public static void main(String[] args) {
         launch(args);
     }

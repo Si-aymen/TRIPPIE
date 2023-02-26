@@ -3,13 +3,12 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: #fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.HomeController">
- 
-    <children>
-                                  <AnchorPane layoutY="-15.0" prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;"></AnchorPane>
-
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.HomeController">
+   <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -28,7 +27,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#lancer_afficherloc" text="Consulter locateur" />
             </items>
           </Menu>
-
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
@@ -36,8 +34,13 @@
           </Menu>
         </menus>
       </MenuBar>
-
-      <AnchorPane fx:id="rootPane" layoutY="69.0" prefHeight="450.0" prefWidth="600.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.399999999999977" />
-      
-    </children>
+      <AnchorPane fx:id="rootPane" layoutY="69.0" prefHeight="450.0" prefWidth="600.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.399999999999977">
+         <children>
+            <ImageView fitHeight="95.0" fitWidth="200.0" layoutX="204.0" layoutY="147.0">
+               <image>
+                  <Image url="@http://localhost/bg.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </children>
 </AnchorPane>

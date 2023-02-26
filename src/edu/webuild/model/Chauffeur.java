@@ -55,6 +55,11 @@ public class Chauffeur {
         this.password = password;
     }
 
+    public Chauffeur(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
   
 
     public int getId_ch() {

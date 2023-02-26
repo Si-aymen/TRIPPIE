@@ -4,17 +4,13 @@
  * and open the template in the editor.
  */
 package webuild;
-
-import edu.webuild.model.Chauffeur;
-import edu.webuild.model.Client;
-import edu.webuild.model.Locateur;
-import edu.webuild.model.Role;
 import edu.webuild.model.Utilisateur;
 import edu.webuild.services.ChauffeurCRUD;
 import edu.webuild.services.ClientCRUD;
 import edu.webuild.services.LocateurCRUD;
 import edu.webuild.services.roleCRUD;
 import edu.webuild.services.utilisateurCRUD;
+import sun.applet.Main;
 
 
 
@@ -29,7 +25,9 @@ public class Webuild {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        
+        JavaMail.sendMail("aymen58zouari@gmail.com");
     /*-------------------------------Instance CRUD--------------------------------------------------------------------*/
          //utilisateurCRUD uc = new utilisateurCRUD();
          roleCRUD rc = new roleCRUD();

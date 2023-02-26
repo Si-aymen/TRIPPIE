@@ -6,6 +6,7 @@
 package edu.webuild.interfaces;
 
 import edu.webuild.model.Client;
+import edu.webuild.model.Role;
 import java.util.List;
 
 /**
@@ -20,4 +21,5 @@ public interface InterfaceClientCRUD {
     public List<Client> getById(int id_client);
     public List<Client> FiltrerClient(String f1, String f2);
      public List<Client> trierClient();
+     public Role getRole(int id_role);
 }
