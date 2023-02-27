@@ -30,6 +30,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Call;
+import edu.webuild.services.Emailsender;
 import java.net.URI;
 
 /**
@@ -61,24 +62,61 @@ public class AjouterreservationController implements Initializable {
     private void ajouter_reservation(ActionEvent event) {
          Date date_debut = java.sql.Date.valueOf(date_debut_pk.getValue());
         Date date_fin = java.sql.Date.valueOf(date_fin_pk1.getValue());
+        int comparison = date_debut.compareTo(date_fin);
+        if (comparison > 0) {
+    Alert alert = new Alert(AlertType.INFORMATION);
+
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("date debut est apres date de retour de voiture");
+        alert.show();
+} else if (comparison == 0) { Alert alert = new Alert(AlertType.INFORMATION);
+   alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("date debut est egale au date fin de reservation");
+        alert.show();
+} else {
         reservation res = new reservation(date_debut, date_fin, Afficher_voitureController.voiture);
         InterfaceCRUD2 inter = new reservationCRUD();
         inter.ajouterreservation(res);
+        /*
         Alert alert = new Alert(AlertType.INFORMATION);
 
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
         alert.setContentText("voiture insérée avec succés!");
         alert.show();
+        */
+        /*
          System.out.println(ACCOUNT_SID);
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-
-        Call call = Call.creator(
+*/
+     /*   Call call = Call.creator(
          new com.twilio.type.PhoneNumber("+21625104011"), new com.twilio.type.PhoneNumber("+12766183954"), URI.create("http://demo.twilio.com/docs/voice.xml")).create();
-        System.out.println(call.getSid());
+        System.out.println(call.getSid());*/
+        
+        
+        
+         String message = "Dear [Client's Name],\n"
+                + "\n"
+                + "I am writing this email to confirm your location reservation for the following details:\n"
+                + "\n"
+                 + "votre voiture  : " +Afficher_voitureController.marque + "\n"
+                      + "votre voiture  : " +Afficher_voitureController.Puissence + "\n"
+                + "date debut reservation : " +date_debut + "\n"
+                + "date fin reservation : " + date_fin + "\n"
+                + "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
+                + "\n" ;
+               
+
+        Emailsender.sendEmail_add("khmiriiheb3@gmail.com",message);
+        
+        
+        
 
     }
     }
+}
 
 
 

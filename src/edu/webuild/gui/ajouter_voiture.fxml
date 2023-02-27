@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: fff2e2;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controllers.Ajouter_voitureController">
+<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Ajouter_voitureController">
      <children>
       <Label layoutX="105.0" layoutY="83.0" text="matricule" />
       <Label layoutX="116.0" layoutY="154.0" text="marque" />
       <Label layoutX="122.0" layoutY="235.0" text="puissance" />
       <Label layoutX="116.0" layoutY="328.0" text="prix_jours" />
       <TextField fx:id="fxmatricule" layoutX="649.0" layoutY="105.0" prefHeight="72.0" prefWidth="195.0" />
-      <TextField fx:id="fx_marque" layoutX="649.0" layoutY="243.0" prefHeight="72.0" prefWidth="195.0" />
-      <TextField fx:id="fx_puissance" layoutX="649.0" layoutY="363.0" prefHeight="72.0" prefWidth="195.0" />
       <TextField fx:id="fx_prix_jours" layoutX="648.0" layoutY="480.0" prefHeight="72.0" prefWidth="195.0" />
       <Button fx:id="ajouter" layoutX="942.0" layoutY="591.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="72.0" prefWidth="136.0" text="ajouter" />
        <AnchorPane layoutY="-15.0" prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;" />
@@ -22,5 +21,7 @@
       <Text layoutX="406.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="marque" />
       <Text layoutX="402.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="puissannce" />
       <Text layoutX="402.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix par jour" />
+      <ChoiceBox fx:id="fx_marque" layoutX="648.0" layoutY="250.0" prefHeight="58.0" prefWidth="195.0" />
+      <ChoiceBox fx:id="fx_puissance" layoutX="645.0" layoutY="367.0" prefHeight="58.0" prefWidth="203.0" />
    </children>
 </AnchorPane>

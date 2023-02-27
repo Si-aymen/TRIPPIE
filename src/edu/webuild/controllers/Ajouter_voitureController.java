@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 /**
@@ -27,27 +28,31 @@ public class Ajouter_voitureController implements Initializable {
     @FXML
     private TextField fxmatricule;
     @FXML
-    private TextField fx_marque;
+    private ChoiceBox<String> fx_marque;
     @FXML
-    private TextField fx_puissance;
+    private ChoiceBox<String> fx_puissance;
     @FXML
     private TextField fx_prix_jours;
     @FXML
     private Button ajouter;
+    private final String[] fx_marquee = {"BMW","Mercedes","Audi","clio","porshe","peugeot","hamer"};
+    private final String[] fx_puissancee = {"5ch","6ch","7ch","8ch","9ch","10ch","11ch","12ch","13ch"};
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        fx_marque.getItems().addAll(fx_marquee);
+        fx_puissance.getItems().addAll(fx_puissancee);
         // TODO
     }    
 
     @FXML
     private void ajouter(ActionEvent event) {
          String matricule = fxmatricule.getText();
-        String marque = fx_marque.getText();
-        String puissance = fx_puissance.getText();
+       String marque = fx_marque.getValue();
+       String puissance = fx_puissance.getValue();
         int prix_jours = Integer.parseInt(fx_prix_jours.getText());
          if(prix_jours<0){
              Alert alert = new Alert(AlertType.INFORMATION);
@@ -66,12 +71,6 @@ public class Ajouter_voitureController implements Initializable {
            alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
         alert.setContentText("erreur il faut contenir tunis");
-        alert.show();
-        }else if (puissance.indexOf("ch")==-1){
-             Alert alert = new Alert(AlertType.INFORMATION);
-           alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("erreur il faut contenir ch");
         alert.show();
         }else if (marque.isEmpty()){
              Alert alert = new Alert(AlertType.INFORMATION);
