@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,20 +34,18 @@ public class Location_voitureController implements Initializable {
 
     /**
      * Initializes the controller class.
-     *
-     * @param url
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }    
 
     @FXML
     private void location_voiture(ActionEvent event) {
-        try {
+         try {
 
             Parent page1
-                    = FXMLLoader.load(getClass().getResource("crud_voiture.fxml"));
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/crud_voiture.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -60,10 +58,10 @@ public class Location_voitureController implements Initializable {
 
     @FXML
     private void reservation_voiture(ActionEvent event) {
-        try {
+          try {
 
             Parent page1
-                    = FXMLLoader.load(getClass().getResource("affichage_reservation.fxml"));
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/affichage_reservation.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -73,5 +71,5 @@ public class Location_voitureController implements Initializable {
 
         }
     }
-
+    
 }

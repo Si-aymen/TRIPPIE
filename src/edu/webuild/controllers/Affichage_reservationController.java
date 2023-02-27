@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
 import edu.webuild.interfaces.InterfaceCRUD2;
 import edu.webuild.model.reservation;
@@ -39,13 +39,11 @@ public class Affichage_reservationController implements Initializable {
     @FXML
     private Button supprimer_reservation;
     @FXML
-    private Button modifier_reservation;
-    static Date date_debut;
+    private Button updatereservation;
+     static Date date_debut;
     static Date date_fin;
     static int id;
     static voiture voiture;
-    @FXML
-    private Button updatereservation;
 
     /**
      * Initializes the controller class.
@@ -61,11 +59,12 @@ public class Affichage_reservationController implements Initializable {
 
         }
 
-    }
+        // TODO
+    }    
 
     @FXML
     private void supprimer_reservation(ActionEvent event) {
-        ListView<reservation> list = (ListView<reservation>) affichage_reservation;
+          ListView<reservation> list = (ListView<reservation>) affichage_reservation;
         InterfaceCRUD2 inter = new reservationCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
@@ -77,8 +76,6 @@ public class Affichage_reservationController implements Initializable {
             System.out.println("Veuillez sélectionner une voiture à supprimer.");
         }
     }
-
- 
 
     @FXML
     private void updatereservation(ActionEvent event) {
@@ -104,5 +101,7 @@ public class Affichage_reservationController implements Initializable {
 
         }
     }
+        
+    }
+    
 
-}

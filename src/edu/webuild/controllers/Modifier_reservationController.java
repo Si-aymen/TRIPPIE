@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
 import edu.webuild.interfaces.InterfaceCRUD2;
 import edu.webuild.model.reservation;
@@ -36,10 +36,8 @@ public class Modifier_reservationController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-   
-
-    }
+        // TODO
+    }    
 
     @FXML
     private void modifier_reservation(ActionEvent event) {
@@ -49,5 +47,5 @@ public class Modifier_reservationController implements Initializable {
         reservation res = new reservation(date_debut, date_fin,Affichage_reservationController.voiture);
         inter.modifierreservation(res);
     }
-
+    
 }

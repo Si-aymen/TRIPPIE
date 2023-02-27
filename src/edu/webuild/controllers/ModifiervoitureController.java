@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
 import edu.webuild.interfaces.InterfaceCRUD;
 import edu.webuild.model.voiture;
@@ -14,7 +14,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 /**
@@ -23,8 +22,7 @@ import javafx.scene.control.TextField;
  * @author khmir
  */
 public class ModifiervoitureController implements Initializable {
-    
-    private ListView<voiture> affichervoiture;
+
     @FXML
     private TextField fx_matricule;
     @FXML
@@ -46,8 +44,8 @@ public class ModifiervoitureController implements Initializable {
         fx_puissance.setText(Afficher_voitureController.Puissence);
         fx_prix_jours.setText(Afficher_voitureController.Prix_jour);
         
-    }
-    
+    }    
+
     @FXML
     private void modifier_voiture(ActionEvent event) {
         InterfaceCRUD inter = new voitureCRUD();
@@ -57,6 +55,6 @@ public class ModifiervoitureController implements Initializable {
         int prix_jour = Integer.parseInt(fx_prix_jours.getText());
         voiture v = new voiture(Afficher_voitureController.id,matricule, marque, puissence, prix_jour);
         inter.modifiervoiture(v);
-        
     }
+    
 }

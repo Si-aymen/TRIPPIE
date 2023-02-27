@@ -2,6 +2,24 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/gui/ajouter_voiture.fxml</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/gui/affichage_reservation.fxml</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/Affichage_reservationController.java</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/gui/crud_voiture.fxml</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/gui/afficher_voiture.fxml</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/gui/ajouterreservation.fxml</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/gui/interfacemodulelocation.java</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/gui/modifier_reservation.fxml</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/Location_voitureController.java</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/gui/modifiervoiture.fxml</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/Crud_voitureController.java</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/AjouterreservationController.java</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/gui/location_voiture.fxml</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/Ajouter_voitureController.java</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/Afficher_voitureController.java</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/ModifiervoitureController.java</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/Modifier_reservationController.java</file>
+        </group>
     </open-files>
 </project-private>

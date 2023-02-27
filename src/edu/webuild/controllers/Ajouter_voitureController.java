@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
 import edu.webuild.model.voiture;
 import edu.webuild.services.voitureCRUD;
@@ -41,11 +41,11 @@ public class Ajouter_voitureController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }    
 
     @FXML
     private void ajouter(ActionEvent event) {
-        String matricule = fxmatricule.getText();
+         String matricule = fxmatricule.getText();
         String marque = fx_marque.getText();
         String puissance = fx_puissance.getText();
         int prix_jours = Integer.parseInt(fx_prix_jours.getText());
@@ -97,6 +97,7 @@ public class Ajouter_voitureController implements Initializable {
         alert.setContentText("voiture insérée avec succés!");
         alert.show();
     }
+    
     }
-
+    
 }

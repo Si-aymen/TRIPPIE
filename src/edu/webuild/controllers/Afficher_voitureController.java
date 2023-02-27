@@ -3,14 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
 import edu.webuild.interfaces.InterfaceCRUD;
-import edu.webuild.interfaces.InterfaceCRUD2;
 import edu.webuild.model.voiture;
-import edu.webuild.model.reservation;
 import edu.webuild.services.voitureCRUD;
-import edu.webuild.services.reservationCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -24,13 +21,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -43,24 +36,24 @@ public class Afficher_voitureController implements Initializable {
     private ListView<voiture> affichervoiture;
     @FXML
     private Button supprimer;
-    private TextField supsup;
     @FXML
     private Button mod;
+    @FXML
+    private Button reservervoiture ; 
+            
     static int id;
     static String matricule;
     static String marque;
     static String Puissence;
     static String Prix_jour;
     static voiture voiture;
-    @FXML
-    private Button reservervoiture;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ListView<voiture> list1 = affichervoiture;
+        ListView<voiture> list1 = (ListView<voiture>) affichervoiture;
         InterfaceCRUD inter = new voitureCRUD();
         List<voiture> list2 = inter.affichervoitures();
         for (int i = 0; i < list2.size(); i++) {
@@ -68,13 +61,11 @@ public class Afficher_voitureController implements Initializable {
             list1.getItems().add(v);
 
         }
-
-        // TODO
-    }
+    }    
 
     @FXML
     private void supprimer_voiture(ActionEvent event) {
-        ListView<voiture> list = affichervoiture;
+         ListView<voiture> list = affichervoiture;
         InterfaceCRUD inter = new voitureCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
@@ -102,7 +93,7 @@ public class Afficher_voitureController implements Initializable {
         try {
 
             Parent page1
-                    = FXMLLoader.load(getClass().getResource("modifiervoiture.fxml"));
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/modifiervoiture.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -115,7 +106,7 @@ public class Afficher_voitureController implements Initializable {
 
     @FXML
     private void reservervoiture(ActionEvent event) {
-        ListView<voiture> list = affichervoiture;
+         ListView<voiture> list = affichervoiture;
         InterfaceCRUD inter = new voitureCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         voiture v = list.getSelectionModel().getSelectedItem();
@@ -124,7 +115,7 @@ public class Afficher_voitureController implements Initializable {
         try {
 
             Parent page1
-                    = FXMLLoader.load(getClass().getResource("ajouterreservation.fxml"));
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouterreservation.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -134,4 +125,6 @@ public class Afficher_voitureController implements Initializable {
 
         }
     }
-}
+    }
+    
+

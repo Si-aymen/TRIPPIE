@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
-import edu.webuild.interfaces.InterfaceCRUD;
 import edu.webuild.interfaces.InterfaceCRUD2;
 import edu.webuild.model.reservation;
 import edu.webuild.services.reservationCRUD;
-import edu.webuild.services.voitureCRUD;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
@@ -20,7 +18,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -41,14 +38,12 @@ public class AjouterreservationController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         // TODO
-    }
+    }    
 
     @FXML
     private void ajouter_reservation(ActionEvent event) {
-
-        Date date_debut = java.sql.Date.valueOf(date_debut_pk.getValue());
+         Date date_debut = java.sql.Date.valueOf(date_debut_pk.getValue());
         Date date_fin = java.sql.Date.valueOf(date_fin_pk1.getValue());
         reservation res = new reservation(date_debut, date_fin, Afficher_voitureController.voiture);
         InterfaceCRUD2 inter = new reservationCRUD();
@@ -60,5 +55,6 @@ public class AjouterreservationController implements Initializable {
         alert.setContentText("voiture insérée avec succés!");
         alert.show();
     }
+    }
+    
 
-}

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,7 +45,7 @@ public class Crud_voitureController implements Initializable {
          try {
 
 Parent page1 =
-FXMLLoader.load(getClass().getResource("afficher_voiture.fxml"));
+FXMLLoader.load(getClass().getResource("/edu/webuild/gui/afficher_voiture.fxml"));
 Scene scene = new Scene(page1);
 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 stage.setScene(scene);
@@ -55,15 +55,14 @@ Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE,nu
 
 
 } 
-        
     }
 
     @FXML
     private void ajouter_voiture(ActionEvent event) {
-                try {
+          try {
 
 Parent page1 =
-FXMLLoader.load(getClass().getResource("ajouter_voiture.fxml"));
+FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_voiture.fxml"));
 Scene scene = new Scene(page1);
 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 stage.setScene(scene);
@@ -72,4 +71,8 @@ stage.show();
 Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE,null, ex);
 
 
-}}}
+}
+        
+    }
+    
+}

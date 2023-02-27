@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.gui.Modifier_reservationController">
-   <children>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Modifier_reservationController">
+    <children>
       <DatePicker fx:id="date_debut_pk" layoutX="223.0" layoutY="125.0" />
       <DatePicker fx:id="date_fin_pk" layoutX="224.0" layoutY="233.0" />
       <Button fx:id="modifier" layoutX="472.0" layoutY="315.0" mnemonicParsing="false" onAction="#modifier_reservation" text="modifier" />
