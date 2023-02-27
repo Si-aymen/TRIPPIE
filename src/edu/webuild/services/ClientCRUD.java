@@ -200,7 +200,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
         return list;
     }
 
-    public boolean FoundUser(String email, String password) throws SQLException {
+    public boolean FoundClient(String email, String password) throws SQLException {
         String query = "SELECT COUNT(*) FROM client WHERE email = ? AND password = ?";
         PreparedStatement pstmt = conn.prepareStatement(query);
 

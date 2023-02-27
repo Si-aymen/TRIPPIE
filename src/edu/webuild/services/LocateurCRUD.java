@@ -10,6 +10,7 @@ import edu.webuild.model.Locateur;
 import edu.webuild.model.Role;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -187,6 +188,23 @@ public List<Locateur> afficherLocateur() {
         }
 
         return list;
+    }
+    
+     public boolean FoundLocateur(String email, String password) throws SQLException {
+        String query = "SELECT COUNT(*) FROM locateur WHERE email = ? AND password = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+
+        pstmt.setString(1, email);
+        pstmt.setString(2, password);
+
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            int count = rs.getInt(1);
+            return count > 0;
+        }
+
+        return false;
     }
 
     

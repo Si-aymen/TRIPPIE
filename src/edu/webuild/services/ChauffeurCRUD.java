@@ -212,7 +212,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         return list;
     }
 
-    public boolean FoundUser(String email, String password) throws SQLException {
+        public boolean FoundChauffeur(String email, String password) throws SQLException {
         String query = "SELECT COUNT(*) FROM chauffeur WHERE email = ? AND password = ?";
         PreparedStatement pstmt = conn.prepareStatement(query);
 
@@ -229,6 +229,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         return false;
     }
 
+    
     public void resetPass(Chauffeur ch) {
 
         try {

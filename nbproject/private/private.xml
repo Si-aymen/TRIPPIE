@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_chauffeurController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_locateurController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Modifier_roleController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/affiche_cl.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Utilisateur.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Role.java</file>
@@ -33,12 +34,14 @@
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/afficher_user.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ProfilClientController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ajouter_user.fxml</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/style.css</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_roleController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/Welcome.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/GetPassword.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/Login.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_clController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Client.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/LocateurCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Modifier_locController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceUserCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/SendPasswordController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/ClientCRUD.java</file>

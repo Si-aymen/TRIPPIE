@@ -7,6 +7,7 @@ package edu.webuild.controllers;
 
 import edu.webuild.model.Client;
 import edu.webuild.utils.MyConnection;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +21,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -32,48 +38,69 @@ public class ProfilClientController implements Initializable {
     private Button exitBtn;
     private int id_client_connecte;
     @FXML
-    private Label fxnom;
+    private TextField fxnom;
     @FXML
-    private Label fxprenom;
-   
+    private TextField fxprenom;
+    private static String currentUserEmail;
     @FXML
-    private ListView<Client> listview;
+    private TextField fxemail;
+    private String email;
 
-   
+    public void setEmail(String email) {
+        this.email = email;
+        currentUserEmail = email;
+      
+    }
+
+    public void setFxnom(TextField fxnom) {
+        this.fxnom = fxnom;
+    }
+
+    public void setFxprenom(TextField fxprenom) {
+        this.fxprenom = fxprenom;
+    }
+
+    public void setFxemail(TextField fxemail) {
+        this.fxemail = fxemail;
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        MyConnection c = new MyConnection();
-        Connection cnx = c.getConn();
-        String query = "SELECT utilisateur.nom, utilisateur.prenom, client.email "
-                + "FROM utilisateur "
-                + "INNER JOIN role ON utilisateur.id_user = role.id_user "
-                + "INNER JOIN client ON role.id_role = client.id_role "
-                + "WHERE client.email = ? AND client.password = ?";
-        try {
-            PreparedStatement ps = cnx.prepareStatement(query);
-            ps.setString(1, "email_du_client");
-            ps.setString(2, "mot_de_passe_du_client");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                String nom = rs.getString("nom");
-                String prenom = rs.getString("prenom");
-                String email = rs.getString("email");
-                String list = nom + "/" + prenom + "/" + email;
-                listview.getItems().add(list);
+
+        // Check if there is a current user email
+        if (email != null) {
+            System.out.println("im here");
+              System.out.println(email); 
+            // Use the current user email to display the user's details
+            try (Connection connection = MyConnection.getInstance().getConn()) {
+                String query = "SELECT utilisateur.nom, utilisateur.prenom, utilisateur.email "
+                        + "FROM utilisateur "
+                        + "JOIN role ON utilisateur.id_user = role.id_user "
+                        + "JOIN client ON role.id_role = client.id_role "
+                        + "WHERE email = ? ";
+                PreparedStatement statement = connection.prepareStatement(query);
+                statement.setString(1, email);
+                ResultSet resultSet = statement.executeQuery();
+                if (resultSet.next()) {
+                    String nom = resultSet.getString("nom");
+                    String prenom = resultSet.getString("prenom");
+                    String email = resultSet.getString("email");
+                    fxnom.setText(nom);
+                    fxprenom.setText(prenom);
+                    fxemail.setText(email);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
         }
-
     }
 
     @FXML
-    private void exit(ActionEvent event) {
+    private void exit(ActionEvent event
+    ) {
         exitBtn.setOnAction(e -> Platform.exit());
     }
 
