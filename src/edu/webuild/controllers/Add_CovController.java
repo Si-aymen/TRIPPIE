@@ -7,6 +7,7 @@ package edu.webuild.controllers;
 
 import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.model.CoVoiturage;
+import edu.webuild.services.Call_Cov;
 import edu.webuild.services.CoVoiturageCRUD;
 import edu.webuild.services.EmailSender;
 import edu.webuild.services.SmS_Cov;
@@ -160,9 +161,11 @@ public class Add_CovController implements Initializable {
                 + "Best regards,";
 
         String emailto = email.getText();
-        EmailSender.sendEmail_add(emailto,message);
+        EmailSender.sendEmail_add(emailto, message);
         send.send_message("+21692554097", message);
-        
+
+        Call_Cov test_call = new Call_Cov();
+        test_call.cal("+21692554097");
 
         try {
 

@@ -10,13 +10,14 @@ public class SmS_Cov {
     // Find your Account Sid and Token at twilio.com/console
 
     public static final String ACCOUNT_SID = "AC1ed373981440ff3b6ccefc4eb68223b7";
-    public static final String AUTH_TOKEN = "90af29a6f56ee87124333cdf2dd07dd1";
+    public static final String AUTH_TOKEN = "12e649ee6be8f46c2a00151f1427739a";
 
-    public void send_message(String To,String value ) {
+    public void send_message(String To, String value) {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-        
+
         Message message;
-        message = Message.creator(new com.twilio.type.PhoneNumber(To), new com.twilio.type.PhoneNumber("+12766226509"),value).create();
+        //message = Message.creator(new com.twilio.type.PhoneNumber(To), new com.twilio.type.PhoneNumber("+12766226509"), value).create();
+        message = Message.creator(new com.twilio.type.PhoneNumber(To), new com.twilio.type.PhoneNumber("+12766226509"), value).create();
 
         System.out.println(message.getSid());
     }
