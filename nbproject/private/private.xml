@@ -3,9 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/edu/webuild/interfaces/CouponAjoutController.java</file>
-            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/edu/webuild/interfaces/CouponWindow.java</file>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/edu/webuild/interfaces/Table1Controller.java</file>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/webuild/Webuild.java</file>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/edu/webuild/interfaces/ModifierController.java</file>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/edu/webuild/interfaces/AjoutercouponController.java</file>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/edu/webuild/interfaces/Table2Controller.java</file>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/edu/webuild/inter/interfacecoupon.java</file>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/edu/webuild/interfaces/tablemain.java</file>
             <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/edu/webuild/model/coupon.java</file>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/edu/webuild/services/couponCrud.java</file>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/edu/webuild/interfaces/ModifiercadeauController.java</file>
+            <file>file:/C:/Users/HP/Desktop/3A4/java/prosit2/promotion1/src/edu/webuild/inter/interfacecadeau.java</file>
         </group>
     </open-files>
 </project-private>
