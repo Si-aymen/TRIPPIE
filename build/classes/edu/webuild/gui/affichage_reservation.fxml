@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Affichage_reservationController">
+<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Affichage_reservationController">
      <children>
-      <ListView fx:id="affichage_reservation" layoutX="55.0" layoutY="46.0" prefHeight="272.0" prefWidth="504.0" />
-      <Button fx:id="supprimer_reservation" layoutX="74.0" layoutY="340.0" mnemonicParsing="false" onAction="#supprimer_reservation" text="supprimer" />
-      <Button fx:id="updatereservation" layoutX="459.0" layoutY="340.0" mnemonicParsing="false" onAction="#updatereservation" text="updatereservation" />
+      <ListView fx:id="affichage_reservation" layoutX="273.0" layoutY="38.0" prefHeight="506.0" prefWidth="1089.0" />
+      <Button fx:id="supprimer_reservation" layoutX="366.0" layoutY="577.0" mnemonicParsing="false" onAction="#supprimer_reservation" prefHeight="58.0" prefWidth="112.0" text="supprimer " />
+      <Button fx:id="updatereservation" layoutX="658.0" layoutY="580.0" mnemonicParsing="false" onAction="#updatereservation" prefHeight="52.0" prefWidth="112.0" text="modifier reservation" />
+      <AnchorPane layoutY="-15.0" prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;" />
+      <Button layoutX="915.0" layoutY="580.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="112.0" text="details" />
    </children>
+  
 </AnchorPane>

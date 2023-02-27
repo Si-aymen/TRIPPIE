@@ -19,12 +19,26 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 
+
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Call;
+import java.net.URI;
+
 /**
  * FXML Controller class
  *
  * @author khmir
  */
 public class AjouterreservationController implements Initializable {
+    
 
     @FXML
     private Button ajouter_reservation;
@@ -32,6 +46,8 @@ public class AjouterreservationController implements Initializable {
     private DatePicker date_debut_pk;
     @FXML
     private DatePicker date_fin_pk1;
+        public static final String ACCOUNT_SID ="ACb4efd56d6c3d29ef384aca75f3d2237d";
+    public static final String AUTH_TOKEN = "f82e10f9854258e174ee5029059a4d74" ;
 
     /**
      * Initializes the controller class.
@@ -54,7 +70,22 @@ public class AjouterreservationController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("voiture insérée avec succés!");
         alert.show();
+         System.out.println(ACCOUNT_SID);
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+        Call call = Call.creator(
+         new com.twilio.type.PhoneNumber("+21625104011"), new com.twilio.type.PhoneNumber("+12766183954"), URI.create("http://demo.twilio.com/docs/voice.xml")).create();
+        System.out.println(call.getSid());
+
     }
     }
+
+
+
+ 
+
+  
+
+
     
 
