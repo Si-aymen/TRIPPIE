@@ -18,7 +18,7 @@
             <Button fx:id="loginBtn" layoutX="374.0" layoutY="292.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="249.0" style="-fx-background-color: BLACK;" text="Login" textFill="WHITE" />
             <PasswordField fx:id="txtpass" layoutX="383.0" layoutY="191.0" prefHeight="27.0" prefWidth="231.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-prompt-text-fill: #000000;" />
             
-            <AnchorPane prefHeight="410.0" prefWidth="264.0" style="-fx-background-color: #FFFFFF">
+            <AnchorPane prefHeight="410.0" prefWidth="264.0" style="-fx-background-color: #828CA7">
                <children>
                   <Label layoutX="46.0" layoutY="231.0" text="Bienvenue à notre application" textFill="BLACK">
                      <font>

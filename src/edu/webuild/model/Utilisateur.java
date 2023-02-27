@@ -28,6 +28,11 @@ public class Utilisateur {
     public Utilisateur(int id_user) {
         this.id_user = id_user;
     }
+
+    public Utilisateur(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+    }
     
     
     //constructur parametre 

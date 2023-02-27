@@ -42,6 +42,18 @@ public class Ajouter_clientController implements Initializable {
     @FXML
     private TextField fxid;
 
+    
+    /**
+     *
+     * @param id
+     */
+    public void SetId_role(String id) {
+         this.fxid.setText(id);
+    }
+
+    
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -54,10 +66,10 @@ public class Ajouter_clientController implements Initializable {
     private void addcli(ActionEvent event) {
         Role r = new Role();
         roleCRUD rc = new roleCRUD();
-        int id_role = Integer.parseInt(fxid.getText());
+        r.setId_role(Integer.parseInt(fxid.getText()));
         String email = fxmail.getText();
         String password = fxpass.getText();
-        r.setId_role(id_role);
+       
 
         // Définir la regex pour valider l'adresse e-mail
         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";

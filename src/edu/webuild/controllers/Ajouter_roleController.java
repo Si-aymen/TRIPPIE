@@ -48,21 +48,42 @@ public class Ajouter_roleController implements Initializable {
     private RadioButton fxloc;
 
     private String cin;
-    
-    private int id_user ;
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    private int id_role;
+    private Utilisateur user;
+    @FXML
+    private TextField fxidu;
+    @FXML
+    private TextField test;
+
+    /**
+     *
+     * @param id
+     */
+    public void setFxidu(String id) {
+        this.fxidu.setText(id);
     }
 
-    
+    /**
+     *
+     * @param u
+     */
+    /*public void setUser(Utilisateur u) {
+        user = u;
+        System.out.println(user);
+        System.out.println(user.getId_user() + "");
+        test.setText(user.getId_user() + "");
+        System.out.println(user.getId_user() + "");
+        fxidu.setText(user.getId_user() + "");
+        System.out.println(user.getId_user() + "");
+
+    }*/
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//fxid.setText(id_user+"");
-//System.out.println(fxid.getText());
+
     }
 
     @FXML
@@ -70,62 +91,62 @@ public class Ajouter_roleController implements Initializable {
         Utilisateur u = new Utilisateur();
         utilisateurCRUD uc = new utilisateurCRUD();
 //        int ID = Integer.parseInt(fxid.getText());
-
+        roleCRUD rc = new roleCRUD();
         if (fxclient.isSelected()) {
             String libelle = fxclient.getText();
-            System.out.println(id_user);
-
-            u.setId_user(id_user);
+            u.setId_user(Integer.parseInt(fxidu.getText()));
             Role r = new Role();
+
             r.setLibelle("Client");
             uc.affecterClient(r, u);
+            String id = rc.getById_user(Integer.parseInt(fxidu.getText())).getId_role() + "";
             try {
 
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_client.fxml"));
-                Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/ajouter_client.fxml"));
+                Parent rooot = loader.load();
+                Ajouter_clientController dc = loader.getController();
+                fxclient.getScene().setRoot(rooot);
+                dc.SetId_role(id);
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-
+                System.out.println(ex.getMessage());
             }
+
         } else if (fxch.isSelected()) {
             String libelle = fxch.getText();
 
-            u.setId_user(id_user);
+            u.setId_user(Integer.parseInt(fxidu.getText()));
             Role r = new Role();
             r.setLibelle("Chauffeur");
             uc.affecterChauffeur(r, u);
+            String id = rc.getById_user(Integer.parseInt(fxidu.getText())).getId_role() + "";
             try {
 
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_chauffeur.fxml"));
-                Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/ajouter_chauffeur.fxml"));
+                Parent rooot = loader.load();
+                Ajouter_chauffeurController dc = loader.getController();
+                fxclient.getScene().setRoot(rooot);
+                dc.SetId_role(id);
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-
+                System.out.println(ex.getMessage());
             }
-        } else if(fxloc.isSelected()) {
+        } else if (fxloc.isSelected()) {
             String libelle = fxloc.getText();
 
-            u.setId_user(id_user);
+            u.setId_user(Integer.parseInt(fxidu.getText()));
             Role r = new Role();
             r.setLibelle("Locateur");
             uc.affecterLocateur(r, u);
 
+             String id = rc.getById_user(Integer.parseInt(fxidu.getText())).getId_role() + "";
             try {
 
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_locateur.fxml"));
-                Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/ajouter_locateur.fxml"));
+                Parent rooot = loader.load();
+                Ajouter_locateurController dc = loader.getController();
+                fxclient.getScene().setRoot(rooot);
+                dc.SetId_role(id);
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-
+                System.out.println(ex.getMessage());
             }
 
         }

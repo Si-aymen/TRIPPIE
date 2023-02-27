@@ -264,4 +264,26 @@ public class roleCRUD implements InterfaceRoleCRUD {
     return null;
 }
 
+    @Override
+    public Role getById_user(int id_user) {
+        Role r = new Role();
+
+        try {
+            String req = "SELECT * FROM `role` WHERE id_user = '" + id_user + "'";//"SELECT utilisateur. *, role.libelle FROM utilisateur INNER JOIN role ON utilisateur.role = role.id_role";
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                r.setId_role(RS.getInt(1));
+                r.setLibelle(RS.getString(2));
+               Utilisateur u =new Utilisateur(id_user);
+                u.setId_user(id_user);
+                r.setId_user(u);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+        return r;
+    }
 }

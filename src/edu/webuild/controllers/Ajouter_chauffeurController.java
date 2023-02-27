@@ -51,6 +51,16 @@ public class Ajouter_chauffeurController implements Initializable {
     private TextField fxid;
 
     /**
+     *
+     * @param id
+     */
+    public void SetId_role(String id) {
+         this.fxid.setText(id);
+    }
+    
+    
+    
+    /**
      * Initializes the controller class.
      */
     @Override
@@ -62,14 +72,14 @@ public class Ajouter_chauffeurController implements Initializable {
     private void addch(ActionEvent event) {        
         Role r = new Role();
         roleCRUD rc = new roleCRUD();
-        int id_role = Integer.parseInt(fxid.getText());
+        r.setId_role(Integer.parseInt(fxid.getText()));
         String num_permis = fxperm.getText();
         String marque_voiture = fxmarque.getText();
         String couleur_voiture = fxcoul.getText();
         String email = fxmail.getText();
         String password = fxpass.getText();
         String immatriculation = fxmat.getText();
-        r.setId_role(id_role);
+       
         // Définir la regex pour valider l'adresse e-mail
         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
         if (num_permis.isEmpty() || marque_voiture.isEmpty() || couleur_voiture.isEmpty() || immatriculation.isEmpty()|| email.isEmpty()|| password.isEmpty()) {

@@ -28,6 +28,7 @@ public interface InterfaceRoleCRUD {
        public void affecterRole(Chauffeur ch,Role r);
        public void affecterRole2(Client cli,Role r);
        public void affecterRole3(Locateur loc,Role r);
+        public Role getById_user(int id_user);
         
 }
 

@@ -16,6 +16,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -37,13 +39,8 @@ import javafx.stage.Stage;
  */
 public class LoginController {
 
-   
     @FXML
     private Button forgotBtn;
-   
-
- 
-  
 
     @FXML
     private TextField txtusername;
@@ -51,10 +48,8 @@ public class LoginController {
     @FXML
     private Button loginBtn;
 
-
     @FXML
     private PasswordField txtpass;
-
 
     @FXML
     private Button exitBtn;
@@ -64,19 +59,17 @@ public class LoginController {
     ResultSet rs;
     private FirstWindow main;
 
-    
-     public void setMain(FirstWindow main) {
-        this.main = main; 
-       
+    public void setMain(FirstWindow main) {
+        this.main = main;
+
     }
-    
-     private boolean validateInput() throws SQLException, NoSuchAlgorithmException {
+
+    private boolean validateInput() throws SQLException, NoSuchAlgorithmException {
         boolean isValid = true;
         String email = txtusername.getText();
         String password = txtpass.getText();
- 
 
-ClientCRUD cc = new ClientCRUD();
+        ClientCRUD cc = new ClientCRUD();
 
         // Validate email address
         if (!Pattern.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}", email)) {
@@ -101,8 +94,6 @@ ClientCRUD cc = new ClientCRUD();
         return isValid;
     }
 
-    
-    
     @FXML
     public void exit(ActionEvent event) throws IOException {
         exitBtn.setOnAction(e -> Platform.exit());
@@ -114,15 +105,12 @@ ClientCRUD cc = new ClientCRUD();
         if (validateInput()) {
 
             String email = txtusername.getText();
-           
+
             //User u = userService.getUserByEmai(email); // l'email de l'utilisateur connecté
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilClient.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Welcome.fxml"));
 
             Parent root = loader.load();
             WelcomeController dc = loader.getController();
-            
-
-            
 
             // Create a new scene with the loaded FXML file and show it
             Scene scene = new Scene(root);
@@ -145,13 +133,13 @@ ClientCRUD cc = new ClientCRUD();
 
     @FXML
     public void forgotPsw(ActionEvent event) throws IOException {
-        
+
         Parent view4 = FXMLLoader.load(getClass().getResource("GetPassword.fxml"));
         Scene scene4 = new Scene(view4);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene4);
         window.show();
-    }
-
    
+    
+}
 }

@@ -21,7 +21,7 @@ String user = "root";
 String pwd = "";
 private static MyConnection instance;
 
-    private MyConnection() {
+    public MyConnection() {
         try {
             conn=DriverManager.getConnection(url, user, pwd);
             System.out.println("Connexion etablie!!!");

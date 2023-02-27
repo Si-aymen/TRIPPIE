@@ -22,4 +22,5 @@ public interface InterfaceClientCRUD {
     public List<Client> FiltrerClient(String f1, String f2);
      public List<Client> trierClient();
      public Role getRole(int id_role);
+      public String afficherProfilClient(String email, String password);
 }

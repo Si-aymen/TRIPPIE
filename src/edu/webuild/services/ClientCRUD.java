@@ -8,6 +8,7 @@ package edu.webuild.services;
 import edu.webuild.interfaces.InterfaceClientCRUD;
 import edu.webuild.model.Client;
 import edu.webuild.model.Role;
+import edu.webuild.model.Utilisateur;
 import java.sql.Connection;
 import java.sql.Statement;
 import edu.webuild.utils.MyConnection;
@@ -42,10 +43,10 @@ public class ClientCRUD implements InterfaceClientCRUD {
         }
     }
 
-   @Override
+    @Override
     public void modifierClient(Client cl) {
         try {
-            String req = "UPDATE `client` SET `email` = '" + cl.getEmail() + "', `password` = '" + cl.getPassword()+  "' WHERE `client`.`id_client` = " + cl.getId_client();
+            String req = "UPDATE `client` SET `email` = '" + cl.getEmail() + "', `password` = '" + cl.getPassword() + "' WHERE `client`.`id_client` = " + cl.getId_client();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Client updated !");
@@ -54,6 +55,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
 
         }
     }
+
     @Override
     public void supprimerClient(int id_client) {
         try {
@@ -90,7 +92,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
 
         return list;
     }
-    
+
     @Override
     public Role getRole(int id_role) {
         Role r = new Role();
@@ -100,9 +102,8 @@ public class ClientCRUD implements InterfaceClientCRUD {
             Statement st = conn.createStatement();
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
-               
+
                 r.setLibelle(RS.getString(1));
-               
 
             }
         } catch (SQLException ex) {
@@ -198,7 +199,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
 
         return list;
     }
-    
+
     public boolean FoundUser(String email, String password) throws SQLException {
         String query = "SELECT COUNT(*) FROM client WHERE email = ? AND password = ?";
         PreparedStatement pstmt = conn.prepareStatement(query);
@@ -215,63 +216,79 @@ public class ClientCRUD implements InterfaceClientCRUD {
 
         return false;
     }
-    
-    
-  
-    
+
     public Client getByIdRole(int id_role) {
-    String query = "SELECT * FROM client WHERE id_role = ?";
+        String query = "SELECT * FROM client WHERE id_role = ?";
 
-    try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-        preparedStatement.setInt(1, id_role);
+        try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+            preparedStatement.setInt(1, id_role);
 
-        ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-        if (resultSet.next()) {
-            int idClient = resultSet.getInt("id_client");
-            int idRoleClient = resultSet.getInt("id_role");
-            String email = resultSet.getString("email");
-            String password = resultSet.getString("password");
+            if (resultSet.next()) {
+                int idClient = resultSet.getInt("id_client");
+                int idRoleClient = resultSet.getInt("id_role");
+                String email = resultSet.getString("email");
+                String password = resultSet.getString("password");
 
-            roleCRUD roleCRUD = new roleCRUD();
-            Role role = (Role) roleCRUD.getById(idRoleClient);
+                roleCRUD roleCRUD = new roleCRUD();
+                Role role = (Role) roleCRUD.getById(idRoleClient);
 
-            return new Client(idClient, role, email, password);
+                return new Client(idClient, role, email, password);
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
         }
 
-    } catch (SQLException ex) {
-        System.err.println(ex.getMessage());
+        return null;
     }
 
-    return null;
-}
-    
-   public void afficherProfilClient(String email, String password) {
-    String query = "SELECT utilisateur.nom, utilisateur.prenom " +
-                   "FROM utilisateur " +
-                   "INNER JOIN role ON utilisateur.id_user = role.id_user " +
-                   "INNER JOIN client ON role.id_role = client.id_role " +
-                   "WHERE client.email = ? AND client.password = ?";
-    
-    try {
-       
-        PreparedStatement ps = conn.prepareStatement(query);
-        ps.setString(1, email);
-        ps.setString(2, password);
-        ResultSet rs = ps.executeQuery();
-        
-        if (rs.next()) {
-            String nom = rs.getString("nom");
-            String prenom = rs.getString("prenom");
-            System.out.println(nom + " " + prenom);
-        } else {
-            System.out.println("Adresse email ou mot de passe incorrect.");
+    @Override
+    public String afficherProfilClient(String email, String password) {
+        String query = "SELECT utilisateur.nom, utilisateur.prenom "
+                + "FROM utilisateur "
+                + "INNER JOIN client ON utilisateur.id_user = client.id_user "
+                + "WHERE client.email = ? AND client.password = ?";
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String nom = rs.getString("nom");
+                String prenom = rs.getString("prenom");
+                return nom + " " + prenom;
+            } else {
+                return null;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
-        
-    } catch (SQLException e) {
-        e.printStackTrace();
     }
-}
-    
 
+    public Utilisateur getClient(String email, String password) throws SQLException {
+        String query = "SELECT utilisateur.nom, utilisateur.prenom "
+                + "FROM utilisateur "
+                + "JOIN role ON utilisateur.id_user = role.id_user "
+                + "JOIN client ON role.id_role = client.id_role "
+                + "WHERE email = ? AND password = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String nom = rs.getString("nom");
+                String prenom = rs.getString("prenom");
+                return new Utilisateur(nom, prenom);
+            } else {
+                return null;
+            }
+
+        }
 }

@@ -46,6 +46,16 @@ public class Ajouter_locateurController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    
+     /**
+     *
+     * @param id
+     */
+    public void SetId_role(String id) {
+         this.fxid.setText(id);
+    } 
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -55,11 +65,11 @@ public class Ajouter_locateurController implements Initializable {
     private void addloc(ActionEvent event) {
          Role r = new Role();
         roleCRUD rc = new roleCRUD();
-        int id_role = Integer.parseInt(fxid.getText());
+        r.setId_role(Integer.parseInt(fxid.getText()));
         String nom_agence=fxagence.getText();
         String email = fxmail.getText();
         String password = fxpass.getText();
-         r.setId_role(id_role);
+        
           String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
         if (nom_agence.isEmpty()|| email.isEmpty()|| password.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

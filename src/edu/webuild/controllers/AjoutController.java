@@ -48,8 +48,6 @@ import javafx.stage.Stage;
  */
 public class AjoutController implements Initializable {
 
-    
-
     @FXML
     private TextField fxcin;
     @FXML
@@ -62,7 +60,7 @@ public class AjoutController implements Initializable {
     private TextField fxage;
     @FXML
     private Button btnajout;
-   public static int id_user;
+    public static int id_user;
 
     /**
      * Initializes the controller class.
@@ -138,21 +136,19 @@ public class AjoutController implements Initializable {
             uc.ajouterUtilisateur(u);
             //role
 
-            try {
-                Ajouter_roleController rc = new Ajouter_roleController();
-                int id_user = uc.getByCin(cin).getId_user();
-                        System.out.println(id_user);
-                rc.setId_user(id_user);
-//                rc.setFxid(id_user+"");
-                System.out.println("cbon");
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_role.fxml"));
-                Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            String id = uc.getByCin(cin).getId_user() + "";
 
+//                rc.setFxid(id_user+"");
+            System.out.println(id);
+            try {
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/ajouter_role.fxml"));
+                Parent rooot=loader.load();
+                Ajouter_roleController dc = loader.getController();
+                fxcin.getScene().setRoot(rooot);
+                dc.setFxidu(id);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
             }
 
         }
