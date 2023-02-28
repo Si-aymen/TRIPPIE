@@ -12,6 +12,7 @@ import edu.webuild.model.Utilisateur;
 import java.sql.Connection;
 import java.sql.Statement;
 import edu.webuild.utils.MyConnection;
+import static java.lang.Math.log;
 import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,6 +21,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import static javax.mail.Flags.Flag.USER;
+import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
 /**
  *
@@ -271,24 +273,122 @@ public class ClientCRUD implements InterfaceClientCRUD {
         }
     }
 
-    public Utilisateur getClient(String email, String password) throws SQLException {
-        String query = "SELECT utilisateur.nom, utilisateur.prenom "
+    /*public Client getClient(String email, String password) throws SQLException {
+        String query = "SELECT utilisateur.nom, utilisateur.prenom, role.id_role "
+                + "FROM utilisateur "
+                + "JOIN role ON utilisateur.id_user = role.id_user "
+                + "JOIN client ON role.id_role = client.id_role "
+                + "JOIN utilisateur ON utilisateur.id_user = client.id_user "
+                + "WHERE email = ? AND password = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, email);
+            ps.setString(2, password);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String nom = rs.getString("nom");
+                    String prenom = rs.getString("prenom");
+                    int id_role = rs.getInt("id_role");
+                    int id_client = rs.getInt("id_client");
+                    int id_user = rs.getInt("id_user");
+                    //Utilisateur user = new Utilisateur(nom, prenom);
+                    // Créer l'objet User
+                    Utilisateur user = new Utilisateur();
+                    // Créer l'objet Role
+                    Role role = new Role(id_role, user);
+
+                    // Créer l'objet Client
+                    Client client = new Client();
+                    client.setEmail(email);
+                    client.setId_client(id_client);
+                    user.setId_user(id_user);
+                    client.setId_role(role);
+                    return client;
+
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }*/
+    public Client getClient(String email, String password) throws SQLException {
+        String query = "SELECT utilisateur.nom, utilisateur.prenom, role.id_role, role.id_user, client.id_client "
                 + "FROM utilisateur "
                 + "JOIN role ON utilisateur.id_user = role.id_user "
                 + "JOIN client ON role.id_role = client.id_role "
                 + "WHERE email = ? AND password = ?";
-            PreparedStatement ps = conn.prepareStatement(query);
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, email);
             ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String nom = rs.getString("nom");
+                    String prenom = rs.getString("prenom");
+                    int id_role = rs.getInt("id_role");
+                    int id_client = rs.getInt("id_client");
+                    int id_user = rs.getInt("id_user");
 
-            if (rs.next()) {
-                String nom = rs.getString("nom");
-                String prenom = rs.getString("prenom");
-                return new Utilisateur(nom, prenom);
-            } else {
-                return null;
+                    // Créer l'objet User
+                    Utilisateur user = new Utilisateur();
+                    user.setId_user(id_user);
+                    user.setNom(nom);
+                    user.setPrenom(prenom);
+
+                    // Créer l'objet Role
+                    Role role = new Role();
+                    role.setId_role(id_role);
+                    role.setId_user(user);
+
+                    // Créer l'objet Client
+                    Client client = new Client();
+                    client.setEmail(email);
+                    client.setId_client(id_client);
+                    client.setId_role(role);
+
+                    return client;
+
+                } else {
+                    return null;
+                }
             }
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return null;
+    }
+
+    /*public void afficherProfil(Client client) {
+        System.out.println("Nom: " + client.getUtilisateur().getNom());
+        System.out.println("Prénom: " + client.getUtilisateur().getPrenom());
+        System.out.println("Email: " + client.getEmail());
+
+        // Récupérer le rôle du client
+        Role role = client.getId_role();
+
+        System.out.println("Rôle: " + role.getLibelle());
+
+        // Récupérer l'utilisateur associé au rôle
+        Utilisateur user = role.getId_user();
+
+        System.out.println("ID Utilisateur: " + user.getId_user());
+    }*/
+    public List<Client> getClientByEmail(String email) throws SQLException {
+        String query = "SELECT * FROM client WHERE email = ?";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setString(1, email);
+        ResultSet rs = preparedStatement.executeQuery();
+        List<Client> clients = new ArrayList<>();
+        while (rs.next()) {
+            Client client = new Client();
+            Role role = new Role();
+            client.setId_role(role);
+            client.setId_client(rs.getInt("id_client"));
+            client.setEmail(rs.getString("email"));
+            client.setPassword(rs.getString("Password"));
+            clients.add(client);
+        }
+        return clients;
+    }
 }

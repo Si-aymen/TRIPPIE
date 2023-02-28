@@ -71,6 +71,11 @@ public class LoginController {
 
     }
 
+    public void setTxtusername(String email) {
+        this.txtusername.setText(email);
+    }
+    
+
     @FXML
     public void initialize() {
         fxchoice.getItems().addAll("Client", "Chauffeur", "Locateur", "Admin");
@@ -191,7 +196,6 @@ public class LoginController {
                     Parent root = loader.load();
                     ProfilClientController freelancerController = loader.getController();
                     freelancerController.setEmail(email);
-                    
                     Scene scene = new Scene(root);
                     Stage stage = (Stage) loginBtn.getScene().getWindow();
                     stage.setScene(scene);

@@ -39,6 +39,12 @@ public class Client {
         this.email = email;
         this.password = password;
     }
+
+    public Client(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+    
     
     
 

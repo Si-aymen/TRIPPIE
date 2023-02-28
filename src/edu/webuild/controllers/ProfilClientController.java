@@ -49,6 +49,8 @@ public class ProfilClientController implements Initializable {
     public void setEmail(String email) {
         this.email = email;
         currentUserEmail = email;
+        System.out.println(email);
+      
       
     }
 
@@ -66,12 +68,14 @@ public class ProfilClientController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+            fxemail.setText(email);
         // Check if there is a current user email
-        if (email != null) {
+       /* if (email != null) {
             System.out.println("im here");
               System.out.println(email); 
             // Use the current user email to display the user's details
@@ -95,7 +99,8 @@ public class ProfilClientController implements Initializable {
             } catch (SQLException ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }*/
+       
     }
 
     @FXML

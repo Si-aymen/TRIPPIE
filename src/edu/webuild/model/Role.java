@@ -24,6 +24,16 @@ public class Role  {
         this.libelle = libelle;
     }
 
+    public Role(int id_role) {
+        this.id_role = id_role;
+    }
+
+    public Role(int id_role, Utilisateur id_user) {
+        this.id_role = id_role;
+        this.id_user = id_user;
+    }
+
+    
     
     public Role(int id_role, String libelle) {
         this.id_role = id_role;

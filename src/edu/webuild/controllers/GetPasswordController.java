@@ -1,21 +1,45 @@
 package edu.webuild.controllers;
 
-import edu.webuild.services.ChauffeurCRUD;
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.googleapis.json.GoogleJsonError;
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.client.repackaged.org.apache.commons.codec.EncoderException;
+import com.google.api.client.util.store.FileDataStoreFactory;
+import com.google.api.services.gmail.Gmail;
+import static com.google.api.services.gmail.GmailScopes.GMAIL_SEND;
+import edu.webuild.model.Client;
+import edu.webuild.services.ClientCRUD;
 import edu.webuild.utils.MyConnection;
-import java.awt.Component;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
-import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,20 +48,23 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.mail.Authenticator;
 import javax.swing.JOptionPane;
 import javax.mail.Message;
+import static javax.mail.Message.RecipientType.TO;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import org.apache.commons.codec.binary.Base64;
 
 /**
  * FXML Controller class
@@ -50,139 +77,36 @@ public class GetPasswordController implements Initializable {
     private TextField txtusername;
     @FXML
     private PasswordField txtpass;
+
+    static String Ssemail2;
     @FXML
-    private Button loginBtn;
-    private Connection connection;
-    @FXML
-    private Button loginBtn1;
-    int randomCode;
+    private Button btnRechercher;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
-    private String encryptPassword(String password) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[] hash = md.digest(password.getBytes(StandardCharsets.UTF_8));
-        StringBuilder hexString = new StringBuilder();
-        for (byte b : hash) {
-            String hex = Integer.toHexString(0xff & b);
-            if (hex.length() == 1) {
-                hexString.append('0');
-            }
-            hexString.append(hex);
-        }
-        return hexString.toString();
-    }
-
+   
     @FXML
-    private void Codeverif(ActionEvent event) throws SQLException, NoSuchAlgorithmException, MessagingException {
-        connection = MyConnection.getInstance().getConn();
+    private void Rechercher(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/IdentifierCompte.fxml"));
+
+        Parent rat = loader.load();
+        IdentifierCompteController dc = loader.getController();
         String email = txtusername.getText();
-        if (email.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Attention");
-            alert.setHeaderText(null);
-            alert.setContentText("Veuillez saisir l'email.");
-            alert.showAndWait();
-            return;
-        }
-        // Generate a new password
-        String newPassword = generateRandomPassword();
-        // Encrypt the new password
-        String encryptedPassword = encryptPassword(newPassword);
-        // Update the user's password in the database
-        String updateQuery = "UPDATE client SET password = ? WHERE email = ?";
-        try (PreparedStatement statement = connection.prepareStatement(updateQuery)) {
-            statement.setString(1, encryptedPassword);
-            statement.setString(2, email);
-            statement.executeUpdate();
-        }
-        // Send the new password to the user's email
-        sendEmail(email, "Nouveau mot de passe", "Votre nouveau mot de passe est: " + newPassword);
+        Ssemail2 = txtusername.getText();
+        dc.setUserInformation(email);
+        // Create a new scene with the loaded FXML file and show it
+        Scene scene = new Scene(rat);
+        Stage stage = (Stage) btnRechercher.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Succès");
-        alert.setHeaderText(null);
-        alert.setContentText("Un nouveau mot de passe a été envoyé à votre adresse email!");
-        alert.showAndWait();
     }
-
-    private String generateRandomPassword() {
-        // Generate a new password with 8 characters
-        String passwordChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        StringBuilder passwordBuilder = new StringBuilder();
-        for (int i = 0; i < 8; i++) {
-            int index = (int) (Math.random() * passwordChars.length());
-            passwordBuilder.append(passwordChars.charAt(index));
-        }
-        return passwordBuilder.toString();
-    }
-
-    private void sendEmail(String to, String subject, String body) throws MessagingException {
-        String from = "aymen58zouari@gmail.com";
-        String password = "ugfvtyktyzdbanue";
-
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.starttls.required", "true");
-
-        Session session = Session.getInstance(props, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, password);
-            }
-        });
-
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(from));
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-        message.setSubject(subject);
-        message.setText(body);
-        System.out.println("ok");
-        Transport transport = session.getTransport("smtp");
-        transport.connect("smtp.gmail.com", 587, from, password);
-        System.out.println("okkkkk");
-        transport.sendMessage(message, message.getAllRecipients());
-         
-        transport.close();
-       
-    }
-
-    @FXML
-    private void Verif(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Sendcode.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-            // Hide the current window
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        if (txtpass.getText().equals(String.valueOf(randomCode))) {
-            try {
-                int code = Integer.parseInt(txtpass.getText());
-                if (code == randomCode) {
-                    // Open the reset password form
-                } else {
-                    JOptionPane.showMessageDialog(null, "Code do not match");
-                }
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Invalid code format");
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid code");
-        }
-    }
-
 }
