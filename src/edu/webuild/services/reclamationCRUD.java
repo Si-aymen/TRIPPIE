@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import edu.webuild.interfaces.InterfaceCRUD;
 import edu.webuild.model.reponse;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -26,16 +27,31 @@ public class reclamationCRUD implements InterfaceCRUD {
     Connection conn = MyConnection.getInstance().getConn();
 
     @Override
-    public void ajouterReclamation(reclamation r) {
+    public void ajouterReclamation(reclamation reclamation) {
         try {
-            String req = "INSERT INTO `reclamation`(`type_rec`,`commentaire`,`etat`) VALUES ('" + r.getType_rec() + "','" + r.getCommentaire() + "','non traité')";
+            String query = "INSERT INTO reclamation (type_rec, commentaire, etat,id_utilisateur,date_creation) VALUES (?, ?, ?,?,?)";
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1, reclamation.getType_rec());
+            preparedStatement.setString(2, reclamation.getCommentaire());
+            preparedStatement.setString(3,"non traité");
+            preparedStatement.setInt(4, reclamation.getId_utilisateur());
+            preparedStatement.setString(5, reclamation.getDate_creation().toString());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    /*public void ajouterReclamation(reclamation r) {
+        try {
+            String req = "INSERT INTO `reclamation`(`type_rec`,`commentaire`,`etat`,`id_utilisateur`,`date_creation`) VALUES ('" + r.getType_rec() + "',"
+                    + "'" + r.getCommentaire() + "','non traité','" + r.getId_utilisateur() + "','" + r.getDate_creation().toString()+ "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Reclamation ajouté!!!");
         } catch (SQLException ex) {
-            System.out.println("Reclamation non ajouté");
+            System.err.println(ex);
         }
-    }
+    }*/
 
     @Override
     public void modifierReclamation(reclamation r, int id) {
@@ -70,11 +86,13 @@ public class reclamationCRUD implements InterfaceCRUD {
 
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
-                reclamation r = new reclamation(RS.getString(2), RS.getString(3), RS.getString(4));
+                reclamation r = new reclamation();
                 r.setId_rec(RS.getInt(1));
                 r.setType_rec(RS.getString(2));
                 r.setCommentaire(RS.getString(3));
                 r.setEtat(RS.getString(4));
+                r.setId_utilisateur(RS.getInt(5));
+                r.setDate_creation(RS.getDate(6));
 
                 list.add(r);
             }

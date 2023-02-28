@@ -29,6 +29,7 @@ public interface InterfaceCRUD {
    public List<reponse> afficherReponse();
    public reponse detailsReponse(int id);
    public List<reponse> getById_rep(int id);
-   public List<reponse> afficher_join();
+   
+   //public List<reponse> afficher_join();
    
 }

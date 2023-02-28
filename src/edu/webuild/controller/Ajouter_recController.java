@@ -5,10 +5,13 @@
  */
 package edu.webuild.controller;
 
+import static edu.webuild.controller.Ajouter_recAdminController.id_utilisateur;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,7 +56,10 @@ public class Ajouter_recController implements Initializable {
     private void ajouter_rec(ActionEvent event) throws IOException {
 
         String type = tf_type.getText();
-        String commentaire = tf_commentaire.getText();
+        String commentaire = tf_commentaire.getText();   
+            LocalDate localDate = LocalDate.now();
+            Date date_creation = Date.valueOf(localDate);
+            
         if (type.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -67,7 +73,7 @@ public class Ajouter_recController implements Initializable {
             alert.setContentText("Commentaire manquant");
             alert.showAndWait();
         } else {
-            reclamation r = new reclamation(type, commentaire, "non traité");
+            reclamation r = new reclamation(type, commentaire, "non traité", date_creation, id_utilisateur);
 
             reclamationCRUD rc = new reclamationCRUD();
 

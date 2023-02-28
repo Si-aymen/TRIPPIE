@@ -9,6 +9,11 @@ import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.sql.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +40,8 @@ public class Ajouter_recAdminController implements Initializable {
     private TextArea tf_commentaire;
     @FXML
     private AnchorPane rootPane;
+    
+    public static int id_utilisateur = 1;
 
     /**
      * Initializes the controller class.
@@ -56,7 +63,9 @@ public class Ajouter_recAdminController implements Initializable {
         
         
             String type = tf_type.getText();
-            String commentaire = tf_commentaire.getText();
+            String commentaire = tf_commentaire.getText();   
+            LocalDate localDate = LocalDate.now();
+            Date date_creation = Date.valueOf(localDate);
             
             if (type.isEmpty())
             {
@@ -75,7 +84,7 @@ public class Ajouter_recAdminController implements Initializable {
             alert.showAndWait();
             }
             else{
-            reclamation r = new reclamation(type, commentaire, "non traité");
+            reclamation r = new reclamation(type, commentaire, "non traité", date_creation, id_utilisateur);
 
             reclamationCRUD rc = new reclamationCRUD();
 

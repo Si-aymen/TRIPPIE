@@ -5,6 +5,8 @@
  */
 package edu.webuild.model;
 
+import java.util.Date;
+
 /**
  *
  * @author belkn
@@ -14,23 +16,30 @@ public class reclamation {
     private String type_rec;
     private String commentaire;
     private String etat;
+    private Date date_creation;
+    private int id_utilisateur;
 
     public reclamation() {
     }
 
-    public reclamation(String type_rec, String commentaire, String etat) {
-        this.type_rec = type_rec;
-        this.commentaire = commentaire;
-        this.etat = etat;
-    }
-
-    public reclamation(int id_rec, String type_rec, String commentaire, String etat) {
+    public reclamation(int id_rec, String type_rec, String commentaire, String etat, Date date_creation, int id_utilisateur) {
         this.id_rec = id_rec;
         this.type_rec = type_rec;
         this.commentaire = commentaire;
         this.etat = etat;
+        this.date_creation = date_creation;
+        this.id_utilisateur = id_utilisateur;
     }
 
+    public reclamation(String type_rec, String commentaire, String etat, Date date_creation, int id_utilisateur) {
+        this.type_rec = type_rec;
+        this.commentaire = commentaire;
+        this.etat = etat;
+        this.date_creation = date_creation;
+        this.id_utilisateur = id_utilisateur;
+    }
+ 
+    
     @Override
     public String toString() {
         return "Type : " + type_rec + " || Commentaire : " + commentaire + " || Etat : " + etat;
@@ -66,6 +75,22 @@ public class reclamation {
 
     public void setEtat(String etat) {
         this.etat = etat;
+    }
+
+    public Date getDate_creation() {
+        return date_creation;
+    }
+
+    public void setDate_creation(Date date_creation) {
+        this.date_creation = date_creation;
+    }
+
+    public int getId_utilisateur() {
+        return id_utilisateur;
+    }
+
+    public void setId_utilisateur(int id_utilisateur) {
+        this.id_utilisateur = id_utilisateur;
     }
     
     
