@@ -59,10 +59,10 @@ public class Add_CovController implements Initializable {
     static String url_image;
     @FXML
     private ChoiceBox<String> depart_box;
-    private final String[] places_dep = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba"};
+    private final String[] places_dep = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba","beja"};
     @FXML
     private ChoiceBox<String> destination_box;
-    private final String[] places_dest = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba"};
+    private final String[] places_dest = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba","beja"};
 
     @FXML
     private ChoiceBox<Integer> nmbr_place_box;
@@ -149,7 +149,7 @@ public class Add_CovController implements Initializable {
                 + "Place of departure: " + depart + "\n"
                 + "Destination: " + destination + "\n"
                 + "Date of departure: " + date_dep + "\n"
-                + "Number of available seats: \n" + nmbr_place + "\n"
+                + "Number of available seats: " + nmbr_place + "\n"
                 + "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
                 + "\n"
                 + "Please note that the departure time is " + depart + ". We kindly ask you to arrive at the pickup location 15 minutes before departure time to avoid any delays.\n"
