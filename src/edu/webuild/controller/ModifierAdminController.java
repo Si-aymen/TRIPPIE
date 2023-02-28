@@ -5,10 +5,13 @@
  */
 package edu.webuild.controller;
 
+import static edu.webuild.controller.Ajouter_recAdminController.id_utilisateur;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,6 +37,8 @@ public class ModifierAdminController implements Initializable {
     private TextField modif_etat;
     @FXML
     private TextArea modif_comm;
+    
+    public static int id_utilisateur = 1;
 
     /**
      * Initializes the controller class.
@@ -53,9 +58,11 @@ public class ModifierAdminController implements Initializable {
             id = Integer.parseInt(String.valueOf(AdminReclamationController.id_rec));
             String type = modif_type.getText();
             String commentaire = modif_comm.getText();
-            String etat = modif_etat.getText();
+            String etat = modif_etat.getText();   
+            LocalDate localDate = LocalDate.now();
+            Date date_creation = Date.valueOf(localDate);
             
-            reclamation r = new reclamation(type, commentaire, etat);
+            reclamation r = new reclamation(type, commentaire, etat, date_creation, id_utilisateur);
             
             reclamationCRUD rc = new reclamationCRUD();
             
