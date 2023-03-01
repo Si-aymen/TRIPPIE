@@ -5,14 +5,14 @@
         <group>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/services/reclamationCRUD.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/model/reponse.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/webuild/MainView.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/RepondreController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Suivre_recController.java</file>
-            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/MainView.java</file>
-            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/webuild/Webuild.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/ReclamationController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/utils/Mailing.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/services/reponseCRUD.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Ajouter_recController.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/utils/Email.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/AdminRepondreController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/AfficheReponseController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Modifier_recController.java</file>

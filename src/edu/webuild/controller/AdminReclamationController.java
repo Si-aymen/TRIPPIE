@@ -5,8 +5,12 @@
  */
 package edu.webuild.controller;
 
+import com.twilio.http.TwilioRestClient;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
+import edu.webuild.utils.Email;
 import edu.webuild.utils.Mailing;
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javax.mail.MessagingException;
 
 /**
  * FXML Controller class
@@ -41,6 +46,9 @@ public class AdminReclamationController implements Initializable {
     static public String toEmail = "guerfala71@gmail.com";
     static public String subject = "test";
     static public String body = "test";
+    
+    static public String num = "54833493";
+    static public String phone = "+216"+num;
 
     /**
      * Initializes the controller class.
@@ -171,10 +179,27 @@ public class AdminReclamationController implements Initializable {
     }
 
     @FXML
-    private void mail(ActionEvent event) {
+    private void mail(ActionEvent event) throws MessagingException {
 
-        Mailing m = new Mailing();
-        m.sendEmail(toEmail, subject, body);
+        Email e = new Email("freeelanci@gmail.com", "jjrnaazzdfwhwfar", "guerfala71@gmail.com", "Etat réclamation", " bonjour, Votre réclamation a été traitée");
+        e.sendEmail();
+    }
+
+    @FXML
+    private void sendSMS(ActionEvent event) {
+        try{
+        TwilioRestClient client = new TwilioRestClient.Builder("ACac8596dd282c3072d3da4dbb09625ab1", "953d46930a342a889d193acfade908ad").build();
+
+        Message message = Message.creator(
+                new PhoneNumber(phone), // To phone number
+                new PhoneNumber("+12766226225"), // From Twilio phone number
+                "Votre réclamation est reçu") // SMS message body
+                .create(client);
+
+        System.out.println("message envoyé");
+        }catch (Error ex) {
+            System.err.println(ex);
+        }
     }
 
 }

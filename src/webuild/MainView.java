@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package webuild;
 
 import java.io.IOException;
 import javafx.application.Application;
@@ -23,7 +23,7 @@ public class MainView extends Application {
         
         
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("adminReclamation.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
             
             Scene scene = new Scene(root);
             

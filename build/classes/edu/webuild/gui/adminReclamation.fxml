@@ -40,7 +40,8 @@
                   <FontAwesomeIconView glyphName="TRASH" layoutX="134.0" layoutY="68.0" onMouseClicked="#supprimer" size="35" />
                   <FontAwesomeIconView glyphName="REPLY" layoutX="178.0" layoutY="68.0" onMouseClicked="#repondre" size="35" />
                   <FontAwesomeIconView glyphName="CHECK" layoutX="231.0" layoutY="68.0" onMouseClicked="#traite" size="35" />
-                  <Button layoutX="471.0" layoutY="341.0" mnemonicParsing="false" onAction="#mail" text="mail" />
+                  <Button layoutX="436.0" layoutY="341.0" mnemonicParsing="false" onAction="#mail" text="mail" />
+                  <Button layoutX="494.0" layoutY="341.0" mnemonicParsing="false" onAction="#sendSMS" text="sms" />
                </children>
             </AnchorPane>
          </children>
