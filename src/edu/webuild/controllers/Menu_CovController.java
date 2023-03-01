@@ -5,7 +5,7 @@
  */
 package edu.webuild.controllers;
 
-import test_code.Menu_CoVoiturageController;
+import edu.webuild.controllers.Menu_CoVoiturageController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -124,7 +124,7 @@ public class Menu_CovController implements Initializable {
 
     @FXML
     private void Front_btu(ActionEvent event) {
-               try {
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Market_cov.fxml"));
             Scene scene = new Scene(page1);
@@ -134,8 +134,23 @@ public class Menu_CovController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
-        } 
-        
+        }
+
+    }
+
+    @FXML
+    private void Map_btu(ActionEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/TestMap.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
 }
