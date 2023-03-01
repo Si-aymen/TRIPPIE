@@ -25,7 +25,7 @@
                </font>
             </Label>
          </children></AnchorPane>
-      <Button fx:id="exitBtn" layoutX="644.0" layoutY="12.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;" text="X">
+      <Button fx:id="exitBtn" layoutX="627.0" layoutY="1.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;" text="X">
          <font>
             <Font name="Microsoft YaHei Bold" size="13.0" />
          </font>

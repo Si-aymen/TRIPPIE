@@ -24,6 +24,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 
 /**
@@ -49,6 +50,8 @@ public class Ajouter_chauffeurController implements Initializable {
     private Button btn;
     @FXML
     private TextField fxid;
+    @FXML
+    private ToggleButton showbtnnewnew;
 
     /**
      *
@@ -62,10 +65,21 @@ public class Ajouter_chauffeurController implements Initializable {
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        showbtnnewnew.setOnAction(event -> {
+            if (showbtnnewnew.isSelected()) {
+            fxpass.setPromptText(fxpass.getText());
+            fxpass.setText("");
+        } else {
+            fxpass.setText(fxpass.getPromptText());
+            fxpass.setPromptText("");
+        }
+        });
     }    
     
     @FXML

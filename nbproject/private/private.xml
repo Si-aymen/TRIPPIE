@@ -4,28 +4,38 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_chauffeurController.java</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/ClientCRUD.java</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/AjoutController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ProfilClientController.java</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ModifierController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_locateurController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Modifier_roleController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_roleController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Role.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ProfilChauffeur.fxml</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/DetailsChauffeurController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ProfilLocateur.fxml</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_roleController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_clController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ProfileAdmin.fxml</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Client.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ProfilChauffeurController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/LocateurCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Modifier_locController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/GetPasswordController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/SendPasswordController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/ClientCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/AjoutController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ModifierController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ProfilLocateurController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/roleCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/IdentifierCompteController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_clientController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceClientCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/ChauffeurCRUD.java</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Role.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/LoginController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/FirstWindow.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ProfilClient.fxml</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_roleController.java</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_clController.java</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Client.java</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/GetPasswordController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/DetailsChauffeur.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/webuild/Webuild.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/HomeController.java</file>
-            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/SendPasswordController.java</file>
         </group>
     </open-files>
 </project-private>

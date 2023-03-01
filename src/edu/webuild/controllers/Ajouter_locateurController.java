@@ -59,6 +59,15 @@ public class Ajouter_locateurController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        showbtnnewnew.setOnAction(event -> {
+            if (showbtnnewnew.isSelected()) {
+            fxpass.setPromptText(fxpass.getText());
+            fxpass.setText("");
+        } else {
+            fxpass.setText(fxpass.getPromptText());
+            fxpass.setPromptText("");
+        }
+        });
     }    
 
     @FXML
