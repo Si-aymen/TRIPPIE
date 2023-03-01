@@ -25,5 +25,6 @@ public interface InterfaceCRUD {
     public List<voiture> triervoiture();
 
     public List<voiture> Filter_voiture(String S, String SS);
+    public void modifieretat(voiture v )  ;
 
 }

@@ -16,7 +16,7 @@ public class voiture {
     private int id;
     private String matricule, marque, puissance/*,etat*/;
     private int prix_jours;
-    private String image_voiture ;
+    private String image_voiture , energie , etat ;
 
     //constructeur par defaut
     public voiture() {
@@ -49,8 +49,36 @@ public class voiture {
         this.prix_jours = prix_jours;
         this.image_voiture = image_voiture;
     }
-    
 
+    public voiture(String matricule, String marque, String puissance, int prix_jours, String image_voiture, String energie) {
+        this.matricule = matricule;
+        this.marque = marque;
+        this.puissance = puissance;
+        this.prix_jours = prix_jours;
+        this.image_voiture = image_voiture;
+        this.energie = energie;
+    }   
+
+    public voiture(int id, String matricule, String marque, String puissance, int prix_jours, String energie) {
+        this.id = id;
+        this.matricule = matricule;
+        this.marque = marque;
+        this.puissance = puissance;
+        this.prix_jours = prix_jours;
+        this.energie = energie;
+    }
+
+    public voiture(String matricule, String marque, String puissance, int prix_jours, String image_voiture, String energie, String etat) {
+        this.matricule = matricule;
+        this.marque = marque;
+        this.puissance = puissance;
+        this.prix_jours = prix_jours;
+        this.image_voiture = image_voiture;
+        this.energie = energie;
+        this.etat = etat;
+    }
+    
+   
     public int getId() {
         return id;
     }
@@ -99,10 +127,29 @@ public class voiture {
         this.image_voiture = image_voiture;
     }
 
+    public String getEnergie() {
+        return energie;
+    }
+
+    public void setEnergie(String energie) {
+        this.energie = energie;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
     @Override
     public String toString() {
-        return ""/* + "id=" + id + ", matricule=" + matricule*/ + " marque=" + marque + " || puissance=" + puissance + "|| prix_jours=" + prix_jours + /*", image_voiture=" + image_voiture +*/ "";
+        return "voiture{" + "marque=" + marque + ", puissance=" + puissance + ", prix_jours=" + prix_jours + ", energie=" + energie + ", etat=" + etat + '}';
     }
+    
+
+  
     
 
     

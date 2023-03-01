@@ -26,7 +26,7 @@ public class voitureCRUD implements InterfaceCRUD{
     @Override
     public void ajoutervoiture(voiture v) {
         try {
-            String req = "INSERT INTO `voiture`(`matricule`,`marque`,`puissance`,`prix_jours`,`picture`) VALUES ('"+v.getMatricule()+"','"+v.getMarque()+"','"+v.getPuissance()+"','"+v.getPrix_jours()+"','"+v.getImage_voiture()+"')";
+            String req = "INSERT INTO `voiture`(`matricule`,`marque`,`puissance`,`prix_jours`,`picture`,`energie`,`etat`) VALUES ('"+v.getMatricule()+"','"+v.getMarque()+"','"+v.getPuissance()+"','"+v.getPrix_jours()+"','"+v.getImage_voiture()+"','"+v.getEnergie()+"','non reservé')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("voiture ajouté!!!");
@@ -38,7 +38,18 @@ public class voitureCRUD implements InterfaceCRUD{
     @Override
     public void modifiervoiture(voiture v ) {
         try {
-            String req = "UPDATE `voiture` SET `matricule` = '" + v.getMatricule() + "', `marque` = '" + v.getMarque() +"',`puissance` = '" + v.getPuissance()+ "',`prix_jours` = '" + v.getPrix_jours()+ "' WHERE `id` = " + v.getId();
+            String req = "UPDATE `voiture` SET `matricule` = '" + v.getMatricule() + "', `marque` = '" + v.getMarque() +"',`puissance` = '" + v.getPuissance()+ "',`prix_jours` = '" + v.getPrix_jours()+ "',`energie` = '" + v.getEnergie()+ "' WHERE `id` = " + v.getId();
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("voiture updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+     @Override
+    public void modifieretat(voiture v ) {
+        try {
+       String req = "UPDATE `voiture` SET `etat` = 'reservé' WHERE `id` = " + v.getId();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("voiture updated !");
@@ -76,6 +87,8 @@ public class voitureCRUD implements InterfaceCRUD{
                 v.setPuissance(RS.getString(4));    
                 v.setPrix_jours(RS.getInt(5));
                 v.setImage_voiture(RS.getString(6)); 
+                v.setEnergie(RS.getString(7)); 
+                 v.setEtat(RS.getString(8)); 
              
              list.add(v);
             }

@@ -51,7 +51,9 @@ public class Afficher_voitureController implements Initializable {
     static String Prix_jour;
     static voiture voiture;
     static public String url_img;
-    
+    static String energie;
+    static String etat;
+
     @FXML
     private Button details;
     @FXML
@@ -71,6 +73,7 @@ public class Afficher_voitureController implements Initializable {
 
         }
     }
+
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -86,15 +89,16 @@ public class Afficher_voitureController implements Initializable {
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             voiture v = list.getSelectionModel().getSelectedItem();
-             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
             alert.setHeaderText(null);
             alert.setContentText("Êtes-vous sûr de vouloir supprimer cet voiture ?");
             Optional<ButtonType> result = alert.showAndWait();
-             if (result.get() == ButtonType.OK){
-            inter.supprimervoiture(v.getId());
-            list.getItems().remove(selectedIndex);
-             showAlert("voiture supprimé");}
+            if (result.get() == ButtonType.OK) {
+                inter.supprimervoiture(v.getId());
+                list.getItems().remove(selectedIndex);
+                showAlert("voiture supprimé");
+            }
         } else {
             System.out.println("Veuillez sélectionner une voiture à supprimer.");
         }
@@ -111,8 +115,7 @@ public class Afficher_voitureController implements Initializable {
         marque = v.getMarque();
         Puissence = v.getPuissance();
         Prix_jour = Integer.toString(v.getPrix_jours());
-      
-        
+        energie = v.getEnergie();
 
         try {
 
@@ -152,7 +155,7 @@ public class Afficher_voitureController implements Initializable {
 
     @FXML
     private void details(ActionEvent event) {
-         ListView<voiture> list = affichervoiture;
+        ListView<voiture> list = affichervoiture;
         InterfaceCRUD inter = new voitureCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         voiture v = list.getSelectionModel().getSelectedItem();
@@ -161,8 +164,9 @@ public class Afficher_voitureController implements Initializable {
         marque = v.getMarque();
         Puissence = v.getPuissance();
         Prix_jour = Integer.toString(v.getPrix_jours());
-        url_img= v.getImage_voiture();
-       
+        url_img = v.getImage_voiture();
+        energie = v.getEnergie();
+
         try {
 
             Parent page1
@@ -175,12 +179,12 @@ public class Afficher_voitureController implements Initializable {
             Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
-         
-}
+
+    }
 
     @FXML
     private void back(ActionEvent event) {
-         try {
+        try {
 
             Parent page1
                     = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/crud_voiture.fxml"));

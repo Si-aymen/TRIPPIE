@@ -24,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -48,6 +49,8 @@ public class DetailsController implements Initializable {
     private Label fxx_puissance;
     @FXML
     private Button back;
+    @FXML
+    private Label fx_energie;
 
     /**
      * Initializes the controller class.
@@ -58,8 +61,9 @@ public class DetailsController implements Initializable {
         fxx_matricule.setText(String.valueOf(Afficher_voitureController.matricule));
         fxx_modele.setText(String.valueOf(Afficher_voitureController.marque));
         fxx_puissance.setText(String.valueOf(Afficher_voitureController.Puissence));
-
         fx_prix_jours.setText(Afficher_voitureController.Prix_jour);
+        fx_energie.setText(Afficher_voitureController.energie);
+        
         try {
             imageView.setImage(new Image(new FileInputStream(imagePath)));
         } catch (FileNotFoundException e) {

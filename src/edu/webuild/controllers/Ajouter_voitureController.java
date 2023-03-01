@@ -51,11 +51,14 @@ public class Ajouter_voitureController implements Initializable {
     private Button ajouter;
     private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
     private final String[] fx_puissancee = {"5ch", "6ch", "7ch", "8ch", "9ch", "10ch", "11ch", "12ch", "13ch"};
+    private final String[] fx_energiee = {"energie", "gazoil", "gpl"};
     @FXML
     private ImageView lab_image;
     static String url_image;
     @FXML
     private Button back;
+    @FXML
+    private ChoiceBox<String> fx_energie;
 
     /**
      * Initializes the controller class.
@@ -64,6 +67,8 @@ public class Ajouter_voitureController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         fx_marque.getItems().addAll(fx_marquee);
         fx_puissance.getItems().addAll(fx_puissancee);
+        fx_energie.getItems().addAll(fx_energiee);
+
         String image_voiture = url_image;
         // TODO
     }
@@ -73,8 +78,18 @@ public class Ajouter_voitureController implements Initializable {
         String matricule = fxmatricule.getText();
         String marque = fx_marque.getValue();
         String puissance = fx_puissance.getValue();
+        String energie = fx_energie.getValue();
         int prix_jours = Integer.parseInt(fx_prix_jours.getText());
         String cov_img = url_image;
+        String etat = "non reservé";
+
+        int position1 = matricule.indexOf("tunis");
+        String partie1 = matricule.substring(0, position1);
+        String partie2 = matricule.substring(position1 + 5, matricule.length() - position1 + 4);
+        int convert1 = Integer.parseInt(partie1);
+
+        int convert2 = Integer.parseInt(partie2);
+
         if (prix_jours < 100) {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
@@ -106,15 +121,29 @@ public class Ajouter_voitureController implements Initializable {
             alert.setContentText("erreur il faut contenir tunis");
             alert.show();
         } else {
-            voiture v = new voiture(matricule, marque, puissance, prix_jours, cov_img);
-            voitureCRUD voit = new voitureCRUD();
-            voit.ajoutervoiture(v);
-            Alert alert = new Alert(AlertType.INFORMATION);
+            if (convert2 > 999) {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("tu ne respecte pas l immatriulation");
+                alert.show();
+            } else if (convert1 > 9999) {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("tu ne respecte pas l immatriulation");
+                alert.show();
+            } else {
+                voiture v = new voiture(matricule, marque, puissance, prix_jours, cov_img, energie);
+                voitureCRUD voit = new voitureCRUD();
+                voit.ajoutervoiture(v);
+                Alert alert = new Alert(AlertType.INFORMATION);
 
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("voiture insérée avec succés!");
-            alert.show();
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("voiture insérée avec succés!");
+                alert.show();
+            }
         }
 
     }
@@ -162,7 +191,7 @@ public class Ajouter_voitureController implements Initializable {
 
     @FXML
     private void back(ActionEvent event) {
-         try {
+        try {
 
             Parent page1
                     = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/crud_voiture.fxml"));

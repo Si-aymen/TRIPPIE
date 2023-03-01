@@ -37,12 +37,12 @@ public class ReservervoiturefrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
+    }
+ 
 
     @FXML
     private void ajouter_reservation(ActionEvent event) {
-      Date date_debutt = java.sql.Date.valueOf(date_debut.getValue());
+        Date date_debutt = java.sql.Date.valueOf(date_debut.getValue());
         Date date_finn = java.sql.Date.valueOf(date_fin.getValue());
         int comparison = date_debutt.compareTo(date_finn);
         if (comparison > 0) {
@@ -59,17 +59,14 @@ public class ReservervoiturefrontController implements Initializable {
             alert.setContentText("date debut est egale au date fin de reservation");
             alert.show();
         } else {
-           reservation res = new reservation(date_debutt, date_finn,new voiture(230,"215tunis215","clio","5ch",250));
+            reservation res = new reservation(date_debutt, date_finn, new voiture(230, "215tunis215", "clio", "5ch", 250));
             InterfaceCRUD2 inter = new reservationCRUD();
             inter.ajouterreservation(res);
-          
-          
 
             String message = "Dear [Client's Name],\n"
                     + "\n"
                     + "I am writing this email to confirm your location reservation for the following details:\n"
                     + "\n"
-                   
                     + "date debut reservation : " + date_debut + "\n"
                     + "date fin reservation : " + date_fin + "\n"
                     + "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
@@ -79,5 +76,5 @@ public class ReservervoiturefrontController implements Initializable {
 
         }
     }
-    
+
 }

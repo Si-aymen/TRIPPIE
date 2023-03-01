@@ -43,6 +43,8 @@ public class ModifiervoitureController implements Initializable {
     private Button modifier_voiture;
     @FXML
     private Button back;
+    @FXML
+    private TextField fx_energie;
 
     /**
      * Initializes the controller class.
@@ -53,6 +55,7 @@ public class ModifiervoitureController implements Initializable {
         fx_modele.setText(Afficher_voitureController.marque);
         fx_puissance.setText(Afficher_voitureController.Puissence);
         fx_prix_jours.setText(Afficher_voitureController.Prix_jour);
+   fx_energie.setText(Afficher_voitureController.energie);
         
     }    
 
@@ -63,7 +66,8 @@ public class ModifiervoitureController implements Initializable {
         String marque = fx_modele.getText();
         String puissence = fx_puissance.getText();
         int prix_jour = Integer.parseInt(fx_prix_jours.getText());
-        voiture v = new voiture(Afficher_voitureController.id,matricule, marque, puissence, prix_jour);
+        String energie = fx_energie.getText();
+        voiture v = new voiture(Afficher_voitureController.id,matricule, marque, puissence, prix_jour,energie);
         inter.modifiervoiture(v);
     }
 
