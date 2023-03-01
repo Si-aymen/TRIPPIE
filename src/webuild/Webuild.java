@@ -36,7 +36,7 @@ public class Webuild {
         ClientCRUD client = new ClientCRUD();
         LocateurCRUD l = new LocateurCRUD();
         
-
+        System.out.println(client.getClient("zouari.aymen@esprit.tn"));
      
         //System.out.println(cc.afficherChauffeur());
         // System.out.println(rc.afficherRole());

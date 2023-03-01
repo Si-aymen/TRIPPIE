@@ -65,6 +65,7 @@ public class LoginController {
     @FXML
     private ChoiceBox<String> fxchoice;
     private String email;
+    static String SSemail;
 
     public void setMain(FirstWindow main) {
         this.main = main;
@@ -74,7 +75,6 @@ public class LoginController {
     public void setTxtusername(String email) {
         this.txtusername.setText(email);
     }
-    
 
     @FXML
     public void initialize() {
@@ -188,14 +188,17 @@ public class LoginController {
         String email = txtusername.getText();
         String password = txtpass.getText();
         String userType = fxchoice.getValue();
-
+         
         if (validateInput()) {
             switch (userType) {
                 case "Client":
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilClient.fxml"));
                     Parent root = loader.load();
-                    ProfilClientController freelancerController = loader.getController();
-                    freelancerController.setEmail(email);
+                    ProfilClientController dc = loader.getController();
+                    txtusername.getScene().setRoot(root);
+                 
+                dc.setEmail_lbl(email);
+                   
                     Scene scene = new Scene(root);
                     Stage stage = (Stage) loginBtn.getScene().getWindow();
                     stage.setScene(scene);

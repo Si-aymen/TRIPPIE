@@ -41,14 +41,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import static javax.mail.Message.RecipientType.TO;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
@@ -62,16 +68,15 @@ import org.apache.commons.codec.binary.Base64;
  */
 public class IdentifierCompteController implements Initializable {
 
-   
     @FXML
     private Label ssemails;
     private ClientCRUD clientCRUD;
     private Gmail service;
-    private static final String TEST_EMAIL = "aymen58zouari@gmail.com";
+    private static final String TEST_EMAIL = "zouari.aymen@esprit.tn";
     @FXML
     private ListView<Client> cli;
-   
-
+    ClientCRUD cc=new ClientCRUD();
+    
     /**
      * Initializes the controller class.
      *
@@ -82,6 +87,11 @@ public class IdentifierCompteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         {
+            try {
+                Client c=cc.getClient(Ssemail2);
+            } catch (SQLException ex) {
+                Logger.getLogger(IdentifierCompteController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             clientCRUD = new ClientCRUD();
             cli.setCellFactory(param -> new ListCell<Client>() {
                 @Override
@@ -101,7 +111,7 @@ public class IdentifierCompteController implements Initializable {
                     alert.setTitle("Confirmation de la réinitialisation de mot de passe");
                     alert.setHeaderText("Vous êtes sur le point de réinitialiser le mot de passe de l'utilisateur " + newValue.getEmail());
                     alert.setContentText("Êtes-vous sûr de vouloir continuer ?");
-
+                    
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.isPresent() && result.get() == ButtonType.OK) {
                         // User confirmed password reset
@@ -109,6 +119,9 @@ public class IdentifierCompteController implements Initializable {
                         String token = generateToken();
                         String emailAddress = newValue.getEmail();
                         try {
+                            Client cli=cc.getClient(Ssemail2);
+                            cli.setToken(token);
+                            cc.modifierClient(cli);
                             sendMail(emailAddress, token);
                         } catch (Exception ex) {
                             Logger.getLogger(IdentifierCompteController.class.getName()).log(Level.SEVERE, null, ex);
@@ -182,12 +195,9 @@ public class IdentifierCompteController implements Initializable {
         email.addRecipient(TO, new InternetAddress(Ssemail2));// static variable globale static
         System.out.println(Ssemail2);
         email.setSubject(subject);
-
-        // email.setText(message);
-        email.setText("Bonjour,\n\n"
-                + "Voici votre lien de réinitialisation de mot de passe : "
-                + "http://localhost:8080/reset_password?token=" + "token");
-
+        System.out.println("lena");
+        email.setText(message);
+        System.out.println("2");
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         email.writeTo(buffer);
         byte[] rawMessageBytes = buffer.toByteArray();
@@ -200,7 +210,6 @@ public class IdentifierCompteController implements Initializable {
         try {
             GMailer();
             System.out.println(msg);
-
             System.out.println("service");
             System.out.println(service);
             Message sentMessage = service.users().messages().send("me", msg).execute();
@@ -215,6 +224,15 @@ public class IdentifierCompteController implements Initializable {
                 throw e;
             }
         }
+    }
+
+    @FXML
+    private void connecter(ActionEvent event) throws IOException {
+         Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/SendPassword.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
     }
 
 }

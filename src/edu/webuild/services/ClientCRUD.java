@@ -48,7 +48,20 @@ public class ClientCRUD implements InterfaceClientCRUD {
     @Override
     public void modifierClient(Client cl) {
         try {
-            String req = "UPDATE `client` SET `email` = '" + cl.getEmail() + "', `password` = '" + cl.getPassword() + "' WHERE `client`.`id_client` = " + cl.getId_client();
+            String req = "UPDATE `client` SET `email` = '" + cl.getEmail() + "', `password` = '" + cl.getPassword() + "', `token` = '" + cl.getToken() + "' WHERE `client`.`id_client` = " + cl.getId_client();
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("Client updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+    }
+
+    @Override
+    public void modifierC(Client cl) {
+        try {
+            String req = "UPDATE `client` SET `token` = '" + cl.getToken();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Client updated !");
@@ -219,6 +232,19 @@ public class ClientCRUD implements InterfaceClientCRUD {
         return false;
     }
 
+    public void changePassword(String mdp, String email) throws SQLException {
+        String req = "UPDATE client SET password = ?  WHERE email = ?";
+        PreparedStatement pst = conn.prepareStatement(req);
+        pst.setString(1, mdp);
+        pst.setString(2, email);
+        int rowUpdated = pst.executeUpdate();
+        if (rowUpdated > 0) {
+            System.out.println("Mdp modifié");
+        } else {
+            System.out.println("ERR");
+        }
+    }
+
     public Client getByIdRole(int id_role) {
         String query = "SELECT * FROM client WHERE id_role = ?";
 
@@ -247,16 +273,16 @@ public class ClientCRUD implements InterfaceClientCRUD {
     }
 
     @Override
-    public String afficherProfilClient(String email, String password) {
+    public String afficherProfilClient(String email) {
         String query = "SELECT utilisateur.nom, utilisateur.prenom "
                 + "FROM utilisateur "
                 + "INNER JOIN client ON utilisateur.id_user = client.id_user "
-                + "WHERE client.email = ? AND client.password = ?";
+                + "WHERE client.email = ? ";
 
         try {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, email);
-            ps.setString(2, password);
+
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -313,15 +339,14 @@ public class ClientCRUD implements InterfaceClientCRUD {
         }
         return null;
     }*/
-    public Client getClient(String email, String password) throws SQLException {
-        String query = "SELECT utilisateur.nom, utilisateur.prenom, role.id_role, role.id_user, client.id_client "
+    public Client getClient(String email) throws SQLException {
+        String query = "SELECT * "
                 + "FROM utilisateur "
                 + "JOIN role ON utilisateur.id_user = role.id_user "
                 + "JOIN client ON role.id_role = client.id_role "
-                + "WHERE email = ? AND password = ?";
+                + "WHERE email = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, email);
-            ps.setString(2, password);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     String nom = rs.getString("nom");
@@ -357,6 +382,31 @@ public class ClientCRUD implements InterfaceClientCRUD {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public Client getClientbymail(String email) throws SQLException {
+
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM client WHERE email = ?");
+        ps.setString(1, email);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+
+            int id_client = rs.getInt("id_client");
+            int id_role = rs.getInt("id_role");
+            String password = rs.getString("password");
+            Role role = new Role();
+            role.setId_role(id_role);
+            Client client=new Client();
+            client.setId_client(id_client);
+            client.setId_role(role);
+            client.setEmail(email);
+            client.setPassword(password);
+            
+            return client;
+        } else {
+            return null;
+        }
     }
 
     /*public void afficherProfil(Client client) {

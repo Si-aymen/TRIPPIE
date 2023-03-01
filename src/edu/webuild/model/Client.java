@@ -14,6 +14,8 @@ public class Client {
     Role  id_role;
     String email;
     String password;
+    String token;
+    boolean token_verif;
     
 
     public Client() {
@@ -81,6 +83,24 @@ public class Client {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public boolean isToken_verif() {
+        return token_verif;
+    }
+
+    public void setToken_verif(boolean token_verif) {
+        this.token_verif = token_verif;
+    }
+    
+    
 
    
 
