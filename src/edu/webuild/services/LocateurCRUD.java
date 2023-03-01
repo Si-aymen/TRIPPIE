@@ -8,6 +8,7 @@ package edu.webuild.services;
 import edu.webuild.interfaces.InterfaceLocateurCRUD;
 import edu.webuild.model.Locateur;
 import edu.webuild.model.Role;
+import edu.webuild.model.Utilisateur;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -206,6 +207,52 @@ public List<Locateur> afficherLocateur() {
 
         return false;
     }
+     
+        public Locateur getLocateur(String email) throws SQLException {
+        String query = "SELECT * "
+                + "FROM utilisateur "
+                + "JOIN role ON utilisateur.id_user = role.id_user "
+                + "JOIN locateur ON role.id_role = locateur.id_role "
+                + "WHERE email = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String nom = rs.getString("nom");
+                    String prenom = rs.getString("prenom");
+                    int id_role = rs.getInt("id_role");
+                    int id_loc = rs.getInt("id_loc");
+                    int id_user = rs.getInt("id_user");
+
+                    // Créer l'objet User
+                    Utilisateur user = new Utilisateur();
+                    user.setId_user(id_user);
+                    user.setNom(nom);
+                    user.setPrenom(prenom);
+
+                    // Créer l'objet Role
+                    Role role = new Role();
+                    role.setId_role(id_role);
+                    role.setId_user(user);
+
+                    // Créer l'objet Locateur
+                    Locateur client = new Locateur();
+                    client.setEmail(email);
+                    client.setId_loc(id_loc);
+                    client.setId_role(role);
+
+                    return client;
+
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     
 }

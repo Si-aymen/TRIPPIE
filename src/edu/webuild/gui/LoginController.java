@@ -5,7 +5,9 @@
  */
 package edu.webuild.gui;
 
+import edu.webuild.controllers.ProfilChauffeurController;
 import edu.webuild.controllers.ProfilClientController;
+import edu.webuild.controllers.ProfilLocateurController;
 import edu.webuild.controllers.WelcomeController;
 import edu.webuild.model.Chauffeur;
 import edu.webuild.model.Client;
@@ -23,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +38,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 
 /**
@@ -66,6 +70,9 @@ public class LoginController {
     private ChoiceBox<String> fxchoice;
     private String email;
     static String SSemail;
+    @FXML
+    private ToggleButton showbtnnewnew;
+    private boolean labelVisible = false;
 
     public void setMain(FirstWindow main) {
         this.main = main;
@@ -76,10 +83,18 @@ public class LoginController {
         this.txtusername.setText(email);
     }
 
-    @FXML
     public void initialize() {
         fxchoice.getItems().addAll("Client", "Chauffeur", "Locateur", "Admin");
         fxchoice.setValue("Client"); // sélectionne "Option 1" comme valeur par défaut
+        showbtnnewnew.setOnAction(event -> {
+            if (showbtnnewnew.isSelected()) {
+            txtpass.setPromptText(txtpass.getText());
+            txtpass.setText("");
+        } else {
+            txtpass.setText(txtpass.getPromptText());
+            txtpass.setPromptText("");
+        }
+        });
     }
 
 //    private boolean validateInput() throws SQLException, NoSuchAlgorithmException {
@@ -188,7 +203,7 @@ public class LoginController {
         String email = txtusername.getText();
         String password = txtpass.getText();
         String userType = fxchoice.getValue();
-         
+
         if (validateInput()) {
             switch (userType) {
                 case "Client":
@@ -196,20 +211,18 @@ public class LoginController {
                     Parent root = loader.load();
                     ProfilClientController dc = loader.getController();
                     txtusername.getScene().setRoot(root);
-                 
-                dc.setEmail_lbl(email);
-                   
+                    dc.setEmail_lbl(email);
                     Scene scene = new Scene(root);
                     Stage stage = (Stage) loginBtn.getScene().getWindow();
                     stage.setScene(scene);
                     stage.show();
                     break;
                 case "Chauffeur":
-                    // valider les informations d'identification du chauffeur
-
-                    // ouvrir la fenêtre d'accueil pour les chauffeurs
-                    FXMLLoader loader2 = new FXMLLoader(getClass().getResource("Welcome.fxml"));
+                    FXMLLoader loader2 = new FXMLLoader(getClass().getResource("ProfilChauffeur.fxml"));
                     Parent root2 = loader2.load();
+                    ProfilChauffeurController pc = loader2.getController();
+                    txtusername.getScene().setRoot(root2);
+                    pc.setEmail_lbl(email);
                     Scene scene2 = new Scene(root2);
                     Stage stage2 = (Stage) loginBtn.getScene().getWindow();
                     stage2.setScene(scene2);
@@ -219,8 +232,11 @@ public class LoginController {
                 case "Locateur":
 
                     // ouvrir la fenêtre d'accueil pour les locateurs
-                    FXMLLoader loader3 = new FXMLLoader(getClass().getResource("LocateurHome.fxml"));
+                    FXMLLoader loader3 = new FXMLLoader(getClass().getResource("ProfilLocateur.fxml"));
                     Parent root3 = loader3.load();
+                    ProfilLocateurController lc = loader3.getController();
+                    txtusername.getScene().setRoot(root3);
+                    lc.setEmail_lbl(email);
                     Scene scene3 = new Scene(root3);
                     Stage stage3 = (Stage) loginBtn.getScene().getWindow();
                     stage3.setScene(scene3);
@@ -266,4 +282,6 @@ public class LoginController {
         window.show();
 
     }
+
+  
 }

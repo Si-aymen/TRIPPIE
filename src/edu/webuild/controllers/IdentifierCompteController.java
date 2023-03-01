@@ -120,7 +120,7 @@ public class IdentifierCompteController implements Initializable {
                         String emailAddress = newValue.getEmail();
                         try {
                             Client cli=cc.getClient(Ssemail2);
-                            cli.setToken(token);
+                            cli.setPassword(token);
                             cc.modifierClient(cli);
                             sendMail(emailAddress, token);
                         } catch (Exception ex) {

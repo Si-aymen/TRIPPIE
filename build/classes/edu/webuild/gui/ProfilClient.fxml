@@ -9,19 +9,19 @@
    <children>
       <AnchorPane prefHeight="421.0" prefWidth="200.0" style="-fx-background-color: #828CA7;">
          <children>
-            <Label fx:id="nom_lbl" layoutX="27.0" layoutY="94.0" prefHeight="35.0" prefWidth="146.0" text="nomPrenom" textFill="#804242">
+            <Label fx:id="nom_lbl" layoutX="27.0" layoutY="137.0" prefHeight="35.0" prefWidth="146.0" text="nomPrenom">
                <font>
                   <Font name="System Bold Italic" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="genre_lbl" layoutX="36.0" layoutY="149.0" prefHeight="25.0" prefWidth="97.0" text="genre">
+            <Label fx:id="genre_lbl" layoutX="51.0" layoutY="179.0" prefHeight="25.0" prefWidth="97.0" text="Prenom">
                <font>
-                  <Font name="System Bold Italic" size="18.0" />
+                  <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="email_lbl" layoutX="45.0" layoutY="195.0" prefHeight="30.0" prefWidth="54.0" text="email">
+            <Label fx:id="email_lbl" layoutX="16.0" layoutY="216.0" prefHeight="30.0" prefWidth="166.0" text="email">
                <font>
-                  <Font name="System Bold Italic" size="18.0" />
+                  <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
          </children></AnchorPane>
@@ -30,20 +30,5 @@
             <Font name="Microsoft YaHei Bold" size="13.0" />
          </font>
       </Button>
-      <Label fx:id="domain_lbl" layoutX="386.0" layoutY="245.0" prefHeight="30.0" prefWidth="97.0" text="domaine">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="type_lbl" layoutX="262.0" layoutY="246.0" text="type">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="bday_lbl" layoutX="385.0" layoutY="148.0" prefHeight="30.0" prefWidth="135.0" text="bday_lbl">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

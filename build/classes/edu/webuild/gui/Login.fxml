@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -45,6 +46,7 @@
             </Button>
             <Button layoutX="444.0" layoutY="322.0" mnemonicParsing="false" onAction="#signupScene" style="-fx-background-color: transparent;" text="Creer un compte" />
             <ChoiceBox fx:id="fxchoice" layoutX="421.0" layoutY="227.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black;" />
+            <ToggleButton fx:id="showbtnnewnew" layoutX="590.0" layoutY="141.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
          </children>
       </AnchorPane>
     </children>

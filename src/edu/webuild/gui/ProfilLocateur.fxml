@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B4A7D6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.ProfilClientController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B4A7D6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.ProfilLocateurController">
    <children>
       <AnchorPane prefHeight="421.0" prefWidth="200.0" style="-fx-background-color: #828CA7;">
          <children>
@@ -24,8 +24,9 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-         </children></AnchorPane>
-      <Button fx:id="exitBtn" layoutX="644.0" layoutY="12.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;" text="X">
+         </children>
+      </AnchorPane>
+      <Button fx:id="exitBtn" layoutX="627.0" layoutY="1.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;" text="X">
          <font>
             <Font name="Microsoft YaHei Bold" size="13.0" />
          </font>

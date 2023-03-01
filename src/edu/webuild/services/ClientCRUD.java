@@ -48,7 +48,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
     @Override
     public void modifierClient(Client cl) {
         try {
-            String req = "UPDATE `client` SET `email` = '" + cl.getEmail() + "', `password` = '" + cl.getPassword() + "', `token` = '" + cl.getToken() + "' WHERE `client`.`id_client` = " + cl.getId_client();
+            String req = "UPDATE `client` SET `email` = '" + cl.getEmail() + "', `password` = '" + cl.getPassword() +  "' WHERE `client`.`id_client` = " + cl.getId_client();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Client updated !");
@@ -58,18 +58,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
         }
     }
 
-    @Override
-    public void modifierC(Client cl) {
-        try {
-            String req = "UPDATE `client` SET `token` = '" + cl.getToken();
-            Statement st = conn.createStatement();
-            st.executeUpdate(req);
-            System.out.println("Client updated !");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-
-        }
-    }
+   
 
     @Override
     public void supprimerClient(int id_client) {

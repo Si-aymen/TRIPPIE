@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B4A7D6;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controllers.DetailsChauffeurController">
+   <children>
+      <Label layoutX="160.0" layoutY="186.0" text="Numero Permis:" />
+      <Label layoutX="159.0" layoutY="232.0" text="Marque Voiture:" />
+      <Label layoutX="159.0" layoutY="279.0" text="Couleur Voiture:" />
+      <Label layoutX="159.0" layoutY="318.0" text="Immatriculation:" />
+      <Label fx:id="num" layoutX="298.0" layoutY="186.0" text="Numero Permis" />
+      <Label fx:id="marque" layoutX="297.0" layoutY="232.0" text="Marque Voiture" />
+      <Label fx:id="couleur" layoutX="297.0" layoutY="279.0" text="Couleur Voiture" />
+      <Label fx:id="mat" layoutX="297.0" layoutY="318.0" text="Immatriculation" />
+      <Label layoutX="160.0" layoutY="65.0" text="Nom:" />
+      <Label layoutX="159.0" layoutY="99.0" text="Prenom:" />
+      <Label layoutX="159.0" layoutY="142.0" text="Email:" />
+      <Label fx:id="nom" layoutX="297.0" layoutY="65.0" text="Nom" />
+      <Label fx:id="prenom" layoutX="297.0" layoutY="99.0" text="Prenom" />
+      <Label fx:id="email" layoutX="295.0" layoutY="142.0" prefHeight="18.0" prefWidth="148.0" text="Email" />
+   </children>
+</AnchorPane>

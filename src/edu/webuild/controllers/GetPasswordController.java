@@ -50,6 +50,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -75,12 +76,12 @@ public class GetPasswordController implements Initializable {
 
     @FXML
     private TextField txtusername;
-    @FXML
-    private PasswordField txtpass;
 
     static String Ssemail2;
     @FXML
     private Button btnRechercher;
+    @FXML
+    private ChoiceBox<String> fxchoice;
 
     /**
      * Initializes the controller class.
@@ -90,6 +91,8 @@ public class GetPasswordController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         fxchoice.getItems().addAll("Client", "Chauffeur", "Locateur", "Admin");
+        fxchoice.setValue("Client"); // sélectionne "Option 1" comme valeur par défaut
     }
    
     @FXML

@@ -8,6 +8,7 @@ package edu.webuild.services;
 import edu.webuild.interfaces.InterfaceChauffeurCRUD;
 import edu.webuild.model.Chauffeur;
 import edu.webuild.model.Role;
+import edu.webuild.model.Utilisateur;
 import edu.webuild.utils.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -262,5 +263,51 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         }
         return existe;
     }
+    
+     public Chauffeur getChauffeur(String email) throws SQLException {
+        String query = "SELECT * "
+                + "FROM utilisateur "
+                + "JOIN role ON utilisateur.id_user = role.id_user "
+                + "JOIN chauffeur ON role.id_role = chauffeur.id_role "
+                + "WHERE email = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String nom = rs.getString("nom");
+                    String prenom = rs.getString("prenom");
+                    int id_role = rs.getInt("id_role");
+                    int id_client = rs.getInt("id_ch");
+                    int id_user = rs.getInt("id_user");
+
+                    // Créer l'objet User
+                    Utilisateur user = new Utilisateur();
+                    user.setId_user(id_user);
+                    user.setNom(nom);
+                    user.setPrenom(prenom);
+
+                    // Créer l'objet Role
+                    Role role = new Role();
+                    role.setId_role(id_role);
+                    role.setId_user(user);
+
+                    // Créer l'objet Chauffeur
+                    Chauffeur client = new Chauffeur();
+                    client.setEmail(email);
+                    client.setId_ch(id_client);
+                    client.setId_role(role);
+
+                    return client;
+
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 }

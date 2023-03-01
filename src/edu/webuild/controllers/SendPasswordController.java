@@ -47,7 +47,12 @@ public class SendPasswordController implements Initializable {
     @FXML
     private Button loginBtn;
     
-    ClientCRUD cc = new ClientCRUD();
+   
+    @FXML
+    private PasswordField txtpass1;
+    @FXML
+    private PasswordField ancien;
+    Client c=new Client();
 
     /**
      * Initializes the controller class.
@@ -61,14 +66,17 @@ public class SendPasswordController implements Initializable {
 
     @FXML
     private void Confirm(ActionEvent event) throws SQLException {
-        Client c = cc.getClientbymail(Ssemail2);
-        System.out.println(c);
-        if (!c.getToken().equals(txtusername.getText())) {
-            
-        } else {
-            c.setEmail(txtpass.getText());
-            cc.modifierClient(c);
-        }
+       if (validateInputs()){
+            ClientCRUD cc = new ClientCRUD();
+            String email = txtusername.getText();
+            String mdp = txtpass.getText();
+            cc.changePassword(mdp, email);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Succès");
+                alert.setHeaderText("Modifié");
+                alert.setContentText("Mot de passe changé avec succès");
+                alert.showAndWait();
+        
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
@@ -77,10 +85,44 @@ public class SendPasswordController implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(SendPasswordController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+        }
+       
 
     }
+    
+    
+    private boolean validateInputs() throws SQLException {
+
+        if (txtusername.getText().isEmpty() || ancien.getText().isEmpty() || txtpass.getText().isEmpty() || txtpass1.getText().isEmpty()) {
+            Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("Erreur");
+            alert1.setContentText("Veuillez remplir tous les champs");
+            alert1.setHeaderText("Controle de saisie");
+            alert1.show();
+            return false;
+        }
+        else if (!(txtpass.getText().equals(txtpass1.getText()))) {
+            Alert alert2 = new Alert(Alert.AlertType.WARNING);
+            alert2.setTitle("Erreur");
+            alert2.setContentText("Veuillez vérifier votre nouveau mot de passe");
+            alert2.setHeaderText(null);
+            alert2.show();
+            return false;
+        }
+          else if (!(ancien.getText().equals(c.getPassword()))) {
+            Alert alert2 = new Alert(Alert.AlertType.WARNING);
+            alert2.setTitle("Erreur");
+            alert2.setContentText("Le mot de passe que vous avez entré ne correspond pas au clé d'activation");
+            alert2.setHeaderText(null);
+            alert2.show();
+            return false;
+        }
+        return true;
+
+    }
+
 
 }
