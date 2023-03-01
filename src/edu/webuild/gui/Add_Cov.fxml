@@ -122,9 +122,9 @@
         <Button layoutX="61.0" layoutY="436.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Participation Co_Voiturage" />
         <Button layoutX="61.0" layoutY="497.0" mnemonicParsing="false" onAction="#stats" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Stats" />
         <ChoiceBox fx:id="depart_box" layoutX="520.0" layoutY="169.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="destination_box" layoutX="520.0" layoutY="248.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="nmbr_place_box" layoutX="520.0" layoutY="330.0" prefWidth="150.0" />
-      <TextField fx:id="email" layoutX="534.0" layoutY="540.0" promptText="just testing the email" />
+        <ChoiceBox fx:id="destination_box" layoutX="520.0" layoutY="248.0" prefWidth="150.0" />
+        <ChoiceBox fx:id="nmbr_place_box" layoutX="520.0" layoutY="330.0" prefWidth="150.0" />
+        <TextField fx:id="email" layoutX="534.0" layoutY="540.0" promptText="just testing the email" />
 
     </children>
 </AnchorPane>

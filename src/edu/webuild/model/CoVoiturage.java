@@ -18,7 +18,7 @@ public class CoVoiturage {
     private String destination;
     private Date date_dep;
     private int nmbr_place;
-    private String cov_img; 
+    private String cov_img;
 
     public String getCov_img() {
         return cov_img;

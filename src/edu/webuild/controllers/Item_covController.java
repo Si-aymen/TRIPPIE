@@ -6,6 +6,8 @@
 package edu.webuild.controllers;
 
 import edu.webuild.model.CoVoiturage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -32,20 +34,29 @@ public class Item_covController implements Initializable {
     @FXML
     private Label temps;
     private MyListener myListener;
-    private CoVoiturage cov ;
+    private CoVoiturage cov;
+    @FXML
+    private Label nb_plc;
 
     /**
      * Initializes the controller class.
      */
-    public void setData(String departt, String destinationn, Date d) {
+    public void setData(String departt, String destinationn, Date d, String url, String nmbr_place) {
         depart.setText(departt);
         destination.setText(destinationn);
         temps.setText(d.toString());
-        // Uncomment the following lines if you want to set an image
-        //String fullurl = "C:\\xampp\\htdocs\\image_trippie_cov\\" + url;
-        //Image image = new Image(getClass().getResourceAsStream("C:\\Users\\manou\\Desktop\\TRIPPIE-co_voiturage\\205.jpg"));
-        //Image image = new Image("C:\\Users\\manou\\Desktop\\TRIPPIE-co_voiturage\\205.jpg");
-        //img.setImage(image);
+        String fullurl ="C:\\xampp\\htdocs\\image_trippie_cov\\"+url;
+        System.out.println("full url "+ fullurl);
+        nb_plc.setText(nmbr_place);
+//        Image image = new Image(fullurl);
+//        //Image image = new Image("C:\\Users\\manou\\Desktop\\TRIPPIE-co_voiturage\\205.jpg");
+//        img.setImage(image);
+        
+        try {
+            img.setImage(new Image(new FileInputStream(fullurl)));
+        } catch (FileNotFoundException e) {
+            System.err.println("Error loading image: " + e.getMessage());
+        }
     }
 
     @Override
@@ -54,7 +65,6 @@ public class Item_covController implements Initializable {
         //img.setImage(new Image("C:\\Users\\manou\\Desktop\\TRIPPIE-co_voiturage\\205.jpg"));
     }
 
-    @FXML
     public void onClick() {
         myListener.onClick(cov);
     }
@@ -64,6 +74,7 @@ public class Item_covController implements Initializable {
     }
 
     public interface MyListener {
+
         void onClick(CoVoiturage cov);
     }
 

@@ -25,7 +25,7 @@ public class Call_Cov {
     public static final String ACCOUNT_SID = "AC1ed373981440ff3b6ccefc4eb68223b7";
     public static final String AUTH_TOKEN = "12e649ee6be8f46c2a00151f1427739a";
 
-    public void  cal(String TO) {
+    public void cal(String TO) {
         System.out.println(ACCOUNT_SID);
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 

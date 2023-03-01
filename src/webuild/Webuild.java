@@ -27,8 +27,13 @@ public class Webuild {
 
         SmS_Cov send = new SmS_Cov();
         //send.send_message("+21692554097", "test the msg 10th time");
-        Call_Cov test_call = new Call_Cov(); 
-        test_call.cal("+21692554097");
+        Call_Cov test_call = new Call_Cov();
+        //test_call.cal("+21692554097");
+
+        Whatsapp what = new Whatsapp();
+        String toNumber = "+21692554097";
+        String messageBody = "ok test";
+        what.sendWhatsappMessage(toNumber, messageBody);
 
     }
 

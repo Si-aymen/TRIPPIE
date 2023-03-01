@@ -5,6 +5,7 @@
  */
 package edu.webuild.controllers;
 
+import test_code.Menu_CoVoiturageController;
 import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.model.CoVoiturage;
 import edu.webuild.services.Call_Cov;
@@ -59,10 +60,10 @@ public class Add_CovController implements Initializable {
     static String url_image;
     @FXML
     private ChoiceBox<String> depart_box;
-    private final String[] places_dep = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba","beja"};
+    private final String[] places_dep = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba", "beja"};
     @FXML
     private ChoiceBox<String> destination_box;
-    private final String[] places_dest = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba","beja"};
+    private final String[] places_dest = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba", "beja"};
 
     @FXML
     private ChoiceBox<Integer> nmbr_place_box;

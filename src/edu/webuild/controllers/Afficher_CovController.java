@@ -5,7 +5,7 @@
  */
 package edu.webuild.controllers;
 
-import edu.webuild.controllers.Menu_CoVoiturageController;
+import test_code.Menu_CoVoiturageController;
 import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.interfaces.InterfaceParticipation;
 import edu.webuild.model.CoVoiturage;
@@ -140,7 +140,6 @@ public class Afficher_CovController implements Initializable {
         nmbr_place = Integer.toString(V.getNmbr_place());
         System.out.println(id_co);
 
-
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Mod_Cov.fxml"));
@@ -192,9 +191,6 @@ public class Afficher_CovController implements Initializable {
 //            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
-
-
-
     @FXML
     private void delete_cov(ActionEvent event) {
 

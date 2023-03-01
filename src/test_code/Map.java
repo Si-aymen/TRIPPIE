@@ -16,7 +16,6 @@ public class Map extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-
         // create a JFXPanel to hold the map
         JFXPanel jfxPanel = new JFXPanel();
 
@@ -47,9 +46,7 @@ public class Map extends Application {
         primaryStage.show();
     }
 
-
-
-public static void main(String[] args) {
+    public static void main(String[] args) {
         launch(args);
     }
 }

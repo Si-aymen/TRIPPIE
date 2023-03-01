@@ -11,7 +11,7 @@ public class EmailSender {
     private static final String USERNAME = "aymen.rahali@esprit.tn";
     private static final String PASSWORD = "tumlrjgqhmlmbpwt";
 
-    public static void sendEmail_add(String toEmail,String message ) {
+    public static void sendEmail_add(String toEmail, String message) {
         //String toEmail = "manouch2001.ra@gmail.com";
         String subject = "Trippie Add Cov_voiturage ";
         //String message = "confirmation email";
@@ -90,8 +90,7 @@ public class EmailSender {
 //    }
 //}
 
-
-    public static void sendEmail_mod(String toEmail,String subject) {
+    public static void sendEmail_mod(String toEmail, String subject) {
 
         //String subject = "Trippie modify Cov_voiturage ";
         String message = "confirmation email";

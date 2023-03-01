@@ -5,6 +5,7 @@
  */
 package edu.webuild.controllers;
 
+import test_code.Menu_CoVoiturageController;
 import edu.webuild.interfaces.InterfaceParticipation;
 import edu.webuild.model.Participation;
 import edu.webuild.services.ParticipationCrud;
@@ -75,7 +76,6 @@ public class Add_PartController implements Initializable {
 
     }
 
-
     private void Cov_btu(ActionEvent event) {
         try {
 
@@ -92,7 +92,7 @@ public class Add_PartController implements Initializable {
 
     @FXML
     private void cov_btu(ActionEvent event) {
-                try {
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_Cov.fxml"));
             Scene scene = new Scene(page1);
@@ -107,7 +107,7 @@ public class Add_PartController implements Initializable {
 
     @FXML
     private void stats(ActionEvent event) {
-                try {
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Piechart.fxml"));
             Scene scene = new Scene(page1);

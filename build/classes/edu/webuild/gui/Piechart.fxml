@@ -105,17 +105,17 @@
                 </Text>
             </children>
         </AnchorPane>
-      <PieChart fx:id="pie" layoutX="272.0" layoutY="141.0" />
-      <Button layoutX="51.0" layoutY="205.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="User" />
-      <Button layoutX="51.0" layoutY="261.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Voiture" />
-      <Button layoutX="51.0" layoutY="315.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Reservation Voiture" />
-      <Button fx:id="cov_btu" layoutX="51.0" layoutY="371.0" mnemonicParsing="false" onAction="#cov_btu" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Co_Voiturage" />
-      <Button layoutX="51.0" layoutY="426.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Participation Co_Voiturage" />
-      <Button layoutX="51.0" layoutY="487.0" mnemonicParsing="false" onAction="#stats" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Stats" />
-      <PieChart fx:id="pie2" layoutX="772.0" layoutY="145.0" />
-      <Label layoutX="311.0" layoutY="611.0" text="Nombre des Co_Voiturage" />
-      <Label layoutX="311.0" layoutY="651.0" text="Nombre des participations" />
-      <Label fx:id="nmbr_cov" layoutX="494.0" layoutY="611.0" text="Label" />
-      <Label fx:id="nmbr_part" layoutX="494.0" layoutY="651.0" text="Label" />
+        <PieChart fx:id="pie" layoutX="272.0" layoutY="141.0" />
+        <Button layoutX="51.0" layoutY="205.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="User" />
+        <Button layoutX="51.0" layoutY="261.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Voiture" />
+        <Button layoutX="51.0" layoutY="315.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Reservation Voiture" />
+        <Button fx:id="cov_btu" layoutX="51.0" layoutY="371.0" mnemonicParsing="false" onAction="#cov_btu" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Co_Voiturage" />
+        <Button layoutX="51.0" layoutY="426.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Participation Co_Voiturage" />
+        <Button layoutX="51.0" layoutY="487.0" mnemonicParsing="false" onAction="#stats" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Stats" />
+        <PieChart fx:id="pie2" layoutX="772.0" layoutY="145.0" />
+        <Label layoutX="311.0" layoutY="611.0" text="Nombre des Co_Voiturage" />
+        <Label layoutX="311.0" layoutY="651.0" text="Nombre des participations" />
+        <Label fx:id="nmbr_cov" layoutX="494.0" layoutY="611.0" text="Label" />
+        <Label fx:id="nmbr_part" layoutX="494.0" layoutY="651.0" text="Label" />
     </children>
 </AnchorPane>

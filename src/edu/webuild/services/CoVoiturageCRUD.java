@@ -218,6 +218,6 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
             System.out.println(ex.getMessage());
         }
 
-        return Integer.toString(count) ;
+        return Integer.toString(count);
     }
 }

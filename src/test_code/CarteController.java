@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.controllers;
+package test_code;
 
-import edu.webuild.controllers.Menu_CoVoiturageController;
+import test_code.Menu_CoVoiturageController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;

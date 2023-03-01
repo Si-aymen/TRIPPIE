@@ -10,12 +10,13 @@ package edu.webuild.model;
  * @author manou
  */
 public class Participation {
-    private int id_part; 
+
+    private int id_part;
     private int nmbr_place_part;
     private int id_co;
 
-    public Participation(){
-    
+    public Participation() {
+
     }
 
     public int getId_part() {
@@ -41,6 +42,7 @@ public class Participation {
     public void setId_co(int id_co) {
         this.id_co = id_co;
     }
+
     public Participation(int id_part, int nmbr_place_part, int id_co) {
         this.id_part = id_part;
         this.nmbr_place_part = nmbr_place_part;
@@ -54,8 +56,7 @@ public class Participation {
 
     @Override
     public String toString() {
-        return "Participation{" + "id_part=" + id_part + ", nmbr_place_part=" + nmbr_place_part + ", id_co=" + id_co + '}' +"\n";
+        return "Participation{" + "id_part=" + id_part + ", nmbr_place_part=" + nmbr_place_part + ", id_co=" + id_co + '}' + "\n";
     }
-    
-    
+
 }
