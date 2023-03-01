@@ -12,14 +12,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -32,8 +40,10 @@ public class Market_voiturebackController implements Initializable {
     private ScrollPane scroll;
     @FXML
     private GridPane grid;
-     private List<voiture> voitDataList = FXCollections.observableArrayList();
+    private List<voiture> voitDataList = FXCollections.observableArrayList();
     private InterfaceCRUD voitureCRUD = new voitureCRUD();
+    @FXML
+    private Button add_voiture;
 
     /**
      * Initializes the controller class.
@@ -48,9 +58,9 @@ public class Market_voiturebackController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/cardvoiture.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
-                Item_voitureController item = fxmlLoader.getController();
-              //  item.setData(DataList.get(i).getImage_voiture(), Integer.toString(voitDataList.get(i).getPrix_jours(),voitDataList.get(i).getEnergie(),voitDataList.get(i).getEtat());
-              
+                CardvoitureController item = fxmlLoader.getController();
+
+                item.setData(voitDataList.get(i).getId(), voitDataList.get(i).getMatricule(), voitDataList.get(i).getMarque(), voitDataList.get(i).getPuissance(), voitDataList.get(i).getImage_voiture(), Integer.toString(voitDataList.get(i).getPrix_jours()), voitDataList.get(i).getEnergie(), voitDataList.get(i).getEtat());
                 if (column == 2) {
                     column = 0;
                     row++;
@@ -71,6 +81,22 @@ public class Market_voiturebackController implements Initializable {
             }
         }
         // TODO
-    }    
-    
+    }
+
+    @FXML
+    private void add_voiture(ActionEvent event) {
+        try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Ajoutervoitureback.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
 }

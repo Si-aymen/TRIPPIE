@@ -73,12 +73,12 @@ public class Market_voitController implements Initializable {
         int row = 3;
         for (int i = 0; i < voitDataList.size(); i++) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/Item_voiture.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/cardvoiture.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
-                Item_voitureController item = fxmlLoader.getController();
-                item.setData(voitDataList.get(i).getId(),voitDataList.get(i).getMarque(), voitDataList.get(i).getPuissance(), voitDataList.get(i).getImage_voiture(), Integer.toString(voitDataList.get(i).getPrix_jours()));
-              
+                CardvoitureController item = fxmlLoader.getController();
+
+                item.setData(voitDataList.get(i).getId(), voitDataList.get(i).getMatricule(), voitDataList.get(i).getMarque(), voitDataList.get(i).getPuissance(), voitDataList.get(i).getImage_voiture(), Integer.toString(voitDataList.get(i).getPrix_jours()), voitDataList.get(i).getEnergie(), voitDataList.get(i).getEtat());
                 if (column == 2) {
                     column = 0;
                     row++;
@@ -106,7 +106,7 @@ public class Market_voitController implements Initializable {
 
     @FXML
     private void details_btu(ActionEvent event) {
-         try {
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Details_Cov.fxml"));
             Scene scene = new Scene(page1);
@@ -121,7 +121,7 @@ public class Market_voitController implements Initializable {
 
     @FXML
     private void back(ActionEvent event) {
-         try {
+        try {
 
             Parent page1
                     = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/location_voiture.fxml"));
