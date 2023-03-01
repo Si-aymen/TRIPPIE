@@ -59,15 +59,14 @@ public class Webuild {
            
       
 // ---------------Create a new Abonnement object--------------
-   
-//   AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
-//         Date dateAchat = Date.valueOf("2023-02-24");
-//            Date dateExpiration = Date.valueOf("2024-02-24");
-//           abonnement abonnement = new abonnement("GOLD", 120, dateAchat ,dateExpiration);
-////       
-//        
-// -------------Add the new Abonnement object to the database-----------
-         //  abonnementCRUD.ajouterabonnement(abonnement);
+    AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
+         Date dateAchat = Date.valueOf("2023-02-24");
+           Date dateExpiration = Date.valueOf("2025-02-24");
+         abonnement abonnement = new abonnement("PLAT", 120, dateAchat ,dateExpiration);
+       
+        
+//// -------------Add the new Abonnement object to the database-----------
+     abonnementCRUD.ajouterabonnement(abonnement);
 
     // -------------display the objects in the database---------------------------------
 //     System.out.println( abonnementCRUD.afficherabonnement());
@@ -86,9 +85,8 @@ public class Webuild {
             // System.out.println( abonnementCRUD.Filter_abonnement("dateAchat","2022-02-22"));
 
 // -------------deletes  objects in the database---------------------------------
-    //   abonnementCRUD.supprimerabonnement(18);
-             
-
+//   abonnementCRUD.supprimerabonnement(34);
+    
 // ---------------------Call the modifierabonnement method to update the abonnement
         //abonnementCRUD.modifierabonnement(abonnement, 22);
 
@@ -139,7 +137,7 @@ public class Webuild {
              // Call modifiercarte with appropriate parameters
 //                        cartefidelite cf = new cartefidelite();
 //                        cf.setPointMerci("50");
-//                        int id_cf = 21;
+//                        int id_cf =     22;
 //                        cartefideliteCRUD.modifiercarte(cf, id_cf);
             
             

@@ -8,9 +8,6 @@ package edu.webuild.services;
 import edu.webuild.model.abonnement;
 import edu.webuild.utils.MyConnection;
 import edu.webuild.model.cartefidelite;
-import edu.webuild.services.CartefideliteCRUD;
-
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -22,9 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.webuild.interfaces.InterfaceAbonnement;
-import java.time.LocalDate;
-import java.time.ZoneId;
-
 
 /**
  *
@@ -49,11 +43,6 @@ public class AbonnementCRUD implements InterfaceAbonnement{
           
 
 
-// Date validation
-          
-        if (A.getDateAchat().compareTo(A.getDateExpiration()) >= 0) {
-            throw new IllegalArgumentException("La date d'achat doit être antérieure à la date d'expiration.");
-        }
 
            
                 

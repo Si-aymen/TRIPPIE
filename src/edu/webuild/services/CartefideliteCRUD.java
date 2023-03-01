@@ -198,7 +198,7 @@ public void modifiercarte(cartefidelite cf, int id_cf) {
     public List<AbonnementCarteFidelite> getAllCarteFideliteWithAbonnement() {
       
          List<AbonnementCarteFidelite> cartesFidelitesAbonnements = new ArrayList<>();
-    String query = "SELECT * FROM abonnement JOIN cartefidelite ON abonnement.idA = cartefidelite.idA";
+    String query = "SELECT * FROM abonnement JOIN cartefidelite ON abonnement.idA = cartefidelite.pointMerci";
     try (
          PreparedStatement ps = conn.prepareStatement(query);
          ResultSet rs = ps.executeQuery()) {
