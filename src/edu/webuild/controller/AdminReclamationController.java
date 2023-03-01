@@ -11,7 +11,6 @@ import com.twilio.type.PhoneNumber;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
 import edu.webuild.utils.Email;
-import edu.webuild.utils.Mailing;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -20,10 +19,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import javax.mail.MessagingException;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -55,6 +57,7 @@ public class AdminReclamationController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+                      
         ListView list2 = liste_reclamation;
         reclamation r = new reclamation();
         reclamationCRUD rec = new reclamationCRUD();
@@ -63,6 +66,7 @@ public class AdminReclamationController implements Initializable {
             reclamation reclamation = list.get(i);
             list2.getItems().add(reclamation);
         }
+                
     }
 
     @FXML
@@ -150,6 +154,14 @@ public class AdminReclamationController implements Initializable {
             reclamation reclamation = list2.get(i);
             list.getItems().add(reclamation);
         }
+        
+        Notifications n = Notifications.create()
+                        .title("Bienvenue")
+                        .text("Username ou mot de passe invalide!")
+                        .graphic(null)
+                        .position(Pos.TOP_CENTER)
+                        .hideAfter(Duration.seconds(5));
+                n.showInformation();
 
     }
 
