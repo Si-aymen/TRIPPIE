@@ -21,11 +21,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -42,13 +52,21 @@ public class Ajouter_recAdminController implements Initializable {
     private AnchorPane rootPane;
     
     public static int id_utilisateur = 1;
+    
+    int etatrecaptcha = 0;
+    Stage window;
+    WebView webView2;
+    WebEngine webEngine;
+    
+    @FXML
+    private ImageView recaptcha;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        recaptcha.setImage(new Image("/edu/webuild/images/google-captcha.jpg"));
     }    
 
     @FXML
@@ -102,6 +120,27 @@ public class Ajouter_recAdminController implements Initializable {
             }
         
         
+    }
+        
+    @FXML
+    private void recaptcha(MouseEvent event) {
+        //Block events to other windows
+//            window.setTitle("Veuillez choisir un compte");
+        webView2.setPrefSize(400, 500);
+        webEngine.setUserAgent("use required / intended UA string");
+        webEngine.load("https://www.google.com");
+
+        Button closeButton = new Button("Fermer");
+        closeButton.setOnAction(e -> window.close());
+
+        VBox layout = new VBox(10);
+        layout.getChildren().addAll(webView2);
+        layout.setAlignment(Pos.CENTER);
+
+        //Display window and wait for it to be closed before returning
+        Scene scene = new Scene(layout);
+        window.setScene(scene);
+        window.showAndWait();
     }
     
 }

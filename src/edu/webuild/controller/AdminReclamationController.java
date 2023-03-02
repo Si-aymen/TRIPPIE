@@ -157,7 +157,7 @@ public class AdminReclamationController implements Initializable {
         
         Notifications n = Notifications.create()
                         .title("Bienvenue")
-                        .text("Username ou mot de passe invalide!")
+                        .text("Réclamation traité !")
                         .graphic(null)
                         .position(Pos.TOP_CENTER)
                         .hideAfter(Duration.seconds(5));

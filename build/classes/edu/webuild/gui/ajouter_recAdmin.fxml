@@ -5,10 +5,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff2e2;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controller.Ajouter_recAdminController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controller.Ajouter_recAdminController">
    <children>
       <FontAwesomeIconView glyphName="ARROW_CIRCLE_LEFT" layoutX="51.0" layoutY="52.0" onMouseClicked="#retour" size="35" />
       <Label layoutX="63.0" layoutY="81.0" text="Type de la réclamation :" />
@@ -16,5 +16,6 @@
       <TextField fx:id="tf_type" layoutX="201.0" layoutY="77.0" />
       <TextArea fx:id="tf_commentaire" layoutX="189.0" layoutY="117.0" prefHeight="146.0" prefWidth="234.0" />
       <Button layoutX="248.0" layoutY="297.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+      <ImageView fx:id="recaptcha" fitHeight="44.0" fitWidth="150.0" layoutX="14.0" layoutY="341.0" onMouseClicked="#recaptcha" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
