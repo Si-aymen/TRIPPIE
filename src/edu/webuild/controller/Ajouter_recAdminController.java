@@ -54,9 +54,9 @@ public class Ajouter_recAdminController implements Initializable {
     public static int id_utilisateur = 1;
     
     int etatrecaptcha = 0;
-    Stage window;
-    WebView webView2;
-    WebEngine webEngine;
+    Stage window = new Stage();
+    WebView webView2 = new WebView();
+    WebEngine webEngine = new WebEngine();
     
     @FXML
     private ImageView recaptcha;
