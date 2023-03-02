@@ -175,20 +175,20 @@ public class AjoutervoiturebackController implements Initializable {
                 alert.setContentText("tu ne respecte pas l immatriulation");
                 alert.show();
             } else {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Confirmation");
-                alert.setHeaderText(null);
-                alert.setContentText("are you sure to add this car ?");
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK) {
+//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//                alert.setTitle("Confirmation");
+//                alert.setHeaderText(null);
+//                alert.setContentText("are you sure to add this car ?");
+//                Optional<ButtonType> result = alert.showAndWait();
+//                if (result.get() == ButtonType.OK) {
                     voiture v = new voiture(matricule, marque, puissance, prix_jours, cov_img, energie);
                     voitureCRUD voit = new voitureCRUD();
                     voit.ajoutervoiture(v);
-                    showAlert("car added successfully");
+                 //  showAlert("car added successfully");
 
                 }
             }
         }
 
     }
-}
+

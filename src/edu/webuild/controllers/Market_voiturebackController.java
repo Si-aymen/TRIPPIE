@@ -73,6 +73,8 @@ public class Market_voiturebackController implements Initializable {
                 grid.setMinHeight(Region.USE_COMPUTED_SIZE);
                 grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
+                
+                
 
                 GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
             } catch (IOException e) {
@@ -82,6 +84,7 @@ public class Market_voiturebackController implements Initializable {
         }
         // TODO
     }
+   
 
     @FXML
     private void add_voiture(ActionEvent event) {
