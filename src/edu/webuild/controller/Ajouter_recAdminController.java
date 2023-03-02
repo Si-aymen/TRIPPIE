@@ -5,19 +5,17 @@
  */
 package edu.webuild.controller;
 
+import com.jfoenix.controls.JFXButton;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
 import java.sql.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,12 +27,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -52,6 +52,8 @@ public class Ajouter_recAdminController implements Initializable {
     private AnchorPane rootPane;
     
     public static int id_utilisateur = 1;
+    private String path;
+    File selectedFile;
     
     int etatrecaptcha = 0;
     Stage window = new Stage();
@@ -60,6 +62,10 @@ public class Ajouter_recAdminController implements Initializable {
     
     @FXML
     private ImageView recaptcha;
+    @FXML
+    private ImageView screenshotView;
+    @FXML
+    private JFXButton image;
 
     /**
      * Initializes the controller class.
@@ -67,6 +73,41 @@ public class Ajouter_recAdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         recaptcha.setImage(new Image("/edu/webuild/images/google-captcha.jpg"));
+        
+        screenshotView.setOnDragOver(new EventHandler<DragEvent>() {
+            public void handle(DragEvent event) {
+                Dragboard db = event.getDragboard();
+                if (db.hasFiles()) {
+                    event.acceptTransferModes(TransferMode.COPY);
+                } else {
+                    event.consume();
+                }
+            }
+        });
+
+        // Dropping over surface
+        screenshotView.setOnDragDropped(new EventHandler<DragEvent>() {
+            public void handle(DragEvent event) {
+                Dragboard db = event.getDragboard();
+                boolean success = false;
+                if (db.hasFiles()) {
+                    success = true;
+                    path = null;
+                    for (File file : db.getFiles()) {
+                        path = file.getName();
+                        selectedFile = new File(file.getAbsolutePath());
+                        System.out.println("Drag and drop file done and path=" + file.getAbsolutePath());//file.getAbsolutePath()="C:\Users\X\Desktop\ScreenShot.6.png"
+                        screenshotView.setImage(new Image("file:" + file.getAbsolutePath()));
+//                        screenshotView.setFitHeight(150);
+//                        screenshotView.setFitWidth(250);
+                        image.setText(path);
+                    }
+                }
+                event.setDropCompleted(success);
+                event.consume();
+            }
+        });
+        screenshotView.setImage(new Image("file:C:\\Users\\guerf\\Desktop\\TRIPPIE-Reclamation\\src\\edu\\webuild\\images\\drag-drop.gif"));
     }    
 
     @FXML

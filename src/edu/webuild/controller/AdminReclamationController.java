@@ -15,14 +15,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import javax.mail.MessagingException;
 import org.controlsfx.control.Notifications;
@@ -48,16 +53,21 @@ public class AdminReclamationController implements Initializable {
     static public String toEmail = "guerfala71@gmail.com";
     static public String subject = "test";
     static public String body = "test";
-    
+
     static public String num = "54833493";
-    static public String phone = "+216"+num;
+    static public String phone = "+216" + num;
+
+    static reclamation selectionedReclamation;
+    static Stage stageAffichageUnique;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                      
+
+        stageAffichageUnique = new Stage();
+
         ListView list2 = liste_reclamation;
         reclamation r = new reclamation();
         reclamationCRUD rec = new reclamationCRUD();
@@ -66,7 +76,33 @@ public class AdminReclamationController implements Initializable {
             reclamation reclamation = list.get(i);
             list2.getItems().add(reclamation);
         }
-                
+
+        list2.setOnMouseClicked((MouseEvent event2)
+                -> {
+            if (event2.getClickCount() >= 2) {
+                if (list2.getSelectionModel().getSelectedItem() != null) {
+                    reclamation reclam = (reclamation) list2.getSelectionModel().getSelectedItem();
+
+                    id_rec = Integer.toString(reclam.getId_rec());
+                    type_rec = reclam.getType_rec();
+                    commentaire_rec = reclam.getCommentaire();
+                    etat_rec = reclam.getEtat();
+
+                    Parent root;
+                    try {
+                        root = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/affiche_recUnique.fxml"));
+                        Scene scene = new Scene(root);
+                        stageAffichageUnique.setScene(scene);
+                        stageAffichageUnique.show();
+
+                    } catch (IOException ex) {
+                        System.err.println(ex);
+                    }
+
+                }
+            }
+        });
+
     }
 
     @FXML
@@ -154,14 +190,14 @@ public class AdminReclamationController implements Initializable {
             reclamation reclamation = list2.get(i);
             list.getItems().add(reclamation);
         }
-        
+
         Notifications n = Notifications.create()
-                        .title("Bienvenue")
-                        .text("Réclamation traité !")
-                        .graphic(null)
-                        .position(Pos.TOP_CENTER)
-                        .hideAfter(Duration.seconds(5));
-                n.showInformation();
+                .title("Bienvenue")
+                .text("Réclamation traité !")
+                .graphic(null)
+                .position(Pos.TOP_CENTER)
+                .hideAfter(Duration.seconds(5));
+        n.showInformation();
 
     }
 
@@ -199,17 +235,17 @@ public class AdminReclamationController implements Initializable {
 
     @FXML
     private void sendSMS(ActionEvent event) {
-        try{
-        TwilioRestClient client = new TwilioRestClient.Builder("ACac8596dd282c3072d3da4dbb09625ab1", "953d46930a342a889d193acfade908ad").build();
+        try {
+            TwilioRestClient client = new TwilioRestClient.Builder("ACac8596dd282c3072d3da4dbb09625ab1", "953d46930a342a889d193acfade908ad").build();
 
-        Message message = Message.creator(
-                new PhoneNumber(phone), // To phone number
-                new PhoneNumber("+12766226225"), // From Twilio phone number
-                "Votre réclamation est reçu") // SMS message body
-                .create(client);
+            Message message = Message.creator(
+                    new PhoneNumber(phone), // To phone number
+                    new PhoneNumber("+12766226225"), // From Twilio phone number
+                    "Votre réclamation est reçu") // SMS message body
+                    .create(client);
 
-        System.out.println("message envoyé");
-        }catch (Error ex) {
+            System.out.println("message envoyé");
+        } catch (Error ex) {
             System.err.println(ex);
         }
     }
