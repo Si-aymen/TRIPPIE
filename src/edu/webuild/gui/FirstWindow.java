@@ -33,7 +33,7 @@ public class FirstWindow extends Application {
     public void mainWindow() {
         try {
             // view
-            FXMLLoader loader = new FXMLLoader(FirstWindow.class.getResource("ajouter_chauffeur.fxml"));
+            FXMLLoader loader = new FXMLLoader(FirstWindow.class.getResource("Login.fxml"));
             AnchorPane pane = loader.load();
 
             // controller

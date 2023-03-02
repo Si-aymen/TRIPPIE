@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,8 +41,7 @@ public class ProfilChauffeurController implements Initializable {
     private Button exitBtn;
     @FXML
     private Button btn;
-
-
+    static String email ;
 //    public void setEmail_lbl(String email) throws SQLException {
 //        this.email_lbl.setText(email);
 //        // TODO
@@ -76,16 +77,24 @@ public class ProfilChauffeurController implements Initializable {
     }
 
     @FXML
-    private void details(ActionEvent event) throws IOException {
-        FXMLLoader loader3 = new FXMLLoader(getClass().getResource("/edu/webuild/gui/ProfilLocateur.fxml"));
-                    Parent root3 = loader3.load();
-                    DetailsChauffeurController lc = loader3.getController();
-                    email_lbl.getScene().setRoot(root3);      
-                    lc.setEmail(email);
-                    Scene scene3 = new Scene(root3);
-                    Stage stage3 = (Stage) btn.getScene().getWindow();
-                    stage3.setScene(scene3);
-                    stage3.show();
-    }
+    private void details(ActionEvent event) throws IOException, SQLException {
+         
+        
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/ProfilLocateur.fxml"));
+            Parent root = loader.load();
+            email_lbl.getScene().setRoot(root);
+            DetailsChauffeurController det=loader.getController();
+            email=email_lbl.getText();
+            det.setEmail(email);
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) btn.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ProfilChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
 
+        }
+
+    }
 }

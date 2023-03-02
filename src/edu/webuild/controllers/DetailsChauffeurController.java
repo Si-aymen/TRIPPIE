@@ -5,12 +5,15 @@
  */
 package edu.webuild.controllers;
 
+import static edu.webuild.controllers.ProfilChauffeurController.email;
+import edu.webuild.model.Chauffeur;
+import edu.webuild.services.ChauffeurCRUD;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-
 
 /**
  * FXML Controller class
@@ -33,26 +36,33 @@ public class DetailsChauffeurController implements Initializable {
     private Label prenom;
     @FXML
     private Label email;
+    ChauffeurCRUD ch = new ChauffeurCRUD();
 
-    public void setEmail(String email2) {
-        this.email.setText(email2);
-        System.out.println(email2);
+    public void setEmail(String email) throws SQLException {
+        
+        this.email.setText(email);
+        ChauffeurCRUD u = new ChauffeurCRUD();
+        Chauffeur p = u.getChauffeur(email);
+        nom.setText(p.getId_role().getId_user().getNom());
+        prenom.setText(p.getId_role().getId_user().getPrenom());
+        marque.setText(p.getMarque_voiture());
+        couleur.setText(p.getCouleur_voiture());
+        mat.setText(p.getImmatriculation());
+       
+
     }
 
-    
-    
-    
-    
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
+  
+
 }

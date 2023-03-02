@@ -14,8 +14,10 @@
       <TextField fx:id="fxmarque" layoutX="98.0" layoutY="206.0" promptText="Marque Voiture" style="-fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="fxmat" layoutX="98.0" layoutY="259.0" promptText="Matricule" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black;" />
       <TextField fx:id="fxcoul" layoutX="98.0" layoutY="107.0" promptText="Couleur Voiture" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black;" />
+      <PasswordField fx:id="fxpass" layoutX="362.0" layoutY="220.0" promptText="Mot de passe" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-prompt-text-fill: black;" />
       <ToggleButton fx:id="showbtnnewnew" layoutX="486.0" layoutY="221.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
-      <PasswordField fx:id="fxpass" layoutX="362.0" layoutY="220.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-prompt-text-fill: black;" />
       <TextField fx:id="fxmail" layoutX="362.0" layoutY="163.0" promptText="Email" style="-fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-background-color: transparent;" />
+      <PasswordField fx:id="fxpass1" layoutX="362.0" layoutY="273.0" promptText="Retaper mot de passe" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-prompt-text-fill: black;" />
+      <ToggleButton fx:id="showbtnnewnew1" layoutX="486.0" layoutY="274.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
    </children>
 </AnchorPane>

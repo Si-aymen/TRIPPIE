@@ -109,7 +109,17 @@ public class Ajouter_clientController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Veuillez saisir une adresse e-mail valide.");
             alert.showAndWait();
-        } else {
+        } 
+        else if(!(fxpass.getText().equals(fxpass1.getText()))){
+        
+          Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir une adresse e-mail valide.");
+            alert.showAndWait();
+        
+        }
+        else {
             Client cli = new Client(r, email, password);
             rc.affecterRole2(cli, r);
             try {

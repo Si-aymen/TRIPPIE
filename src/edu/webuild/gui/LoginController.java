@@ -132,28 +132,7 @@ public class LoginController {
         exitBtn.setOnAction(e -> Platform.exit());
     }
 
-//    @FXML
-//    void login(ActionEvent event) throws IOException, SQLException, NoSuchAlgorithmException {
-//
-//        if (validateInput()) {
-//
-//            String email = txtusername.getText();
-//
-//            //User u = userService.getUserByEmai(email); // l'email de l'utilisateur connecté
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("Welcome.fxml"));
-//
-//            Parent root = loader.load();
-//            WelcomeController dc = loader.getController();
-//
-//            // Create a new scene with the loaded FXML file and show it
-//            Scene scene = new Scene(root);
-//            Stage stage = (Stage) loginBtn.getScene().getWindow();
-//            stage.setScene(scene);
-//            stage.show();
-//
-//        }
-//
-//    }
+
     private boolean validateInput() throws SQLException, NoSuchAlgorithmException {
         boolean isValid = true;
         String email = txtusername.getText();

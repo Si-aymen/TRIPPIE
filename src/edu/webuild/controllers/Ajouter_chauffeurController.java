@@ -23,6 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
@@ -52,6 +53,10 @@ public class Ajouter_chauffeurController implements Initializable {
     private TextField fxid;
     @FXML
     private ToggleButton showbtnnewnew;
+    @FXML
+    private PasswordField fxpass1;
+    @FXML
+    private ToggleButton showbtnnewnew1;
 
     /**
      *
@@ -78,6 +83,15 @@ public class Ajouter_chauffeurController implements Initializable {
         } else {
             fxpass.setText(fxpass.getPromptText());
             fxpass.setPromptText("");
+        }
+        });
+         showbtnnewnew1.setOnAction(event -> {
+            if (showbtnnewnew1.isSelected()) {
+            fxpass1.setPromptText(fxpass1.getText());
+            fxpass1.setText("");
+        } else {
+            fxpass1.setText(fxpass1.getPromptText());
+            fxpass1.setPromptText("");
         }
         });
     }    
@@ -112,6 +126,15 @@ public class Ajouter_chauffeurController implements Initializable {
             alert.setContentText("Veuillez saisir une adresse e-mail valide.");
             alert.showAndWait();
         } 
+         else if(!(fxpass.getText().equals(fxpass1.getText()))){
+        
+          Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir une adresse e-mail valide.");
+            alert.showAndWait();
+        
+        }
         else{
         Chauffeur ch = new Chauffeur(r, num_permis, marque_voiture, couleur_voiture, immatriculation, email, password);
         rc.affecterRole(ch, r);
