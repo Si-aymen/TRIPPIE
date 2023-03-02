@@ -13,6 +13,7 @@ import edu.webuild.services.reclamationCRUD;
 import edu.webuild.utils.Email;
 import java.io.IOException;
 import java.net.URL;
+import java.util.*;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -49,6 +50,7 @@ public class AdminReclamationController implements Initializable {
     static public String type_rec;
     static public String commentaire_rec;
     static public String etat_rec;
+    static public Date date;
 
     static public String toEmail = "guerfala71@gmail.com";
     static public String subject = "test";
@@ -87,6 +89,7 @@ public class AdminReclamationController implements Initializable {
                     type_rec = reclam.getType_rec();
                     commentaire_rec = reclam.getCommentaire();
                     etat_rec = reclam.getEtat();
+                    date = reclam.getDate_creation();
 
                     Parent root;
                     try {

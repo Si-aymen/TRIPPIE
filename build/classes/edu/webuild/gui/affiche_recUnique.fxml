@@ -14,10 +14,10 @@
       <Label layoutX="90.0" layoutY="251.0" text="Etat :" />
       <Label layoutX="56.0" layoutY="291.0" text="Date de création :" />
       <Label layoutX="70.0" layoutY="362.0" text="Piéce jointe :" />
-      <TextField fx:id="type" layoutX="203.0" layoutY="91.0" />
-      <TextArea fx:id="commentaire" layoutX="178.0" layoutY="135.0" prefHeight="86.0" prefWidth="241.0" />
-      <TextField fx:id="etat" layoutX="203.0" layoutY="247.0" />
-      <DatePicker fx:id="date" layoutX="186.0" layoutY="287.0" />
+      <TextField fx:id="type" editable="false" layoutX="203.0" layoutY="91.0" />
+      <TextArea fx:id="commentaire" editable="false" layoutX="178.0" layoutY="135.0" prefHeight="86.0" prefWidth="241.0" />
+      <TextField fx:id="etat" editable="false" layoutX="203.0" layoutY="247.0" />
+      <DatePicker fx:id="date" editable="false" layoutX="186.0" layoutY="287.0" />
       <ImageView fx:id="piece_jointe" fitHeight="150.0" fitWidth="200.0" layoutX="178.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
