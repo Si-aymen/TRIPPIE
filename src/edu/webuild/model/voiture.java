@@ -16,6 +16,7 @@ public class voiture {
     private int id;
     private String matricule, marque, puissance/*,etat*/;
     private int prix_jours;
+    private String image_voiture ;
 
     //constructeur par defaut
     public voiture() {
@@ -39,6 +40,16 @@ public class voiture {
         this.prix_jours = prix_jours;
         // this.etat=etat;
     }
+
+    public voiture( String matricule, String marque, String puissance, int prix_jours, String image_voiture) {
+     
+        this.matricule = matricule;
+        this.marque = marque;
+        this.puissance = puissance;
+        this.prix_jours = prix_jours;
+        this.image_voiture = image_voiture;
+    }
+    
 
     public int getId() {
         return id;
@@ -80,9 +91,20 @@ public class voiture {
         this.prix_jours = prix_jours;
     }
 
+    public String getImage_voiture() {
+        return image_voiture;
+    }
+
+    public void setImage_voiture(String image_voiture) {
+        this.image_voiture = image_voiture;
+    }
+
     @Override
     public String toString() {
-        return "voiture{" + "id=" + id + ", matricule=" + matricule + ", marque=" + marque + ", puissance=" + puissance + ", prix_jours=" + prix_jours +/*", etat=" + etat + '}'+*/ "\n";
+        return "voiture{" + "id=" + id + ", matricule=" + matricule + ", marque=" + marque + ", puissance=" + puissance + ", prix_jours=" + prix_jours + ", image_voiture=" + image_voiture + '}';
     }
+    
+
+    
 
 }

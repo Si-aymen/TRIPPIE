@@ -39,8 +39,8 @@ public class Afficher_voitureController implements Initializable {
     @FXML
     private Button mod;
     @FXML
-    private Button reservervoiture ; 
-            
+    private Button reservervoiture;
+
     static int id;
     static String matricule;
     static String marque;
@@ -61,11 +61,11 @@ public class Afficher_voitureController implements Initializable {
             list1.getItems().add(v);
 
         }
-    }    
+    }
 
     @FXML
     private void supprimer_voiture(ActionEvent event) {
-         ListView<voiture> list = affichervoiture;
+        ListView<voiture> list = affichervoiture;
         InterfaceCRUD inter = new voitureCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
@@ -106,7 +106,7 @@ public class Afficher_voitureController implements Initializable {
 
     @FXML
     private void reservervoiture(ActionEvent event) {
-         ListView<voiture> list = affichervoiture;
+        ListView<voiture> list = affichervoiture;
         InterfaceCRUD inter = new voitureCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         voiture v = list.getSelectionModel().getSelectedItem();
@@ -125,6 +125,4 @@ public class Afficher_voitureController implements Initializable {
 
         }
     }
-    }
-    
-
+}

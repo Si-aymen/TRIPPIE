@@ -26,7 +26,7 @@ public class voitureCRUD implements InterfaceCRUD{
     @Override
     public void ajoutervoiture(voiture v) {
         try {
-            String req = "INSERT INTO `voiture`(`matricule`,`marque`,`puissance`,`prix_jours`) VALUES ('"+v.getMatricule()+"','"+v.getMarque()+"','"+v.getPuissance()+"','"+v.getPrix_jours()+"')";
+            String req = "INSERT INTO `voiture`(`matricule`,`marque`,`puissance`,`prix_jours`,`picture`) VALUES ('"+v.getMatricule()+"','"+v.getMarque()+"','"+v.getPuissance()+"','"+v.getPrix_jours()+"','"+v.getImage_voiture()+"')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("voiture ajouté!!!");

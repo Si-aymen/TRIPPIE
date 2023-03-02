@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
@@ -23,5 +24,7 @@
       <Text layoutX="402.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix par jour" />
       <ChoiceBox fx:id="fx_marque" layoutX="648.0" layoutY="250.0" prefHeight="58.0" prefWidth="195.0" />
       <ChoiceBox fx:id="fx_puissance" layoutX="645.0" layoutY="367.0" prefHeight="58.0" prefWidth="203.0" />
+      <Button layoutX="608.0" layoutY="627.0" mnemonicParsing="false" onAction="#add_picture" text="image" />
+      <ImageView fx:id="lab_image" fitHeight="150.0" fitWidth="200.0" layoutX="1023.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

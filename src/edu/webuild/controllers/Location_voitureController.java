@@ -38,11 +38,11 @@ public class Location_voitureController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void location_voiture(ActionEvent event) {
-         try {
+        try {
 
             Parent page1
                     = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/crud_voiture.fxml"));
@@ -58,7 +58,7 @@ public class Location_voitureController implements Initializable {
 
     @FXML
     private void reservation_voiture(ActionEvent event) {
-          try {
+        try {
 
             Parent page1
                     = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/affichage_reservation.fxml"));
@@ -71,5 +71,5 @@ public class Location_voitureController implements Initializable {
 
         }
     }
-    
+
 }

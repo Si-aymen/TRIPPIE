@@ -16,11 +16,13 @@
             <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/gui/modifiervoiture.fxml</file>
             <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/Crud_voitureController.java</file>
             <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/AjouterreservationController.java</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/services/voitureCRUD.java</file>
             <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/gui/location_voiture.fxml</file>
             <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/Ajouter_voitureController.java</file>
             <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/Afficher_voitureController.java</file>
             <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/ModifiervoitureController.java</file>
             <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/controllers/Modifier_reservationController.java</file>
+            <file>file:/C:/Users/khmir/Desktop/Allocation/src/edu/webuild/model/voiture.java</file>
         </group>
     </open-files>
 </project-private>

@@ -37,15 +37,15 @@ public class Modifier_reservationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void modifier_reservation(ActionEvent event) {
-         InterfaceCRUD2 inter = new reservationCRUD();
-        Date date_debut = java.sql.Date.valueOf(date_debut_pk.getValue());       
+        InterfaceCRUD2 inter = new reservationCRUD();
+        Date date_debut = java.sql.Date.valueOf(date_debut_pk.getValue());
         Date date_fin = java.sql.Date.valueOf(date_fin_pk.getValue());
-        reservation res = new reservation(date_debut, date_fin,Affichage_reservationController.voiture);
+        reservation res = new reservation(date_debut, date_fin, Affichage_reservationController.voiture);
         inter.modifierreservation(res);
     }
-    
+
 }
