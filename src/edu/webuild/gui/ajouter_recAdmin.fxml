@@ -18,7 +18,7 @@
       <TextArea fx:id="tf_commentaire" layoutX="189.0" layoutY="117.0" prefHeight="81.0" prefWidth="223.0" />
       <Button layoutX="248.0" layoutY="350.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
       <ImageView fx:id="recaptcha" fitHeight="44.0" fitWidth="150.0" layoutX="14.0" layoutY="341.0" onMouseClicked="#recaptcha" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="screenshotView" fitHeight="150.0" fitWidth="200.0" layoutX="351.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="screenshotView" fitHeight="150.0" fitWidth="200.0" layoutX="351.0" layoutY="213.0" onMouseClicked="#image" pickOnBounds="true" preserveRatio="true" />
       <JFXButton fx:id="image" layoutX="425.0" layoutY="363.0" />
    </children>
 </AnchorPane>

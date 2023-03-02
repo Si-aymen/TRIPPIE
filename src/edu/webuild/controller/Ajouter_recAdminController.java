@@ -10,6 +10,7 @@ import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.sql.Date;
@@ -35,6 +36,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -182,6 +184,30 @@ public class Ajouter_recAdminController implements Initializable {
         Scene scene = new Scene(layout);
         window.setScene(scene);
         window.showAndWait();
+    }
+
+    @FXML
+    private void image(MouseEvent event) throws MalformedURLException {
+        FileChooser fc = new FileChooser();
+        fc.setInitialDirectory(new File(System.getProperty("user.home") + "\\Desktop"));
+        fc.setTitle("Veuillez choisir l'image");
+        fc.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image", "*.jpg", "*.png"),
+                new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg")
+        );
+        selectedFile = fc.showOpenDialog(null);
+
+        if (selectedFile != null) {
+
+            path = selectedFile.getName();
+//                path = selectedFile.toURI().toURL().toExternalForm();
+            screenshotView.setImage(new Image(selectedFile.toURI().toURL().toString()));
+            screenshotView.setFitHeight(150);
+            screenshotView.setFitWidth(250);
+            image.setText(path);
+
+        }
     }
     
 }
