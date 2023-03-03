@@ -60,6 +60,7 @@ public class Score implements InterfaceScore {
     public void setHighestScore(int highestScore) {
         this.highestScore = highestScore;
     }
+    
 
    @Override
 public void updateScore(boolean hitObstacle) {
@@ -72,7 +73,7 @@ public void updateScore(boolean hitObstacle) {
         // Game over
         try {
             
-                String req = "UPDATE scores SET score = ?, highest_score = ? WHERE id_score = ?";
+                String req = "UPDATE score SET score = ?, highestScore = ? WHERE idScore = ?";
             PreparedStatement ps = conn.prepareStatement(req);
             
             ps.setInt(1, score);

@@ -59,14 +59,14 @@ public class Webuild {
            
       
 // ---------------Create a new Abonnement object--------------
-    AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
-         Date dateAchat = Date.valueOf("2023-02-24");
-           Date dateExpiration = Date.valueOf("2025-02-24");
-         abonnement abonnement = new abonnement("PLAT", 120, dateAchat ,dateExpiration);
-       
-        
+//    AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
+//         Date dateAchat = Date.valueOf("2023-02-24");
+//           Date dateExpiration = Date.valueOf("2025-02-24");
+//         abonnement abonnement = new abonnement("PLAT", 120, dateAchat ,dateExpiration);
+//       
+//        
 //// -------------Add the new Abonnement object to the database-----------
-     abonnementCRUD.ajouterabonnement(abonnement);
+//     abonnementCRUD.ajouterabonnement(abonnement);
 
     // -------------display the objects in the database---------------------------------
 //     System.out.println( abonnementCRUD.afficherabonnement());
@@ -139,7 +139,16 @@ public class Webuild {
 //                        cf.setPointMerci("50");
 //                        int id_cf =     22;
 //                        cartefideliteCRUD.modifiercarte(cf, id_cf);
-            
+      
+
+
+
+
+
+
+
+
+
             
   }
 //    

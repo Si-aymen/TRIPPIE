@@ -3,13 +3,20 @@ package edu.webuild.game;
 
 import edu.webuild.interfaces.InterfaceScore;
 import edu.webuild.interfaces.InterfaceGameSceneController;
+import edu.webuild.utils.MyConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,6 +24,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import javafx.collections.ObservableList;
+import javafx.scene.layout.Pane;
+
+
 
 public class GameSceneController implements InterfaceGameSceneController {
 
@@ -31,9 +42,12 @@ public class GameSceneController implements InterfaceGameSceneController {
 
     @FXML
     private Button restartButton;
+    @FXML
+    private Button playAgainButton;
 
     @FXML
     private Label scoreLabel;
+  
 
     private AnimationTimer gameLoop;
 
@@ -72,12 +86,20 @@ public class GameSceneController implements InterfaceGameSceneController {
     private boolean isJumping;
 
     private boolean hasCollided;
+   private ObservableList<Node> obstacles;
+
+
 @Override
     public void initialize() {
         car = new Rectangle(50, 400, 40, 20);
         car.setFill(Color.BLUE);
         obstacle = new Rectangle(0, 0, 0, 0);
         obstacle.setFill(Color.RED);
+        
+      obstacles = canvas.getChildren().filtered(node -> node.getStyleClass().contains("obstacle"));
+for (Node obstacle : obstacles) {
+        obstacle.setUserData("obstacle");
+    }
         canvas.getGraphicsContext2D().fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gamePaused = true;
         gameStarted = false;
@@ -109,12 +131,11 @@ public class GameSceneController implements InterfaceGameSceneController {
         });
         scoreService = new Score();
     }
-@Override
-    public void startGame() {
-        gameStarted = true;
-        gamePaused = false;
-        gameLoop.start();
-    }
+    @Override
+public ObservableList<Node> obstacles() {
+    return obstacles;
+}
+    
 @Override
     public void pauseGame() {
         gamePaused = true;
@@ -182,12 +203,36 @@ public void addObstacle(double x, double y) {
     scoreService.updateScore(hitObstacle);
 }
 @Override
-    public void checkCollision() {
+    public void checkCollisions() {
+    for (Node obstacle : obstacles) {
         if (car.getBoundsInParent().intersects(obstacle.getBoundsInParent())) {
-            hasCollided = true;
-            gameLoop.stop();
+            gameOver();
+            return;
         }
     }
+    score++;
+    scoreLabel.setText("Score: " + score);
+}
+@Override
+    public void gameOver() {
+        pauseGame();
+        saveScore();
+        scoreLabel.setText("Game Over. Score: " + score);
+        playAgainButton.setVisible(true);
+    }
+@Override
+public void saveScore() {
+    Statement ste;
+    Connection conn = MyConnection.getInstance().getConn();
+    String query = "INSERT INTO scores (score) VALUES (?)";
+    try {
+        PreparedStatement statement = conn.prepareStatement(query);
+        statement.setInt(1, score);
+        statement.executeUpdate();
+    } catch (SQLException ex) {
+        System.err.println("Error updating score in the database: " + ex.getMessage());
+    }
+}
 @Override
     public void updateObstaclePosition() {
         obstacleXPosition -= obstacleSpeed;
@@ -215,15 +260,36 @@ public void addObstacle(double x, double y) {
         canvas.getGraphicsContext2D().fillRect(obstacle.getX(), obstacle.getY(), obstacle.getWidth(), obstacle.getHeight());
     }
   @Override
-    public boolean checkCollision(Rectangle obstacle) {
-        return car.getBoundsInParent().intersects(obstacle.getBoundsInParent());
-    }
+public boolean checkCollision(Rectangle obstacle) {
+    return car.getBoundsInParent().intersects(obstacle.getBoundsInParent());
+}
+
 @Override
     public void gameLoop() {
         updateObstaclePosition();
         spawnObstacle();
-        checkCollision();
+        checkCollisions();
         updateCanvas();
+    }
+    @Override
+    public void start() {
+    gameLoop = new AnimationTimer() {
+        @Override
+        public void handle(long now) {
+            gameLoop();
+        }
+    };
+    gameLoop.start();
+}
+
+    
+    
+    
+@Override
+    public void startGame() {
+        gameStarted = true;
+        gamePaused = false;
+        start();
     }
 
 }
