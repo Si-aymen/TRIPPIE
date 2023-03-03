@@ -433,6 +433,47 @@ public class ClientCRUD implements InterfaceClientCRUD {
         return clients;
     }
     
+    @Override
+    public List<Client> afficherClient2() {
+        List<Client> list = new ArrayList<>();
+
+        try {
+            String req = "SELECT client.email, "
+                    + " role.libelle AS role_libelle, "
+                    + " utilisateur.cin, utilisateur.nom, utilisateur.prenom,utilisateur.sexe "
+                    + "FROM utilisateur "
+                    + "JOIN role ON utilisateur.id_user = role.id_user "
+                    + "JOIN client ON role.id_role = client.id_role ";
+
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                Client loc = new Client();
+                loc.setEmail(RS.getString("email"));
+                
+
+                Role role = new Role();
+                loc.setId_role(role);
+                role.setLibelle(RS.getString("role_libelle"));
+
+                Utilisateur utilisateur = new Utilisateur();
+                utilisateur.setCin(RS.getString("cin"));
+                utilisateur.setNom(RS.getString("nom"));
+                utilisateur.setPrenom(RS.getString("prenom"));
+                utilisateur.setSexe(RS.getString("sexe"));
+               
+                role.setId_user(utilisateur);
+                loc.setId_role(role);
+
+                list.add(loc);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+
     
      
 }

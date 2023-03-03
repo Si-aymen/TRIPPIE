@@ -5,6 +5,22 @@
  */
 package edu.webuild.controllers;
 
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.googleapis.json.GoogleJsonError;
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.client.repackaged.org.apache.commons.codec.EncoderException;
+import com.google.api.client.util.store.FileDataStoreFactory;
+import com.google.api.services.gmail.Gmail;
+import static com.google.api.services.gmail.GmailScopes.GMAIL_SEND;
+import com.google.api.services.gmail.model.Message;
+import static edu.webuild.controllers.GetPasswordController.Ssemail2;
 import edu.webuild.model.Chauffeur;
 import edu.webuild.model.Role;
 import edu.webuild.services.ChauffeurCRUD;
@@ -27,6 +43,20 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
+import edu.webuild.controllers.IdentifierCompteController;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Properties;
+import static javax.mail.Message.RecipientType.TO;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import org.apache.commons.codec.binary.Base64;
 
 /**
  * FXML Controller class
@@ -34,7 +64,7 @@ import javafx.stage.Stage;
  * @author aymen
  */
 public class Ajouter_chauffeurController implements Initializable {
-    
+
     @FXML
     private TextField fxperm;
     @FXML
@@ -57,21 +87,21 @@ public class Ajouter_chauffeurController implements Initializable {
     private PasswordField fxpass1;
     @FXML
     private ToggleButton showbtnnewnew1;
+    private Gmail service;
     @FXML
     private TextField fxtel;
-
+    private static final String TEST_EMAIL = "zouari.aymen@esprit.tn";
     /**
      *
      * @param id
      */
     public void SetId_role(String id) {
-         this.fxid.setText(id);
+        this.fxid.setText(id);
     }
-    
-    
-    
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -80,26 +110,26 @@ public class Ajouter_chauffeurController implements Initializable {
         // TODO
         showbtnnewnew.setOnAction(event -> {
             if (showbtnnewnew.isSelected()) {
-            fxpass.setPromptText(fxpass.getText());
-            fxpass.setText("");
-        } else {
-            fxpass.setText(fxpass.getPromptText());
-            fxpass.setPromptText("");
-        }
+                fxpass.setPromptText(fxpass.getText());
+                fxpass.setText("");
+            } else {
+                fxpass.setText(fxpass.getPromptText());
+                fxpass.setPromptText("");
+            }
         });
-         showbtnnewnew1.setOnAction(event -> {
+        showbtnnewnew1.setOnAction(event -> {
             if (showbtnnewnew1.isSelected()) {
-            fxpass1.setPromptText(fxpass1.getText());
-            fxpass1.setText("");
-        } else {
-            fxpass1.setText(fxpass1.getPromptText());
-            fxpass1.setPromptText("");
-        }
+                fxpass1.setPromptText(fxpass1.getText());
+                fxpass1.setText("");
+            } else {
+                fxpass1.setText(fxpass1.getPromptText());
+                fxpass1.setPromptText("");
+            }
         });
-    }    
-    
+    }
+
     @FXML
-    private void addch(ActionEvent event) {        
+    private void addch(ActionEvent event) throws Exception {
         Role r = new Role();
         roleCRUD rc = new roleCRUD();
         r.setId_role(Integer.parseInt(fxid.getText()));
@@ -109,50 +139,111 @@ public class Ajouter_chauffeurController implements Initializable {
         String email = fxmail.getText();
         String password = fxpass.getText();
         String immatriculation = fxmat.getText();
-        int tel=Integer.parseInt(fxtel.getText());
-       
+        int tel = Integer.parseInt(fxtel.getText());
+
         // Définir la regex pour valider l'adresse e-mail
         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-        if (num_permis.isEmpty() || marque_voiture.isEmpty() || couleur_voiture.isEmpty() || immatriculation.isEmpty()|| email.isEmpty()|| password.isEmpty()) {
+        if (num_permis.isEmpty() || marque_voiture.isEmpty() || couleur_voiture.isEmpty() || immatriculation.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("Veuillez remplir tous les champs.");
             alert.show();
 
-        }
-        else if (!email.matches(regex)) {
+        } else if (!email.matches(regex)) {
             // Afficher un message d'erreur si la saisie est invalide
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
             alert.setHeaderText(null);
             alert.setContentText("Veuillez saisir une adresse e-mail valide.");
             alert.showAndWait();
-        } 
-         else if(!(fxpass.getText().equals(fxpass1.getText()))){
-        
-          Alert alert = new Alert(Alert.AlertType.ERROR);
+        } else if (!(fxpass.getText().equals(fxpass1.getText()))) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
             alert.setHeaderText(null);
             alert.setContentText("Veuillez saisir une adresse e-mail valide.");
             alert.showAndWait();
-        
-        }
-        else{
-        Chauffeur ch = new Chauffeur(r, num_permis, marque_voiture, couleur_voiture, immatriculation, tel, email, password);
-        rc.affecterRole(ch, r);
-        
-        try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-
+        } else {
+            Chauffeur ch = new Chauffeur(r, num_permis, marque_voiture, couleur_voiture, immatriculation, tel, email, password);
+            rc.affecterRole(ch, r);
+            String subject="Tripee";
+            String message="Inscription avec succée";
+            sendMail(subject, message);
+         
+          
         }
     }
+      public void sendMail(String subject, String message) throws Exception, EncoderException {
+
+        Properties props = new Properties();
+        Session session = Session.getDefaultInstance(props, null);
+        MimeMessage email = new MimeMessage(session);
+        email.setFrom(new InternetAddress(TEST_EMAIL));
+        email.addRecipient(TO, new InternetAddress(fxmail.getText()));// static variable globale static
+        System.out.println(Ssemail2);
+        email.setSubject(subject);
+        System.out.println("lena");
+        email.setText(message);
+        System.out.println("2");
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        email.writeTo(buffer);
+        byte[] rawMessageBytes = buffer.toByteArray();
+        String encodedEmail = new String(Base64.encodeBase64(rawMessageBytes));
+        String safeString = encodedEmail.replace('+', '-').replace('/', '_');
+        //String encodedEmail = Base64.encodeBase64URLSafeString(rawMessageBytes);
+        Message msg = new Message();
+        msg.setRaw(encodedEmail);
+
+        try {
+            GMailer();
+            System.out.println(msg);
+            System.out.println("service");
+            System.out.println(service);
+            Message sentMessage = service.users().messages().send("me", msg).execute();
+            System.out.println(sentMessage);
+            System.out.println("Message id: " + msg.getId());
+            System.out.println(msg.toPrettyString());
+        } catch (GoogleJsonResponseException e) {
+            GoogleJsonError error = e.getDetails();
+            if (error.getCode() == 403) {
+                System.err.println("Unable to send message: " + e.getDetails());
+            } else {
+                throw e;
+            }
+        }
+    }
+      
+      public void GMailer() throws Exception {
+        System.out.println("gmail");
+        NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+        GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
+        service = new Gmail.Builder(httpTransport, jsonFactory, getCredentials(httpTransport, jsonFactory))
+                .setApplicationName("Webuild")
+                .build();
+    }
+
+    private static Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory)
+            throws IOException {
+        Collection<String> gm = new ArrayList<>();
+        System.out.println("cred");
+        List<String> scopes = Arrays.asList(GMAIL_SEND);
+        System.out.println();
+        gm.add(GMAIL_SEND);
+        String json = "{\"installed\":{\"client_id\":\"500444830183-ddvcoqhadvgupgvhkq6kjf2qmtlubncd.apps.googleusercontent.com\",\"project_id\":\"high-transit-379208\",\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"token_uri\":\"https://oauth2.googleapis.com/token\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\",\"client_secret\":\"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\",\"redirect_uris\":[\"http://localhost\"]}}";
+        StringReader reader = new StringReader(json);
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, reader);
+        //GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(Identifier_votre_compteController.class.getResourceAsStream("‪C:\\Users\\aymen\\Desktop\\code_secret_client.json")));
+
+        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
+                httpTransport, jsonFactory, clientSecrets, scopes)
+                //.setDataStoreFactory(new FileDataStoreFactory(Paths.get("tokens").toFile()))
+                .setDataStoreFactory(new FileDataStoreFactory(new File("/path/to/credential-store")))
+                .setAccessType("offline")
+                .build();
+
+        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
+        return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 }

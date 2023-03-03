@@ -225,6 +225,7 @@ public class IdentifierCompteController implements Initializable {
             }
         }
     }
+    
 
     @FXML
     private void connecter(ActionEvent event) throws IOException {

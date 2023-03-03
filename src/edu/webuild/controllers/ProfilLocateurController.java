@@ -7,15 +7,23 @@ package edu.webuild.controllers;
 
 import edu.webuild.model.Locateur;
 import edu.webuild.services.LocateurCRUD;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -32,6 +40,8 @@ public class ProfilLocateurController implements Initializable {
     private Label email_lbl;
     @FXML
     private Button exitBtn;
+    @FXML
+    private Button deco;
 
     /**
      * Initializes the controller class.
@@ -58,6 +68,22 @@ public class ProfilLocateurController implements Initializable {
     @FXML
     private void exit(ActionEvent event) {
          exitBtn.setOnAction(e -> Platform.exit());
+    }
+
+    @FXML
+    private void deco(ActionEvent event) {
+          try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ProfilChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
     
 }

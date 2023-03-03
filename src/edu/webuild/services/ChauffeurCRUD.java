@@ -10,6 +10,7 @@ import edu.webuild.model.Chauffeur;
 import edu.webuild.model.Role;
 import edu.webuild.model.Utilisateur;
 import edu.webuild.utils.MyConnection;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +18,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.image.Image;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -257,6 +260,31 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
 
     }
 
+    @Override
+    public Image afficher(String identifiant) {
+        try (PreparedStatement ps = this.conn.prepareStatement("SELECT img "
+                + "FROM utilisateur "
+                + "JOIN role ON utilisateur.id_user = role.id_user "
+                + "JOIN chauffeur ON role.id_role = chauffeur.id_role "
+                + "WHERE email=? ")) {
+            ps.setString(1, identifiant);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    byte[] data = rs.getBytes("img");
+                    String cheminImage = "C:\\xampp\\htdocs\\" + identifiant;
+                    try (FileOutputStream fos = new FileOutputStream(cheminImage)) {
+                        fos.write(data);
+                    }
+                    return new Image("file:" + cheminImage);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erreur lors de l'affichage de l'image");
+        }
+        return null;
+    }
+
     public Chauffeur getChauffeur(String email) throws SQLException {
         String query = "SELECT * "
                 + "FROM utilisateur "
@@ -269,6 +297,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 if (rs.next()) {
                     String nom = rs.getString("nom");
                     String prenom = rs.getString("prenom");
+                    String img = rs.getString("img");
                     int id_role = rs.getInt("id_role");
                     int id_client = rs.getInt("id_ch");
                     int id_user = rs.getInt("id_user");
@@ -323,7 +352,6 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 ch.setCouleur_voiture(RS.getString("couleur_voiture"));
                 ch.setImmatriculation(RS.getString("immatriculation"));
                 ch.setEmail(RS.getString("email"));
-            
 
                 Role role = new Role();
                 ch.setId_role(role);
@@ -334,7 +362,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 utilisateur.setNom(RS.getString("nom"));
                 utilisateur.setPrenom(RS.getString("prenom"));
                 utilisateur.setSexe(RS.getString("sexe"));
-               
+
                 role.setId_user(utilisateur);
                 ch.setId_role(role);
 

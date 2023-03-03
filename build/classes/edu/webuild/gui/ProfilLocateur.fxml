@@ -31,5 +31,6 @@
             <Font name="Microsoft YaHei Bold" size="13.0" />
          </font>
       </Button>
+      <Button fx:id="deco" layoutX="543.0" layoutY="369.0" mnemonicParsing="false" onAction="#deco" style="-fx-background-color: black;" text="Déconnecter" textFill="WHITE" />
    </children>
 </AnchorPane>

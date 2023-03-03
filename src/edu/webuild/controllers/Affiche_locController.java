@@ -70,7 +70,8 @@ public class Affiche_locController implements Initializable {
                         super.updateItem(user, empty);
                         if (user != null && !empty) {
                             // Affiche les informations du covoiturage dans la cellule
-                            setText(String.format("nom:%s - prenom:%s - genre:%s - nom_agence:%s - email:%s - Role:%s",
+                            setText(String.format("cin:%s - nom:%s - prenom:%s - genre:%s - nom_agence:%s - email:%s - Role:%s",
+                                    user.getId_role().getId_user().getCin(),
                                     user.getId_role().getId_user().getNom(),
                                     user.getId_role().getId_user().getPrenom(),
                                     user.getId_role().getId_user().getSexe(),

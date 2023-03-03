@@ -62,7 +62,7 @@ public class AjoutController implements Initializable {
     private TextField fxprenom;
     @FXML
     private TextField fxsexe;
-   
+
     @FXML
     private Button btnajout;
     public static int id_user;
@@ -71,7 +71,7 @@ public class AjoutController implements Initializable {
     @FXML
     private ImageView fximg;
     static String url_image;
-
+    static String image;
     /**
      * Initializes the controller class.
      *
@@ -81,7 +81,7 @@ public class AjoutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
+        image = url_image;
     }
 
     @FXML
@@ -92,7 +92,7 @@ public class AjoutController implements Initializable {
         String prenom = fxprenom.getText();
         String cin = fxcin.getText();
         String sexe = fxsexe.getText();
-    
+        String img = url_image;
 
         if (cin.isEmpty() || nom.isEmpty() || prenom.isEmpty() || sexe.isEmpty()) {
             // Afficher un message d'erreur si la saisie est invalide
@@ -135,7 +135,7 @@ public class AjoutController implements Initializable {
         //        }
         else {
 
-            Utilisateur u = new Utilisateur(cin, nom, prenom, sexe);
+            Utilisateur u = new Utilisateur(cin, nom, prenom, sexe, img);
             utilisateurCRUD uc = new utilisateurCRUD();
             uc.ajouterUtilisateur(u);
             //role
@@ -147,7 +147,7 @@ public class AjoutController implements Initializable {
             try {
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/ajouter_role.fxml"));
-                Parent rooot=loader.load();
+                Parent rooot = loader.load();
                 Ajouter_roleController dc = loader.getController();
                 fxcin.getScene().setRoot(rooot);
                 dc.setFxidu(id);
@@ -161,7 +161,7 @@ public class AjoutController implements Initializable {
 
     @FXML
     private void image(ActionEvent event) {
-         ImageView imageView = fximg;
+        ImageView imageView = fximg;
 
         // Create a FileChooser
         FileChooser fileChooser = new FileChooser();

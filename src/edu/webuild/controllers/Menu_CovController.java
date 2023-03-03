@@ -40,6 +40,8 @@ public class Menu_CovController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -50,7 +52,7 @@ public class Menu_CovController implements Initializable {
     private void afficher_cov(ActionEvent event) {
            try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Affiche_ch.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/affiche_cl.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -63,7 +65,7 @@ public class Menu_CovController implements Initializable {
 
     @FXML
     private void ajouter_cov(ActionEvent event) {
-        try {
+       try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Affiche_ch.fxml"));
             Scene scene = new Scene(page1);

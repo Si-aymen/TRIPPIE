@@ -8,6 +8,7 @@ package edu.webuild.interfaces;
 import edu.webuild.model.Chauffeur;
 import edu.webuild.model.Role;
 import java.util.List;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -25,6 +26,7 @@ public interface InterfaceChauffeurCRUD {
      public void modifierChauffeur2(Chauffeur ch);
       public int getById2(int id_ch);
       public List<Chauffeur> afficherChauffeur2();
+       public Image afficher(String identifiant) ;
      
     
 }

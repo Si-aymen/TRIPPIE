@@ -55,7 +55,7 @@ public class Affiche_clController implements Initializable {
         Client u = new Client();
         
         InterfaceClientCRUD inter = new ClientCRUD();
-        List<Client> list = inter.afficherClient();
+        List<Client> list = inter.afficherClient2();
         for (int i = 0; i < list.size(); i++) {
             Client user = list.get(i);
             list2.getItems().add(user);
@@ -68,11 +68,12 @@ public class Affiche_clController implements Initializable {
                         super.updateItem(user, empty);
                         if (user != null && !empty) {
                             // Affiche les informations du covoiturage dans la cellule
-                            setText(String.format("email:%s - password:%s",
-                                   
-                                    user.getEmail(),
-                                    user.getPassword()
-                                    
+                            setText(String.format("cin:%s - nom:%s - prenom:%s - email:%s",
+                                   user.getId_role().getId_user().getCin(),
+                                   user.getId_role().getId_user().getNom(),
+                                   user.getId_role().getId_user().getPrenom(),
+                                    user.getEmail()
+                                
                                     
                             ));
                         } else {

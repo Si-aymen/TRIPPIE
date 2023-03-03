@@ -10,9 +10,9 @@
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="998.0" style="-fx-background-color: fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Menu_CovController">
     <children>
         <Text fill="#878787" layoutX="453.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="www.Trippir.tn" wrappingWidth="138.40000000000003" />
-        <Button fx:id="afficher_coc" layoutX="477.0" layoutY="317.0" mnemonicParsing="false" onAction="#afficher_cov" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Afficher Co_Voiturage" />
-        <Button fx:id="ajouter_cov" layoutX="477.0" layoutY="198.0" mnemonicParsing="false" onAction="#ajouter_cov" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Ajouter Co_Voiturage" />
-        <Button fx:id="afficher_Part" layoutX="477.0" layoutY="435.0" mnemonicParsing="false" onAction="#afficher_Part" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Afficher Participation" />
+        <Button fx:id="afficher_coc" layoutX="477.0" layoutY="317.0" mnemonicParsing="false" onAction="#afficher_cov" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Afficher Client" />
+        <Button fx:id="ajouter_cov" layoutX="477.0" layoutY="198.0" mnemonicParsing="false" onAction="#ajouter_cov" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Afficher Chauffeur" />
+        <Button fx:id="afficher_Part" layoutX="477.0" layoutY="435.0" mnemonicParsing="false" onAction="#afficher_Part" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Afficher Locateur" />
         <Button layoutX="61.0" layoutY="215.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="User" />
         <Button layoutX="61.0" layoutY="271.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Voiture" />
         <Button layoutX="61.0" layoutY="325.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Reservation Voiture" />
@@ -115,7 +115,7 @@
         <Button layoutX="61.0" layoutY="215.0" mnemonicParsing="false" onAction="#Front_btu" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Front" />
         <Button layoutX="61.0" layoutY="271.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Voiture" />
         <Button layoutX="61.0" layoutY="325.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Reservation Voiture" />
-        <Button fx:id="cov_btu1" layoutX="61.0" layoutY="381.0" mnemonicParsing="false" onAction="#cov_btu" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Co_Voiturage" />
+        <Button fx:id="cov_btu1" layoutX="61.0" layoutY="381.0" mnemonicParsing="false" onAction="#cov_btu" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Utilisateur" />
         <Button layoutX="61.0" layoutY="436.0" mnemonicParsing="false" onAction="#Map_btu" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Map" />
         <Button layoutX="61.0" layoutY="497.0" mnemonicParsing="false" onAction="#stats" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Stats" />
     </children>

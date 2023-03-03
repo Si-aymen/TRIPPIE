@@ -8,15 +8,24 @@ package edu.webuild.controllers;
 import edu.webuild.gui.LoginController;
 import edu.webuild.model.Client;
 import edu.webuild.services.ClientCRUD;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 
 /**
@@ -33,13 +42,9 @@ public class ProfilClientController implements Initializable {
     @FXML
     private Label email_lbl;
     @FXML
-    private Label domain_lbl;
-    @FXML
-    private Label type_lbl;
-    @FXML
     private Label genre_lbl;
     @FXML
-    private Label bday_lbl;
+    private Button deco;
 
     /**
      * Initializes the controller class.
@@ -72,6 +77,23 @@ public class ProfilClientController implements Initializable {
 
     @FXML
     private void exit(ActionEvent event) {
+        exitBtn.setOnAction(e -> Platform.exit());
+    }
+
+    @FXML
+    private void deco(ActionEvent event) {
+          try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ProfilChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
     
    

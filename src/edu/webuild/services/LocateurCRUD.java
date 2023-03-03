@@ -272,7 +272,7 @@ public class LocateurCRUD implements InterfaceLocateurCRUD {
                     + " utilisateur.cin, utilisateur.nom, utilisateur.prenom,utilisateur.sexe "
                     + "FROM utilisateur "
                     + "JOIN role ON utilisateur.id_user = role.id_user "
-                    + "JOIN chauffeur ON role.id_role = chauffeur.id_role ";
+                    + "JOIN locateur ON role.id_role = locateur.id_role ";
 
             Statement st = conn.createStatement();
             ResultSet RS = st.executeQuery(req);

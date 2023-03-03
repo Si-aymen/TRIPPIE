@@ -23,5 +23,6 @@ public interface InterfaceClientCRUD {
      public List<Client> trierClient();
      public Role getRole(int id_role);
       public String afficherProfilClient(String email);
+      public List<Client> afficherClient2();
  
 }
