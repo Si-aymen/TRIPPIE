@@ -40,6 +40,8 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -173,11 +175,13 @@ public class Ajouter_recAdminController implements Initializable {
 
             rc.ajouterReclamation(r);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText(null);
-            alert.setContentText("Cette réclamation est ajoutée avec succés");
-            alert.showAndWait();
+            Notifications n = Notifications.create()
+                .title("WeBuild")
+                .text("Réclamation ajoutée !")
+                .graphic(null)
+                .position(Pos.TOP_CENTER)
+                .hideAfter(Duration.seconds(5));
+        n.showInformation();
 
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
             rootPane.getChildren().setAll(pane);

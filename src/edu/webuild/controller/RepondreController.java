@@ -16,11 +16,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -76,11 +79,14 @@ public class RepondreController implements Initializable {
 
             rc.ajouterReponse(r1);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText(null);
-            alert.setContentText("Cette reponse est ajoutée avec succés");
-            alert.showAndWait();
+            Notifications n = Notifications.create()
+                .title("WeBuild")
+                .text("Réponse ajoutée avec succé !")
+                .graphic(null)
+                .position(Pos.TOP_CENTER)
+                .hideAfter(Duration.seconds(5));
+        n.showInformation();
+            
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/suivre_rec.fxml"));
             rootPane.getChildren().setAll(pane);
         }

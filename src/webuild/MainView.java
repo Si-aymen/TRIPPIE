@@ -23,7 +23,7 @@ public class MainView extends Application {
         
         
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Reclamation.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
             
             Scene scene = new Scene(root);
             
