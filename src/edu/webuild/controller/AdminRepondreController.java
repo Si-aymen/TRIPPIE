@@ -10,17 +10,21 @@ import edu.webuild.services.reponseCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -37,6 +41,10 @@ public class AdminRepondreController implements Initializable {
     private AnchorPane rootPane;
     @FXML
     private TextArea tf_reponse;
+    @FXML
+    private ImageView piece_jointe;
+    @FXML
+    private DatePicker date;
 
     /**
      * Initializes the controller class.
@@ -44,8 +52,12 @@ public class AdminRepondreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        String im = "http://localhost/image_trippie_reclamation/" + AdminReclamationController.url_image;
+
         type.setText(String.valueOf(AdminReclamationController.type_rec));
         commentaire.setText(String.valueOf(AdminReclamationController.commentaire_rec));
+        date.setPromptText(AdminReclamationController.date.toString());
+        piece_jointe.setImage(new Image(im));
     }
 
     @FXML
@@ -77,11 +89,14 @@ public class AdminRepondreController implements Initializable {
 
             rc.ajouterReponse(r1);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText(null);
-            alert.setContentText("Cette reponse est ajoutée avec succés");
-            alert.showAndWait();
+            Notifications n = Notifications.create()
+                    .title("WeBuild")
+                    .text("Réponse ajoutée !")
+                    .graphic(null)
+                    .position(Pos.TOP_CENTER)
+                    .hideAfter(Duration.seconds(5));
+            n.showInformation();
+
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/AdminReclamation.fxml"));
             rootPane.getChildren().setAll(pane);
         }

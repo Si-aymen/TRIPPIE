@@ -5,7 +5,6 @@
  */
 package edu.webuild.controller;
 
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import edu.webuild.model.reclamation;
 import edu.webuild.model.reponse;
 import edu.webuild.services.reclamationCRUD;

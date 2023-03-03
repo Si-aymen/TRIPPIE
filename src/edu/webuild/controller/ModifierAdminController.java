@@ -17,8 +17,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
@@ -40,15 +43,24 @@ public class ModifierAdminController implements Initializable {
     private TextArea modif_comm;
     
     public static int id_utilisateur = 1;
+    @FXML
+    private DatePicker date;
+    @FXML
+    private ImageView piece_jointe;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        String im = "http://localhost/image_trippie_reclamation/" + AdminReclamationController.url_image;
+        
         modif_type.setText(String.valueOf(AdminReclamationController.type_rec));
         modif_comm.setText(String.valueOf(AdminReclamationController.commentaire_rec));
         modif_etat.setText(String.valueOf(AdminReclamationController.etat_rec));
+        date.setPromptText(AdminReclamationController.date.toString());
+        piece_jointe.setImage(new Image(im));
     }    
 
     @FXML

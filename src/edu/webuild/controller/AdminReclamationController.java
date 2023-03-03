@@ -132,6 +132,8 @@ public class AdminReclamationController implements Initializable {
         type_rec = r.getType_rec();
         commentaire_rec = r.getCommentaire();
         etat_rec = r.getEtat();
+        date = r.getDate_creation();
+        url_image = r.getUrl_image();
 
         try {
 
@@ -170,6 +172,8 @@ public class AdminReclamationController implements Initializable {
         type_rec = r.getType_rec();
         commentaire_rec = r.getCommentaire();
         etat_rec = r.getEtat();
+        date = r.getDate_creation();
+        url_image = r.getUrl_image();
 
         try {
 

@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controller.ModifierAdminController">
    <children>
-      <Label layoutX="16.0" layoutY="114.0" text="Type de la réclamation :" />
-      <Label layoutX="40.0" layoutY="175.0" text="Commentaire :" />
-      <Label layoutX="66.0" layoutY="279.0" text="Etat :" />
-      <TextField fx:id="modif_type" layoutX="151.0" layoutY="110.0" />
-      <TextField fx:id="modif_etat" layoutX="151.0" layoutY="275.0" />
-      <TextArea fx:id="modif_comm" layoutX="151.0" layoutY="150.0" prefHeight="115.0" prefWidth="200.0" />
-      <Button layoutX="300.0" layoutY="338.0" mnemonicParsing="false" onAction="#modifier_rec" text="Modifier" />
+      <Label layoutX="16.0" layoutY="77.0" text="Type de la réclamation :" />
+      <Label layoutX="40.0" layoutY="132.0" text="Commentaire :" />
+      <Label layoutX="66.0" layoutY="223.0" text="Etat :" />
+      <TextField fx:id="modif_type" layoutX="151.0" layoutY="73.0" />
+      <TextField fx:id="modif_etat" layoutX="151.0" layoutY="219.0" />
+      <TextArea fx:id="modif_comm" layoutX="151.0" layoutY="117.0" prefHeight="81.0" prefWidth="200.0" />
+      <Button layoutX="488.0" layoutY="314.0" mnemonicParsing="false" onAction="#modifier_rec" text="Modifier" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#retour_reclamation" text="Retour" />
+      <Label layoutX="32.0" layoutY="270.0" text="Date de création :" />
+      <Label layoutX="45.0" layoutY="318.0" text="Piéce jointe :" />
+      <DatePicker fx:id="date" editable="false" layoutX="144.0" layoutY="266.0" />
+      <ImageView fx:id="piece_jointe" fitHeight="90.0" fitWidth="135.0" layoutX="151.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
