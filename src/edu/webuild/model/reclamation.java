@@ -12,6 +12,7 @@ import java.util.Date;
  * @author belkn
  */
 public class reclamation {
+
     private int id_rec;
     private String type_rec;
     private String commentaire;
@@ -42,7 +43,6 @@ public class reclamation {
         this.url_image = url_image;
     }
 
-        
     @Override
     public String toString() {
         return "Type : " + type_rec + " || Commentaire : " + commentaire + " || Etat : " + etat;
@@ -103,8 +103,5 @@ public class reclamation {
     public void setUrl_image(String url_image) {
         this.url_image = url_image;
     }
-    
-    
 
-    
 }

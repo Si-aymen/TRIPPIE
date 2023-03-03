@@ -43,10 +43,10 @@ public class AdminRepondreController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         type.setText(String.valueOf(AdminReclamationController.type_rec));
         commentaire.setText(String.valueOf(AdminReclamationController.commentaire_rec));
-    }    
+    }
 
     @FXML
     private void retour(MouseEvent event) throws IOException {
@@ -56,9 +56,9 @@ public class AdminRepondreController implements Initializable {
 
     @FXML
     private void repondre(ActionEvent event) throws IOException {
-        
+
         String rep = tf_reponse.getText();
-        
+
         if (rep.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -66,10 +66,10 @@ public class AdminRepondreController implements Initializable {
             alert.setContentText("Reponse manquante");
             alert.showAndWait();
         } else {
-        
-        int id_rec = AdminReclamationController.id; 
-        
-            String reponse = "(Admin): "+tf_reponse.getText();
+
+            int id_rec = AdminReclamationController.id;
+
+            String reponse = "(Admin): " + tf_reponse.getText();
 
             reponse r1 = new reponse(reponse, id_rec, "en cours de traitement");
 
@@ -86,5 +86,5 @@ public class AdminRepondreController implements Initializable {
             rootPane.getChildren().setAll(pane);
         }
     }
-    
+
 }

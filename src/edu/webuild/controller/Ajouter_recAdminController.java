@@ -176,12 +176,12 @@ public class Ajouter_recAdminController implements Initializable {
             rc.ajouterReclamation(r);
 
             Notifications n = Notifications.create()
-                .title("WeBuild")
-                .text("Réclamation ajoutée !")
-                .graphic(null)
-                .position(Pos.TOP_CENTER)
-                .hideAfter(Duration.seconds(5));
-        n.showInformation();
+                    .title("WeBuild")
+                    .text("Réclamation ajoutée !")
+                    .graphic(null)
+                    .position(Pos.TOP_CENTER)
+                    .hideAfter(Duration.seconds(5));
+            n.showInformation();
 
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
             rootPane.getChildren().setAll(pane);

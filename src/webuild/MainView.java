@@ -17,19 +17,17 @@ import javafx.stage.Stage;
  * @author guerf
  */
 public class MainView extends Application {
-    
+
     @Override
     public void start(Stage primaryStage) {
-        
-        
+
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
-            
+
             Scene scene = new Scene(root);
-            
+
             /*String css = this.getClass().getResource("/edu/webuild/gui/style.css").toExternalForm();
             scene.getStylesheets().add(css);*/
-            
             primaryStage.setTitle("Webuild");
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -44,5 +42,5 @@ public class MainView extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

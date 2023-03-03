@@ -57,7 +57,7 @@ public class Ajouter_recController implements Initializable {
     private ImageView screenshotView;
     @FXML
     private JFXButton image;
-    
+
     File selectedFile;
     public String url_image;
     private String path;
@@ -110,10 +110,10 @@ public class Ajouter_recController implements Initializable {
     private void ajouter_rec(ActionEvent event) throws IOException {
 
         String type = tf_type.getText();
-        String commentaire = tf_commentaire.getText();   
-            LocalDate localDate = LocalDate.now();
-            Date date_creation = Date.valueOf(localDate);
-            
+        String commentaire = tf_commentaire.getText();
+        LocalDate localDate = LocalDate.now();
+        Date date_creation = Date.valueOf(localDate);
+
         if (type.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -134,12 +134,12 @@ public class Ajouter_recController implements Initializable {
             rc.ajouterReclamation(r);
 
             Notifications n = Notifications.create()
-                .title("WeBuild")
-                .text("Réclamation ajoutée !")
-                .graphic(null)
-                .position(Pos.TOP_CENTER)
-                .hideAfter(Duration.seconds(5));
-        n.showInformation();
+                    .title("WeBuild")
+                    .text("Réclamation ajoutée !")
+                    .graphic(null)
+                    .position(Pos.TOP_CENTER)
+                    .hideAfter(Duration.seconds(5));
+            n.showInformation();
 
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Reclamation.fxml"));
             rootPane.getChildren().setAll(pane);
@@ -164,29 +164,29 @@ public class Ajouter_recController implements Initializable {
                 new FileChooser.ExtensionFilter("JPG", "*.jpg")
         );
         selectedFile = fc.showOpenDialog(null);
-        
+
         if (selectedFile != null) {
 
-                // Load the selected image into the image view
-                Image image1 = new Image(selectedFile.toURI().toString());
+            // Load the selected image into the image view
+            Image image1 = new Image(selectedFile.toURI().toString());
 
-                //url_image = file.toURI().toString();
-                System.out.println(selectedFile.toURI().toString());
-                screenshotView.setImage(image1);
+            //url_image = file.toURI().toString();
+            System.out.println(selectedFile.toURI().toString());
+            screenshotView.setImage(image1);
 
-                // Create a new file in the destination directory
-                File destinationFile = new File("C:\\xampp\\htdocs\\image_trippie_reclamation\\" + selectedFile.getName());
-                // url_image = "C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName();
-                url_image = selectedFile.getName();
+            // Create a new file in the destination directory
+            File destinationFile = new File("C:\\xampp\\htdocs\\image_trippie_reclamation\\" + selectedFile.getName());
+            // url_image = "C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName();
+            url_image = selectedFile.getName();
 
-                try {
-                    // Copy the selected file to the destination file
-                    Files.copy(selectedFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                } catch (IOException e) {
-                    System.err.println(e);
-                }
-
+            try {
+                // Copy the selected file to the destination file
+                Files.copy(selectedFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                System.err.println(e);
             }
+
+        }
     }
 
 }

@@ -28,7 +28,7 @@ public class reponseCRUD implements InterfaceCRUD {
     @Override
     public void ajouterReponse(reponse r) {
         try {
-            String req = "INSERT INTO `reponse`(`reponse`,`id_rec`,`etat`) VALUES ('" + r.getReponse() + "','" + r.getId_rec() + "','" + r.getEtat()+ "')";
+            String req = "INSERT INTO `reponse`(`reponse`,`id_rec`,`etat`) VALUES ('" + r.getReponse() + "','" + r.getId_rec() + "','" + r.getEtat() + "')";
             String req2 = "UPDATE `reclamation` SET `etat` = 'en cours de traitement'  WHERE `reclamation`.`id_rec` = " + r.getId_rec();
             ste = conn.createStatement();
             ste.executeUpdate(req);

@@ -5,15 +5,11 @@
  */
 package edu.webuild.controller;
 
-import edu.webuild.model.reclamation;
 import edu.webuild.model.reponse;
-import edu.webuild.services.reclamationCRUD;
 import edu.webuild.services.reponseCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +49,7 @@ public class Ajouter_reponseController implements Initializable {
         tf_type.setText(String.valueOf(AdminReclamationController.type_rec));
         tf_commentaire.setText(String.valueOf(AdminReclamationController.commentaire_rec));
         tf_etat.setText(String.valueOf(AdminReclamationController.etat_rec));
-    }    
+    }
 
     @FXML
     private void retour(MouseEvent event) throws IOException {
@@ -63,10 +59,10 @@ public class Ajouter_reponseController implements Initializable {
 
     @FXML
     private void ajouter(ActionEvent event) throws IOException {
-        
+
         String rep = tf_reponse.getText();
         String etat = tf_etat.getText();
-        
+
         if (rep.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -80,8 +76,8 @@ public class Ajouter_reponseController implements Initializable {
             alert.setContentText("Etat manquant");
             alert.showAndWait();
         } else {
-            
-            rep = "(Admin): "+tf_reponse.getText();
+
+            rep = "(Admin): " + tf_reponse.getText();
             reponse r = new reponse(rep, AdminReclamationController.id, etat);
 
             reponseCRUD rc = new reponseCRUD();
@@ -89,16 +85,16 @@ public class Ajouter_reponseController implements Initializable {
             rc.ajouterReponse(r);
 
             Notifications n = Notifications.create()
-                .title("WeBuild")
-                .text("Réponse ajoutée !")
-                .graphic(null)
-                .position(Pos.TOP_CENTER)
-                .hideAfter(Duration.seconds(5));
-        n.showInformation();
-            
+                    .title("WeBuild")
+                    .text("Réponse ajoutée !")
+                    .graphic(null)
+                    .position(Pos.TOP_CENTER)
+                    .hideAfter(Duration.seconds(5));
+            n.showInformation();
+
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/afficheReponse.fxml"));
             rootPane.getChildren().setAll(pane);
         }
     }
-    
+
 }

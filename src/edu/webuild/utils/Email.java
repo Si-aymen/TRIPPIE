@@ -61,7 +61,7 @@ public class Email {
 
         // Envoi du message
         Transport.send(e_message);
-        
+
         System.out.println("mail envoyé avec succés");
     }
 }

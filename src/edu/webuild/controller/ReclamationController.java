@@ -5,12 +5,6 @@
  */
 package edu.webuild.controller;
 
-import static edu.webuild.controller.AdminReclamationController.commentaire_rec;
-import static edu.webuild.controller.AdminReclamationController.etat_rec;
-import static edu.webuild.controller.AdminReclamationController.id;
-import static edu.webuild.controller.AdminReclamationController.id_rec;
-import static edu.webuild.controller.AdminReclamationController.type_rec;
-import static edu.webuild.controller.AdminReclamationController.url_image;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
 import java.io.IOException;
@@ -36,7 +30,7 @@ public class ReclamationController implements Initializable {
     private AnchorPane rootPane;
     @FXML
     private ListView<reclamation> liste_reclamation;
-    
+
     static public int id;
     static public String id_rec;
     static public String type_rec;
@@ -49,7 +43,7 @@ public class ReclamationController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         ListView list2 = liste_reclamation;
         reclamation r = new reclamation();
         reclamationCRUD rec = new reclamationCRUD();
@@ -58,30 +52,27 @@ public class ReclamationController implements Initializable {
             reclamation reclamation = list.get(i);
             list2.getItems().add(reclamation);
         }
-        
-        
-        
-    }    
 
+    }
 
     @FXML
     private void lancer_suivre(ActionEvent event) throws IOException {
-        
+
         ListView<reclamation> list = liste_reclamation;
-        
+
         reclamationCRUD rec = new reclamationCRUD();
-        
+
         int selectedID = list.getSelectionModel().getSelectedIndex();
-        
+
         reclamation r = list.getSelectionModel().getSelectedItem();
-        
+
         id = r.getId_rec();
         id_rec = Integer.toString(r.getId_rec());
         type_rec = r.getType_rec();
         commentaire_rec = r.getCommentaire();
         etat_rec = r.getEtat();
         url_image = r.getUrl_image();
-        
+
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/suivre_rec.fxml"));
         rootPane.getChildren().setAll(pane);
     }
@@ -94,15 +85,15 @@ public class ReclamationController implements Initializable {
 
     @FXML
     private void modifier(MouseEvent event) {
-        
+
         ListView<reclamation> list = liste_reclamation; // assuming listView is a ListView<CoVoiturage>
-        
+
         reclamationCRUD rec = new reclamationCRUD();
-        
+
         int selectedID = list.getSelectionModel().getSelectedIndex();
-        
+
         reclamation r = list.getSelectionModel().getSelectedItem(); // use getSelectedItem() to get the selected item, not getSelectedItems()*
-        
+
         id_rec = Integer.toString(r.getId_rec());
         type_rec = r.getType_rec();
         commentaire_rec = r.getCommentaire();
@@ -113,21 +104,20 @@ public class ReclamationController implements Initializable {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/modifier_rec.fxml"));
             rootPane.getChildren().setAll(pane);
         } catch (IOException ex) {
-            
 
         }
     }
 
     @FXML
     private void supprimer(MouseEvent event) {
-        
+
         ListView<reclamation> list_supp = liste_reclamation; // assuming listView is a ListView<CoVoiturage>
         reclamationCRUD rec = new reclamationCRUD();
         int selectedID = list_supp.getSelectionModel().getSelectedIndex();
         reclamation r = list_supp.getSelectionModel().getSelectedItem(); // use getSelectedItem() to get the selected item, not getSelectedItems()
-        
+
         rec.supprimerReclamation(r.getId_rec()); // assuming CoVoiturage has a method getId() to retrieve the unique ID of the object
         list_supp.getItems().remove(selectedID);
     }
-    
+
 }

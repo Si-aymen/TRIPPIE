@@ -5,7 +5,6 @@
  */
 package edu.webuild.controller;
 
-import com.jfoenix.controls.JFXButton;
 import edu.webuild.model.reponse;
 import edu.webuild.services.reponseCRUD;
 import java.io.IOException;
@@ -50,7 +49,7 @@ public class Suivre_recController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         String im = "http://localhost/image_trippie_reclamation/" + ReclamationController.url_image;
 
         etat.setText("Votre réclamation est : " + ReclamationController.etat_rec);

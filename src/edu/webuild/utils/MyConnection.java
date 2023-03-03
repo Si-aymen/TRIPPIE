@@ -7,38 +7,37 @@ package edu.webuild.utils;
 
 import java.sql.*;
 
-
 /**
  *
  * @author belkn
  */
 public class MyConnection {
-    
-   private static Connection conn;  //DB Credations
-    
-String url = "jdbc:mysql://localhost:3306/webuild";
-String user = "root";
-String pwd = "";
-private static MyConnection instance;
+
+    private static Connection conn;  //DB Credations
+
+    String url = "jdbc:mysql://localhost:3306/webuild";
+    String user = "root";
+    String pwd = "";
+    private static MyConnection instance;
 
     private MyConnection() {
         try {
-            conn=DriverManager.getConnection(url, user, pwd);
+            conn = DriverManager.getConnection(url, user, pwd);
             System.out.println("Connexion etablie!!!");
         } catch (SQLException ex) {
-            System.out.println("Prebleme de connexion");        }
+            System.out.println("Prebleme de connexion");
+        }
     }
 
     public static MyConnection getInstance() {
-        if(instance==null){
-            instance= new MyConnection();
+        if (instance == null) {
+            instance = new MyConnection();
         }
         return instance;
     }
- 
-    
-    public Connection getConn(){
+
+    public Connection getConn() {
         return MyConnection.getInstance().conn;
     }
-    
+
 }

@@ -14,22 +14,32 @@ import java.util.List;
  * @author guerf
  */
 public interface InterfaceCRUD {
-    
-   public void ajouterReclamation(reclamation r);
-   public void modifierReclamation(reclamation r , int id);
-   public void supprimerReclamation(int id) ;
-   public List<reclamation> afficherReclamation();
-   public reclamation detailsReclamation(int id);
-   public reclamation getById_rec(int id);
-   public void traite(reclamation r);
-   
-   public void ajouterReponse(reponse r);
-   public void modifierReponse(reponse r , int id);
-   public void supprimerReponse(int id) ;
-   public List<reponse> afficherReponse();
-   public reponse detailsReponse(int id);
-   public List<reponse> getById_rep(int id);
-   
-   //public List<reponse> afficher_join();
-   
+
+    public void ajouterReclamation(reclamation r);
+
+    public void modifierReclamation(reclamation r, int id);
+
+    public void supprimerReclamation(int id);
+
+    public List<reclamation> afficherReclamation();
+
+    public reclamation detailsReclamation(int id);
+
+    public reclamation getById_rec(int id);
+
+    public void traite(reclamation r);
+
+    public void ajouterReponse(reponse r);
+
+    public void modifierReponse(reponse r, int id);
+
+    public void supprimerReponse(int id);
+
+    public List<reponse> afficherReponse();
+
+    public reponse detailsReponse(int id);
+
+    public List<reponse> getById_rep(int id);
+
+    //public List<reponse> afficher_join();
 }

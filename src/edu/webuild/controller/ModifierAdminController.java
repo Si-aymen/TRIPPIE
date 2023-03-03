@@ -5,7 +5,6 @@
  */
 package edu.webuild.controller;
 
-import static edu.webuild.controller.Ajouter_recAdminController.id_utilisateur;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
 import java.io.IOException;
@@ -18,7 +17,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -72,12 +70,12 @@ public class ModifierAdminController implements Initializable {
             rc.modifierReclamation(r, id);
 
             Notifications n = Notifications.create()
-                .title("WeBuild")
-                .text("Réclamation modifiée avec succé !")
-                .graphic(null)
-                .position(Pos.TOP_CENTER)
-                .hideAfter(Duration.seconds(5));
-        n.showInformation();
+                    .title("WeBuild")
+                    .text("Réclamation modifiée avec succé !")
+                    .graphic(null)
+                    .position(Pos.TOP_CENTER)
+                    .hideAfter(Duration.seconds(5));
+            n.showInformation();
             
             
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));

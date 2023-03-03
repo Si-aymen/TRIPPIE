@@ -10,8 +10,6 @@ import edu.webuild.services.reponseCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -80,13 +78,13 @@ public class RepondreController implements Initializable {
             rc.ajouterReponse(r1);
 
             Notifications n = Notifications.create()
-                .title("WeBuild")
-                .text("Réponse ajoutée avec succé !")
-                .graphic(null)
-                .position(Pos.TOP_CENTER)
-                .hideAfter(Duration.seconds(5));
-        n.showInformation();
-            
+                    .title("WeBuild")
+                    .text("Réponse ajoutée avec succé !")
+                    .graphic(null)
+                    .position(Pos.TOP_CENTER)
+                    .hideAfter(Duration.seconds(5));
+            n.showInformation();
+
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/suivre_rec.fxml"));
             rootPane.getChildren().setAll(pane);
         }

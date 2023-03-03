@@ -10,6 +10,7 @@ package edu.webuild.model;
  * @author guerf
  */
 public class reponse {
+
     private int id_rep;
     private String reponse;
     private int id_rec;
@@ -68,5 +69,4 @@ public class reponse {
         this.etat = etat;
     }
 
-    
 }
