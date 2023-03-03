@@ -17,6 +17,8 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -38,20 +40,25 @@ public class Item_covController implements Initializable {
     @FXML
     private Label nb_plc;
 
+//    private void CLick(MouseEvent actionEvent) {
+//        
+//    }
+
     /**
      * Initializes the controller class.
      */
-    public void setData(String departt, String destinationn, Date d, String url, String nmbr_place) {
+    public void setData(String departt, String destinationn, Date d, String url, String nmbr_place, MyListener myListener) {
+        this.myListener = myListener;
         depart.setText(departt);
         destination.setText(destinationn);
         temps.setText(d.toString());
-        String fullurl ="C:\\xampp\\htdocs\\image_trippie_cov\\"+url;
-        System.out.println("full url "+ fullurl);
+        String fullurl = "C:\\xampp\\htdocs\\image_trippie_cov\\" + url;
+        System.out.println("full url " + fullurl);
         nb_plc.setText(nmbr_place);
 //        Image image = new Image(fullurl);
 //        //Image image = new Image("C:\\Users\\manou\\Desktop\\TRIPPIE-co_voiturage\\205.jpg");
 //        img.setImage(image);
-        
+
         try {
             img.setImage(new Image(new FileInputStream(fullurl)));
         } catch (FileNotFoundException e) {
@@ -71,6 +78,11 @@ public class Item_covController implements Initializable {
 
     public void setMyListener(MyListener myListener) {
         this.myListener = myListener;
+    }
+
+    @FXML
+    private void Click(MouseEvent event) {
+        myListener.onClick(cov);
     }
 
     public interface MyListener {

@@ -8,8 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.Rating?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Details_CovController">
+<AnchorPane id="AnchorPane" onDragDetected="#rating_stars_btu" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Details_CovController">
     <children>
         <Text fill="#878787" layoutX="812.0" layoutY="773.0" strokeType="OUTSIDE" strokeWidth="0.0" text="www.Trippie.tn" wrappingWidth="138.40000000000003" />
         <TextField fx:id="depart_TF" layoutX="531.0" layoutY="177.0" />
@@ -22,7 +23,7 @@
         <DatePicker fx:id="Date_pk" layoutX="531.0" layoutY="419.0" />
         <ImageView fx:id="imageView" fitHeight="292.0" fitWidth="364.0" layoutX="780.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" />
         <Button layoutX="1165.0" layoutY="487.0" mnemonicParsing="false" onAction="#add_image" text="add image" />
-        <AnchorPane layoutX="241.0" layoutY="-36.0" prefHeight="127.0" prefWidth="1192.0" style="-fx-background-color: #ebd3cb;">
+        <AnchorPane layoutX="233.0" layoutY="-36.0" prefHeight="127.0" prefWidth="1200.0" style="-fx-background-color: #ebd3cb;">
             <children>
                 <Text fill="#fcfafa" layoutX="14.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" /home/CoVoiturage">
                     <font>
@@ -36,7 +37,7 @@
                 </Text>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="5.0" layoutY="1.0" prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;">
+        <AnchorPane prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;">
             <children>
                 <Text fill="#4a6dd8" layoutX="99.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trippie">
                     <font>
@@ -52,5 +53,7 @@
         <Button layoutX="71.0" layoutY="446.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Participation Co_Voiturage" />
         <Button layoutX="71.0" layoutY="507.0" mnemonicParsing="false" onAction="#stats" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Stats" />
         <TextField fx:id="id_co_TF" layoutX="531.0" layoutY="125.0" />
+      <Button layoutX="632.0" layoutY="585.0" mnemonicParsing="false" text="valider rating stars " />
+      <Rating layoutX="322.0" layoutY="579.0" />
     </children>
 </AnchorPane>

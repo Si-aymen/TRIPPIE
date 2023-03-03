@@ -36,7 +36,7 @@ public class CoVoiturage_Main extends Application {
         // tackPane root = new StackPane();
         //root.getChildren().add(btn);
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Map_stat.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Menu_Cov.fxml"));
             Scene scene = new Scene(root, 1400, 800);
 
             primaryStage.setTitle("Trippie");

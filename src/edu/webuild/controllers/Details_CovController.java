@@ -25,7 +25,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import impl.org.controlsfx.skin.RatingSkin;
+import org.controlsfx.control.Rating;
+//import controlsfx
 
 /**
  * FXML Controller class
@@ -48,6 +52,8 @@ public class Details_CovController implements Initializable {
     private DatePicker Date_pk;
     @FXML
     private ImageView imageView;
+    @FXML
+    private Rating Rating_stars;
 
     /**
      * Initializes the controller class.
@@ -105,6 +111,12 @@ public class Details_CovController implements Initializable {
             Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+    }
+
+    @FXML
+    private void rating_stars_btu(MouseEvent event) {
+        //String ratt = Rating_stars.toString();
+
     }
 
 }
