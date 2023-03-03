@@ -18,28 +18,31 @@ public class reclamation {
     private String etat;
     private Date date_creation;
     private int id_utilisateur;
+    private String url_image;
 
     public reclamation() {
     }
 
-    public reclamation(int id_rec, String type_rec, String commentaire, String etat, Date date_creation, int id_utilisateur) {
+    public reclamation(int id_rec, String type_rec, String commentaire, String etat, Date date_creation, int id_utilisateur, String url_image) {
         this.id_rec = id_rec;
         this.type_rec = type_rec;
         this.commentaire = commentaire;
         this.etat = etat;
         this.date_creation = date_creation;
         this.id_utilisateur = id_utilisateur;
+        this.url_image = url_image;
     }
 
-    public reclamation(String type_rec, String commentaire, String etat, Date date_creation, int id_utilisateur) {
+    public reclamation(String type_rec, String commentaire, String etat, Date date_creation, int id_utilisateur, String url_image) {
         this.type_rec = type_rec;
         this.commentaire = commentaire;
         this.etat = etat;
         this.date_creation = date_creation;
         this.id_utilisateur = id_utilisateur;
+        this.url_image = url_image;
     }
- 
-    
+
+        
     @Override
     public String toString() {
         return "Type : " + type_rec + " || Commentaire : " + commentaire + " || Etat : " + etat;
@@ -91,6 +94,14 @@ public class reclamation {
 
     public void setId_utilisateur(int id_utilisateur) {
         this.id_utilisateur = id_utilisateur;
+    }
+
+    public String getUrl_image() {
+        return url_image;
+    }
+
+    public void setUrl_image(String url_image) {
+        this.url_image = url_image;
     }
     
     

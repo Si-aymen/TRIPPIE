@@ -12,6 +12,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.sql.Date;
 import java.util.ResourceBundle;
@@ -52,16 +54,16 @@ public class Ajouter_recAdminController implements Initializable {
     private TextArea tf_commentaire;
     @FXML
     private AnchorPane rootPane;
-    
+
     public static int id_utilisateur = 1;
     private String path;
     File selectedFile;
-    
+
     int etatrecaptcha = 0;
     Stage window = new Stage();
     WebView webView2 = new WebView();
     WebEngine webEngine = new WebEngine();
-    
+
     @FXML
     private ImageView recaptcha;
     @FXML
@@ -69,13 +71,15 @@ public class Ajouter_recAdminController implements Initializable {
     @FXML
     private JFXButton image;
 
+    public String url_image;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         recaptcha.setImage(new Image("/edu/webuild/images/google-captcha.jpg"));
-        
+
         screenshotView.setOnDragOver(new EventHandler<DragEvent>() {
             public void handle(DragEvent event) {
                 Dragboard db = event.getDragboard();
@@ -110,42 +114,60 @@ public class Ajouter_recAdminController implements Initializable {
             }
         });
         screenshotView.setImage(new Image("file:C:\\Users\\guerf\\Desktop\\TRIPPIE-Reclamation\\src\\edu\\webuild\\images\\drag-drop.gif"));
-    }    
+    }
 
     @FXML
     private void retour(MouseEvent event) throws IOException {
-        
+
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     private void ajouter(ActionEvent event) throws IOException {
-        
-        
-            String type = tf_type.getText();
-            String commentaire = tf_commentaire.getText();   
-            LocalDate localDate = LocalDate.now();
-            Date date_creation = Date.valueOf(localDate);
-            
-            if (type.isEmpty())
-            {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        String type = tf_type.getText();
+        String commentaire = tf_commentaire.getText();
+        LocalDate localDate = LocalDate.now();
+        Date date_creation = Date.valueOf(localDate);
+        if (selectedFile != null) {
+
+                // Load the selected image into the image view
+                Image image1 = new Image(selectedFile.toURI().toString());
+
+                //url_image = file.toURI().toString();
+                System.out.println(selectedFile.toURI().toString());
+                screenshotView.setImage(image1);
+
+                // Create a new file in the destination directory
+                File destinationFile = new File("C:\\xampp\\htdocs\\image_trippie_reclamation\\" + selectedFile.getName());
+                // url_image = "C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName();
+                url_image = selectedFile.getName();
+
+                try {
+                    // Copy the selected file to the destination file
+                    Files.copy(selectedFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                } catch (IOException e) {
+                    System.err.println(e);
+                }
+
+            }
+
+        if (type.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText(null);
             alert.setContentText("Type manquant");
             alert.showAndWait();
-            }
-            else if(commentaire.isEmpty())
-            {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        } else if (commentaire.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText(null);
             alert.setContentText("Commentaire manquant");
             alert.showAndWait();
-            }
-            else{
-            reclamation r = new reclamation(type, commentaire, "non traité", date_creation, id_utilisateur);
+        } else {
+            
+            reclamation r = new reclamation(type, commentaire, "non traité", date_creation, id_utilisateur, url_image);
 
             reclamationCRUD rc = new reclamationCRUD();
 
@@ -156,15 +178,14 @@ public class Ajouter_recAdminController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Cette réclamation est ajoutée avec succés");
             alert.showAndWait();
-            
+
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/adminReclamation.fxml"));
             rootPane.getChildren().setAll(pane);
-            
-            }
-        
-        
+
+        }
+
     }
-        
+
     @FXML
     private void recaptcha(MouseEvent event) {
         //Block events to other windows
@@ -197,17 +218,29 @@ public class Ajouter_recAdminController implements Initializable {
                 new FileChooser.ExtensionFilter("JPG", "*.jpg")
         );
         selectedFile = fc.showOpenDialog(null);
-
+        
         if (selectedFile != null) {
 
-            path = selectedFile.getName();
-//                path = selectedFile.toURI().toURL().toExternalForm();
-            screenshotView.setImage(new Image(selectedFile.toURI().toURL().toString()));
-            screenshotView.setFitHeight(150);
-            screenshotView.setFitWidth(250);
-            image.setText(path);
+                // Load the selected image into the image view
+                Image image1 = new Image(selectedFile.toURI().toString());
 
-        }
+                //url_image = file.toURI().toString();
+                System.out.println(selectedFile.toURI().toString());
+                screenshotView.setImage(image1);
+
+                // Create a new file in the destination directory
+                File destinationFile = new File("C:\\xampp\\htdocs\\image_trippie_reclamation\\" + selectedFile.getName());
+                // url_image = "C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName();
+                url_image = selectedFile.getName();
+
+                try {
+                    // Copy the selected file to the destination file
+                    Files.copy(selectedFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                } catch (IOException e) {
+                    System.err.println(e);
+                }
+
+            }
     }
-    
+
 }

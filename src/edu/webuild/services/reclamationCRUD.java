@@ -29,13 +29,14 @@ public class reclamationCRUD implements InterfaceCRUD {
     @Override
     public void ajouterReclamation(reclamation reclamation) {
         try {
-            String query = "INSERT INTO reclamation (type_rec, commentaire, etat,id_utilisateur,date_creation) VALUES (?, ?, ?,?,?)";
+            String query = "INSERT INTO reclamation (type_rec, commentaire, etat,id_utilisateur,date_creation,image) VALUES (?, ?, ?,?,?,?)";
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1, reclamation.getType_rec());
             preparedStatement.setString(2, reclamation.getCommentaire());
             preparedStatement.setString(3,"non traité");
             preparedStatement.setInt(4, reclamation.getId_utilisateur());
             preparedStatement.setString(5, reclamation.getDate_creation().toString());
+            preparedStatement.setString(6, reclamation.getUrl_image());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -93,6 +94,7 @@ public class reclamationCRUD implements InterfaceCRUD {
                 r.setEtat(RS.getString(4));
                 r.setId_utilisateur(RS.getInt(5));
                 r.setDate_creation(RS.getDate(6));
+                r.setUrl_image(RS.getString(7));
 
                 list.add(r);
             }

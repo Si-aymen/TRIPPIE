@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
@@ -41,10 +42,16 @@ public class Affiche_recUniqueController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        String im = "http://localhost/image_trippie_reclamation/" + AdminReclamationController.url_image;
+        
+        System.out.println(im);
+        
         type.setText(String.valueOf(AdminReclamationController.type_rec));
         commentaire.setText(String.valueOf(AdminReclamationController.commentaire_rec));
         etat.setText(String.valueOf(AdminReclamationController.etat_rec));
         date.setPromptText(AdminReclamationController.date.toString());
+        piece_jointe.setImage(new Image(im));
     }    
     
 }

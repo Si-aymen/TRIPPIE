@@ -67,7 +67,7 @@ public class Modifier_recController implements Initializable {
             LocalDate localDate = LocalDate.now();
             Date date_creation = Date.valueOf(localDate);
             
-            reclamation r = new reclamation(type, commentaire, "non traité", date_creation, id_utilisateur);
+            reclamation r = new reclamation(type, commentaire, "non traité", date_creation, id_utilisateur, "");
             
             reclamationCRUD rc = new reclamationCRUD();
             

@@ -51,6 +51,7 @@ public class AdminReclamationController implements Initializable {
     static public String commentaire_rec;
     static public String etat_rec;
     static public Date date;
+    static public String url_image;
 
     static public String toEmail = "guerfala71@gmail.com";
     static public String subject = "test";
@@ -90,6 +91,7 @@ public class AdminReclamationController implements Initializable {
                     commentaire_rec = reclam.getCommentaire();
                     etat_rec = reclam.getEtat();
                     date = reclam.getDate_creation();
+                    url_image = reclam.getUrl_image();
 
                     Parent root;
                     try {

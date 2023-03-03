@@ -62,7 +62,7 @@ public class ModifierAdminController implements Initializable {
             LocalDate localDate = LocalDate.now();
             Date date_creation = Date.valueOf(localDate);
             
-            reclamation r = new reclamation(type, commentaire, etat, date_creation, id_utilisateur);
+            reclamation r = new reclamation(type, commentaire, etat, date_creation, id_utilisateur, "");
             
             reclamationCRUD rc = new reclamationCRUD();
             

@@ -73,7 +73,7 @@ public class Ajouter_recController implements Initializable {
             alert.setContentText("Commentaire manquant");
             alert.showAndWait();
         } else {
-            reclamation r = new reclamation(type, commentaire, "non traité", date_creation, id_utilisateur);
+            reclamation r = new reclamation(type, commentaire, "non traité", date_creation, id_utilisateur, "");
 
             reclamationCRUD rc = new reclamationCRUD();
 
