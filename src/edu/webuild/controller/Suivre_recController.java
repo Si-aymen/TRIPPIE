@@ -5,6 +5,7 @@
  */
 package edu.webuild.controller;
 
+import com.jfoenix.controls.JFXButton;
 import edu.webuild.model.reponse;
 import edu.webuild.services.reponseCRUD;
 import java.io.IOException;
@@ -19,6 +20,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -39,16 +42,21 @@ public class Suivre_recController implements Initializable {
     private TextArea tf_commentaire;
     @FXML
     private ListView<reponse> liste;
+    @FXML
+    private ImageView piece_jointe;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        String im = "http://localhost/image_trippie_reclamation/" + ReclamationController.url_image;
 
         etat.setText("Votre réclamation est : " + ReclamationController.etat_rec);
         tf_type.setText(ReclamationController.type_rec);
         tf_commentaire.setText(ReclamationController.commentaire_rec);
+        piece_jointe.setImage(new Image(im));
 
         ListView list = liste;
         reponse r = new reponse();
@@ -79,6 +87,10 @@ public class Suivre_recController implements Initializable {
     private void retour(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Reclamation.fxml"));
         rootPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void image(MouseEvent event) {
     }
 
 }

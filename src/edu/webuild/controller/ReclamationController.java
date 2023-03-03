@@ -10,6 +10,7 @@ import static edu.webuild.controller.AdminReclamationController.etat_rec;
 import static edu.webuild.controller.AdminReclamationController.id;
 import static edu.webuild.controller.AdminReclamationController.id_rec;
 import static edu.webuild.controller.AdminReclamationController.type_rec;
+import static edu.webuild.controller.AdminReclamationController.url_image;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
 import java.io.IOException;
@@ -41,6 +42,7 @@ public class ReclamationController implements Initializable {
     static public String type_rec;
     static public String commentaire_rec;
     static public String etat_rec;
+    static public String url_image;
 
     /**
      * Initializes the controller class.
@@ -78,6 +80,7 @@ public class ReclamationController implements Initializable {
         type_rec = r.getType_rec();
         commentaire_rec = r.getCommentaire();
         etat_rec = r.getEtat();
+        url_image = r.getUrl_image();
         
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/suivre_rec.fxml"));
         rootPane.getChildren().setAll(pane);
