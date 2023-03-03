@@ -16,6 +16,7 @@ public class Chauffeur {
     String marque_voiture;
     String couleur_voiture;
     String immatriculation;
+    int tel;
     String email;
     String password;
 
@@ -55,9 +56,41 @@ public class Chauffeur {
         this.password = password;
     }
 
+    public Chauffeur(int id_ch, Role id_role, String num_permis, String marque_voiture, String couleur_voiture, String immatriculation, int tel, String email, String password) {
+        this.id_ch = id_ch;
+        this.id_role = id_role;
+        this.num_permis = num_permis;
+        this.marque_voiture = marque_voiture;
+        this.couleur_voiture = couleur_voiture;
+        this.immatriculation = immatriculation;
+        this.tel = tel;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Chauffeur(Role id_role, String num_permis, String marque_voiture, String couleur_voiture, String immatriculation, int tel, String email, String password) {
+        this.id_role = id_role;
+        this.num_permis = num_permis;
+        this.marque_voiture = marque_voiture;
+        this.couleur_voiture = couleur_voiture;
+        this.immatriculation = immatriculation;
+        this.tel = tel;
+        this.email = email;
+        this.password = password;
+    }
+
+    
     public Chauffeur(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public int getTel() {
+        return tel;
+    }
+
+    public void setTel(int tel) {
+        this.tel = tel;
     }
 
   
@@ -129,8 +162,10 @@ public class Chauffeur {
 
     @Override
     public String toString() {
-        return "Chauffeur{" + "id_ch=" + id_ch + ", id_role=" + id_role + ", num_permis=" + num_permis + ", marque_voiture=" + marque_voiture + ", couleur_voiture=" + couleur_voiture + ", immatriculation=" + immatriculation + ", email=" + email + ", password=" + password + '}';
+        return "Chauffeur{" + "id_ch=" + id_ch + ", id_role=" + id_role + ", num_permis=" + num_permis + ", marque_voiture=" + marque_voiture + ", couleur_voiture=" + couleur_voiture + ", immatriculation=" + immatriculation + ", tel=" + tel + ", email=" + email + ", password=" + password + '}';
     }
+
+   
 
    
 

@@ -21,4 +21,5 @@ public interface InterfaceLocateurCRUD {
    public List<Locateur> getById(int id_loc);
     public List<Locateur> FiltrerLocateur(String f1, String f2);
      public List<Locateur> trierLocateur();
+      public List<Locateur> afficherLocateur2();
 }

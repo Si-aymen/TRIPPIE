@@ -49,7 +49,7 @@ public class GetPasswordController implements Initializable {
 
     @FXML
     private void Rechercher(ActionEvent event) throws IOException, SQLException {
-        if (validateInputs()) {
+//        if (validateInputs()) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/IdentifierCompte.fxml"));
             Parent rat = loader.load();
             IdentifierCompteController dc = loader.getController();
@@ -61,28 +61,28 @@ public class GetPasswordController implements Initializable {
             Stage stage = (Stage) btnRechercher.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-        }
+        //}
 
     }
 
-    private boolean validateInputs() throws SQLException {
-
-        if (txtusername.getText().isEmpty()) {
-            Alert alert1 = new Alert(Alert.AlertType.WARNING);
-            alert1.setTitle("Erreur");
-            alert1.setContentText("Veuillez remplir tous les champs");
-            alert1.setHeaderText("Controle de saisie");
-            alert1.show();
-            return false;
-        } else if (!(txtusername.getText().equals(c.getEmail()) || txtusername.getText().equals(ch.getEmail()) || txtusername.getText().equals(loc.getEmail()))) {
-            Alert alert2 = new Alert(Alert.AlertType.WARNING);
-            alert2.setTitle("Erreur");
-            alert2.setContentText("L'adresse email est incorrecte");
-            alert2.setHeaderText(null);
-            alert2.show();
-            return false;
-        }
-        return true;
-
-    }
+//    private boolean validateInputs() throws SQLException {
+//
+//        if (txtusername.getText().isEmpty()) {
+//            Alert alert1 = new Alert(Alert.AlertType.WARNING);
+//            alert1.setTitle("Erreur");
+//            alert1.setContentText("Veuillez remplir tous les champs");
+//            alert1.setHeaderText("Controle de saisie");
+//            alert1.show();
+//            return false;
+//        } else if (!(txtusername.getText().equals(c.getEmail()) && txtusername.getText().equals(ch.getEmail())  txtusername.getText().equals(loc.getEmail()))) {
+//            Alert alert2 = new Alert(Alert.AlertType.WARNING);
+//            alert2.setTitle("Erreur");
+//            alert2.setContentText("L'adresse email est incorrecte");
+//            alert2.setHeaderText(null);
+//            alert2.show();
+//            return false;
+//        }
+//        return true;
+//
+//    }
 }

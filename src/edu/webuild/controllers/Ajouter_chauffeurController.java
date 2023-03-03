@@ -57,6 +57,8 @@ public class Ajouter_chauffeurController implements Initializable {
     private PasswordField fxpass1;
     @FXML
     private ToggleButton showbtnnewnew1;
+    @FXML
+    private TextField fxtel;
 
     /**
      *
@@ -107,6 +109,7 @@ public class Ajouter_chauffeurController implements Initializable {
         String email = fxmail.getText();
         String password = fxpass.getText();
         String immatriculation = fxmat.getText();
+        int tel=Integer.parseInt(fxtel.getText());
        
         // Définir la regex pour valider l'adresse e-mail
         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
@@ -136,12 +139,12 @@ public class Ajouter_chauffeurController implements Initializable {
         
         }
         else{
-        Chauffeur ch = new Chauffeur(r, num_permis, marque_voiture, couleur_voiture, immatriculation, email, password);
+        Chauffeur ch = new Chauffeur(r, num_permis, marque_voiture, couleur_voiture, immatriculation, tel, email, password);
         rc.affecterRole(ch, r);
         
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Affiche_ch.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

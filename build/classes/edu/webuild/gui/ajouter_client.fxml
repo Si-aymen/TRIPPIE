@@ -10,10 +10,11 @@
    <children>
       <TextField fx:id="fxid" layoutX="495.0" layoutY="342.0" prefHeight="18.0" prefWidth="50.0" />
       <Button fx:id="fxbtn" layoutX="486.0" layoutY="342.0" mnemonicParsing="false" onAction="#addcli" style="-fx-background-color: black;" text="Confirmer" textFill="WHITE" />
-      <PasswordField fx:id="fxpass" layoutX="225.0" layoutY="207.0" promptText="Mot de passe" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black;" />
+      <PasswordField fx:id="fxpass" layoutX="181.0" layoutY="207.0" prefHeight="28.0" prefWidth="194.0" promptText="Mot de passe" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black;" />
       <ToggleButton fx:id="showbtnnewnew" layoutX="347.0" layoutY="208.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
-      <TextField fx:id="fxmail" layoutX="225.0" layoutY="142.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-border-width: 0px 0px 2px 0px;" />
-      <PasswordField fx:id="fxpass1" layoutX="225.0" layoutY="274.0" promptText="Retapez mot de passe" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black;" />
+      <TextField fx:id="fxmail" layoutX="181.0" layoutY="146.0" prefHeight="28.0" prefWidth="194.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-border-width: 0px 0px 2px 0px;" />
+      <PasswordField fx:id="fxpass1" layoutX="181.0" layoutY="274.0" prefHeight="28.0" prefWidth="194.0" promptText="Retapez mot de passe" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black;" />
       <ToggleButton fx:id="showbtnnewnew1" layoutX="347.0" layoutY="275.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
+      <TextField fx:id="fxtel" layoutX="181.0" layoutY="90.0" prefHeight="28.0" prefWidth="194.0" promptText="GSM" style="-fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-border-width: 0px 0px 2px 0px;" />
    </children>
 </AnchorPane>

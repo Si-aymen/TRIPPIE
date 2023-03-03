@@ -56,7 +56,7 @@ public class Affiche_locController implements Initializable {
         Locateur u = new Locateur();
 
         InterfaceLocateurCRUD inter = new LocateurCRUD();
-        List<Locateur> list = inter.afficherLocateur();
+        List<Locateur> list = inter.afficherLocateur2();
         for (int i = 0; i < list.size(); i++) {
             Locateur user = list.get(i);
             list2.getItems().add(user);
@@ -70,10 +70,14 @@ public class Affiche_locController implements Initializable {
                         super.updateItem(user, empty);
                         if (user != null && !empty) {
                             // Affiche les informations du covoiturage dans la cellule
-                            setText(String.format("-nom_agence:%s - email:%s - password:%s",
+                            setText(String.format("nom:%s - prenom:%s - genre:%s - nom_agence:%s - email:%s - Role:%s",
+                                    user.getId_role().getId_user().getNom(),
+                                    user.getId_role().getId_user().getPrenom(),
+                                    user.getId_role().getId_user().getSexe(),
                                     user.getNom_agence(),
                                     user.getEmail(),
-                                    user.getPassword()
+                                    user.getId_role().getLibelle()
+                                  
                             ));
                         } else {
                             setText(null);

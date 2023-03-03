@@ -12,14 +12,33 @@ package edu.webuild.model;
 public class Client {
     int id_client;
     Role  id_role;
+    int tel;
     String email;
     String password;
-    String token;
     boolean token_verif;
+    
+
+    public Client(int id_client, Role id_role, String email, String password, String token, int tel, boolean token_verif) {
+        this.id_client = id_client;
+        this.id_role = id_role;
+        this.email = email;
+        this.password = password;
+        this.tel = tel;
+        this.token_verif = token_verif;
+    }
+    
     
 
     public Client() {
     }
+
+    public Client(Role id_role, String email, String password, int tel) {
+        this.id_role = id_role;
+        this.email = email;
+        this.password = password;
+        this.tel = tel;
+    }
+    
 
     public Client(int id_client ,Role id_role,String email, String password) {
         this.id_client = id_client;
@@ -72,6 +91,14 @@ public class Client {
         return email;
     }
 
+    public int getTel() {
+        return tel;
+    }
+
+    public void setTel(int tel) {
+        this.tel = tel;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -84,13 +111,6 @@ public class Client {
         this.password = password;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 
     public boolean isToken_verif() {
         return token_verif;
@@ -99,15 +119,27 @@ public class Client {
     public void setToken_verif(boolean token_verif) {
         this.token_verif = token_verif;
     }
+
+    public Client(Role id_role, int tel, String email, String password) {
+        this.id_role = id_role;
+        this.tel = tel;
+        this.email = email;
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" + "id_client=" + id_client + ", id_role=" + id_role + ", tel=" + tel + ", email=" + email + ", password=" + password + ", token_verif=" + token_verif + '}';
+    }
+
+
+    
     
     
 
    
 
-    @Override
-    public String toString() {
-        return "Client{" + "id_client=" + id_client + ",id_role=" + id_role + ",  email=" + email + ", password=" + password +  '}';
-    }
+   
 
    
    

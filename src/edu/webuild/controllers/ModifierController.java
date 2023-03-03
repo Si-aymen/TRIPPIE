@@ -43,8 +43,7 @@ public class ModifierController implements Initializable {
     private TextField fxprenom;
     @FXML
     private TextField fxsexe;
-    @FXML
-    private TextField fxage;
+   
     @FXML
     private Button btnmod;
    
@@ -52,6 +51,8 @@ public class ModifierController implements Initializable {
     private TextField fxid;
     @FXML
     private TextField fxCin;
+    @FXML
+    private TextField fxcin;
   
 
     /**
@@ -66,7 +67,7 @@ public class ModifierController implements Initializable {
         fxnom.setText(String.valueOf(AfficheController.nom));
         fxprenom.setText(String.valueOf(AfficheController.prenom));
         fxsexe.setText(String.valueOf(AfficheController.sexe));
-        fxage.setText(String.valueOf(AfficheController.age));
+    
     }    
     
     @FXML
@@ -76,7 +77,7 @@ public class ModifierController implements Initializable {
         String nom = fxnom.getText();
         String prenom = fxprenom.getText();
         String sexe = fxsexe.getText();
-        int age = Integer.parseInt(fxage.getText());
+
         if (cin.isEmpty() || nom.isEmpty() || prenom.isEmpty() || sexe.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
@@ -85,13 +86,7 @@ public class ModifierController implements Initializable {
             alert.show();
 
         }
-        else  if (age==0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("Veuillez remplir tous les champs.");
-            alert.show();
-        }
+       
        else if(cin.length() != 8){
         
           Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -126,18 +121,12 @@ public class ModifierController implements Initializable {
 //        alert.setContentText("il faut que saisir H=Homme ou bien F=Femme ");
 //        alert.show();
 //        }
-        else if(age<=18){
-             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-           alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("erreur +18 ");
-        alert.show();
-        }
+        
        
         
         else{
 
-        Utilisateur u = new Utilisateur(AfficheController.id_user,cin, nom, prenom, sexe,age);
+        Utilisateur u = new Utilisateur(AfficheController.id_user,cin, nom, prenom, sexe);
         inter.modifierUtilisateur(u);
          
 try {

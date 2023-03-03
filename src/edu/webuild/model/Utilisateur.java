@@ -16,8 +16,9 @@ import java.util.List;
 public class Utilisateur {
     public int id_user;
     private String cin;
-    private String nom,prenom,sexe;
-    private int age;
+    private String nom,prenom,sexe,img;
+    
+ 
   
    
 
@@ -37,22 +38,31 @@ public class Utilisateur {
     
     //constructur parametre 
 
-    public Utilisateur(int id_user, String cin, String nom, String prenom, String sexe, int age) {
+    public Utilisateur(int id_user, String cin, String nom, String prenom, String sexe) {
         this.id_user = id_user;
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
-        this.age = age;
+      
         
     }
 
-    public Utilisateur(String cin, String nom, String prenom, String sexe, int age) {
+    public Utilisateur(String cin, String nom, String prenom, String sexe, String img) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
-        this.age = age;
+        this.img = img;
+    }
+    
+
+    public Utilisateur(String cin, String nom, String prenom, String sexe) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.sexe = sexe;
+        
       
     }
 
@@ -98,19 +108,18 @@ public class Utilisateur {
         this.sexe = sexe;
     }
 
-    public int getAge() {
-        return age;
+    public String getImg() {
+        return img;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setImg(String img) {
+        this.img = img;
     }
 
  
-
     @Override
     public String toString() {
-        return "Utilisateur{" + "id_user=" + id_user + ", cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", age=" + age + '}';
+        return "Utilisateur{" + "id_user=" + id_user + ", cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe +  '}';
     }
 
    

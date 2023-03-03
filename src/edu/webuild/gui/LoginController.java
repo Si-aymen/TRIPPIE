@@ -8,7 +8,6 @@ package edu.webuild.gui;
 import edu.webuild.controllers.ProfilChauffeurController;
 import edu.webuild.controllers.ProfilClientController;
 import edu.webuild.controllers.ProfilLocateurController;
-import edu.webuild.controllers.WelcomeController;
 import edu.webuild.model.Chauffeur;
 import edu.webuild.model.Client;
 import edu.webuild.model.Role;
@@ -32,6 +31,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -72,7 +73,6 @@ public class LoginController {
     static String SSemail;
     @FXML
     private ToggleButton showbtnnewnew;
-    private boolean labelVisible = false;
 
     public void setMain(FirstWindow main) {
         this.main = main;
@@ -88,12 +88,12 @@ public class LoginController {
         fxchoice.setValue("Client"); // sélectionne "Option 1" comme valeur par défaut
         showbtnnewnew.setOnAction(event -> {
             if (showbtnnewnew.isSelected()) {
-            txtpass.setPromptText(txtpass.getText());
-            txtpass.setText("");
-        } else {
-            txtpass.setText(txtpass.getPromptText());
-            txtpass.setPromptText("");
-        }
+                txtpass.setPromptText(txtpass.getText());
+                txtpass.setText("");
+            } else {
+                txtpass.setText(txtpass.getPromptText());
+                txtpass.setPromptText("");
+            }
         });
     }
 
@@ -131,7 +131,6 @@ public class LoginController {
     public void exit(ActionEvent event) throws IOException {
         exitBtn.setOnAction(e -> Platform.exit());
     }
-
 
     private boolean validateInput() throws SQLException, NoSuchAlgorithmException {
         boolean isValid = true;
@@ -222,21 +221,26 @@ public class LoginController {
                     stage3.show();
 
                     break;
-//                case "Admin":
-//                    // valider les informations d'identification de l'administrateur
-//                    if (adminCRUD.foundAdmin(email, password)) {
-//                        // ouvrir la fenêtre d'accueil pour les administrateurs
-//                        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminHome.fxml"));
-//                        Parent root = loader.load();
-//                        Scene scene = new Scene(root);
-//                        Stage stage = (Stage) loginBtn.getScene().getWindow();
-//                        stage.setScene(scene);
-//                        stage.show();
-//                    } else {
-//                        // afficher un message d'erreur si les informations d'identification sont incorrectes
-//                        showError("Nom d'utilisateur ou mot de passe incorrect");
-//                    }
-//                    break;
+                case "Admin":
+                    String email1 = "zouari.aymen@esprit.tn";
+                    String password1 = "aymenzouari1";
+                    if (txtusername.getText().equals(email1) && txtpass.getText().equals(password1)) {
+                        // If login is successful, navigate to the main menu
+                        Parent view3 = FXMLLoader.load(getClass().getResource("Menu_Cov.fxml"));
+                        Scene scene4 = new Scene(view3);
+                        Stage window = (Stage) loginBtn.getScene().getWindow();
+                        window.setScene(scene4);
+                        window.show();
+                    } else {
+                        // If login fails, display an error message
+                        Alert alert = new Alert(AlertType.ERROR);
+                        alert.setTitle("Login Error");
+                        alert.setHeaderText("Invalid email or password");
+                        alert.setContentText("Please try again.");
+                        alert.showAndWait();
+                    }
+
+                    break;
 
             }
         }
@@ -262,5 +266,4 @@ public class LoginController {
 
     }
 
-  
 }

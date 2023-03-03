@@ -17,6 +17,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import edu.webuild.utils.MyConnection;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -38,7 +41,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -56,11 +62,15 @@ public class AjoutController implements Initializable {
     private TextField fxprenom;
     @FXML
     private TextField fxsexe;
-    @FXML
-    private TextField fxage;
+   
     @FXML
     private Button btnajout;
     public static int id_user;
+    @FXML
+    private Button btnimg;
+    @FXML
+    private ImageView fximg;
+    static String url_image;
 
     /**
      * Initializes the controller class.
@@ -82,7 +92,7 @@ public class AjoutController implements Initializable {
         String prenom = fxprenom.getText();
         String cin = fxcin.getText();
         String sexe = fxsexe.getText();
-        int age = Integer.parseInt(fxage.getText());
+    
 
         if (cin.isEmpty() || nom.isEmpty() || prenom.isEmpty() || sexe.isEmpty()) {
             // Afficher un message d'erreur si la saisie est invalide
@@ -123,15 +133,9 @@ public class AjoutController implements Initializable {
         //        alert.setContentText("il faut que saisir H=Homme ou bien F=Femme ");
         //        alert.show();
         //        }
-        else if (age <= 18) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("erreur +18 ");
-            alert.show();
-        } else {
+        else {
 
-            Utilisateur u = new Utilisateur(cin, nom, prenom, sexe, age);
+            Utilisateur u = new Utilisateur(cin, nom, prenom, sexe);
             utilisateurCRUD uc = new utilisateurCRUD();
             uc.ajouterUtilisateur(u);
             //role
@@ -153,6 +157,46 @@ public class AjoutController implements Initializable {
 
         }
 
+    }
+
+    @FXML
+    private void image(ActionEvent event) {
+         ImageView imageView = fximg;
+
+        // Create a FileChooser
+        FileChooser fileChooser = new FileChooser();
+
+        // Add a filter to only show image files
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif")
+        );
+
+        // Get the primary stage from the image view
+        Stage primaryStage = (Stage) imageView.getScene().getWindow();
+
+        // Show the file chooser dialog
+        File file = fileChooser.showOpenDialog(primaryStage);
+
+        if (file != null) {
+            // Load the selected image into the image view
+            Image image = new Image(file.toURI().toString());
+
+            //url_image = file.toURI().toString();
+            System.out.println(file.toURI().toString());
+            imageView.setImage(image);
+
+            // Create a new file in the destination directory
+            File destinationFile = new File("C:\\xampp\\htdocs\\" + file.getName());
+            // url_image = "C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName();
+            url_image = file.getName();
+
+            try {
+                // Copy the selected file to the destination file
+                Files.copy(file.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

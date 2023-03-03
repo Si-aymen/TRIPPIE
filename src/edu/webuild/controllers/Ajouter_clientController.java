@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package edu.webuild.controllers;
+
 import edu.webuild.controllers.IdentifierCompteController;
 import edu.webuild.model.Client;
 import edu.webuild.model.Role;
@@ -49,19 +50,17 @@ public class Ajouter_clientController implements Initializable {
     private PasswordField fxpass1;
     @FXML
     private ToggleButton showbtnnewnew1;
+    @FXML
+    private TextField fxtel;
 
-    
     /**
      *
      * @param id
      */
     public void SetId_role(String id) {
-         this.fxid.setText(id);
+        this.fxid.setText(id);
     }
 
-    
-    
-    
     /**
      * Initializes the controller class.
      */
@@ -70,23 +69,23 @@ public class Ajouter_clientController implements Initializable {
         // TODO
         showbtnnewnew.setOnAction(event -> {
             if (showbtnnewnew.isSelected()) {
-            fxpass.setPromptText(fxpass.getText());
-            fxpass.setText("");
-        } else {
-            fxpass.setText(fxpass.getPromptText());
-            fxpass.setPromptText("");
-        }
+                fxpass.setPromptText(fxpass.getText());
+                fxpass.setText("");
+            } else {
+                fxpass.setText(fxpass.getPromptText());
+                fxpass.setPromptText("");
+            }
         });
-         showbtnnewnew1.setOnAction(event -> {
+        showbtnnewnew1.setOnAction(event -> {
             if (showbtnnewnew1.isSelected()) {
-            fxpass1.setPromptText(fxpass1.getText());
-            fxpass1.setText("");
-        } else {
-            fxpass1.setText(fxpass1.getPromptText());
-            fxpass1.setPromptText("");
-        }
+                fxpass1.setPromptText(fxpass1.getText());
+                fxpass1.setText("");
+            } else {
+                fxpass1.setText(fxpass1.getPromptText());
+                fxpass1.setPromptText("");
+            }
         });
-        
+
     }
 
     @FXML
@@ -94,9 +93,10 @@ public class Ajouter_clientController implements Initializable {
         Role r = new Role();
         roleCRUD rc = new roleCRUD();
         r.setId_role(Integer.parseInt(fxid.getText()));
+        int tel = Integer.parseInt(fxtel.getText());
         String email = fxmail.getText();
         String password = fxpass.getText();
-       
+        
 
         // Définir la regex pour valider l'adresse e-mail
         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
@@ -109,22 +109,20 @@ public class Ajouter_clientController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Veuillez saisir une adresse e-mail valide.");
             alert.showAndWait();
-        } 
-        else if(!(fxpass.getText().equals(fxpass1.getText()))){
-        
-          Alert alert = new Alert(AlertType.ERROR);
+        } else if (!(fxpass.getText().equals(fxpass1.getText()))) {
+
+            Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
             alert.setHeaderText(null);
             alert.setContentText("Veuillez saisir une adresse e-mail valide.");
             alert.showAndWait();
-        
-        }
-        else {
-            Client cli = new Client(r, email, password);
+
+        } else {
+            Client cli = new Client(r, email, password, tel);
             rc.affecterRole2(cli, r);
             try {
 
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/affiche_cl.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

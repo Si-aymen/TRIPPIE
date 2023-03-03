@@ -50,6 +50,8 @@ public class Ajouter_locateurController implements Initializable {
     private ToggleButton showbtnnewnew;
     @FXML
     private ToggleButton showbtnnewnew1;
+    @FXML
+    private TextField fxtel;
 
     /**
      * Initializes the controller class.
@@ -93,12 +95,13 @@ public class Ajouter_locateurController implements Initializable {
         roleCRUD rc = new roleCRUD();
         r.setId_role(Integer.parseInt(fxid.getText()));
         String nom_agence=fxagence.getText();
+        int tel = Integer.parseInt(fxtel.getText());
         String email = fxmail.getText();
         String password = fxpass.getText();
         
           String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
         if (nom_agence.isEmpty()|| email.isEmpty()|| password.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("Veuillez remplir tous les champs.");
@@ -123,18 +126,18 @@ public class Ajouter_locateurController implements Initializable {
         
         }
         else{
-        Locateur loc = new Locateur(r,nom_agence, email, password);
+        Locateur loc = new Locateur(r, tel, nom_agence, email, password);
         rc.affecterRole3(loc, r);
        
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Affiche_loc.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ajouter_locateurController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }

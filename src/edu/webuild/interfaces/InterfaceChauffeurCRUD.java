@@ -22,6 +22,9 @@ public interface InterfaceChauffeurCRUD {
     public List<Chauffeur> FiltrerChauffeur(String f1, String f2);
      public List<Chauffeur> trierChauffeur();
      public void ajouterChauffeur2(Chauffeur c);
+     public void modifierChauffeur2(Chauffeur ch);
+      public int getById2(int id_ch);
+      public List<Chauffeur> afficherChauffeur2();
      
     
 }

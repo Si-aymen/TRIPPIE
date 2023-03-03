@@ -28,11 +28,6 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label text="Age">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
          </children>
       </VBox>
       <VBox layoutX="161.0" layoutY="59.0" prefHeight="200.0" prefWidth="196.0" spacing="20.0">
@@ -41,7 +36,6 @@
             <TextField fx:id="fxnom" />
             <TextField fx:id="fxprenom" />
             <TextField fx:id="fxsexe" />
-            <TextField fx:id="fxage" />
             <TextField fx:id="fxcin" visible="false" />
          </children>
       </VBox>

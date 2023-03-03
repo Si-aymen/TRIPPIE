@@ -10,11 +10,12 @@
    <children>
       <TextField fx:id="fxid" layoutX="525.0" layoutY="337.0" prefHeight="0.0" prefWidth="22.0" />
       <Button fx:id="btn" layoutX="509.0" layoutY="337.0" mnemonicParsing="false" onAction="#addloc" style="-fx-background-color: black;" text="Ajouter" textFill="WHITE" />
-      <TextField fx:id="fxagence" layoutX="225.0" layoutY="54.0" promptText="Nom d'agence" style="-fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-border-width: 0px 0px 2px 0px;" />
-      <PasswordField fx:id="fxpass" layoutX="225.0" layoutY="192.0" promptText="Mot de passe" style="-fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-background-color: transparent;" />
+      <TextField fx:id="fxagence" layoutX="225.0" layoutY="85.0" promptText="Nom d'agence" style="-fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-border-width: 0px 0px 2px 0px;" />
+      <PasswordField fx:id="fxpass" layoutX="225.0" layoutY="212.0" promptText="Mot de passe" style="-fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-background-color: transparent;" />
       <PasswordField fx:id="fxpass1" layoutX="225.0" layoutY="260.0" promptText="Retaper mot de passe" style="-fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-background-color: transparent; -fx-prompt-text-fill: black;" />
-      <TextField fx:id="fxmail" layoutX="225.0" layoutY="121.0" promptText="Email" style="-fx-border-width: 0px 0px 2px 0px; -fx-prompt-text-fill: black; -fx-background-color: transparent; -fx-border-color: black;" />
-      <ToggleButton fx:id="showbtnnewnew" layoutX="347.0" layoutY="193.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
+      <TextField fx:id="fxmail" layoutX="225.0" layoutY="172.0" promptText="Email" style="-fx-border-width: 0px 0px 2px 0px; -fx-prompt-text-fill: black; -fx-background-color: transparent; -fx-border-color: black;" />
+      <ToggleButton fx:id="showbtnnewnew" layoutX="347.0" layoutY="213.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
       <ToggleButton fx:id="showbtnnewnew1" layoutX="347.0" layoutY="261.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
+      <TextField fx:id="fxtel" layoutX="225.0" layoutY="130.0" promptText="GSM" style="-fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-border-width: 0px 0px 2px 0px;" />
    </children>
 </AnchorPane>

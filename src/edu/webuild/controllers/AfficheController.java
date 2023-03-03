@@ -86,12 +86,12 @@ public class AfficheController implements Initializable {
                         super.updateItem(user, empty);
                         if (user != null && !empty) {
                             // Affiche les informations du covoiturage dans la cellule
-                            setText(String.format("CIN:%s - Nom:%s - Prenom:%s - Genre:%s - Age:%d ans ",
+                            setText(String.format("CIN:%s - Nom:%s - Prenom:%s - Genre:%s  ",
                                     user.getCin(),
                                     user.getNom(),
                                     user.getPrenom(),
-                                    user.getSexe(),
-                                    user.getAge()
+                                    user.getSexe()
+                                   
                                     
                             ));
                         } else {
@@ -132,7 +132,6 @@ public class AfficheController implements Initializable {
         nom = u.getNom();
         prenom = u.getPrenom();
         sexe = u.getSexe();
-        age = Integer.toString(u.getAge());
 
         try {
 

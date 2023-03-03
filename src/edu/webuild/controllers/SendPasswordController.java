@@ -1,8 +1,6 @@
 package edu.webuild.controllers;
 
 import static com.sun.glass.ui.Cursor.setVisible;
-import static edu.webuild.controllers.Affiche_chController.email;
-import static edu.webuild.controllers.Affiche_chController.password;
 import static edu.webuild.controllers.GetPasswordController.Ssemail2;
 import edu.webuild.model.Chauffeur;
 import edu.webuild.model.Client;
@@ -46,16 +44,16 @@ public class SendPasswordController implements Initializable {
     private PasswordField txtpass;
     @FXML
     private Button loginBtn;
-    
-   
+
     @FXML
     private PasswordField txtpass1;
-    @FXML
     private PasswordField ancien;
-    Client c=new Client();
+    Client c = new Client();
+    ClientCRUD cC = new ClientCRUD();
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -66,37 +64,34 @@ public class SendPasswordController implements Initializable {
 
     @FXML
     private void Confirm(ActionEvent event) throws SQLException {
-       if (validateInputs()){
-            ClientCRUD cc = new ClientCRUD();
-            String email = txtusername.getText();
-            String mdp = txtpass.getText();
-            cc.changePassword(mdp, email);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        if (validateInputs()) {
+            try {
+                ClientCRUD cc = new ClientCRUD();
+                String email = txtusername.getText();
+                String mdp = txtpass.getText();
+                cc.changePassword(mdp, email);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Succès");
                 alert.setHeaderText("Modifié");
                 alert.setContentText("Mot de passe changé avec succès");
                 alert.showAndWait();
-        
-        try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(SendPasswordController.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         }
-        }
-       
 
     }
-    
-    
+
     private boolean validateInputs() throws SQLException {
 
-        if (txtusername.getText().isEmpty() || ancien.getText().isEmpty() || txtpass.getText().isEmpty() || txtpass1.getText().isEmpty()) {
+        if (txtusername.getText().isEmpty() || txtpass.getText().isEmpty() || txtpass1.getText().isEmpty()) {
             Alert alert1 = new Alert(Alert.AlertType.WARNING);
             alert1.setTitle("Erreur");
             alert1.setContentText("Veuillez remplir tous les champs");
@@ -112,17 +107,9 @@ public class SendPasswordController implements Initializable {
             alert2.show();
             return false;
         }
-          else if (!(ancien.getText().equals(c.getPassword()))) {
-            Alert alert2 = new Alert(Alert.AlertType.WARNING);
-            alert2.setTitle("Erreur");
-            alert2.setContentText("Le mot de passe que vous avez entré ne correspond pas au clé d'activation");
-            alert2.setHeaderText(null);
-            alert2.show();
-            return false;
-        }
+      
         return true;
 
     }
-
 
 }

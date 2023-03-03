@@ -64,7 +64,7 @@ public class Affiche_chController implements Initializable {
         Chauffeur u = new Chauffeur();
         
         InterfaceChauffeurCRUD inter = new ChauffeurCRUD();
-        List<Chauffeur> list = inter.afficherChauffeur();
+        List<Chauffeur> list = inter.afficherChauffeur2();
         for (int i = 0; i < list.size(); i++) {
             Chauffeur user = list.get(i);
             list2.getItems().add(user);
@@ -78,15 +78,18 @@ public class Affiche_chController implements Initializable {
                         super.updateItem(user, empty);
                         if (user != null && !empty) {
                             // Affiche les informations du covoiturage dans la cellule
-                            setText(String.format("Num_permis:%s - Marque_voi:%s - Couleur_voi:%s - Matricule%s - email:%s - password:%s",
+                            setText(String.format("Cin:%s - Nom:%s - Prenom:%s - Num_permis:%s - Marque_voi:%s - Couleur_voi:%s - Matricule%s - email:%s - Role:%s",
+                                    user.getId_role().getId_user().getCin(),
+                                    user.getId_role().getId_user().getNom(),
+                                    user.getId_role().getId_user().getPrenom(),
+                              
                                     user.getNum_permis(),
                                     user.getMarque_voiture(),
                                     user.getCouleur_voiture(),
                                     user.getImmatriculation(),
                                     user.getEmail(),
-                                    user.getPassword()
-                                    
-                            ));
+                                    user.getId_role().getLibelle()
+   ));
                         } else {
                             setText(null);
                         }

@@ -35,7 +35,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
     @Override
     public void ajouterClient(Client cl) {
         try {
-            String req = "INSERT INTO `client`(`id_client` ,`id_role`,`email`,`password`) VALUES ('" + cl.getId_client() + "','" + cl.getId_role() + "','" + cl.getEmail() + "','" + cl.getPassword() + "')";
+            String req = "INSERT INTO `client`(`id_client` ,`id_role`,`gsm`,`email`,`password`) VALUES ('" + cl.getId_client() + "','" + cl.getId_role() + "','" + cl.getTel()+ "','" + cl.getEmail() + "','" + cl.getPassword() + "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Client ajouté!!!");
@@ -397,6 +397,8 @@ public class ClientCRUD implements InterfaceClientCRUD {
             return null;
         }
     }
+    
+    
 
     /*public void afficherProfil(Client client) {
         System.out.println("Nom: " + client.getUtilisateur().getNom());
@@ -430,4 +432,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
         }
         return clients;
     }
+    
+    
+     
 }

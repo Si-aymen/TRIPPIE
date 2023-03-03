@@ -6,7 +6,6 @@
 package webuild;
 
 import edu.webuild.model.Client;
-import edu.webuild.model.Mailing;
 import edu.webuild.model.Utilisateur;
 import edu.webuild.services.ChauffeurCRUD;
 import edu.webuild.services.ClientCRUD;
@@ -43,7 +42,7 @@ public class Webuild {
         /*-----------------------------Role--------------------------------------------*/
         // service init
         utilisateurCRUD ps = new utilisateurCRUD();
-        Mailing mail = new Mailing();
+        
         //mail.sendEmail("aymen.donga@gmail.com", "aa", "aa");
         //clc.getClient("zouari.aymen@esprit.tn", "fe7a6e9f64edda7c234e8af6daf9860a26fe45e7a0d1098f0ec24e53fd3cfef8");
         //player init
