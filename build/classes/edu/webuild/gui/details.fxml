@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.DetailsController">
+      <TextField fx:id="fx_modele" layoutX="769.0" layoutY="274.0" prefHeight="63.0" prefWidth="222.0" />
+      <TextField fx:id="fx_puissance" layoutX="769.0" layoutY="401.0" prefHeight="63.0" prefWidth="222.0" />
+      <TextField fx:id="fx_prix_jours" layoutX="774.0" layoutY="530.0" prefHeight="63.0" prefWidth="212.0" /> 
+      <AnchorPane layoutY="-15.0" prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;" />
+   <TextField fx:id="fx_matricule" layoutX="752.0" layoutY="172.0" />
+   <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="1115.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" />
+</AnchorPane>

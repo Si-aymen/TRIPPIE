@@ -4,14 +4,14 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: fff2e2;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controllers.Afficher_voitureController">
+<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Afficher_voitureController">
     <children>
       <ListView fx:id="affichervoiture" layoutX="293.0" layoutY="27.0" prefHeight="460.0" prefWidth="1080.0" />
       <Button fx:id="supprimer" layoutX="847.0" layoutY="567.0" mnemonicParsing="false" onAction="#supprimer_voiture" prefHeight="66.0" prefWidth="142.0" text="supprimer" />
       <Button fx:id="mod" layoutX="334.0" layoutY="567.0" mnemonicParsing="false" onAction="#mod" prefHeight="66.0" prefWidth="142.0" text="modifier" />
       <Button fx:id="reservervoiture" layoutX="596.0" layoutY="567.0" mnemonicParsing="false" onAction="#reservervoiture" prefHeight="66.0" prefWidth="142.0" text="reserver" />
        <AnchorPane prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;" />
-      <Button layoutX="1097.0" layoutY="567.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="142.0" text="details" />
+      <Button fx:id="details" layoutX="1097.0" layoutY="567.0" mnemonicParsing="false" onAction="#details" prefHeight="66.0" prefWidth="142.0" text="details" />
    </children>
     
 </AnchorPane>

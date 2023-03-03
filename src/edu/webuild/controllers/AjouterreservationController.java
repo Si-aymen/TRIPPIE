@@ -46,6 +46,13 @@ public class AjouterreservationController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+    public void appeler (){
+         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+            Call call = Call.creator(
+                    new com.twilio.type.PhoneNumber("+21625104011"), new com.twilio.type.PhoneNumber("+12766183954"), URI.create("http://demo.twilio.com/docs/voice.xml")).create();
+            System.out.println(call.getSid());
+    }
 
     @FXML
     private void ajouter_reservation(ActionEvent event) {
@@ -69,27 +76,14 @@ public class AjouterreservationController implements Initializable {
             reservation res = new reservation(date_debut, date_fin, Afficher_voitureController.voiture);
             InterfaceCRUD2 inter = new reservationCRUD();
             inter.ajouterreservation(res);
-            /*
-        Alert alert = new Alert(AlertType.INFORMATION);
-
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("voiture insérée avec succés!");
-        alert.show();
-             */
-
-            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-
-            Call call = Call.creator(
-                    new com.twilio.type.PhoneNumber("+21625104011"), new com.twilio.type.PhoneNumber("+12766183954"), URI.create("http://demo.twilio.com/docs/voice.xml")).create();
-            System.out.println(call.getSid());
+            appeler();
+          
 
             String message = "Dear [Client's Name],\n"
                     + "\n"
                     + "I am writing this email to confirm your location reservation for the following details:\n"
                     + "\n"
-                    + "votre voiture  : " + Afficher_voitureController.marque + "\n"
-                    + "votre marque  : " + Afficher_voitureController.Puissence + "\n"
+                   
                     + "date debut reservation : " + date_debut + "\n"
                     + "date fin reservation : " + date_fin + "\n"
                     + "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"

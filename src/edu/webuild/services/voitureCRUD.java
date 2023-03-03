@@ -75,7 +75,7 @@ public class voitureCRUD implements InterfaceCRUD{
                 v.setMarque(RS.getString(3));
                 v.setPuissance(RS.getString(4));    
                 v.setPrix_jours(RS.getInt(5));
-                //  v.setEtat(RS.getString(6)); 
+                v.setImage_voiture(RS.getString(6)); 
              
              list.add(v);
             }

@@ -16,6 +16,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,8 +28,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -66,6 +67,13 @@ public class Affichage_reservationController implements Initializable {
 
         // TODO
     }
+     private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     @FXML
     private void supprimer_reservation(ActionEvent event) {
@@ -76,6 +84,10 @@ public class Affichage_reservationController implements Initializable {
         if (selectedIndex >= 0) {
 
             reservation r = list.getSelectionModel().getSelectedItem();
+              Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
             // date local system
             LocalDate localDate = LocalDate.now();
 
@@ -99,23 +111,11 @@ public class Affichage_reservationController implements Initializable {
 
             // if (day>num1-3)&&(month == num2)
             if (day - 3 > num1 && num2 == month) {
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("impossible d 'annuler la reservation !");
-                alert.show();
+                showAlert(" impossible d 'annuler la reservation");
             } else if (month > num2) {
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("impossible d 'annnuler votre reservation  !");
-                alert.show();
+                 showAlert(" impossible d 'annuler la reservation");
             } else if (month == num2 && day == num1) {
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("impossible d 'annnuler votre reservation  !");
-                alert.show();
+                showAlert(" impossible d 'annuler la reservation");
             } else {
                 String message = "Dear [Client's Name],\n"
                         + "\n"
@@ -123,13 +123,13 @@ public class Affichage_reservationController implements Initializable {
                         + "\n";
 
                 Emailsender.sendEmail_add("khmiriiheb3@gmail.com", message);
+                  Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
                 inter.supprimerreservation(r.getId());
                 list.getItems().remove(selectedIndex);
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("votre annulation a ete effectué avec succes !");
-                alert.show();
+                showAlert("reservation supprimé");
+                
+            }
             }
 
         } else {
@@ -137,13 +137,7 @@ public class Affichage_reservationController implements Initializable {
         }
     }
 
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+  
 
     @FXML
     private void updatereservation(ActionEvent event) {
@@ -159,7 +153,7 @@ public class Affichage_reservationController implements Initializable {
         try {
 
             Parent page1
-                    = FXMLLoader.load(getClass().getResource("modifier_reservation.fxml"));
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/modifier_reservation.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
