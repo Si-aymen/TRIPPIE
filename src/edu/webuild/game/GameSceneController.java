@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -47,7 +48,11 @@ public class GameSceneController implements InterfaceGameSceneController {
 
     @FXML
     private Label scoreLabel;
+    @FXML
+    private Pane obstaclePane;
+
   
+private Random random;
 
     private AnimationTimer gameLoop;
 
@@ -95,8 +100,10 @@ public class GameSceneController implements InterfaceGameSceneController {
         car.setFill(Color.BLUE);
         obstacle = new Rectangle(0, 0, 0, 0);
         obstacle.setFill(Color.RED);
-        
-      obstacles = canvas.getChildren().filtered(node -> node.getStyleClass().contains("obstacle"));
+        random = new Random();
+
+      obstacles = obstaclePane.getChildren().filtered(node -> node.getStyleClass().contains("obstacle"));
+
 for (Node obstacle : obstacles) {
         obstacle.setUserData("obstacle");
     }
@@ -190,11 +197,16 @@ public void jumpCar() {
             jumpAnimation.play();
         }
     }
-   @Override
+  @Override
 public void addObstacle(double x, double y) {
-    obstacle.setX(x);
-    obstacle.setY(y);
+    obstacle.setWidth(obstacleWidth);
+    obstacle.setHeight(obstacleHeight);
+    obstacleXPosition = x;
+    obstacleYPosition = y;
+    obstacle.setX(obstacleXPosition);
+    obstacle.setY(obstacleYPosition);
 }
+
 
 
     public void updateScore(boolean hitObstacle) {
@@ -235,18 +247,19 @@ public void saveScore() {
 }
 @Override
     public void updateObstaclePosition() {
-        obstacleXPosition -= obstacleSpeed;
+       obstacleXPosition -= obstacleSpeed * (obstacleWidth / 60.0);
+
         obstacle.setX(obstacleXPosition);
     }
 @Override
     public void spawnObstacle() {
         if (obstacle.getWidth() <= 0) {
-            obstacle.setWidth(obstacleWidth);
-            obstacle.setHeight(obstacleHeight);
-            obstacleXPosition = canvas.getWidth() - 50;
-            obstacleYPosition = canvas.getHeight() - obstacle.getHeight() - 5;
-            obstacle.setX(obstacleXPosition);
-            obstacle.setY(obstacleYPosition);
+           obstacleWidth = random.nextDouble() * 30 + 30;
+            obstacleHeight = random.nextDouble() * 30 + 30;
+
+            double y = random.nextDouble() * (canvas.getHeight() - obstacleHeight);
+addObstacle(canvas.getWidth() + obstacleWidth, y);
+
             updateScore(true); // pass true if obstacle is hit, false otherwise
         }
     }
