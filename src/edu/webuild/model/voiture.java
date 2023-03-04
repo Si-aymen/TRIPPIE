@@ -101,7 +101,7 @@ public class voiture {
 
     @Override
     public String toString() {
-        return "voiture{" + "id=" + id + ", matricule=" + matricule + ", marque=" + marque + ", puissance=" + puissance + ", prix_jours=" + prix_jours + ", image_voiture=" + image_voiture + '}';
+        return ""/* + "id=" + id + ", matricule=" + matricule*/ + " marque=" + marque + " || puissance=" + puissance + "|| prix_jours=" + prix_jours + /*", image_voiture=" + image_voiture +*/ "";
     }
     
 

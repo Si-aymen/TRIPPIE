@@ -67,7 +67,8 @@ public class Affichage_reservationController implements Initializable {
 
         // TODO
     }
-     private void showAlert(String message) {
+
+    private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);
@@ -84,11 +85,12 @@ public class Affichage_reservationController implements Initializable {
         if (selectedIndex >= 0) {
 
             reservation r = list.getSelectionModel().getSelectedItem();
-              Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
             alert.setHeaderText(null);
-            alert.setContentText("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+              alert.setContentText("Êtes-vous sûr de vouloir modifier cet reservation ?");
             // date local system
+            
             LocalDate localDate = LocalDate.now();
 
             int day = localDate.getDayOfMonth(); // Extract the day from the LocalDate object
@@ -107,13 +109,13 @@ public class Affichage_reservationController implements Initializable {
             int num1 = Integer.parseInt(jour);
             int num2 = Integer.parseInt(mois);
             int num3 = Integer.parseInt(annee);
-            System.out.println(day);
+           
 
             // if (day>num1-3)&&(month == num2)
             if (day - 3 > num1 && num2 == month) {
                 showAlert(" impossible d 'annuler la reservation");
             } else if (month > num2) {
-                 showAlert(" impossible d 'annuler la reservation");
+                showAlert(" impossible d 'annuler la reservation");
             } else if (month == num2 && day == num1) {
                 showAlert(" impossible d 'annuler la reservation");
             } else {
@@ -123,13 +125,13 @@ public class Affichage_reservationController implements Initializable {
                         + "\n";
 
                 Emailsender.sendEmail_add("khmiriiheb3@gmail.com", message);
-                  Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){
-                inter.supprimerreservation(r.getId());
-                list.getItems().remove(selectedIndex);
-                showAlert("reservation supprimé");
-                
-            }
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    inter.supprimerreservation(r.getId());
+                    list.getItems().remove(selectedIndex);
+                    showAlert("reservation supprimé");
+
+                }
             }
 
         } else {
@@ -137,14 +139,14 @@ public class Affichage_reservationController implements Initializable {
         }
     }
 
-  
-
     @FXML
     private void updatereservation(ActionEvent event) {
         ListView<reservation> list = affichage_reservation;
         InterfaceCRUD2 inter = new reservationCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
+        
         reservation r = list.getSelectionModel().getSelectedItem();
+         
 
         int id = r.getId();
         Date date_debut = r.getDate_debut();

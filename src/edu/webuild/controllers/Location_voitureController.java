@@ -31,6 +31,8 @@ public class Location_voitureController implements Initializable {
     private Button location_voiture;
     @FXML
     private Button reservation_voiture;
+    @FXML
+    private Button voiturefront;
 
     /**
      * Initializes the controller class.
@@ -62,6 +64,22 @@ public class Location_voitureController implements Initializable {
 
             Parent page1
                     = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/affichage_reservation.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void voiturefront(ActionEvent event) {
+         try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Market_voit.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

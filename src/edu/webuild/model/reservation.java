@@ -73,7 +73,7 @@ public class reservation {
 
     @Override
     public String toString() {
-        return "reservation{" + "id=" + id + ", date_debut=" + date_debut + ", date_fin=" + date_fin + ", v=" + v + '}';
+        return ""  + " date_debut=" + date_debut + "|| date_fin=" + date_fin + "|| votre reservation est =" + v + "";
     }
 
  
