@@ -29,6 +29,9 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import edu.webuild.controllers.Menu_CoVoiturageController;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import javafx.scene.image.Image;
 
 public class Market_covController implements Initializable {
 
@@ -81,7 +84,7 @@ public class Market_covController implements Initializable {
 
                 Item_covController item = fxmlLoader.getController();
                 System.out.println("cov details name " + covDataList.get(i).getDepart() + " url : C:\\xampp\\htdocs\\image_trippie_cov\\" + covDataList.get(i).getCov_img());
-                item.setData(covDataList.get(i).getDepart(), covDataList.get(i).getDestination(), covDataList.get(i).getDate_dep(), covDataList.get(i).getCov_img(), Integer.toString(covDataList.get(i).getNmbr_place()),myListener);
+                item.setData(covDataList.get(i).getId_co(), covDataList.get(i).getDepart(), covDataList.get(i).getDestination(), covDataList.get(i).getDate_dep(), covDataList.get(i).getCov_img(), Integer.toString(covDataList.get(i).getNmbr_place()), myListener);
                 //item.setData(covDataList.get(i).getDepart(), covDataList.get(i).getDestination(), covDataList.get(i).getDate_dep());
 
                 if (column == 2) {
@@ -103,6 +106,7 @@ public class Market_covController implements Initializable {
                 e.printStackTrace();
             }
         }
+
     }
 
     @FXML
@@ -113,7 +117,7 @@ public class Market_covController implements Initializable {
     private void details_btu(ActionEvent event) {
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Details_Cov.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Details_Front_cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -122,11 +126,21 @@ public class Market_covController implements Initializable {
             Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+
     }
 
     private void setChosenCov(CoVoiturage co) {
-        det_dep.setText(co.getDepart());
-        det_dest.setText(co.getDestination());
+
+        System.out.println(Item_covController.covt.getDepart());
+        System.out.println(Item_covController.covt.getDestination());
+        det_dep.setText(Item_covController.covt.getDepart());
+        det_dest.setText(Item_covController.covt.getDestination());
+        String imagePath = "C:\\xampp\\htdocs\\image_trippie_cov\\" + Item_covController.covt.getCov_img();
+        try {
+            det_cov_img.setImage(new Image(new FileInputStream(imagePath)));
+        } catch (FileNotFoundException e) {
+            System.err.println("Error loading image: " + e.getMessage());
+        }
 
     }
 

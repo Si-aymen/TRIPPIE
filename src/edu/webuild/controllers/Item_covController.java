@@ -5,7 +5,9 @@
  */
 package edu.webuild.controllers;
 
+import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.model.CoVoiturage;
+import edu.webuild.services.CoVoiturageCRUD;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javafx.fxml.FXML;
@@ -15,7 +17,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
@@ -40,15 +44,20 @@ public class Item_covController implements Initializable {
     @FXML
     private Label nb_plc;
 
+    static CoVoiturage covt = new CoVoiturage();
+    @FXML
+    private Label id_co;
+
 //    private void CLick(MouseEvent actionEvent) {
 //        
 //    }
-
     /**
      * Initializes the controller class.
      */
-    public void setData(String departt, String destinationn, Date d, String url, String nmbr_place, MyListener myListener) {
+    public void setData(int id_coo, String departt, String destinationn, Date d, String url, String nmbr_place, MyListener myListener) {
+
         this.myListener = myListener;
+        this.id_co.setText(Integer.toString(id_coo));
         depart.setText(departt);
         destination.setText(destinationn);
         temps.setText(d.toString());
@@ -82,7 +91,19 @@ public class Item_covController implements Initializable {
 
     @FXML
     private void Click(MouseEvent event) {
+        InterfaceCoVoiturage inter = new CoVoiturageCRUD();
+        List<CoVoiturage> L = new ArrayList<>();
         myListener.onClick(cov);
+        //covt.setId_co(Integer.parseInt(id_co.getText()));
+        L = inter.rechCoVoiturage(Integer.parseInt(id_co.getText()));
+        covt.setId_co(L.get(0).getId_co());
+        covt.setDepart(L.get(0).getDepart());
+        covt.setDestination(L.get(0).getDestination());
+        covt.setNmbr_place(L.get(0).getNmbr_place());
+        covt.setDate_dep(L.get(0).getDate_dep());
+        System.out.println(L.get(0).getCov_img());
+        covt.setCov_img(L.get(0).getCov_img());
+        System.out.println(covt.getCov_img());
     }
 
     public interface MyListener {

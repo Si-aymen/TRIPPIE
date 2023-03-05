@@ -4,8 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/manou/Desktop/TRIPPIE-co_voiturage/src/edu/webuild/controllers/Item_covController.java</file>
+            <file>file:/C:/Users/manou/Desktop/TRIPPIE-co_voiturage/src/edu/webuild/gui/Market_Back.fxml</file>
+            <file>file:/C:/Users/manou/Desktop/TRIPPIE-co_voiturage/src/edu/webuild/gui/Add_covoiturage.fxml</file>
             <file>file:/C:/Users/manou/Desktop/TRIPPIE-co_voiturage/src/edu/webuild/controllers/Market_covController.java</file>
-            <file>file:/C:/Users/manou/Desktop/TRIPPIE-co_voiturage/src/edu/webuild/controllers/Weather_covController.java</file>
+            <file>file:/C:/Users/manou/Desktop/TRIPPIE-co_voiturage/src/edu/webuild/controllers/Add_CovController.java</file>
+            <file>file:/C:/Users/manou/Desktop/TRIPPIE-co_voiturage/src/edu/webuild/controllers/Market_BackController.java</file>
+            <file>file:/C:/Users/manou/Desktop/TRIPPIE-co_voiturage/src/edu/webuild/gui/CoVoiturage_Main.java</file>
+            <file>file:/C:/Users/manou/Desktop/TRIPPIE-co_voiturage/src/edu/webuild/controllers/Stat_covoiturageController.java</file>
+            <file>file:/C:/Users/manou/Desktop/TRIPPIE-co_voiturage/src/edu/webuild/controllers/Add_covoiturageController.java</file>
+            <file>file:/C:/Users/manou/Desktop/TRIPPIE-co_voiturage/src/edu/webuild/controllers/Details_Front_covController.java</file>
         </group>
     </open-files>
 </project-private>

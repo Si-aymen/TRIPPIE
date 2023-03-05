@@ -35,6 +35,7 @@
                         <Insets left="20.0" top="20.0" />
                     </VBox.margin>
                 </HBox>
+            <Label fx:id="id_co" text="Label" />
                 <ImageView fx:id="img" fitHeight="223.0" fitWidth="322.0" pickOnBounds="true" preserveRatio="true" />
             <Label text="Nombre de place " />
             <Label fx:id="nb_plc" text="Label" />

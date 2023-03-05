@@ -40,8 +40,7 @@ public class Market_BackController implements Initializable {
 
     private List<CoVoiturage> covDataList = FXCollections.observableArrayList();
     private InterfaceCoVoiturage coVoiturageCRUDService = new CoVoiturageCRUD();
-        private MyListener myListener;
-
+    private MyListener myListener;
 
     @FXML
     private TextField search_bar;
@@ -63,7 +62,6 @@ public class Market_BackController implements Initializable {
         covDataList.addAll(coVoiturageCRUDService.afficherCoVoiturage());
         System.out.println("load data");
 
-
         int column = 0;
         int row = 3;
         for (int i = 0; i < covDataList.size(); i++) {
@@ -73,7 +71,7 @@ public class Market_BackController implements Initializable {
 
                 Item_covController item = fxmlLoader.getController();
                 System.out.println("cov details name " + covDataList.get(i).getDepart() + " url : C:\\xampp\\htdocs\\image_trippie_cov\\" + covDataList.get(i).getCov_img());
-                item.setData(covDataList.get(i).getDepart(), covDataList.get(i).getDestination(), covDataList.get(i).getDate_dep(), covDataList.get(i).getCov_img(), Integer.toString(covDataList.get(i).getNmbr_place()), myListener);
+                item.setData(covDataList.get(i).getId_co(),covDataList.get(i).getDepart(), covDataList.get(i).getDestination(), covDataList.get(i).getDate_dep(), covDataList.get(i).getCov_img(), Integer.toString(covDataList.get(i).getNmbr_place()), myListener);
                 //item.setData(covDataList.get(i).getDepart(), covDataList.get(i).getDestination(), covDataList.get(i).getDate_dep());
 
                 if (column == 2) {
@@ -107,10 +105,33 @@ public class Market_BackController implements Initializable {
 
     @FXML
     private void cov_btu(ActionEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Add_covoiturage.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
     @FXML
     private void stat_btu(ActionEvent event) {
-    }
+        try {
 
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Stat_covoiturage.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
 }
