@@ -1,73 +1,86 @@
 package edu.webuild.controllers;
 
-import edu.webuild.model.APIConnector;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javax.json.JsonObject;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 public class Weather_covController implements Initializable {
 
+    private static final String API_KEY = "c254001f0f2a23d71745d80d4fd561bc";
+    private static final String API_URL = "https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s";
+
+    @FXML
+    private Label temperatureLabel;
+    @FXML
+    private Label weatherLabel;
     @FXML
     private TextField cityInput;
-
     @FXML
     private TextArea weatherText;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
-//
-//    private final String cityAPI = "https://api.openweathermap.org/data/2.5/weather?q=%s&appid=de35640ce835464292a140436230103";
-//    private final String weatherAPI = "https://api.openweathermap.org/data/2.5/weather?id=%s&appid=de35640ce835464292a140436230103";
+    public void setWeather() throws MalformedURLException, IOException {
+        String city = cityInput.getText();
+        String apiUrl = String.format(API_URL, city, API_KEY);
 
-    private final String cityAPI = "https://www.metaweather.com/api/location/search/?query=";
-    private final String weatherAPI = "https://www.metaweather.com/api/location/";
+        URL url = new URL(apiUrl);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String inputLine;
+        StringBuilder response = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+
+        }
+
+        // Parse the JSON response to extract the weather information
+        JSONObject jsonObj;
+        jsonObj = new JSONObject(response.toString());
+
+        JSONObject mainObj = jsonObj.getJSONObject("main");
+
+        JSONArray weatherArr = jsonObj.getJSONArray("weather");
+
+        JSONObject weatherObj = weatherArr.getJSONObject(0);
+
+        String temperature = String.valueOf(mainObj.getDouble("temp"));
+        String weather = weatherObj.getString("description");
+
+        // Update the UI with the weather information
+        temperatureLabel.setText("Temperature: " + temperature);
+        weatherLabel.setText("Weather: " + weather);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // Initialize method is empty as there's nothing to do on initialization
+    }
 
     @FXML
-    private void getWeatherData(ActionEvent event) throws MalformedURLException {
-        JSONObject todaysWeather = GetTodaysWeatherInformation(getWoeid());
-
-        System.out.println(todaysWeather);
-
-        weatherText.setText(
-                "Min temperature: " + todaysWeather.get("min_temp")
-                + "\nCurrent temperature: " + todaysWeather.get("the_temp")
-                + "\nMax temperature: " + todaysWeather.get("max_temp")
-        );
+    private void getWeatherData(ActionEvent event) {
+        try {
+            setWeather();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public String getWoeid() throws MalformedURLException {
-        APIConnector apiConnectorCity = new APIConnector(cityAPI);
-        System.out.println("City input: " + cityInput.getText());
-        JSONArray jsonArray = apiConnectorCity.getJSONArray(cityInput.getText());
-        System.out.println("City API response: " + jsonArray);
-
-        JSONObject jsonData = (JSONObject) (apiConnectorCity.getJSONArray(cityInput.getText())).get(0);
-
-        System.out.println("okok");
-
-        return jsonData.get("woeid").toString();
-    }
-
-    public JSONObject GetTodaysWeatherInformation(String woeid) throws MalformedURLException {
-        APIConnector apiConnectorWeather = new APIConnector(weatherAPI);
-
-        JSONObject weatherJSONObject = apiConnectorWeather.getJSONObject(woeid + "/");
-
-        JSONArray weatherArray = (JSONArray) weatherJSONObject.get("consolidated_weather");
-
-        return (JSONObject) weatherArray.get(0);
-    }
 }

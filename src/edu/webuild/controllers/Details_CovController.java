@@ -5,6 +5,7 @@
  */
 package edu.webuild.controllers;
 
+import edu.webuild.services.Weather_cov;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,13 +23,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import impl.org.controlsfx.skin.RatingSkin;
-import org.controlsfx.control.Rating;
+//import impl.org.controlsfx.skin.RatingSkin;
+//import org.controlsfx.control.Rating;
 //import controlsfx
 
 /**
@@ -41,19 +43,28 @@ public class Details_CovController implements Initializable {
     @FXML
     private TextField id_co_TF;
     @FXML
-    private TextField depart_TF;
-    @FXML
-    private TextField destination_TF;
-    @FXML
-    private TextField nmbr_place_TF;
-    @FXML
     private Button cov_btu;
-    @FXML
     private DatePicker Date_pk;
     @FXML
     private ImageView imageView;
+    //@FXML
+    //private Rating Rating_stars;
     @FXML
-    private Rating Rating_stars;
+    private Label temp_lab;
+    @FXML
+    private Label depart_co_lab;
+    @FXML
+    private Label destination_co_lab;
+    @FXML
+    private Label date_dep_co_lab;
+    @FXML
+    private Label nmbr_place_co_lab;
+    @FXML
+    private Label weather_lab;
+    @FXML
+    private Label depart_co_lab1;
+    @FXML
+    private Label depart_co_lab11;
 
     /**
      * Initializes the controller class.
@@ -63,19 +74,34 @@ public class Details_CovController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Weather_cov Weath = new Weather_cov();
         String imagePath = "C:\\xampp\\htdocs\\image_trippie_cov\\" + Afficher_CovController.url_img;
         System.out.println(imagePath);
         id_co_TF.setText(String.valueOf(Afficher_CovController.id_co));
-        depart_TF.setText(String.valueOf(Afficher_CovController.depart));
-        destination_TF.setText(String.valueOf(Afficher_CovController.destination));
+        depart_co_lab.setText(String.valueOf(Afficher_CovController.depart));
+        destination_co_lab.setText(String.valueOf(Afficher_CovController.destination));
         Date dateDep = Afficher_CovController.date_dep;
-        Date_pk.setPromptText(dateDep != null ? dateDep.toString() : "");
-        nmbr_place_TF.setText(String.valueOf(Afficher_CovController.nmbr_place));
+        date_dep_co_lab.setText(String.valueOf(Afficher_CovController.date_dep));
+        nmbr_place_co_lab.setText(String.valueOf(Afficher_CovController.nmbr_place));
         try {
             imageView.setImage(new Image(new FileInputStream(imagePath)));
         } catch (FileNotFoundException e) {
             System.err.println("Error loading image: " + e.getMessage());
         }
+        depart_co_lab1.setText(String.valueOf(Afficher_CovController.destination));
+        depart_co_lab11.setText(String.valueOf(Afficher_CovController.destination));
+        String place = String.valueOf(Afficher_CovController.destination);
+        try {
+            temp_lab.setText(Weath.setTemp(place));
+        } catch (IOException ex) {
+            Logger.getLogger(Details_CovController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            weather_lab.setText(Weath.setWeather(place));
+        } catch (IOException ex) {
+            Logger.getLogger(Details_CovController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @FXML
