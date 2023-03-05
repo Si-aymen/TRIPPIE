@@ -57,6 +57,9 @@ public class FroggerApp extends Application {
     private Button restartButton;
 
 
+    //score system variable
+    private long startTime;
+
     
     //a method that creates and returns the game's scene graph.
     private Parent createContent() {
@@ -119,67 +122,68 @@ public class FroggerApp extends Application {
     }
 
     //a method that checks if the game is over and handles the end of the game.
-    private void checkState() {
-        for (Node car : cars) {
-            if (car.getBoundsInParent().intersects(frog.getBoundsInParent())) {
-                frog.setTranslateX(0);
-                frog.setTranslateY(600 - 39);
-                restartButton.setDisable(false); // Enable the restart button
+   private void checkState() {
+    for (Node car : cars) {
+        if (car.getBoundsInParent().intersects(frog.getBoundsInParent())) {
+            frog.setTranslateX(0);
+            frog.setTranslateY(600 - 39);
+            restartButton.setDisable(false); // Enable the restart button
             startButton.setDisable(true); // Disable the start button
-                 
-                 return;
-            }
+            return;
         }
+    }
 
-        if (frog.getTranslateY() <= 0) {
-            timer.stop();
-            String win = "YOU WIN";
-             score += 100; // increment the score by 100
-            scoreText.setText("Score: " + score);
-            
-            // update high score
+    if (frog.getTranslateY() <= 0) {
+        // Calculate the elapsed time in seconds
+        long elapsedTime = (System.currentTimeMillis() - startTime) / 1000;
+        
+        // Calculate the score based on the elapsed time
+        int timeScore = (int)(1000 - elapsedTime * 10);
+        if (timeScore < 0) {
+            timeScore = 0;
+        }
+        score += timeScore;
+        scoreText.setText("Score: " + score);
+        
+        // Update high score if necessary
         int currentHighScore = getHighScore();
         if (score > currentHighScore) {
-            
             updateHighScore(score);
             currentHighScore = score;
         }
-        // display high score
+        
+        // Display high score
         Text highScoreText = new Text("High Score: " + currentHighScore);
         highScoreText.setFont(Font.font(24));
         highScoreText.setFill(Color.BLACK);
         highScoreText.setTranslateX(10);
         highScoreText.setTranslateY(60);
         root.getChildren().add(highScoreText);
-            
-            restartButton.setDisable(false); // Enable the restart button
-        startButton.setDisable(true); // Disable the start button
-            HBox hBox = new HBox();
-            hBox.setTranslateX(300);
-            hBox.setTranslateY(250);
-            root.getChildren().add(hBox);
-
-            for (int i = 0; i < win.toCharArray().length; i++) {
-                char letter = win.charAt(i);
-
-                Text text = new Text(String.valueOf(letter));
-                text.setFont(Font.font(48));
-                text.setOpacity(0);
-
-                hBox.getChildren().add(text);
-
-                FadeTransition ft = new FadeTransition(Duration.seconds(0.66), text);
-                ft.setToValue(1);
-                ft.setDelay(Duration.seconds(i * 0.15));
-                ft.play();
-            }
-        }
+        
+        // Stop the timer and display the win message
+        timer.stop();
+        restartButton.setDisable(false);
+        startButton.setDisable(true);
+        String win = "YOU WIN";
+        Text winText = new Text(win);
+        winText.setFont(Font.font(48));
+        winText.setTranslateX(300);
+        winText.setTranslateY(250);
+        winText.setOpacity(0);
+        root.getChildren().add(winText);
+        FadeTransition ft = new FadeTransition(Duration.seconds(2), winText);
+        ft.setToValue(1);
+        ft.play();
     }
+}
+
 //a method that sets up the game's scene and starts the AnimationTimer.
     @Override
     public void start(Stage stage) throws Exception {
         
         stage.setScene(new Scene(createContent()));
+        // Set the starting time to the current time
+    startTime = System.currentTimeMillis();
 
         stage.getScene().setOnKeyPressed(event -> {
             switch (event.getCode()) {
