@@ -21,6 +21,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 
 /**
@@ -28,17 +29,34 @@ import javafx.scene.input.KeyCode;
  * @author mtirn
  */
 public class FroggerApp extends Application {
-
+    
+//an AnimationTimer object that is used to update
+//the game state and handle animation.
     private AnimationTimer timer;
 
     private Pane root;
-
+//Node for the game's scene graph.
     private List<Node> cars = new ArrayList<>();
     private Node frog;
+    private int score = 0;
+    private Text scoreText;
+    
+    // Right here m gonna declare buttons variable
+    
+    private Button startButton;
 
+    
+    //a method that creates and returns the game's scene graph.
     private Parent createContent() {
         root = new Pane();
         root.setPrefSize(800, 600);
+        
+        scoreText = new Text("Score: 0");
+        scoreText.setFont(Font.font(24));
+        scoreText.setFill(Color.BLACK);
+        scoreText.setTranslateX(10);
+        scoreText.setTranslateY(30);
+        root.getChildren().add(scoreText);
 
         frog = initFrog();
 
@@ -54,7 +72,7 @@ public class FroggerApp extends Application {
 
         return root;
     }
-
+//a method that initializes the player's frog.
     private Node initFrog() {
         Rectangle rect = new Rectangle(38, 38, Color.GREEN);
         rect.setTranslateY(600 - 39);
@@ -62,6 +80,7 @@ public class FroggerApp extends Application {
         return rect;
     }
 
+    //a method that creates a new car and adds it to the scene graph.
     private Node spawnCar() {
         Rectangle rect = new Rectangle(40, 40, Color.RED);
         rect.setTranslateY((int)(Math.random() * 14) * 40);
@@ -70,17 +89,20 @@ public class FroggerApp extends Application {
         return rect;
     }
 
+    
+    //a method that updates the game state on each frame.
     private void onUpdate() {
         for (Node car : cars)
-            car.setTranslateX(car.getTranslateX() + Math.random() * 10);
+            car.setTranslateX(car.getTranslateX() + Math.random() * 15);
 
-        if (Math.random() < 0.075) {
+        if (Math.random() < 0.0375) {
             cars.add(spawnCar());
         }
 
         checkState();
     }
 
+    //a method that checks if the game is over and handles the end of the game.
     private void checkState() {
         for (Node car : cars) {
             if (car.getBoundsInParent().intersects(frog.getBoundsInParent())) {
@@ -93,7 +115,8 @@ public class FroggerApp extends Application {
         if (frog.getTranslateY() <= 0) {
             timer.stop();
             String win = "YOU WIN";
-
+             score += 100; // increment the score by 100
+            scoreText.setText("Score: " + score);
             HBox hBox = new HBox();
             hBox.setTranslateX(300);
             hBox.setTranslateY(250);
@@ -115,9 +138,10 @@ public class FroggerApp extends Application {
             }
         }
     }
-
+//a method that sets up the game's scene and starts the AnimationTimer.
     @Override
     public void start(Stage stage) throws Exception {
+        
         stage.setScene(new Scene(createContent()));
 
         stage.getScene().setOnKeyPressed(event -> {
@@ -141,6 +165,13 @@ public class FroggerApp extends Application {
 
         stage.show();
     }
+
+    
+    
+
+    
+    
+
 
     public static void main(String[] args) {
         launch(args);
