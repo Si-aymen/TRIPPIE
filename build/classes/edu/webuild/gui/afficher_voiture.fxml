@@ -12,6 +12,7 @@
       <Button fx:id="reservervoiture" layoutX="596.0" layoutY="567.0" mnemonicParsing="false" onAction="#reservervoiture" prefHeight="66.0" prefWidth="142.0" text="reserver" />
        <AnchorPane prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;" />
       <Button fx:id="details" layoutX="1097.0" layoutY="567.0" mnemonicParsing="false" onAction="#details" prefHeight="66.0" prefWidth="142.0" text="details" />
+      <Button fx:id="back" layoutX="241.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Button" />
    </children>
     
 </AnchorPane>

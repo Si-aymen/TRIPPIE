@@ -35,6 +35,7 @@
                                         <Font name="Cambria" size="40.0" />
                                     </font>
                                 </Label>
+                        <Button fx:id="back" mnemonicParsing="false" onAction="#back" text="Button" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" stylesheets="@style.css" VBox.vgrow="NEVER">

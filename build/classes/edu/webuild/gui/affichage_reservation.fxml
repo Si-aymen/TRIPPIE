@@ -10,7 +10,8 @@
       <Button fx:id="supprimer_reservation" layoutX="366.0" layoutY="577.0" mnemonicParsing="false" onAction="#supprimer_reservation" prefHeight="58.0" prefWidth="112.0" text="supprimer " />
       <Button fx:id="updatereservation" layoutX="658.0" layoutY="580.0" mnemonicParsing="false" onAction="#updatereservation" prefHeight="52.0" prefWidth="112.0" text="modifier reservation" />
       <AnchorPane layoutY="-15.0" prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;" />
-      <Button layoutX="915.0" layoutY="580.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="112.0" text="details" />
+      <Button fx:id="details" layoutX="915.0" layoutY="580.0" mnemonicParsing="false" onAction="#details" prefHeight="52.0" prefWidth="112.0" text="details" />
+      <Button fx:id="back" layoutX="247.0" layoutY="13.0" mnemonicParsing="false" onAction="#back" text="Button" />
    </children>
   
 </AnchorPane>

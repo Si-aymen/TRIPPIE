@@ -54,6 +54,8 @@ public class Afficher_voitureController implements Initializable {
     
     @FXML
     private Button details;
+    @FXML
+    private Button back;
 
     /**
      * Initializes the controller class.
@@ -175,4 +177,20 @@ public class Afficher_voitureController implements Initializable {
         }
          
 }
+
+    @FXML
+    private void back(ActionEvent event) {
+         try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/crud_voiture.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
 }

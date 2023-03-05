@@ -50,6 +50,10 @@ public class Affichage_reservationController implements Initializable {
     static Date date_fin;
     static int id;
     static voiture voiture;
+    @FXML
+    private Button back;
+    @FXML
+    private Button details;
 
     /**
      * Initializes the controller class.
@@ -164,6 +168,52 @@ public class Affichage_reservationController implements Initializable {
             Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+    }
+
+    @FXML
+    private void back(ActionEvent event) {
+         try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/location_voiture.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        
+    }
+
+    @FXML
+    private void details(ActionEvent event) {
+         ListView<reservation> list = affichage_reservation;
+        InterfaceCRUD2 inter = new reservationCRUD();
+        int selectedIndex = list.getSelectionModel().getSelectedIndex();
+        reservation r = list.getSelectionModel().getSelectedItem();
+        
+         Date date_debut = r.getDate_debut();
+        Date date_fin = r.getDate_debut();
+        
+       
+       
+      
+        
+         try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/detailsReservation.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+            
     }
 
 }

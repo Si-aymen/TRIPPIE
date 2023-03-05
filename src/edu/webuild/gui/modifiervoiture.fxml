@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: fff2e2;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.webuild.controllers.ModifiervoitureController">
+<AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="1411.0" style="-fx-background-color: fff2e2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.ModifiervoitureController">
      <children>
       <TextField fx:id="fx_matricule" layoutX="769.0" layoutY="138.0" prefHeight="63.0" prefWidth="222.0" />
       <TextField fx:id="fx_modele" layoutX="769.0" layoutY="274.0" prefHeight="63.0" prefWidth="222.0" />
@@ -17,5 +17,6 @@
       <Text layoutX="568.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="marque" />
       <Text layoutX="568.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="puissance" />
       <Text layoutX="568.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix par jour" />
+      <Button fx:id="back" layoutX="265.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Button" />
    </children>
 </AnchorPane>

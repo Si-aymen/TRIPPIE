@@ -8,7 +8,6 @@ package edu.webuild.controllers;
 import edu.webuild.interfaces.InterfaceCRUD;
 import edu.webuild.model.voiture;
 import edu.webuild.services.voitureCRUD;
-import java.awt.Insets;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -23,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -60,6 +60,8 @@ public class Market_voitController implements Initializable {
     private ScrollPane scroll;
     @FXML
     private GridPane grid;
+    @FXML
+    private Button back;
 
     /**
      * Initializes the controller class.
@@ -113,6 +115,22 @@ public class Market_voitController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(Market_voitController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void back(ActionEvent event) {
+         try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/location_voiture.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }

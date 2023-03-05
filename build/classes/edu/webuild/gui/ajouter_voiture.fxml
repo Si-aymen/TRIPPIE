@@ -26,5 +26,6 @@
       <ChoiceBox fx:id="fx_puissance" layoutX="645.0" layoutY="367.0" prefHeight="58.0" prefWidth="203.0" />
       <Button layoutX="608.0" layoutY="627.0" mnemonicParsing="false" onAction="#add_picture" text="image" />
       <ImageView fx:id="lab_image" fitHeight="150.0" fitWidth="200.0" layoutX="1023.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="back" layoutX="271.0" layoutY="33.0" mnemonicParsing="false" onAction="#back" text="Button" />
    </children>
 </AnchorPane>

@@ -31,6 +31,8 @@ public class Crud_voitureController implements Initializable {
     private Button affichervoiture;
     @FXML
     private Button ajouter_voiture;
+    @FXML
+    private Button back;
 
     /**
      * Initializes the controller class.
@@ -71,6 +73,22 @@ public class Crud_voitureController implements Initializable {
 
         }
 
+    }
+
+    @FXML
+    private void back(ActionEvent event) {
+         try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/location_voiture.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
 }

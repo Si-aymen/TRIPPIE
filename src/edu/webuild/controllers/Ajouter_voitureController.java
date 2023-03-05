@@ -13,9 +13,15 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -48,6 +54,8 @@ public class Ajouter_voitureController implements Initializable {
     @FXML
     private ImageView lab_image;
     static String url_image;
+    @FXML
+    private Button back;
 
     /**
      * Initializes the controller class.
@@ -130,7 +138,7 @@ public class Ajouter_voitureController implements Initializable {
         File file = fileChooser.showOpenDialog(primaryStage);
 
         if (file != null) {
-            // Load the selected image into the image view
+            // Load the  selected image into the image view
             Image image = new Image(file.toURI().toString());
 
             //url_image = file.toURI().toString();
@@ -150,6 +158,22 @@ public class Ajouter_voitureController implements Initializable {
             }
         }
 
+    }
+
+    @FXML
+    private void back(ActionEvent event) {
+         try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/crud_voiture.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
 }
