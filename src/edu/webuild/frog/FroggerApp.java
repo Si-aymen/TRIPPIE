@@ -78,7 +78,7 @@ public class FroggerApp extends Application {
 
         root.getChildren().add(frog);
 
-         initStartButton(); // Initialize the start button
+         
         initRestartButton(); // Initialize the restart button
         
         timer = new AnimationTimer() {
@@ -236,20 +236,20 @@ public class FroggerApp extends Application {
     
     //Buttons methods
     //START
-private void initStartButton() {
-    startButton = new Button("Start");
-    //This event handler should start the game by calling the timer.start() method.
-    startButton.setOnAction(event -> {
-        timer.start();
-    });
-
-    HBox hBox = new HBox();
-    hBox.setTranslateX(600);
-    hBox.setTranslateY(30);
-    hBox.getChildren().add(startButton);
-
-    root.getChildren().add(hBox);
-}
+//private void initStartButton() {
+//    startButton = new Button("Start");
+//    //This event handler should start the game by calling the timer.start() method.
+//    startButton.setOnAction(event -> {
+//        timer.start();
+//    });
+//
+//    HBox hBox = new HBox();
+//    hBox.setTranslateX(600);
+//    hBox.setTranslateY(30);
+//    hBox.getChildren().add(startButton);
+//
+//    root.getChildren().add(hBox);
+//}
     
     //RESTART
 private void initRestartButton() {
