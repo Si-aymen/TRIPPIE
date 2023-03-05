@@ -59,16 +59,20 @@ public class FroggerApp extends Application {
         root.getChildren().add(scoreText);
 
         frog = initFrog();
+        
 
         root.getChildren().add(frog);
 
+         initStartButton(); // Initialize the start button
+        
+        
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 onUpdate();
             }
         };
-        timer.start();
+//        timer.start();
 
         return root;
     }
@@ -168,7 +172,20 @@ public class FroggerApp extends Application {
 
     
     
+private void initStartButton() {
+    startButton = new Button("Start");
+    //This event handler should start the game by calling the timer.start() method.
+    startButton.setOnAction(event -> {
+        timer.start();
+    });
 
+    HBox hBox = new HBox();
+    hBox.setTranslateX(600);
+    hBox.setTranslateY(30);
+    hBox.getChildren().add(startButton);
+
+    root.getChildren().add(hBox);
+}
     
     
 
