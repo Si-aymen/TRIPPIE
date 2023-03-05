@@ -4,6 +4,13 @@
  * and open the template in the editor.
  */
 package edu.webuild.frog;
+
+
+import java.sql.*;
+import edu.webuild.utils.MyConnection;
+
+
+
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
@@ -29,6 +36,9 @@ import javafx.scene.input.KeyCode;
  * @author mtirn
  */
 public class FroggerApp extends Application {
+     Statement ste;
+    Connection conn = MyConnection.getInstance().getConn();
+
     
 //an AnimationTimer object that is used to update
 //the game state and handle animation.
@@ -44,6 +54,8 @@ public class FroggerApp extends Application {
     // Right here m gonna declare buttons variable
     
     private Button startButton;
+    private Button restartButton;
+
 
     
     //a method that creates and returns the game's scene graph.
@@ -64,7 +76,7 @@ public class FroggerApp extends Application {
         root.getChildren().add(frog);
 
          initStartButton(); // Initialize the start button
-        
+        initRestartButton(); // Initialize the restart button
         
         timer = new AnimationTimer() {
             @Override
@@ -112,7 +124,10 @@ public class FroggerApp extends Application {
             if (car.getBoundsInParent().intersects(frog.getBoundsInParent())) {
                 frog.setTranslateX(0);
                 frog.setTranslateY(600 - 39);
-                return;
+                restartButton.setDisable(false); // Enable the restart button
+            startButton.setDisable(true); // Disable the start button
+                 
+                 return;
             }
         }
 
@@ -121,6 +136,24 @@ public class FroggerApp extends Application {
             String win = "YOU WIN";
              score += 100; // increment the score by 100
             scoreText.setText("Score: " + score);
+            
+            // update high score
+        int currentHighScore = getHighScore();
+        if (score > currentHighScore) {
+            
+            updateHighScore(score);
+            currentHighScore = score;
+        }
+        // display high score
+        Text highScoreText = new Text("High Score: " + currentHighScore);
+        highScoreText.setFont(Font.font(24));
+        highScoreText.setFill(Color.BLACK);
+        highScoreText.setTranslateX(10);
+        highScoreText.setTranslateY(60);
+        root.getChildren().add(highScoreText);
+            
+            restartButton.setDisable(false); // Enable the restart button
+        startButton.setDisable(true); // Disable the start button
             HBox hBox = new HBox();
             hBox.setTranslateX(300);
             hBox.setTranslateY(250);
@@ -170,8 +203,35 @@ public class FroggerApp extends Application {
         stage.show();
     }
 
+    public void updateHighScore(int score) {
+    try {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO highscores (score) VALUES (?)");
+        ps.setInt(1, score);
+        ps.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+
+    public int getHighScore() {
+        int highScore = 0;
+
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT MAX(score) FROM highscores");
+            if (rs.next()) {
+                highScore = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return highScore;
+    }
     
-    
+    //Buttons methods
+    //START
 private void initStartButton() {
     startButton = new Button("Start");
     //This event handler should start the game by calling the timer.start() method.
@@ -187,7 +247,32 @@ private void initStartButton() {
     root.getChildren().add(hBox);
 }
     
+    //RESTART
+private void initRestartButton() {
+    restartButton = new Button("Restart");
+    restartButton.setOnAction(event -> {
+        resetGame();
+    });
+
+    HBox hBox = new HBox();
+    hBox.setTranslateX(600);
+    hBox.setTranslateY(60);
+    hBox.getChildren().add(restartButton);
+
+    root.getChildren().add(hBox);
     
+}
+               //----reset----
+private void resetGame() {
+    cars.clear();
+    score = 0;
+    scoreText.setText("Score: " + score);
+    frog.setTranslateX(0);
+    frog.setTranslateY(600 - 39);
+    timer.start();
+    restartButton.setDisable(true);
+    startButton.setDisable(false);
+}
 
 
     public static void main(String[] args) {
