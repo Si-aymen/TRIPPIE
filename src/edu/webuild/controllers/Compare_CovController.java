@@ -6,6 +6,7 @@
 package edu.webuild.controllers;
 
 import edu.webuild.model.CoVoiturage;
+import edu.webuild.services.Weather_cov;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -63,12 +64,21 @@ public class Compare_CovController implements Initializable {
     private ImageView ImageView_covt1;
     @FXML
     private ImageView ImageView_covt2;
+    @FXML
+    private Label temp1;
+    @FXML
+    private Label temp11;
+    @FXML
+    private Label dest_temp;
+    @FXML
+    private Label dest_temp1;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Weather_cov Weath = new Weather_cov();
         covt1 = Afficher_CovController.covt1;
         covt2 = Afficher_CovController.covt2;
         depart_covt1_lab.setText(covt1.getDepart());
@@ -87,6 +97,32 @@ public class Compare_CovController implements Initializable {
 
         } catch (FileNotFoundException e) {
             System.err.println("Error loading image: " + e.getMessage());
+        }
+        String place_dep1 = covt1.getDepart();
+        try {
+            temp1.setText(Weath.setTemp(place_dep1));
+        } catch (IOException ex) {
+            Logger.getLogger(Compare_CovController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String place_dest1 = covt1.getDestination();
+
+        try {
+            temp11.setText(Weath.setTemp(place_dest1));
+        } catch (IOException ex) {
+            Logger.getLogger(Compare_CovController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String place_dep2 = covt2.getDepart();
+        try {
+            dest_temp.setText(Weath.setTemp(place_dep1));
+        } catch (IOException ex) {
+            Logger.getLogger(Compare_CovController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String place_dest2 = covt2.getDestination();
+
+        try {
+            dest_temp1.setText(Weath.setTemp(place_dest1));
+        } catch (IOException ex) {
+            Logger.getLogger(Compare_CovController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

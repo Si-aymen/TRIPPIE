@@ -65,6 +65,14 @@ public class Details_CovController implements Initializable {
     private Label depart_co_lab1;
     @FXML
     private Label depart_co_lab11;
+    @FXML
+    private Label temp_lab1;
+    @FXML
+    private Label weather_lab1;
+    @FXML
+    private Label depart_co_lab12;
+    @FXML
+    private Label depart_co_lab111;
 
     /**
      * Initializes the controller class.
@@ -98,6 +106,19 @@ public class Details_CovController implements Initializable {
         }
         try {
             weather_lab.setText(Weath.setWeather(place));
+        } catch (IOException ex) {
+            Logger.getLogger(Details_CovController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        depart_co_lab12.setText(String.valueOf(Afficher_CovController.depart));
+        depart_co_lab111.setText(String.valueOf(Afficher_CovController.depart));
+        String place2 = String.valueOf(Afficher_CovController.depart);
+        try {
+            temp_lab1.setText(Weath.setTemp(place2));
+        } catch (IOException ex) {
+            Logger.getLogger(Details_CovController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            weather_lab1.setText(Weath.setWeather(place2));
         } catch (IOException ex) {
             Logger.getLogger(Details_CovController.class.getName()).log(Level.SEVERE, null, ex);
         }

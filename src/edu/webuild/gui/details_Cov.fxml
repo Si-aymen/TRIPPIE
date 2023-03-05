@@ -58,5 +58,11 @@
       <Label fx:id="depart_co_lab1" layoutX="410.0" layoutY="602.0" text="Label" />
       <Label layoutX="320.0" layoutY="648.0" text="weather in" />
       <Label fx:id="depart_co_lab11" layoutX="410.0" layoutY="648.0" text="Label" />
+      <Label fx:id="temp_lab1" layoutX="907.0" layoutY="610.0" prefHeight="18.0" prefWidth="98.0" text="Label" />
+      <Label fx:id="weather_lab1" layoutX="912.0" layoutY="657.0" prefHeight="18.0" prefWidth="107.0" text="Label" />
+      <Label layoutX="731.0" layoutY="611.0" text="temp in " />
+      <Label fx:id="depart_co_lab12" layoutX="807.0" layoutY="611.0" text="Label" />
+      <Label layoutX="717.0" layoutY="657.0" text="weather in" />
+      <Label fx:id="depart_co_lab111" layoutX="807.0" layoutY="657.0" text="Label" />
     </children>
 </AnchorPane>
