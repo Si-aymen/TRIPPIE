@@ -47,11 +47,16 @@ import edu.webuild.controllers.IdentifierCompteController;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.StringReader;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import static javax.mail.Message.RecipientType.TO;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
@@ -67,12 +72,7 @@ public class Ajouter_chauffeurController implements Initializable {
 
     @FXML
     private TextField fxperm;
-    @FXML
-    private TextField fxmarque;
-    @FXML
-    private TextField fxcoul;
-    @FXML
-    private TextField fxmat;
+  
     @FXML
     private TextField fxmail;
     @FXML
@@ -91,6 +91,12 @@ public class Ajouter_chauffeurController implements Initializable {
     @FXML
     private TextField fxtel;
     private static final String TEST_EMAIL = "zouari.aymen@esprit.tn";
+    @FXML
+    private Button btnimg;
+    @FXML
+    private ImageView fximg;
+     static String url_image;
+    static String image;
     /**
      *
      * @param id
@@ -108,6 +114,7 @@ public class Ajouter_chauffeurController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+          image = url_image;
         showbtnnewnew.setOnAction(event -> {
             if (showbtnnewnew.isSelected()) {
                 fxpass.setPromptText(fxpass.getText());
@@ -130,20 +137,20 @@ public class Ajouter_chauffeurController implements Initializable {
 
     @FXML
     private void addch(ActionEvent event) throws Exception {
+          String img = url_image;
         Role r = new Role();
         roleCRUD rc = new roleCRUD();
         r.setId_role(Integer.parseInt(fxid.getText()));
         String num_permis = fxperm.getText();
-        String marque_voiture = fxmarque.getText();
-        String couleur_voiture = fxcoul.getText();
+   
         String email = fxmail.getText();
         String password = fxpass.getText();
-        String immatriculation = fxmat.getText();
+      
         int tel = Integer.parseInt(fxtel.getText());
 
         // Définir la regex pour valider l'adresse e-mail
         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-        if (num_permis.isEmpty() || marque_voiture.isEmpty() || couleur_voiture.isEmpty() || immatriculation.isEmpty() || email.isEmpty() || password.isEmpty()) {
+        if (num_permis.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
@@ -166,7 +173,7 @@ public class Ajouter_chauffeurController implements Initializable {
             alert.showAndWait();
 
         } else {
-            Chauffeur ch = new Chauffeur(r, num_permis, marque_voiture, couleur_voiture, immatriculation, tel, email, password);
+            Chauffeur ch = new Chauffeur(r, img, num_permis, tel, email, password);
             rc.affecterRole(ch, r);
             String subject="Tripee";
             String message="Inscription avec succée";
@@ -175,6 +182,8 @@ public class Ajouter_chauffeurController implements Initializable {
           
         }
     }
+    
+  
       public void sendMail(String subject, String message) throws Exception, EncoderException {
 
         Properties props = new Properties();
@@ -245,5 +254,45 @@ public class Ajouter_chauffeurController implements Initializable {
 
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
+    }
+
+    @FXML
+    private void image(ActionEvent event) {
+          ImageView imageView = fximg;
+
+        // Create a FileChooser
+        FileChooser fileChooser = new FileChooser();
+
+        // Add a filter to only show image files
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif")
+        );
+
+        // Get the primary stage from the image view
+        Stage primaryStage = (Stage) imageView.getScene().getWindow();
+
+        // Show the file chooser dialog
+        File file = fileChooser.showOpenDialog(primaryStage);
+
+        if (file != null) {
+            // Load the selected image into the image view
+            Image image = new Image(file.toURI().toString());
+
+            //url_image = file.toURI().toString();
+            System.out.println(file.toURI().toString());
+            imageView.setImage(image);
+
+            // Create a new file in the destination directory
+            File destinationFile = new File("C:\\xampp\\htdocs\\" + file.getName());
+            // url_image = "C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName();
+            url_image = file.getName();
+
+            try {
+                // Copy the selected file to the destination file
+                Files.copy(file.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

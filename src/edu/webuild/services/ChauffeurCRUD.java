@@ -33,8 +33,8 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
     @Override
     public void ajouterChauffeur(Chauffeur c) {
         try {
-            String req = "INSERT INTO `chauffeur`(`id_role`,`num_permis`,`marque_voiture`,`couleur_voiture`,`immatriculation`,`gsm`,`email`,`password`)"
-                    + " VALUES ('" + c.getId_role() + "','" + c.getNum_permis() + "','" + c.getMarque_voiture() + "','" + c.getCouleur_voiture() + "','" + c.getImmatriculation() + "',"
+            String req = "INSERT INTO `chauffeur`(`id_role`,`img`,`num_permis`,`gsm`,`email`,`password`)"
+                    + " VALUES ('" + c.getId_role() + "','" + c.getImg()+ "','" + c.getNum_permis()+ "',"
                     + "'" + c.getTel() + "','" + c.getEmail() + "','" + c.getPassword() + "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
@@ -47,8 +47,8 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
     @Override
     public void ajouterChauffeur2(Chauffeur c) {
         try {
-            String req = "INSERT INTO `chauffeur`(`num_permis`,`marque_voiture`,`couleur_voiture`,`immatriculation`,`email`,`password`)"
-                    + " VALUES ('" + c.getNum_permis() + "','" + c.getMarque_voiture() + "','" + c.getCouleur_voiture() + "','" + c.getImmatriculation() + "',"
+            String req = "INSERT INTO `chauffeur`(`img`,`num_permis`,`marque_voiture`,`couleur_voiture`,`immatriculation`,`email`,`password`)"
+                    + " VALUES ('" + c.getImg()+ "','" + c.getNum_permis()+ "',"
                     + "'" + c.getEmail() + "','" + c.getPassword() + "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
@@ -61,8 +61,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
     @Override
     public void modifierChauffeur(Chauffeur ch) {
         try {
-            String req = "UPDATE `chauffeur` SET `num_permis` = '" + ch.getNum_permis() + "',`marque_voiture` = '" + ch.getMarque_voiture() + "',`couleur_voiture` = '"
-                    + ch.getCouleur_voiture() + "',`immatriculation` = '" + ch.getImmatriculation() + "',"
+            String req = "UPDATE `chauffeur` SET `img` = '" + ch.getImg()+ "',`num_permis` = '" + ch.getNum_permis()+ "',"
                     + "`email` = '" + ch.getEmail() + "',`password` = '" + ch.getPassword() + "' WHERE `chauffeur`.`id_ch` = " + ch.getId_ch();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
@@ -72,19 +71,19 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         }
     }
 
-    @Override
-    public void modifierChauffeur2(Chauffeur ch) {
-        try {
-            String req = "UPDATE `chauffeur` SET `marque_voiture` = '" + ch.getMarque_voiture() + "',`couleur_voiture` = '"
-                    + ch.getCouleur_voiture() + "',`immatriculation` = '" + ch.getImmatriculation() + "',`gsm` = '" + ch.getTel() + "',"
-                    + "`email` = '" + ch.getEmail() + "' WHERE `chauffeur`.`id_ch` = " + ch.getId_ch();
-            Statement st = conn.createStatement();
-            st.executeUpdate(req);
-            System.out.println("Chauffeur updated !");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
+//    @Override
+//    public void modifierChauffeur2(Chauffeur ch) {
+//        try {
+//            String req = "UPDATE `chauffeur` SET `marque_voiture` = '" + ch.getMarque_voiture() + "',`couleur_voiture` = '"
+//                    + ch.getCouleur_voiture() + "',`immatriculation` = '" + ch.getImmatriculation() + "',`gsm` = '" + ch.getTel() + "',"
+//                    + "`email` = '" + ch.getEmail() + "' WHERE `chauffeur`.`id_ch` = " + ch.getId_ch();
+//            Statement st = conn.createStatement();
+//            st.executeUpdate(req);
+//            System.out.println("Chauffeur updated !");
+//        } catch (SQLException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//    }
 
     @Override
     public void supprimerChauffeur(int id_ch) {
@@ -110,14 +109,12 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 Chauffeur ch = new Chauffeur();
                 ch.setId_ch(RS.getInt(1));
                 ch.setNum_permis(RS.getString(2));
-                ch.setMarque_voiture(RS.getString(3));
-                ch.setCouleur_voiture(RS.getString(4));
-                ch.setImmatriculation(RS.getString(5));
-                ch.setEmail(RS.getString(6));
-                ch.setPassword(RS.getString(7));
+                
+                ch.setEmail(RS.getString(3));
+                ch.setPassword(RS.getString(4));
                 Role role = new Role();
                 ch.setId_role(role);
-                role.setLibelle(RS.getString(9));
+                role.setLibelle(RS.getString(5));
 
                 list.add(ch);
             }
@@ -139,11 +136,9 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 Chauffeur ch = new Chauffeur();
                 ch.setId_ch(RS.getInt(1));
                 ch.setNum_permis(RS.getString(2));
-                ch.setMarque_voiture(RS.getString(3));
-                ch.setCouleur_voiture(RS.getString(4));
-                ch.setImmatriculation(RS.getString(5));
-                ch.setEmail(RS.getString(6));
-                ch.setPassword(RS.getString(7));
+              
+                ch.setEmail(RS.getString(3));
+                ch.setPassword(RS.getString(4));
 
                 list.add(ch);
             }
@@ -168,11 +163,9 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                     Chauffeur ch = new Chauffeur();
                     ch.setId_ch(RS.getInt(1));
                     ch.setNum_permis(RS.getString(2));
-                    ch.setMarque_voiture(RS.getString(3));
-                    ch.setCouleur_voiture(RS.getString(4));
-                    ch.setImmatriculation(RS.getString(5));
-                    ch.setEmail(RS.getString(6));
-                    ch.setPassword(RS.getString(7));
+             
+                    ch.setEmail(RS.getString(3));
+                    ch.setPassword(RS.getString(4));
 
                     list.add(ch);
                 }
@@ -185,11 +178,9 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                     Chauffeur ch = new Chauffeur();
                     ch.setId_ch(RS.getInt(1));
                     ch.setNum_permis(RS.getString(2));
-                    ch.setMarque_voiture(RS.getString(3));
-                    ch.setCouleur_voiture(RS.getString(4));
-                    ch.setImmatriculation(RS.getString(5));
-                    ch.setEmail(RS.getString(6));
-                    ch.setPassword(RS.getString(7));
+                 
+                    ch.setEmail(RS.getString(3));
+                    ch.setPassword(RS.getString(4));
 
                     list.add(ch);
 
@@ -215,11 +206,9 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 Chauffeur ch = new Chauffeur();
                 ch.setId_ch(RS.getInt(1));
                 ch.setNum_permis(RS.getString(2));
-                ch.setMarque_voiture(RS.getString(3));
-                ch.setCouleur_voiture(RS.getString(4));
-                ch.setImmatriculation(RS.getString(5));
-                ch.setEmail(RS.getString(6));
-                ch.setPassword(RS.getString(7));
+            
+                ch.setEmail(RS.getString(3));
+                ch.setPassword(RS.getString(4));
 
                 list.add(ch);
             }
@@ -330,13 +319,16 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         }
         return null;
     }
+    
+    
+    
 
     @Override
     public List<Chauffeur> afficherChauffeur2() {
         List<Chauffeur> list = new ArrayList<>();
 
         try {
-            String req = "SELECT chauffeur.num_permis, chauffeur.marque_voiture, chauffeur.couleur_voiture, chauffeur.immatriculation,"
+            String req = "SELECT chauffeur.img,chauffeur.num_permis, "
                     + " chauffeur.email, chauffeur.password, role.libelle AS role_libelle,"
                     + " utilisateur.cin, utilisateur.nom, utilisateur.prenom,utilisateur.sexe "
                     + "FROM utilisateur "
@@ -347,10 +339,9 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
                 Chauffeur ch = new Chauffeur();
+                ch.setImg(RS.getString("img"));
                 ch.setNum_permis(RS.getString("num_permis"));
-                ch.setMarque_voiture(RS.getString("marque_voiture"));
-                ch.setCouleur_voiture(RS.getString("couleur_voiture"));
-                ch.setImmatriculation(RS.getString("immatriculation"));
+              
                 ch.setEmail(RS.getString("email"));
 
                 Role role = new Role();
@@ -384,11 +375,9 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                     Chauffeur ch = new Chauffeur();
                     ch.setId_ch(rs.getInt(1));
                     ch.setNum_permis(rs.getString(2));
-                    ch.setMarque_voiture(rs.getString(3));
-                    ch.setCouleur_voiture(rs.getString(4));
-                    ch.setImmatriculation(rs.getString(5));
-                    ch.setEmail(rs.getString(6));
-                    ch.setPassword(rs.getString(7));
+                   
+                    ch.setEmail(rs.getString(3));
+                    ch.setPassword(rs.getString(4));
                     int id_role = rs.getInt("id_role");
                     Role r = new Role();
                     r.setId_role(id_role);
@@ -417,11 +406,9 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 Chauffeur ch = new Chauffeur();
                 ch.setId_ch(RS.getInt(1));
                 ch.setNum_permis(RS.getString(2));
-                ch.setMarque_voiture(RS.getString(3));
-                ch.setCouleur_voiture(RS.getString(4));
-                ch.setImmatriculation(RS.getString(5));
-                ch.setEmail(RS.getString(6));
-                ch.setPassword(RS.getString(7));
+               
+                ch.setEmail(RS.getString(3));
+                ch.setPassword(RS.getString(4));
 
             }
         } catch (SQLException ex) {
@@ -430,6 +417,52 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         }
 
         return id_ch;
+    }
+
+    
+     @Override
+    public List<Chauffeur> afficherChauffeur3() {
+        List<Chauffeur> list = new ArrayList<>();
+
+        try {
+            String req = "SELECT chauffeur.img,chauffeur.gsm,chauffeur.num_permis,chauffeur.email, "
+                    + " role.libelle AS role_libelle, "
+                    + " utilisateur.cin, utilisateur.nom, utilisateur.prenom,utilisateur.sexe "
+                    + "FROM utilisateur "
+                    + "JOIN role ON utilisateur.id_user = role.id_user "
+                    + "JOIN chauffeur ON role.id_role = chauffeur.id_role ";
+
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                Chauffeur loc = new Chauffeur();
+                
+                loc.setImg(RS.getString("img"));
+              
+                loc.setTel(RS.getInt("gsm"));
+                   loc.setNum_permis(RS.getString("num_permis"));
+                loc.setEmail(RS.getString("email"));
+
+                Role role = new Role();
+                loc.setId_role(role);
+                role.setLibelle(RS.getString("role_libelle"));
+//
+                Utilisateur utilisateur = new Utilisateur();
+                utilisateur.setCin(RS.getString("cin"));
+                utilisateur.setNom(RS.getString("nom"));
+                utilisateur.setPrenom(RS.getString("prenom"));
+                utilisateur.setSexe(RS.getString("sexe"));
+
+                role.setId_user(utilisateur);
+                loc.setId_role(role);
+
+                list.add(loc);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
     }
 
 }

@@ -5,7 +5,6 @@
  */
 package edu.webuild.controllers;
 
-import static edu.webuild.controllers.AjoutController.url_image;
 import edu.webuild.model.Chauffeur;
 import edu.webuild.services.ChauffeurCRUD;
 import java.io.File;
@@ -58,16 +57,22 @@ public class ProfilChauffeurController implements Initializable {
     static String ssmail;
     @FXML
     private Button deco;
+    String url;
 
     public void setEmail_lbl(String email) throws SQLException, FileNotFoundException {
+
         this.email_lbl.setText(email);
         ChauffeurCRUD u = new ChauffeurCRUD();
         Chauffeur p = u.getChauffeur(email);
-       
-
-        email_lbl.setText(email);
-        nom_lbl.setText(p.getId_role().getId_user().getNom());
-        genre_lbl.setText(p.getId_role().getId_user().getPrenom());
+        String fullurl = "C:\\xampp\\htdocs\\" + url;
+        try {
+            email_lbl.setText(email);
+            nom_lbl.setText(p.getId_role().getId_user().getNom());
+            genre_lbl.setText(p.getId_role().getId_user().getPrenom());
+            fximg.setImage(new Image(new FileInputStream(fullurl)));
+        } catch (FileNotFoundException e) {
+            System.err.println("Error loading image: " + e.getMessage());
+        }
 
     }
 
@@ -84,7 +89,7 @@ public class ProfilChauffeurController implements Initializable {
 
     @FXML
     private void deco(ActionEvent event) {
-         try {
+        try {
 
             Parent page1
                     = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
@@ -97,7 +102,5 @@ public class ProfilChauffeurController implements Initializable {
 
         }
     }
-
-  
 
 }

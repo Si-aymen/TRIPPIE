@@ -12,10 +12,8 @@ package edu.webuild.model;
 public class Chauffeur {
     int id_ch;
     Role   id_role;
+    String img;
     String num_permis;
-    String marque_voiture;
-    String couleur_voiture;
-    String immatriculation;
     int tel;
     String email;
     String password;
@@ -23,62 +21,34 @@ public class Chauffeur {
     public Chauffeur() {
     }
 
-    public Chauffeur(int id_ch,  Role id_role, String num_permis, String marque_voiture, String couleur_voiture, String immatriculation, String email, String password) {
+    public Chauffeur(int id_ch, Role id_role, String img, String num_permis, int tel, String email, String password) {
         this.id_ch = id_ch;
         this.id_role = id_role;
-       
-        
+        this.img = img;
         this.num_permis = num_permis;
-        this.marque_voiture = marque_voiture;
-        this.couleur_voiture = couleur_voiture;
-        this.immatriculation = immatriculation;
-        this.email = email;
-        this.password = password;
-    }
-
-    public Chauffeur(Role id_role, String num_permis, String marque_voiture, String couleur_voiture, String immatriculation, String email, String password) {
-        this.id_role = id_role;
-        this.num_permis = num_permis;
-        this.marque_voiture = marque_voiture;
-        this.couleur_voiture = couleur_voiture;
-        this.immatriculation = immatriculation;
-        this.email = email;
-        this.password = password;
-    }
-
-    public Chauffeur(int id_ch, String num_permis, String marque_voiture, String couleur_voiture, String immatriculation, String email, String password) {
-        this.id_ch = id_ch;
-        this.num_permis = num_permis;
-        this.marque_voiture = marque_voiture;
-        this.couleur_voiture = couleur_voiture;
-        this.immatriculation = immatriculation;
-        this.email = email;
-        this.password = password;
-    }
-
-    public Chauffeur(int id_ch, Role id_role, String num_permis, String marque_voiture, String couleur_voiture, String immatriculation, int tel, String email, String password) {
-        this.id_ch = id_ch;
-        this.id_role = id_role;
-        this.num_permis = num_permis;
-        this.marque_voiture = marque_voiture;
-        this.couleur_voiture = couleur_voiture;
-        this.immatriculation = immatriculation;
         this.tel = tel;
         this.email = email;
         this.password = password;
     }
 
-    public Chauffeur(Role id_role, String num_permis, String marque_voiture, String couleur_voiture, String immatriculation, int tel, String email, String password) {
+    public Chauffeur(Role id_role, String img, String num_permis, int tel, String email, String password) {
         this.id_role = id_role;
+        this.img = img;
         this.num_permis = num_permis;
-        this.marque_voiture = marque_voiture;
-        this.couleur_voiture = couleur_voiture;
-        this.immatriculation = immatriculation;
         this.tel = tel;
         this.email = email;
         this.password = password;
     }
 
+    public Chauffeur(String img, String num_permis, int tel, String email, String password) {
+        this.img = img;
+        this.num_permis = num_permis;
+        this.tel = tel;
+        this.email = email;
+        this.password = password;
+    }
+
+ 
     
     public Chauffeur(String email, String password) {
         this.email = email;
@@ -120,29 +90,7 @@ public class Chauffeur {
         this.num_permis = num_permis;
     }
 
-    public String getMarque_voiture() {
-        return marque_voiture;
-    }
-
-    public void setMarque_voiture(String marque_voiture) {
-        this.marque_voiture = marque_voiture;
-    }
-
-    public String getCouleur_voiture() {
-        return couleur_voiture;
-    }
-
-    public void setCouleur_voiture(String couleur_voiture) {
-        this.couleur_voiture = couleur_voiture;
-    }
-
-    public String getImmatriculation() {
-        return immatriculation;
-    }
-
-    public void setImmatriculation(String immatriculation) {
-        this.immatriculation = immatriculation;
-    }
+ 
 
     public String getEmail() {
         return email;
@@ -160,12 +108,20 @@ public class Chauffeur {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "Chauffeur{" + "id_ch=" + id_ch + ", id_role=" + id_role + ", num_permis=" + num_permis + ", marque_voiture=" + marque_voiture + ", couleur_voiture=" + couleur_voiture + ", immatriculation=" + immatriculation + ", tel=" + tel + ", email=" + email + ", password=" + password + '}';
+    public String getImg() {
+        return img;
     }
 
-   
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    @Override
+    public String toString() {
+        return "Chauffeur{" + "id_ch=" + id_ch + ", id_role=" + id_role + ", img=" + img + ", num_permis=" + num_permis + ", tel=" + tel + ", email=" + email + ", password=" + password + '}';
+    }
+
+  
 
    
 

@@ -261,7 +261,7 @@ public class LocateurCRUD implements InterfaceLocateurCRUD {
         }
         return null;
     }
-    
+
     @Override
     public List<Locateur> afficherLocateur2() {
         List<Locateur> list = new ArrayList<>();
@@ -280,7 +280,6 @@ public class LocateurCRUD implements InterfaceLocateurCRUD {
                 Locateur loc = new Locateur();
                 loc.setNom_agence(RS.getString("nom_agence"));
                 loc.setEmail(RS.getString("email"));
-                
 
                 Role role = new Role();
                 loc.setId_role(role);
@@ -291,7 +290,51 @@ public class LocateurCRUD implements InterfaceLocateurCRUD {
                 utilisateur.setNom(RS.getString("nom"));
                 utilisateur.setPrenom(RS.getString("prenom"));
                 utilisateur.setSexe(RS.getString("sexe"));
-               
+
+                role.setId_user(utilisateur);
+                loc.setId_role(role);
+
+                list.add(loc);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<Locateur> afficherLocateur3() {
+        List<Locateur> list = new ArrayList<>();
+
+        try {
+            String req = "SELECT locateur.img , locateur.nom_agence , locateur.gsm , locateur.email , "
+                    + " role.libelle AS role_libelle, "
+                    + " utilisateur.cin, utilisateur.nom, utilisateur.prenom,utilisateur.sexe "
+                    + "FROM utilisateur "
+                    + "JOIN role ON utilisateur.id_user = role.id_user "
+                    + "JOIN locateur ON role.id_role = locateur.id_role ";
+
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                Locateur loc = new Locateur();
+           
+                loc.setImg(RS.getString("img"));
+                loc.setNom_agence(RS.getString("nom_agence"));
+                loc.setTel(RS.getInt("gsm"));
+                loc.setEmail(RS.getString("email"));
+
+                Role role = new Role();
+                loc.setId_role(role);
+                role.setLibelle(RS.getString("role_libelle"));
+//
+                Utilisateur utilisateur = new Utilisateur();
+                utilisateur.setCin(RS.getString("cin"));
+                utilisateur.setNom(RS.getString("nom"));
+                utilisateur.setPrenom(RS.getString("prenom"));
+                utilisateur.setSexe(RS.getString("sexe"));
+
                 role.setId_user(utilisateur);
                 loc.setId_role(role);
 

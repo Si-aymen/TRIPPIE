@@ -17,7 +17,8 @@
          </font>
       </Text>
       <Line endX="338.0" layoutX="171.0" layoutY="78.0" startX="-97.0" />
-      <Label fx:id="ssemails" layoutX="74.0" layoutY="88.0" prefHeight="17.0" prefWidth="129.0" />
-      <Button layoutX="432.0" layoutY="360.0" mnemonicParsing="false" onAction="#connecter" style="-fx-background-color: black;" text="Changer mot de passe" textFill="WHITE" />
+      <Label fx:id="ssemails" layoutX="74.0" layoutY="88.0" prefHeight="18.0" prefWidth="285.0" />
+      <Button layoutX="427.0" layoutY="359.0" mnemonicParsing="false" onAction="#connecter" prefHeight="26.0" prefWidth="143.0" style="-fx-background-color: black;" text="Changer mot de passe" textFill="WHITE" />
+      <Button layoutX="323.0" layoutY="359.0" mnemonicParsing="false" onAction="#gotologin" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: black;" text="Se connecter" textFill="WHITE" />
    </children>
 </AnchorPane>

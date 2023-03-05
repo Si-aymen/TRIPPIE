@@ -29,6 +29,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -49,6 +51,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import static javax.mail.Message.RecipientType.TO;
 import javax.mail.Session;
@@ -81,91 +86,94 @@ public class Ajouter_locateurController implements Initializable {
     private ToggleButton showbtnnewnew1;
     @FXML
     private TextField fxtel;
-      private static final String TEST_EMAIL = "zouari.aymen@esprit.tn";
-       private Gmail service;
+    private static final String TEST_EMAIL = "zouari.aymen@esprit.tn";
+    private Gmail service;
+    @FXML
+    private Button btnimg;
+    @FXML
+    private ImageView fximg;
+    static String url_image;
+    static String image;
 
     /**
      * Initializes the controller class.
      */
-    
-    
-     /**
+    /**
      *
      * @param id
      */
     public void SetId_role(String id) {
-         this.fxid.setText(id);
-    } 
+        this.fxid.setText(id);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        image = url_image;
         showbtnnewnew.setOnAction(event -> {
             if (showbtnnewnew.isSelected()) {
-            fxpass.setPromptText(fxpass.getText());
-            fxpass.setText("");
-        } else {
-            fxpass.setText(fxpass.getPromptText());
-            fxpass.setPromptText("");
-        }
+                fxpass.setPromptText(fxpass.getText());
+                fxpass.setText("");
+            } else {
+                fxpass.setText(fxpass.getPromptText());
+                fxpass.setPromptText("");
+            }
         });
         showbtnnewnew1.setOnAction(event -> {
             if (showbtnnewnew1.isSelected()) {
-            fxpass1.setPromptText(fxpass1.getText());
-            fxpass1.setText("");
-        } else {
-            fxpass1.setText(fxpass1.getPromptText());
-            fxpass1.setPromptText("");
-        }
+                fxpass1.setPromptText(fxpass1.getText());
+                fxpass1.setText("");
+            } else {
+                fxpass1.setText(fxpass1.getPromptText());
+                fxpass1.setPromptText("");
+            }
         });
-    }    
+    }
 
     @FXML
     private void addloc(ActionEvent event) throws Exception {
-         Role r = new Role();
+        Role r = new Role();
         roleCRUD rc = new roleCRUD();
+        String img = url_image;
         r.setId_role(Integer.parseInt(fxid.getText()));
-        String nom_agence=fxagence.getText();
+        String nom_agence = fxagence.getText();
         int tel = Integer.parseInt(fxtel.getText());
         String email = fxmail.getText();
         String password = fxpass.getText();
-        
-          String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-        if (nom_agence.isEmpty()|| email.isEmpty()|| password.isEmpty()) {
+
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+        if (nom_agence.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("Veuillez remplir tous les champs.");
             alert.show();
 
-        }
-        else if (!email.matches(regex)) {
+        } else if (!email.matches(regex)) {
             // Afficher un message d'erreur si la saisie est invalide
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
             alert.setHeaderText(null);
             alert.setContentText("Veuillez saisir une adresse e-mail valide.");
             alert.showAndWait();
-        } 
-         else if(!(fxpass.getText().equals(fxpass1.getText()))){
-        
-          Alert alert = new Alert(Alert.AlertType.ERROR);
+        } else if (!(fxpass.getText().equals(fxpass1.getText()))) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
             alert.setHeaderText(null);
             alert.setContentText("Veuillez saisir une adresse e-mail valide.");
             alert.showAndWait();
-        
-        }
-        else{
-        Locateur loc = new Locateur(r, tel, nom_agence, email, password);
-        rc.affecterRole3(loc, r);
-         String subject="Tripee";
-            String message="Inscription avec succée";
+
+        } else {
+            Locateur loc = new Locateur(r, img, nom_agence, tel, email, password);
+            rc.affecterRole3(loc, r);
+            String subject = "Tripee";
+            String message = "Inscription avec succée";
             sendMail(subject, message);
-       
-        
+
+        }
     }
-    }
+
     public void sendMail(String subject, String message) throws Exception, EncoderException {
 
         Properties props = new Properties();
@@ -205,8 +213,8 @@ public class Ajouter_locateurController implements Initializable {
             }
         }
     }
-      
-      public void GMailer() throws Exception {
+
+    public void GMailer() throws Exception {
         System.out.println("gmail");
         NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
         GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
@@ -236,5 +244,45 @@ public class Ajouter_locateurController implements Initializable {
 
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
+    }
+
+    @FXML
+    private void image(ActionEvent event) {
+        ImageView imageView = fximg;
+
+        // Create a FileChooser
+        FileChooser fileChooser = new FileChooser();
+
+        // Add a filter to only show image files
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif")
+        );
+
+        // Get the primary stage from the image view
+        Stage primaryStage = (Stage) imageView.getScene().getWindow();
+
+        // Show the file chooser dialog
+        File file = fileChooser.showOpenDialog(primaryStage);
+
+        if (file != null) {
+            // Load the selected image into the image view
+            Image image = new Image(file.toURI().toString());
+
+            //url_image = file.toURI().toString();
+            System.out.println(file.toURI().toString());
+            imageView.setImage(image);
+
+            // Create a new file in the destination directory
+            File destinationFile = new File("C:\\xampp\\htdocs\\" + file.getName());
+            // url_image = "C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName();
+            url_image = file.getName();
+
+            try {
+                // Copy the selected file to the destination file
+                Files.copy(file.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

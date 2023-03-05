@@ -16,7 +16,7 @@ public class MyConnection {
     
    private static Connection conn;  //DB Credations
     
-String url = "jdbc:mysql://localhost:3306/webuild";
+String url = "jdbc:mysql://localhost:3306/webuild2";
 String user = "root";
 String pwd = "";
 private static MyConnection instance;

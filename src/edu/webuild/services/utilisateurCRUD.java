@@ -32,7 +32,31 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
     @Override
     public void ajouterUtilisateur(Utilisateur u) {
         try {
-            String req = "INSERT INTO `utilisateur`(`cin`, `img`, `nom`, `prenom`, `sexe`) VALUES ('" + u.getCin() + "','" + u.getImg()+ "','" + u.getNom() + "','" + u.getPrenom() + "','" + u.getSexe() + "')";
+            String req = "INSERT INTO `utilisateur`(`cin`,`nom`, `prenom`, `sexe`) VALUES ('" + u.getCin() + "','" + u.getNom() + "','" + u.getPrenom() + "','" + u.getSexe() + "')";
+            ste = conn.createStatement();
+
+            ste.executeUpdate(req, Statement.RETURN_GENERATED_KEYS);
+
+            // Récupérer l'ID auto-incrémenté généré lors de l'insertion
+            ResultSet generatedKeys = ste.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                int id_user = generatedKeys.getInt(1);
+                System.out.println("ID auto-incrémenté généré lors de l'insertion: " + id_user);
+            } else {
+                throw new SQLException("L'ajout a échoué, aucun ID auto-incrémenté généré.");
+            }
+
+            System.out.println("Utilisateur ajouté!!!");
+        } catch (SQLException ex) {
+            System.out.println("Utilisateur non ajouté");
+            System.out.println(ex);
+        }
+    }
+    
+     @Override
+    public void ajouterHomme(Utilisateur u) {
+        try {
+            String req = "INSERT INTO `utilisateur`(`cin`, `img`, `nom`, `prenom`, `sexe`) VALUES ('" + u.getCin() + "','" + u.getImg()+ "','" + u.getNom() + "','" + u.getPrenom() + "','Homme')";
             ste = conn.createStatement();
 
             ste.executeUpdate(req, Statement.RETURN_GENERATED_KEYS);
@@ -53,6 +77,31 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
         }
     }
 
+      
+     @Override
+    public void ajouterFemme(Utilisateur u) {
+        try {
+            String req = "INSERT INTO `utilisateur`(`cin`, `img`, `nom`, `prenom`, `sexe`) VALUES ('" + u.getCin() + "','" + u.getImg()+ "','" + u.getNom() + "','" + u.getPrenom() + "','Femme')";
+            ste = conn.createStatement();
+
+            ste.executeUpdate(req, Statement.RETURN_GENERATED_KEYS);
+
+            // Récupérer l'ID auto-incrémenté généré lors de l'insertion
+            ResultSet generatedKeys = ste.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                int id_user = generatedKeys.getInt(1);
+                System.out.println("ID auto-incrémenté généré lors de l'insertion: " + id_user);
+            } else {
+                throw new SQLException("L'ajout a échoué, aucun ID auto-incrémenté généré.");
+            }
+
+            System.out.println("Utilisateur ajouté!!!");
+        } catch (SQLException ex) {
+            System.out.println("Utilisateur non ajouté");
+            System.out.println(ex);
+        }
+    }
+    
     @Override
     public void modifierUtilisateur(Utilisateur u) {
         try {

@@ -52,7 +52,7 @@ public class Menu_CovController implements Initializable {
     private void afficher_cov(ActionEvent event) {
            try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/affiche_cl.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Cards.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -67,7 +67,7 @@ public class Menu_CovController implements Initializable {
     private void ajouter_cov(ActionEvent event) {
        try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Affiche_ch.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/CardsCh.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -82,7 +82,7 @@ public class Menu_CovController implements Initializable {
     private void afficher_Part(ActionEvent event) {
          try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Affiche_loc.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/CardsLoc.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -95,6 +95,7 @@ public class Menu_CovController implements Initializable {
 
     @FXML
     private void cov_btu(ActionEvent event) {
+        
     }
 
     @FXML

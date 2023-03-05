@@ -28,6 +28,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -75,8 +77,8 @@ public class IdentifierCompteController implements Initializable {
     private static final String TEST_EMAIL = "zouari.aymen@esprit.tn";
     @FXML
     private ListView<Client> cli;
-    ClientCRUD cc=new ClientCRUD();
-    
+    ClientCRUD cc = new ClientCRUD();
+
     /**
      * Initializes the controller class.
      *
@@ -88,7 +90,7 @@ public class IdentifierCompteController implements Initializable {
         // TODO
         {
             try {
-                Client c=cc.getClient(Ssemail2);
+                Client c = cc.getClient(Ssemail2);
             } catch (SQLException ex) {
                 Logger.getLogger(IdentifierCompteController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -111,7 +113,7 @@ public class IdentifierCompteController implements Initializable {
                     alert.setTitle("Confirmation de la réinitialisation de mot de passe");
                     alert.setHeaderText("Vous êtes sur le point de réinitialiser le mot de passe de l'utilisateur " + newValue.getEmail());
                     alert.setContentText("Êtes-vous sûr de vouloir continuer ?");
-                    
+
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.isPresent() && result.get() == ButtonType.OK) {
                         // User confirmed password reset
@@ -119,7 +121,7 @@ public class IdentifierCompteController implements Initializable {
                         String token = generateToken();
                         String emailAddress = newValue.getEmail();
                         try {
-                            Client cli=cc.getClient(Ssemail2);
+                            Client cli = cc.getClient(Ssemail2);
                             cli.setPassword(token);
                             cc.modifierClient(cli);
                             sendMail(emailAddress, token);
@@ -187,6 +189,8 @@ public class IdentifierCompteController implements Initializable {
     }
 
     public void sendMail(String subject, String message) throws Exception, EncoderException {
+        // Load email template
+        String content = new String(Files.readAllBytes(Paths.get("mail.html")));
 
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
@@ -194,6 +198,7 @@ public class IdentifierCompteController implements Initializable {
         email.setFrom(new InternetAddress(TEST_EMAIL));
         email.addRecipient(TO, new InternetAddress(Ssemail2));// static variable globale static
         System.out.println(Ssemail2);
+        email.setContent(content, "text/html");
         email.setSubject(subject);
         System.out.println("lena");
         email.setText(message);
@@ -225,15 +230,23 @@ public class IdentifierCompteController implements Initializable {
             }
         }
     }
-    
 
     @FXML
     private void connecter(ActionEvent event) throws IOException {
-         Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/SendPassword.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
+        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/SendPassword.fxml"));
+        Scene scene = new Scene(page1);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void gotologin(ActionEvent event) throws IOException {
+        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
+        Scene scene = new Scene(page1);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

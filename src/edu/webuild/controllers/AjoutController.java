@@ -66,12 +66,8 @@ public class AjoutController implements Initializable {
     @FXML
     private Button btnajout;
     public static int id_user;
-    @FXML
-    private Button btnimg;
-    @FXML
     private ImageView fximg;
-    static String url_image;
-    static String image;
+   
     /**
      * Initializes the controller class.
      *
@@ -81,7 +77,7 @@ public class AjoutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        image = url_image;
+      
     }
 
     @FXML
@@ -92,7 +88,7 @@ public class AjoutController implements Initializable {
         String prenom = fxprenom.getText();
         String cin = fxcin.getText();
         String sexe = fxsexe.getText();
-        String img = url_image;
+      
 
         if (cin.isEmpty() || nom.isEmpty() || prenom.isEmpty() || sexe.isEmpty()) {
             // Afficher un message d'erreur si la saisie est invalide
@@ -135,7 +131,7 @@ public class AjoutController implements Initializable {
         //        }
         else {
 
-            Utilisateur u = new Utilisateur(cin, nom, prenom, sexe, img);
+            Utilisateur u = new Utilisateur(cin, nom, prenom, sexe);
             utilisateurCRUD uc = new utilisateurCRUD();
             uc.ajouterUtilisateur(u);
             //role
@@ -159,44 +155,5 @@ public class AjoutController implements Initializable {
 
     }
 
-    @FXML
-    private void image(ActionEvent event) {
-        ImageView imageView = fximg;
-
-        // Create a FileChooser
-        FileChooser fileChooser = new FileChooser();
-
-        // Add a filter to only show image files
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif")
-        );
-
-        // Get the primary stage from the image view
-        Stage primaryStage = (Stage) imageView.getScene().getWindow();
-
-        // Show the file chooser dialog
-        File file = fileChooser.showOpenDialog(primaryStage);
-
-        if (file != null) {
-            // Load the selected image into the image view
-            Image image = new Image(file.toURI().toString());
-
-            //url_image = file.toURI().toString();
-            System.out.println(file.toURI().toString());
-            imageView.setImage(image);
-
-            // Create a new file in the destination directory
-            File destinationFile = new File("C:\\xampp\\htdocs\\" + file.getName());
-            // url_image = "C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName();
-            url_image = file.getName();
-
-            try {
-                // Copy the selected file to the destination file
-                Files.copy(file.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
 }

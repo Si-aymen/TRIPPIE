@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -24,6 +25,8 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
+            <Button fx:id="modif" layoutX="74.0" layoutY="365.0" mnemonicParsing="false" text="Modifier" />
+            <ImageView fx:id="fximg" fitHeight="60.0" fitWidth="70.0" layoutX="70.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
          </children></AnchorPane>
       <Button fx:id="exitBtn" layoutX="627.0" layoutY="1.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;" text="X">
          <font>

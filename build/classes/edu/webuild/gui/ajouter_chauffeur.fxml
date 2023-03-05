@@ -4,6 +4,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B4A7D6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Ajouter_chauffeurController">
@@ -11,14 +12,13 @@
       <TextField fx:id="fxid" layoutX="515.0" layoutY="332.0" prefHeight="18.0" prefWidth="39.0" />
       <Button fx:id="btn" layoutX="500.0" layoutY="332.0" mnemonicParsing="false" onAction="#addch" style="-fx-background-color: black;" text="Confirmer" textFill="WHITE" />
       <TextField fx:id="fxperm" layoutX="98.0" layoutY="154.0" promptText="Numero Permis" style="-fx-border-color: black; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-prompt-text-fill: black;" />
-      <TextField fx:id="fxmarque" layoutX="98.0" layoutY="206.0" promptText="Marque Voiture" style="-fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="fxmat" layoutX="98.0" layoutY="259.0" promptText="Matricule" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black;" />
-      <TextField fx:id="fxcoul" layoutX="98.0" layoutY="107.0" promptText="Couleur Voiture" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black;" />
-      <PasswordField fx:id="fxpass" layoutX="347.0" layoutY="207.0" promptText="Mot de passe" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-prompt-text-fill: black;" />
-      <ToggleButton fx:id="showbtnnewnew" layoutX="471.0" layoutY="208.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
-      <TextField fx:id="fxmail" layoutX="348.0" layoutY="157.0" promptText="Email" style="-fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-background-color: transparent;" />
-      <PasswordField fx:id="fxpass1" layoutX="346.0" layoutY="260.0" promptText="Retaper" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-prompt-text-fill: black;" />
-      <ToggleButton fx:id="showbtnnewnew1" layoutX="471.0" layoutY="260.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
-      <TextField fx:id="fxtel" layoutX="348.0" layoutY="110.0" promptText="GSM" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black;" />
+      <PasswordField fx:id="fxpass" layoutX="326.0" layoutY="191.0" promptText="Mot de passe" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-prompt-text-fill: black;" />
+      <ToggleButton fx:id="showbtnnewnew" layoutX="449.0" layoutY="194.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
+      <TextField fx:id="fxmail" layoutX="327.0" layoutY="141.0" promptText="Email" style="-fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-prompt-text-fill: black; -fx-background-color: transparent;" />
+      <PasswordField fx:id="fxpass1" layoutX="325.0" layoutY="244.0" promptText="Retaper" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black; -fx-prompt-text-fill: black;" />
+      <ToggleButton fx:id="showbtnnewnew1" layoutX="446.0" layoutY="245.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
+      <TextField fx:id="fxtel" layoutX="98.0" layoutY="207.0" promptText="GSM" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: black; -fx-prompt-text-fill: black;" />
+      <Button fx:id="btnimg" layoutX="446.0" layoutY="58.0" mnemonicParsing="false" onAction="#image" prefHeight="26.0" prefWidth="107.0" text="Importer image" />
+      <ImageView fx:id="fximg" fitHeight="64.0" fitWidth="160.0" layoutX="196.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

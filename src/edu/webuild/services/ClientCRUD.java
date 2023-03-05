@@ -7,11 +7,14 @@ package edu.webuild.services;
 
 import edu.webuild.interfaces.InterfaceClientCRUD;
 import edu.webuild.model.Client;
+import edu.webuild.model.Etat;
 import edu.webuild.model.Role;
 import edu.webuild.model.Utilisateur;
 import java.sql.Connection;
 import java.sql.Statement;
 import edu.webuild.utils.MyConnection;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import static java.lang.Math.log;
 import java.net.URL;
 import java.sql.DriverManager;
@@ -20,6 +23,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import static javax.mail.Flags.Flag.USER;
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
@@ -30,12 +39,14 @@ import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 public class ClientCRUD implements InterfaceClientCRUD {
 
     Statement ste;
+    PreparedStatement stee;
     Connection conn = MyConnection.getInstance().getConn();
 
     @Override
     public void ajouterClient(Client cl) {
         try {
-            String req = "INSERT INTO `client`(`id_client` ,`id_role`,`gsm`,`email`,`password`) VALUES ('" + cl.getId_client() + "','" + cl.getId_role() + "','" + cl.getTel()+ "','" + cl.getEmail() + "','" + cl.getPassword() + "')";
+            String req = "INSERT INTO `client`(`id_client` ,`id_role`,`img`,`gsm`,`email`,`password`) VALUES ('" + cl.getId_client() + "','" + cl.getId_role() + "','" + cl.getImg()+ "',"
+                    + "'" + cl.getTel()+ "','" + cl.getEmail()+ "','" + cl.getPassword() + "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Client ajouté!!!");
@@ -48,7 +59,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
     @Override
     public void modifierClient(Client cl) {
         try {
-            String req = "UPDATE `client` SET `email` = '" + cl.getEmail() + "', `password` = '" + cl.getPassword() +  "' WHERE `client`.`id_client` = " + cl.getId_client();
+            String req = "UPDATE `client` SET `email` = '" + cl.getEmail() + "', `password` = '" + cl.getPassword() + "' WHERE `client`.`id_client` = " + cl.getId_client();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Client updated !");
@@ -58,7 +69,18 @@ public class ClientCRUD implements InterfaceClientCRUD {
         }
     }
 
-   
+    @Override
+    public void modifierProfil(Client cl) {
+        try {
+            String req = "UPDATE `client` SET `gsm` = '" + cl.getTel() + "'`email` = '" + cl.getEmail() + "', `password` = '" + cl.getPassword() + "' WHERE `client`.`id_client` = " + cl.getId_client();
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("Client updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+    }
 
     @Override
     public void supprimerClient(int id_client) {
@@ -73,10 +95,66 @@ public class ClientCRUD implements InterfaceClientCRUD {
     }
 
     @Override
+    public void disable(int id_client) {
+        try {
+            String req = "UPDATE client SET etat = false WHERE id_client = ?";
+            PreparedStatement pstmt = conn.prepareStatement(req);
+            pstmt.setInt(1, id_client);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la désactivation du compte du client : " + e.getMessage());
+        }
+    }
+
+    @Override
+    public boolean isEnabled(int clientId) {
+        boolean result = false;
+        try {
+            String sql = "SELECT etat FROM client WHERE id_client = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, clientId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                result = rs.getBoolean("enabled");
+            }
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la récupération de l'état du compte du client : " + e.getMessage());
+        }
+        return result;
+    }
+
+//    @Override
+//    public List<Client> afficherClient() {
+//        List<Client> list = new ArrayList<>();
+//        try {
+//            String req = "SELECT client.*, role.libelle FROM client INNER JOIN role ON client.id_role = role.id_role";//"SELECT client. *, role.libelle FROM client INNER JOIN role ON client.role = role.id_role";
+//            Statement st = conn.createStatement();
+//            ResultSet RS = st.executeQuery(req);
+//            while (RS.next()) {
+//                Client cl = new Client();
+//                cl.setId_client(RS.getInt(1));
+//                Role role = new Role();
+//                cl.setId_role(role);
+//                role.setLibelle(RS.getString(2));
+//                cl.setEmail(RS.getString(3));
+//                cl.setPassword(RS.getString(4));
+//
+//                list.add(cl);
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//
+//        return list;
+//    }
+    @Override
     public List<Client> afficherClient() {
         List<Client> list = new ArrayList<>();
         try {
-            String req = "SELECT client.*, role.libelle FROM client INNER JOIN role ON client.id_role = role.id_role";//"SELECT client. *, role.libelle FROM client INNER JOIN role ON client.role = role.id_role";
+            String req = "SELECT * "
+                    + "FROM client "
+                    + "INNER JOIN client ON utilisateur.id_user = client.id_user "
+                    + "WHERE client.email = ? ";//"SELECT client. *, role.libelle FROM client INNER JOIN role ON client.role = role.id_role";
             Statement st = conn.createStatement();
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
@@ -130,6 +208,31 @@ public class ClientCRUD implements InterfaceClientCRUD {
                 cl.setId_client(RS.getInt(1));
                 cl.setEmail(RS.getString(2));
                 cl.setPassword(RS.getString(3));
+
+                list.add(cl);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<Client> affiche() {
+        List<Client> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `client` ";//"SELECT client. *, role.libelle FROM client INNER JOIN role ON client.role = role.id_role";
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                Client cl = new Client();
+                cl.setId_client(RS.getInt(1));
+                cl.setTel(RS.getInt(2));
+                cl.setEmail(RS.getString(3));
+                cl.setPassword(RS.getString(4));
+               
 
                 list.add(cl);
             }
@@ -233,6 +336,19 @@ public class ClientCRUD implements InterfaceClientCRUD {
             System.out.println("ERR");
         }
     }
+    
+     public void changePassword2(String mdp, int gsm) throws SQLException {
+        String req = "UPDATE client SET password = ?  WHERE gsm = ?";
+        PreparedStatement pst = conn.prepareStatement(req);
+        pst.setString(1, mdp);
+        pst.setInt(2, gsm);
+        int rowUpdated = pst.executeUpdate();
+        if (rowUpdated > 0) {
+            System.out.println("Mdp modifié");
+        } else {
+            System.out.println("ERR");
+        }
+    }
 
     public Client getByIdRole(int id_role) {
         String query = "SELECT * FROM client WHERE id_role = ?";
@@ -251,7 +367,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
                 roleCRUD roleCRUD = new roleCRUD();
                 Role role = (Role) roleCRUD.getById(idRoleClient);
 
-                return new Client(idClient, role, email, password);
+               // return new Client(idClient, role, email, password);
             }
 
         } catch (SQLException ex) {
@@ -386,19 +502,17 @@ public class ClientCRUD implements InterfaceClientCRUD {
             String password = rs.getString("password");
             Role role = new Role();
             role.setId_role(id_role);
-            Client client=new Client();
+            Client client = new Client();
             client.setId_client(id_client);
             client.setId_role(role);
             client.setEmail(email);
             client.setPassword(password);
-            
+
             return client;
         } else {
             return null;
         }
     }
-    
-    
 
     /*public void afficherProfil(Client client) {
         System.out.println("Nom: " + client.getUtilisateur().getNom());
@@ -432,7 +546,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
         }
         return clients;
     }
-    
+
     @Override
     public List<Client> afficherClient2() {
         List<Client> list = new ArrayList<>();
@@ -450,7 +564,6 @@ public class ClientCRUD implements InterfaceClientCRUD {
             while (RS.next()) {
                 Client loc = new Client();
                 loc.setEmail(RS.getString("email"));
-                
 
                 Role role = new Role();
                 loc.setId_role(role);
@@ -461,7 +574,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
                 utilisateur.setNom(RS.getString("nom"));
                 utilisateur.setPrenom(RS.getString("prenom"));
                 utilisateur.setSexe(RS.getString("sexe"));
-               
+
                 role.setId_user(utilisateur);
                 loc.setId_role(role);
 
@@ -474,6 +587,73 @@ public class ClientCRUD implements InterfaceClientCRUD {
         return list;
     }
 
+    @Override
+    public List<Client> afficherClient3() {
+        List<Client> list = new ArrayList<>();
+
+        try {
+            String req = "SELECT client.img,client.gsm,client.email, "
+                    + " role.libelle AS role_libelle, "
+                    + " utilisateur.cin, utilisateur.nom, utilisateur.prenom,utilisateur.sexe "
+                    + "FROM utilisateur "
+                    + "JOIN role ON utilisateur.id_user = role.id_user "
+                    + "JOIN client ON role.id_role = client.id_role ";
+
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                Client loc = new Client();
+                loc.setImg(RS.getString("img"));
+                loc.setTel(RS.getInt("gsm"));
+                loc.setEmail(RS.getString("email"));
+
+                Role role = new Role();
+                loc.setId_role(role);
+                role.setLibelle(RS.getString("role_libelle"));
+//
+                Utilisateur utilisateur = new Utilisateur();
+                utilisateur.setCin(RS.getString("cin"));
+                utilisateur.setNom(RS.getString("nom"));
+                utilisateur.setPrenom(RS.getString("prenom"));
+                utilisateur.setSexe(RS.getString("sexe"));
+
+                role.setId_user(utilisateur);
+                loc.setId_role(role);
+
+                list.add(loc);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+
+    public void upDateStatus(int i) {
+        String req = "UPDATE `client` SET etat='accepted' where id_client=?";
+        try {
+            stee = conn.prepareStatement(req);
+            stee.setInt(1, i);
+            stee.executeUpdate();
+            System.out.println("User Approuved");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     
-     
+    public Image getUserImageFromDatabase(int id_client) throws SQLException, IOException {
+    String sql = "SELECT img FROM client WHERE id_client = ?";
+ 
+         PreparedStatement stmt = conn.prepareStatement(sql) ;
+        stmt.setInt(1, id_client);
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                byte[] imageData = rs.getBytes("img");
+                return new Image(new ByteArrayInputStream(imageData));
+            }
+        }
+    
+    return null;
+}
+
 }

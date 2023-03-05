@@ -25,16 +25,14 @@ import javafx.stage.Stage;
  */
 public class GetPasswordController implements Initializable {
 
-    @FXML
     private TextField txtusername;
 
     static String Ssemail2;
-    @FXML
     private Button btnRechercher;
     Client c = new Client();
     Chauffeur ch = new Chauffeur();
     Locateur loc = new Locateur();
-
+  
     /**
      * Initializes the controller class.
      *
@@ -47,7 +45,6 @@ public class GetPasswordController implements Initializable {
 
     }
 
-    @FXML
     private void Rechercher(ActionEvent event) throws IOException, SQLException {
 //        if (validateInputs()) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/IdentifierCompte.fxml"));
@@ -85,4 +82,12 @@ public class GetPasswordController implements Initializable {
 //        return true;
 //
 //    }
+
+    @FXML
+    private void mail(ActionEvent event) {
+    }
+
+    @FXML
+    private void sms(ActionEvent event) {
+    }
 }

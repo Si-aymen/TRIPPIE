@@ -12,44 +12,47 @@ package edu.webuild.model;
 public class Locateur {
     int id_loc;
     Role id_role;
-    int tel;
-
-    public Locateur(int id_loc, Role id_role, int tel, String nom_agence, String email, String password) {
-        this.id_loc = id_loc;
-        this.id_role = id_role;
-        this.tel = tel;
-        this.nom_agence = nom_agence;
-        this.email = email;
-        this.password = password;
-    }
+    String img;
     String nom_agence;
+    int tel;
     String email;
     String password;
+    
+
+    
+   
 
     public Locateur() {
     }
 
-    public Locateur(int id_loc, Role id_role,String nom_agence, String email, String password) {
+    public Locateur(int id_loc, Role id_role, String img, String nom_agence, int tel, String email, String password) {
         this.id_loc = id_loc;
         this.id_role = id_role;
+        this.img = img;
         this.nom_agence = nom_agence;
+        this.tel = tel;
         this.email = email;
         this.password = password;
     }
 
-    public Locateur(Role id_role, String nom_agence, String email, String password) {
+    public Locateur(Role id_role, String img, String nom_agence, int tel, String email, String password) {
         this.id_role = id_role;
+        this.img = img;
         this.nom_agence = nom_agence;
+        this.tel = tel;
         this.email = email;
         this.password = password;
     }
 
-    public Locateur(int id_loc, String nom_agence, String email, String password) {
-        this.id_loc = id_loc;
+    public Locateur(String img, String nom_agence, int tel, String email, String password) {
+        this.img = img;
         this.nom_agence = nom_agence;
+        this.tel = tel;
         this.email = email;
         this.password = password;
     }
+
+    
     
     
 
@@ -103,11 +106,20 @@ public class Locateur {
         this.tel = tel;
     }
 
-    @Override
-    public String toString() {
-        return "Locateur{" + "id_loc=" + id_loc + ", id_role=" + id_role + ", tel=" + tel + ", nom_agence=" + nom_agence + ", email=" + email + ", password=" + password + '}';
+    public String getImg() {
+        return img;
     }
 
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    @Override
+    public String toString() {
+        return "Locateur{" + "id_loc=" + id_loc + ", id_role=" + id_role + ", img=" + img + ", nom_agence=" + nom_agence + ", tel=" + tel + ", email=" + email + ", password=" + password + '}';
+    }
+
+  
     public Locateur(Role id_role, int tel, String nom_agence, String email, String password) {
         this.id_role = id_role;
         this.tel = tel;

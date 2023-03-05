@@ -17,8 +17,6 @@
             <TextField fx:id="fxsexe" promptText="Genre" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-prompt-text-fill: #000000;" />
          </children>
       </VBox>
-      <Button fx:id="btnimg" layoutX="452.0" layoutY="58.0" mnemonicParsing="false" onAction="#image" prefHeight="26.0" prefWidth="107.0" text="Importer image" />
       <ImageView fitHeight="28.0" fitWidth="130.0" layoutX="96.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="fximg" fitHeight="64.0" fitWidth="160.0" layoutX="202.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

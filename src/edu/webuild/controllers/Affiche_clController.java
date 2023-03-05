@@ -50,17 +50,17 @@ public class Affiche_clController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-          ListView list2 = listView;
+        ListView list2 = listView;
 
         Client u = new Client();
-        
+
         InterfaceClientCRUD inter = new ClientCRUD();
         List<Client> list = inter.afficherClient2();
         for (int i = 0; i < list.size(); i++) {
             Client user = list.get(i);
             list2.getItems().add(user);
         }
-         list2.setCellFactory(new Callback<ListView<Client>, ListCell<Client>>() {
+        list2.setCellFactory(new Callback<ListView<Client>, ListCell<Client>>() {
             @Override
             public ListCell<Client> call(ListView<Client> listView) {
                 return new ListCell<Client>() {
@@ -69,12 +69,10 @@ public class Affiche_clController implements Initializable {
                         if (user != null && !empty) {
                             // Affiche les informations du covoiturage dans la cellule
                             setText(String.format("cin:%s - nom:%s - prenom:%s - email:%s",
-                                   user.getId_role().getId_user().getCin(),
-                                   user.getId_role().getId_user().getNom(),
-                                   user.getId_role().getId_user().getPrenom(),
+                                    user.getId_role().getId_user().getCin(),
+                                    user.getId_role().getId_user().getNom(),
+                                    user.getId_role().getId_user().getPrenom(),
                                     user.getEmail()
-                                
-                                    
                             ));
                         } else {
                             setText(null);
@@ -83,33 +81,36 @@ public class Affiche_clController implements Initializable {
                 };
             }
         });
-       
-    }    
+
+    }
 
     @FXML
     private void supprimer_user(ActionEvent event) {
-          ListView<Client> list = listView;
+        ListView<Client> list = listView;
         InterfaceClientCRUD inter = new ClientCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             Client u = list.getSelectionModel().getSelectedItem();
             System.out.println(u.getId_client());
-            inter.supprimerClient(u.getId_client());
-            list.getItems().remove(selectedIndex);
-        } else {
-            System.out.println("Veuillez sélectionner un client à supprimer.");
-        }
+            inter.disable(u.getId_client());
+            if (!inter.isEnabled(u.getId_client())) {
+                list.getItems().add(id_client, u);
+                System.out.println("Le compte du client a été désactivé avec succès.");
+            } else {
+                System.out.println("Erreur : le compte du client n'a pas été désactivé.");
+            }
+        } 
     }
 
     @FXML
     private void modifyuser(ActionEvent event) {
-         ListView<Client> list = listView;
+        ListView<Client> list = listView;
         InterfaceClientCRUD inter = new ClientCRUD();
         int selectedID = list.getSelectionModel().getSelectedIndex();
         Client u = list.getSelectionModel().getSelectedItem(); // use getSelectedItem() to get the selected item, not getSelectedItems()*
-        id_client=u.getId_client();
+        id_client = u.getId_client();
         email = u.getEmail();
-        password=u.getPassword();
+        password = u.getPassword();
 
         try {
 
@@ -123,5 +124,5 @@ public class Affiche_clController implements Initializable {
 
         }
     }
-    
+
 }

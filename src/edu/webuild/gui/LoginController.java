@@ -258,7 +258,7 @@ public class LoginController {
     @FXML
     public void forgotPsw(ActionEvent event) throws IOException {
 
-        Parent view4 = FXMLLoader.load(getClass().getResource("GetPassword.fxml"));
+        Parent view4 = FXMLLoader.load(getClass().getResource("ChoixReset.fxml"));
         Scene scene4 = new Scene(view4);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene4);

@@ -24,5 +24,9 @@ public interface InterfaceClientCRUD {
      public Role getRole(int id_role);
       public String afficherProfilClient(String email);
       public List<Client> afficherClient2();
- 
+      public void disable(int id_client) ;
+       public boolean isEnabled(int clientId) ;
+       public void modifierProfil(Client cl);
+         public List<Client> affiche();
+   public List<Client> afficherClient3() ;
 }

@@ -183,16 +183,14 @@ public class roleCRUD implements InterfaceRoleCRUD {
     public void affecterRole(Chauffeur ch, Role r) {
         try {
 
-            String req = "INSERT INTO `chauffeur` (num_permis,marque_voiture,couleur_voiture,immatriculation,gsm,email,password,id_role) VALUES (?,?,?,?,?,?,?,?)";
+            String req = "INSERT INTO `chauffeur` (img,num_permis,marque_voiture,couleur_voiture,immatriculation,gsm,email,password,id_role) VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, ch.getNum_permis());
-            ps.setString(2, ch.getMarque_voiture());
-            ps.setString(3, ch.getCouleur_voiture());
-            ps.setString(4, ch.getImmatriculation());
-            ps.setInt(5, ch.getTel());
-            ps.setString(6, ch.getEmail());
-            ps.setString(7, ch.getPassword());
-            ps.setInt(8, r.getId_role());
+            ps.setString(1, ch.getImg());
+             ps.setString(2, ch.getNum_permis());
+            ps.setInt(3, ch.getTel());
+            ps.setString(4, ch.getEmail());
+            ps.setString(5, ch.getPassword());
+            ps.setInt(6, r.getId_role());
 
             ps.executeUpdate();
 
@@ -207,12 +205,13 @@ public class roleCRUD implements InterfaceRoleCRUD {
     public void affecterRole2(Client cli, Role r) {
         try {
 
-            String req = "INSERT INTO `client`  (gsm,email,password,id_role) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `client`  (img,gsm,email,password,id_role) VALUES (?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
-            ps.setInt(1, cli.getTel());
-            ps.setString(2, cli.getEmail());
-            ps.setString(3, cli.getPassword());
-            ps.setInt(4, r.getId_role());
+            ps.setString(1, cli.getImg());
+            ps.setInt(2, cli.getTel());
+            ps.setString(3, cli.getEmail());
+            ps.setString(4, cli.getPassword());
+            ps.setInt(5, r.getId_role());
 
             ps.executeUpdate();
 
@@ -227,14 +226,14 @@ public class roleCRUD implements InterfaceRoleCRUD {
     public void affecterRole3(Locateur loc, Role r) {
         try {
 
-            String req = "INSERT INTO `locateur`  (nom_agence,gsm,email,password,id_role) VALUES (?,?,?,?,?)";
+            String req = "INSERT INTO `locateur`  (img,nom_agence,gsm,email,password,id_role) VALUES (?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
-            
-            ps.setString(1, loc.getNom_agence());
-            ps.setInt(2, loc.getTel());
-            ps.setString(3, loc.getEmail());
-            ps.setString(4, loc.getPassword());
-            ps.setInt(5, r.getId_role());
+             ps.setString(1, loc.getImg());
+            ps.setString(2, loc.getNom_agence());
+            ps.setInt(3, loc.getTel());
+            ps.setString(4, loc.getEmail());
+            ps.setString(5, loc.getPassword());
+            ps.setInt(6, r.getId_role());
 
             ps.executeUpdate();
 

@@ -11,42 +11,42 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="368.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.gui.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.gui.LoginController">
     <children>
-      <AnchorPane prefHeight="409.0" prefWidth="660.0" style="-fx-background-color: #B4A7D6">
+      <AnchorPane prefHeight="810.0" prefWidth="1315.0" style="-fx-background-color: #B4A7D6">
          <children>
-            <TextField fx:id="txtusername" layoutX="383.0" layoutY="97.0" prefHeight="27.0" prefWidth="231.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-prompt-text-fill: #000000;" />
-            <Button fx:id="loginBtn" layoutX="374.0" layoutY="292.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="249.0" style="-fx-background-color: BLACK;" text="Login" textFill="WHITE" />
-            <PasswordField fx:id="txtpass" layoutX="383.0" layoutY="140.0" prefHeight="27.0" prefWidth="231.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-prompt-text-fill: #000000;" />
+            <TextField fx:id="txtusername" layoutX="661.0" layoutY="280.0" prefHeight="27.0" prefWidth="231.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-prompt-text-fill: #000000;" />
+            <Button fx:id="loginBtn" layoutX="652.0" layoutY="475.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="249.0" style="-fx-background-color: BLACK;" text="Login" textFill="WHITE" />
+            <PasswordField fx:id="txtpass" layoutX="661.0" layoutY="323.0" prefHeight="27.0" prefWidth="231.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-prompt-text-fill: #000000;" />
             
-            <AnchorPane prefHeight="410.0" prefWidth="264.0" style="-fx-background-color: #828CA7">
+            <AnchorPane prefHeight="810.0" prefWidth="386.0" style="-fx-background-color: #828CA7">
                <children>
-                  <Label layoutX="46.0" layoutY="231.0" text="Bienvenue à notre application" textFill="BLACK">
+                  <Label layoutX="98.0" layoutY="405.0" text="Bienvenue à notre application" textFill="BLACK">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="109.0" layoutY="250.0" text="Tripee" textFill="BLACK">
+                  <Label layoutX="161.0" layoutY="424.0" prefWidth="110.0" text="Tripee" textFill="BLACK">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="81.0" fitWidth="110.0" layoutX="77.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="129.0" fitWidth="231.0" layoutX="78.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@http://localhost/bg.PNG" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
-            <Button fx:id="forgotBtn" layoutX="513.0" layoutY="179.0" mnemonicParsing="false" onAction="#forgotPsw" style="-fx-background-color: transparent;" text="Forgot password?" textFill="#b84654" />
-            <Button fx:id="exitBtn" layoutX="634.0" layoutY="2.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;" text="X">
+            <Button fx:id="forgotBtn" layoutX="791.0" layoutY="362.0" mnemonicParsing="false" onAction="#forgotPsw" style="-fx-background-color: transparent;" text="Forgot password?" textFill="#b84654" />
+            <Button fx:id="exitBtn" layoutX="1273.0" layoutY="14.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;" text="X">
                <font>
                   <Font name="Microsoft YaHei Bold" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="444.0" layoutY="322.0" mnemonicParsing="false" onAction="#signupScene" style="-fx-background-color: transparent;" text="Creer un compte" />
-            <ChoiceBox fx:id="fxchoice" layoutX="421.0" layoutY="227.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black;" />
-            <ToggleButton fx:id="showbtnnewnew" layoutX="590.0" layoutY="141.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
+            <Button layoutX="722.0" layoutY="505.0" mnemonicParsing="false" onAction="#signupScene" style="-fx-background-color: transparent;" text="Creer un compte" />
+            <ChoiceBox fx:id="fxchoice" layoutX="699.0" layoutY="410.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black;" />
+            <ToggleButton fx:id="showbtnnewnew" layoutX="864.0" layoutY="324.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
          </children>
       </AnchorPane>
     </children>

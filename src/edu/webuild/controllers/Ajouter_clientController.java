@@ -30,6 +30,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -51,6 +53,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import static javax.mail.Message.RecipientType.TO;
 import javax.mail.Session;
@@ -83,6 +88,12 @@ public class Ajouter_clientController implements Initializable {
     private TextField fxtel;
   private static final String TEST_EMAIL = "zouari.aymen@esprit.tn";
    private Gmail service;
+    @FXML
+    private Button btnimg;
+    @FXML
+    private ImageView fximg;
+        static String url_image;
+    static String image;
     /**
      *
      * @param id
@@ -97,6 +108,7 @@ public class Ajouter_clientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+          image = url_image;
         showbtnnewnew.setOnAction(event -> {
             if (showbtnnewnew.isSelected()) {
                 fxpass.setPromptText(fxpass.getText());
@@ -121,6 +133,7 @@ public class Ajouter_clientController implements Initializable {
     @FXML
     private void addcli(ActionEvent event) throws Exception {
         Role r = new Role();
+        String img = url_image;
         roleCRUD rc = new roleCRUD();
         r.setId_role(Integer.parseInt(fxid.getText()));
         int tel = Integer.parseInt(fxtel.getText());
@@ -148,11 +161,16 @@ public class Ajouter_clientController implements Initializable {
             alert.showAndWait();
 
         } else {
-            Client cli = new Client(r, email, password, tel);
+            Client cli = new Client(r, img, tel, email, password);
             rc.affecterRole2(cli, r);
-             String subject="Tripee";
+            try {
+                 String subject="Tripee";
             String message="Inscription avec succée";
             sendMail(subject, message);
+            } catch (Exception e) {
+                
+            }
+            
            
 
         }
@@ -227,5 +245,45 @@ public class Ajouter_clientController implements Initializable {
 
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
+    }
+
+    @FXML
+    private void image(ActionEvent event) {
+           ImageView imageView = fximg;
+
+        // Create a FileChooser
+        FileChooser fileChooser = new FileChooser();
+
+        // Add a filter to only show image files
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif")
+        );
+
+        // Get the primary stage from the image view
+        Stage primaryStage = (Stage) imageView.getScene().getWindow();
+
+        // Show the file chooser dialog
+        File file = fileChooser.showOpenDialog(primaryStage);
+
+        if (file != null) {
+            // Load the selected image into the image view
+            Image image = new Image(file.toURI().toString());
+
+            //url_image = file.toURI().toString();
+            System.out.println(file.toURI().toString());
+            imageView.setImage(image);
+
+            // Create a new file in the destination directory
+            File destinationFile = new File("C:\\xampp\\htdocs\\" + file.getName());
+            // url_image = "C:\\xampp\\htdocs\\image_trippie_cov\\" + file.getName();
+            url_image = file.getName();
+
+            try {
+                // Copy the selected file to the destination file
+                Files.copy(file.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
