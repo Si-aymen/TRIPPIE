@@ -51,7 +51,35 @@ public class GameSceneController implements InterfaceGameSceneController {
     @FXML
     private Pane obstaclePane;
 
-  
+  @FXML
+private Rectangle car;
+
+@FXML
+private Rectangle obstacle1;
+
+@FXML
+private Rectangle obstacle2;
+@FXML
+public void restartGame() {
+    // Reset the position of the car
+    car.setLayoutX(50);
+    car.setLayoutY(canvas.getHeight() - car.getHeight() - 20);
+
+    // Reset the position of the obstacles
+    obstacle1.setLayoutX(500);
+    obstacle1.setLayoutY(canvas.getHeight() - obstacle1.getHeight() - 20);
+
+    obstacle2.setLayoutX(700);
+    obstacle2.setLayoutY(canvas.getHeight() - obstacle2.getHeight() - 20);
+
+    // Reset the score and update the score label
+    score = 0;
+    scoreLabel.setText("Score: " + score);
+
+    // Start the game loop again
+    gameLoop();
+}
+
 private Random random;
 
     private AnimationTimer gameLoop;
@@ -60,7 +88,7 @@ private Random random;
 
     private boolean gameStarted;
 
-    private Rectangle car;
+//    private Rectangle car;
 
     private Rectangle obstacle;
 
@@ -101,12 +129,25 @@ private Random random;
         obstacle = new Rectangle(0, 0, 0, 0);
         obstacle.setFill(Color.RED);
         random = new Random();
+// Set the initial position of the car
+    car.setLayoutX(50);
+    car.setLayoutY(canvas.getHeight() - car.getHeight() - 20);
+if(canvas == null) {
+    System.out.println("Canvas is null!");
+    return;
+}
 
-      obstacles = obstaclePane.getChildren().filtered(node -> node.getStyleClass().contains("obstacle"));
+    // Set the initial position of the obstacles
+    obstacle1.setLayoutX(500);
+    obstacle1.setLayoutY(canvas.getHeight() - obstacle1.getHeight() - 20);
 
-for (Node obstacle : obstacles) {
-        obstacle.setUserData("obstacle");
-    }
+    obstacle2.setLayoutX(700);
+    obstacle2.setLayoutY(canvas.getHeight() - obstacle2.getHeight() - 20);
+      //obstacles = obstaclePane.getChildren().filtered(node -> node.getStyleClass().contains("obstacle"));
+
+//for (Node obstacle : obstacles) {
+//        obstacle.setUserData("obstacle");
+//    }
         canvas.getGraphicsContext2D().fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gamePaused = true;
         gameStarted = false;
@@ -137,6 +178,19 @@ for (Node obstacle : obstacles) {
             }
         });
         scoreService = new Score();
+        canvas.setOnKeyPressed(event -> {
+    switch (event.getCode()) {
+        case SPACE:
+            jump();
+            break;
+        case RIGHT:
+            moveRight();
+            break;
+    }
+});
+
+canvas.requestFocus(); // To make sure that the canvas receives key events
+
     }
     @Override
 public ObservableList<Node> obstacles() {
@@ -147,20 +201,20 @@ public ObservableList<Node> obstacles() {
     public void pauseGame() {
         gamePaused = true;
     }
-@Override
-    public void restartGame() {
-        gameStarted = false;
-        gamePaused = true;
-        score = 0;
-        scoreLabel.setText("Score: " + score);
-        hasCollided = false;
-        obstacle.setWidth(0);
-        obstacle.setHeight(0);
-        car.setX(50);
-        obstacleXPosition = canvas.getWidth() - 50;
-        obstacleYPosition = canvas.getHeight() - 30;
-        canvas.getGraphicsContext2D().fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-    }
+//@Override
+//    public void restartGame() {
+//        gameStarted = false;
+//        gamePaused = true;
+//        score = 0;
+//        scoreLabel.setText("Score: " + score);
+//        hasCollided = false;
+//        obstacle.setWidth(0);
+//        obstacle.setHeight(0);
+//        car.setX(50);
+//        obstacleXPosition = canvas.getWidth() - 50;
+//        obstacleYPosition = canvas.getHeight() - 30;
+//        canvas.getGraphicsContext2D().fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+//    }
     @Override
 public void moveRight() {
     car.setX(car.getX() + carSpeed);
@@ -216,14 +270,11 @@ public void addObstacle(double x, double y) {
 }
 @Override
     public void checkCollisions() {
-    for (Node obstacle : obstacles) {
-        if (car.getBoundsInParent().intersects(obstacle.getBoundsInParent())) {
-            gameOver();
-            return;
-        }
+    // Check for collision between the car and each obstacle
+    if (car.getBoundsInParent().intersects(obstacle1.getBoundsInParent())
+            || car.getBoundsInParent().intersects(obstacle2.getBoundsInParent())) {
+        gameOver();
     }
-    score++;
-    scoreLabel.setText("Score: " + score);
 }
 @Override
     public void gameOver() {
@@ -247,10 +298,19 @@ public void saveScore() {
 }
 @Override
     public void updateObstaclePosition() {
-       obstacleXPosition -= obstacleSpeed * (obstacleWidth / 60.0);
+    // Move the obstacles to the left
+    obstacle1.setLayoutX(obstacle1.getLayoutX() - obstacleSpeed);
+    obstacle2.setLayoutX(obstacle2.getLayoutX() - obstacleSpeed);
 
-        obstacle.setX(obstacleXPosition);
+    // If an obstacle is off the screen, reset its position
+    if (obstacle1.getLayoutX() + obstacle1.getWidth() < 0) {
+        obstacle1.setLayoutX(canvas.getWidth());
     }
+    if (obstacle2.getLayoutX() + obstacle2.getWidth() < 0) {
+        obstacle2.setLayoutX(canvas.getWidth());
+    }
+}
+
 @Override
     public void spawnObstacle() {
         if (obstacle.getWidth() <= 0) {
@@ -265,7 +325,7 @@ addObstacle(canvas.getWidth() + obstacleWidth, y);
     }
 @Override
     public void updateCanvas() {
-        canvas.getGraphicsContext2D().setFill(Color.WHITE);
+        canvas.getGraphicsContext2D().setFill(Color.BLACK);
         canvas.getGraphicsContext2D().fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         canvas.getGraphicsContext2D().setFill(Color.BLUE);
         canvas.getGraphicsContext2D().fillRect(car.getX(), car.getY(), car.getWidth(), car.getHeight());
