@@ -53,7 +53,7 @@ public class FroggerApp extends Application {
     
     // Right here m gonna declare buttons variable
     
-    private Button startButton;
+//    private Button startButton;
     private Button restartButton;
 
 
@@ -87,7 +87,7 @@ public class FroggerApp extends Application {
                 onUpdate();
             }
         };
-//        timer.start();
+       timer.start();
 
         return root;
     }
@@ -128,7 +128,19 @@ public class FroggerApp extends Application {
             frog.setTranslateX(0);
             frog.setTranslateY(600 - 39);
             restartButton.setDisable(false); // Enable the restart button
-            startButton.setDisable(true); // Disable the start button
+//            startButton.setDisable(true); // Disable the start button
+   timer.stop();
+    String win = "YOU LOST";
+    Text winText = new Text(win);
+        winText.setFont(Font.font(48));
+        winText.setTranslateX(300);
+        winText.setTranslateY(250);
+        winText.setOpacity(0);
+        root.getChildren().add(winText);
+        FadeTransition ft = new FadeTransition(Duration.seconds(1), winText);
+         ft.setFromValue(1.0);
+        ft.setToValue(0.0);
+        ft.play();
             return;
         }
     }
@@ -163,7 +175,7 @@ public class FroggerApp extends Application {
         // Stop the timer and display the win message
         timer.stop();
         restartButton.setDisable(false);
-        startButton.setDisable(true);
+//        startButton.setDisable(true);
         String win = "YOU WIN";
         Text winText = new Text(win);
         winText.setFont(Font.font(48));
@@ -172,7 +184,8 @@ public class FroggerApp extends Application {
         winText.setOpacity(0);
         root.getChildren().add(winText);
         FadeTransition ft = new FadeTransition(Duration.seconds(2), winText);
-        ft.setToValue(1);
+        ft.setFromValue(1.0);
+        ft.setToValue(0.0);
         ft.play();
     }
 }
@@ -268,14 +281,19 @@ private void initRestartButton() {
 }
                //----reset----
 private void resetGame() {
-    cars.clear();
+//    cars.clear();
     score = 0;
     scoreText.setText("Score: " + score);
     frog.setTranslateX(0);
     frog.setTranslateY(600 - 39);
     timer.start();
     restartButton.setDisable(true);
-    startButton.setDisable(false);
+  
+  
+    
+    
+    
+//    startButton.setDisable(false);
 }
 
 

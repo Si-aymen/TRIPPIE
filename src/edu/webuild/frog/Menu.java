@@ -12,13 +12,16 @@ import java.io.InputStream;
 import java.nio.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import javafx.animation.AnimationTimer;
 
 import javafx.application.*;
 import javafx.stage.*;
 import javafx.geometry.*;
 import javafx.scene.*;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -37,9 +40,12 @@ import javafx.scene.text.*;
  * @author mtirn
  */
 public class Menu extends Application{
-	
+    
+	 private Button startButton;
+         private Pane root;
+         private AnimationTimer timer;
 	private Parent createContent() {
-		Pane root = new Pane();
+		 root = new Pane(); // initialize root here
 		
 		root.setPrefSize(1050, 600);
 		
@@ -58,7 +64,7 @@ public class Menu extends Application{
 		title.setTranslateY(200);
 		
 		MenuBox vbox = new MenuBox(
-				new MenuItem("START GAME"),
+				new MenuItem("START"),
 				new MenuItem("HOW IT WORKS"),
 				new MenuItem("QUIT")
 				);
@@ -66,8 +72,13 @@ public class Menu extends Application{
 		vbox.setTranslateY(300);
 		
 		root.getChildren().addAll(title,vbox);
-		
+                 
+                
+		this.root = root; // set root field
+
+                  initStartButton(); // initialize start button
 		return root;
+                
 		
 	}
 	@Override
@@ -77,6 +88,7 @@ public class Menu extends Application{
 		primaryStage.setScene(scene);
                
 		primaryStage.show();
+                
                
 	}
 	
@@ -155,6 +167,26 @@ public class Menu extends Application{
 			
 			}
 		}
+     private void initStartButton() {
+    startButton = new Button("Start");
+    startButton.setOnAction(event -> {
+        try {
+            FroggerApp game = new FroggerApp(); // create an instance of the game
+            Stage gameStage = new Stage(); // create a new stage for the game
+            game.start(gameStage); // start the game in the new stage
+            ((Stage) root.getScene().getWindow()).close(); // close the menu window
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    });
+
+    HBox hBox = new HBox();
+    hBox.setTranslateX(600);
+    hBox.setTranslateY(30);
+    hBox.getChildren().add(startButton);
+
+    root.getChildren().add(hBox);
+}
 
 	public static void main(String[] args) {
 		
@@ -162,4 +194,3 @@ public class Menu extends Application{
                 
 	}
 }
-
