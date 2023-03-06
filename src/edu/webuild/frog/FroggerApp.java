@@ -8,6 +8,10 @@ package edu.webuild.frog;
 
 import java.sql.*;
 import edu.webuild.utils.MyConnection;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 
 
@@ -30,6 +34,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 
 /**
@@ -72,6 +78,16 @@ public class FroggerApp extends Application {
     private Parent createContent() {
         root = new Pane();
         root.setPrefSize(1050, 600); //Screen size
+        //add background image
+		try(InputStream is = Files.newInputStream(Paths.get("src/edu/webuild/resources/bg.png"))){
+			ImageView img = new ImageView(new Image(is));
+			img.setFitWidth(1050);
+			img.setFitHeight(600);
+			root.getChildren().add(img);
+		}
+		catch(IOException e) {
+			System.out.println("Couldn't load image");
+		}
         
         scoreText = new Text("Score: 0");
         scoreText.setFont(Font.font(24));
@@ -102,19 +118,21 @@ initBackToMenuButton(); // Initialize the back to menu button
 //a method that initializes the player's frog.
     private Node initFrog() {
         Rectangle rect = new Rectangle(38, 38, Color.GREEN);
-        rect.setTranslateY(600 - 39);
+        rect.setTranslateY(600 - 38);
 
         return rect;
     }
 
     //a method that creates a new car and adds it to the scene graph.
-    private Node spawnCar() {
-        Rectangle rect = new Rectangle(40, 40, Color.RED);
-        rect.setTranslateY((int)(Math.random() * 14) * 40);
+   private Node spawnCar() {
+    Rectangle rect = new Rectangle(40, 40, Color.RED);
+    double middleY = (400 + 90 - 40) / 2.0; // calculate the middle of the restricted range
+    rect.setTranslateY((int)(Math.random() * 200) + middleY); // set y-coordinate
+    root.getChildren().add(rect);
+    return rect;
+}
 
-        root.getChildren().add(rect);
-        return rect;
-    }
+
 
     
     //a method that updates the game state on each frame.
@@ -122,7 +140,7 @@ initBackToMenuButton(); // Initialize the back to menu button
         for (Node car : cars)
             car.setTranslateX(car.getTranslateX() + Math.random() * 15);
 
-        if (Math.random() < 0.0375) {
+        if (Math.random() < 0.0075) { //speed
             cars.add(spawnCar());
         }
 
@@ -136,7 +154,7 @@ initBackToMenuButton(); // Initialize the back to menu button
             frog.setTranslateX(0);
             frog.setTranslateY(600 - 39);
             restartButton.setDisable(false); // Enable the restart button
-//            startButton.setDisable(true); // Disable the start button
+
    timer.stop();
     String win = "YOU LOST";
     Text winText = new Text(win);
@@ -153,7 +171,7 @@ initBackToMenuButton(); // Initialize the back to menu button
         }
     }
 
-    if (frog.getTranslateY() <= 0) {
+    if (frog.getTranslateY() <= 180) {
         // Calculate the elapsed time in seconds
         long elapsedTime = (System.currentTimeMillis() - startTime) / 1000;
         
