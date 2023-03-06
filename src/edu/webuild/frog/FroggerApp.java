@@ -106,7 +106,7 @@ initBackToMenuButton(); // Initialize the back to menu button
         
         
         timer = new AnimationTimer() {
-            @Override
+            @Override    
             public void handle(long now) {
                 onUpdate();
             }
@@ -117,19 +117,28 @@ initBackToMenuButton(); // Initialize the back to menu button
     }
 //a method that initializes the player's frog.
     private Node initFrog() {
-        Rectangle rect = new Rectangle(38, 38, Color.GREEN);
-        rect.setTranslateY(600 - 38);
+        //Rectangle rect = new Rectangle(38, 38, Color.GREEN);
+        
+     Image palayerImage = new Image("edu/webuild/resources/charachter.png");
+     ImageView palayerView = new ImageView(palayerImage);
+     palayerView.setFitWidth(90);
+   palayerView.setFitHeight(90);
+       palayerView.setTranslateY(600 - 70);
 
-        return rect;
+        return palayerView;
     }
 
     //a method that creates a new car and adds it to the scene graph.
    private Node spawnCar() {
-    Rectangle rect = new Rectangle(40, 40, Color.RED);
-    double middleY = (400 + 90 - 40) / 2.0; // calculate the middle of the restricted range
-    rect.setTranslateY((int)(Math.random() * 200) + middleY); // set y-coordinate
-    root.getChildren().add(rect);
-    return rect;
+    //Rectangle rect = new Rectangle(40, 40, Color.RED);
+     Image carImage = new Image("edu/webuild/resources/car.png");
+     ImageView carView = new ImageView(carImage);
+     carView.setFitWidth(100);
+    carView.setFitHeight(100);
+    double middleY = (500 + 90 - 100) / 2.0; // calculate the middle of the restricted range
+    carView.setTranslateY((int)(Math.random() * 200) + middleY); // set y-coordinate
+    root.getChildren().add(carView);
+    return carView;
 }
 
 
@@ -138,7 +147,7 @@ initBackToMenuButton(); // Initialize the back to menu button
     //a method that updates the game state on each frame.
     private void onUpdate() {
         for (Node car : cars)
-            car.setTranslateX(car.getTranslateX() + Math.random() * 15);
+            car.setTranslateX(car.getTranslateX() + Math.random() * 3); //moves each car to the right by a random amount between 0 and 3 pixels
 
         if (Math.random() < 0.0075) { //speed
             cars.add(spawnCar());
