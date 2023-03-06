@@ -41,14 +41,15 @@ import javafx.scene.text.*;
  */
 public class Menu extends Application{
     
+    
 	 private Button startButton;
          private Pane root;
          private AnimationTimer timer;
 	private Parent createContent() {
 		 root = new Pane(); // initialize root here
 		
-		root.setPrefSize(1050, 600);
-		
+		root.setPrefSize(1050, 600); //Screen size
+		//add background image
 		try(InputStream is = Files.newInputStream(Paths.get("src/edu/webuild/resources/bg.png"))){
 			ImageView img = new ImageView(new Image(is));
 			img.setFitWidth(1050);
@@ -63,20 +64,11 @@ public class Menu extends Application{
 		title.setTranslateX(50);
 		title.setTranslateY(200);
 		
-		MenuBox vbox = new MenuBox(
-				new MenuItem("START"),
-				new MenuItem("HOW IT WORKS"),
-				new MenuItem("QUIT")
-				);
-		vbox.setTranslateX(100);
-		vbox.setTranslateY(300);
-		
-		root.getChildren().addAll(title,vbox);
                  
                 
 		this.root = root; // set root field
 
-                  initStartButton(); // initialize start button
+                initStartButton(); // initialize start button
 		return root;
                 
 		
@@ -108,67 +100,35 @@ public class Menu extends Application{
 		}
 	}
 	
-	private static class MenuBox extends VBox{
-		public MenuBox(MenuItem...items) {
-			getChildren().add(createSeperator());
-			
-			for(MenuItem item : items) {
-				getChildren().addAll(item, createSeperator());
-			}
-		}
-		
-		private Line createSeperator() {
-			Line sep = new Line();
-			sep.setEndX(210);
-			sep.setStroke(Color.DARKGREY);
-			return sep;
-		}
-		
-	}
 	
 
-	private static class MenuItem extends StackPane{
-		public MenuItem(String name) {
-			LinearGradient gradient = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, new Stop[] { 
-				new Stop(0, Color.DARKBLUE),
-				new Stop(0.1, Color.BLACK),
-				new Stop(0.9, Color.BLACK),
-				new Stop(1, Color.DARKBLUE)
-				
-			});
-			
-			Rectangle bg = new Rectangle(200,30);
-			bg.setOpacity(0.4);
-			
-			Text text = new Text(name);
-			text.setFill(Color.DARKGREY);
-			text.setFont(Font.font("Times New Roman", FontWeight.SEMI_BOLD,20));
-			
-			setAlignment(Pos.CENTER);
-			getChildren().addAll(bg, text);
-			setOnMouseEntered(event -> {
-				bg.setFill(gradient);
-				text.setFill(Color.BLUE);
-				
-			});
-			
-			setOnMouseExited(event -> {
-				bg.setFill(Color.BLACK);
-				text.setFill(Color.DARKGREY);
-			});
-			setOnMousePressed(event -> {
-				bg.setFill(Color.DARKVIOLET);
-				
-			});
-			
-			setOnMouseReleased(event -> {
-				bg.setFill(gradient);
-			});
-			
-			}
-		}
+	
+		
      private void initStartButton() {
+         
     startButton = new Button("Start");
+    
+   
+    startButton .setStyle(
+            "-fx-background-color: #A08EF9; -fx-text-fill: white; -fx-font-size: 14px;"
+                    + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+    
+    startButton.setOnMouseEntered(e -> {
+    startButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -fx-font-size: 14px;"
+                    + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+});
+    
+
+startButton.setOnMouseExited(e -> {
+    startButton.setStyle( "-fx-background-color: #6143F7; -fx-text-fill: white; -fx-font-size: 14px;"
+                    + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+});
+
+ startButton.setOnMouseEntered(e -> {
+    startButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -fx-font-size: 14px;"
+                    + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+});
+    
     startButton.setOnAction(event -> {
         try {
             FroggerApp game = new FroggerApp(); // create an instance of the game
@@ -181,8 +141,8 @@ public class Menu extends Application{
     });
 
     HBox hBox = new HBox();
-    hBox.setTranslateX(600);
-    hBox.setTranslateY(30);
+    hBox.setTranslateX(800);
+    hBox.setTranslateY(300);
     hBox.getChildren().add(startButton);
 
     root.getChildren().add(hBox);

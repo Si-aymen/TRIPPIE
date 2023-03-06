@@ -248,33 +248,40 @@ public class FroggerApp extends Application {
     }
     
     //Buttons methods
-    //START
-//private void initStartButton() {
-//    startButton = new Button("Start");
-//    //This event handler should start the game by calling the timer.start() method.
-//    startButton.setOnAction(event -> {
-//        timer.start();
-//    });
-//
-//    HBox hBox = new HBox();
-//    hBox.setTranslateX(600);
-//    hBox.setTranslateY(30);
-//    hBox.getChildren().add(startButton);
-//
-//    root.getChildren().add(hBox);
-//}
-    
+  
     //RESTART
 private void initRestartButton() {
+    
     restartButton = new Button("Restart");
+    restartButton.setStyle(
+            "-fx-background-color: #A08EF9; -fx-text-fill: white; -fx-font-size: 14px;"
+                    + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+    
+   restartButton.setOnMouseEntered(e -> {
+   restartButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -fx-font-size: 14px;"
+                    + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+});
+    
+
+restartButton.setOnMouseExited(e -> {
+   restartButton.setStyle( "-fx-background-color: #6143F7; -fx-text-fill: white; -fx-font-size: 14px;"
+                    + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+});
+
+restartButton.setOnMouseEntered(e -> {
+restartButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -fx-font-size: 14px;"
+                    + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+});
     restartButton.setOnAction(event -> {
         resetGame();
     });
 
     HBox hBox = new HBox();
-    hBox.setTranslateX(600);
-    hBox.setTranslateY(60);
+    hBox.setTranslateX(700);
+    hBox.setTranslateY(10);
     hBox.getChildren().add(restartButton);
+         restartButton .setStyle("-fx-background-color: #A08EF9; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+
 
     root.getChildren().add(hBox);
     
