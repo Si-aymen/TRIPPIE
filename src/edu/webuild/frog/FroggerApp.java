@@ -175,9 +175,9 @@ initBackToMenuButton(); // Initialize the back to menu button
         // Display high score
         Text highScoreText = new Text("High Score: " + currentHighScore);
         highScoreText.setFont(Font.font(24));
-        highScoreText.setFill(Color.BLACK);
-        highScoreText.setTranslateX(10);
-        highScoreText.setTranslateY(60);
+        highScoreText.setFill(Color.BLUE);
+        highScoreText.setTranslateX(460);
+        highScoreText.setTranslateY(80);
         root.getChildren().add(highScoreText);
         
         // Stop the timer and display the win message
@@ -203,10 +203,6 @@ initBackToMenuButton(); // Initialize the back to menu button
     public void start(Stage stage) throws Exception {
         
         stage.setScene(new Scene(createContent()));
-      // Load Font Awesome CSS file
-    Scene scene = new Scene(createContent());
-    scene.getStylesheets().add(getClass().getResource("fontawesome-all.min.css").toExternalForm());
-    stage.setScene(scene);
         // Set the starting time to the current time
     startTime = System.currentTimeMillis();
 
@@ -231,7 +227,6 @@ initBackToMenuButton(); // Initialize the back to menu button
 
         stage.show();
     }
-
     public void updateHighScore(int score) {
     try {
         PreparedStatement ps = conn.prepareStatement("INSERT INTO highscores (score) VALUES (?)");
@@ -314,7 +309,7 @@ private void resetGame() {
 //BACK TO MENU
     private void initBackToMenuButton() {
        
-        backToMenuButton = new Button("Back to Menu", createBackArrowIcon());
+        backToMenuButton = new Button("Back to Menu");
 
     backToMenuButton.setStyle(
         "-fx-background-color: #A08EF9; -fx-text-fill: white; -fx-font-size: 14px;"
@@ -353,11 +348,7 @@ private void resetGame() {
 
         root.getChildren().add(hBox);
     }
-    private Label createBackArrowIcon() {
-    Label backArrow = new Label("\uf060"); // Unicode for the back-arrow icon in Font Awesome
-    backArrow.setStyle("-fx-font-family: 'FontAwesome'; -fx-font-size: 20px;");
-    return backArrow;
-}
+  
 
 
     public static void main(String[] args) {
