@@ -19,7 +19,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Market_covController">
     <children>
-        <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
                 <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../../../style.css" BorderPane.alignment="CENTER">
                     <children>
@@ -179,7 +179,7 @@
                                                 </Label>
                                             </children>
                                         </VBox>
-                                        <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button mnemonicParsing="false" onAction="#Add_btu" text="Add" />
                                     </children>
                                 </HBox>
                                 <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />

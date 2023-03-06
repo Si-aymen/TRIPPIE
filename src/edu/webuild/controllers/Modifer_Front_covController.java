@@ -154,7 +154,7 @@ public class Modifer_Front_covController implements Initializable {
 
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Afficher_Cov.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Market_cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

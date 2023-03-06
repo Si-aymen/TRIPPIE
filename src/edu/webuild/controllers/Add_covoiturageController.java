@@ -141,6 +141,7 @@ public class Add_covoiturageController implements Initializable {
 
         String emailto = email.getText();
         EmailSender.sendEmail_add(emailto, message);
+        EmailSender.sendEmail_add("manouch2001.ra@gmail.com", message);
         //send.send_message("+21692554097", message);
 
         Call_Cov test_call = new Call_Cov();
@@ -148,7 +149,7 @@ public class Add_covoiturageController implements Initializable {
 
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Afficher_Cov.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Market_cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
