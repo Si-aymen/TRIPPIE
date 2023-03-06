@@ -5,6 +5,9 @@
  */
 package edu.webuild.controllers;
 
+import edu.webuild.interfaces.InterfaceCoVoiturage;
+import edu.webuild.model.CoVoiturage;
+import edu.webuild.services.CoVoiturageCRUD;
 import edu.webuild.services.Weather_cov;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,6 +26,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -131,6 +135,20 @@ public class Details_Front_covController implements Initializable {
 
     @FXML
     private void delete_btu(ActionEvent event) {
+        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+        inter_co.supprimerCoVoiturage(Item_covController.covt.getId_co());
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Market_cov.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
     }
 
 }
