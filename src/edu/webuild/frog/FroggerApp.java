@@ -165,12 +165,13 @@ initBackToMenuButton(); // Initialize the back to menu button
             restartButton.setDisable(false); // Enable the restart button
 
    timer.stop();
-    String win = "YOU LOST";
+    String win = "YOU LOST :(";
     Text winText = new Text(win);
         winText.setFont(Font.font(48));
-        winText.setTranslateX(300);
-        winText.setTranslateY(250);
+        winText.setTranslateX(450);
+        winText.setTranslateY(350);
         winText.setOpacity(0);
+        winText.setFill(Color.RED);
         root.getChildren().add(winText);
         FadeTransition ft = new FadeTransition(Duration.seconds(1), winText);
          ft.setFromValue(1.0);
@@ -211,12 +212,13 @@ initBackToMenuButton(); // Initialize the back to menu button
         timer.stop();
         restartButton.setDisable(false);
 //        startButton.setDisable(true);
-        String win = "YOU WIN";
+        String win = "YOU WON !";
         Text winText = new Text(win);
         winText.setFont(Font.font(48));
-        winText.setTranslateX(300);
-        winText.setTranslateY(250);
+        winText.setTranslateX(400);
+        winText.setTranslateY(350);
         winText.setOpacity(0);
+        winText.setFill(Color.GREEN);
         root.getChildren().add(winText);
         FadeTransition ft = new FadeTransition(Duration.seconds(2), winText);
         ft.setFromValue(1.0);
