@@ -19,6 +19,7 @@ import javafx.stage.*;
 import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -61,9 +62,6 @@ public class Menu extends Application{
 			System.out.println("Couldn't load image");
 		}
 		
-		Title title = new Title ("TRIPPIE");
-		title.setTranslateX(50);
-		title.setTranslateY(200);
 		
                  
                 
@@ -82,25 +80,21 @@ public class Menu extends Application{
 		primaryStage.setScene(scene);
                
 		primaryStage.show();
+                FroggerApp app = new FroggerApp();
+               int highScore = app.getHighScore();
+               Label highScoreLabel = new Label(  highScore + "Tokens:"+" Available on your Wallet ");
+                highScoreLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+                highScoreLabel.setTextFill(Color.WHITE);
+                highScoreLabel.setLayoutX(660);
+                highScoreLabel.setLayoutY(50);
+                root.getChildren().add(highScoreLabel);
+
+
                 
                
 	}
 	
-	private static class Title extends StackPane{
-		public Title(String name) {
-			Rectangle bg = new Rectangle(375, 60);
-			bg.setStroke(Color.WHITE);
-			bg.setStrokeWidth(2);
-			bg.setFill(null);
-			
-			Text text = new Text(name);
-			text.setFill(Color.WHITE);
-			text.setFont(Font.font("Times New Roman", FontWeight.SEMI_BOLD, 50));
-			
-			setAlignment(Pos.CENTER);
-			getChildren().addAll(bg,text);
-		}
-	}
+	
 	
 	
 
@@ -135,6 +129,7 @@ startButton.setOnMouseExited(e -> {
         try {
             FroggerApp game = new FroggerApp(); // create an instance of the game
             Stage gameStage = new Stage(); // create a new stage for the game
+            
             game.start(gameStage); // start the game in the new stage
             ((Stage) root.getScene().getWindow()).close(); // close the menu window
         } catch (Exception e) {
@@ -143,7 +138,7 @@ startButton.setOnMouseExited(e -> {
     });
 
     HBox hBox = new HBox();
-    hBox.setTranslateX(800);
+    hBox.setTranslateX(470);
     hBox.setTranslateY(300);
     hBox.getChildren().add(startButton);
 
@@ -207,7 +202,7 @@ startButton.setOnMouseExited(e -> {
     });
 
     HBox hBox = new HBox();
-    hBox.setTranslateX(800);
+    hBox.setTranslateX(465);
     hBox.setTranslateY(350);
     hBox.getChildren().add(howItWorksButton);
 
