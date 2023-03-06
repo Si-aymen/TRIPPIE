@@ -358,6 +358,17 @@
                                                    </children></HBox>
                                              </children>
                                           </HBox>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" />
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" onAction="#Modify_btu" text="Modify" />
+                                                   </children>
+                                                </HBox>
+                                                <Button mnemonicParsing="false" onAction="#delete_btu" text="Delete" />
+                                             </children>
+                                          </HBox>
                                        </children>
                                     </VBox>
                                  </children>
