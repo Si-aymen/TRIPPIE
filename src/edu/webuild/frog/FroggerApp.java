@@ -29,6 +29,7 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 
 /**
@@ -53,6 +54,12 @@ public class FroggerApp extends Application {
     
     // Right here m gonna declare buttons variable
     
+    //Back button
+     private Button backToMenuButton;
+    
+    
+    
+    
 //    private Button startButton;
     private Button restartButton;
 
@@ -64,12 +71,12 @@ public class FroggerApp extends Application {
     //a method that creates and returns the game's scene graph.
     private Parent createContent() {
         root = new Pane();
-        root.setPrefSize(800, 600);
+        root.setPrefSize(1050, 600); //Screen size
         
         scoreText = new Text("Score: 0");
         scoreText.setFont(Font.font(24));
         scoreText.setFill(Color.BLACK);
-        scoreText.setTranslateX(10);
+        scoreText.setTranslateX(500);
         scoreText.setTranslateY(30);
         root.getChildren().add(scoreText);
 
@@ -77,9 +84,10 @@ public class FroggerApp extends Application {
         
 
         root.getChildren().add(frog);
-
+initBackToMenuButton(); // Initialize the back to menu button
          
         initRestartButton(); // Initialize the restart button
+        
         
         timer = new AnimationTimer() {
             @Override
@@ -195,6 +203,10 @@ public class FroggerApp extends Application {
     public void start(Stage stage) throws Exception {
         
         stage.setScene(new Scene(createContent()));
+      // Load Font Awesome CSS file
+    Scene scene = new Scene(createContent());
+    scene.getStylesheets().add(getClass().getResource("fontawesome-all.min.css").toExternalForm());
+    stage.setScene(scene);
         // Set the starting time to the current time
     startTime = System.currentTimeMillis();
 
@@ -277,7 +289,7 @@ restartButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -f
     });
 
     HBox hBox = new HBox();
-    hBox.setTranslateX(700);
+    hBox.setTranslateX(900);
     hBox.setTranslateY(10);
     hBox.getChildren().add(restartButton);
          restartButton .setStyle("-fx-background-color: #A08EF9; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
@@ -288,7 +300,7 @@ restartButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -f
 }
                //----reset----
 private void resetGame() {
-//    cars.clear();
+
     score = 0;
     scoreText.setText("Score: " + score);
     frog.setTranslateX(0);
@@ -298,9 +310,53 @@ private void resetGame() {
   
   
     
-    
-    
-//    startButton.setDisable(false);
+}
+//BACK TO MENU
+    private void initBackToMenuButton() {
+       
+        backToMenuButton = new Button("Back to Menu", createBackArrowIcon());
+
+    backToMenuButton.setStyle(
+        "-fx-background-color: #A08EF9; -fx-text-fill: white; -fx-font-size: 14px;"
+        + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;"
+    );
+
+        backToMenuButton.setStyle(
+                "-fx-background-color: #A08EF9; -fx-text-fill: white; -fx-font-size: 14px;"
+                        + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+
+        backToMenuButton.setOnMouseEntered(e -> {
+            backToMenuButton.setStyle("-fx-background-color: #2F2078; -fx-text-fill: white; -fx-font-size: 14px;"
+                    + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+        });
+
+        backToMenuButton.setOnMouseExited(e -> {
+            backToMenuButton.setStyle("-fx-background-color: #6143F7; -fx-text-fill: white; -fx-font-size: 14px;"
+                    + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+        });
+
+        backToMenuButton.setOnAction(event -> {
+            // Switch to the main menu scene
+            Menu mainMenuApp = new Menu();
+            Stage stage = (Stage) backToMenuButton.getScene().getWindow();
+            try {
+                mainMenuApp.start(stage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        HBox hBox = new HBox();
+        hBox.setTranslateX(70);
+    hBox.setTranslateY(20);
+        hBox.getChildren().add(backToMenuButton);
+
+        root.getChildren().add(hBox);
+    }
+    private Label createBackArrowIcon() {
+    Label backArrow = new Label("\uf060"); // Unicode for the back-arrow icon in Font Awesome
+    backArrow.setStyle("-fx-font-family: 'FontAwesome'; -fx-font-size: 20px;");
+    return backArrow;
 }
 
 

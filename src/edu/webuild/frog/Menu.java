@@ -43,6 +43,7 @@ public class Menu extends Application{
     
     
 	 private Button startButton;
+         private Button howItWorksButton;
          private Pane root;
          private AnimationTimer timer;
 	private Parent createContent() {
@@ -69,6 +70,7 @@ public class Menu extends Application{
 		this.root = root; // set root field
 
                 initStartButton(); // initialize start button
+                initHowItWorksButton();
 		return root;
                 
 		
@@ -106,7 +108,7 @@ public class Menu extends Application{
 		
      private void initStartButton() {
          
-    startButton = new Button("Start");
+    startButton = new Button("Earn Tokens");
     
    
     startButton .setStyle(
@@ -147,6 +149,71 @@ startButton.setOnMouseExited(e -> {
 
     root.getChildren().add(hBox);
 }
+    private void initHowItWorksButton() {
+    howItWorksButton = new Button("How It Works");
+
+    howItWorksButton.setStyle(
+            "-fx-background-color: #A08EF9; -fx-text-fill: white; -fx-font-size: 14px;"
+                    + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+
+    howItWorksButton.setOnMouseEntered(e -> {
+        howItWorksButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -fx-font-size: 14px;"
+                + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+    });
+
+    howItWorksButton.setOnMouseExited(e -> {
+        howItWorksButton.setStyle( "-fx-background-color: #6143F7; -fx-text-fill: white; -fx-font-size: 14px;"
+                + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+    });
+
+    howItWorksButton.setOnAction(event -> {
+        // create a new popup window
+        Stage popup = new Stage();
+        popup.initModality(Modality.APPLICATION_MODAL);
+        popup.initOwner(root.getScene().getWindow());
+        popup.setTitle("How It Works");
+            
+        // create a VBox to hold the instructions
+        VBox instructions = new VBox();
+        instructions.setAlignment(Pos.CENTER);
+        instructions.setSpacing(20);
+
+        // add instructions to the VBox
+        Text instruction1 = new Text("Use arrow keys to move the frog");
+        Text instruction2 = new Text("Avoid cars  to reach the other side");
+        Text instruction3 = new Text("Cross the Road quickly to improve your score");
+
+        instruction1.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        instruction2.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        instruction3.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+
+        instructions.getChildren().addAll(instruction1, instruction2, instruction3);
+
+        // create a button to close the popup window
+        Button closeButton = new Button("Close");
+        closeButton.setOnAction(closeEvent -> popup.close());
+
+        // add the VBox and the Close button to the popup window
+        VBox popupContent = new VBox(instructions, closeButton);
+        popupContent.setAlignment(Pos.CENTER);
+        popupContent.setSpacing(20);
+
+        // create a scene for the popup window and add the popupContent to it
+        Scene popupScene = new Scene(popupContent, 400, 200);
+
+        // set the scene of the popup window and show it
+        popup.setScene(popupScene);
+        popup.showAndWait();
+    });
+
+    HBox hBox = new HBox();
+    hBox.setTranslateX(800);
+    hBox.setTranslateY(350);
+    hBox.getChildren().add(howItWorksButton);
+
+    root.getChildren().add(hBox);
+}
+
 
 	public static void main(String[] args) {
 		
