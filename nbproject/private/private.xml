@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_chauffeurController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ChauffeurCard.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_locateurController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Modifier_roleController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Utilisateur.java</file>
@@ -16,6 +17,9 @@
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ProfilChauffeurController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Approve.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/GetPasswordController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/CardsLocController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ChoixReset.fxml</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/CardsCh.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceLocateurCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/AjoutController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Chauffeur.java</file>
@@ -23,22 +27,28 @@
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ProfilLocateurController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/CardsController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/utilisateurCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/Phone.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/ChauffeurCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/DashboardAdminController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/LoginController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_chController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ProfilClient.fxml</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/UpdateProfilChController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/Cards.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/DetailsChauffeur.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Modifier_chController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/ResetPassCode.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceChauffeurCRUD.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/LocateurCardController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ClientCardController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ProfilClientController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_roleController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/DashboardAdmin.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/style.css</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ChauffeurCardController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_clController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Client.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/LocateurCard.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/LocateurCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Etat.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Modifier_locController.java</file>
@@ -49,14 +59,20 @@
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/model/Locateur.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/services/roleCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Menu_CovController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/CardsLoc.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/IdentifierCompteController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Affiche_locController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Ajouter_clientController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/CardsChController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/modifier_ch_front.fxml</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/UpdateProfilCh.fxml</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/interfaces/InterfaceClientCRUD.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/MenuAdminController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/gui/FirstWindow.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/PhoneController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/Modifier_cliController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ChoixResetController.java</file>
+            <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/ResetPassCodeController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/SupprimerCard.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/HomeController.java</file>
             <file>file:/C:/Users/aymen/Documents/NetBeansProjects/webuild/src/edu/webuild/controllers/mail.html</file>

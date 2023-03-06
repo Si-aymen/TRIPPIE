@@ -34,7 +34,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
     public void ajouterChauffeur(Chauffeur c) {
         try {
             String req = "INSERT INTO `chauffeur`(`id_role`,`img`,`num_permis`,`gsm`,`email`,`password`)"
-                    + " VALUES ('" + c.getId_role() + "','" + c.getImg()+ "','" + c.getNum_permis()+ "',"
+                    + " VALUES ('" + c.getId_role() + "','" + c.getImg() + "','" + c.getNum_permis() + "',"
                     + "'" + c.getTel() + "','" + c.getEmail() + "','" + c.getPassword() + "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
@@ -48,7 +48,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
     public void ajouterChauffeur2(Chauffeur c) {
         try {
             String req = "INSERT INTO `chauffeur`(`img`,`num_permis`,`marque_voiture`,`couleur_voiture`,`immatriculation`,`email`,`password`)"
-                    + " VALUES ('" + c.getImg()+ "','" + c.getNum_permis()+ "',"
+                    + " VALUES ('" + c.getImg() + "','" + c.getNum_permis() + "',"
                     + "'" + c.getEmail() + "','" + c.getPassword() + "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
@@ -61,7 +61,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
     @Override
     public void modifierChauffeur(Chauffeur ch) {
         try {
-            String req = "UPDATE `chauffeur` SET `img` = '" + ch.getImg()+ "',`num_permis` = '" + ch.getNum_permis()+ "',"
+            String req = "UPDATE `chauffeur` SET `img` = '" + ch.getImg() + "',`num_permis` = '" + ch.getNum_permis() + "',"
                     + "`email` = '" + ch.getEmail() + "',`password` = '" + ch.getPassword() + "' WHERE `chauffeur`.`id_ch` = " + ch.getId_ch();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
@@ -84,7 +84,6 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
 //            System.out.println(ex.getMessage());
 //        }
 //    }
-
     @Override
     public void supprimerChauffeur(int id_ch) {
         try {
@@ -109,7 +108,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 Chauffeur ch = new Chauffeur();
                 ch.setId_ch(RS.getInt(1));
                 ch.setNum_permis(RS.getString(2));
-                
+
                 ch.setEmail(RS.getString(3));
                 ch.setPassword(RS.getString(4));
                 Role role = new Role();
@@ -136,7 +135,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 Chauffeur ch = new Chauffeur();
                 ch.setId_ch(RS.getInt(1));
                 ch.setNum_permis(RS.getString(2));
-              
+
                 ch.setEmail(RS.getString(3));
                 ch.setPassword(RS.getString(4));
 
@@ -163,7 +162,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                     Chauffeur ch = new Chauffeur();
                     ch.setId_ch(RS.getInt(1));
                     ch.setNum_permis(RS.getString(2));
-             
+
                     ch.setEmail(RS.getString(3));
                     ch.setPassword(RS.getString(4));
 
@@ -178,7 +177,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                     Chauffeur ch = new Chauffeur();
                     ch.setId_ch(RS.getInt(1));
                     ch.setNum_permis(RS.getString(2));
-                 
+
                     ch.setEmail(RS.getString(3));
                     ch.setPassword(RS.getString(4));
 
@@ -206,7 +205,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 Chauffeur ch = new Chauffeur();
                 ch.setId_ch(RS.getInt(1));
                 ch.setNum_permis(RS.getString(2));
-            
+
                 ch.setEmail(RS.getString(3));
                 ch.setPassword(RS.getString(4));
 
@@ -284,6 +283,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
             ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
+
                     String nom = rs.getString("nom");
                     String prenom = rs.getString("prenom");
                     String img = rs.getString("img");
@@ -319,9 +319,174 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         }
         return null;
     }
-    
-    
-    
+
+    public Chauffeur getChauffeurUpdate(String email) throws SQLException {
+        String query = "SELECT * "
+                + "FROM utilisateur "
+                + "JOIN role ON utilisateur.id_user = role.id_user "
+                + "JOIN chauffeur ON role.id_role = chauffeur.id_role "
+                + "WHERE email = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String cin = rs.getString("cin");
+                    String nom = rs.getString("nom");
+                    String prenom = rs.getString("prenom");
+                    String img = rs.getString("img");
+                    String num_permis = rs.getString("num_permis");
+                    int id_role = rs.getInt("id_role");
+                    int id_client = rs.getInt("id_ch");
+                    int id_user = rs.getInt("id_user");
+
+                    // Créer l'objet User
+                    Utilisateur user = new Utilisateur();
+                    user.setId_user(id_user);
+                    user.setCin(cin);
+                    user.setNom(nom);
+                    user.setPrenom(prenom);
+
+                    // Créer l'objet Role
+                    Role role = new Role();
+                    role.setId_role(id_role);
+                    role.setId_user(user);
+
+                    // Créer l'objet Chauffeur
+                    Chauffeur client = new Chauffeur();
+                    client.setNum_permis(num_permis);
+                    client.setEmail(email);
+                    client.setId_ch(id_client);
+                    client.setId_role(role);
+
+                    return client;
+
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void changePassword2(String mdp, int gsm) throws SQLException {
+        String req = "UPDATE chauffeur SET password = ?  WHERE gsm = ?";
+        PreparedStatement pst = conn.prepareStatement(req);
+        pst.setString(1, mdp);
+        pst.setInt(2, gsm);
+        int rowUpdated = pst.executeUpdate();
+        if (rowUpdated > 0) {
+            System.out.println("Mdp modifié");
+        } else {
+            System.out.println("ERR");
+        }
+    }
+
+    public void Update(int tel, String numPermis, String email, String cin, String nom, String prenom, int id_ch, int id_user) {
+        try {
+            String req = "UPDATE chauffeur "
+                    + "SET  gsm = ?, num_permis = ?, email = ? "
+                    + "WHERE id_ch = ?";
+
+            PreparedStatement ps = conn.prepareStatement(req);
+
+            ps.setInt(1, tel);
+            ps.setString(2, numPermis);
+            ps.setString(3, email);
+            ps.setInt(4, id_ch);
+
+            int rowsUpdated = ps.executeUpdate();
+
+            if (rowsUpdated == 0) {
+                throw new SQLException("La mise à jour du chauffeur a échoué, aucun enregistrement modifié.");
+            }
+
+            String req2 = "UPDATE utilisateur "
+                    + "SET cin = ?, nom = ?, prenom = ? "
+                    + "WHERE id_user = ? ";
+
+            PreparedStatement ps2 = conn.prepareStatement(req2);
+            ps2.setString(1, cin);
+            ps2.setString(2, nom);
+            ps2.setString(3, prenom);
+            ps2.setInt(4, id_user);
+
+            int rowsUpdated2 = ps2.executeUpdate();
+
+            if (rowsUpdated2 == 0) {
+                throw new SQLException("La mise à jour de l'utilisateur a échoué, aucun enregistrement modifié.");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Une erreur s'est produite lors de la mise à jour du chauffeur : " + ex.getMessage());
+        }
+    }
+
+    public void UpdateJOIN(int tel, String numPermis, String email, String cin, String nom, String prenom, int id_ch) {
+        try {
+            String req = "UPDATE chauffeur "
+                    + "INNER JOIN role ON chauffeur.id_role = role.id_role "
+                    + "INNER JOIN utilisateur ON role.id_user = utilisateur.id_user "
+                    + "SET chauffeur.gsm = ?, chauffeur.num_permis = ?, chauffeur.email = ?, "
+                    + "utilisateur.cin = ?, utilisateur.nom = ?, utilisateur.prenom = ? "
+                    + "WHERE chauffeur.id_ch = ? ";
+
+            PreparedStatement ps = conn.prepareStatement(req);
+
+            ps.setInt(1, tel);
+            ps.setString(2, numPermis);
+            ps.setString(3, email);
+            ps.setString(4, cin);
+            ps.setString(5, nom);
+            ps.setString(6, prenom);
+            ps.setInt(7, id_ch);
+
+            int rowsUpdated = ps.executeUpdate();
+
+            if (rowsUpdated == 0) {
+                throw new SQLException("La mise à jour du chauffeur a échoué, aucun enregistrement modifié.");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Une erreur s'est produite lors de la mise à jour du chauffeur : " + ex.getMessage());
+        }
+    }
+
+    public void UpdateCh(int gsm, String num_permis, String email, int id_ch) throws SQLException {
+        try {
+            String req = "UPDATE chauffeur SET gsm = ? , num_permis = ? , email = ? WHERE id_ch = ?";
+            PreparedStatement pst = conn.prepareStatement(req);
+            pst.setInt(1, gsm);
+            pst.setString(2, num_permis);
+            pst.setString(3, email);
+            pst.setInt(4, id_ch);
+            int rowUpdated = pst.executeUpdate();
+            if (rowUpdated > 0) {
+                System.out.println("Mdp modifié");
+            } else {
+                System.out.println("ERR");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void disableChauffeur(int chauffeurId) {
+        try {
+            String query = "UPDATE chauffeur SET etat = 'disabled' WHERE id_ch = ?";
+            PreparedStatement pst = conn.prepareStatement(query);
+            pst.setInt(1, chauffeurId);
+            int rowsUpdated = pst.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Chauffeur account disabled successfully.");
+            } else {
+                System.out.println("Error: Chauffeur account not found.");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }
 
     @Override
     public List<Chauffeur> afficherChauffeur2() {
@@ -341,7 +506,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 Chauffeur ch = new Chauffeur();
                 ch.setImg(RS.getString("img"));
                 ch.setNum_permis(RS.getString("num_permis"));
-              
+
                 ch.setEmail(RS.getString("email"));
 
                 Role role = new Role();
@@ -375,7 +540,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                     Chauffeur ch = new Chauffeur();
                     ch.setId_ch(rs.getInt(1));
                     ch.setNum_permis(rs.getString(2));
-                   
+
                     ch.setEmail(rs.getString(3));
                     ch.setPassword(rs.getString(4));
                     int id_role = rs.getInt("id_role");
@@ -406,7 +571,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 Chauffeur ch = new Chauffeur();
                 ch.setId_ch(RS.getInt(1));
                 ch.setNum_permis(RS.getString(2));
-               
+
                 ch.setEmail(RS.getString(3));
                 ch.setPassword(RS.getString(4));
 
@@ -419,8 +584,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         return id_ch;
     }
 
-    
-     @Override
+    @Override
     public List<Chauffeur> afficherChauffeur3() {
         List<Chauffeur> list = new ArrayList<>();
 
@@ -436,11 +600,11 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
                 Chauffeur loc = new Chauffeur();
-                
+
                 loc.setImg(RS.getString("img"));
-              
+
                 loc.setTel(RS.getInt("gsm"));
-                   loc.setNum_permis(RS.getString("num_permis"));
+                loc.setNum_permis(RS.getString("num_permis"));
                 loc.setEmail(RS.getString("email"));
 
                 Role role = new Role();

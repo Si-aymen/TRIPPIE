@@ -302,6 +302,19 @@ public class LocateurCRUD implements InterfaceLocateurCRUD {
 
         return list;
     }
+    
+     public void changePassword2(String mdp, int gsm) throws SQLException {
+        String req = "UPDATE locateur SET password = ?  WHERE gsm = ?";
+        PreparedStatement pst = conn.prepareStatement(req);
+        pst.setString(1, mdp);
+        pst.setInt(2, gsm);
+        int rowUpdated = pst.executeUpdate();
+        if (rowUpdated > 0) {
+            System.out.println("Mdp modifié");
+        } else {
+            System.out.println("ERR");
+        }
+    }
 
     @Override
     public List<Locateur> afficherLocateur3() {

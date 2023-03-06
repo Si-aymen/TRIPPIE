@@ -17,6 +17,7 @@ public class Chauffeur {
     int tel;
     String email;
     String password;
+    Etat etat;
 
     public Chauffeur() {
     }

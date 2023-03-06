@@ -34,5 +34,6 @@
             <Font name="Microsoft YaHei Bold" size="13.0" />
          </font>
       </Button>
+      <Button fx:id="updatebtn" layoutX="334.0" layoutY="373.0" mnemonicParsing="false" onAction="#update" text="Update" />
    </children>
 </AnchorPane>

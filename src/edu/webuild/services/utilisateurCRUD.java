@@ -52,11 +52,11 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
             System.out.println(ex);
         }
     }
-    
-     @Override
+
+    @Override
     public void ajouterHomme(Utilisateur u) {
         try {
-            String req = "INSERT INTO `utilisateur`(`cin`, `img`, `nom`, `prenom`, `sexe`) VALUES ('" + u.getCin() + "','" + u.getImg()+ "','" + u.getNom() + "','" + u.getPrenom() + "','Homme')";
+            String req = "INSERT INTO `utilisateur`(`cin`, `img`, `nom`, `prenom`, `sexe`) VALUES ('" + u.getCin() + "','" + u.getImg() + "','" + u.getNom() + "','" + u.getPrenom() + "','Homme')";
             ste = conn.createStatement();
 
             ste.executeUpdate(req, Statement.RETURN_GENERATED_KEYS);
@@ -77,11 +77,10 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
         }
     }
 
-      
-     @Override
+    @Override
     public void ajouterFemme(Utilisateur u) {
         try {
-            String req = "INSERT INTO `utilisateur`(`cin`, `img`, `nom`, `prenom`, `sexe`) VALUES ('" + u.getCin() + "','" + u.getImg()+ "','" + u.getNom() + "','" + u.getPrenom() + "','Femme')";
+            String req = "INSERT INTO `utilisateur`(`cin`, `img`, `nom`, `prenom`, `sexe`) VALUES ('" + u.getCin() + "','" + u.getImg() + "','" + u.getNom() + "','" + u.getPrenom() + "','Femme')";
             ste = conn.createStatement();
 
             ste.executeUpdate(req, Statement.RETURN_GENERATED_KEYS);
@@ -101,7 +100,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
             System.out.println(ex);
         }
     }
-    
+
     @Override
     public void modifierUtilisateur(Utilisateur u) {
         try {
@@ -172,7 +171,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                 u.setNom(RS.getString(3));
                 u.setPrenom(RS.getString(4));
                 u.setSexe(RS.getString(5));
-               
+
                 r.setId_role(RS.getInt(6));
 
                 list.add(u);
@@ -198,7 +197,6 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                 u.setNom(RS.getString(3));
                 u.setPrenom(RS.getString(4));
                 u.setSexe(RS.getString(5));
-           
 
             }
         } catch (SQLException ex) {
@@ -223,7 +221,6 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                 u.setNom(RS.getString(3));
                 u.setPrenom(RS.getString(4));
                 u.setSexe(RS.getString(5));
-               
 
                 list.add(u);
             }
@@ -251,7 +248,6 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                     u.setNom(RS.getString(3));
                     u.setPrenom(RS.getString(4));
                     u.setSexe(RS.getString(5));
-                   
 
                     list.add(u);
                 }
@@ -267,7 +263,6 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                     u.setNom(RS.getString(3));
                     u.setPrenom(RS.getString(4));
                     u.setSexe(RS.getString(5));
-                    
 
                     list.add(u);
 
@@ -296,7 +291,6 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                 u.setNom(RS.getString(3));
                 u.setPrenom(RS.getString(4));
                 u.setSexe(RS.getString(5));
-               
 
                 list.add(u);
             }
@@ -386,6 +380,30 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
         }
 
     }
-    
-    
+
+    public void UpdateUser(String cin, String nom, String prenom, int id_user) throws SQLException {
+        try {
+            String req = "UPDATE utilisateur "
+                    + "SET  cin = ?, nom = ?, prenom = ? "
+                    + "WHERE id_user = ? ";
+
+            PreparedStatement pst = conn.prepareStatement(req);
+            pst.setString(1, cin);
+            pst.setString(2, nom);
+            pst.setString(3, prenom);
+           
+            pst.setInt(4, id_user);
+
+            int rowUpdated = pst.executeUpdate();
+            if (rowUpdated > 0) {
+                System.out.println("Mdp modifié");
+            } else {
+                System.out.println("ERR");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
 }

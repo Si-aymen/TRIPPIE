@@ -10,6 +10,7 @@ import edu.webuild.model.Chauffeur;
 import edu.webuild.services.ChauffeurCRUD;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -26,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import edu.webuild.utils.MyConnection;
 
 /**
  * FXML Controller class
@@ -56,6 +58,8 @@ public class CardsChController implements Initializable {
     private ScrollPane scroll;
     @FXML
     private GridPane grid;
+    MyConnection conn;
+    
 
     /**
      * Initializes the controller class.
@@ -110,6 +114,10 @@ public class CardsChController implements Initializable {
 
     @FXML
     private void details_btu(ActionEvent event) {
+         ChauffeurCRUD us= new ChauffeurCRUD(); 
+         Chauffeur c= new Chauffeur();
+        us.disableChauffeur(c.getId_ch());
+
     }
 
 }

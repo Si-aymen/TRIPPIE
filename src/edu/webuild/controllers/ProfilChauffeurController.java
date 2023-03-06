@@ -103,4 +103,24 @@ public class ProfilChauffeurController implements Initializable {
         }
     }
 
+    @FXML
+    private void update(ActionEvent event) throws SQLException {
+        try {
+            String email= email_lbl.getText();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/UpdateProfilCh.fxml"));
+            Parent root = loader.load();
+            UpdateProfilChController controller = loader.getController();
+            // set any necessary information in the controller
+            email_lbl.getScene().setRoot(root);
+            controller.setChauffeur(email);
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ProfilChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
 }
