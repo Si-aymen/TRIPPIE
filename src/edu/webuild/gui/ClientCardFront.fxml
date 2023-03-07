@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="360.0" prefWidth="395.0" stylesheets="@../../../../../../../Desktop/Allocation/TRIPPIE-Allocation/src/edu/webuild/gui/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.ClientCardFrontController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="63.0" prefHeight="360.0" prefWidth="395.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="img" fitHeight="181.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="fx_nom" prefHeight="49.0" prefWidth="137.0" text="Nom">
+               <font>
+                  <Font name="Cambria" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="fx_prenom" prefHeight="49.0" prefWidth="101.0" text="Prenom">
+               <font>
+                  <Font name="Cambria Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="fruit-item" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>

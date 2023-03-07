@@ -349,7 +349,75 @@ public class ClientCRUD implements InterfaceClientCRUD {
             System.out.println("ERR");
         }
     }
+     
+     
+     public Client getClientUpdate(String email) throws SQLException {
+        String query = "SELECT * "
+                + "FROM utilisateur "
+                + "JOIN role ON utilisateur.id_user = role.id_user "
+                + "JOIN client ON role.id_role = client.id_role "
+                + "WHERE email = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String cin = rs.getString("cin");
+                    String nom = rs.getString("nom");
+                    String prenom = rs.getString("prenom");
+                    String img = rs.getString("img");
+                    int id_role = rs.getInt("id_role");
+                    int id_client = rs.getInt("id_client");
+                    int id_user = rs.getInt("id_user");
 
+                    // Créer l'objet User
+                    Utilisateur user = new Utilisateur();
+                    user.setId_user(id_user);
+                    user.setCin(cin);
+                    user.setNom(nom);
+                    user.setPrenom(prenom);
+
+                    // Créer l'objet Role
+                    Role role = new Role();
+                    role.setId_role(id_role);
+                    role.setId_user(user);
+
+                    // Créer l'objet Chauffeur
+                    Client client = new Client();
+                 
+                    client.setEmail(email);
+                    client.setId_client(id_client);
+                    client.setId_role(role);
+
+                    return client;
+
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+      public void UpdateCli(int gsm, String email, int id_client) throws SQLException {
+        try {
+            String req = "UPDATE client SET gsm = ? , email = ? WHERE id_client = ?";
+            PreparedStatement pst = conn.prepareStatement(req);
+            pst.setInt(1, gsm);
+            pst.setString(2, email);
+            pst.setInt(3, id_client);
+            int rowUpdated = pst.executeUpdate();
+            if (rowUpdated > 0) {
+                System.out.println("Mdp modifié");
+            } else {
+                System.out.println("ERR");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+     
     public Client getByIdRole(int id_role) {
         String query = "SELECT * FROM client WHERE id_role = ?";
 

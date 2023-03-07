@@ -6,19 +6,23 @@
 package edu.webuild.controllers;
 
 import edu.webuild.gui.LoginController;
+import edu.webuild.interfaces.InterfaceClientCRUD;
 import edu.webuild.model.Client;
 import edu.webuild.services.ClientCRUD;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Base64;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,9 +32,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 /**
@@ -55,23 +62,31 @@ public class ProfilClientController implements Initializable {
     static String url;
     @FXML
     private ImageView fximg;
+    @FXML
+    private ScrollPane scroll;
+    @FXML
+    private GridPane grid;
+    private List<Client> clientDataList = FXCollections.observableArrayList();
+
+    private InterfaceClientCRUD ClientCRUD = new ClientCRUD();
 
     public void setEmail_lbl(String email) throws SQLException, IOException {
         this.email_lbl.setText(email);
         // TODO
         ClientCRUD u = new ClientCRUD();
         Client p = u.getClient(email);
-        String fullurl = "C:\\xampp\\htdocs\\" + url + p.getImg(); // Récupérer l'identifiant de l'utilisateur à partir de l'objet Client
-        System.out.println("C:\\xampp\\htdocs\\" + url + p.getImg());
-        try {
-            email_lbl.setText(email);
-            System.out.println(email);
-            nom_lbl.setText(p.getId_role().getId_user().getNom());  // Récupérer l'utilisateur connecté
-            genre_lbl.setText(p.getId_role().getId_user().getPrenom());
-            fximg.setImage(new Image(new FileInputStream(fullurl)));
-        } catch (FileNotFoundException e) {
-            System.err.println("Error loading image: " + e.getMessage());
-        }
+
+        email_lbl.setText(email);
+        System.out.println(email);
+        nom_lbl.setText(p.getId_role().getId_user().getNom());  // Récupérer l'utilisateur connecté
+        genre_lbl.setText(p.getId_role().getId_user().getPrenom());
+        String fullurl = "C:\\xampp\\htdocs\\" + p.getImg();
+        System.out.println(p.getImg());
+        File file = new File(fullurl);
+        System.out.println(p.getImg());
+        FileInputStream fileInputStream = new FileInputStream(file);
+        Image image = new Image(fileInputStream);
+        fximg.setImage(image);
     }
 
     /**
@@ -82,7 +97,49 @@ public class ProfilClientController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+//        try {
+//          
+//            String email = null;
+//            this.email_lbl.setText(email);
+//          
+//            ClientCRUD u = new ClientCRUD();
+//            Client p = u.getClient(email);
+//            System.out.println(p);
+//            clientDataList.add(p);
+//            
+//            int column = 0;
+//            int row = 3;
+//            for (int i = 0; i < clientDataList.size(); i++) {
+//                try {
+//                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/ClientCardFront.fxml"));
+//                    AnchorPane anchorPane = fxmlLoader.load();
+//                    
+//                    ClientCardFrontController item = fxmlLoader.getController();
+//                    
+//                    item.setDataClient(clientDataList.get(i).getId_role().getId_user().getNom(),clientDataList.get(i).getId_role().getId_user().getPrenom(), clientDataList.get(i).getImg());
+//                    
+//                    if (column == 1) {
+//                        column = 0;
+//                        row++;
+//                    }
+//                    
+//                    grid.add(anchorPane, column++, row);
+//                    grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+//                    grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+//                    grid.setMaxWidth(Region.USE_PREF_SIZE);
+//                    grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+//                    grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+//                    grid.setMaxHeight(Region.USE_PREF_SIZE);
+//                    
+//                    GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
+//                } catch (IOException e) {
+//                    System.out.println("problem");
+//                    e.printStackTrace();
+//                }
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ProfilClientController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     @FXML
@@ -96,6 +153,26 @@ public class ProfilClientController implements Initializable {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
             Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ProfilClientController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void Update(ActionEvent event) throws SQLException {
+        try {
+            String email = email_lbl.getText();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/UpdateProfilCl.fxml"));
+            Parent root = loader.load();
+            UpdateProfilClController controller = loader.getController();
+            // set any necessary information in the controller
+            email_lbl.getScene().setRoot(root);
+            controller.setClient(email);
+            Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();

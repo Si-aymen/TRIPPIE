@@ -52,27 +52,30 @@ public class ProfilChauffeurController implements Initializable {
     MyConnection conn;
     @FXML
     private ImageView fximg;
-    static String url_image;
+    String url_image;
 
     static String ssmail;
     @FXML
     private Button deco;
     String url;
+    @FXML
+    private Button updatebtn;
 
     public void setEmail_lbl(String email) throws SQLException, FileNotFoundException {
 
         this.email_lbl.setText(email);
         ChauffeurCRUD u = new ChauffeurCRUD();
         Chauffeur p = u.getChauffeur(email);
-        String fullurl = "C:\\xampp\\htdocs\\" + url;
-        try {
-            email_lbl.setText(email);
-            nom_lbl.setText(p.getId_role().getId_user().getNom());
-            genre_lbl.setText(p.getId_role().getId_user().getPrenom());
-            fximg.setImage(new Image(new FileInputStream(fullurl)));
-        } catch (FileNotFoundException e) {
-            System.err.println("Error loading image: " + e.getMessage());
-        }
+        email_lbl.setText(email);
+        nom_lbl.setText(p.getId_role().getId_user().getNom());
+        genre_lbl.setText(p.getId_role().getId_user().getPrenom());
+        String fullurl = "C:\\xampp\\htdocs\\" + p.getImg();
+        System.out.println(p.getImg());
+        File file = new File(fullurl);
+        System.out.println(p.getImg());
+        FileInputStream fileInputStream = new FileInputStream(file);
+        Image image = new Image(fileInputStream);
+        fximg.setImage(image);
 
     }
 
@@ -106,7 +109,7 @@ public class ProfilChauffeurController implements Initializable {
     @FXML
     private void update(ActionEvent event) throws SQLException {
         try {
-            String email= email_lbl.getText();
+            String email = email_lbl.getText();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/UpdateProfilCh.fxml"));
             Parent root = loader.load();
             UpdateProfilChController controller = loader.getController();

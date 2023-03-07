@@ -7,6 +7,9 @@ package edu.webuild.controllers;
 
 import edu.webuild.model.Locateur;
 import edu.webuild.services.LocateurCRUD;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -23,6 +26,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -42,37 +47,48 @@ public class ProfilLocateurController implements Initializable {
     private Button exitBtn;
     @FXML
     private Button deco;
+    @FXML
+    private Button modif;
+    @FXML
+    private ImageView fximg;
 
-    /**
-     * Initializes the controller class.
-     */
-    
-    
-    public void setEmail_lbl(String email) throws SQLException {
+    public void setEmail_lbl(String email) throws SQLException, FileNotFoundException {
         this.email_lbl.setText(email);
         // TODO
-            LocateurCRUD u = new LocateurCRUD();
-            Locateur p = u.getLocateur(email);
-         email_lbl.setText(email);
-      
+        LocateurCRUD u = new LocateurCRUD();
+        Locateur p = u.getLocateur(email);
+        email_lbl.setText(email);
         System.out.println(email);
         nom_lbl.setText(p.getId_role().getId_user().getNom());  // Récupérer l'utilisateur connecté
         genre_lbl.setText(p.getId_role().getId_user().getPrenom());
-    }    
+         String fullurl = "C:\\xampp\\htdocs\\" + p.getImg(); 
+        System.out.println(p.getImg());
+        File file = new File(fullurl);
+        System.out.println(p.getImg());
+        FileInputStream fileInputStream = new FileInputStream(file);
+        Image image = new Image(fileInputStream);
+        fximg.setImage(image);
+    }
 
+    /**
+     * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void exit(ActionEvent event) {
-         exitBtn.setOnAction(e -> Platform.exit());
+        exitBtn.setOnAction(e -> Platform.exit());
     }
 
     @FXML
     private void deco(ActionEvent event) {
-          try {
+        try {
 
             Parent page1
                     = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
@@ -81,9 +97,29 @@ public class ProfilLocateurController implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ProfilChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProfilLocateurController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }
-    
+
+    @FXML
+    private void Update(ActionEvent event) throws SQLException {
+        try {
+            String email = email_lbl.getText();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/UpdateProfilLoc.fxml"));
+            Parent root = loader.load();
+            UpdateProfilLocController controller = loader.getController();
+            // set any necessary information in the controller
+            email_lbl.getScene().setRoot(root);
+            controller.setLocateur(email);
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ProfilLocateurController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
 }

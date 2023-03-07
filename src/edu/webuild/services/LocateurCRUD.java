@@ -228,6 +228,7 @@ public class LocateurCRUD implements InterfaceLocateurCRUD {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     String nom = rs.getString("nom");
+                    String img = rs.getString("img");
                     String prenom = rs.getString("prenom");
                     int id_role = rs.getInt("id_role");
                     int id_loc = rs.getInt("id_loc");
@@ -246,6 +247,7 @@ public class LocateurCRUD implements InterfaceLocateurCRUD {
 
                     // Créer l'objet Locateur
                     Locateur client = new Locateur();
+                    client.setImg(img);
                     client.setEmail(email);
                     client.setId_loc(id_loc);
                     client.setId_role(role);
@@ -315,6 +317,77 @@ public class LocateurCRUD implements InterfaceLocateurCRUD {
             System.out.println("ERR");
         }
     }
+     
+     
+      public Locateur getLocateurUpdate(String email) throws SQLException {
+        String query = "SELECT * "
+                + "FROM utilisateur "
+                + "JOIN role ON utilisateur.id_user = role.id_user "
+                + "JOIN locateur ON role.id_role = locateur.id_role "
+                + "WHERE email = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String cin = rs.getString("cin");
+                    String nom = rs.getString("nom");
+                    String prenom = rs.getString("prenom");
+                    String img = rs.getString("img");
+                    String nom_agence = rs.getString("nom_agence");
+                    int id_role = rs.getInt("id_role");
+                    int id_client = rs.getInt("id_client");
+                    int id_user = rs.getInt("id_user");
+
+                    // Créer l'objet User
+                    Utilisateur user = new Utilisateur();
+                    user.setId_user(id_user);
+                    user.setCin(cin);
+                    user.setNom(nom);
+                    user.setPrenom(prenom);
+
+                    // Créer l'objet Role
+                    Role role = new Role();
+                    role.setId_role(id_role);
+                    role.setId_user(user);
+
+                    // Créer l'objet Chauffeur
+                    Locateur client = new Locateur();
+                    client.setNom_agence(nom_agence);
+                    client.setEmail(email);
+                    client.setId_loc(id_client);
+                    client.setId_role(role);
+
+                    return client;
+
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+      public void UpdateLoc(int gsm,String nom_agence, String email, int id_loc) throws SQLException {
+        try {
+            String req = "UPDATE locateur SET gsm = ? , nom_agence = ? , email = ? WHERE id_loc = ?";
+            PreparedStatement pst = conn.prepareStatement(req);
+            pst.setInt(1, gsm);
+            pst.setString(2, nom_agence);
+            pst.setString(3, email);
+            pst.setInt(4, id_loc);
+            int rowUpdated = pst.executeUpdate();
+            if (rowUpdated > 0) {
+                System.out.println("Mdp modifié");
+            } else {
+                System.out.println("ERR");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
 
     @Override
     public List<Locateur> afficherLocateur3() {
