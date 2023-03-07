@@ -9,8 +9,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,6 +34,8 @@ public class LocateurCardController implements Initializable {
     private ImageView img;
     @FXML
     private Label fx_nomage;
+    @FXML
+    private Button disablebtn;
 
     /**
      * Initializes the controller class.
@@ -57,5 +61,9 @@ public class LocateurCardController implements Initializable {
       
         
         
+    }
+
+    @FXML
+    private void disable(ActionEvent event) {
     }
 }

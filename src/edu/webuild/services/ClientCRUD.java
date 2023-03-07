@@ -105,6 +105,57 @@ public class ClientCRUD implements InterfaceClientCRUD {
             System.err.println("Erreur lors de la désactivation du compte du client : " + e.getMessage());
         }
     }
+    
+    
+
+     public Client getClientCard(int gsm) throws SQLException {
+        String query = "SELECT * "
+                + "FROM utilisateur "
+                + "JOIN role ON utilisateur.id_user = role.id_user "
+                + "JOIN chauffeur ON role.id_role = chauffeur.id_role "
+                + "WHERE gsm = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setInt(1, gsm);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String email = rs.getString("email");
+                    String nom = rs.getString("nom");
+                    String prenom = rs.getString("prenom");
+                    String img = rs.getString("img");
+                
+                    int id_role = rs.getInt("id_role");
+                    int id_client = rs.getInt("id_ch");
+                    int id_user = rs.getInt("id_user");
+
+                    // Créer l'objet User
+                    Utilisateur user = new Utilisateur();
+                    user.setId_user(id_user);
+                    user.setNom(nom);
+                    user.setPrenom(prenom);
+
+                    // Créer l'objet Role
+                    Role role = new Role();
+                    role.setId_role(id_role);
+                    role.setId_user(user);
+
+                    // Créer l'objet Chauffeur
+                    Client client = new Client();
+                    client.setTel(gsm);
+                    client.setEmail(email);
+                    client.setId_client(id_client);
+                    client.setId_role(role);
+
+                    return client;
+
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public boolean isEnabled(int clientId) {
@@ -524,6 +575,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
                 if (rs.next()) {
                     String nom = rs.getString("nom");
                     String prenom = rs.getString("prenom");
+                    String img = rs.getString("img");
                     int id_role = rs.getInt("id_role");
                     int id_client = rs.getInt("id_client");
                     int id_user = rs.getInt("id_user");
@@ -541,6 +593,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
 
                     // Créer l'objet Client
                     Client client = new Client();
+                    client.setImg(img);
                     client.setEmail(email);
                     client.setId_client(id_client);
                     client.setId_role(role);

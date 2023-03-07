@@ -38,6 +38,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 /**
@@ -62,10 +63,6 @@ public class ProfilClientController implements Initializable {
     static String url;
     @FXML
     private ImageView fximg;
-    @FXML
-    private ScrollPane scroll;
-    @FXML
-    private GridPane grid;
     private List<Client> clientDataList = FXCollections.observableArrayList();
 
     private InterfaceClientCRUD ClientCRUD = new ClientCRUD();
@@ -87,6 +84,18 @@ public class ProfilClientController implements Initializable {
         FileInputStream fileInputStream = new FileInputStream(file);
         Image image = new Image(fileInputStream);
         fximg.setImage(image);
+        // Créer un objet Circle avec le rayon et la position souhaités
+        Circle circle = new Circle();
+        circle.setRadius(fximg.getFitWidth() / 2);
+        circle.setCenterX(fximg.getFitWidth() / 2);
+        circle.setCenterY(fximg.getFitHeight() / 2);
+
+// Utiliser le Circle comme clip
+        fximg.setClip(circle);
+
+// Définir la taille de l'ImageView pour qu'elle soit égale au diamètre du cercle
+        fximg.setFitWidth(circle.getRadius() * 2);
+        fximg.setFitHeight(circle.getRadius() * 2);
     }
 
     /**

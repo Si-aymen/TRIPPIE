@@ -17,6 +17,7 @@ public class Locateur {
     int tel;
     String email;
     String password;
+     Etat etat;
     
 
     
@@ -114,6 +115,15 @@ public class Locateur {
         this.img = img;
     }
 
+    public Etat getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
+    }
+
+    
     @Override
     public String toString() {
         return "Locateur{" + "id_loc=" + id_loc + ", id_role=" + id_role + ", img=" + img + ", nom_agence=" + nom_agence + ", tel=" + tel + ", email=" + email + ", password=" + password + '}';

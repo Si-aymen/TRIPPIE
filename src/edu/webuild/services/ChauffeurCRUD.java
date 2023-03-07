@@ -319,6 +319,55 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         }
         return null;
     }
+    
+    
+     public Chauffeur getChauffeurCard(String num_permis) throws SQLException {
+        String query = "SELECT * "
+                + "FROM utilisateur "
+                + "JOIN role ON utilisateur.id_user = role.id_user "
+                + "JOIN chauffeur ON role.id_role = chauffeur.id_role "
+                + "WHERE num_permis = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, num_permis);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String email = rs.getString("email");
+                    String nom = rs.getString("nom");
+                    String prenom = rs.getString("prenom");
+                    String img = rs.getString("img");
+                    int id_role = rs.getInt("id_role");
+                    int id_client = rs.getInt("id_ch");
+                    int id_user = rs.getInt("id_user");
+
+                    // Créer l'objet User
+                    Utilisateur user = new Utilisateur();
+                    user.setId_user(id_user);
+                    user.setNom(nom);
+                    user.setPrenom(prenom);
+
+                    // Créer l'objet Role
+                    Role role = new Role();
+                    role.setId_role(id_role);
+                    role.setId_user(user);
+
+                    // Créer l'objet Chauffeur
+                    Chauffeur client = new Chauffeur();
+                    client.setNum_permis(num_permis);
+                    client.setEmail(email);
+                    client.setId_ch(id_client);
+                    client.setId_role(role);
+
+                    return client;
+
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public Chauffeur getChauffeurUpdate(String email) throws SQLException {
         String query = "SELECT * "
@@ -472,11 +521,11 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         }
     }
 
-    public void disableChauffeur(int chauffeurId) {
+    public void disableChauffeur(String num_permis) {
         try {
-            String query = "UPDATE chauffeur SET etat = 'disabled' WHERE id_ch = ?";
+            String query = "UPDATE chauffeur SET etat = 'disabled' WHERE num_permis = ?";
             PreparedStatement pst = conn.prepareStatement(query);
-            pst.setInt(1, chauffeurId);
+            pst.setString(1, num_permis);
             int rowsUpdated = pst.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("Chauffeur account disabled successfully.");

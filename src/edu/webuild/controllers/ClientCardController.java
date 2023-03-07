@@ -7,6 +7,7 @@ package edu.webuild.controllers;
 
 import edu.webuild.model.Client;
 import edu.webuild.model.Etat;
+import edu.webuild.services.ClientCRUD;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -37,6 +38,8 @@ public class ClientCardController implements Initializable {
     @FXML
     private ImageView img;
     private Label fx_prix_par_jour;
+    @FXML
+    private Button disablebtn;
 
     /**
      * Initializes the controller class.
@@ -60,9 +63,23 @@ public class ClientCardController implements Initializable {
         } catch (FileNotFoundException e) {
             System.err.println("Error loading image: " + e.getMessage());
         }
+//        disablebtn.setOnAction(e -> {
+//            try {
+//                ClientCRUD cc = new ClientCRUD();
+//                Client c = cc.getClientCard(0);
+//                cc.disableClient(c.getNum_permis());
+//                System.out.println(c.getId_ch());
+//            } catch (SQLException ex) {
+//                Logger.getLogger(ClientCardController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        });
       
         
         
+    }
+
+    @FXML
+    private void disable(ActionEvent event) {
     }
 
 }

@@ -28,6 +28,6 @@ public interface InterfaceChauffeurCRUD {
       public List<Chauffeur> afficherChauffeur2();
        public Image afficher(String identifiant) ;
         public List<Chauffeur> afficherChauffeur3();
-     
+     public void disableChauffeur(String num_permis);
     
 }

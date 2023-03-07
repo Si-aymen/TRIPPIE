@@ -17,6 +17,7 @@ public class Client {
     int tel;
     String email;
     String password;
+     Etat etat;
 
     public Client(int id_client, Role id_role, String img, int tel, String email, String password) {
         this.id_client = id_client;
@@ -99,6 +100,14 @@ public class Client {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public Etat getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
     }
 
     

@@ -45,7 +45,7 @@
                      </font>
                   </Label>
                </children></HBox>
-            <Button mnemonicParsing="false" text="details" />
+            <Button fx:id="disablebtn" mnemonicParsing="false" onAction="#disable" text="Disable" />
          </children>
       </VBox>
    </children>

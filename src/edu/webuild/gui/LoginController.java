@@ -10,6 +10,7 @@ import edu.webuild.controllers.ProfilClientController;
 import edu.webuild.controllers.ProfilLocateurController;
 import edu.webuild.model.Chauffeur;
 import edu.webuild.model.Client;
+import edu.webuild.model.Etat;
 import edu.webuild.model.Role;
 import edu.webuild.services.ChauffeurCRUD;
 import edu.webuild.services.ClientCRUD;
@@ -73,6 +74,7 @@ public class LoginController {
     static String SSemail;
     @FXML
     private ToggleButton showbtnnewnew;
+    Chauffeur c;
 
     public void setMain(FirstWindow main) {
         this.main = main;
@@ -140,6 +142,11 @@ public class LoginController {
         // Validate email address
         if (!Pattern.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}", email)) {
             isValid = false;
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Erreur de connexion");
+            alert.setHeaderText(null);
+            alert.setContentText("Vérifier votre mail");
+            alert.showAndWait();
             txtusername.setStyle("-fx-border-color: red;");
         } else {
             txtusername.setStyle("");
@@ -148,6 +155,11 @@ public class LoginController {
         // Validate password
         if (password.isEmpty()) {
             isValid = false;
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Erreur de connexion");
+            alert.setHeaderText(null);
+            alert.setContentText("Remplir tous les champs");
+            alert.showAndWait();
             txtpass.setStyle("-fx-border-color: red;");
         } else {
             txtpass.setStyle("");
@@ -162,9 +174,32 @@ public class LoginController {
             }
         } else if (selectedUser.equals("Chauffeur")) {
             ChauffeurCRUD cr = new ChauffeurCRUD();
-            if (!cr.FoundChauffeur(email, password)) {
+            Chauffeur chauffeur = cr.getChauffeur(email);
+
+            if (chauffeur == null) {
                 isValid = false;
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erreur de connexion");
+                alert.setHeaderText(null);
+                alert.setContentText("Le chauffeur sélectionné n'existe pas.");
+                alert.showAndWait();
+            } else if (!cr.FoundChauffeur(email, password)) {
+                isValid = false;
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erreur de connexion");
+                alert.setHeaderText(null);
+                alert.setContentText("L'adresse email ou le mot de passe est incorrect pour le chauffeur sélectionné.");
+                alert.showAndWait();
+            } else if (chauffeur.getEtat() != Etat.enabled) {
+                isValid = false;
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erreur de connexion");
+                alert.setHeaderText(null);
+                alert.setContentText("Mr " + chauffeur.getId_role().getId_user().getNom() + chauffeur.getId_role().getId_user().getNom()
+                        + "Votre compte est désactivé");
+                alert.showAndWait();
             }
+
         } else if (selectedUser.equals("Locateur")) {
             // Add validation for locateur
             LocateurCRUD lc = new LocateurCRUD();
@@ -196,6 +231,7 @@ public class LoginController {
                     stage.show();
                     break;
                 case "Chauffeur":
+
                     FXMLLoader loader2 = new FXMLLoader(getClass().getResource("ProfilChauffeur.fxml"));
                     Parent root2 = loader2.load();
                     ProfilChauffeurController pc = loader2.getController();

@@ -59,7 +59,6 @@ public class CardsChController implements Initializable {
     @FXML
     private GridPane grid;
     MyConnection conn;
-    
 
     /**
      * Initializes the controller class.
@@ -82,7 +81,7 @@ public class CardsChController implements Initializable {
 
                 item.setDataClient(chauffeurDataList.get(i).getId_role().getId_user().getNom(), chauffeurDataList.get(i).getId_role().getId_user().getPrenom(),
                         chauffeurDataList.get(i).getId_role().getLibelle(), chauffeurDataList.get(i).getNum_permis(), chauffeurDataList.get(i).getImg());
-
+                
                 if (column == 2) {
                     column = 0;
                     row++;
@@ -114,10 +113,10 @@ public class CardsChController implements Initializable {
 
     @FXML
     private void details_btu(ActionEvent event) {
-         ChauffeurCRUD us= new ChauffeurCRUD(); 
-         Chauffeur c= new Chauffeur();
-        us.disableChauffeur(c.getId_ch());
 
+    }
+
+    public void disableChauffeur(int id_ch) {
     }
 
 }

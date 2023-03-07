@@ -38,7 +38,7 @@
             </HBox>
             <ImageView fx:id="img" fitHeight="181.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true" />
             <HBox prefHeight="66.0" prefWidth="395.0" />
-            <Button mnemonicParsing="false" text="details" />
+            <Button fx:id="disablebtn" mnemonicParsing="false" onAction="#disable" text="Disable" />
          </children>
       </VBox>
    </children>

@@ -117,6 +117,14 @@ public class Chauffeur {
         this.img = img;
     }
 
+    public Etat getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
+    }
+
     @Override
     public String toString() {
         return "Chauffeur{" + "id_ch=" + id_ch + ", id_role=" + id_role + ", img=" + img + ", num_permis=" + num_permis + ", tel=" + tel + ", email=" + email + ", password=" + password + '}';
