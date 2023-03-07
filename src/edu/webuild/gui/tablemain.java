@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package edu.webuild.gui;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -16,26 +17,28 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  *
  * @author HP
  */
-public class NewFXMain extends Application {
+public class tablemain extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-         try {
-            Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-
+        try {
+            // charger l'interface graphique 
+            //FXMLLoader.load, vous spécifiez le nom du fichier FXML que vous souhaitez charger 
+            //cette méthode crée un objet de type Parent qui représente la racine de votre interface utilisateur
+           Parent   root = FXMLLoader.load(getClass().getResource("main.fxml"));
+           //qui représente la racine de votre interface utilisateur qui représente la racine de votre interface utilisateur
+            Scene scene = new Scene(root,700,700);
+        
+        primaryStage.setTitle("Promotion");
+        primaryStage.setScene(scene);
+        primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(NewFXMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tablemain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
