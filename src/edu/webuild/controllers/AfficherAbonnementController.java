@@ -72,7 +72,8 @@ public class AfficherAbonnementController implements Initializable {
     private Button btnEdit;
  
     
-    
+    @FXML
+            private Button btndelete;
     
     
     //VARIABLES
@@ -192,6 +193,40 @@ private void modifierabonnement(ActionEvent event) {
 
 
 
-       
+       @FXML
+private void supprimerabonnement(ActionEvent event) {
+    Statement ste;
+    Connection conn = MyConnection.getInstance().getConn();
+    abonnement selectedEntity = listView.getSelectionModel().getSelectedItem();
+    
+    // Check if an entity is selected
+    if (selectedEntity != null) {
+        // Display a confirmation dialog
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Delete the selected entity?");
+        alert.setContentText("Are you sure you want to delete the selected entity?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // If the user confirmed, delete the selected entity from the list view and the database
+            listView.getItems().remove(selectedEntity);
+
+            // Delete the selected entity from the database
+            System.out.println("Connection object in event handler: " + conn.toString()); // Debugging statement
+            AbonnementCRUD abonnementCRUD = new AbonnementCRUD(conn);
+            System.out.println("AbonnementCRUD object created with connection: " + abonnementCRUD.toString()); // Debugging statement
+            abonnementCRUD.supprimerabonnement(selectedEntity.getIdA());
+        }
+    } else {
+        // If no entity is selected, display an error message
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("No entity selected");
+        alert.setContentText("Please select an entity to delete.");
+        alert.showAndWait();
+    }
+}
+
     
 }
