@@ -8,7 +8,7 @@ package edu.webuild.controllers;
 import edu.webuild.interfaces.InterfaceCRUD2;
 import edu.webuild.model.reservation;
 import edu.webuild.model.voiture;
-import edu.webuild.services.Emailsender;
+import edu.webuild.services.*;
 import edu.webuild.services.reservationCRUD;
 import java.io.IOException;
 import java.net.URL;
@@ -128,7 +128,7 @@ public class Affichage_reservationController implements Initializable {
                         + "votre reservation a ete effectué avec succes :\n"
                         + "\n";
 
-                Emailsender.sendEmail_add("khmiriiheb3@gmail.com", message);
+                EmailSender.sendEmail_add("khmiri.iheb@esprit.tn", message);
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK) {
                     inter.supprimerreservation(r.getId());

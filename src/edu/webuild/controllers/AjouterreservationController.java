@@ -21,7 +21,7 @@ import javafx.scene.control.Button;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Call;
 import edu.webuild.interfaces.InterfaceCRUD;
-import edu.webuild.services.Emailsender;
+import edu.webuild.services.*;
 import edu.webuild.services.voitureCRUD;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -150,7 +150,8 @@ public class AjouterreservationController implements Initializable {
                     + "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
                     + "\n";
 
-            Emailsender.sendEmail_add("khmiriiheb3@gmail.com", message);
+            //Emailsender.sendEmail_add("khmiriiheb3@gmail.com", message);
+            EmailSender.sendEmail_add("khmiri.iheb@esprit.tn", message);
 
         } 
         }

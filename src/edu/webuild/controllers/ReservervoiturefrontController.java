@@ -6,7 +6,7 @@
 package edu.webuild.controllers;
 
 import edu.webuild.interfaces.InterfaceCRUD2;
-import edu.webuild.services.Emailsender;
+import edu.webuild.services.*;
 import edu.webuild.model.reservation;
 import edu.webuild.model.voiture;
 import edu.webuild.services.reservationCRUD;
@@ -38,7 +38,6 @@ public class ReservervoiturefrontController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
- 
 
     @FXML
     private void ajouter_reservation(ActionEvent event) {
@@ -72,7 +71,7 @@ public class ReservervoiturefrontController implements Initializable {
                     + "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
                     + "\n";
 
-            Emailsender.sendEmail_add("khmiriiheb3@gmail.com", message);
+            EmailSender.sendEmail_add("khmiri.iheb@esprit.tn", message);
 
         }
     }
