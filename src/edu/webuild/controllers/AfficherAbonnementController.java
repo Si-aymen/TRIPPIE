@@ -136,13 +136,17 @@ private void modifierabonnement(ActionEvent event) {
 
     
 
-        TextField typeField = new TextField(selectedEntity.getType());
-        grid.add(new Label("Type:"), 0, 0);
-        grid.add(typeField, 1, 0);
+      TextField typeField = new TextField(selectedEntity.getType());
+grid.add(new Label("Type:"), 0, 0);
+grid.add(typeField, 1, 0);
+
+TextField prixField = new TextField(String.valueOf(selectedEntity.getPrix()));
+grid.add(new Label("Prix:"), 0, 1);
+grid.add(prixField, 1, 1);
 
         TextField idAField = new TextField();
-        grid.add(new Label("IDA:"), 0, 1);
-        grid.add(idAField, 1, 1);
+        grid.add(new Label("IDA:"), 0, 2);
+        grid.add(idAField, 1, 2);
 
         dialog.getDialogPane().setContent(grid);
 
@@ -151,15 +155,15 @@ private void modifierabonnement(ActionEvent event) {
         dialog.getDialogPane().getButtonTypes().addAll(saveButtonType, ButtonType.CANCEL);
 
         // Set the result converter for the dialog
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == saveButtonType) {
-                // If the Save button is clicked, update the selected entity
-                selectedEntity.setType(typeField.getText());
-                return selectedEntity;
-            }
-            return null;
-        });
-
+dialog.setResultConverter(dialogButton -> {
+    if (dialogButton == saveButtonType) {
+        // If the Save button is clicked, update the selected entity
+        selectedEntity.setType(typeField.getText());
+        selectedEntity.setPrix(Integer.parseInt(prixField.getText()));
+        return selectedEntity;
+    }
+    return null;
+});
         // Show the dialog and wait for the user's input
         Optional<abonnement> result = dialog.showAndWait();
 
@@ -180,6 +184,12 @@ private void modifierabonnement(ActionEvent event) {
                 AbonnementCRUD abonnementCRUD = new AbonnementCRUD(conn);
                 abonnementCRUD.modifierabonnement(idAInt, selectedEntity);
             });
+            Alert alert = new Alert(AlertType.INFORMATION);
+
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("membership updated successfully!");
+        alert.show();
         });
     } else {
         // If no entity is selected, display an error message

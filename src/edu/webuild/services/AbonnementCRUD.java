@@ -76,20 +76,21 @@ public class AbonnementCRUD implements InterfaceAbonnement{
             System.out.println(ex.getMessage());
         }
     }
-   @Override
+  @Override
 public void modifierabonnement(int idA, abonnement A) {
     try {
-        String req = "UPDATE `abonnement` SET `type` = ? WHERE `idA` = ?";
-        System.out.println(req); // Print out the SQL statement
+        String req = "UPDATE `abonnement` SET `type` = ?, `prix` = ? WHERE `idA` = ?";
         PreparedStatement ps = conn.prepareStatement(req);
         ps.setString(1, A.getType());
-        ps.setInt(2, idA);
+        ps.setInt(2, A.getPrix());
+        ps.setInt(3, idA);
         ps.executeUpdate();
-        System.out.println(" updated !");
+        System.out.println("Abonnement updated!");
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
     }
 }
+
 
 
     
