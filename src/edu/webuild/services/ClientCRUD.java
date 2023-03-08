@@ -108,17 +108,17 @@ public class ClientCRUD implements InterfaceClientCRUD {
     
     
 
-     public Client getClientCard(int gsm) throws SQLException {
+     public Client getClientCard(String email) throws SQLException {
         String query = "SELECT * "
                 + "FROM utilisateur "
                 + "JOIN role ON utilisateur.id_user = role.id_user "
                 + "JOIN chauffeur ON role.id_role = chauffeur.id_role "
-                + "WHERE gsm = ?";
+                + "WHERE email = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setInt(1, gsm);
+            ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    String email = rs.getString("email");
+                    
                     String nom = rs.getString("nom");
                     String prenom = rs.getString("prenom");
                     String img = rs.getString("img");
@@ -140,7 +140,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
 
                     // Créer l'objet Chauffeur
                     Client client = new Client();
-                    client.setTel(gsm);
+                    client.setImg(img);
                     client.setEmail(email);
                     client.setId_client(id_client);
                     client.setId_role(role);
@@ -576,6 +576,8 @@ public class ClientCRUD implements InterfaceClientCRUD {
                     String nom = rs.getString("nom");
                     String prenom = rs.getString("prenom");
                     String img = rs.getString("img");
+                    Etat etat = Etat.valueOf(rs.getString("etat"));
+                    String password = rs.getString("password");
                     int id_role = rs.getInt("id_role");
                     int id_client = rs.getInt("id_client");
                     int id_user = rs.getInt("id_user");
@@ -593,8 +595,10 @@ public class ClientCRUD implements InterfaceClientCRUD {
 
                     // Créer l'objet Client
                     Client client = new Client();
+                    client.setEtat(etat);
                     client.setImg(img);
                     client.setEmail(email);
+                    client.setPassword(password);
                     client.setId_client(id_client);
                     client.setId_role(role);
 
@@ -675,7 +679,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
         try {
             String req = "SELECT client.email, "
                     + " role.libelle AS role_libelle, "
-                    + " utilisateur.cin, utilisateur.nom, utilisateur.prenom,utilisateur.sexe "
+                    + " utilisateur.cin, utilisateur.nom, utilisateur.prenom "
                     + "FROM utilisateur "
                     + "JOIN role ON utilisateur.id_user = role.id_user "
                     + "JOIN client ON role.id_role = client.id_role ";
@@ -694,7 +698,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
                 utilisateur.setCin(RS.getString("cin"));
                 utilisateur.setNom(RS.getString("nom"));
                 utilisateur.setPrenom(RS.getString("prenom"));
-                utilisateur.setSexe(RS.getString("sexe"));
+           
 
                 role.setId_user(utilisateur);
                 loc.setId_role(role);
@@ -715,7 +719,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
         try {
             String req = "SELECT client.img,client.gsm,client.email, "
                     + " role.libelle AS role_libelle, "
-                    + " utilisateur.cin, utilisateur.nom, utilisateur.prenom,utilisateur.sexe "
+                    + " utilisateur.cin, utilisateur.nom, utilisateur.prenom "
                     + "FROM utilisateur "
                     + "JOIN role ON utilisateur.id_user = role.id_user "
                     + "JOIN client ON role.id_role = client.id_role ";
@@ -736,7 +740,7 @@ public class ClientCRUD implements InterfaceClientCRUD {
                 utilisateur.setCin(RS.getString("cin"));
                 utilisateur.setNom(RS.getString("nom"));
                 utilisateur.setPrenom(RS.getString("prenom"));
-                utilisateur.setSexe(RS.getString("sexe"));
+             
 
                 role.setId_user(utilisateur);
                 loc.setId_role(role);
@@ -776,5 +780,21 @@ public class ClientCRUD implements InterfaceClientCRUD {
     
     return null;
 }
+    
+     public void disableClient(String email) {
+        try {
+            String query = "UPDATE client SET etat = 'disabled' WHERE email = ?";
+            PreparedStatement pst = conn.prepareStatement(query);
+            pst.setString(1, email);
+            int rowsUpdated = pst.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Client account disabled successfully.");
+            } else {
+                System.out.println("Error: Client account not found.");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }
 
 }

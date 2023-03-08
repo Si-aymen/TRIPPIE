@@ -41,8 +41,5 @@ public interface InterfaceUserCRUD {
 
     public Utilisateur getByCin(String cin);
 
-    public void ajouterFemme(Utilisateur u);
-
-    public void ajouterHomme(Utilisateur u);
 
 }

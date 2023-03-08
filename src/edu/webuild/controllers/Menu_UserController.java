@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author aymen
  */
-public class Menu_CovController implements Initializable {
+public class Menu_UserController implements Initializable {
 
     @FXML
     private Button afficher_coc;
@@ -33,10 +33,6 @@ public class Menu_CovController implements Initializable {
     private Button ajouter_cov;
     @FXML
     private Button afficher_Part;
-    @FXML
-    private Button cov_btu;
-    @FXML
-    private Button cov_btu1;
 
     /**
      * Initializes the controller class.
@@ -58,7 +54,7 @@ public class Menu_CovController implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(Menu_CovController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }
@@ -73,7 +69,7 @@ public class Menu_CovController implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(Menu_CovController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }
@@ -88,27 +84,26 @@ public class Menu_CovController implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(Menu_CovController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }
 
     @FXML
-    private void cov_btu(ActionEvent event) {
-        
+    private void statttt(ActionEvent event) {
+         try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Stat_utilisateur.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
-    @FXML
-    private void stats(ActionEvent event) {
-    }
-
-    @FXML
-    private void Front_btu(ActionEvent event) {
-    }
-
-    @FXML
-    private void Map_btu(ActionEvent event) {
-    }
 
     
     

@@ -16,7 +16,7 @@ import java.util.List;
 public class Utilisateur {
     public int id_user;
     private String cin;
-    private String nom,prenom,sexe,img;
+    private String nom,prenom;
     
  
   
@@ -38,34 +38,25 @@ public class Utilisateur {
     
     //constructur parametre 
 
-    public Utilisateur(int id_user, String cin, String nom, String prenom, String sexe) {
+    public Utilisateur(int id_user, String cin, String nom, String prenom) {
         this.id_user = id_user;
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
-        this.sexe = sexe;
+        
       
         
     }
 
-    public Utilisateur(String cin, String nom, String prenom, String sexe, String img) {
+    public Utilisateur(String cin, String nom, String prenom) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
-        this.sexe = sexe;
-        this.img = img;
+      
     }
     
 
-    public Utilisateur(String cin, String nom, String prenom, String sexe) {
-        this.cin = cin;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.sexe = sexe;
-        
-      
-    }
-
+ 
     
 
     public int getId_user() {
@@ -100,26 +91,11 @@ public class Utilisateur {
         this.prenom = prenom;
     }
 
-    public String getSexe() {
-        return sexe;
-    }
-
-    public void setSexe(String sexe) {
-        this.sexe = sexe;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
 
  
     @Override
     public String toString() {
-        return "Utilisateur{" + "id_user=" + id_user + ", cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe +  '}';
+        return "Utilisateur{" + "id_user=" + id_user + ", cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + '}';
     }
 
    

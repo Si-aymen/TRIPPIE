@@ -5,10 +5,15 @@
  */
 package edu.webuild.controllers;
 
+import edu.webuild.model.Locateur;
+import edu.webuild.services.LocateurCRUD;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -58,6 +63,15 @@ public class LocateurCardController implements Initializable {
         } catch (FileNotFoundException e) {
             System.err.println("Error loading image: " + e.getMessage());
         }
+         disablebtn.setOnAction(e -> {
+            try {
+                LocateurCRUD cc = new LocateurCRUD();
+                Locateur c = cc.getLocateurCard(nom_agence);
+                cc.disableLocateur(c.getNom_agence());
+            } catch (SQLException ex) {
+                Logger.getLogger(ChauffeurCardController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
       
         
         

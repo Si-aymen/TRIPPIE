@@ -33,6 +33,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import edu.webuild.utils.MyConnection;
 import java.io.FileOutputStream;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Circle;
 
 /**
  * FXML Controller class
@@ -59,7 +62,11 @@ public class ProfilChauffeurController implements Initializable {
     private Button deco;
     String url;
     @FXML
-    private Button updatebtn;
+    private Button modif;
+    @FXML
+    private ScrollPane scroll;
+    @FXML
+    private GridPane grid;
 
     public void setEmail_lbl(String email) throws SQLException, FileNotFoundException {
 
@@ -70,12 +77,21 @@ public class ProfilChauffeurController implements Initializable {
         nom_lbl.setText(p.getId_role().getId_user().getNom());
         genre_lbl.setText(p.getId_role().getId_user().getPrenom());
         String fullurl = "C:\\xampp\\htdocs\\" + p.getImg();
-        System.out.println(p.getImg());
         File file = new File(fullurl);
-        System.out.println(p.getImg());
         FileInputStream fileInputStream = new FileInputStream(file);
         Image image = new Image(fileInputStream);
         fximg.setImage(image);
+        // Créer un objet Circle avec le rayon et la position souhaités
+        Circle circle = new Circle();
+        circle.setRadius(fximg.getFitWidth() / 2);
+        circle.setCenterX(fximg.getFitWidth() / 2);
+        circle.setCenterY(fximg.getFitHeight() / 2);
+        // Utiliser le Circle comme clip
+        fximg.setClip(circle);
+
+// Définir la taille de l'ImageView pour qu'elle soit égale au diamètre du cercle
+        fximg.setFitWidth(circle.getRadius() * 2);
+        fximg.setFitHeight(circle.getRadius() * 2);
 
     }
 
@@ -106,7 +122,6 @@ public class ProfilChauffeurController implements Initializable {
         }
     }
 
-    @FXML
     private void update(ActionEvent event) throws SQLException {
         try {
             String email = email_lbl.getText();
@@ -124,6 +139,10 @@ public class ProfilChauffeurController implements Initializable {
             Logger.getLogger(ProfilChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+    }
+
+    @FXML
+    private void Update(ActionEvent event) {
     }
 
 }

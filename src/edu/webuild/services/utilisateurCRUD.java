@@ -32,7 +32,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
     @Override
     public void ajouterUtilisateur(Utilisateur u) {
         try {
-            String req = "INSERT INTO `utilisateur`(`cin`,`nom`, `prenom`, `sexe`) VALUES ('" + u.getCin() + "','" + u.getNom() + "','" + u.getPrenom() + "','" + u.getSexe() + "')";
+            String req = "INSERT INTO `utilisateur`(`cin`,`nom`, `prenom`) VALUES ('" + u.getCin() + "','" + u.getNom() + "','" + u.getPrenom() + "')";
             ste = conn.createStatement();
 
             ste.executeUpdate(req, Statement.RETURN_GENERATED_KEYS);
@@ -53,58 +53,11 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
         }
     }
 
-    @Override
-    public void ajouterHomme(Utilisateur u) {
-        try {
-            String req = "INSERT INTO `utilisateur`(`cin`, `img`, `nom`, `prenom`, `sexe`) VALUES ('" + u.getCin() + "','" + u.getImg() + "','" + u.getNom() + "','" + u.getPrenom() + "','Homme')";
-            ste = conn.createStatement();
-
-            ste.executeUpdate(req, Statement.RETURN_GENERATED_KEYS);
-
-            // Récupérer l'ID auto-incrémenté généré lors de l'insertion
-            ResultSet generatedKeys = ste.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                int id_user = generatedKeys.getInt(1);
-                System.out.println("ID auto-incrémenté généré lors de l'insertion: " + id_user);
-            } else {
-                throw new SQLException("L'ajout a échoué, aucun ID auto-incrémenté généré.");
-            }
-
-            System.out.println("Utilisateur ajouté!!!");
-        } catch (SQLException ex) {
-            System.out.println("Utilisateur non ajouté");
-            System.out.println(ex);
-        }
-    }
-
-    @Override
-    public void ajouterFemme(Utilisateur u) {
-        try {
-            String req = "INSERT INTO `utilisateur`(`cin`, `img`, `nom`, `prenom`, `sexe`) VALUES ('" + u.getCin() + "','" + u.getImg() + "','" + u.getNom() + "','" + u.getPrenom() + "','Femme')";
-            ste = conn.createStatement();
-
-            ste.executeUpdate(req, Statement.RETURN_GENERATED_KEYS);
-
-            // Récupérer l'ID auto-incrémenté généré lors de l'insertion
-            ResultSet generatedKeys = ste.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                int id_user = generatedKeys.getInt(1);
-                System.out.println("ID auto-incrémenté généré lors de l'insertion: " + id_user);
-            } else {
-                throw new SQLException("L'ajout a échoué, aucun ID auto-incrémenté généré.");
-            }
-
-            System.out.println("Utilisateur ajouté!!!");
-        } catch (SQLException ex) {
-            System.out.println("Utilisateur non ajouté");
-            System.out.println(ex);
-        }
-    }
-
+   
     @Override
     public void modifierUtilisateur(Utilisateur u) {
         try {
-            String req = "UPDATE `utilisateur` SET `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() + "', `sexe` = '" + u.getSexe() + "' WHERE `utilisateur`.`id_user` = " + u.getId_user();
+            String req = "UPDATE `utilisateur` SET `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() + "' WHERE `utilisateur`.`id_user` = " + u.getId_user();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Utilisateur updated !");
@@ -117,7 +70,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
     @Override
     public void modifierUtilisateur(Utilisateur u, int id_user) {
         try {
-            String req = "UPDATE `utilisateur` SET `cin`='" + u.getCin() + "', `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() + "', `sexe` = '" + u.getSexe() + "' WHERE `utilisateur`.`id_user` = " + u.getId_user();
+            String req = "UPDATE `utilisateur` SET `cin`='" + u.getCin() + "', `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() +  "' WHERE `utilisateur`.`id_user` = " + u.getId_user();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Utilisateur updated !");
@@ -170,7 +123,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                 u.setCin(RS.getString(2));
                 u.setNom(RS.getString(3));
                 u.setPrenom(RS.getString(4));
-                u.setSexe(RS.getString(5));
+              
 
                 r.setId_role(RS.getInt(6));
 
@@ -196,7 +149,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                 u.setCin(RS.getString(2));
                 u.setNom(RS.getString(3));
                 u.setPrenom(RS.getString(4));
-                u.setSexe(RS.getString(5));
+             
 
             }
         } catch (SQLException ex) {
@@ -220,7 +173,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                 u.setCin(RS.getString(2));
                 u.setNom(RS.getString(3));
                 u.setPrenom(RS.getString(4));
-                u.setSexe(RS.getString(5));
+               
 
                 list.add(u);
             }
@@ -247,7 +200,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                     u.setCin(RS.getString(2));
                     u.setNom(RS.getString(3));
                     u.setPrenom(RS.getString(4));
-                    u.setSexe(RS.getString(5));
+
 
                     list.add(u);
                 }
@@ -262,7 +215,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                     u.setCin(RS.getString(2));
                     u.setNom(RS.getString(3));
                     u.setPrenom(RS.getString(4));
-                    u.setSexe(RS.getString(5));
+                   
 
                     list.add(u);
 
@@ -290,7 +243,7 @@ public class utilisateurCRUD implements InterfaceUserCRUD {
                 u.setCin(RS.getString(2));
                 u.setNom(RS.getString(3));
                 u.setPrenom(RS.getString(4));
-                u.setSexe(RS.getString(5));
+           
 
                 list.add(u);
             }

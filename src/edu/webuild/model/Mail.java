@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.controllers;
-
-import edu.webuild.model.Client;
+package edu.webuild.model;
 
 /**
  *
- * @author user
+ * @author aymen
  */
-public interface Approve {
-    public void approve(Client client);
+public class Mail {
+    
 }

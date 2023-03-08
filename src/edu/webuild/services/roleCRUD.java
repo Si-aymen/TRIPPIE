@@ -183,7 +183,7 @@ public class roleCRUD implements InterfaceRoleCRUD {
     public void affecterRole(Chauffeur ch, Role r) {
         try {
 
-            String req = "INSERT INTO `chauffeur` (img,num_permis,marque_voiture,couleur_voiture,immatriculation,gsm,email,password,id_role) VALUES (?,?,?,?,?,?,?,?,?)";
+            String req = "INSERT INTO `chauffeur` (img,num_permis,gsm,email,password,id_role) VALUES (?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, ch.getImg());
              ps.setString(2, ch.getNum_permis());

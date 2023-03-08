@@ -11,6 +11,7 @@ import edu.webuild.controllers.ProfilLocateurController;
 import edu.webuild.model.Chauffeur;
 import edu.webuild.model.Client;
 import edu.webuild.model.Etat;
+import edu.webuild.model.Locateur;
 import edu.webuild.model.Role;
 import edu.webuild.services.ChauffeurCRUD;
 import edu.webuild.services.ClientCRUD;
@@ -169,8 +170,30 @@ public class LoginController {
         String selectedUser = fxchoice.getValue();
         if (selectedUser.equals("Client")) {
             ClientCRUD cc = new ClientCRUD();
-            if (!cc.FoundClient(email, password)) {
+           Client client = cc.getClient(email);
+
+            if (client == null) {
                 isValid = false;
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erreur de connexion");
+                alert.setHeaderText(null);
+                alert.setContentText("Le chauffeur sélectionné n'existe pas.");
+                alert.showAndWait();
+            } else if (!cc.FoundClient(email, password)) {
+                isValid = false;
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erreur de connexion");
+                alert.setHeaderText(null);
+                alert.setContentText("L'adresse email ou le mot de passe est incorrect pour le chauffeur sélectionné.");
+                alert.showAndWait();
+            } else if (client.getEtat() != Etat.enabled) {
+                isValid = false;
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erreur de connexion");
+                alert.setHeaderText(null);
+                alert.setContentText("Mr " + client.getId_role().getId_user().getNom() +" " +client.getId_role().getId_user().getPrenom()
+                        + "Your account is disabled");
+                alert.showAndWait();
             }
         } else if (selectedUser.equals("Chauffeur")) {
             ChauffeurCRUD cr = new ChauffeurCRUD();
@@ -190,21 +213,44 @@ public class LoginController {
                 alert.setHeaderText(null);
                 alert.setContentText("L'adresse email ou le mot de passe est incorrect pour le chauffeur sélectionné.");
                 alert.showAndWait();
-            } else if (chauffeur.getEtat() != Etat.enabled) {
+            } else if (chauffeur.getEtat() == Etat.disabled) {
                 isValid = false;
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Erreur de connexion");
                 alert.setHeaderText(null);
-                alert.setContentText("Mr " + chauffeur.getId_role().getId_user().getNom() + chauffeur.getId_role().getId_user().getNom()
-                        + "Votre compte est désactivé");
+                alert.setContentText("Mr " + chauffeur.getId_role().getId_user().getNom() +" " + chauffeur.getId_role().getId_user().getPrenom()
+                        + " Your account is disabled");
                 alert.showAndWait();
             }
 
         } else if (selectedUser.equals("Locateur")) {
             // Add validation for locateur
             LocateurCRUD lc = new LocateurCRUD();
-            if (!lc.FoundLocateur(email, password)) {
+
+            Locateur locateur = lc.getLocateur(email);
+
+            if (locateur == null) {
                 isValid = false;
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erreur de connexion");
+                alert.setHeaderText(null);
+                alert.setContentText("Le chauffeur sélectionné n'existe pas.");
+                alert.showAndWait();
+            } else if (!lc.FoundLocateur(email, password)) {
+                isValid = false;
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erreur de connexion");
+                alert.setHeaderText(null);
+                alert.setContentText("L'adresse email ou le mot de passe est incorrect pour le chauffeur sélectionné.");
+                alert.showAndWait();
+            } else if (locateur.getEtat() != Etat.enabled) {
+                isValid = false;
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erreur de connexion");
+                alert.setHeaderText(null);
+                alert.setContentText("Mr " + locateur.getId_role().getId_user().getNom() +" " + locateur.getId_role().getId_user().getPrenom()
+                        + " Your account is disabled");
+                alert.showAndWait();
             }
         }
 
@@ -262,7 +308,7 @@ public class LoginController {
                     String password1 = "aymenzouari1";
                     if (txtusername.getText().equals(email1) && txtpass.getText().equals(password1)) {
                         // If login is successful, navigate to the main menu
-                        Parent view3 = FXMLLoader.load(getClass().getResource("Menu_Cov.fxml"));
+                        Parent view3 = FXMLLoader.load(getClass().getResource("Menu_User.fxml"));
                         Scene scene4 = new Scene(view3);
                         Stage window = (Stage) loginBtn.getScene().getWindow();
                         window.setScene(scene4);

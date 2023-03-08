@@ -7,6 +7,7 @@ package edu.webuild.services;
 
 import edu.webuild.interfaces.InterfaceChauffeurCRUD;
 import edu.webuild.model.Chauffeur;
+import edu.webuild.model.Etat;
 import edu.webuild.model.Role;
 import edu.webuild.model.Utilisateur;
 import edu.webuild.utils.MyConnection;
@@ -287,6 +288,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                     String nom = rs.getString("nom");
                     String prenom = rs.getString("prenom");
                     String img = rs.getString("img");
+                    Etat etat = Etat.valueOf(rs.getString("etat"));
                     int id_role = rs.getInt("id_role");
                     int id_client = rs.getInt("id_ch");
                     int id_user = rs.getInt("id_user");
@@ -304,9 +306,12 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
 
                     // Créer l'objet Chauffeur
                     Chauffeur client = new Chauffeur();
+
                     client.setEmail(email);
+                    client.setImg(img);
                     client.setId_ch(id_client);
                     client.setId_role(role);
+                    client.setEtat(etat);
 
                     return client;
 
@@ -319,9 +324,8 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         }
         return null;
     }
-    
-    
-     public Chauffeur getChauffeurCard(String num_permis) throws SQLException {
+
+    public Chauffeur getChauffeurCard(String num_permis) throws SQLException {
         String query = "SELECT * "
                 + "FROM utilisateur "
                 + "JOIN role ON utilisateur.id_user = role.id_user "
@@ -544,7 +548,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         try {
             String req = "SELECT chauffeur.img,chauffeur.num_permis, "
                     + " chauffeur.email, chauffeur.password, role.libelle AS role_libelle,"
-                    + " utilisateur.cin, utilisateur.nom, utilisateur.prenom,utilisateur.sexe "
+                    + " utilisateur.cin, utilisateur.nom, utilisateur.prenom "
                     + "FROM utilisateur "
                     + "JOIN role ON utilisateur.id_user = role.id_user "
                     + "JOIN chauffeur ON role.id_role = chauffeur.id_role ";
@@ -566,7 +570,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 utilisateur.setCin(RS.getString("cin"));
                 utilisateur.setNom(RS.getString("nom"));
                 utilisateur.setPrenom(RS.getString("prenom"));
-                utilisateur.setSexe(RS.getString("sexe"));
+               
 
                 role.setId_user(utilisateur);
                 ch.setId_role(role);
@@ -640,7 +644,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
         try {
             String req = "SELECT chauffeur.img,chauffeur.gsm,chauffeur.num_permis,chauffeur.email, "
                     + " role.libelle AS role_libelle, "
-                    + " utilisateur.cin, utilisateur.nom, utilisateur.prenom,utilisateur.sexe "
+                    + " utilisateur.cin, utilisateur.nom, utilisateur.prenom "
                     + "FROM utilisateur "
                     + "JOIN role ON utilisateur.id_user = role.id_user "
                     + "JOIN chauffeur ON role.id_role = chauffeur.id_role ";
@@ -664,7 +668,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                 utilisateur.setCin(RS.getString("cin"));
                 utilisateur.setNom(RS.getString("nom"));
                 utilisateur.setPrenom(RS.getString("prenom"));
-                utilisateur.setSexe(RS.getString("sexe"));
+         
 
                 role.setId_user(utilisateur);
                 loc.setId_role(role);

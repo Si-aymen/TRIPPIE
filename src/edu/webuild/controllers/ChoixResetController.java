@@ -50,7 +50,7 @@ public class ChoixResetController implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(Menu_CovController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ChoixResetController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }
@@ -65,7 +65,7 @@ public class ChoixResetController implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(Menu_CovController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ChoixResetController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }

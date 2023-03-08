@@ -37,7 +37,14 @@
                </VBox.margin>
             </HBox>
             <ImageView fx:id="img" fitHeight="181.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true" />
-            <HBox prefHeight="66.0" prefWidth="395.0" />
+            <HBox prefHeight="66.0" prefWidth="219.0">
+               <children>
+                  <Label fx:id="fx_prix_par_jour" prefHeight="30.0" prefWidth="407.0" text="email">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children></HBox>
             <Button fx:id="disablebtn" mnemonicParsing="false" onAction="#disable" text="Disable" />
          </children>
       </VBox>

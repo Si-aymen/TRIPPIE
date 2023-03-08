@@ -163,6 +163,7 @@ public class Ajouter_clientController implements Initializable {
         } else {
             Client cli = new Client(r, img, tel, email, password);
             rc.affecterRole2(cli, r);
+            
             try {
                  String subject="Tripee";
             String message="Inscription avec succée";

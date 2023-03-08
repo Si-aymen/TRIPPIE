@@ -50,6 +50,8 @@ public class SendPasswordController implements Initializable {
     private PasswordField ancien;
     Client c = new Client();
     ClientCRUD cC = new ClientCRUD();
+    @FXML
+    private PasswordField txtcode;
 
     /**
      * Initializes the controller class.
@@ -90,7 +92,8 @@ public class SendPasswordController implements Initializable {
     }
 
     private boolean validateInputs() throws SQLException {
-
+        ClientCRUD cc = new ClientCRUD();
+        Client c = cc.getClient(Ssemail2);
         if (txtusername.getText().isEmpty() || txtpass.getText().isEmpty() || txtpass1.getText().isEmpty()) {
             Alert alert1 = new Alert(Alert.AlertType.WARNING);
             alert1.setTitle("Erreur");
@@ -98,16 +101,22 @@ public class SendPasswordController implements Initializable {
             alert1.setHeaderText("Controle de saisie");
             alert1.show();
             return false;
-        }
-        else if (!(txtpass.getText().equals(txtpass1.getText()))) {
+        } else if (!(txtpass.getText().equals(txtpass1.getText()))) {
             Alert alert2 = new Alert(Alert.AlertType.WARNING);
-            alert2.setTitle("Erreur");
-            alert2.setContentText("Veuillez vérifier votre nouveau mot de passe");
+            alert2.setTitle("Error");
+            alert2.setContentText("Verify your password");
+            alert2.setHeaderText(null);
+            alert2.show();
+            return false;
+        } else if (!(txtcode.getText().equals(c.getPassword()))) {
+
+            Alert alert2 = new Alert(Alert.AlertType.WARNING);
+            alert2.setTitle("Error");
+            alert2.setContentText("Wrong code");
             alert2.setHeaderText(null);
             alert2.show();
             return false;
         }
-      
         return true;
 
     }

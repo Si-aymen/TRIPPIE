@@ -26,8 +26,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 /**
@@ -51,6 +54,10 @@ public class ProfilLocateurController implements Initializable {
     private Button modif;
     @FXML
     private ImageView fximg;
+    @FXML
+    private ScrollPane scroll;
+    @FXML
+    private GridPane grid;
 
     public void setEmail_lbl(String email) throws SQLException, FileNotFoundException {
         this.email_lbl.setText(email);
@@ -61,13 +68,23 @@ public class ProfilLocateurController implements Initializable {
         System.out.println(email);
         nom_lbl.setText(p.getId_role().getId_user().getNom());  // Récupérer l'utilisateur connecté
         genre_lbl.setText(p.getId_role().getId_user().getPrenom());
-         String fullurl = "C:\\xampp\\htdocs\\" + p.getImg(); 
+        String fullurl = "C:\\xampp\\htdocs\\" + p.getImg();
         System.out.println(p.getImg());
         File file = new File(fullurl);
-        System.out.println(p.getImg());
         FileInputStream fileInputStream = new FileInputStream(file);
         Image image = new Image(fileInputStream);
         fximg.setImage(image);
+        // Créer un objet Circle avec le rayon et la position souhaités
+        Circle circle = new Circle();
+        circle.setRadius(fximg.getFitWidth() / 2);
+        circle.setCenterX(fximg.getFitWidth() / 2);
+        circle.setCenterY(fximg.getFitHeight() / 2);
+        // Utiliser le Circle comme clip
+        fximg.setClip(circle);
+
+// Définir la taille de l'ImageView pour qu'elle soit égale au diamètre du cercle
+        fximg.setFitWidth(circle.getRadius() * 2);
+        fximg.setFitHeight(circle.getRadius() * 2);
     }
 
     /**

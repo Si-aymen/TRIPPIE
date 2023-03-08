@@ -60,8 +60,7 @@ public class AjoutController implements Initializable {
     private TextField fxnom;
     @FXML
     private TextField fxprenom;
-    @FXML
-    private TextField fxsexe;
+   
 
     @FXML
     private Button btnajout;
@@ -87,15 +86,15 @@ public class AjoutController implements Initializable {
         String nom = fxnom.getText();
         String prenom = fxprenom.getText();
         String cin = fxcin.getText();
-        String sexe = fxsexe.getText();
+       
       
 
-        if (cin.isEmpty() || nom.isEmpty() || prenom.isEmpty() || sexe.isEmpty()) {
+        if (cin.isEmpty() || nom.isEmpty() || prenom.isEmpty()) {
             // Afficher un message d'erreur si la saisie est invalide
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Erreur de saisie");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.setContentText("Please complete all fields.");
             alert.show();
 
         } else if (cin.length() != 8) {
@@ -103,14 +102,14 @@ public class AjoutController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("erreur le cin doit etre 8 chiffres");
+            alert.setContentText("Error cin must be 8 numbers");
             alert.show();
         } else if (Character.isLowerCase(nom.charAt(0))) {
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("erreur le nom doit commence par majuscule");
+            alert.setContentText("Error firstname must start with uppercase");
             alert.show();
 
         } else if (Character.isLowerCase(prenom.charAt(0))) {
@@ -118,7 +117,7 @@ public class AjoutController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("erreur le prenom doit commence par majuscule");
+            alert.setContentText("Error lastname must start with uppercase");
             alert.show();
 
         } //        else if (sexe !="Homme" || sexe !="Femme" || sexe !="H" || sexe !="F"){
@@ -131,7 +130,7 @@ public class AjoutController implements Initializable {
         //        }
         else {
 
-            Utilisateur u = new Utilisateur(cin, nom, prenom, sexe);
+            Utilisateur u = new Utilisateur(cin, nom, prenom);
             utilisateurCRUD uc = new utilisateurCRUD();
             uc.ajouterUtilisateur(u);
             //role

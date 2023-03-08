@@ -66,6 +66,10 @@ public class ProfilClientController implements Initializable {
     private List<Client> clientDataList = FXCollections.observableArrayList();
 
     private InterfaceClientCRUD ClientCRUD = new ClientCRUD();
+    @FXML
+    private ScrollPane scroll;
+    @FXML
+    private GridPane grid;
 
     public void setEmail_lbl(String email) throws SQLException, IOException {
         this.email_lbl.setText(email);

@@ -28,6 +28,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import edu.webuild.utils.MyConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -39,26 +45,12 @@ public class CardsChController implements Initializable {
     private InterfaceChauffeurCRUD ChauffeurCRUD = new ChauffeurCRUD();
     private List<Chauffeur> chauffeurDataList = FXCollections.observableArrayList();
     @FXML
-    private Button back;
-    @FXML
-    private TextField search_bar;
-    @FXML
-    private VBox chosenFruitCard;
-    @FXML
-    private Label fruitNameLable;
-    @FXML
-    private Label fruitPriceLabel;
-    @FXML
-    private ImageView det_cov_img;
-    @FXML
-    private Label det_dep;
-    @FXML
-    private Label det_dest;
-    @FXML
     private ScrollPane scroll;
     @FXML
     private GridPane grid;
     MyConnection conn;
+    @FXML
+    private Button cov_btu1;
 
     /**
      * Initializes the controller class.
@@ -103,20 +95,38 @@ public class CardsChController implements Initializable {
         }
     }
 
-    @FXML
-    private void back(ActionEvent event) {
-    }
-
-    @FXML
-    private void search_btu(ActionEvent event) {
-    }
-
-    @FXML
-    private void details_btu(ActionEvent event) {
-
-    }
 
     public void disableChauffeur(int id_ch) {
+    }
+
+    @FXML
+    private void cov_btu(ActionEvent event) {
+         try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_User.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void stats(ActionEvent event) { 
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Stat_utilisateur.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
 }

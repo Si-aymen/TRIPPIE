@@ -190,7 +190,7 @@ public class IdentifierCompteController implements Initializable {
 
     public void sendMail(String subject, String message) throws Exception, EncoderException {
         // Load email template
-        String content = new String(Files.readAllBytes(Paths.get("mail.html")));
+        
 
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
@@ -198,7 +198,6 @@ public class IdentifierCompteController implements Initializable {
         email.setFrom(new InternetAddress(TEST_EMAIL));
         email.addRecipient(TO, new InternetAddress(Ssemail2));// static variable globale static
         System.out.println(Ssemail2);
-        email.setContent(content, "text/html");
         email.setSubject(subject);
         System.out.println("lena");
         email.setText(message);
