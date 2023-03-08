@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B4A7D6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.ResetPassCodeController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #828CA7;" />
+      <Button layoutX="502.0" layoutY="314.0" mnemonicParsing="false" onAction="#Confirmer" text="Confirm" />
+      <PasswordField fx:id="fxpass1" layoutX="327.0" layoutY="185.0" promptText="Password" />
+      <PasswordField fx:id="fxpass2" layoutX="327.0" layoutY="228.0" promptText="Confirm Password" />
+      <TextField fx:id="fxnum" layoutX="327.0" layoutY="146.0" promptText="GSM" />
+      <ChoiceBox fx:id="fxchoixe" layoutX="327.0" layoutY="62.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

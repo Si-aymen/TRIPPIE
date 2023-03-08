@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #B4A7D6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Ajouter_roleController">
+   <children>
+      <TextField fx:id="fxidu" layoutX="1228.0" layoutY="736.0" prefHeight="18.0" prefWidth="27.0" />
+      <Button fx:id="fxbtn" layoutX="1212.0" layoutY="735.0" mnemonicParsing="false" onAction="#confirm" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: black;" text="Next" textFill="WHITE" />
+      <VBox layoutX="600.0" layoutY="354.0" prefHeight="62.0" prefWidth="100.0" spacing="20.0">
+         <children>
+            <RadioButton fx:id="fxclient" mnemonicParsing="false" text="Client" />
+            <RadioButton fx:id="fxch" mnemonicParsing="false" text="Chauffeur" />
+            <RadioButton fx:id="fxloc" mnemonicParsing="false" text="Locateur" />
+         </children>
+      </VBox>
+      <Label layoutX="437.0" layoutY="153.0" text="Choose your role in our application">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
