@@ -12,7 +12,11 @@ import java.io.IOException;
 
 import java.util.Date;
 
+
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,10 +37,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 
 import javafx.scene.control.ListView;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -105,33 +111,40 @@ public class AfficherAbonnementController implements Initializable {
     }
 
     
-       @FXML   
-       private void modifierabonnement(ActionEvent event)
-       {
-          
+      @FXML   
+private void modifierabonnement(ActionEvent event) {
+    
     abonnement selectedEntity = listView.getSelectionModel().getSelectedItem();
     
     // Check if an entity is selected
     if (selectedEntity != null) {
+        
         // Display a dialog to edit the selected entity
         Dialog<abonnement> dialog = new Dialog<>();
         dialog.setTitle("Edit Entity");
         dialog.setHeaderText("Edit the selected entity:");
 
         // Set the dialog content
-        // For example, you can use a form to display the fields of the entity
-        // and allow the user to edit them
-        // Here's an example using a GridPane to display the fields of the entity
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
 
-        TextField nameField = new TextField(selectedEntity.getType());
+        TextField typeField = new TextField(selectedEntity.getType());
         grid.add(new Label("Type:"), 0, 0);
-        grid.add(nameField, 1, 0);
+        grid.add(typeField, 1, 0);
 
-        
+         DatePicker achatField = new DatePicker(selectedEntity.getDateAchat().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        grid.add(new Label("Date Achat:"), 0, 1);
+        grid.add(achatField, 1, 1);
+
+        DatePicker expirationField = new DatePicker(selectedEntity.getDateExpiration().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        grid.add(new Label("Date Expiration:"), 0, 2);
+        grid.add(expirationField, 1, 2);
+            
+        Spinner<Integer> prixField = new Spinner<>(0, 100, selectedEntity.getPrix());
+        grid.add(new Label("Prix:"), 0, 4);
+        grid.add(prixField, 1, 4);
 
         dialog.getDialogPane().setContent(grid);
 
@@ -142,9 +155,13 @@ public class AfficherAbonnementController implements Initializable {
         // Set the result converter for the dialog
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == saveButtonType) {
+                
                 // If the Save button is clicked, update the selected entity
-                selectedEntity.setType(nameField.getText());
-            
+                selectedEntity.setType(typeField.getText());
+                selectedEntity.setDateAchat(java.sql.Date.valueOf(achatField.getValue()));
+                selectedEntity.setDateExpiration(java.sql.Date.valueOf(expirationField.getValue()));
+                selectedEntity.setPrix(prixField.getValue());
+                
                 return selectedEntity;
             }
             return null;
@@ -155,12 +172,13 @@ public class AfficherAbonnementController implements Initializable {
 
         // If the user clicked the Save button, update the entity in the list view
         result.ifPresent(entity -> {
+            
             // Update the entity in the list view
             listView.refresh();
             
             // Call your CRUD method to update the entity in the database
-            // For example:
-            // entity.update();
+            AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
+            abonnementCRUD.modifierabonnement(selectedEntity, selectedEntity.getIdA());
         });
     } else {
         // If no entity is selected, display an error message
@@ -170,7 +188,8 @@ public class AfficherAbonnementController implements Initializable {
         alert.setContentText("Please select an entity to edit.");
         alert.showAndWait();
     }
-       }
+}
+
            
            
            
