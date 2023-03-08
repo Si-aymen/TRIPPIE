@@ -162,6 +162,24 @@ public class reclamationCRUD implements InterfaceCRUD {
 
         return r;
     }
+    
+    @Override
+    public int countRec(String type) {
+        int count = 0;
+        try {
+            String req = "SELECT COUNT(*) FROM reclamation WHERE type_rec = '"+type+"'";
+            PreparedStatement pst = conn.prepareStatement(req);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next())
+            {
+                count = rs.getInt(1);
+                return count;
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return count;
+    }
 
     @Override
     public void ajouterReponse(reponse r) {
@@ -192,5 +210,5 @@ public class reclamationCRUD implements InterfaceCRUD {
     public List<reponse> getById_rep(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }

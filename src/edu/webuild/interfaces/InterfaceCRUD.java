@@ -40,6 +40,8 @@ public interface InterfaceCRUD {
     public reponse detailsReponse(int id);
 
     public List<reponse> getById_rep(int id);
+    
+    public int countRec(String type);
 
     //public List<reponse> afficher_join();
 }

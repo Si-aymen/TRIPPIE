@@ -9,14 +9,22 @@ import com.jfoenix.controls.JFXButton;
 import static edu.webuild.controller.Ajouter_recAdminController.id_utilisateur;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -25,10 +33,13 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
@@ -61,6 +72,11 @@ public class Ajouter_recController implements Initializable {
     File selectedFile;
     public String url_image;
     private String path;
+    String[] type_r = {"Technique", "Autre"};
+    private String type, commentaire;
+
+    @FXML
+    private ChoiceBox<String> type_choix = new ChoiceBox<>();
 
     /**
      * Initializes the controller class.
@@ -70,6 +86,26 @@ public class Ajouter_recController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        try {
+            // ouvre le fichier "choix.txt" en mode lecture
+            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\guerf\\Desktop\\TRIPPIE-Reclamation\\src\\edu\\webuild\\controller\\choix.txt"));
+
+            // lit chaque ligne du fichier et ajoute les choix au choixTypeR
+            String line;
+            while ((line = reader.readLine()) != null) {
+                type_choix.getItems().add(line);
+            }
+
+            // ferme le fichier
+            reader.close();
+        } catch (IOException e) {
+            System.err.println(e);
+        }
+
+        // Ajouter le nouveau type de réclamation à la liste des options du choix
+        type_choix.getItems().add("Autre");
+
         screenshotView.setOnDragOver(new EventHandler<DragEvent>() {
             public void handle(DragEvent event) {
                 Dragboard db = event.getDragboard();
@@ -104,13 +140,32 @@ public class Ajouter_recController implements Initializable {
             }
         });
         screenshotView.setImage(new Image("file:C:\\Users\\guerf\\Desktop\\TRIPPIE-Reclamation\\src\\edu\\webuild\\images\\drag-drop.gif"));
+
+        type_choix.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.equals("Autre")) {
+                // Demander à l'utilisateur de saisir un nouveau type de réclamation
+                TextInputDialog dialog = new TextInputDialog();
+                dialog.setTitle("Nouveau type de réclamation");
+                dialog.setHeaderText(null);
+                dialog.setContentText("Entrez un nouveau type de réclamation:");
+
+                Optional<String> result = dialog.showAndWait();
+                result.ifPresent(type -> {
+                    // Ajouter le nouveau type de réclamation à la liste des options du choix
+                    type_choix.getItems().add(type);
+                    // Sélectionner le nouveau type de réclamation
+                    type_choix.getSelectionModel().select(type);
+                });
+            }
+        });
+
     }
 
     @FXML
     private void ajouter_rec(ActionEvent event) throws IOException {
 
-        String type = tf_type.getText();
-        String commentaire = tf_commentaire.getText();
+        type = type_choix.getValue();
+        commentaire = tf_commentaire.getText();
         LocalDate localDate = LocalDate.now();
         Date date_creation = Date.valueOf(localDate);
 
@@ -140,6 +195,30 @@ public class Ajouter_recController implements Initializable {
                     .position(Pos.TOP_CENTER)
                     .hideAfter(Duration.seconds(5));
             n.showInformation();
+
+            int count = rc.countRec(type);
+            System.out.println(count);
+
+            if (count > 5) {
+                try {
+                    // ouvre le fichier "choix.txt" en mode écriture
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\guerf\\Desktop\\TRIPPIE-Reclamation\\src\\edu\\webuild\\controller\\choix.txt"));
+
+                    // récupère les choix actuels du choixTypeR
+                    ObservableList<String> items = type_choix.getItems();
+
+                    // écrit chaque choix sur une nouvelle ligne dans le fichier
+                    for (String item : items) {
+                        writer.write(item);
+                        writer.newLine();
+                    }
+
+                    // ferme le fichier
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Reclamation.fxml"));
             rootPane.getChildren().setAll(pane);
