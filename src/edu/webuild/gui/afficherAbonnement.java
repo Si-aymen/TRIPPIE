@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package edu.webuild.gui;
-
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;

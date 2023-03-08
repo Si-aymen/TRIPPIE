@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.controllers;
+package edu.webuild.gui;
 import edu.webuild.interfaces.InterfaceAbonnement;
 import edu.webuild.model.abonnement;
 import edu.webuild.services.AbonnementCRUD;
+import edu.webuild.gui.ajouterAbonnement;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
