@@ -74,6 +74,39 @@ public void ajouterreservation(reservation r) {
 
         return list;
     }
+        
+     @Override
+    public List<reservation> rechercherreservation(int id ) {
+       List<reservation> list = new ArrayList<>();
+        try {
+          String req = "SELECT * FROM `reservation` WHERE id= " + id;
+            Statement st = conn.createStatement();
+           
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+             reservation r = new reservation();
+             r.setId(RS.getInt(1));
+                r.setDate_debut(RS.getDate(2));
+                r.setDate_fin(RS.getDate(3));
+                /*
+                r.setId_voiture(RS.getInt(4));
+             */
+                voitureCRUD voit = new voitureCRUD();
+                int user_id = RS.getInt(4);
+                voiture v = voit.getUserByID(user_id);
+                r.setV(v);
+                list.add(r);
+                
+                
+           
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+
 
   @Override
     public void supprimerreservation(int id) {

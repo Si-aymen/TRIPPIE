@@ -26,5 +26,7 @@ public interface InterfaceCRUD {
 
     public List<voiture> Filter_voiture(String S, String SS);
     public void modifieretat(voiture v )  ;
+     public List<voiture> rechVoiture(int id);
+     public List<voiture> affichervoitures1();
 
 }

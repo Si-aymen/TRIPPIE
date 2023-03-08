@@ -72,6 +72,33 @@ public class voitureCRUD implements InterfaceCRUD{
     }
 
     @Override
+    public List<voiture> affichervoitures1() {
+       List<voiture> list = new ArrayList<>();
+        try {
+            String req = "Select * from voiture where etat='non reservé'";
+            Statement st = conn.createStatement();
+           
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+             voiture v = new voiture();
+             v.setId(RS.getInt(1));
+                v.setMatricule(RS.getString(2));
+                v.setMarque(RS.getString(3));
+                v.setPuissance(RS.getString(4));    
+                v.setPrix_jours(RS.getInt(5));
+                v.setImage_voiture(RS.getString(6)); 
+                v.setEnergie(RS.getString(7)); 
+                 v.setEtat(RS.getString(8)); 
+             
+             list.add(v);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+    @Override
     public List<voiture> affichervoitures() {
        List<voiture> list = new ArrayList<>();
         try {
@@ -81,6 +108,31 @@ public class voitureCRUD implements InterfaceCRUD{
             ResultSet RS= st.executeQuery(req);
             while(RS.next()){
              voiture v = new voiture();
+             v.setId(RS.getInt(1));
+                v.setMatricule(RS.getString(2));
+                v.setMarque(RS.getString(3));
+                v.setPuissance(RS.getString(4));    
+                v.setPrix_jours(RS.getInt(5));
+                v.setImage_voiture(RS.getString(6)); 
+                v.setEnergie(RS.getString(7)); 
+                 v.setEtat(RS.getString(8)); 
+             
+             list.add(v);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+    public List<voiture> rechVoiture(int id) {
+        List<voiture> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `voiture` WHERE id= " + id;
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                 voiture v = new voiture();
              v.setId(RS.getInt(1));
                 v.setMatricule(RS.getString(2));
                 v.setMarque(RS.getString(3));

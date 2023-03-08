@@ -24,6 +24,7 @@ import edu.webuild.interfaces.InterfaceCRUD;
 import edu.webuild.services.Emailsender;
 import edu.webuild.services.voitureCRUD;
 import java.io.IOException;
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -63,17 +64,24 @@ public class AjouterreservationController implements Initializable {
 
     public void appeler() {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+//
+//        Call call = Call.creator(
+//                new com.twilio.type.PhoneNumber("+21650201529"),
+//                new com.twilio.type.PhoneNumber("+12708196867"),
+//                new com.twilio.twiml.VoiceResponse.Builder()
+//                        .say(new com.twilio.twiml.Say.Builder("bonjour webuild vous informez que votre reservation a ete effectué avec succes ").build())
+//                        .build())
+//                .setUrl("http://demo.twilio.com/docs/voice.xml")
+//                .create();
+   
+//             
+   Call call = Call.creator(
+                new com.twilio.type.PhoneNumber("+21650201529"), new com.twilio.type.PhoneNumber("+12766183954"), URI.create("http://demo.twilio.com/docs/voice.xml")).create();
+        System.out.println(call.getSid());         
+            
+           
+            }
 
-       /* Call call = Call.creator(
-                new com.twilio.type.PhoneNumber("+21650201529"),
-                new com.twilio.type.PhoneNumber("+12708196867"),
-                new com.twilio.twiml.VoiceResponse.Builder()
-                        .say(new com.twilio.twiml.Say.Builder("bonjour webuild vous informez que votre reservation a ete effectué avec succes ").build())
-                        .build())
-                .setUrl("http://demo.twilio.com/docs/voice.xml")
-                .create();
-*/
-    }
 
     @FXML
     private void ajouter_reservation(ActionEvent event) {
