@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 import edu.webuild.interfaces.InterfaceAbonnement;
 import edu.webuild.model.abonnement;
 import edu.webuild.services.AbonnementCRUD;
@@ -13,6 +13,8 @@ import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -28,7 +30,8 @@ public class AfficherAbonnementController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
+        @FXML
+    private ListView<abonnement> listView;
     
     @FXML
     private ListView<abonnement> affichageabonnement;
@@ -40,20 +43,24 @@ public class AfficherAbonnementController implements Initializable {
     static Date date_fin;
     static int id;
     static abonnement abonnement;
-    
+      ObservableList<abonnement> abonnements = FXCollections.observableArrayList();
+              AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-       // ListView<abonnement> list1 = affichageabonnement;
-              AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
+      // Call the afficherabonnement() method to retrieve the list of abonnements from the database
+        List<abonnement> list = abonnementCRUD.afficherabonnement();
+        // Convert the list to an ObservableList and store it in the abonnements instance variable
+        abonnements = FXCollections.observableArrayList(list);
+  // Set the items property of the ListView to the abonnements list
+        listView.setItems(abonnements);
+        
+        
+        
+        
+         //System.out.println( abonnementCRUD.afficherabonnement());
 
-      //  List<abonnement> list2 = abonnementCRUD.afficherabonnement();
-         System.out.println( abonnementCRUD.afficherabonnement());
-//        for (int i = 0; i < list2.size(); i++) {
-//            abonnement a = list2.get(i);
-//            list1.getItems().add(a);
-//
-//        }
 
         
     }    

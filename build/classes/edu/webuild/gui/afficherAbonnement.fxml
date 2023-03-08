@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.gui.AfficherAbonnementController">
+<AnchorPane id="AnchorPane" prefHeight="438.0" prefWidth="640.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.AfficherAbonnementController">
     <stylesheets>
         <URL value="@afficherabonnement.css" />
     </stylesheets>
    <children>
-      <ListView fx:id="AfficherAbonnement" layoutX="55.0" layoutY="46.0" prefHeight="272.0" prefWidth="504.0" />
-      <Button fx:id="modifierabonnement" layoutX="55.0" layoutY="328.0" mnemonicParsing="false" text="modifier abonnement" />
-      <Button fx:id="supprimerabonnement" layoutX="418.0" layoutY="328.0" mnemonicParsing="false" text="supprimer abonnement" />
+      <ListView fx:id="listView" layoutX="1.0" layoutY="83.0" prefHeight="272.0" prefWidth="640.0" />
    </children>
 </AnchorPane>

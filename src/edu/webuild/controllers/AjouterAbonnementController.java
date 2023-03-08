@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.gui;
+package edu.webuild.controllers;
 import edu.webuild.interfaces.InterfaceAbonnement;
 import edu.webuild.model.abonnement;
 import edu.webuild.services.AbonnementCRUD;
