@@ -24,6 +24,7 @@ import edu.webuild.interfaces.InterfaceCRUD;
 import edu.webuild.services.*;
 import edu.webuild.services.voitureCRUD;
 import java.io.IOException;
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -48,8 +49,8 @@ public class AjouterreservationController implements Initializable {
     private DatePicker date_debut_pk;
     @FXML
     private DatePicker date_fin_pk1;
-    public static final String ACCOUNT_SID = "AC0578c30cc6dca5aaa242984635afc216";
-    public static final String AUTH_TOKEN = "95eaaf34d104da9bc14f86f54b8de054";
+    public static final String ACCOUNT_SID = "ACa2ec39cd2a68e12a23ca67347af2ae8c";
+    public static final String AUTH_TOKEN = "94aa457bd9354679abab2257270c8099";
     @FXML
     private Button back;
 
@@ -62,21 +63,27 @@ public class AjouterreservationController implements Initializable {
     }
 
     public void appeler() {
-        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+       
+//
+//        Call call = Call.creator(
+//                new com.twilio.type.PhoneNumber("+21650201529"),
+//                new com.twilio.type.PhoneNumber("+12708196867"),
+//                new com.twilio.twiml.VoiceResponse.Builder()
+//                        .say(new com.twilio.twiml.Say.Builder("bonjour webuild vous informez que votre reservation a ete effectué avec succes ").build())
+//                        .build())
+//                .setUrl("http://demo.twilio.com/docs/voice.xml")
+//                .create();
+   
+//             
+       
+            
+           
+            }
 
-       /* Call call = Call.creator(
-                new com.twilio.type.PhoneNumber("+21650201529"),
-                new com.twilio.type.PhoneNumber("+12708196867"),
-                new com.twilio.twiml.VoiceResponse.Builder()
-                        .say(new com.twilio.twiml.Say.Builder("bonjour webuild vous informez que votre reservation a ete effectué avec succes ").build())
-                        .build())
-                .setUrl("http://demo.twilio.com/docs/voice.xml")
-                .create();
-*/
-    }
 
     @FXML
     private void ajouter_reservation(ActionEvent event) {
+         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Date date_debut = java.sql.Date.valueOf(date_debut_pk.getValue());
         Date date_fin = java.sql.Date.valueOf(date_fin_pk1.getValue());
        
@@ -138,7 +145,9 @@ public class AjouterreservationController implements Initializable {
             inter.ajouterreservation(res);
             InterfaceCRUD inter2 = new voitureCRUD();
             inter2.modifieretat(Afficher_voitureController.voiture);
-            appeler();
+         Call call = Call.creator(
+                new com.twilio.type.PhoneNumber("+21650201529"), new com.twilio.type.PhoneNumber("+15075954684"), URI.create("http://demo.twilio.com/docs/voice.xml")).create();
+        System.out.println(call.getSid());     
             showAlert("votre reszervation a ete effectué avec succes ");
 
             String message = "Dear [Client's Name],\n"
@@ -152,6 +161,17 @@ public class AjouterreservationController implements Initializable {
 
             //Emailsender.sendEmail_add("khmiriiheb3@gmail.com", message);
             EmailSender.sendEmail_add("khmiri.iheb@esprit.tn", message);
+            try {
+
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoiturefront.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
 
         } 
         }

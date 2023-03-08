@@ -38,10 +38,6 @@ public class Afficher_voitureController implements Initializable {
     @FXML
     private ListView<voiture> affichervoiture;
     @FXML
-    private Button supprimer;
-    @FXML
-    private Button mod;
-    @FXML
     private Button reservervoiture;
 
     static int id;
@@ -54,8 +50,6 @@ public class Afficher_voitureController implements Initializable {
     static String energie;
     static String etat;
 
-    @FXML
-    private Button details;
     @FXML
     private Button back;
 
@@ -82,7 +76,6 @@ public class Afficher_voitureController implements Initializable {
         alert.showAndWait();
     }
 
-    @FXML
     private void supprimer_voiture(ActionEvent event) {
         ListView<voiture> list = affichervoiture;
         InterfaceCRUD inter = new voitureCRUD();
@@ -104,7 +97,6 @@ public class Afficher_voitureController implements Initializable {
         }
     }
 
-    @FXML
     private void mod(ActionEvent event) {
         ListView<voiture> list = affichervoiture;
         InterfaceCRUD inter = new voitureCRUD();
@@ -153,7 +145,6 @@ public class Afficher_voitureController implements Initializable {
         }
     }
 
-    @FXML
     private void details(ActionEvent event) {
         ListView<voiture> list = affichervoiture;
         InterfaceCRUD inter = new voitureCRUD();

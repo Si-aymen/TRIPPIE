@@ -15,9 +15,15 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -47,28 +53,28 @@ public class AjoutervoiturebackController implements Initializable {
     private ChoiceBox<String> fx_energie;
     @FXML
     private TextField fx_prix_jours;
+    
     @FXML
     private Button ajouter;
-    private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
+     private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
     private final String[] fx_puissancee = {"5ch", "6ch", "7ch", "8ch", "9ch", "10ch", "11ch", "12ch", "13ch"};
     private final String[] fx_energiee = {"energie", "gazoil", "gpl"};
-    static String url_image;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        fx_marque.getItems().addAll(fx_marquee);
+         fx_marque.getItems().addAll(fx_marquee);
         fx_puissance.getItems().addAll(fx_puissancee);
-        fx_energie.getItems().addAll(fx_energiee);
-
+        fx_energie.getItems().addAll(fx_energiee); 
         String image_voiture = url_image;
-    }
+        // TODO
+    }    
 
     @FXML
     private void add_picture(ActionEvent event) {
-        ImageView imageView = lab_image;
+         ImageView imageView = lab_image;
 
         // Create a FileChooser
         FileChooser fileChooser = new FileChooser();
@@ -106,17 +112,8 @@ public class AjoutervoiturebackController implements Initializable {
         }
     }
 
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
     @FXML
-    private void ajouter(ActionEvent event) {
-        String matricule = fxmatricule.getText();
+    private void ajouter(ActionEvent event) { String matricule = fxmatricule.getText();
         String marque = fx_marque.getValue();
         String puissance = fx_puissance.getValue();
         String energie = fx_energie.getValue();
@@ -125,11 +122,12 @@ public class AjoutervoiturebackController implements Initializable {
         String etat = "non reservé";
 
         int position1 = matricule.indexOf("tunis");
-        String partie1 = matricule.substring(0, position1);
-        String partie2 = matricule.substring(position1 + 5, matricule.length() - position1 + 4);
-        int convert1 = Integer.parseInt(partie1);
-
-        int convert2 = Integer.parseInt(partie2);
+  //    String partie1 = matricule.substring(0, position1);
+//      String partie2 = matricule.substring(position1 + 5, matricule.length() - position1 + 4);
+    //   int convert1 = Integer.parseInt(partie1);
+      //  int convert2 = Integer.parseInt(partie2);
+     
+        
 
         if (prix_jours < 100) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -161,34 +159,57 @@ public class AjoutervoiturebackController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("erreur il faut contenir tunis");
             alert.show();
+//        } else if (convert1>9999) {
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Information Dialog");
+//            alert.setHeaderText(null);
+//            alert.setContentText("pb matricule");
+//            alert.show();
+//        }
+//            else if (convert2>999) {
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Information Dialog");
+//            alert.setHeaderText(null);
+//            alert.setContentText("pb matricule");
+//            alert.show();
+                    
         } else {
-            if (convert2 > 999) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("tu ne respecte pas l immatriulation");
-                alert.show();
-            } else if (convert1 > 9999) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("tu ne respecte pas l immatriulation");
-                alert.show();
-            } else {
-//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//                alert.setTitle("Confirmation");
-//                alert.setHeaderText(null);
-//                alert.setContentText("are you sure to add this car ?");
-//                Optional<ButtonType> result = alert.showAndWait();
-//                if (result.get() == ButtonType.OK) {
-                    voiture v = new voiture(matricule, marque, puissance, prix_jours, cov_img, energie);
-                    voitureCRUD voit = new voitureCRUD();
-                    voit.ajoutervoiture(v);
-                 //  showAlert("car added successfully");
+           {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("are you sure to add this car ?");
+            
 
-                }
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+
+                voiture v = new voiture(matricule, marque, puissance, prix_jours, cov_img, energie);
+                voitureCRUD voit = new voitureCRUD();
+                voit.ajoutervoiture(v);
+                 showAlert("car added successfully");}
+            try {
+
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoitureback.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+               
             }
         }
-
     }
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    
 
+}

@@ -28,7 +28,7 @@
                                         <Font name="Cambria Bold" size="40.0" />
                                     </font>
                                 </Label>
-                                <Label text="Back" textFill="#878787">
+                                <Label text="Front" textFill="#878787">
                                     <font>
                                         <Font name="Cambria" size="40.0" />
                                     </font>
@@ -344,7 +344,7 @@
             </center>
         </BorderPane>
       <Button layoutX="71.0" layoutY="225.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="User" />
-      <Button layoutX="71.0" layoutY="281.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Voiture" />
+      <Button layoutX="71.0" layoutY="281.0" mnemonicParsing="false" onAction="#voiture_front" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Voiture" />
       <Button layoutX="71.0" layoutY="335.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Reservation Voiture" />
       <Button fx:id="cov_btu" layoutX="71.0" layoutY="391.0" mnemonicParsing="false" onAction="#cov_btu" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Co_Voiturage" />
       <Button layoutX="71.0" layoutY="446.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Participation Co_Voiturage" />
