@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="438.0" prefWidth="640.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.AfficherAbonnementController">
+<AnchorPane id="AnchorPane" prefHeight="474.0" prefWidth="776.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.AfficherAbonnementController">
     <stylesheets>
         <URL value="@afficherabonnement.css" />
     </stylesheets>
    <children>
-      <ListView fx:id="listView" layoutX="1.0" layoutY="83.0" prefHeight="272.0" prefWidth="640.0" />
+      <ListView fx:id="listView" layoutX="262.0" layoutY="57.0" prefHeight="159.0" prefWidth="402.0" />
+      <Label layoutX="20.0" layoutY="31.0" prefHeight="18.0" prefWidth="151.0" text="All the membership infos:" />
+      <Button fx:id="btnEdit" layoutX="613.0" layoutY="235.0" mnemonicParsing="false" onAction="#modifierabonnement" prefHeight="26.0" prefWidth="50.0" text="Edit" />
+    <AnchorPane layoutY="-15.0" prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;" />
    </children>
 </AnchorPane>

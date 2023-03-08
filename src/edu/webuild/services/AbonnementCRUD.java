@@ -82,7 +82,7 @@ public class AbonnementCRUD implements InterfaceAbonnement{
             String req = "UPDATE `abonnement` SET `type` = ?, `dateExpiration` = ?, `dateAchat` = ?, `prix` = ? WHERE `idA` = ?";
             PreparedStatement ps = conn.prepareStatement(req);
               ps.setInt(1, idA);
-            ps.setString(2, A.getType());
+            ps.setString(2, A.getType());       
              ps.setInt(3, A.getPrix());
             ps.setDate(4, Date.valueOf(A.getDateAchat().toString())); // convert LocalDate to java.sql.Date
 
