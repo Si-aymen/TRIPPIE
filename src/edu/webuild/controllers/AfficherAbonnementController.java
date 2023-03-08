@@ -8,12 +8,15 @@ import edu.webuild.interfaces.InterfaceAbonnement;
 import edu.webuild.model.abonnement;
 import edu.webuild.services.AbonnementCRUD;
 import edu.webuild.gui.afficherAbonnement;
+import edu.webuild.utils.MyConnection;
 import java.io.IOException;
 
 import java.util.Date;
 
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
@@ -44,6 +47,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -54,6 +58,7 @@ import javafx.stage.Stage;
  * @author mtirn
  */
 public class AfficherAbonnementController implements Initializable {
+    
 
     /**
      * Initializes the controller class.
@@ -65,20 +70,18 @@ public class AfficherAbonnementController implements Initializable {
     private ListView<abonnement> affichageabonnement;
       @FXML
     private Button btnEdit;
-       @FXML
-    private Button btnDelete;
+ 
     
     
     
     
     //VARIABLES
-    static int idA,prix ;
-    static String type;
-    static Date dateAchat;
-    static Date dateExpiration;
+    int idA ;
+   String type;
+  
 
    
-    static abonnement abonnement;
+  
 
 
       
@@ -110,15 +113,15 @@ public class AfficherAbonnementController implements Initializable {
         alert.showAndWait();
     }
 
-    
-      @FXML   
+@FXML
 private void modifierabonnement(ActionEvent event) {
-    
+    Statement ste;
+    Connection conn = MyConnection.getInstance().getConn();
     abonnement selectedEntity = listView.getSelectionModel().getSelectedItem();
-    
+
     // Check if an entity is selected
     if (selectedEntity != null) {
-        
+
         // Display a dialog to edit the selected entity
         Dialog<abonnement> dialog = new Dialog<>();
         dialog.setTitle("Edit Entity");
@@ -130,21 +133,15 @@ private void modifierabonnement(ActionEvent event) {
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
 
+    
+
         TextField typeField = new TextField(selectedEntity.getType());
         grid.add(new Label("Type:"), 0, 0);
         grid.add(typeField, 1, 0);
 
-         DatePicker achatField = new DatePicker(selectedEntity.getDateAchat().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        grid.add(new Label("Date Achat:"), 0, 1);
-        grid.add(achatField, 1, 1);
-
-        DatePicker expirationField = new DatePicker(selectedEntity.getDateExpiration().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        grid.add(new Label("Date Expiration:"), 0, 2);
-        grid.add(expirationField, 1, 2);
-            
-        Spinner<Integer> prixField = new Spinner<>(0, 100, selectedEntity.getPrix());
-        grid.add(new Label("Prix:"), 0, 4);
-        grid.add(prixField, 1, 4);
+        TextField idAField = new TextField();
+        grid.add(new Label("IDA:"), 0, 1);
+        grid.add(idAField, 1, 1);
 
         dialog.getDialogPane().setContent(grid);
 
@@ -155,13 +152,8 @@ private void modifierabonnement(ActionEvent event) {
         // Set the result converter for the dialog
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == saveButtonType) {
-                
                 // If the Save button is clicked, update the selected entity
                 selectedEntity.setType(typeField.getText());
-                selectedEntity.setDateAchat(java.sql.Date.valueOf(achatField.getValue()));
-                selectedEntity.setDateExpiration(java.sql.Date.valueOf(expirationField.getValue()));
-                selectedEntity.setPrix(prixField.getValue());
-                
                 return selectedEntity;
             }
             return null;
@@ -170,15 +162,23 @@ private void modifierabonnement(ActionEvent event) {
         // Show the dialog and wait for the user's input
         Optional<abonnement> result = dialog.showAndWait();
 
-        // If the user clicked the Save button, update the entity in the list view
+        // If the user clicked the Save button, update the entity in the list view and the database
         result.ifPresent(entity -> {
-            
             // Update the entity in the list view
             listView.refresh();
-            
-            // Call your CRUD method to update the entity in the database
-            AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
-            abonnementCRUD.modifierabonnement(selectedEntity, selectedEntity.getIdA());
+
+            // Prompt the user for the idA value
+            TextInputDialog idAInputDialog = new TextInputDialog();
+            idAInputDialog.setTitle("Enter IDA");
+            idAInputDialog.setHeaderText("Please enter the IDA value:");
+            Optional<String> idAResult = idAInputDialog.showAndWait();
+
+            // If the user entered an idA value, update the entity in the database
+            idAResult.ifPresent(idA -> {
+                int idAInt = Integer.parseInt(idA);
+                AbonnementCRUD abonnementCRUD = new AbonnementCRUD(conn);
+                abonnementCRUD.modifierabonnement(idAInt, selectedEntity);
+            });
         });
     } else {
         // If no entity is selected, display an error message
@@ -190,9 +190,8 @@ private void modifierabonnement(ActionEvent event) {
     }
 }
 
-           
-           
-           
+
+
        
     
 }

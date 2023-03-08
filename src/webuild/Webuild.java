@@ -59,11 +59,11 @@ public class Webuild {
            
       
 // ---------------Create a new Abonnement object--------------
-    AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
-         Date dateAchat = Date.valueOf("2023-02-24");
-          Date dateExpiration = Date.valueOf("2025-02-24");
-        abonnement abonnement = new abonnement("PLAT", 120, dateAchat ,dateExpiration);
-//       
+//   AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
+     //  Date dateAchat = Date.valueOf("2023-02-24");
+       // Date dateExpiration = Date.valueOf("2025-02-24");
+      // abonnement abonnement = new abonnement("PLATLLLLL", 120);
+////       
 //        
 //// -------------Add the new Abonnement object to the database-----------
 //     abonnementCRUD.ajouterabonnement(abonnement);
@@ -88,10 +88,10 @@ public class Webuild {
 // abonnementCRUD.supprimerabonnement(34);
     
 // ---------------------Call the modifierabonnement method to update the abonnement
-       abonnementCRUD.modifierabonnement(abonnement, 22);
+      //abonnementCRUD.modifierabonnement(abonnement, 38);
 
         // Print the updated abonnement
-       // System.out.println(abonnementCRUD.afficherabonnement());                  
+//        System.out.println(abonnementCRUD.afficherabonnement());                  
 
 
 

@@ -76,24 +76,22 @@ public class AbonnementCRUD implements InterfaceAbonnement{
             System.out.println(ex.getMessage());
         }
     }
-    @Override
-    public void modifierabonnement(abonnement A, int idA) {
-        try {
-            String req = "UPDATE `abonnement` SET `type` = ?, `dateExpiration` = ?, `dateAchat` = ?, `prix` = ? WHERE `idA` = ?";
-            PreparedStatement ps = conn.prepareStatement(req);
-              ps.setInt(1, idA);
-            ps.setString(2, A.getType());       
-             ps.setInt(3, A.getPrix());
-            ps.setDate(4, Date.valueOf(A.getDateAchat().toString())); // convert LocalDate to java.sql.Date
-
-            ps.setDate(5, Date.valueOf(A.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
-          
-            ps.executeUpdate();
-            System.out.println(" updated !");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+   @Override
+public void modifierabonnement(int idA, abonnement A) {
+    try {
+        String req = "UPDATE `abonnement` SET `type` = ? WHERE `idA` = ?";
+        System.out.println(req); // Print out the SQL statement
+        PreparedStatement ps = conn.prepareStatement(req);
+        ps.setString(1, A.getType());
+        ps.setInt(2, idA);
+        ps.executeUpdate();
+        System.out.println(" updated !");
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
     }
+}
+
+
     
     
     @Override
@@ -118,17 +116,20 @@ public class AbonnementCRUD implements InterfaceAbonnement{
     public List<abonnement> afficherabonnement() {
        List<abonnement> list = new ArrayList<>();
         try {
-        String req = "SELECT type, prix, dateAchat, dateExpiration FROM abonnement";
+        String req = "SELECT idA, type, prix, dateAchat, dateExpiration FROM abonnement";
+
         Statement st = conn.createStatement();
         ResultSet RS = st.executeQuery(req);
         while (RS.next()) {
-            abonnement A = new abonnement();
-            A.setType(RS.getString(1));
-            A.setPrix(RS.getInt(2));
-            A.setDateAchat(RS.getDate(3));
-            A.setDateExpiration(RS.getDate(4));
-            list.add(A);
-        }
+    abonnement A = new abonnement();
+    A.setIdA(RS.getInt(1));
+    A.setType(RS.getString(2));
+    A.setPrix(RS.getInt(3));
+    A.setDateAchat(RS.getDate(4));
+    A.setDateExpiration(RS.getDate(5));
+    list.add(A);
+}
+
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
     }
@@ -230,7 +231,15 @@ public class AbonnementCRUD implements InterfaceAbonnement{
         return list;
     }
   
+public AbonnementCRUD(Connection conn)
+{
 
- 
+this.conn=conn;
+}
+
+    public AbonnementCRUD() {
+       
+    }
+
     
 }
