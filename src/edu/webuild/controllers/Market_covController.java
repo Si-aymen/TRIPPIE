@@ -32,6 +32,7 @@ import edu.webuild.controllers.Menu_CoVoiturageController;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 
 public class Market_covController implements Initializable {
 
@@ -144,9 +145,24 @@ public class Market_covController implements Initializable {
 
     }
 
-    @FXML
-    private void Add_btu(ActionEvent event) {
+//    @FXML
+//    private void Add_btu(ActionEvent event) {
+//
+//        try {
+//
+//            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Add_covoiturage.fxml"));
+//            Scene scene = new Scene(page1);
+//            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            stage.setScene(scene);
+//            stage.show();
+//        } catch (IOException ex) {
+//            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+//
+//        }
+//    }
 
+    @FXML
+    private void Added_cov(MouseEvent event) {
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Add_covoiturage.fxml"));

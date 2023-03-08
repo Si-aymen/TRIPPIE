@@ -163,7 +163,7 @@
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
                                 <Pane prefHeight="84.0" prefWidth="96.0" />
-                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../../../style.css">
+                                <HBox alignment="CENTER" onMouseClicked="#Added_cov" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../../../style.css">
                                     <children>
                                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" stylesheets="@../../../style.css">
                                             <children>
@@ -179,7 +179,6 @@
                                                 </Label>
                                             </children>
                                         </VBox>
-                              <Button mnemonicParsing="false" onAction="#Add_btu" text="Add" />
                                     </children>
                                 </HBox>
                                 <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
