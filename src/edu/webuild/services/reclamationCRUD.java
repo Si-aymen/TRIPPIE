@@ -210,5 +210,31 @@ public class reclamationCRUD implements InterfaceCRUD {
     public List<reponse> getById_rep(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<reclamation> rechReclamation(int id) {
+        List<reclamation> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `reclamation` WHERE id_rec= " + id;
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                reclamation r = new reclamation();
+                r.setId_rec(RS.getInt("id_rec"));
+                r.setType_rec(RS.getString("type_rec"));
+                r.setCommentaire(RS.getString("commentaire"));
+                r.setEtat(RS.getString("etat"));
+                r.setId_utilisateur(RS.getInt("id_utilisateur"));
+                r.setDate_creation(RS.getDate("date_creation"));
+                r.setUrl_image(RS.getString("image"));
+
+                list.add(r);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return list;
+    }
     
 }

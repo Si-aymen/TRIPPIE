@@ -42,6 +42,8 @@ public interface InterfaceCRUD {
     public List<reponse> getById_rep(int id);
     
     public int countRec(String type);
+    
+    public List<reclamation> rechReclamation(int id);
 
     //public List<reponse> afficher_join();
 }
