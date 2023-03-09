@@ -96,15 +96,14 @@ public class Ajouter_recController implements Initializable {
             while ((line = reader.readLine()) != null) {
                 type_choix.getItems().add(line);
             }
+            // Ajouter le nouveau type de réclamation à la liste des options du choix
+            type_choix.getItems().add("Autre");
 
             // ferme le fichier
             reader.close();
         } catch (IOException e) {
             System.err.println(e);
         }
-
-        // Ajouter le nouveau type de réclamation à la liste des options du choix
-        type_choix.getItems().add("Autre");
 
         screenshotView.setOnDragOver(new EventHandler<DragEvent>() {
             public void handle(DragEvent event) {
@@ -199,8 +198,11 @@ public class Ajouter_recController implements Initializable {
             int count = rc.countRec(type);
             System.out.println(count);
 
-            if (count > 5) {
+            if (count > 2) {
                 try {
+                    
+                    type_choix.getItems().remove("Autre");
+                    
                     // ouvre le fichier "choix.txt" en mode écriture
                     BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\guerf\\Desktop\\TRIPPIE-Reclamation\\src\\edu\\webuild\\controller\\choix.txt"));
 
