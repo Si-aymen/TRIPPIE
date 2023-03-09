@@ -5,13 +5,13 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="474.0" prefWidth="776.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.AfficherAbonnementController">
+<AnchorPane id="AnchorPane" prefHeight="800" prefWidth="1300" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.AfficherAbonnementController">
     
    <children>
-      <ListView fx:id="listView" layoutX="262.0" layoutY="57.0" prefHeight="159.0" prefWidth="402.0" />
+      <ListView fx:id="listView" layoutX="262.0" layoutY="57.0" prefHeight="234.0" prefWidth="978.0" />
       <Label layoutX="20.0" layoutY="31.0" prefHeight="18.0" prefWidth="151.0" text="All the membership infos:" />
-      <Button fx:id="btnEdit" layoutX="613.0" layoutY="235.0" mnemonicParsing="false" onAction="#modifierabonnement" prefHeight="26.0" prefWidth="50.0" text="Edit" />
+      <Button fx:id="btnEdit" layoutX="1189.0" layoutY="307.0" mnemonicParsing="false" onAction="#modifierabonnement" prefHeight="26.0" prefWidth="50.0" text="Edit" />
     <AnchorPane layoutY="-15.0" prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;" />
-      <Button fx:id="btndelete" layoutX="554.0" layoutY="235.0" mnemonicParsing="false" onAction="#supprimerabonnement" text="Delete" />
+      <Button fx:id="btndelete" layoutX="1125.0" layoutY="307.0" mnemonicParsing="false" onAction="#supprimerabonnement" text="Delete" />
    </children>
 </AnchorPane>
