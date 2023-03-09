@@ -63,21 +63,27 @@ public class Discount1Controller implements Initializable {
         if (discountPercentage > 0) {
     discountshow.setText(String.format("Discounted Price: %.2f", discountedPrice));
     test.setText("Your coupon code is valid");
-} else {
+} else if(discountPercentage == 0)  {
             
     test.setText("Invalid coupon code");
 }
-       
+   else {
+        test.setText("Coupon code has expired");
+    }     
     }
      public int getDiscountPercentageFromDB(String couponCode) {
         try {
             // Fetch the discount percentage and number of times the coupon has been used for the given coupon code from the database
             Statement stmt = cnx2.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT taux_reduction, nbr_utilisation   FROM coupon WHERE code_coupon='" + couponCode + "'");
+            ResultSet rs = stmt.executeQuery("SELECT taux_reduction, nbr_utilisation,date_experation   FROM coupon WHERE code_coupon='" + couponCode + "' AND date_experation<= NOW()");
             if (rs.next()) {
                 int discountPercentage = rs.getInt("taux_reduction");
                 int nbrUtilisation = rs.getInt("nbr_utilisation");
-             
+                
+                Date expirationDate = rs.getDate("date_experation");
+             if (expirationDate != null && expirationDate.before(new Date())) {
+                return -1; // Coupon has expired
+            }
                
            
 PreparedStatement pst = cnx2.prepareStatement("INSERT INTO historique (taux_redu, code_coupon) VALUES ( ?, ?)");
