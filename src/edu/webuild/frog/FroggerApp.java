@@ -96,12 +96,12 @@ private Button stopMusicButton;
     //a method that creates and returns the game's scene graph.
     private Parent createContent() {
         root = new Pane();
-        root.setPrefSize(1050, 600); //Screen size
+        root.setPrefSize(1300, 800); //Screen size
         //add background image
 		try(InputStream is = Files.newInputStream(Paths.get("src/edu/webuild/resources/bg.png"))){
 			ImageView img = new ImageView(new Image(is));
-			img.setFitWidth(1050);
-			img.setFitHeight(600);
+			img.setFitWidth(1300);
+			img.setFitHeight(800);
 			root.getChildren().add(img);
 		}
 		catch(IOException e) {
@@ -119,15 +119,56 @@ private Button stopMusicButton;
         stopMusicButton.setOnAction(event -> {
             SoundPlayer.stopSound();
         });
+            HBox musicBox = new HBox();
+            musicBox.setTranslateX(850);
+            musicBox.setTranslateY(10);
+            musicBox.setSpacing(20); // Set spacing to 10 pixels
+            musicBox.getChildren().addAll(playMusicButton, stopMusicButton);
+            root.getChildren().add(musicBox);
 
-        HBox musicBox = new HBox();
-        musicBox.setTranslateX(700);
-        musicBox.setTranslateY(10);
-        musicBox.getChildren().addAll(playMusicButton, stopMusicButton);
-        root.getChildren().add(musicBox);
+ //____________________PLAY_________________
 
-
+                        playMusicButton.setStyle(
+                                "-fx-background-color: #A08EF9; -fx-text-fill: white; -fx-font-size: 14px;"
+                                        + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+                        playMusicButton.setOnMouseEntered(e -> {
+                        playMusicButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -fx-font-size: 14px;"
+                                        + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+                    });
     
+
+                        playMusicButton.setOnMouseExited(e -> {
+                           playMusicButton.setStyle( "-fx-background-color: #6143F7; -fx-text-fill: white; -fx-font-size: 14px;"
+                                           + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+                       });
+
+                    playMusicButton.setOnMouseEntered(e -> {
+                    playMusicButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -fx-font-size: 14px;"
+                                       + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+                   });
+
+                    
+                    //____________________STOP__________________
+                    
+                       stopMusicButton.setStyle(
+                                "-fx-background-color: #A08EF9; -fx-text-fill: white; -fx-font-size: 14px;"
+                                        + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+                        stopMusicButton.setOnMouseEntered(e -> {
+                        stopMusicButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -fx-font-size: 14px;"
+                                        + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+                    });
+    
+
+                        stopMusicButton.setOnMouseExited(e -> {
+                          stopMusicButton.setStyle( "-fx-background-color: #6143F7; -fx-text-fill: white; -fx-font-size: 14px;"
+                                           + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+                       });
+
+                    stopMusicButton.setOnMouseEntered(e -> {
+                    stopMusicButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -fx-font-size: 14px;"
+                                       + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+                   });
+       
     
         scoreText = new Text("Score: 0");
         scoreText.setFont(Font.font(24));
@@ -163,7 +204,7 @@ initBackToMenuButton(); // Initialize the back to menu button
      ImageView palayerView = new ImageView(palayerImage);
      palayerView.setFitWidth(90);
    palayerView.setFitHeight(90);
-       palayerView.setTranslateY(600 - 70);
+       palayerView.setTranslateY(800 - 70);
 
         return palayerView;
     }
@@ -175,7 +216,7 @@ initBackToMenuButton(); // Initialize the back to menu button
      ImageView carView = new ImageView(carImage);
      carView.setFitWidth(100);
     carView.setFitHeight(100);
-    double middleY = (500 + 90 - 100) / 2.0; // calculate the middle of the restricted range
+    double middleY = (880 + 90 - 100) / 2.0; // calculate the middle of the restricted range
     carView.setTranslateY((int)(Math.random() * 200) + middleY); // set y-coordinate
     root.getChildren().add(carView);
     return carView;
@@ -360,7 +401,7 @@ restartButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -f
     });
 
     HBox hBox = new HBox();
-    hBox.setTranslateX(900);
+    hBox.setTranslateX(1150);
     hBox.setTranslateY(10);
     hBox.getChildren().add(restartButton);
          restartButton .setStyle("-fx-background-color: #A08EF9; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");

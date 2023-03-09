@@ -54,12 +54,12 @@ public class Menu extends Application{
          private Parent createContent() {
 		 root = new Pane(); // initialize root here
 		
-		root.setPrefSize(1050, 600); //Screen size
+		root.setPrefSize(1300, 800); //Screen size
 		//add background image
 		try(InputStream is = Files.newInputStream(Paths.get("src/edu/webuild/resources/bg.png"))){
 			ImageView img = new ImageView(new Image(is));
-			img.setFitWidth(1050);
-			img.setFitHeight(600);
+			img.setFitWidth(1300);
+			img.setFitHeight(800);
 			root.getChildren().add(img);
 		}
 		catch(IOException e) {
@@ -92,8 +92,8 @@ public class Menu extends Application{
                Label highScoreLabel = new Label(  highScore + "Tokens:"+" Available on your Wallet ");
                 highScoreLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
                 highScoreLabel.setTextFill(Color.BLUE);
-                highScoreLabel.setLayoutX(660);
-                highScoreLabel.setLayoutY(60);
+                highScoreLabel.setLayoutX(900);
+                highScoreLabel.setLayoutY(80);
                 root.getChildren().add(highScoreLabel);
 
 
