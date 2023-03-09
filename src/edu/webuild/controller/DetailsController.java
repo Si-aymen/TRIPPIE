@@ -6,6 +6,7 @@
 package edu.webuild.controller;
 
 import edu.webuild.model.reponse;
+import edu.webuild.services.reclamationCRUD;
 import edu.webuild.services.reponseCRUD;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,6 +31,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -100,6 +104,29 @@ public class DetailsController implements Initializable {
 
     @FXML
     private void delete_btu(ActionEvent event) {
+        try {
+            reclamationCRUD rec = new reclamationCRUD();
+            System.out.println("1");
+            
+            rec.supprimerReclamation(Item_recController.r.getId_rec());
+            System.out.println("2");
+            
+            Notifications n = Notifications.create()
+                    .title("WeBuild")
+                    .text("Réclamation supprimé avec succé !")
+                    .graphic(null)
+                    .position(Pos.TOP_CENTER)
+                    .hideAfter(Duration.seconds(5));
+            n.showInformation();
+            
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Front.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
     }
 
     @FXML
