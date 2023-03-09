@@ -55,11 +55,6 @@ public class abonnement {
         this.type = type;
         this.prix = prix;
     }
-
-    public abonnement(int idA, String type) {
-        this.idA = idA;
-        this.type = type;
-    }
     
 
     public abonnement(Date dateExpiration, Date dateAchat) {
@@ -109,12 +104,11 @@ public class abonnement {
 
     @Override
     public String toString() {
-        return "abonnement{" + "idA=" + idA + ", type=" + type + ", dateExpiration=" + dateExpiration + ", dateAchat=" + dateAchat + ", prix=" + prix + '}';
+        return "abonnement{" + "type=" + type + ", dateExpiration=" + dateExpiration + ", dateAchat=" + dateAchat + ", prix=" + prix + '}';
     }
 
     
     
-  
       
        
  

@@ -38,9 +38,10 @@ public class AbonnementCRUD implements InterfaceAbonnement{
           // Set values for the insert statement
             ps.setString(1, A.getType());
             ps.setInt(2, A.getPrix());
-            ps.setDate(3, Date.valueOf(A.getDateAchat().toString())); // convert LocalDate to java.sql.Date
+         ps.setDate(3, Date.valueOf(A.getDateAchat().toString())); // convert LocalDate to java.sql.Date
              ps.setDate(4, Date.valueOf(A.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
           
+
 
 
 
