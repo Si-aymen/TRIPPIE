@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="437.0" style="-fx-background-color: #ee9362;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.VipshopController">
+   <children>
+      <Button layoutX="25.0" layoutY="331.0" mnemonicParsing="false" onAction="#get" prefHeight="25.0" prefWidth="463.0" text="GET">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font></Button>
+      <CheckBox fx:id="check2" layoutX="243.0" layoutY="169.0" mnemonicParsing="false" />
+      <HBox layoutX="-1.0" layoutY="6.0" prefHeight="66.0" prefWidth="502.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="503.0" text="Mini Shop " textFill="#e44776">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox layoutX="8.0" layoutY="72.0" prefHeight="36.0" prefWidth="150.0">
+         <children>
+            <Label fx:id="gift1" alignment="TOP_LEFT" prefHeight="40.0" prefWidth="150.0" text="gift1">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <CheckBox fx:id="check1" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="75.0" layoutY="169.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="16.0" />
+      <HBox layoutX="3.0" layoutY="104.0" prefHeight="67.0" prefWidth="193.0">
+         <children>
+            <Label fx:id="desc1" alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="194.0" />
+         </children>
+      </HBox>
+      <Label fx:id="desc11" alignment="TOP_LEFT" layoutX="178.0" layoutY="108.0" prefHeight="53.0" prefWidth="159.0" />
+      <HBox layoutX="215.0" layoutY="72.0" prefHeight="36.0" prefWidth="114.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="gift2" alignment="TOP_LEFT" prefHeight="38.0" prefWidth="114.0" text="gift2">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox layoutX="354.0" layoutY="76.0" prefHeight="53.0" prefWidth="140.0">
+         <children>
+            <Label fx:id="gift3" alignment="TOP_LEFT" prefHeight="53.0" prefWidth="142.0" text="gift3">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label fx:id="desc111" alignment="TOP_LEFT" layoutX="339.0" layoutY="104.0" prefHeight="53.0" prefWidth="159.0" />
+      <CheckBox fx:id="check3" layoutX="376.0" layoutY="161.0" mnemonicParsing="false" />
+      <HBox layoutX="3.0" layoutY="200.0" prefHeight="53.0" prefWidth="114.0">
+         <children>
+            <Label fx:id="gift4" alignment="TOP_LEFT" prefHeight="53.0" prefWidth="156.0" text="gift4">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label fx:id="desc12" alignment="TOP_LEFT" layoutX="-2.0" layoutY="225.0" prefHeight="67.0" prefWidth="179.0" />
+      <CheckBox fx:id="check4" layoutX="83.0" layoutY="288.0" mnemonicParsing="false" />
+      <HBox layoutX="231.0" layoutY="200.0" prefHeight="53.0" prefWidth="98.0">
+         <children>
+            <Label fx:id="gift5" alignment="TOP_LEFT" prefHeight="24.0" prefWidth="108.0" text="gift5">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label fx:id="desc13" alignment="CENTER" contentDisplay="CENTER" layoutX="223.0" layoutY="245.0" prefHeight="39.0" prefWidth="114.0" />
+      <CheckBox fx:id="check5" layoutX="272.0" layoutY="288.0" mnemonicParsing="false" />
+      <HBox layoutX="357.0" layoutY="191.0" prefHeight="53.0" prefWidth="133.0">
+         <children>
+            <Label fx:id="gift6" alignment="TOP_LEFT" prefHeight="39.0" prefWidth="135.0" text="gift6">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label fx:id="desc131" alignment="TOP_LEFT" layoutX="348.0" layoutY="231.0" prefHeight="53.0" prefWidth="150.0" />
+      <CheckBox fx:id="check6" layoutX="384.0" layoutY="288.0" mnemonicParsing="false" />
+   </children>
+</AnchorPane>
