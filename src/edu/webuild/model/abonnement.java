@@ -21,7 +21,11 @@ public class abonnement {
 
     public abonnement() {
     }
-
+// Constructor with type parameter
+    public abonnement(String type) {
+        setType(type);
+        setPrix(type);
+    }
     public abonnement(int idA, String type, Date dateExpiration, Date dateAchat, int prix) {
         this.idA = idA;
         this.type = type;
@@ -62,45 +66,84 @@ public class abonnement {
         this.dateAchat = dateAchat;
     }
 
-    public int getIdA() {
-        return idA;
-    }
-
+   // Getters and setters
     public String getType() {
         return type;
+    }
+//I added a new constructor that takes a type parameter and sets the corresponding prix value using the setPrix method
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Date getDateExpiration() {
         return dateExpiration;
     }
 
-    public Date getDateAchat() {
-        return dateAchat;
-    }
-
-    public int getPrix() {
-        return prix;
-    }
-
-    public void setIdA(int idA) {
-        this.idA = idA;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public void setDateExpiration(Date dateExpiration) {
         this.dateExpiration = dateExpiration;
+    }
+
+    public Date getDateAchat() {
+        return dateAchat;
     }
 
     public void setDateAchat(Date dateAchat) {
         this.dateAchat = dateAchat;
     }
 
+    public int getPrix() {
+        return prix;
+    }
+
     public void setPrix(int prix) {
         this.prix = prix;
     }
+
+    // Method to set the prix value based on the type value
+    //I also added a setPrix method that sets the prix value based on the type value using a switch statement.
+    public void setPrix(String type) {
+        switch (type) {
+            case "Gold":
+                this.prix = 1080;
+                break;
+            case "Platinium":
+                this.prix = 700;
+                break;
+            case "Bronze":
+                this.prix = 400;
+                break;
+            default:
+                this.prix = 0;
+                break;
+        }
+    }
+
+    public int getIdA() {
+        return idA;
+    }
+
+    public void setIdA(int idA) {
+        this.idA = idA;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     @Override
     public String toString() {

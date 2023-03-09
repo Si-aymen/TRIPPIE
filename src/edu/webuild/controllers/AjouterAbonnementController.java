@@ -36,6 +36,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
@@ -50,8 +51,7 @@ public class AjouterAbonnementController implements Initializable {
      * Initializes the controller class.
      */
     
-    @FXML
-    private TextField tfType;
+   
      @FXML
     private TextField tfPrix;
       @FXML
@@ -64,11 +64,19 @@ public class AjouterAbonnementController implements Initializable {
       //VARIABLES
         Date dateAchat,dateExpiration;
     
+@FXML
+private ComboBox<String> cbType;
 
-    
-   // Initialize the date pickers for dateAchat and dateExpiration
+
+// Initialize the type and price fields
 @Override
 public void initialize(URL url, ResourceBundle rb) {
+    // Add items to the type combo box
+    cbType.getItems().addAll("Gold", "Platinium", "Bronze");
+
+    // Set the price text field to read-only
+    tfPrix.setEditable(false);
+
     // Set the date picker value to today's date
     LocalDate today = LocalDate.now();
     tfdateAchat.setValue(today);
@@ -76,16 +84,15 @@ public void initialize(URL url, ResourceBundle rb) {
     tfdateExpiration.setValue(today.plusYears(1));
     tfdateExpiration.setDisable(true);
 }
-    
-    
-  @FXML
+
+@FXML
 private void ajouterabonnement(ActionEvent event) {
-    // Get the input values from the text fields and date pickers
-    String type = tfType.getText().trim();
-    String prixString = tfPrix.getText().trim();
+    // Get the input values from the combo box and date picker
+    String type = cbType.getValue();
+    LocalDate dateExpirationLocal = tfdateExpiration.getValue();
 
     // Validate the input values
-    if (type.isEmpty() || prixString.isEmpty()) {
+    if (type == null || dateExpirationLocal == null) {
         // If any input value is empty, show an error message
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Error");
@@ -95,14 +102,15 @@ private void ajouterabonnement(ActionEvent event) {
         return;
     }
 
-    // Parse the input values
-    int prix = Integer.parseInt(prixString);
-    LocalDate today = LocalDate.now();
-    Date dateAchat = java.sql.Date.valueOf(today);
-    Date dateExpiration = java.sql.Date.valueOf(today.plusYears(1));
+    // Create a new abonnement object with the selected type
+    abonnement abonnement = new abonnement(type);
 
-    // Create a new abonnement object and insert it into the database
-    abonnement abonnement = new abonnement(type, prix, dateAchat, dateExpiration);
+    // Set the dateAchat and dateExpiration attributes
+    LocalDate today = LocalDate.now();
+    abonnement.setDateAchat(java.sql.Date.valueOf(today));
+    abonnement.setDateExpiration(java.sql.Date.valueOf(dateExpirationLocal.plusYears(1)));
+
+    // Insert the new abonnement object into the database
     AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
     abonnementCRUD.ajouterabonnement(abonnement);
 
@@ -114,5 +122,15 @@ private void ajouterabonnement(ActionEvent event) {
     alert.show();
 }
 
+// Update the price text field when the user selects a type
+@FXML
+private void updatePrix(ActionEvent event) {
+    String type = cbType.getValue();
+    abonnement abonnement = new abonnement(type);
+    tfPrix.setText(String.valueOf(abonnement.getPrix()));
+}
+
+    
+  
 
 }
