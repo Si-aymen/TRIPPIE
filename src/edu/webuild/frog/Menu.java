@@ -32,19 +32,28 @@ import javafx.scene.layout.Pane;
 
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Optional;
+import java.util.Scanner;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.*;
-
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.Scanner;
 /**
  *
  * @author mtirn
  */
 public class Menu extends Application{
     
-
-
+private Label quoteLabel;
+         
 	 private Button startButton;
          private Button howItWorksButton;
          private Pane root;
@@ -74,18 +83,27 @@ public class Menu extends Application{
                 initStartButton(); // initialize start button
                 initHowItWorksButton();
                 initBuyMembershipButton(); // initialize buy membership button
-              
+              initQuoteLabel(); // initialize quote label
 
 		return root;
                 
 		
 	}
+         private void initQuoteLabel() {
+        quoteLabel = new Label();
+        quoteLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+        quoteLabel.setTextFill(Color.BLUE);
+        quoteLabel.setLayoutX(100);
+        quoteLabel.setLayoutY(80);
+        root.getChildren().add(quoteLabel);
+    }
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 		Scene scene = new Scene(createContent());
 		primaryStage.setTitle("VIDEO GAME");
 		primaryStage.setScene(scene);
-               
+                               setRandomQuote();
+
 		primaryStage.show();
                 FroggerApp app = new FroggerApp();
                int highScore = app.getHighScore();
@@ -102,7 +120,19 @@ public class Menu extends Application{
 	}
 	
 	
-	
+	private void setRandomQuote() {
+    try {
+        URL url = new URL("https://api.quotable.io/random");
+        InputStream input = url.openStream();
+        Scanner scanner = new Scanner(input);
+        String response = scanner.useDelimiter("\\A").next();
+        String quote = response.substring(response.indexOf("content") + 10, response.indexOf("author") - 3);
+        quoteLabel.setText(quote);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 	
 
 	
