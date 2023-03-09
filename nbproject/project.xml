@@ -3,11 +3,7 @@
     <type>org.netbeans.modules.java.j2seproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
-<<<<<<< HEAD
             <name>webuild</name>
-=======
-            <name>promotion1</name>
->>>>>>> 9d50923a1a42e629ddfc92983077ffa5c623bbf0
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>
