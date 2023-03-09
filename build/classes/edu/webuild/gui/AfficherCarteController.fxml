@@ -10,8 +10,7 @@
    <children>
       <ListView fx:id="listView" layoutX="262.0" layoutY="57.0" prefHeight="234.0" prefWidth="978.0" />
       <Label layoutX="20.0" layoutY="31.0" prefHeight="18.0" prefWidth="151.0" text="All the membership infos:" />
-      <Button fx:id="btnEdit" layoutX="1189.0" layoutY="307.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="50.0" text="Edit" />
+      <Button fx:id="btnEdit" layoutX="1189.0" layoutY="307.0" mnemonicParsing="false" onAction="#modifierabonnement" prefHeight="26.0" prefWidth="50.0" text="Edit" />
     <AnchorPane layoutY="-15.0" prefHeight="822.0" prefWidth="236.0" style="-fx-background-color: #b2acbd;" />
-      <Button fx:id="btndelete" layoutX="1125.0" layoutY="307.0" mnemonicParsing="false"  text="Delete" />
    </children>
 </AnchorPane>

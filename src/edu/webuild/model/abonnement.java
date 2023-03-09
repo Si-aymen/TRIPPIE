@@ -125,6 +125,11 @@ public class abonnement {
     public void setIdA(int idA) {
         this.idA = idA;
     }
+
+    @Override
+    public String toString() {
+        return "abonnement{" + "idA=" + idA + ", type=" + type + ", dateExpiration=" + dateExpiration + ", dateAchat=" + dateAchat + ", prix=" + prix + '}';
+    }
     
     
     
@@ -145,10 +150,7 @@ public class abonnement {
     
     
 
-    @Override
-    public String toString() {
-        return "abonnement{" + "type=" + type + ", dateExpiration=" + dateExpiration + ", dateAchat=" + dateAchat + ", prix=" + prix + '}';
-    }
+   
 
     
     

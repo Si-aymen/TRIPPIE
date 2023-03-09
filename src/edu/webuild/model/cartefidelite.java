@@ -84,8 +84,10 @@ public class cartefidelite {
 
     @Override
     public String toString() {
-        return "cartefidelite{" + "pointMerci=" + pointMerci + ", dateExpiration=" + dateExpiration + ", idA=" + idA + '}';
+        return "cartefidelite{" + "id_cf=" + id_cf + ", pointMerci=" + pointMerci + ", dateExpiration=" + dateExpiration + ", idA=" + idA + '}';
     }
+
+   
 
     
     
