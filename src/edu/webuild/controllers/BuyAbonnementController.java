@@ -102,9 +102,33 @@ private void buyabonnement(ActionEvent event) {
     abonnement.setDateAchat(java.sql.Date.valueOf(today));
     abonnement.setDateExpiration(java.sql.Date.valueOf(dateExpirationLocal.plusYears(1)));
 
-    // Insert the new abonnement object into the database
-    AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
-    abonnementCRUD.ajouterabonnement(abonnement);
+    // Check if the price is greater than or equal to the highscore
+FroggerApp app = new FroggerApp();
+int highScore = app.getHighScore();
+    if (abonnement.getPrix() == app.getHighScore()) {
+        // Insert the new abonnement object into the database
+        AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
+        abonnementCRUD.ajouterabonnement(abonnement);
+
+        // Show a success message
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("You bought a new membership!");
+        alert.show();
+    }
+    
+    
+    
+    
+    else {
+        // If the price is less than the highscore, show an error message
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Cannot Buy");
+        alert.setContentText("You cannot buy this abonnement because your highscore is too low.");
+        alert.showAndWait();
+    }
 
     // Show a success message
     Alert alert = new Alert(Alert.AlertType.INFORMATION);

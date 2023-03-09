@@ -104,7 +104,7 @@ public class abonnement {
     public void setPrix(String type) {
         switch (type) {
             case "Gold":
-                this.prix = 1080;
+                this.prix = 1070;
                 break;
             case "Platinium":
                 this.prix = 700;
