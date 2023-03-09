@@ -56,7 +56,7 @@ public class ModifiervoiturebackController implements Initializable {
     private Button ajouter;
      private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
     private final String[] fx_puissancee = {"5ch", "6ch", "7ch", "8ch", "9ch", "10ch", "11ch", "12ch", "13ch"};
-    private final String[] fx_energiee = {"energie", "gazoil", "gpl"};
+    private final String[] fx_energiee = {"essence", "gazoil", "gpl"};
     @FXML
     private Button picture_add;
     
@@ -130,6 +130,7 @@ public class ModifiervoiturebackController implements Initializable {
         String marque = fx_marque.getValue();
         String puissance = fx_puissance.getValue();
         String energie = fx_energie.getValue();
+        int prix_jours1 = Integer.parseInt(fx_prix_jours.getText());
         int prix_jours=CardvoitureController.vo.getPrix_jours();
                  if (prix_jours < 100) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -181,7 +182,7 @@ public class ModifiervoiturebackController implements Initializable {
      
                 
          InterfaceCRUD inter = new voitureCRUD();
-   voiture v = new voiture(CardvoitureController.vo.getId(),matricule, marque, puissance, prix_jours,energie);
+   voiture v = new voiture(CardvoitureController.vo.getId(),matricule, marque, puissance, prix_jours1,energie);
         inter.modifiervoiture(v);
         try {
 
@@ -190,7 +191,7 @@ public class ModifiervoiturebackController implements Initializable {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
-            } catch (IOException ex) {
+             } catch (IOException ex) {
                 Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
 
             }

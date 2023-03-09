@@ -17,13 +17,13 @@
    <children>
       <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
+            <VBox prefHeight="810.0" prefWidth="300.0" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
+                  <Pane prefHeight="57.0" prefWidth="0.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Button fx:id="cov_btu1" layoutX="149.0" layoutY="309.0" mnemonicParsing="false" onAction="#cov_btu" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="User" />
                      </children></Pane>
-                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
+                  <Pane prefHeight="57.0" prefWidth="0.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Button layoutX="154.0" layoutY="56.0" mnemonicParsing="false" onAction="#stats" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Stats" />
                      </children></Pane>

@@ -5,6 +5,11 @@
  */
 package edu.webuild.controllers;
 
+import static edu.webuild.controllers.Afficher_CovController.date_dep;
+import static edu.webuild.controllers.Afficher_CovController.depart;
+import static edu.webuild.controllers.Afficher_CovController.destination;
+import static edu.webuild.controllers.Afficher_CovController.id_co;
+import static edu.webuild.controllers.Afficher_CovController.nmbr_place;
 import edu.webuild.controllers.Menu_CoVoiturageController;
 import edu.webuild.interfaces.InterfaceCoVoiturage;
 import edu.webuild.interfaces.InterfaceParticipation;
@@ -103,10 +108,40 @@ public class Show_cov_backController implements Initializable {
 
     @FXML
     private void modify_cov(ActionEvent event) {
+
+        ListView<CoVoiturage> list = listView;
+        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+        int selectedID = list.getSelectionModel().getSelectedIndex();
+        CoVoiturage V = list.getSelectionModel().getSelectedItem();
+        id_co = Integer.toString(V.getId_co());
+        depart = V.getDepart();
+        destination = V.getDestination();
+        date_dep = V.getDate_dep();
+        nmbr_place = Integer.toString(V.getNmbr_place());
+        System.out.println(id_co);
+
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Back/Mod_cov_back.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
     @FXML
     private void delete_cov(ActionEvent event) {
+        ListView<CoVoiturage> list = listView; // assuming listView is a ListView<CoVoiturage>
+        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+        int selectedID = list.getSelectionModel().getSelectedIndex();
+        CoVoiturage V = list.getSelectionModel().getSelectedItem(); // use getSelectedItem() to get the selected item, not getSelectedItems()
+        System.out.println(V.getId_co());
+        inter_co.supprimerCoVoiturage(V.getId_co()); // assuming CoVoiturage has a method getId() to retrieve the unique ID of the object
+        list.getItems().remove(selectedID);
     }
 
     @FXML
@@ -139,6 +174,25 @@ public class Show_cov_backController implements Initializable {
 
     @FXML
     private void part(ActionEvent event) {
+        ListView<CoVoiturage> list = listView; // assuming listView is a ListView<CoVoiturage>
+        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+        InterfaceParticipation inter_part = new ParticipationCrud();
+        int selectedID = list.getSelectionModel().getSelectedIndex();
+        CoVoiturage V = list.getSelectionModel().getSelectedItem(); // use getSelectedItem() to get the selected item, not getSelectedItems()*
+        id_co = Integer.toString(V.getId_co());
+        nmbr_place = Integer.toString(V.getNmbr_place());
+
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/**.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
     @FXML
@@ -147,6 +201,17 @@ public class Show_cov_backController implements Initializable {
 
     @FXML
     private void stats(ActionEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Piechart.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
     @FXML
@@ -160,6 +225,36 @@ public class Show_cov_backController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void add_particpation(MouseEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Back/***.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void back(ActionEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front_Front.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }

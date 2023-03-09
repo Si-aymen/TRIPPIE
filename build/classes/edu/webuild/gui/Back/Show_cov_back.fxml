@@ -34,7 +34,10 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <Pane prefHeight="0.0" prefWidth="0.0" VBox.vgrow="ALWAYS" />
+                        <Pane prefHeight="0.0" prefWidth="0.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Button layoutX="117.0" layoutY="618.0" mnemonicParsing="false" onAction="#back" text="back" />
+                     </children></Pane>
                     </children>
                 </VBox>
             </left>
@@ -89,7 +92,7 @@
                                     <children>
                                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" stylesheets="@../../../style.css">
                                             <children>
-                                                <Label prefHeight="29.0" prefWidth="190.0" stylesheets="@../../../style.css" text="Co voiturage" textFill="#878787">
+                                                <Label prefHeight="29.0" prefWidth="190.0" stylesheets="@../../../style.css" text="Add car pool" textFill="#878787">
                                                     <font>
                                                         <Font name="Cambria Bold" size="18.0" />
                                                     </font>
@@ -105,11 +108,11 @@
                                     </children>
                                 </HBox>
                                 <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
-                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../../../style.css">
+                                <HBox alignment="CENTER" onMouseClicked="#add_particpation" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../../../style.css">
                                     <children>
                                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
                                             <children>
-                                                <Label prefHeight="29.0" prefWidth="190.0" text="Participation" textFill="#878787">
+                                                <Label prefHeight="29.0" prefWidth="190.0" text="Add participation" textFill="#878787">
                                                     <font>
                                                         <Font name="Cambria Bold" size="18.0" />
                                                     </font>
