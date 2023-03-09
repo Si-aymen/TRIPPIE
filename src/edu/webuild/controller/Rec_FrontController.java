@@ -138,7 +138,7 @@ public class Rec_FrontController implements Initializable {
     private void details_btu(ActionEvent event) {
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/affiche_recUnique.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/details.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
