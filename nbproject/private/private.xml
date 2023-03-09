@@ -9,6 +9,7 @@
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Details_Front_covController.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Show_cov_backController.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/services/CoVoiturageCRUD.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/VipshopController.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/interfaces/InterfaceCoVoiturage.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/interfaces/InterfaceParticipation.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/DetailsvoiturefrontController.java</file>
@@ -32,6 +33,7 @@
             <file>file:/C:/Users/manou/Desktop/integration_final/src/webuild/Webuild.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/PhoneController.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ADD_couponBackController.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/services/EmailSender.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/model/Participation.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Details_cov_back_mController.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Marketcadeau_backController.java</file>

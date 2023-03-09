@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,11 +22,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -41,8 +45,6 @@ public class DetailsvoiturebackController implements Initializable {
     private Label destination_co_lab;
     @FXML
     private ImageView imageView;
-    @FXML
-    private Button cov_btu;
     @FXML
     private Label matricule_lab;
     @FXML
@@ -84,18 +86,27 @@ public class DetailsvoiturebackController implements Initializable {
        
     }    
 
-    @FXML
-    private void cov_btu(ActionEvent event) {
-    }
-
-    @FXML
-    private void stats(ActionEvent event) {
+private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     @FXML
     private void delete_car(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("are you sure to delete this car ?");
+             Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+        
         InterfaceCRUD  inter_co = new voitureCRUD();
         inter_co.supprimervoiture(CardvoitureController.vo.getId());
+        showAlert("car has been successfully deleted");}
+    
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoitureback.fxml"));
@@ -107,7 +118,7 @@ public class DetailsvoiturebackController implements Initializable {
             Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
-
+    
     }
 
     @FXML
@@ -121,6 +132,21 @@ public class DetailsvoiturebackController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoitureback.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }

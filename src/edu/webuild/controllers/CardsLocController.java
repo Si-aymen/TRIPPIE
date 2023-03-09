@@ -27,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -46,8 +47,6 @@ public class CardsLocController implements Initializable {
     private GridPane grid;
     private List<Locateur> locateurDataList = FXCollections.observableArrayList();
     private InterfaceLocateurCRUD LocateurCRUD = new LocateurCRUD();
-    @FXML
-    private Button cov_btu1;
 
     /**
      * Initializes the controller class.
@@ -90,7 +89,6 @@ public class CardsLocController implements Initializable {
 
     }
 
-     @FXML
     private void cov_btu(ActionEvent event) {
          try {
 
@@ -105,7 +103,6 @@ public class CardsLocController implements Initializable {
         }
     }
 
-    @FXML
     private void stats(ActionEvent event) { 
         try {
 
@@ -116,6 +113,21 @@ public class CardsLocController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+          try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_User.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }

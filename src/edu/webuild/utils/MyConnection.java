@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class MyConnection {
 
     private static Connection conn;  //DB Credations
-    String url = "jdbc:mysql://localhost:3306/webuild2 ?zeroDateTimeBehavior=convertToNull";
+    String url = "jdbc:mysql://localhost:3306/webuild2?zeroDateTimeBehavior=convertToNull";
     //String url = "jdbc:mysql://localhost:3306/webuild";
     String user = "root";
     String pwd = "";

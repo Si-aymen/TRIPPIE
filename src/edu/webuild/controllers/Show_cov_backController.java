@@ -57,8 +57,6 @@ public class Show_cov_backController implements Initializable {
     private TextField search_bar;
     @FXML
     private ListView<CoVoiturage> listView;
-    @FXML
-    private Button cov_btu;
 
     static public String id_co;
     static public String depart;
@@ -195,11 +193,7 @@ public class Show_cov_backController implements Initializable {
         }
     }
 
-    @FXML
-    private void cov_btu(ActionEvent event) {
-    }
 
-    @FXML
     private void stats(ActionEvent event) {
         try {
 
@@ -244,7 +238,6 @@ public class Show_cov_backController implements Initializable {
         }
     }
 
-    @FXML
     private void back(ActionEvent event) {
         try {
 
@@ -255,6 +248,21 @@ public class Show_cov_backController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+         try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front_front.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }

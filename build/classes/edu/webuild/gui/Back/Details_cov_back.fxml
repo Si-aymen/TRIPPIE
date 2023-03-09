@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -33,7 +34,10 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <Pane prefHeight="0.0" prefWidth="0.0" VBox.vgrow="ALWAYS" />
+                        <Pane prefHeight="0.0" prefWidth="0.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <FontAwesomeIconView glyphName="ARROW_CIRCLE_LEFT" layoutX="135.0" layoutY="63.0" onMouseClicked="#back_btn" size="35" wrappingWidth="33.48569583892822" />
+                     </children></Pane>
                     </children>
                 </VBox>
             </left>
@@ -384,9 +388,5 @@
                 </VBox>
             </center>
         </BorderPane>
-      <Button layoutX="71.0" layoutY="225.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="User" />
-      <Button layoutX="71.0" layoutY="281.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Voiture" />
-      <Button layoutX="71.0" layoutY="335.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Reservation Voiture" />
-      <Button layoutX="71.0" layoutY="446.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Participation Co_Voiturage" />
     </children>
 </AnchorPane>

@@ -28,6 +28,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -40,8 +41,6 @@ public class Stat_utilisateurController implements Initializable {
     @FXML
     private PieChart pie;
     private PieChart pie2;
-    @FXML
-    private Button cov_btu1;
 
     /**
      * Initializes the controller class.
@@ -83,9 +82,11 @@ public class Stat_utilisateurController implements Initializable {
 
     }
 
+   
+
     @FXML
-    private void cov_btu(ActionEvent event) {
-        try {
+    private void back_btn(MouseEvent event) {
+           try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_User.fxml"));
             Scene scene = new Scene(page1);
@@ -93,9 +94,10 @@ public class Stat_utilisateurController implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ChoixResetController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+        
     }
 
 }

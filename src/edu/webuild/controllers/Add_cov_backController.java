@@ -35,6 +35,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -63,8 +64,6 @@ public class Add_cov_backController implements Initializable {
     private final Integer[] nmbr_place_list = {1, 2, 3, 4, 5, 6};
     @FXML
     private TextField email;
-    @FXML
-    private Button cov_btu;
 
     /**
      * Initializes the controller class.
@@ -203,11 +202,20 @@ public class Add_cov_backController implements Initializable {
     }
 
     @FXML
-    private void cov_btu(ActionEvent event) {
+    private void back_btn(MouseEvent event) {
+                try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Back/Show_cov_back.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ChoixResetController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
     }
 
-    @FXML
-    private void stats(ActionEvent event) {
-    }
 
-}
+

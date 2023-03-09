@@ -5,6 +5,7 @@
  */
 package edu.webuild.controllers;
 
+import edu.webuild.services.EmailSender;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,11 +68,11 @@ public class VipshopController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       try {
+        try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webuild2", "root", "");
             PreparedStatement stmt = conn.prepareStatement("SELECT nom_cadeau,description FROM cadeau");
             ResultSet rs = stmt.executeQuery();
-            
+
             if (rs.next()) {
                 gift1.setText(rs.getString("nom_cadeau"));
                 desc1.setText(rs.getString("description"));
@@ -91,7 +92,7 @@ public class VipshopController implements Initializable {
             if (rs.next()) {
                 gift6.setText(rs.getString("nom_cadeau"));
             }
-            
+
             rs.close();
             stmt.close();
             conn.close();
@@ -117,75 +118,70 @@ public class VipshopController implements Initializable {
                 check6.setSelected(false);
             }
         });
-        
-          check3.setOnAction(event -> {
+
+        check3.setOnAction(event -> {
             if (check3.isSelected()) {
                 check1.setSelected(false);
-                 check2.setSelected(false);
-             
+                check2.setSelected(false);
+
                 check4.setSelected(false);
                 check5.setSelected(false);
                 check6.setSelected(false);
             }
         });
-           check4.setOnAction(event -> {
+        check4.setOnAction(event -> {
             if (check4.isSelected()) {
                 check1.setSelected(false);
-                  check2.setSelected(false);
+                check2.setSelected(false);
                 check3.setSelected(false);
                 check5.setSelected(false);
                 check6.setSelected(false);
             }
         });
-            check5.setOnAction(event -> {
+        check5.setOnAction(event -> {
             if (check5.isSelected()) {
                 check1.setSelected(false);
-                  check2.setSelected(false);
+                check2.setSelected(false);
                 check3.setSelected(false);
                 check4.setSelected(false);
                 check6.setSelected(false);
             }
         });
-             check6.setOnAction(event -> {
+        check6.setOnAction(event -> {
             if (check6.isSelected()) {
                 check1.setSelected(false);
-                  check2.setSelected(false);
+                check2.setSelected(false);
                 check3.setSelected(false);
                 check5.setSelected(false);
                 check4.setSelected(false);
             }
         });
-    }    
+    }
 
     @FXML
     private void get(ActionEvent event) {
-//          String selectedGift = "";
-//    if (check1.isSelected()) {
-//        selectedGift = gift1.getText();
-//    } else if (check2.isSelected()) {
-//        selectedGift = gift2.getText();
-//    } // Add more conditions for other check boxes as needed
-//    else if (check3.isSelected()) {
-//        selectedGift = gift3.getText();
-//    }
-//    else if (check4.isSelected()) {
-//        selectedGift = gift4.getText();
-//    }
-//    else if (check5.isSelected()) {
-//        selectedGift = gift5.getText();
-//    }else if (check6.isSelected()) {
-//        selectedGift = gift6.getText();
-//    }
-//
-//    String clientName = "John Doe"; // Replace with actual client name
-//
-//    String message = "Dear " + clientName + ",\n\n"
-//            + "I am writing this email to confirm your Co_voiturage reservation for the following details:\n\n"
-//            + "Gift: " + selectedGift + "\n"
-//            + "Please note that the departure time is " + selectedGift + ". We kindly ask you to arrive at the pickup location 15 minutes before departure time to avoid any delays.\n\n"
-//            + "Best regards,";
-//
-//    EmailSender.sendEmail_add("rimmdimagh12@gmail.com", message);
+        
+        
+        String selectedGift = "";
+        if (check1.isSelected()) {
+            selectedGift = gift1.getText();
+            String toEmail ="rim.mdimagh@esprit.tn";
+            String message = "you won a gift "+gift1;
+            EmailSender.sendEmail_add(toEmail, message);
+        } else if (check2.isSelected()) {
+            selectedGift = gift2.getText();
+        } // Add more conditions for other check boxes as needed
+        else if (check3.isSelected()) {
+            selectedGift = gift3.getText();
+        } else if (check4.isSelected()) {
+            selectedGift = gift4.getText();
+        } else if (check5.isSelected()) {
+            selectedGift = gift5.getText();
+        } else if (check6.isSelected()) {
+            selectedGift = gift6.getText();
+        }
+
+        
     }
-    
+
 }

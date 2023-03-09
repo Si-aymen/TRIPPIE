@@ -30,6 +30,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -54,12 +55,11 @@ public class ModifiervoiturebackController implements Initializable {
     private TextField fx_prix_jours;
     @FXML
     private Button ajouter;
-     private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
+    private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
     private final String[] fx_puissancee = {"5ch", "6ch", "7ch", "8ch", "9ch", "10ch", "11ch", "12ch", "13ch"};
     private final String[] fx_energiee = {"essence", "gazoil", "gpl"};
     @FXML
     private Button picture_add;
-    
 
     /**
      * Initializes the controller class.
@@ -71,11 +71,11 @@ public class ModifiervoiturebackController implements Initializable {
         fx_energie.getItems().addAll(fx_energiee);
 
         // TODO
-    }    
+    }
 
     @FXML
     private void add_picture(ActionEvent event) {
-          ImageView imageView = lab_image;
+        ImageView imageView = lab_image;
 
         // Create a FileChooser
         FileChooser fileChooser = new FileChooser();
@@ -111,11 +111,10 @@ public class ModifiervoiturebackController implements Initializable {
                 e.printStackTrace();
             }
         }
-        
-        
-        
+
     }
-     private void showAlert(String message) {
+
+    private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);
@@ -125,14 +124,14 @@ public class ModifiervoiturebackController implements Initializable {
 
     @FXML
     private void update(ActionEvent event) {
-        
-        String matricule=CardvoitureController.vo.getMatricule();
+
+        String matricule = CardvoitureController.vo.getMatricule();
         String marque = fx_marque.getValue();
         String puissance = fx_puissance.getValue();
         String energie = fx_energie.getValue();
         int prix_jours1 = Integer.parseInt(fx_prix_jours.getText());
-        int prix_jours=CardvoitureController.vo.getPrix_jours();
-                 if (prix_jours < 100) {
+        int prix_jours = CardvoitureController.vo.getPrix_jours();
+        if (prix_jours < 50) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
@@ -175,29 +174,40 @@ public class ModifiervoiturebackController implements Initializable {
 //            alert.setHeaderText(null);
 //            alert.setContentText("pb matricule");
 //            alert.show();
-                    
-        } else{
-        
-       
-     
-                
-         InterfaceCRUD inter = new voitureCRUD();
-   voiture v = new voiture(CardvoitureController.vo.getId(),matricule, marque, puissance, prix_jours1,energie);
-        inter.modifiervoiture(v);
-        try {
+
+        } else {
+
+            InterfaceCRUD inter = new voitureCRUD();
+            voiture v = new voiture(CardvoitureController.vo.getId(), matricule, marque, puissance, prix_jours1, energie);
+            inter.modifiervoiture(v);
+            try {
 
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoitureback.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
-             } catch (IOException ex) {
+            } catch (IOException ex) {
                 Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
 
             }
-        
-        
+
+        }
+
     }
-    
-}
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/detailsvoitureback.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
 }

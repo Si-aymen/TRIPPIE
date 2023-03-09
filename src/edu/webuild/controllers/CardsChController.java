@@ -33,6 +33,7 @@ import java.util.logging.Logger;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -49,8 +50,6 @@ public class CardsChController implements Initializable {
     @FXML
     private GridPane grid;
     MyConnection conn;
-    @FXML
-    private Button cov_btu1;
 
     /**
      * Initializes the controller class.
@@ -99,7 +98,6 @@ public class CardsChController implements Initializable {
     public void disableChauffeur(int id_ch) {
     }
 
-    @FXML
     private void cov_btu(ActionEvent event) {
          try {
 
@@ -114,7 +112,6 @@ public class CardsChController implements Initializable {
         }
     }
 
-    @FXML
     private void stats(ActionEvent event) { 
         try {
 
@@ -125,6 +122,21 @@ public class CardsChController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+          try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_User.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }

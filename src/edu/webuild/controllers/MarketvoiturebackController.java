@@ -199,7 +199,6 @@ public class MarketvoiturebackController implements Initializable {
         }
     }
 
-    @FXML
     private void back(ActionEvent event) {
           try {
 
@@ -210,6 +209,21 @@ public class MarketvoiturebackController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front_front.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -19,7 +20,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.MarketvoiturebackController">
     <children>
-        <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
                 <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
                     <children>
@@ -30,7 +31,7 @@
                                         <Font name="Cambria Bold" size="40.0" />
                                     </font>
                                 </Label>
-                                <Label text="back" textFill="#878787">
+                                <Label text="Back" textFill="#878787">
                                     <font>
                                         <Font name="Cambria" size="40.0" />
                                     </font>
@@ -150,7 +151,7 @@
                         </VBox>
                         <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button layoutX="311.0" layoutY="15.0" mnemonicParsing="false" onAction="#back" text="back" />
+                        <FontAwesomeIconView glyphName="ARROW_CIRCLE_LEFT" layoutX="201.0" layoutY="27.0" onMouseClicked="#back_btn" size="35" wrappingWidth="33.48569583892822" />
                      </children></Pane>
                     </children>
                 </VBox>

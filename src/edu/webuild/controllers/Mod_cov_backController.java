@@ -31,6 +31,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -60,8 +61,6 @@ public class Mod_cov_backController implements Initializable {
     private Label temp_lab;
     @FXML
     private Label weather_lab;
-    @FXML
-    private Button cov_btu;
 
     private final String[] places_dest = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba", "Beja", "Bizerte", "Gabes"};
     private final String[] places_dep = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba", "Beja", "Bizerte", "Gabes"};
@@ -168,11 +167,19 @@ public class Mod_cov_backController implements Initializable {
     }
 
     @FXML
-    private void cov_btu(ActionEvent event) {
+    private void back_btn(MouseEvent event) {
+           try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Back/Show_cov_back.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ChoixResetController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
-    @FXML
-    private void stats(ActionEvent event) {
-    }
 
 }
