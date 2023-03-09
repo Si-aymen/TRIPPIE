@@ -79,7 +79,7 @@ public class Discount1Controller implements Initializable {
             if (rs.next()) {
                 int discountPercentage = rs.getInt("taux_reduction");
                 int nbrUtilisation = rs.getInt("nbr_utilisation");
-                
+                        
                 Date expirationDate = rs.getDate("date_experation");
              if (expirationDate != null && expirationDate.before(new Date())) {
                 return -1; // Coupon has expired

@@ -118,7 +118,7 @@ public class cadeauCrud  implements interfacecadeau{
                 
                  st.setInt(4,c.getValeur());
                
-                //st.setInt(3, c.getId_coupon());
+                st.setInt(3, c.getId_coupon());
                  st.setInt(5, c.getId_cadeau());
         st.executeUpdate();
         System.out.println("cadeau modifiée avec succès !");

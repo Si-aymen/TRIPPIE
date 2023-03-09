@@ -5,7 +5,7 @@
  */
 package edu.webuild.model;
 
-import java.util.Date;
+
 import javafx.scene.control.TextField;
 
 /**
