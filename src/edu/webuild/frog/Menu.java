@@ -5,20 +5,25 @@
  */
 package edu.webuild.frog;
 
- 
+ import edu.webuild.controllers.BuyAbonnementController;
+
 
 import java.io.IOException;
 import java.io.InputStream;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Optional;
 import javafx.animation.AnimationTimer;
 
 import javafx.application.*;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.*;
 import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;     
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;  
@@ -38,12 +43,15 @@ import javafx.scene.text.*;
  */
 public class Menu extends Application{
     
-    
+
+
 	 private Button startButton;
          private Button howItWorksButton;
          private Pane root;
          private AnimationTimer timer;
-	private Parent createContent() {
+	
+         
+         private Parent createContent() {
 		 root = new Pane(); // initialize root here
 		
 		root.setPrefSize(1050, 600); //Screen size
@@ -65,6 +73,9 @@ public class Menu extends Application{
 
                 initStartButton(); // initialize start button
                 initHowItWorksButton();
+                initBuyMembershipButton(); // initialize buy membership button
+              
+
 		return root;
                 
 		
@@ -80,9 +91,9 @@ public class Menu extends Application{
                int highScore = app.getHighScore();
                Label highScoreLabel = new Label(  highScore + "Tokens:"+" Available on your Wallet ");
                 highScoreLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
-                highScoreLabel.setTextFill(Color.WHITE);
+                highScoreLabel.setTextFill(Color.BLUE);
                 highScoreLabel.setLayoutX(660);
-                highScoreLabel.setLayoutY(50);
+                highScoreLabel.setLayoutY(60);
                 root.getChildren().add(highScoreLabel);
 
 
@@ -204,6 +215,48 @@ startButton.setOnMouseExited(e -> {
 
     root.getChildren().add(hBox);
 }
+private void initBuyMembershipButton() {
+    Button buyMembershipButton = new Button("Buy Membership");
+
+    buyMembershipButton.setStyle(
+            "-fx-background-color: #A08EF9; -fx-text-fill: white; -fx-font-size: 14px;"
+                    + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+
+    buyMembershipButton.setOnMouseEntered(e -> {
+        buyMembershipButton.setStyle( "-fx-background-color: #2F2078; -fx-text-fill: white; -fx-font-size: 14px;"
+                + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+    });
+
+    buyMembershipButton.setOnMouseExited(e -> {
+        buyMembershipButton.setStyle( "-fx-background-color: #6143F7; -fx-text-fill: white; -fx-font-size: 14px;"
+                + " -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 5px;");
+    });
+
+    buyMembershipButton.setOnAction(event -> {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/BuyAbonnementController.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        BuyAbonnementController buyAbonnementController = new BuyAbonnementController();
+        buyAbonnementController.buyabonnement(event);
+        }
+        catch (IOException ex) {
+        System.out.println("Error: " + ex.getMessage());
+    }
+    });
+
+    HBox hBox = new HBox();
+    hBox.setTranslateX(465);
+    hBox.setTranslateY(400);
+    hBox.getChildren().add(buyMembershipButton);
+
+    root.getChildren().add(hBox);
+}
+
 
 
 	public static void main(String[] args) {

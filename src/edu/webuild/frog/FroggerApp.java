@@ -4,10 +4,14 @@
  * and open the template in the editor.
  */
 package edu.webuild.frog;
-
+import edu.webuild.resources.LastFmClient;
+import  edu.webuild.resources.LastFmMusicPlayer;
 
 import java.sql.*;
 import edu.webuild.utils.MyConnection;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -37,6 +41,14 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 /**
  *
@@ -45,6 +57,8 @@ import javafx.scene.input.KeyCode;
 public class FroggerApp extends Application {
      Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
+private static final String MUSIC_QUERY = "frogger game soundtrack";
+    private static final double MUSIC_VOLUME = 0.5;
 
     
 //an AnimationTimer object that is used to update
@@ -73,6 +87,8 @@ public class FroggerApp extends Application {
     //score system variable
     private long startTime;
 
+
+
     
     //a method that creates and returns the game's scene graph.
     private Parent createContent() {
@@ -88,7 +104,11 @@ public class FroggerApp extends Application {
 		catch(IOException e) {
 			System.out.println("Couldn't load image");
 		}
-        
+  
+
+
+    
+    
         scoreText = new Text("Score: 0");
         scoreText.setFont(Font.font(24));
         scoreText.setFill(Color.BLACK);
@@ -228,34 +248,56 @@ initBackToMenuButton(); // Initialize the back to menu button
 }
 
 //a method that sets up the game's scene and starts the AnimationTimer.
-    @Override
-    public void start(Stage stage) throws Exception {
-        
-        stage.setScene(new Scene(createContent()));
-        // Set the starting time to the current time
+ @Override
+public void start(Stage stage) throws Exception {
+    // Create a LastFmClient instance
+    LastFmClient lastFmClient = new LastFmClient();
+
+    // Search for tracks using the LastFmClient instance
+    JSONArray tracks = null;
+    try {
+        tracks = lastFmClient.searchTrack("frogger game soundtrack");
+    } catch (IOException | JSONException e) {
+        // Handle any exceptions that may occur
+        e.printStackTrace();
+    }
+
+    // Create a LastFmMusicPlayer instance and play a track
+    LastFmMusicPlayer lastFmMusicPlayer = new LastFmMusicPlayer();
+    try {
+        lastFmMusicPlayer.playTrack(tracks, 0.5);
+    } catch (IOException | JSONException e) {
+        // Handle any exceptions that may occur
+        e.printStackTrace();
+    }
+
+    stage.setScene(new Scene(createContent()));
+
+    // Set the starting time to the current time
     startTime = System.currentTimeMillis();
 
-        stage.getScene().setOnKeyPressed(event -> {
-            switch (event.getCode()) {
-                case UP: 
-                    frog.setTranslateY(frog.getTranslateY() - 40);
-                    break;
-                case DOWN:
-                    frog.setTranslateY(frog.getTranslateY() + 40);
-                    break;
-                case LEFT:
-                    frog.setTranslateX(frog.getTranslateX() - 40);
-                    break;
-                case RIGHT:
-                    frog.setTranslateX(frog.getTranslateX() + 40);
-                    break;
-                default:
-                    break;
-            }
-        });
+    stage.getScene().setOnKeyPressed(event -> {
+        switch (event.getCode()) {
+            case UP:
+                frog.setTranslateY(frog.getTranslateY() - 40);
+                break;
+            case DOWN:
+                frog.setTranslateY(frog.getTranslateY() + 40);
+                break;
+            case LEFT:
+                frog.setTranslateX(frog.getTranslateX() - 40);
+                break;
+            case RIGHT:
+                frog.setTranslateX(frog.getTranslateX() + 40);
+                break;
+            default:
+                break;
+        }
+    });
 
-        stage.show();
-    }
+    stage.show();
+}
+
     public void updateHighScore(int score) {
     try {
         PreparedStatement ps = conn.prepareStatement("INSERT INTO highscores (score) VALUES (?)");
@@ -263,6 +305,12 @@ initBackToMenuButton(); // Initialize the back to menu button
         ps.executeUpdate();
     } catch (SQLException e) {
         e.printStackTrace();
+    } finally {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 
@@ -272,15 +320,21 @@ initBackToMenuButton(); // Initialize the back to menu button
 
         try {
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT MAX(score) FROM highscores");
+            ResultSet rs = stmt.executeQuery("SELECT score FROM highscores ORDER BY idS DESC LIMIT 1");
             if (rs.next()) {
                 highScore = rs.getInt(1);
             }
         } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            conn.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
-        return highScore;
+    return highScore;
     }
     public void setHighScore(int highScore) {
     this.highScore = highScore;

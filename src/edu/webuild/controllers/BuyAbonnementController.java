@@ -8,6 +8,7 @@ import edu.webuild.frog.FroggerApp;
 import edu.webuild.model.abonnement;
 import edu.webuild.services.AbonnementCRUD;
 import edu.webuild.utils.MyConnection;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -18,8 +19,10 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
@@ -78,7 +81,7 @@ public void initialize(URL url, ResourceBundle rb) {
 }
 
 @FXML
-private void buyabonnement(ActionEvent event) {
+public void buyabonnement(ActionEvent event) {
     // Get the input values from the combo box and date picker
     String type = cbType.getValue();
     LocalDate dateExpirationLocal = tfdateExpiration.getValue();
@@ -145,13 +148,9 @@ int highScore = app.getHighScore();
         alert.setContentText("You cannot buy this abonnement because your highscore is too low.");
         alert.showAndWait();
     }
+System.out.println("cbType is null: " + (cbType == null));
 
-    // Show a success message
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Information Dialog");
-    alert.setHeaderText(null);
-    alert.setContentText("You bought a new memberchip!");
-    alert.show();
+    
 }
 
 // Update the price text field when the user selects a type
