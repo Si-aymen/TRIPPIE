@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.webuild.interfaces.InterfaceAbonnement;
+import java.time.LocalDate;
 
 /**
  *
@@ -30,53 +31,46 @@ public class AbonnementCRUD implements InterfaceAbonnement{
 
     
     @Override
-    public void ajouterabonnement(abonnement A) {
+public void ajouterabonnement(abonnement A) {
+    try {
+        PreparedStatement ps = conn.prepareStatement(
+            "INSERT INTO abonnement (type, prix, dateAchat, dateExpiration) VALUES (?, ?, ?, ?)", 
+            Statement.RETURN_GENERATED_KEYS
+        );
+        // Set values for the insert statement
+        ps.setString(1, A.getType());
+        ps.setInt(2, A.getPrix());
+        LocalDate today = LocalDate.now();
+        ps.setDate(3, Date.valueOf(today)); // set dateAchat to today's date
+        LocalDate expirationDate = today.plusYears(1);
+        ps.setDate(4, Date.valueOf(expirationDate)); // set dateExpiration to 1 year + dateAchat
         
-        
-        try {
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO abonnement (type,prix,dateAchat,dateExpiration) VALUES (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-          // Set values for the insert statement
-            ps.setString(1, A.getType());
-            ps.setInt(2, A.getPrix());
-         ps.setDate(3, Date.valueOf(A.getDateAchat().toString())); // convert LocalDate to java.sql.Date
-             ps.setDate(4, Date.valueOf(A.getDateExpiration().toString())); // convert LocalDate to java.sql.Date
-          
-
-
-
-
-           
-                
-            // Execute the insert statement
-             int affectedRows = ps.executeUpdate();
-            System.out.println("Abonnement ajoutée!");
+        // Execute the insert statement
+        int affectedRows = ps.executeUpdate();
+        System.out.println("Abonnement ajoutée!");
 
         if (affectedRows == 0) {
             throw new SQLException("Creating abonnement failed, no rows affected.");
         }
-            
-        
-       
-            // get the generated idA value
+
+        // get the generated idA value
         ResultSet rs = ps.getGeneratedKeys();
         int idA = 0;
         if (rs.next()) {
             idA = rs.getInt(1);
         }
-       
+
         // create a new cartefidelite record with 0 pointMerci
         CartefideliteCRUD cartefideliteCRUD = new CartefideliteCRUD();
         cartefidelite cartefidelite = new cartefidelite();
         cartefidelite.setPointMerci("0");
-        cartefidelite.setDateExpiration(A.getDateExpiration());
-      
+        cartefidelite.setDateExpiration(Date.valueOf(expirationDate)); // set expiration date
         cartefideliteCRUD.ajoutercarte(cartefidelite,idA);
-        
-        
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
     }
+}
+
   @Override
 public void modifierabonnement(int idA, abonnement A) {
     try {

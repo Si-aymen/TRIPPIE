@@ -66,11 +66,16 @@ public class AjouterAbonnementController implements Initializable {
     
 
     
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+   // Initialize the date pickers for dateAchat and dateExpiration
+@Override
+public void initialize(URL url, ResourceBundle rb) {
+    // Set the date picker value to today's date
+    LocalDate today = LocalDate.now();
+    tfdateAchat.setValue(today);
+    tfdateAchat.setDisable(true);
+    tfdateExpiration.setValue(today.plusYears(1));
+    tfdateExpiration.setDisable(true);
+}
     
     
   @FXML
@@ -78,11 +83,9 @@ private void ajouterabonnement(ActionEvent event) {
     // Get the input values from the text fields and date pickers
     String type = tfType.getText().trim();
     String prixString = tfPrix.getText().trim();
-    LocalDate dateAchatLocal = tfdateAchat.getValue();
-    LocalDate dateExpirationLocal = tfdateExpiration.getValue();
 
     // Validate the input values
-    if (type.isEmpty() || prixString.isEmpty() || dateAchatLocal == null || dateExpirationLocal == null) {
+    if (type.isEmpty() || prixString.isEmpty()) {
         // If any input value is empty, show an error message
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Error");
@@ -91,35 +94,12 @@ private void ajouterabonnement(ActionEvent event) {
         alert.showAndWait();
         return;
     }
-    if (dateAchatLocal.isAfter(dateExpirationLocal)) {
-    // If dateAchat is after dateExpiration, show an error message
-    Alert alert = new Alert(AlertType.ERROR);
-    alert.setTitle("Error");
-    alert.setHeaderText("Invalid date range");
-    alert.setContentText("La date d'achat doit être avant la date d'expiration.");
-    alert.showAndWait();
-    return;
-}
-
-//    // Ensure that dateAchat is equal to today's date
-//    Date today = new Date(System.currentTimeMillis());
-//    if (!java.sql.Date.valueOf(dateAchatLocal).equals(today)) {
-//        dateAchatLocal = today.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//    }
-//    // Check if dateAchat is less than today's date
-//    if (dateAchatLocal.isBefore(LocalDate.now())) {
-//        Alert alert = new Alert(AlertType.ERROR);
-//        alert.setTitle("Error");
-//        alert.setHeaderText("Invalid dateAchat");
-//        alert.setContentText("dateAchat should not be less than today's date.");
-//        alert.showAndWait();
-//        return;
-//    }
 
     // Parse the input values
     int prix = Integer.parseInt(prixString);
-    Date dateAchat = java.sql.Date.valueOf(dateAchatLocal);
-    Date dateExpiration = java.sql.Date.valueOf(dateExpirationLocal);
+    LocalDate today = LocalDate.now();
+    Date dateAchat = java.sql.Date.valueOf(today);
+    Date dateExpiration = java.sql.Date.valueOf(today.plusYears(1));
 
     // Create a new abonnement object and insert it into the database
     abonnement abonnement = new abonnement(type, prix, dateAchat, dateExpiration);
@@ -135,5 +115,4 @@ private void ajouterabonnement(ActionEvent event) {
 }
 
 
-    
 }
