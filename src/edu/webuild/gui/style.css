@@ -42,7 +42,11 @@
 
 .shopping-online-card{
     -fx-background-color: #BAEAC3;
+<<<<<<< HEAD
     -fx-background-radius: 30;
+=======
+    -fx-background-radius: 100;
+>>>>>>> 9d50923a1a42e629ddfc92983077ffa5c623bbf0
 }
 
 .fruit-item{

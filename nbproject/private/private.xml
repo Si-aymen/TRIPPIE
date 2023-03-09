@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Front_FrontController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/Front_Front.fxml</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Ajouter_roleController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/model/Participation.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/Back/Add_cov_back.fxml</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Details_Front_covController.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Show_cov_backController.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Add_part_FrontController.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Details_cov_back_mController.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/location.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Part_cov_backController.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/Back/details_cov_back_m.fxml</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/IdentifierCompteController.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/QrController.java</file>
         </group>
     </open-files>
 </project-private>
