@@ -22,23 +22,20 @@ import javafx.stage.Stage;
  *
  * @author HP
  */
-public class tablemain extends Application {
+public class discount extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+        Parent root;
         try {
-            // charger l'interface graphique 
-            //FXMLLoader.load, vous spécifiez le nom du fichier FXML que vous souhaitez charger 
-            //cette méthode crée un objet de type Parent qui représente la racine de votre interface utilisateur
-           Parent   root = FXMLLoader.load(getClass().getResource("test.fxml"));
-           //qui représente la racine de votre interface utilisateur qui représente la racine de votre interface utilisateur
-            Scene scene = new Scene(root,1370, 700);
+            root = FXMLLoader.load(getClass().getResource("discount1.fxml")); 
+            Scene scene = new Scene(root);
         
-        primaryStage.setTitle("trippe");
+        primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(tablemain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(discount.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Market_couponBackController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Marketcadeau_backController">
     <children>
         <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
@@ -57,12 +57,12 @@
                            </children></Pane>
                                 <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <FontAwesomeIconView glyphName="REFRESH" layoutX="14.0" layoutY="67.0" onMouseClicked="#refresh" size="50" />
+                              <FontAwesomeIconView glyphName="REFRESH" layoutX="14.0" layoutY="67.0" onMouseClicked="#REFRESH" size="50" />
                            </children></Pane>
                                 <HBox alignment="TOP_RIGHT" onMouseClicked="#update" prefHeight="100.0" prefWidth="274.0" styleClass="shopping-online-card" stylesheets="@style.css">
                                     <children>
                                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="131.0" />
-                              <Label contentDisplay="CENTER" prefHeight="81.0" prefWidth="219.0" text="Modifier Coupon" textFill="#878787">
+                              <Label contentDisplay="CENTER" prefHeight="81.0" prefWidth="219.0" text="Modifier cadeau" textFill="#878787">
                                  <font>
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
@@ -71,11 +71,11 @@
                                     </children>
                                 </HBox>
                                 <Pane prefHeight="100.0" prefWidth="222.0" />
-                        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="274.0" styleClass="shopping-online-card" stylesheets="@style.css">
+                        <HBox alignment="TOP_RIGHT" onMouseClicked="#add" prefHeight="100.0" prefWidth="274.0" styleClass="shopping-online-card" stylesheets="@style.css">
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="131.0">
                                  <children>
-                                    <Label onMouseClicked="#add" prefHeight="81.0" prefWidth="195.0" text="ADD Coupon">
+                                    <Label onMouseClicked="#add" prefHeight="81.0" prefWidth="195.0" text="ADD Cadeau" textFill="#878787">
                                        <font>
                                           <Font name="Cambria Bold" size="18.0" />
                                        </font>
@@ -91,7 +91,7 @@
                             </VBox.margin>
                         </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" />
-                  <ListView fx:id="table" blendMode="SRC_ATOP" prefHeight="315.0" prefWidth="759.0" style="-fx-background-color: pink;" />
+                  <ListView fx:id="tablecad" prefHeight="315.0" prefWidth="880.0" />
                     </children>
                 </VBox>
             </center>
