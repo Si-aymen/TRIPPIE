@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Market_couponBackController">
+    <children>
+        <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <left>
+                <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0" />
+                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                    </children>
+                </VBox>
+            </left>
+            <center>
+                <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+                            <VBox.margin>
+                                <Insets left="20.0" right="20.0" />
+                            </VBox.margin>
+                            <children>
+                                <Label prefHeight="29.0" prefWidth="88.0" text="language" textFill="#878787">
+                                    <font>
+                                        <Font name="Cambria Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label prefHeight="29.0" prefWidth="77.0" text="English" textFill="#878787" underline="true">
+                                    <font>
+                                        <Font name="Cambria" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
+                                <Label prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
+                                    <font>
+                                        <Font name="Cambria" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Pane prefHeight="84.0" prefWidth="96.0">
+                           <children>
+                              <FontAwesomeIconView fill="RED" glyphName="TRASH" layoutX="16.0" layoutY="67.0" onMouseClicked="#delete" size="50" />
+                           </children></Pane>
+                                <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <FontAwesomeIconView glyphName="REFRESH" layoutX="14.0" layoutY="67.0" onMouseClicked="#refresh" size="50" />
+                           </children></Pane>
+                                <HBox alignment="TOP_RIGHT" onMouseClicked="#update" prefHeight="100.0" prefWidth="274.0" styleClass="shopping-online-card" stylesheets="@style.css">
+                                    <children>
+                                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="131.0" />
+                              <Label contentDisplay="CENTER" prefHeight="81.0" prefWidth="219.0" text="Modifier Coupon" textFill="#878787">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                                        <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
+                                    </children>
+                                </HBox>
+                                <Pane prefHeight="100.0" prefWidth="222.0" />
+                        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="274.0" styleClass="shopping-online-card" stylesheets="@style.css">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="131.0">
+                                 <children>
+                                    <Label onMouseClicked="#add" prefHeight="81.0" prefWidth="195.0" text="ADD Coupon">
+                                       <font>
+                                          <Font name="Cambria Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </HBox>
+                            </children>
+                            <VBox.margin>
+                                <Insets left="20.0" right="20.0" top="10.0" />
+                            </VBox.margin>
+                        </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <ListView fx:id="table" blendMode="SRC_ATOP" prefHeight="315.0" prefWidth="759.0" style="-fx-background-color: pink;" />
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
