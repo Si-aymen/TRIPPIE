@@ -63,7 +63,7 @@ public class FroggerApp extends Application {
     //Back button
      private Button backToMenuButton;
     
-    
+    int highScore;
     
     
 //    private Button startButton;
@@ -282,7 +282,10 @@ initBackToMenuButton(); // Initialize the back to menu button
 
         return highScore;
     }
-    
+    public void setHighScore(int highScore) {
+    this.highScore = highScore;
+}
+
     //Buttons methods
   
     //RESTART

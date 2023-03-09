@@ -118,7 +118,23 @@ int highScore = app.getHighScore();
         alert.show();
     }
     
-    
+    if (abonnement.getPrix() < highScore) {
+    // If the price is less than  the highscore, deduct the price from the highscore
+        highScore -= abonnement.getPrix();
+        app.setHighScore(highScore);
+        app.updateHighScore(highScore);
+
+    // Insert the new abonnement object into the database
+    AbonnementCRUD abonnementCRUD = new AbonnementCRUD();
+    abonnementCRUD.ajouterabonnement(abonnement);
+
+    // Show a success message
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Information Dialog");
+    alert.setHeaderText(null);
+    alert.setContentText("You bought a new membership!"+"and your new token balance is :"+ highScore);
+    alert.show();
+} 
     
     
     else {
