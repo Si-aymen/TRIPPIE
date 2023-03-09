@@ -19,6 +19,8 @@
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/choix.txt</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Ajouter_recAdminController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Modifier_reponseController.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/DetailsController.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Modifier_backController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/model/reponse.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Item_recController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Suivre_recController.java</file>
@@ -29,6 +31,7 @@
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/AfficheReponseController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/Modifier_recController.java</file>
             <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/controller/AdminReclamationController.java</file>
+            <file>file:/C:/Users/guerf/Desktop/TRIPPIE-Reclamation/src/edu/webuild/gui/details.fxml</file>
         </group>
     </open-files>
 </project-private>
