@@ -43,5 +43,4 @@ public class MyConnection {
     public Connection getConn() {
         return MyConnection.getInstance().conn;
     }
-
 }

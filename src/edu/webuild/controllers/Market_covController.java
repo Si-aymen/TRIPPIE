@@ -160,7 +160,6 @@ public class Market_covController implements Initializable {
 //
 //        }
 //    }
-
     @FXML
     private void Added_cov(MouseEvent event) {
         try {
@@ -175,5 +174,22 @@ public class Market_covController implements Initializable {
 
         }
     }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ProfilClient.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+}
 
 }

@@ -29,6 +29,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 import static javax.mail.Flags.Flag.USER;
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 

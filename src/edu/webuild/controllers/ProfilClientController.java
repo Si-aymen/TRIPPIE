@@ -5,6 +5,7 @@
  */
 package edu.webuild.controllers;
 
+import edu.webuild.frog.Menu;
 import edu.webuild.gui.LoginController;
 import edu.webuild.interfaces.InterfaceClientCRUD;
 import edu.webuild.model.Client;
@@ -222,12 +223,17 @@ public class ProfilClientController implements Initializable {
         }
     }
 
+
     @FXML
-    private void Membership_front(MouseEvent event) {
+    private void Reclamation(MouseEvent event) {  
+        
+        
     }
 
     @FXML
-    private void Reclamation(MouseEvent event) {
+    private void Membership_front(MouseEvent event) throws Exception {
+        Menu main= new Menu();
+        main.start(new Stage());
     }
 
 }

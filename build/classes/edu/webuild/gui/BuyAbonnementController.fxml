@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.collections.FXCollections?>
+
+<AnchorPane id="AnchorPane" prefHeight="400" prefWidth="800" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.301" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.BuyAbonnementController">
+   <children>
+      <ComboBox fx:id="cbType" layoutX="398.0" layoutY="111.0" onAction="#updatePrix" promptText="Choose type...">
+        
+      </ComboBox>
+      <TextField fx:id="tfPrix" layoutX="398.0" layoutY="142.0" />
+      <Button fx:id="btnAjouter" layoutX="480.0" layoutY="258.0" mnemonicParsing="false" onAction="#buyabonnement" prefHeight="32.0" prefWidth="67.0" text="Buy" />
+      <DatePicker fx:id="tfdateAchat" layoutX="398.0" layoutY="177.0" prefHeight="26.0" prefWidth="150.0" />
+      <DatePicker fx:id="tfdateExpiration" layoutX="398.0" layoutY="213.0" prefHeight="26.0" prefWidth="150.0" />
+    
+      <Label layoutX="283.0" layoutY="114.0" prefHeight="18.0" prefWidth="34.0" text="Type" />
+      <Label layoutX="283.0" layoutY="145.0" prefHeight="18.0" prefWidth="34.0" text="Prix" />
+      <Label layoutX="278.0" layoutY="182.0" text="DateAchat" />
+      <Label layoutX="276.0" layoutY="218.0" text="DateExpiration" />
+   </children>
+</AnchorPane>

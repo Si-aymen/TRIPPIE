@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -57,7 +58,10 @@
                                 <String fx:value="shadow" />
                             </styleClass>
                         </HBox>
-                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <FontAwesomeIconView glyphName="ARROW_CIRCLE_LEFT" layoutX="367.0" layoutY="34.0" onMouseClicked="#back_btn" size="35" wrappingWidth="33.48569583892822" />
+                     </children></Pane>
                         <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="535.0" prefWidth="100.0" style="-fx-background-color: fff2e2;" styleClass="chosen-fruit-card" stylesheets="@../../../style.css">
                             <VBox.margin>
                                 <Insets left="50.0" right="50.0" />

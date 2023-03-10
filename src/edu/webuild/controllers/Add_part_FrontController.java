@@ -24,6 +24,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -33,8 +34,6 @@ import javafx.stage.Stage;
  */
 public class Add_part_FrontController implements Initializable {
 
-    @FXML
-    private Button cov_btu;
     private final Integer[] nmbr_place_list = {1, 2, 3, 4, 5, 6};
     @FXML
     private Label nmbr_place_Lab;
@@ -47,17 +46,9 @@ public class Add_part_FrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         nmbr_place_part.getItems().addAll(nmbr_place_list);
-        
+
         nmbr_place_Lab.setText(String.valueOf(Item_covController.covt.getNmbr_place()));
 
-    }
-
-    @FXML
-    private void cov_btu(ActionEvent event) {
-    }
-
-    @FXML
-    private void stats(ActionEvent event) {
     }
 
     @FXML
@@ -91,6 +82,21 @@ public class Add_part_FrontController implements Initializable {
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Market_cov.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Market_cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
