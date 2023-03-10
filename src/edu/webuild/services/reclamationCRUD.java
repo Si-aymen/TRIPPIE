@@ -13,15 +13,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import edu.webuild.interfaces.InterfaceCRUD;
 import edu.webuild.model.reponse;
 import java.sql.PreparedStatement;
+import edu.webuild.interfaces.InterfaceCRUDrec;
 
 /**
  *
  * @author belkn
  */
-public class reclamationCRUD implements InterfaceCRUD {
+public class reclamationCRUD implements InterfaceCRUDrec {
 
     Statement ste;
     Connection conn = MyConnection.getInstance().getConn();

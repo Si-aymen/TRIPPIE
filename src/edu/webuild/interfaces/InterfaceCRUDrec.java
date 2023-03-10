@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author guerf
  */
-public interface InterfaceCRUD {
+public interface InterfaceCRUDrec {
 
     public void ajouterReclamation(reclamation r);
 

@@ -5,7 +5,6 @@
  */
 package edu.webuild.services;
 
-import edu.webuild.interfaces.InterfaceCRUD;
 import edu.webuild.model.reclamation;
 import edu.webuild.model.reponse;
 import edu.webuild.utils.MyConnection;
@@ -15,12 +14,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import edu.webuild.interfaces.InterfaceCRUDrec;
 
 /**
  *
  * @author guerf
  */
-public class reponseCRUD implements InterfaceCRUD {
+public class reponseCRUD implements InterfaceCRUDrec {
 
     Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
