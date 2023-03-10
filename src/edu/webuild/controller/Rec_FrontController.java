@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,12 +47,6 @@ public class Rec_FrontController implements Initializable {
     private MyListener myListener;
     @FXML
     private TextField search_bar;
-    @FXML
-    private VBox chosenFruitCard;
-    @FXML
-    private Label fruitNameLable;
-    @FXML
-    private Label fruitPriceLabel;
     @FXML
     private ImageView det_rec_img;
     @FXML
@@ -149,11 +141,13 @@ public class Rec_FrontController implements Initializable {
         }
     }
 
+
+
     @FXML
-    private void Added_cov(MouseEvent event) {
+    private void ajouter(MouseEvent event) {
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Add_covoiturage.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_front.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
