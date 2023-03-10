@@ -36,9 +36,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -58,14 +61,12 @@ public class AjouterAbonnementController implements Initializable {
     private DatePicker tfdateAchat;
        @FXML
     private DatePicker tfdateExpiration;
-        @FXML
-    private Button btnAjouter;
     
       //VARIABLES
         Date dateAchat,dateExpiration;
     
-@FXML
-private ComboBox<String> cbType;
+    @FXML
+    private ComboBox<String> cbType;
 
 
 // Initialize the type and price fields
@@ -123,12 +124,17 @@ private void ajouterabonnement(ActionEvent event) {
 }
 
 // Update the price text field when the user selects a type
-@FXML
-private void updatePrix(ActionEvent event) {
+    @FXML
+    private void updatePrix(ActionEvent event) {
     String type = cbType.getValue();
     abonnement abonnement = new abonnement(type);
     tfPrix.setText(String.valueOf(abonnement.getPrix()));
 }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+    }
+
 
     
   

@@ -34,6 +34,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -53,8 +54,6 @@ public class BuyAbonnementController implements Initializable {
     private DatePicker tfdateAchat;
        @FXML
     private DatePicker tfdateExpiration;
-        @FXML
-    private Button btnAjouter;
     
       //VARIABLES
         Date dateAchat,dateExpiration;
@@ -80,7 +79,6 @@ public void initialize(URL url, ResourceBundle rb) {
     tfdateExpiration.setDisable(true);
 }
 
-@FXML
 public void buyabonnement(ActionEvent event) {
     // Get the input values from the combo box and date picker
     String type = cbType.getValue();
@@ -160,6 +158,14 @@ private void updatePrix(ActionEvent event) {
     abonnement abonnement = new abonnement(type);
     tfPrix.setText(String.valueOf(abonnement.getPrix()));
 }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+    }
+
+    @FXML
+    private void ajouterabonnement(ActionEvent event) {
+    }
 
 
 }

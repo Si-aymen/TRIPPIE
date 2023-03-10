@@ -48,6 +48,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -66,8 +67,6 @@ public class AfficherAbonnementController implements Initializable {
    @FXML
     private ListView<abonnement> listView;
     
-    @FXML
-    private ListView<abonnement> affichageabonnement;
       @FXML
     private Button btnEdit;
  
@@ -237,6 +236,10 @@ private void supprimerabonnement(ActionEvent event) {
         alert.showAndWait();
     }
 }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+    }
 
     
 }

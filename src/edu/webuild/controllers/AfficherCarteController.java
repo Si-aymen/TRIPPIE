@@ -46,6 +46,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -64,8 +65,6 @@ public class AfficherCarteController implements Initializable {
    @FXML
     private ListView<cartefidelite> listView;
     
-    @FXML
-    private ListView<cartefidelite> affichercarte;
       @FXML
     private Button btnEdit;
  
@@ -186,5 +185,13 @@ dialog.setResultConverter(dialogButton -> {
         alert.showAndWait();
     }
 }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+    }
+
+    @FXML
+    private void supprimerabonnement(ActionEvent event) {
+    }
     
 }
