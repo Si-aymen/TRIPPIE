@@ -6,6 +6,7 @@
 package edu.webuild.controller;
 
 import com.jfoenix.controls.JFXButton;
+import edu.webuild.gui.LoginController;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
 import java.io.BufferedReader;
@@ -74,8 +75,6 @@ public class Ajouter_frontController implements Initializable {
     private JFXButton image;
     
     private String type, commentaire;
-    
-    private static int id_utilisateur = 1;
 
     /**
      * Initializes the controller class.
@@ -175,7 +174,8 @@ public class Ajouter_frontController implements Initializable {
             alert.setContentText("Commentaire manquant");
             alert.showAndWait();
         } else {
-            reclamation r = new reclamation(type, commentaire, "non traité", date_creation, id_utilisateur, url_image);
+            System.out.println( LoginController.id_util);
+            reclamation r = new reclamation(type, commentaire, "non traité", date_creation, LoginController.id_util, url_image);
 
             reclamationCRUD rc = new reclamationCRUD();
 

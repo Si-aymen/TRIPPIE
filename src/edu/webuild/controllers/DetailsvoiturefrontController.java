@@ -93,7 +93,6 @@ private void showAlert(String message) {
         alert.setContentText(message);
         alert.showAndWait();
     }
-    @FXML
     private void delete_car(ActionEvent event) {
         
           Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -121,7 +120,6 @@ private void showAlert(String message) {
 
     }
 
-    @FXML
     private void update_car(ActionEvent event) {
          try {
 

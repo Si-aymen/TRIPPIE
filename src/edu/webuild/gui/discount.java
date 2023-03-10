@@ -24,7 +24,7 @@ public class discount extends Application {
     public void start(Stage primaryStage) {
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("discount1.fxml")); 
+            root = FXMLLoader.load(getClass().getResource("discount.fxml")); 
             Scene scene = new Scene(root);
         
         primaryStage.setTitle("Hello World!");

@@ -66,6 +66,7 @@ public class ProfilClientController implements Initializable {
     @FXML
     private ImageView fximg;
     private List<Client> clientDataList = FXCollections.observableArrayList();
+    static int id_client ; 
 
     private InterfaceClientCRUD ClientCRUD = new ClientCRUD();
 

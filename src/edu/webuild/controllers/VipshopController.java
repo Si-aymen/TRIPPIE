@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 
 /**
  * FXML Controller class
@@ -46,8 +47,7 @@ public class VipshopController implements Initializable {
     private CheckBox check3;
     @FXML
     private Label gift4;
-    @FXML
-    private Label desc12;
+   
     @FXML
     private CheckBox check4;
     @FXML
@@ -62,6 +62,8 @@ public class VipshopController implements Initializable {
     private Label desc131;
     @FXML
     private CheckBox check6;
+    @FXML
+    private Label desc113;
 
     /**
      * Initializes the controller class.
@@ -79,18 +81,23 @@ public class VipshopController implements Initializable {
             }
             if (rs.next()) {
                 gift2.setText(rs.getString("nom_cadeau"));
+                desc11.setText(rs.getString("description"));
             }
             if (rs.next()) {
                 gift3.setText(rs.getString("nom_cadeau"));
+                desc111.setText(rs.getString("description"));
             }
             if (rs.next()) {
                 gift4.setText(rs.getString("nom_cadeau"));
+                     desc13.setText(rs.getString("description"));
             }
             if (rs.next()) {
                 gift5.setText(rs.getString("nom_cadeau"));
+                     desc113.setText(rs.getString("description"));
             }
             if (rs.next()) {
                 gift6.setText(rs.getString("nom_cadeau"));
+                     desc131.setText(rs.getString("description"));
             }
 
             rs.close();
@@ -166,19 +173,53 @@ public class VipshopController implements Initializable {
         if (check1.isSelected()) {
             selectedGift = gift1.getText();
             String toEmail ="rim.mdimagh@esprit.tn";
-            String message = "you won a gift "+gift1;
+            String message = "heelooo i hope you are doing great \n "
+                    + "these email contains your gift \n"
+                    + "please ...   yourr email to reccupaire your gift in our store "
+                    + " your gift is "+gift1;
+                    
             EmailSender.sendEmail_add(toEmail, message);
         } else if (check2.isSelected()) {
             selectedGift = gift2.getText();
+            
+            String toEmail ="rim.mdimagh@esprit.tn";
+            String message = "heelooo i hope you are doing great \n "
+                    + "these email contains your gift \n"
+                    + "please ...   yourr email to reccupaire your gift in our store "
+                    + " your gift is "+gift2;
         } // Add more conditions for other check boxes as needed
         else if (check3.isSelected()) {
             selectedGift = gift3.getText();
+            
+            String toEmail ="rim.mdimagh@esprit.tn";
+            String message = "heelooo i hope you are doing great \n "
+                    + "these email contains your gift \n"
+                    + "please ...   yourr email to reccupaire your gift in our store "
+                    + " your gift is "+gift3;
         } else if (check4.isSelected()) {
             selectedGift = gift4.getText();
+            
+            String toEmail ="rim.mdimagh@esprit.tn";
+            String message = "heelooo i hope you are doing great \n "
+                    + "these email contains your gift \n"
+                    + "please ...   yourr email to reccupaire your gift in our store "
+                    + " your gift is "+gift4;
         } else if (check5.isSelected()) {
             selectedGift = gift5.getText();
+            
+            String toEmail ="rim.mdimagh@esprit.tn";
+            String message = "heelooo i hope you are doing great \n "
+                    + "these email contains your gift \n"
+                    + "please ...   yourr email to reccupaire your gift in our store "
+                    + " your gift is "+gift5;
         } else if (check6.isSelected()) {
             selectedGift = gift6.getText();
+           
+            String toEmail ="rim.mdimagh@esprit.tn";
+            String message = "heelooo i hope you are doing great \n "
+                    + "these email contains your gift \n"
+                    + "please ...   yourr email to reccupaire your gift in our store "
+                    + " your gift is "+gift6;
         }
 
         

@@ -82,6 +82,8 @@ public class LoginController {
     Chauffeur c;
     @FXML
     private ImageView img;
+    
+    static public int id_util;
 
     public void setMain(FirstWindow main) {
         this.main = main;
@@ -186,6 +188,8 @@ public class LoginController {
         if (selectedUser.equals("Client")) {
             ClientCRUD cc = new ClientCRUD();
             Client client = cc.getClient(email);
+            id_util = client.getId_client();
+            System.out.println(id_util);
 
             if (client == null) {
                 isValid = false;
@@ -213,6 +217,7 @@ public class LoginController {
         } else if (selectedUser.equals("Chauffeur")) {
             ChauffeurCRUD cr = new ChauffeurCRUD();
             Chauffeur chauffeur = cr.getChauffeur(email);
+            id_util = chauffeur.getId_ch();
 
             if (chauffeur == null) {
                 isValid = false;
@@ -243,6 +248,7 @@ public class LoginController {
             LocateurCRUD lc = new LocateurCRUD();
 
             Locateur locateur = lc.getLocateur(email);
+            id_util = locateur.getId_loc();
 
             if (locateur == null) {
                 isValid = false;

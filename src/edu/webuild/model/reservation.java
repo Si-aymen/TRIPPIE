@@ -14,7 +14,7 @@ import java.sql.Date;
 public class reservation {
     private int id ;
     private Date date_debut, date_fin ;
-    private voiture v ;
+   
 
     
     //constructeur par defaut
@@ -34,6 +34,15 @@ public class reservation {
         this.date_fin = date_fin;
         this.v = v;
     }
+
+   
+
+    public int getId_client() {
+        return id_client;
+    }
+
+   
+    
 
    
 

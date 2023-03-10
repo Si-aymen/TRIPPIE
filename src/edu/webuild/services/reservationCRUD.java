@@ -25,11 +25,12 @@ public class reservationCRUD implements InterfaceCRUD2 {
     Connection conn = MyConnection.getInstance().getConn();
      @Override
 public void ajouterreservation(reservation r) {
-    String query = "INSERT INTO reservation (date_debut, date_fin, id_voiture) VALUES (?, ?, ?)";
+    String query = "INSERT INTO reservation (date_debut, date_fin, id_voiture ) VALUES (?, ?, ?)";
     try (PreparedStatement ps = conn.prepareStatement(query)) {
         ps.setDate(1, r.getDate_debut());
         ps.setDate(2, r.getDate_fin());
         ps.setInt(3, r.getV().getId());
+       
         int rowsAffected = ps.executeUpdate();
         if (rowsAffected > 0) {
             System.out.println("Reservation ajoutée!");
