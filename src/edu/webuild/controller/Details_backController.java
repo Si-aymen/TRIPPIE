@@ -39,7 +39,7 @@ import org.controlsfx.control.Notifications;
  *
  * @author guerf
  */
-public class DetailsController implements Initializable {
+public class Details_backController implements Initializable {
 
     @FXML
     private TextField search_bar;
@@ -50,29 +50,30 @@ public class DetailsController implements Initializable {
     @FXML
     private Label eta;
     @FXML
-    private ImageView imageView;
+    private ListView<reponse> liste_rep;
     @FXML
-    private Button cov_btu;
+    private ImageView imageView;
     @FXML
     private Label date_cr;
     @FXML
-    private ListView<reponse> liste_rep;
+    private Button cov_btu;
+    
     private ListView list = liste_rep;
     private reponseCRUD rec = new reponseCRUD();
-    private List<reponse> list1 = rec.getById_rep(Item_recController.r.getId_rec());
+    private List<reponse> list1 = rec.getById_rep(Item_backController.r.getId_rec());
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String imagePath = "C:\\xampp\\htdocs\\image_trippie_reclamation\\" + Item_recController.r.getUrl_image();
+        String imagePath = "C:\\xampp\\htdocs\\image_trippie_reclamation\\" + Item_backController.r.getUrl_image();
         System.out.println(imagePath);
         //id_co_TF.setText(String.valueOf(Afficher_CovController.id_co));
-        typ.setText(String.valueOf(Item_recController.r.getType_rec()));
-        comm.setText(String.valueOf(Item_recController.r.getCommentaire()));
-        date_cr.setText(Item_recController.r.getDate_creation().toString());
-        eta.setText(String.valueOf(Item_recController.r.getEtat()));
+        typ.setText(String.valueOf(Item_backController.r.getType_rec()));
+        comm.setText(String.valueOf(Item_backController.r.getCommentaire()));
+        date_cr.setText(Item_backController.r.getDate_creation().toString());
+        eta.setText(String.valueOf(Item_backController.r.getEtat()));
         try {
             imageView.setImage(new Image(new FileInputStream(imagePath)));
         } catch (FileNotFoundException e) {
@@ -85,45 +86,7 @@ public class DetailsController implements Initializable {
             reponse reponse = list1.get(i);
             list.getItems().add(reponse);
         }
-    }
-
-    @FXML
-    private void Modify_btu(ActionEvent event) {
-        
-    }
-
-    @FXML
-    private void delete_btu(ActionEvent event) {
-        try {
-            reclamationCRUD rec = new reclamationCRUD();
-
-            rec.supprimerReclamation(Item_recController.r.getId_rec());
-
-            Notifications n = Notifications.create()
-                    .title("WeBuild")
-                    .text("Réclamation supprimé avec succé !")
-                    .graphic(null)
-                    .position(Pos.TOP_CENTER)
-                    .hideAfter(Duration.seconds(5));
-            n.showInformation();
-
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Front.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            System.err.println(ex);
-        }
-    }
-
-    @FXML
-    private void cov_btu(ActionEvent event) {
-    }
-
-    @FXML
-    private void stats(ActionEvent event) {
-    }
+    }    
 
     @FXML
     private void repondre(ActionEvent event) {
@@ -134,9 +97,9 @@ public class DetailsController implements Initializable {
 
         Optional<String> result = dialog.showAndWait();
 
-        String reponse = "(Utilisateur): " + result.get();
+        String reponse = "(Admin): " + result.get();
 
-        reponse r1 = new reponse(reponse, Item_recController.r.getId_rec(), "en cours de traitement");
+        reponse r1 = new reponse(reponse, Item_backController.r.getId_rec(), "en cours de traitement");
 
         reponseCRUD rc = new reponseCRUD();
 
@@ -154,7 +117,54 @@ public class DetailsController implements Initializable {
 
         list.refresh();
         liste_rep.refresh();
-
     }
 
+    @FXML
+    private void Modify_btu(ActionEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/modifier_back.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.err.println(ex);
+
+        }
+    }
+
+    @FXML
+    private void delete_btu(ActionEvent event) {
+        try {
+            reclamationCRUD rec = new reclamationCRUD();
+
+            rec.supprimerReclamation(Item_backController.r.getId_rec());
+
+            Notifications n = Notifications.create()
+                    .title("WeBuild")
+                    .text("Réclamation supprimé avec succé !")
+                    .graphic(null)
+                    .position(Pos.TOP_CENTER)
+                    .hideAfter(Duration.seconds(5));
+            n.showInformation();
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Back.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    @FXML
+    private void cov_btu(ActionEvent event) {
+    }
+
+    @FXML
+    private void stats(ActionEvent event) {
+    }
+    
 }

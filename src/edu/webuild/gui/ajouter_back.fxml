@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controller.Ajouter_frontController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controller.Ajouter_backController">
    <children>
       <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../../../TRIPPIE-co_voiturage/src/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -206,7 +206,8 @@
                                                 <JFXButton fx:id="image" prefHeight="26.0" prefWidth="356.0" text="image" />
                                              </children>
                                           </HBox>
-                                       </children></VBox>
+                                       </children>
+                                    </VBox>
                                     <VBox prefHeight="200.0" prefWidth="100.0">
                                        <children>
                                           <HBox prefHeight="100.0" prefWidth="200.0">

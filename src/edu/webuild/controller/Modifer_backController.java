@@ -81,7 +81,7 @@ public class Modifer_backController implements Initializable {
             System.err.println(e);
         }
 
-        String imagePath = "C:\\xampp\\htdocs\\image_trippie_reclamation\\" + Item_recController.r.getUrl_image();
+        String imagePath = "C:\\xampp\\htdocs\\image_trippie_reclamation\\" + Item_backController.r.getUrl_image();
         try {
             imageView.setImage(new Image(new FileInputStream(imagePath)));
         } catch (FileNotFoundException e) {
@@ -90,10 +90,10 @@ public class Modifer_backController implements Initializable {
 
         etat_box.getItems().addAll(etats);
 
-        comm.setText(Item_recController.r.getCommentaire());
-        type_box.setValue(Item_recController.r.getType_rec());
-        etat_box.setValue(Item_recController.r.getEtat());
-        date_cr.setText(Item_recController.r.getDate_creation().toString());
+        comm.setText(Item_backController.r.getCommentaire());
+        type_box.setValue(Item_backController.r.getType_rec());
+        etat_box.setValue(Item_backController.r.getEtat());
+        date_cr.setText(Item_backController.r.getDate_creation().toString());
 
     }
 
@@ -101,12 +101,12 @@ public class Modifer_backController implements Initializable {
     private void Modify_btu(ActionEvent event) {
         try {
             int id;
-            id = Item_recController.r.getId_rec();
+            id = Item_backController.r.getId_rec();
             String type = type_box.getValue();
             String commentaire = comm.getText();
             String etat = etat_box.getValue();
 
-            reclamation r = new reclamation(type, commentaire, etat, Item_recController.r.getDate_creation(), id_utilisateur, Item_recController.r.getUrl_image());
+            reclamation r = new reclamation(type, commentaire, etat, Item_backController.r.getDate_creation(), id_utilisateur, Item_backController.r.getUrl_image());
 
             reclamationCRUD rc = new reclamationCRUD();
 
@@ -120,7 +120,7 @@ public class Modifer_backController implements Initializable {
                     .hideAfter(Duration.seconds(5));
             n.showInformation();
         
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Front.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Back.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
