@@ -31,9 +31,9 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="129.0" fitWidth="231.0" layoutX="78.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="img" fitHeight="129.0" fitWidth="231.0" layoutX="68.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@http://localhost/bg.PNG" />
+                        <Image url="@http://localhost/trippie.PNG" />
                      </image>
                   </ImageView>
                </children>

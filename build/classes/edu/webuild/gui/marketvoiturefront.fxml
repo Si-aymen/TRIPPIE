@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -148,7 +149,10 @@
                                 </Button>
                             </children>
                         </VBox>
-                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <FontAwesomeIconView glyphName="ARROW_CIRCLE_LEFT" layoutX="200.0" layoutY="26.0" onMouseClicked="#back_btn" size="35" wrappingWidth="33.48569583892822" />
+                     </children></Pane>
                     </children>
                 </VBox>
             </left>

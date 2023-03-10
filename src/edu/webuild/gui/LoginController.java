@@ -16,6 +16,8 @@ import edu.webuild.model.Role;
 import edu.webuild.services.ChauffeurCRUD;
 import edu.webuild.services.ClientCRUD;
 import edu.webuild.services.LocateurCRUD;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -42,6 +44,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -76,6 +80,8 @@ public class LoginController {
     @FXML
     private ToggleButton showbtnnewnew;
     Chauffeur c;
+    @FXML
+    private ImageView img;
 
     public void setMain(FirstWindow main) {
         this.main = main;
@@ -87,6 +93,15 @@ public class LoginController {
     }
 
     public void initialize() {
+
+//        Image i = new Image("C:\\Users\\manou\\Desktop\\integration_final\\rippe.png");
+//        img.setImage(i);
+//        String path = "\"C:\\\\Users\\\\manou\\\\Desktop\\\\integration_final\\rippe.png\"";
+//        try {
+//            img.setImage(new Image(new FileInputStream(path)));
+//        } catch (FileNotFoundException e) {
+//            System.err.println("Error loading image: " + e.getMessage());
+//        }
         fxchoice.getItems().addAll("Client", "Chauffeur", "Locateur", "Admin");
         fxchoice.setValue("Client"); // sélectionne "Option 1" comme valeur par défaut
         showbtnnewnew.setOnAction(event -> {
@@ -170,7 +185,7 @@ public class LoginController {
         String selectedUser = fxchoice.getValue();
         if (selectedUser.equals("Client")) {
             ClientCRUD cc = new ClientCRUD();
-           Client client = cc.getClient(email);
+            Client client = cc.getClient(email);
 
             if (client == null) {
                 isValid = false;
@@ -191,7 +206,7 @@ public class LoginController {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Erreur de connexion");
                 alert.setHeaderText(null);
-                alert.setContentText("Mr " + client.getId_role().getId_user().getNom() +" " +client.getId_role().getId_user().getPrenom()
+                alert.setContentText("Mr " + client.getId_role().getId_user().getNom() + " " + client.getId_role().getId_user().getPrenom()
                         + "Your account is disabled");
                 alert.showAndWait();
             }
@@ -218,7 +233,7 @@ public class LoginController {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Erreur de connexion");
                 alert.setHeaderText(null);
-                alert.setContentText("Mr " + chauffeur.getId_role().getId_user().getNom() +" " + chauffeur.getId_role().getId_user().getPrenom()
+                alert.setContentText("Mr " + chauffeur.getId_role().getId_user().getNom() + " " + chauffeur.getId_role().getId_user().getPrenom()
                         + " Your account is disabled");
                 alert.showAndWait();
             }
@@ -248,7 +263,7 @@ public class LoginController {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Erreur de connexion");
                 alert.setHeaderText(null);
-                alert.setContentText("Mr " + locateur.getId_role().getId_user().getNom() +" " + locateur.getId_role().getId_user().getPrenom()
+                alert.setContentText("Mr " + locateur.getId_role().getId_user().getNom() + " " + locateur.getId_role().getId_user().getPrenom()
                         + " Your account is disabled");
                 alert.showAndWait();
             }

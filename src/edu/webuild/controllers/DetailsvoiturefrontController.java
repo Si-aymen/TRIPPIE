@@ -29,6 +29,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -44,8 +45,6 @@ public class DetailsvoiturefrontController implements Initializable {
     private Label destination_co_lab;
     @FXML
     private ImageView imageView;
-    @FXML
-    private Button cov_btu;
     @FXML
     private Label matricule_lab;
     @FXML
@@ -87,13 +86,6 @@ public class DetailsvoiturefrontController implements Initializable {
        
     }    
 
-    @FXML
-    private void cov_btu(ActionEvent event) {
-    }
-
-    @FXML
-    private void stats(ActionEvent event) {
-    }
 private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -155,6 +147,21 @@ private void showAlert(String message) {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoiturefront.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }
