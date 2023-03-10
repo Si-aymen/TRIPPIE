@@ -65,7 +65,7 @@ private Label quoteLabel;
 		
 		root.setPrefSize(1300, 800); //Screen size
 		//add background image
-		try(InputStream is = Files.newInputStream(Paths.get("src/edu/webuild/resources/bg.png"))){
+		try(InputStream is = Files.newInputStream(Paths.get("src/edu/webuild/resources/menu.png"))){
 			ImageView img = new ImageView(new Image(is));
 			img.setFitWidth(1300);
 			img.setFitHeight(800);
@@ -108,13 +108,13 @@ private Label quoteLabel;
                 FroggerApp app = new FroggerApp();
                int highScore = app.getHighScore();
                Label highScoreLabel = new Label(  highScore + "Tokens:"+" Available on your Wallet ");
-                highScoreLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
-                highScoreLabel.setTextFill(Color.BLUE);
-                highScoreLabel.setLayoutX(900);
+                highScoreLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
+                highScoreLabel.setTextFill(Color.BLACK);
+                highScoreLabel.setLayoutX(850);
                 highScoreLabel.setLayoutY(80);
                 root.getChildren().add(highScoreLabel);
 
-
+                
                 
                
 	}
@@ -127,7 +127,19 @@ private Label quoteLabel;
         Scanner scanner = new Scanner(input);
         String response = scanner.useDelimiter("\\A").next();
         String quote = response.substring(response.indexOf("content") + 10, response.indexOf("author") - 3);
-        quoteLabel.setText(quote);
+        quoteLabel.setFont(Font.font("Verdana",FontWeight.BOLD, 12));
+            quoteLabel.setTextFill(Color.BLACK);
+          
+            
+             // Create a Text node with the quote
+        Text quoteText = new Text(quote);
+        quoteText.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+        quoteText.setTextAlignment(TextAlignment.CENTER);
+        quoteText.setWrappingWidth(600); // set the maximum width for wrapping
+            // Set the Text node as the quoteLabel's graphic
+        quoteLabel.setGraphic(quoteText);
+            
+       // quoteLabel.setText(quote);
     } catch (IOException e) {
         e.printStackTrace();
     }
@@ -175,8 +187,8 @@ startButton.setOnMouseExited(e -> {
     });
 
     HBox hBox = new HBox();
-    hBox.setTranslateX(470);
-    hBox.setTranslateY(300);
+    hBox.setTranslateX(200);
+    hBox.setTranslateY(450);
     hBox.getChildren().add(startButton);
 
     root.getChildren().add(hBox);
@@ -239,8 +251,8 @@ startButton.setOnMouseExited(e -> {
     });
 
     HBox hBox = new HBox();
-    hBox.setTranslateX(465);
-    hBox.setTranslateY(350);
+    hBox.setTranslateX(200);
+    hBox.setTranslateY(500);
     hBox.getChildren().add(howItWorksButton);
 
     root.getChildren().add(hBox);
@@ -280,8 +292,8 @@ private void initBuyMembershipButton() {
     });
 
     HBox hBox = new HBox();
-    hBox.setTranslateX(465);
-    hBox.setTranslateY(400);
+    hBox.setTranslateX(200);
+    hBox.setTranslateY(550);
     hBox.getChildren().add(buyMembershipButton);
 
     root.getChildren().add(hBox);

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.collections.FXCollections?>
 
-<AnchorPane id="AnchorPane" prefHeight="800" prefWidth="1300" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.301" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.BuyAbonnementController">
+<AnchorPane id="AnchorPane" prefHeight="400" prefWidth="800" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.301" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.BuyAbonnementController">
    <children>
       <ComboBox fx:id="cbType" layoutX="398.0" layoutY="111.0" onAction="#updatePrix" promptText="Choose type...">
         
