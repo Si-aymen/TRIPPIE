@@ -14,6 +14,7 @@ import java.sql.Date;
 public class reservation {
     private int id ;
     private Date date_debut, date_fin ;
+    voiture v;
    
 
     
@@ -34,19 +35,6 @@ public class reservation {
         this.date_fin = date_fin;
         this.v = v;
     }
-
-   
-
-    public int getId_client() {
-        return id_client;
-    }
-
-   
-    
-
-   
-
-    
 
     public int getId() {
         return id;
@@ -84,12 +72,6 @@ public class reservation {
     public String toString() {
         return ""  + " date_debut=" + date_debut + "|| date_fin=" + date_fin + "|| votre reservation est =" + v + "";
     }
-
- 
-    
-
-   
-   
 
     
 

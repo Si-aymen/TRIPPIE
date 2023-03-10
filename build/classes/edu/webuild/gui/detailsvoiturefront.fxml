@@ -351,11 +351,9 @@
                                                                <children>
                                                                   <VBox prefHeight="56.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <Button mnemonicParsing="false" onAction="#delete_car" text="delete car" />
                                                                         <Button mnemonicParsing="false" onAction="#reserve" text="reserve" />
                                                                      </children>
                                                                   </VBox>
-                                                                  <Button mnemonicParsing="false" onAction="#update_car" text="update car" />
                                                                </children>
                                                             </VBox>
                                                          </children>

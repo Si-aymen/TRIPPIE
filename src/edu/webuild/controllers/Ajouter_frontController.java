@@ -67,13 +67,13 @@ public class Ajouter_frontController implements Initializable {
     private ImageView imageV;
     @FXML
     private Button cov_btu;
-    
+
     File selectedFile;
     public String url_image;
     private String path;
     @FXML
     private JFXButton image;
-    
+
     private String type, commentaire;
 
     /**
@@ -151,11 +151,11 @@ public class Ajouter_frontController implements Initializable {
                 });
             }
         });
-    }    
+    }
 
     @FXML
     private void bu_add(ActionEvent event) throws IOException {
-        
+
         type = typ_box.getValue();
         commentaire = comment.getText();
         LocalDate localDate = LocalDate.now();
@@ -174,7 +174,7 @@ public class Ajouter_frontController implements Initializable {
             alert.setContentText("Commentaire manquant");
             alert.showAndWait();
         } else {
-            System.out.println( LoginController.id_util);
+            System.out.println(LoginController.id_util);
             reclamation r = new reclamation(type, commentaire, "non traité", date_creation, LoginController.id_util, url_image);
 
             reclamationCRUD rc = new reclamationCRUD();
@@ -194,9 +194,9 @@ public class Ajouter_frontController implements Initializable {
 
             if (count > 2) {
                 try {
-                    
+
                     typ_box.getItems().remove("Autre");
-                    
+
                     // ouvre le fichier "choix.txt" en mode écriture
                     BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\manou\\Desktop\\integration_final\\src\\edu\\webuild\\controllers\\choix.txt"));
 
@@ -215,7 +215,7 @@ public class Ajouter_frontController implements Initializable {
                     e.printStackTrace();
                 }
             }
-            
+
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Front.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -269,5 +269,5 @@ public class Ajouter_frontController implements Initializable {
 
         }
     }
-    
+
 }
