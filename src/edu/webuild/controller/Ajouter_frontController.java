@@ -6,7 +6,6 @@
 package edu.webuild.controller;
 
 import com.jfoenix.controls.JFXButton;
-import static edu.webuild.controller.Ajouter_recAdminController.id_utilisateur;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
 import java.io.BufferedReader;
@@ -75,6 +74,8 @@ public class Ajouter_frontController implements Initializable {
     private JFXButton image;
     
     private String type, commentaire;
+    
+    private static int id_utilisateur = 1;
 
     /**
      * Initializes the controller class.

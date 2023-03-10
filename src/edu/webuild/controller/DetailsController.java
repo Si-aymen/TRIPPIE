@@ -144,8 +144,6 @@ public class DetailsController implements Initializable {
 
         Optional<String> result = dialog.showAndWait();
 
-        int id_rec = ReclamationController.id;
-
         String reponse = "(Utilisateur): " + result.get();
 
         reponse r1 = new reponse(reponse, Item_recController.r.getId_rec(), "en cours de traitement");

@@ -57,6 +57,12 @@ public class Rec_FrontController implements Initializable {
     private Label type_r;
     @FXML
     private Label etat_r;
+    @FXML
+    private VBox chosenFruitCard;
+    @FXML
+    private Label fruitNameLable;
+    @FXML
+    private Label fruitPriceLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -156,6 +162,10 @@ public class Rec_FrontController implements Initializable {
             System.err.println(ex);
 
         }
+    }
+
+    @FXML
+    private void Added_cov(MouseEvent event) {
     }
 
 }

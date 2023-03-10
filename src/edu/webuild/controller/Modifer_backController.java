@@ -5,7 +5,6 @@
  */
 package edu.webuild.controller;
 
-import static edu.webuild.controller.ModifierAdminController.id_utilisateur;
 import edu.webuild.model.reclamation;
 import edu.webuild.services.reclamationCRUD;
 import java.io.BufferedReader;
@@ -14,11 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,11 +25,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
@@ -62,6 +55,8 @@ public class Modifer_backController implements Initializable {
     private Button cov_btu;
 
     private final String[] etats = {"non traité", "en cours de traitement", "traité"};
+    
+    private static int id_utilisateur = 1;
 
     /**
      * Initializes the controller class.
