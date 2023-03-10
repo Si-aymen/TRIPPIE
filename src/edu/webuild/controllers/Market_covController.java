@@ -192,4 +192,4 @@ public class Market_covController implements Initializable {
     }
 }
 
-}
+

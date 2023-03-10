@@ -3,52 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Front_FrontController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Show_cov_backController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Addcadeau_backController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Modifer_Front_covController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/modifier_reservation.fxml</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Afficher_voitureController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/DetailsvoiturefrontController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ProfilClientController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ClientCardController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Main.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ChauffeurCardController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ChauffeurCardFrontController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/LocateurCardController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/addcadeau_back.fxml</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/modifier_couponBack.fxml</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Afficher_CovController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/CardsChController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Ajouter_reservationfrontController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Modifier_couponBackController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ModifiervoiturefrontController.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Ajouter_frontController.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Item_recController.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Rec_FrontController.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/FirstWindow.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Show_cov_back_mController.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/LoginController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/AjoutervoiturefrontController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ModifierCadeau_backController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/modifierCadeau_back.fxml</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/services/ClientCRUD.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/Back/Mod_cov_back.fxml</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/utils/MyConnection.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/wheel.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Add_CovController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/location.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/ADD_couponBack.fxml</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Details_CovController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/MarketvoiturefrontController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/tablemain.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ADD_couponBackController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/Login.fxml</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/Front/Modifer_Front_cov.fxml</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/market_couponBack.fxml</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Details_cov_back_mController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Add_cov_backController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Marketcadeau_backController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Add_covoiturageController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/marketreservationback.fxml</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Market_couponBackController.java</file>
         </group>
     </open-files>
 </project-private>

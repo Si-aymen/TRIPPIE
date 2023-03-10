@@ -15,20 +15,6 @@ import java.sql.Date;
 import java.time.ZoneId;
 import java.util.Set;
 
-/**
- *
- * @author manou
- */
-public class Webuild {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-  
-    }}
-=======
 import edu.webuild.model.cartefidelite;
 import edu.webuild.model.abonnement;
 import edu.webuild.model.AbonnementCarteFidelite;
@@ -177,4 +163,3 @@ public class Webuild {
   }
 //    
 }
->>>>>>> 1cd5144ab2f454aaecbe8a593a0abd83b7bcd092

@@ -31,8 +31,6 @@ public class Front_FrontController implements Initializable {
 
     @FXML
     private TextField search_bar;
-    @FXML
-    private Button cov_btu;
 
     /**
      * Initializes the controller class.
@@ -120,14 +118,18 @@ public class Front_FrontController implements Initializable {
 
     @FXML
     private void reclamation_menu(MouseEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Back.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
-    @FXML
-    private void cov_btu(ActionEvent event) {
-    }
-
-    @FXML
-    private void stats(ActionEvent event) {
-    }
 
 }

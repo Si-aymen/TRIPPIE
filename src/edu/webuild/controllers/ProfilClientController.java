@@ -223,16 +223,25 @@ public class ProfilClientController implements Initializable {
         }
     }
 
-
     @FXML
-    private void Reclamation(MouseEvent event) {  
-        
-        
+    private void Reclamation(MouseEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Front.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ChoixResetController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
     }
 
     @FXML
     private void Membership_front(MouseEvent event) throws Exception {
-        Menu main= new Menu();
+        Menu main = new Menu();
         main.start(new Stage());
     }
 
