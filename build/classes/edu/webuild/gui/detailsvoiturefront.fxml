@@ -92,7 +92,7 @@
                                     <children>
                                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" stylesheets="@../../../style.css">
                                             <children>
-                                                <Label prefHeight="29.0" prefWidth="190.0" stylesheets="@../../../style.css" text="Co voiturage" textFill="#878787">
+                                                <Label prefHeight="29.0" prefWidth="190.0" stylesheets="@../../../style.css" text="cars" textFill="#878787">
                                                     <font>
                                                         <Font name="Cambria Bold" size="18.0" />
                                                     </font>
@@ -112,7 +112,7 @@
                                     <children>
                                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
                                             <children>
-                                                <Label prefHeight="29.0" prefWidth="190.0" text="Participation" textFill="#878787">
+                                                <Label prefHeight="29.0" prefWidth="190.0" text="list " textFill="#878787">
                                                     <font>
                                                         <Font name="Cambria Bold" size="18.0" />
                                                     </font>

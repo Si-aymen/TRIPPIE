@@ -187,7 +187,9 @@ public class VipshopController implements Initializable {
                     + "these email contains your gift \n"
                     + "please ...   yourr email to reccupaire your gift in our store "
                     + " your gift is "+gift2;
+               EmailSender.sendEmail_add(toEmail, message);
         } // Add more conditions for other check boxes as needed
+        
         else if (check3.isSelected()) {
             selectedGift = gift3.getText();
             
@@ -196,6 +198,7 @@ public class VipshopController implements Initializable {
                     + "these email contains your gift \n"
                     + "please ...   yourr email to reccupaire your gift in our store "
                     + " your gift is "+gift3;
+               EmailSender.sendEmail_add(toEmail, message);
         } else if (check4.isSelected()) {
             selectedGift = gift4.getText();
             
@@ -204,6 +207,7 @@ public class VipshopController implements Initializable {
                     + "these email contains your gift \n"
                     + "please ...   yourr email to reccupaire your gift in our store "
                     + " your gift is "+gift4;
+               EmailSender.sendEmail_add(toEmail, message);
         } else if (check5.isSelected()) {
             selectedGift = gift5.getText();
             
@@ -212,6 +216,7 @@ public class VipshopController implements Initializable {
                     + "these email contains your gift \n"
                     + "please ...   yourr email to reccupaire your gift in our store "
                     + " your gift is "+gift5;
+               EmailSender.sendEmail_add(toEmail, message);
         } else if (check6.isSelected()) {
             selectedGift = gift6.getText();
            
@@ -220,6 +225,7 @@ public class VipshopController implements Initializable {
                     + "these email contains your gift \n"
                     + "please ...   yourr email to reccupaire your gift in our store "
                     + " your gift is "+gift6;
+               EmailSender.sendEmail_add(toEmail, message);
         }
 
         

@@ -171,11 +171,11 @@
                                                          <children>
                                                             <VBox prefHeight="72.0" prefWidth="150.0">
                                                                <children>
-                                                                  <Label prefHeight="75.0" prefWidth="150.0" text="Commentaire :" />
+                                                                  <Label prefHeight="75.0" prefWidth="150.0" text="Comment :" />
                                                                </children></VBox>
                                                             <VBox prefHeight="73.0" prefWidth="150.0">
                                                                <children>
-                                                                  <Label prefHeight="75.0" prefWidth="150.0" text="Etat :" />
+                                                                  <Label prefHeight="75.0" prefWidth="150.0" text="State :" />
                                                                </children>
                                                             </VBox>
                                                          </children>
@@ -238,7 +238,7 @@
                                                                            <children>
                                                                               <VBox prefHeight="18.0" prefWidth="157.0">
                                                                                  <children>
-                                                                                    <Label prefHeight="18.0" prefWidth="202.0" text="Date de création :" />
+                                                                                    <Label prefHeight="18.0" prefWidth="202.0" text="Creation date :" />
                                                                                  </children>
                                                                               </VBox>
                                                                               <VBox prefHeight="18.0" prefWidth="34.0" />
@@ -259,7 +259,7 @@
                                              <children>
                                                 <HBox prefHeight="100.0" prefWidth="200.0">
                                                    <children>
-                                                      <Button mnemonicParsing="false" onAction="#repondre" text="Repondre" />
+                                                      <Button mnemonicParsing="false" onAction="#repondre" text="Answer" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0">

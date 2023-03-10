@@ -171,12 +171,12 @@
                                                          <children>
                                                             <VBox prefHeight="72.0" prefWidth="150.0">
                                                                <children>
-                                                                  <Label prefHeight="75.0" prefWidth="150.0" text="Commentaire :" />
+                                                                  <Label prefHeight="75.0" prefWidth="150.0" text="Comment :" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="73.0" prefWidth="150.0">
                                                                <children>
-                                                                  <Label prefHeight="75.0" prefWidth="150.0" text="Etat :" />
+                                                                  <Label prefHeight="75.0" prefWidth="150.0" text="State :" />
                                                                </children>
                                                             </VBox>
                                                          </children>
@@ -240,7 +240,7 @@
                                                                            <children>
                                                                               <VBox prefHeight="18.0" prefWidth="157.0">
                                                                                  <children>
-                                                                                    <Label prefHeight="18.0" prefWidth="202.0" text="Date de création :" />
+                                                                                    <Label prefHeight="18.0" prefWidth="202.0" text="Creation date :" />
                                                                                  </children>
                                                                               </VBox>
                                                                               <VBox prefHeight="18.0" prefWidth="34.0" />
@@ -270,7 +270,9 @@
                                                       <Button mnemonicParsing="false" onAction="#Modify_btu" text="Modify" />
                                                    </children>
                                                 </HBox>
-                                                <Button mnemonicParsing="false" onAction="#delete_btu" text="Delete" />
+                                                <Button mnemonicParsing="false" onAction="#delete_btu" prefHeight="26.0" prefWidth="89.0" text="Delete" />
+                                                <VBox prefHeight="81.0" prefWidth="66.0" />
+                                                <Button mnemonicParsing="false" onAction="#treat" prefHeight="26.0" prefWidth="103.0" text="Treat" />
                                              </children>
                                           </HBox>
                                        </children>

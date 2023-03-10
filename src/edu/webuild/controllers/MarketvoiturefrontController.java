@@ -50,8 +50,6 @@ import javafx.stage.Stage;
 public class MarketvoiturefrontController implements Initializable {
 
     @FXML
-    private TextField search_bar;
-    @FXML
     private VBox chosenFruitCard;
     @FXML
     private Label fruitNameLable;
@@ -124,9 +122,6 @@ public class MarketvoiturefrontController implements Initializable {
         // TODO
     }
 
-    @FXML
-    private void search_btu(ActionEvent event) {
-    }
 
     @FXML
     private void details_btu(ActionEvent event) {
@@ -200,5 +195,11 @@ public class MarketvoiturefrontController implements Initializable {
             Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+    }
+
+    @FXML
+    private void wheel(ActionEvent event) {
+        Main main=new Main();
+        main.start(new Stage());
     }
 }

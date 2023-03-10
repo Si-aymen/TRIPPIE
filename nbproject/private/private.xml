@@ -5,15 +5,16 @@
         <group>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Ajouter_frontController.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/model/reservation.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/services/ClientCRUD.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Front_FrontController.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Discount1Controller.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/CoVoiturage_Main.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/Rec_FrontController.java</file>
-            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/ProfilChauffeur.fxml</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ADD_couponBackController.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/ajouter_locateur.fxml</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ReservervoiturefrontController.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ProfilChauffeurController.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/FirstWindow.java</file>
             <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ProfilClientController.java</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/gui/ajouter_front.fxml</file>
+            <file>file:/C:/Users/manou/Desktop/integration_final/src/edu/webuild/controllers/ProfilLocateurController.java</file>
         </group>
     </open-files>
 </project-private>

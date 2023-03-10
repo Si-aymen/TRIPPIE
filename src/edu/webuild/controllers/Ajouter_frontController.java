@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.webuild.controller;
+package edu.webuild.controllers;
 
 import com.jfoenix.controls.JFXButton;
-import edu.webuild.gui.LoginController;
+import com.twilio.http.TwilioRestClient;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import edu.webuild.model.reclamation;
+import edu.webuild.services.EmailSender;
 import edu.webuild.services.reclamationCRUD;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -67,14 +70,15 @@ public class Ajouter_frontController implements Initializable {
     private ImageView imageV;
     @FXML
     private Button cov_btu;
-
+   
     File selectedFile;
     public String url_image;
     private String path;
-    @FXML
     private JFXButton image;
-
+   
     private String type, commentaire;
+   
+    private static int id_utilisateur = 1;
 
     /**
      * Initializes the controller class.
@@ -132,7 +136,7 @@ public class Ajouter_frontController implements Initializable {
                 event.consume();
             }
         });
-        imageV.setImage(new Image("file:C:\\Users\\guerf\\Desktop\\TRIPPIE-Reclamation\\src\\edu\\webuild\\images\\drag-drop.gif"));
+        imageV.setImage(new Image("file:C:\\Users\\manou\\Desktop\\integration_final\\src\\edu\\webuild\\gui\\drag-drop.gif"));
 
         typ_box.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.equals("Autre")) {
@@ -151,11 +155,11 @@ public class Ajouter_frontController implements Initializable {
                 });
             }
         });
-    }
+    }    
 
     @FXML
     private void bu_add(ActionEvent event) throws IOException {
-
+       
         type = typ_box.getValue();
         commentaire = comment.getText();
         LocalDate localDate = LocalDate.now();
@@ -174,12 +178,27 @@ public class Ajouter_frontController implements Initializable {
             alert.setContentText("Commentaire manquant");
             alert.showAndWait();
         } else {
-            System.out.println(LoginController.id_util);
-            reclamation r = new reclamation(type, commentaire, "non traité", date_creation, LoginController.id_util, url_image);
+            reclamation r = new reclamation(type, commentaire, "non traité", date_creation, id_utilisateur, url_image);
 
             reclamationCRUD rc = new reclamationCRUD();
 
             rc.ajouterReclamation(r);
+            
+            try {
+            TwilioRestClient client = new TwilioRestClient.Builder("ACac8596dd282c3072d3da4dbb09625ab1", "953d46930a342a889d193acfade908ad").build();
+
+            Message message = Message.creator(
+                    new PhoneNumber("+21654833493"), // To phone number
+                    new PhoneNumber("+12766226225"), // From Twilio phone number
+                    "Votre réclamation est reçu") // SMS message body
+                    .create(client);
+
+            System.out.println("message envoyé");
+        } catch (Error ex) {
+            System.err.println(ex);
+        }
+            
+            EmailSender.sendEmail_add("mohamedtaher.guerfala@esprit.tn", "Your reclamation is received");
 
             Notifications n = Notifications.create()
                     .title("WeBuild")
@@ -194,9 +213,9 @@ public class Ajouter_frontController implements Initializable {
 
             if (count > 2) {
                 try {
-
+                   
                     typ_box.getItems().remove("Autre");
-
+                   
                     // ouvre le fichier "choix.txt" en mode écriture
                     BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\manou\\Desktop\\integration_final\\src\\edu\\webuild\\controllers\\choix.txt"));
 
@@ -215,7 +234,7 @@ public class Ajouter_frontController implements Initializable {
                     e.printStackTrace();
                 }
             }
-
+           
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Front.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -269,5 +288,5 @@ public class Ajouter_frontController implements Initializable {
 
         }
     }
-
+   
 }

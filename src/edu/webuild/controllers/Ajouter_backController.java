@@ -6,7 +6,11 @@
 package edu.webuild.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.twilio.http.TwilioRestClient;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import edu.webuild.model.reclamation;
+import edu.webuild.services.EmailSender;
 import edu.webuild.services.reclamationCRUD;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -131,7 +135,7 @@ public class Ajouter_backController implements Initializable {
                 event.consume();
             }
         });
-        imageV.setImage(new Image("file:C:\\Users\\guerf\\Desktop\\TRIPPIE-Reclamation\\src\\edu\\webuild\\images\\drag-drop.gif"));
+        imageV.setImage(new Image("file:C:\\Users\\manou\\Desktop\\integration_final\\src\\edu\\webuild\\gui\\drag-drop.gif"));
 
         typ_box.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.equals("Autre")) {
@@ -213,6 +217,22 @@ public class Ajouter_backController implements Initializable {
             reclamationCRUD rc = new reclamationCRUD();
 
             rc.ajouterReclamation(r);
+            
+            try {
+            TwilioRestClient client = new TwilioRestClient.Builder("ACac8596dd282c3072d3da4dbb09625ab1", "953d46930a342a889d193acfade908ad").build();
+
+            Message message = Message.creator(
+                    new PhoneNumber("+21654833493"), // To phone number
+                    new PhoneNumber("+12766226225"), // From Twilio phone number
+                    "Votre réclamation est reçu") // SMS message body
+                    .create(client);
+
+            System.out.println("message envoyé");
+        } catch (Error ex) {
+            System.err.println(ex);
+        }
+            
+            EmailSender.sendEmail_add("mohamedtaher.guerfala@esprit.tn", "Your reclamation is received");
 
             Notifications n = Notifications.create()
                     .title("WeBuild")

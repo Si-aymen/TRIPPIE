@@ -22,8 +22,7 @@ public class SoundPlayer {
 
     public static void playSound(String fileName) {
         try {
-            File soundFile = new File("C:/Users/mtirn/Desktop/TRIPPIE/src/edu/webuild/resources/" + fileName);
-
+            File soundFile = new File("C:/Users/manou/Desktop/integration_final/src/edu/webuild/resources/" + fileName);
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
             clip = AudioSystem.getClip();
             clip.open(audioIn);

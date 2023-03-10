@@ -140,7 +140,7 @@ MediaPlayer mediaPlayer = new MediaPlayer(new Media(new File("C:\\Users\\manou\\
         root.getChildren().add(rotateButton);
 
         // Display the wheel in a scene
-        Scene scene = new Scene(root, 400, 400);
+        Scene scene = new Scene(root, 700, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
 

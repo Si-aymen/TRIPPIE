@@ -102,9 +102,10 @@ private Label quoteLabel;
 		Scene scene = new Scene(createContent());
 		primaryStage.setTitle("VIDEO GAME");
 		primaryStage.setScene(scene);
-                               setRandomQuote();
 
 		primaryStage.show();
+                                    setRandomQuote();
+
                 FroggerApp app = new FroggerApp();
                int highScore = app.getHighScore();
                Label highScoreLabel = new Label(  highScore + "Tokens:"+" Available on your Wallet ");

@@ -5,6 +5,7 @@
  */
 package edu.webuild.controller;
 
+import edu.webuild.model.reclamation;
 import edu.webuild.model.reponse;
 import edu.webuild.services.reclamationCRUD;
 import edu.webuild.services.reponseCRUD;
@@ -30,6 +31,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
@@ -55,8 +57,6 @@ public class Details_backController implements Initializable {
     private ImageView imageView;
     @FXML
     private Label date_cr;
-    @FXML
-    private Button cov_btu;
     
     private ListView list = liste_rep;
     private reponseCRUD rec = new reponseCRUD();
@@ -160,11 +160,35 @@ public class Details_backController implements Initializable {
     }
 
     @FXML
-    private void cov_btu(ActionEvent event) {
+    private void retour(MouseEvent event) throws IOException {
+        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Back.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
     }
 
     @FXML
-    private void stats(ActionEvent event) {
+    private void treat(ActionEvent event) throws IOException {
+        reclamationCRUD rec = new reclamationCRUD();
+        reclamation r = rec.getById_rec(Item_backController.r.getId_rec());
+
+        rec.traite(r);
+        
+
+        Notifications n = Notifications.create()
+                .title("Bienvenue")
+                .text("Réclamation traité !")
+                .graphic(null)
+                .position(Pos.TOP_CENTER)
+                .hideAfter(Duration.seconds(5));
+        n.showInformation();
+        
+        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Back.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
     }
     
 }
