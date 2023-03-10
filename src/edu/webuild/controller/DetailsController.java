@@ -13,9 +13,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -57,6 +57,9 @@ public class DetailsController implements Initializable {
     private Label date_cr;
     @FXML
     private ListView<reponse> liste_rep;
+    private ListView list = liste_rep;
+    private reponseCRUD rec = new reponseCRUD();
+    private List<reponse> list1 = rec.getById_rep(Item_recController.r.getId_rec());
 
     /**
      * Initializes the controller class.
@@ -75,17 +78,14 @@ public class DetailsController implements Initializable {
         } catch (FileNotFoundException e) {
             System.err.println("Error loading image: " + e.getMessage());
         }
-        
-        ListView list = liste_rep;
-        reponse r = new reponse();
-        reponseCRUD rec = new reponseCRUD();
-        List<reponse> list1 = rec.getById_rep(Item_recController.r.getId_rec());
+
+        list = liste_rep;
+
         for (int i = 0; i < list1.size(); i++) {
             reponse reponse = list1.get(i);
             list.getItems().add(reponse);
         }
-    }    
-
+    }
 
     @FXML
     private void Modify_btu(ActionEvent event) {
@@ -106,11 +106,9 @@ public class DetailsController implements Initializable {
     private void delete_btu(ActionEvent event) {
         try {
             reclamationCRUD rec = new reclamationCRUD();
-            System.out.println("1");
-            
+
             rec.supprimerReclamation(Item_recController.r.getId_rec());
-            System.out.println("2");
-            
+
             Notifications n = Notifications.create()
                     .title("WeBuild")
                     .text("Réclamation supprimé avec succé !")
@@ -118,7 +116,7 @@ public class DetailsController implements Initializable {
                     .position(Pos.TOP_CENTER)
                     .hideAfter(Duration.seconds(5));
             n.showInformation();
-            
+
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Front.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -139,6 +137,36 @@ public class DetailsController implements Initializable {
 
     @FXML
     private void repondre(ActionEvent event) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Nouveau type de réclamation");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Entrez un nouveau type de réclamation:");
+
+        Optional<String> result = dialog.showAndWait();
+
+        int id_rec = ReclamationController.id;
+
+        String reponse = "(Utilisateur): " + result.get();
+
+        reponse r1 = new reponse(reponse, Item_recController.r.getId_rec(), "en cours de traitement");
+
+        reponseCRUD rc = new reponseCRUD();
+
+        rc.ajouterReponse(r1);
+
+        Notifications n = Notifications.create()
+                .title("WeBuild")
+                .text("Réponse ajoutée avec succé !")
+                .graphic(null)
+                .position(Pos.TOP_CENTER)
+                .hideAfter(Duration.seconds(5));
+        n.showInformation();
+
+        list.getItems().add(r1);
+
+        list.refresh();
+        liste_rep.refresh();
+
     }
-    
+
 }
