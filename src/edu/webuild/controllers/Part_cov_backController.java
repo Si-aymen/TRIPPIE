@@ -48,11 +48,32 @@ public class Part_cov_backController implements Initializable {
 
     @FXML
     private void add_part(ActionEvent event) {
+//        int nmbr_place_prat = nmbr_place_part.getValue();
+//        System.out.println(Show_cov_backController.id_co);
+//        InterfaceParticipation inter_part = new ParticipationCrud();
+//        Participation part = new Participation(nmbr_place_prat, Integer.parseInt(Show_cov_backController.nmbr_place));
+//        int nmbr_place_cov =  Integer.parseInt(Show_cov_backController.nmbr_place);
+//
+//        if (nmbr_place_prat > nmbr_place_cov) {
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Information Dialog");
+//            alert.setHeaderText(null);
+//            alert.setContentText("la nmbr des place est incorrect ");
+//            alert.show();
+//        } else if ((nmbr_place_prat < nmbr_place_cov) || (nmbr_place_prat > 0)) {
+//            inter_part.ajouterParticipation(part);
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Information Dialog");
+//            alert.setHeaderText(null);
+//            alert.setContentText("Participation insérée avec succés!");
+//            alert.show();
+//
+//        }
         int nmbr_place_prat = nmbr_place_part.getValue();
         System.out.println(Show_cov_backController.id_co);
         InterfaceParticipation inter_part = new ParticipationCrud();
-        Participation part = new Participation(nmbr_place_prat, Integer.parseInt(Show_cov_backController.nmbr_place));
-        int nmbr_place_cov =  Integer.parseInt(Show_cov_backController.nmbr_place);
+        Participation part = new Participation(nmbr_place_prat, Integer.parseInt(Show_cov_backController.id_co));
+        int nmbr_place_cov = Integer.parseInt(Show_cov_backController.nmbr_place);
 
         if (nmbr_place_prat > nmbr_place_cov) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -69,7 +90,6 @@ public class Part_cov_backController implements Initializable {
             alert.show();
 
         }
-
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Back/Show_cov_back.fxml"));

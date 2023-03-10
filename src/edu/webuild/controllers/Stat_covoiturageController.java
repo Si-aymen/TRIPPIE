@@ -25,6 +25,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -92,6 +93,21 @@ public class Stat_covoiturageController implements Initializable {
         pieChart2.setTitle("Destination Locations");
 
         System.out.println(inter_co.count_CoVoiturage());
+    }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+                try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Back/Show_cov_back.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
 }

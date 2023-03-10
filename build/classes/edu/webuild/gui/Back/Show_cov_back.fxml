@@ -38,6 +38,7 @@
                         <Pane prefHeight="0.0" prefWidth="0.0" VBox.vgrow="ALWAYS">
                      <children>
                         <FontAwesomeIconView glyphName="ARROW_CIRCLE_LEFT" layoutX="126.0" layoutY="51.0" onMouseClicked="#back_btn" size="35" wrappingWidth="33.48569583892822" />
+                        <Button layoutX="81.0" layoutY="316.0" mnemonicParsing="false" onAction="#stats" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Stats" />
                      </children></Pane>
                     </children>
                 </VBox>
@@ -183,7 +184,7 @@
                                                 <VBox prefHeight="200.0" prefWidth="269.0">
                                                    <children>
                                                       <VBox prefHeight="90.0" prefWidth="264.0" />
-                                                      <Button mnemonicParsing="false" onAction="#part" text="Participation" />
+                                                      <Button mnemonicParsing="false" onAction="#comp" text="Compare" />
                                                    </children>
                                                 </VBox>
                                              </children>

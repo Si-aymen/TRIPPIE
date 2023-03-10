@@ -5,6 +5,8 @@
  */
 package edu.webuild.controllers;
 
+import static edu.webuild.controllers.Afficher_CovController.covt1;
+import static edu.webuild.controllers.Afficher_CovController.covt2;
 import static edu.webuild.controllers.Afficher_CovController.date_dep;
 import static edu.webuild.controllers.Afficher_CovController.depart;
 import static edu.webuild.controllers.Afficher_CovController.destination;
@@ -170,7 +172,6 @@ public class Show_cov_backController implements Initializable {
 
     }
 
-    @FXML
     private void part(ActionEvent event) {
         ListView<CoVoiturage> list = listView; // assuming listView is a ListView<CoVoiturage>
         InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
@@ -182,7 +183,7 @@ public class Show_cov_backController implements Initializable {
 
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/**.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Back/Part_cov_back.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -193,11 +194,11 @@ public class Show_cov_backController implements Initializable {
         }
     }
 
-
+    @FXML
     private void stats(ActionEvent event) {
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Piechart.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Back/Stat_covoiturage.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -227,7 +228,7 @@ public class Show_cov_backController implements Initializable {
     private void add_particpation(MouseEvent event) {
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Back/***.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Back/Part_cov_back.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -254,9 +255,49 @@ public class Show_cov_backController implements Initializable {
 
     @FXML
     private void back_btn(MouseEvent event) {
-         try {
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front_front.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void comp(ActionEvent event) {
+
+        ListView<CoVoiturage> list = listView;
+        list.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        InterfaceCoVoiturage inter_co = new CoVoiturageCRUD();
+
+        // Get the selected items
+        ObservableList<CoVoiturage> selectedItems = list.getSelectionModel().getSelectedItems();
+
+        // Make sure exactly 2 items are selected
+        if (selectedItems.size() != 2) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Selection Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select exactly 2 items to compare");
+            alert.showAndWait();
+            return;
+        }
+
+        // Get the selected items as CoVoiturage objects
+        covt1 = selectedItems.get(0);
+        covt2 = selectedItems.get(1);
+
+        System.out.println(covt1);
+        System.out.println(covt2);
+
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Back/comp_cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
