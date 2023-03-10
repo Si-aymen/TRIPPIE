@@ -7,16 +7,25 @@ package edu.webuild.controllers;
 
 import edu.webuild.model.coupon;
 import edu.webuild.services.couponCrud;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 
 /**
@@ -38,8 +47,6 @@ public class ADD_couponBackController implements Initializable {
     private TextField fxnbr;
     @FXML
     private TextField fxtype;
-    @FXML
-    private Button clean;
     @FXML
     private Button generate;
 
@@ -169,7 +176,6 @@ fxnbr.setText("");
 fxtype.setText(""); 
 datec2.setValue(null); 
     }
- @FXML
 private void generateCouponCode() {
     String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     int codeLength = 5;
@@ -182,8 +188,15 @@ private void generateCouponCode() {
 
     fccode.setText(code.toString());
 }
+   
+
     @FXML
-    private void genrate(ActionEvent event) {
+    private void back_btn(MouseEvent event) {
+        
+    }
+
+    @FXML
+    private void generate(ActionEvent event) {
          generateCouponCode() ; 
     }
 

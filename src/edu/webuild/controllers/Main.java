@@ -198,6 +198,13 @@ try {
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.show();
+                    
+                    
+                
+                    
+                    
+                    
+                    
                 } else if (couponType.equals("simple")) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/qr.fxml"));
                     Parent root = loader.load();

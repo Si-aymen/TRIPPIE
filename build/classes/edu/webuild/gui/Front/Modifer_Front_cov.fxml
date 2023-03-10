@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Mod_cov_backController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Modifer_Front_covController">
     <children>
         <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
@@ -365,10 +365,10 @@
                                                 <HBox prefHeight="100.0" prefWidth="200.0" />
                                                 <HBox prefHeight="100.0" prefWidth="200.0">
                                                    <children>
-                                                      <Button mnemonicParsing="false"  text="Confirme" />
+                                                      <Button mnemonicParsing="false" onAction="#Modify_btu" text="Confirme" />
                                                    </children>
                                                 </HBox>
-                                                <Button mnemonicParsing="false"  text="Reset" />
+                                                <Button mnemonicParsing="false" text="Reset" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -388,6 +388,6 @@
       <Button layoutX="71.0" layoutY="335.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Reservation Voiture" />
       <Button fx:id="cov_btu" layoutX="71.0" layoutY="391.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Co_Voiturage" />
       <Button layoutX="71.0" layoutY="446.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Participation Co_Voiturage" />
-      <Button layoutX="71.0" layoutY="507.0" mnemonicParsing="false"  prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Stats" />
+      <Button layoutX="71.0" layoutY="507.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Stats" />
     </children>
 </AnchorPane>

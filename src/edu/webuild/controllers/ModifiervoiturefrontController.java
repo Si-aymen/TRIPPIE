@@ -14,12 +14,20 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -48,12 +56,11 @@ public class ModifiervoiturefrontController implements Initializable {
     private TextField fx_prix_jours;
     @FXML
     private Button ajouter;
-     private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
+    private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
     private final String[] fx_puissancee = {"5ch", "6ch", "7ch", "8ch", "9ch", "10ch", "11ch", "12ch", "13ch"};
     private final String[] fx_energiee = {"essence", "gazoil", "gpl"};
     @FXML
     private Button picture_add;
-    
 
     /**
      * Initializes the controller class.
@@ -65,11 +72,11 @@ public class ModifiervoiturefrontController implements Initializable {
         fx_energie.getItems().addAll(fx_energiee);
 
         // TODO
-    }    
+    }
 
     @FXML
     private void add_picture(ActionEvent event) {
-          ImageView imageView = lab_image;
+        ImageView imageView = lab_image;
 
         // Create a FileChooser
         FileChooser fileChooser = new FileChooser();
@@ -105,24 +112,22 @@ public class ModifiervoiturefrontController implements Initializable {
                 e.printStackTrace();
             }
         }
-        
-        
-        
+
     }
 
     @FXML
     private void update(ActionEvent event) {
-        String matricule=CardvoitureController.vo.getMatricule();
+        String matricule = CardvoitureController.vo.getMatricule();
         String marque = fx_marque.getValue();
         String puissance = fx_puissance.getValue();
         String energie = fx_energie.getValue();
         int prix_jours1 = Integer.parseInt(fx_prix_jours.getText());
-        int prix_jours=CardvoitureController.vo.getPrix_jours();
-                        if (prix_jours < 100) {
+        int prix_jours = CardvoitureController.vo.getPrix_jours();
+        if (prix_jours1 < 50) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("erreur le prix est negatif");
+            alert.setContentText("error insert price higher than 50 ");
             alert.show();
         } else if (matricule.indexOf("tunis") == -1) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -161,17 +166,42 @@ public class ModifiervoiturefrontController implements Initializable {
 //            alert.setHeaderText(null);
 //            alert.setContentText("pb matricule");
 //            alert.show();
-                    
-        } else{
-       
-     
-                
-         InterfaceCRUD inter = new voitureCRUD();
-   voiture v = new voiture(CardvoitureController.vo.getId(),matricule, marque, puissance, prix_jours1,energie);
-        inter.modifiervoiture(v);
-        
-        
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("are you sure to update this car ?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+
+            InterfaceCRUD inter = new voitureCRUD();
+            voiture v = new voiture(CardvoitureController.vo.getId(), matricule, marque, puissance, prix_jours1, energie);
+            inter.modifiervoiture(v);
+             showAlert("car has been successfully updated");
+
+            }
+            try {
+
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoiturefront.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+
+        }
+
     }
-    
-}
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }

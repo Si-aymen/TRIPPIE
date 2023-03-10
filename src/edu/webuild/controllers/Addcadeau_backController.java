@@ -23,6 +23,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -30,8 +31,6 @@ import javafx.scene.control.TextField;
  * @author HP
  */
 public class Addcadeau_backController implements Initializable {
-    @FXML
-    private Button clean;
     @FXML
     private TextField nomc;
     @FXML
@@ -108,6 +107,10 @@ reccu.setText("");
 des.setText(""); 
 val.setText(""); 
         
+    }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
     }
 
     

@@ -165,16 +165,5 @@ public class Modifer_Front_covController implements Initializable {
         }
     }
 
-    @FXML
-    private void delete_btu(ActionEvent event) {
-    }
-
-    @FXML
-    private void cov_btu(ActionEvent event) {
-    }
-
-    @FXML
-    private void stats(ActionEvent event) {
-    }
 
 }

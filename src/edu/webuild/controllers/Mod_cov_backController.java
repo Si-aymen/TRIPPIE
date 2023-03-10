@@ -65,6 +65,8 @@ public class Mod_cov_backController implements Initializable {
     private final String[] places_dest = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba", "Beja", "Bizerte", "Gabes"};
     private final String[] places_dep = {"Ben Arouse", "Ariena", "Tunis", "Manouba", "Jandouba", "Beja", "Bizerte", "Gabes"};
     private final Integer[] nmbr_place_list = {1, 2, 3, 4, 5, 6};
+    @FXML
+    private Button cov_btu;
 
     /**
      * Initializes the controller class.
@@ -162,11 +164,7 @@ public class Mod_cov_backController implements Initializable {
         }
     }
 
-    @FXML
-    private void delete_btu(ActionEvent event) {
-    }
 
-    @FXML
     private void back_btn(MouseEvent event) {
            try {
 

@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -28,8 +29,6 @@ import javafx.scene.control.TextField;
  */
 public class Modifier_couponBackController implements Initializable {
 
-    @FXML
-    private Button clean;
     @FXML
     private Button generate;
     @FXML
@@ -59,7 +58,6 @@ public class Modifier_couponBackController implements Initializable {
         fxtypem.setText(String.valueOf(Market_couponBackController.type));
         
     }    
-   @FXML
 private void generateCouponCode() {
     String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     int codeLength = 5;
@@ -77,10 +75,7 @@ private void generateCouponCode() {
     private void clean(ActionEvent event) {
     }
 
-    @FXML
-    private void genrate(ActionEvent event) {
-        generateCouponCode();
-    }
+    
 
     @FXML
     private void update(ActionEvent event) {
@@ -105,6 +100,16 @@ private void generateCouponCode() {
         coupon v = new coupon(Market_couponBackController.id_coupon,date_debut, date_expe, taux, code, nbr, type);
         inter.modifier(v);
     }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
+    }
+
+    @FXML
+    private void generate(ActionEvent event) {
+         generateCouponCode();
+    }
+
 
    
     

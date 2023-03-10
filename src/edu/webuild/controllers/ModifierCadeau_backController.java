@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -23,8 +24,6 @@ import javafx.scene.control.TextField;
  */
 public class ModifierCadeau_backController implements Initializable {
 
-    @FXML
-    private Button clean;
     @FXML
     private TextField nomcadM;
     @FXML
@@ -61,6 +60,10 @@ public class ModifierCadeau_backController implements Initializable {
 
         cadeau v = new cadeau(Marketcadeau_backController.id_cadeau,nom, recc, dess,valeur);
         inter.modifier(v);
+    }
+
+    @FXML
+    private void back_btn(MouseEvent event) {
     }
     
 }
