@@ -38,7 +38,8 @@ public class Modifier_reservationController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
+       
     }
 
     private void showAlert(String message) {
@@ -68,33 +69,22 @@ public class Modifier_reservationController implements Initializable {
         int comparaison3 = datefin.compareTo(dateStringlocal);
         if (comparaison2 < 0) {
 
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("date debut est inferieur");
-            alert.show();
+            showAlert("reservation start date is greater than reservation end date");
         }
         if (comparaison3 < 0) {
 
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("date debut est inferieur");
-            alert.show();
+            showAlert("date debut de reservation est egale a date fin  de reservation");
         }
 
         int comparison = date_debut.compareTo(date_fin);
 
         if (comparison > 0) {
 
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("start date is after car return date");
-            alert.show();
+            showAlert("start date is after car return date");
         } else if (comparison == 0) {
 
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("start date is equal to the end date of the reservation");
-            alert.show();
+            showAlert("start date is equal to the end date of the reservation");
+
         } else {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {

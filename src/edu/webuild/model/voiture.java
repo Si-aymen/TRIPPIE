@@ -17,7 +17,7 @@ public class voiture {
     private String matricule, marque, puissance/*,etat*/;
     private int prix_jours;
     private String image_voiture , energie , etat ;
-   private int  id_client ; 
+   private int  id_locateur ; 
 
     //constructeur par defaut
     public voiture() {
@@ -25,49 +25,15 @@ public class voiture {
 
     //constructur parametre 
 
-
- // ajouter voiture 
-
-//    public voiture( String matricule, String marque, String puissance, int prix_jours, String image_voiture) {
-//     
-//        this.matricule = matricule;
-//        this.marque = marque;
-//        this.puissance = puissance;
-//        this.prix_jours = prix_jours;
-//        this.image_voiture = image_voiture;
-//    
-//    }
-//
-//    public voiture(String matricule, String marque, String puissance, int prix_jours, String image_voiture, String energie) {
-//        this.matricule = matricule;
-//        this.marque = marque;
-//        this.puissance = puissance;
-//        this.prix_jours = prix_jours;
-//        this.image_voiture = image_voiture;
-//        this.energie = energie;
-//    }   
-
-   
-//
-//    public voiture(String matricule, String marque, String puissance, int prix_jours, String image_voiture, String energie, String etat) {
-//        this.matricule = matricule;
-//        this.marque = marque;
-//        this.puissance = puissance;
-//        this.prix_jours = prix_jours;
-//        this.image_voiture = image_voiture;
-//        this.energie = energie;
-//        this.etat = etat;
-//     
-//    }
 //locateur 
-    public voiture(String matricule, String marque, String puissance, int prix_jours, String image_voiture, String energie, int id_client) {
+    public voiture(String matricule, String marque, String puissance, int prix_jours, String image_voiture, String energie, int id_locateur) {
      this.matricule=matricule ;
      this.marque=marque ; 
      this.puissance=puissance ; 
      this.prix_jours=prix_jours ; 
      this.image_voiture=image_voiture ; 
      this.energie=energie ; 
-     this.id_client=id_client ; 
+     this.id_locateur=id_locateur ; 
     }
     //admin 
      public voiture(String matricule, String marque, String puissance, int prix_jours, String image_voiture, String energie) {
@@ -160,12 +126,12 @@ public class voiture {
         this.etat = etat;
     }
 
-    public int getId_client() {
-        return id_client;
+    public int getId_locateur() {
+        return id_locateur;
     }
 
-    public void setId_client(int id_client) {
-        this.id_client = id_client;
+    public void setId_locateur(int id_locateur) {
+        this.id_locateur = id_locateur;
     }
 
   
@@ -173,7 +139,7 @@ public class voiture {
 
     @Override
     public String toString() {
-        return "voiture{" + "marque=" + marque + ", puissance=" + puissance + ", prix_jours=" + prix_jours + ", energie=" + energie + ", etat=" + etat + ", id_client=" + id_client + '}';
+        return "voiture{" + "marque=" + marque + ", puissance=" + puissance + ", prix_jours=" + prix_jours + ", energie=" + energie + ", etat=" + etat + ", id_locateur=" + id_locateur + '}';
     }
     
 

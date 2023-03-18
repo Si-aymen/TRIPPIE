@@ -36,7 +36,7 @@ import javafx.stage.Stage;
  *
  * @author khmir
  */
-public class DetailsvoiturebackController implements Initializable {
+public class DetailsvoitureclientController implements Initializable {
 
     @FXML
     private TextField search_bar;
@@ -56,6 +56,13 @@ public class DetailsvoiturebackController implements Initializable {
     private Label energy_lab;
     @FXML
     private Label staus_lab;
+    static String matricule;
+    static String marque;
+    static String puissance;
+    static String prix_jours;
+    static String energie;
+    static String etat;
+    static String imagePath;
 
     /**
      * Initializes the controller class.
@@ -64,14 +71,18 @@ public class DetailsvoiturebackController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         String imagePath = "C:\\xampp\\htdocs\\image_trippie_cov\\" + CardvoitureController.vo.getImage_voiture();
-        System.out.println(imagePath);
-        //id_co_TF.setText(String.valueOf(Afficher_CovController.id_co));
         matricule_lab.setText(String.valueOf(CardvoitureController.vo.getMatricule()));
         brand_lab.setText(String.valueOf(CardvoitureController.vo.getMarque()));
         power_lab.setText(String.valueOf(CardvoitureController.vo.getPuissance()));
         price_lab.setText(String.valueOf(CardvoitureController.vo.getPrix_jours()));
         energy_lab.setText(String.valueOf(CardvoitureController.vo.getEnergie()));
         staus_lab.setText(String.valueOf(CardvoitureController.vo.getEtat()));
+        String matricule = String.valueOf(CardvoitureController.vo.getMatricule());
+        String marque = String.valueOf(CardvoitureController.vo.getMarque());
+        String puissance = String.valueOf(CardvoitureController.vo.getPuissance());
+        String prix_jours = String.valueOf(CardvoitureController.vo.getPrix_jours());
+        String energie = String.valueOf(CardvoitureController.vo.getEnergie());
+        String etat = String.valueOf(CardvoitureController.vo.getEtat());
 
         try {
             imageView.setImage(new Image(new FileInputStream(imagePath)));
@@ -81,6 +92,7 @@ public class DetailsvoiturebackController implements Initializable {
 
     }
 
+
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -89,38 +101,16 @@ public class DetailsvoiturebackController implements Initializable {
         alert.showAndWait();
     }
 
-    @FXML
-    private void delete_car(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText(null);
-        alert.setContentText("are you sure to delete this car ?");
+   
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            InterfaceCRUD inter_co = new voitureCRUD();
-            inter_co.supprimervoiture(CardvoitureController.vo.getId());
-            showAlert("this car was deleted succesfully");
-        }
-        try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoitureback.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
 
-        }
-
-    }
 
     @FXML
     private void update_car(ActionEvent event) {
-        try {
+         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/modifiervoitureback.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajouter_reservationfront.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

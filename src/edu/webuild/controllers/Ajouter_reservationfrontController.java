@@ -31,6 +31,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -46,8 +47,11 @@ public class Ajouter_reservationfrontController implements Initializable {
     private DatePicker date_fin_pk1;
     @FXML
     private Button ajouter;
-     public static final String ACCOUNT_SID = "AC0578c30cc6dca5aaa242984635afc216";
+    public static final String ACCOUNT_SID = "AC0578c30cc6dca5aaa242984635afc216";
     public static final String AUTH_TOKEN = "95eaaf34d104da9bc14f86f54b8de054";
+    private TextField fx_id_reservation;
+    @FXML
+    private TextField fx_id_client;
 
     /**
      * Initializes the controller class.
@@ -55,13 +59,14 @@ public class Ajouter_reservationfrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void ajouter_reservation(ActionEvent event) {
-     Date date_debut = java.sql.Date.valueOf(date_debut_pk.getValue());
+        Date date_debut = java.sql.Date.valueOf(date_debut_pk.getValue());
         Date date_fin = java.sql.Date.valueOf(date_fin_pk1.getValue());
-       
+          int id_client = Integer.parseInt(fx_id_client.getText());
+
         LocalDate currentDate = LocalDate.now(); // Gets the current date
         String dateStringlocal = currentDate.toString();
         String datebuts = date_debut.toString();
@@ -89,53 +94,55 @@ public class Ajouter_reservationfrontController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
             alert.setHeaderText(null);
-            alert.setContentText("Êtes-vous sûr de vouloir ajouter cet reservation ?");
+            alert.setContentText("Are you sure you want to add this reservation ?");
             Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){
-            reservation res = new reservation(date_debut, date_fin, CardvoitureController.vo);
-            InterfaceCRUD2 inter = new reservationCRUD();
-            inter.ajouterreservation(res);
-            InterfaceCRUD inter2 = new voitureCRUD();
-            inter2.modifieretat(CardvoitureController.vo);
-            appeler();
-            showAlert("votre reszervation a ete effectué avec succes ");
-              try {
+            if (result.get() == ButtonType.OK) {
+                reservation res = new reservation(date_debut, date_fin, CardvoitureController.vo,id_client);
+                InterfaceCRUD2 inter = new reservationCRUD();
+                inter.ajouterreservation(res);
+                InterfaceCRUD inter2 = new voitureCRUD();
+                inter2.modifieretat(CardvoitureController.vo);
+                appeler();
+                showAlert("your reservation has been successfully completed ");
+                try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoiturefront.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
+                    Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/market_voitureclientfront.fxml"));
+                    Scene scene = new Scene(page1);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
 
-        }
+                }
 
-            String message = "Dear [Client's Name],\n"
-                    + "\n"
-                    + "I am writing this email to confirm your location reservation for the following details:\n"
-                    + "\n"
-                    + "date debut reservation : " + date_debut + "\n"
-                    + "date fin reservation : " + date_fin + "\n"
-                    + "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
-                    + "\n";
+                String message = "Dear [Client's Name],\n"
+                        + "\n"
+                        + "I am writing this email to confirm your location reservation for the following details:\n"
+                        + "\n"
+                        + "date debut reservation : " + date_debut + "\n"
+                        + "date fin reservation : " + date_fin + "\n"
+                        + "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
+                        + "\n";
 
-            Emailsender.sendEmail_add("khmiriiheb3@gmail.com", message);
+                Emailsender.sendEmail_add("khmiriiheb3@gmail.com", message);
 
-        } 
+            }
         }
     }
-       private void showAlert(String message) {
+
+    private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
-        public void appeler() {
+
+    public void appeler() {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
-       /* Call call = Call.creator(
+        /* Call call = Call.creator(
                 new com.twilio.type.PhoneNumber("+21650201529"),
                 new com.twilio.type.PhoneNumber("+12708196867"),
                 new com.twilio.twiml.VoiceResponse.Builder()
@@ -143,8 +150,7 @@ public class Ajouter_reservationfrontController implements Initializable {
                         .build())
                 .setUrl("http://demo.twilio.com/docs/voice.xml")
                 .create();
-*/
+         */
     }
 
-    
 }

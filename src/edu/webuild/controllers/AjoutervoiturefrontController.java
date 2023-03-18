@@ -53,11 +53,11 @@ public class AjoutervoiturefrontController implements Initializable {
     private ChoiceBox<String> fx_energie;
     @FXML
     private TextField fx_prix_jours;
-     static String url_image;
-    
+    static String url_image;
+
     @FXML
     private Button ajouter;
-     private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
+    private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
     private final String[] fx_puissancee = {"5ch", "6ch", "7ch", "8ch", "9ch", "10ch", "11ch", "12ch", "13ch"};
     private final String[] fx_energiee = {"essence", "gazoil", "gpl"};
     private TextField id_client;
@@ -69,16 +69,16 @@ public class AjoutervoiturefrontController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         fx_marque.getItems().addAll(fx_marquee);
+        fx_marque.getItems().addAll(fx_marquee);
         fx_puissance.getItems().addAll(fx_puissancee);
-        fx_energie.getItems().addAll(fx_energiee); 
+        fx_energie.getItems().addAll(fx_energiee);
         String image_voiture = url_image;
         // TODO
-    }    
+    }
 
     @FXML
     private void add_picture(ActionEvent event) {
-         ImageView imageView = lab_image;
+        ImageView imageView = lab_image;
 
         // Create a FileChooser
         FileChooser fileChooser = new FileChooser();
@@ -117,26 +117,22 @@ public class AjoutervoiturefrontController implements Initializable {
     }
 
     @FXML
-    private void ajouter(ActionEvent event) { String matricule = fxmatricule.getText();
+    private void ajouter(ActionEvent event) {
+        String matricule = fxmatricule.getText();
         String marque = fx_marque.getValue();
         String puissance = fx_puissance.getValue();
         String energie = fx_energie.getValue();
         int prix_jours = Integer.parseInt(fx_prix_jours.getText());
-        
+
         String etat = "non reservé";
-            int id_client = Integer.parseInt(fx_id_client.getText());
-              String cov_img = url_image;
-        
-      
-        
+        int id_client = Integer.parseInt(fx_id_client.getText());
+        String cov_img = url_image;
 
         int position1 = matricule.indexOf("tunis");
-  //    String partie1 = matricule.substring(0, position1);
+        //    String partie1 = matricule.substring(0, position1);
 //      String partie2 = matricule.substring(position1 + 5, matricule.length() - position1 + 4);
-    //   int convert1 = Integer.parseInt(partie1);
-      //  int convert2 = Integer.parseInt(partie2);
-     
-        
+        //   int convert1 = Integer.parseInt(partie1);
+        //  int convert2 = Integer.parseInt(partie2);
 
         if (prix_jours < 100) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -168,50 +164,39 @@ public class AjoutervoiturefrontController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("erreur il faut contenir tunis");
             alert.show();
-//        } else if (convert1>9999) {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Information Dialog");
-//            alert.setHeaderText(null);
-//            alert.setContentText("pb matricule");
-//            alert.show();
-//        }
-//            else if (convert2>999) {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Information Dialog");
-//            alert.setHeaderText(null);
-//            alert.setContentText("pb matricule");
-//            alert.show();
-                    
+//       
+
         } else {
-           {
+            {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmation");
-            alert.setHeaderText(null);
-            alert.setContentText("are you sure to add this car ?");
-            
+                alert.setTitle("Confirmation");
+                alert.setHeaderText(null);
+                alert.setContentText("are you sure to add this car ?");
 
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
 
-                voiture v = new voiture(matricule, marque, puissance, prix_jours, cov_img, energie,id_client);
-                voitureCRUD voit = new voitureCRUD();
-                voit.ajoutervoiture(v);
-                 showAlert("car added successfully");}
-              try {
+                    voiture v = new voiture(matricule, marque, puissance, prix_jours, cov_img, energie, id_client);
+                    voitureCRUD voit = new voitureCRUD();
+                    voit.ajoutervoiture(v);
+                    showAlert("car added successfully");
+                }
+                try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoiturefront.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
+                    Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoiturefront.fxml"));
+                    Scene scene = new Scene(page1);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
 
-        }
-               
+                }
+
             }
         }
     }
+
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -219,6 +204,5 @@ public class AjoutervoiturefrontController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
-    
 
 }

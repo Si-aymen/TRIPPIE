@@ -46,7 +46,7 @@ public class MarketreservationbackController implements Initializable {
     private Button supprimer_reservation;
     @FXML
     private Button updatereservation;
-     static Date date_debut;
+    static Date date_debut;
     static Date date_fin;
     static int id;
     static voiture voiture;
@@ -56,7 +56,7 @@ public class MarketreservationbackController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         ListView<reservation> list1 = affichage_reservation;
+        ListView<reservation> list1 = affichage_reservation;
         InterfaceCRUD2 inter = new reservationCRUD();
         List<reservation> list2 = inter.afficherreservations();
         for (int i = 0; i < list2.size(); i++) {
@@ -66,7 +66,7 @@ public class MarketreservationbackController implements Initializable {
         }
 
         // TODO
-    }    
+    }
 
     @FXML
     private void supprimer_reservation(ActionEvent event) {
@@ -80,9 +80,9 @@ public class MarketreservationbackController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
             alert.setHeaderText(null);
-              alert.setContentText("Êtes-vous sûr de vouloir modifier cet reservation ?");
+            alert.setContentText("are you sure to delete this reservation?");
             // date local system
-            
+
             LocalDate localDate = LocalDate.now();
 
             int day = localDate.getDayOfMonth(); // Extract the day from the LocalDate object
@@ -101,7 +101,6 @@ public class MarketreservationbackController implements Initializable {
             int num1 = Integer.parseInt(jour);
             int num2 = Integer.parseInt(mois);
             int num3 = Integer.parseInt(annee);
-           
 
             // if (day>num1-3)&&(month == num2)
             if (day - 3 > num1 && num2 == month) {
@@ -121,7 +120,7 @@ public class MarketreservationbackController implements Initializable {
                 if (result.get() == ButtonType.OK) {
                     inter.supprimerreservation(r.getId());
                     list.getItems().remove(selectedIndex);
-                    showAlert("reservation supprimé");
+                    showAlert("reservation was deleted");
 
                 }
             }
@@ -130,6 +129,7 @@ public class MarketreservationbackController implements Initializable {
             System.out.println("Veuillez sélectionner une voiture à supprimer.");
         }
     }
+
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -140,12 +140,11 @@ public class MarketreservationbackController implements Initializable {
 
     @FXML
     private void updatereservation(ActionEvent event) {
-         ListView<reservation> list = affichage_reservation;
+        ListView<reservation> list = affichage_reservation;
         InterfaceCRUD2 inter = new reservationCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
-        
+
         reservation r = list.getSelectionModel().getSelectedItem();
-         
 
         int id = r.getId();
         Date date_debut = r.getDate_debut();
@@ -164,5 +163,5 @@ public class MarketreservationbackController implements Initializable {
 
         }
     }
-    
+
 }

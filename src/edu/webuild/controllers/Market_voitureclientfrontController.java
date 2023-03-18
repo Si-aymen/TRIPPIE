@@ -44,7 +44,7 @@ import javafx.stage.Stage;
  *
  * @author khmir
  */
-public class MarketvoiturebackController implements Initializable {
+public class Market_voitureclientfrontController implements Initializable {
 
     @FXML
     private TextField search_bar;
@@ -67,6 +67,7 @@ public class MarketvoiturebackController implements Initializable {
     private List<voiture> voitDataList = FXCollections.observableArrayList();
     private InterfaceCRUD voitureCRUD = new voitureCRUD();
     private MyListener myListener;
+    
 
     /**
      * Initializes the controller class.
@@ -74,8 +75,8 @@ public class MarketvoiturebackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        voitDataList.addAll(voitureCRUD.affichervoitures());
-        System.out.println("load data");
+        voitDataList.addAll(voitureCRUD.affichervoitures1());
+     
         if (voitDataList.size() > 0) {
             setChosenvoit(voitDataList.get(0));
             myListener = new MyListener() {
@@ -128,7 +129,7 @@ public class MarketvoiturebackController implements Initializable {
     private void details_btu(ActionEvent event) {
         try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/detailsvoitureback.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/detailsvoitureclient.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -140,10 +141,9 @@ public class MarketvoiturebackController implements Initializable {
     }
 
     private void setChosenvoit(voiture voi) {
-        System.out.println(CardvoitureController.vo.getId());
+        
 
         det_dep.setText(CardvoitureController.vo.getMarque());
-        System.out.println(CardvoitureController.vo.getMarque());
         det_dest.setText(CardvoitureController.vo.getPuissance());
         String imagePath = "C:\\xampp\\htdocs\\image_trippie_cov\\" + CardvoitureController.vo.getImage_voiture();
         try {
@@ -156,32 +156,16 @@ public class MarketvoiturebackController implements Initializable {
 
     @FXML
     private void add_car(MouseEvent event) {
-        try {
-
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajoutervoitureback.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
     }
 
     @FXML
     private void liste_reservation(MouseEvent event) {
-        try {
+    }
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketreservationback.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
+  
 
-        }
+ 
+   
 
     }
-}
+

@@ -44,11 +44,10 @@ public class CardvoitureController implements Initializable {
     private Label fx_etat;
     static voiture vo = new voiture();
     private MyListener myListener;
-  
+
     private Label id;
     @FXML
     private Label id_voit;
-   
 
     /**
      * Initializes the controller class.
@@ -90,7 +89,7 @@ public class CardvoitureController implements Initializable {
         InterfaceCRUD inter = new voitureCRUD();
         List<voiture> L = new ArrayList<>();
         myListener.onClick(vo);
-     
+
         L = inter.rechVoiture(Integer.parseInt(id_voit.getText()));
 
         vo.setId(L.get(0).getId());

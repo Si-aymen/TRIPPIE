@@ -15,6 +15,7 @@ public class reservation {
     private int id ;
     private Date date_debut, date_fin ;
     private voiture v ;
+    private int id_client ; 
 
     
     //constructeur par defaut
@@ -34,6 +35,24 @@ public class reservation {
         this.date_fin = date_fin;
         this.v = v;
     }
+
+    public reservation( Date date_debut, Date date_fin, voiture v, int id_client) {
+       
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.v = v;
+        this.id_client = id_client;
+    }
+    
+
+    public int getId_client() {
+        return id_client;
+    }
+
+    public void setId_client(int id_client) {
+        this.id_client = id_client;
+    }
+    
 
    
 

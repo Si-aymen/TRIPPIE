@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +27,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -55,12 +58,12 @@ public class ModifiervoiturefrontController implements Initializable {
     private TextField fx_prix_jours;
     @FXML
     private Button ajouter;
-     private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
+    private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
     private final String[] fx_puissancee = {"5ch", "6ch", "7ch", "8ch", "9ch", "10ch", "11ch", "12ch", "13ch"};
     private final String[] fx_energiee = {"essence", "gazoil", "gpl"};
+    static String image_voiture;
     @FXML
     private Button picture_add;
-    
 
     /**
      * Initializes the controller class.
@@ -75,19 +78,19 @@ public class ModifiervoiturefrontController implements Initializable {
         fx_puissance.setValue(String.valueOf(CardvoitureController.vo.getPuissance()));
         fx_energie.setValue(String.valueOf(CardvoitureController.vo.getEnergie()));
         fx_marque.setValue(String.valueOf(CardvoitureController.vo.getMarque()));
-   String imagePath = "C:\\xampp\\htdocs\\image_trippie_cov\\" + CardvoitureController.vo.getImage_voiture();
-          try {
+        String imagePath = "C:\\xampp\\htdocs\\image_trippie_cov\\" + CardvoitureController.vo.getImage_voiture();
+        try {
             lab_image.setImage(new Image(new FileInputStream(imagePath)));
         } catch (FileNotFoundException e) {
             System.err.println("Error loading image: " + e.getMessage());
         }
 
         // TODO
-    }    
+    }
 
     @FXML
     private void add_picture(ActionEvent event) {
-          ImageView imageView = lab_image;
+        ImageView imageView = lab_image;
 
         // Create a FileChooser
         FileChooser fileChooser = new FileChooser();
@@ -123,28 +126,32 @@ public class ModifiervoiturefrontController implements Initializable {
                 e.printStackTrace();
             }
         }
-        
-        
-        
+
     }
 
     @FXML
     private void update(ActionEvent event) {
-        String matricule=CardvoitureController.vo.getMatricule();
+        String matricule = CardvoitureController.vo.getMatricule();
         String marque = fx_marque.getValue();
         String puissance = fx_puissance.getValue();
         String energie = fx_energie.getValue();
-      int prix_jours = Integer.parseInt(fx_prix_jours.getText());
-           String cov_img = url_image; 
-        
-       
-     
-                
-         InterfaceCRUD inter = new voitureCRUD();
-   voiture v = new voiture(CardvoitureController.vo.getId(),matricule, marque, puissance, prix_jours, cov_img ,energie);
-        inter.modifiervoiture(v);
-          
-         try {
+        int prix_jours = Integer.parseInt(fx_prix_jours.getText());
+        String cov_img = url_image;
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("are you sure to update this car?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+
+            InterfaceCRUD inter = new voitureCRUD();
+            voiture v = new voiture(CardvoitureController.vo.getId(), matricule, marque, puissance, prix_jours, CardvoitureController.vo.getImage_voiture(), energie);
+            inter.modifiervoiture(v);
+            showAlert("the car is successfully modified");
+        }
+
+        try {
 
             Parent page1
                     = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoiturefront.fxml"));
@@ -156,8 +163,15 @@ public class ModifiervoiturefrontController implements Initializable {
             Logger.getLogger(MarketreservationbackController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
-        
-        
+
     }
-    
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+
+    }
 }

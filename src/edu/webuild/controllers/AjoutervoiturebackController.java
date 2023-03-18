@@ -53,11 +53,11 @@ public class AjoutervoiturebackController implements Initializable {
     private ChoiceBox<String> fx_energie;
     @FXML
     private TextField fx_prix_jours;
-    static String image_voiture ; 
-    
+    static String image_voiture;
+
     @FXML
     private Button ajouter;
-     private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
+    private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
     private final String[] fx_puissancee = {"5ch", "6ch", "7ch", "8ch", "9ch", "10ch", "11ch", "12ch", "13ch"};
     private final String[] fx_energiee = {"energie", "gazoil", "gpl"};
 
@@ -66,16 +66,16 @@ public class AjoutervoiturebackController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         fx_marque.getItems().addAll(fx_marquee);
+        fx_marque.getItems().addAll(fx_marquee);
         fx_puissance.getItems().addAll(fx_puissancee);
-        fx_energie.getItems().addAll(fx_energiee); 
- String image_voiture = url_image;
+        fx_energie.getItems().addAll(fx_energiee);
+        String image_voiture = url_image;
         // TODO
-    }    
+    }
 
     @FXML
     private void add_picture(ActionEvent event) {
-         ImageView imageView = lab_image;
+        ImageView imageView = lab_image;
 
         // Create a FileChooser
         FileChooser fileChooser = new FileChooser();
@@ -114,7 +114,8 @@ public class AjoutervoiturebackController implements Initializable {
     }
 
     @FXML
-    private void ajouter(ActionEvent event) { String matricule = fxmatricule.getText();
+    private void ajouter(ActionEvent event) {
+        String matricule = fxmatricule.getText();
         String marque = fx_marque.getValue();
         String puissance = fx_puissance.getValue();
         String energie = fx_energie.getValue();
@@ -123,44 +124,44 @@ public class AjoutervoiturebackController implements Initializable {
         String etat = "non reservé";
 
         int position1 = matricule.indexOf("tunis");
-  
-      
+
         if (matricule.indexOf("tunis") == -1) {
             showAlert("the registration number must contain tunis");
         } else if (marque.isEmpty()) {
             showAlert("the registration number is empty ");
         } else if (puissance.isEmpty()) {
-           showAlert("the registration power is empty ");
+            showAlert("the registration power is empty ");
         } else {
-           {
+            {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmation");
-            alert.setHeaderText(null);
-            alert.setContentText("are you sure to add this car ?");
-            
+                alert.setTitle("Confirmation");
+                alert.setHeaderText(null);
+                alert.setContentText("are you sure to add this car ?");
 
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
 
-                voiture v = new voiture(matricule, marque, puissance, prix_jours, cov_img, energie);
-                voitureCRUD voit = new voitureCRUD();
-                voit.ajoutervoiture(v);
-                 showAlert("car added successfully");}
-              try {
+                    voiture v = new voiture(matricule, marque, puissance, prix_jours, cov_img, energie);
+                    voitureCRUD voit = new voitureCRUD();
+                    voit.ajoutervoiture(v);
+                    showAlert("car added successfully");
+                }
+                try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoitureback.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
+                    Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoitureback.fxml"));
+                    Scene scene = new Scene(page1);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
 
-        }
-               
+                }
+
             }
         }
     }
+
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -168,6 +169,5 @@ public class AjoutervoiturebackController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
-    
 
 }

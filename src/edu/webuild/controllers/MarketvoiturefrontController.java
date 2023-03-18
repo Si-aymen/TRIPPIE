@@ -78,7 +78,7 @@ public class MarketvoiturefrontController implements Initializable {
             myListener = new MyListener() {
                 @Override
                 public void onClick(voiture v) {
-           
+
                     setChosenvoit(v);
                 }
             };
@@ -110,7 +110,7 @@ public class MarketvoiturefrontController implements Initializable {
 
                 GridPane.setMargin(anchorPane, new Insets(10));
             } catch (IOException e) {
-             
+
                 e.printStackTrace();
             }
         }
@@ -137,10 +137,9 @@ public class MarketvoiturefrontController implements Initializable {
     }
 
     private void setChosenvoit(voiture voi) {
-        
 
         det_dep.setText(CardvoitureController.vo.getMarque());
-      
+
         det_dest.setText(CardvoitureController.vo.getPuissance());
         String imagePath = "C:\\xampp\\htdocs\\image_trippie_cov\\" + CardvoitureController.vo.getImage_voiture();
         try {
@@ -151,10 +150,9 @@ public class MarketvoiturefrontController implements Initializable {
 
     }
 
-
     @FXML
     private void new_car(MouseEvent event) {
-         try {
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajoutervoiturefront.fxml"));
             Scene scene = new Scene(page1);

@@ -26,7 +26,7 @@ public class voitureCRUD implements InterfaceCRUD{
     @Override
     public void ajoutervoiture(voiture v) {
         try {
-            String req = "INSERT INTO `voiture`(`matricule`,`marque`,`puissance`,`prix_jours`,`picture`,`energie`,`etat`,`id_client`) VALUES ('"+v.getMatricule()+"','"+v.getMarque()+"','"+v.getPuissance()+"','"+v.getPrix_jours()+"','"+v.getImage_voiture()+"','"+v.getEnergie()+"','non reservé','"+v.getId_client()+"')";
+            String req = "INSERT INTO `voiture`(`matricule`,`marque`,`puissance`,`prix_jours`,`picture`,`energie`,`etat`,`id_locateur`) VALUES ('"+v.getMatricule()+"','"+v.getMarque()+"','"+v.getPuissance()+"','"+v.getPrix_jours()+"','"+v.getImage_voiture()+"','"+v.getEnergie()+"','non reservé','"+v.getId_locateur()+"')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("voiture ajouté!!!");
@@ -89,7 +89,7 @@ public class voitureCRUD implements InterfaceCRUD{
                 v.setImage_voiture(RS.getString(6)); 
                 v.setEnergie(RS.getString(7)); 
                  v.setEtat(RS.getString(8)); 
-               v.setId_client(RS.getInt(9));
+               v.setId_locateur(RS.getInt(9));
              
              list.add(v);
             }
@@ -117,7 +117,7 @@ public class voitureCRUD implements InterfaceCRUD{
                 v.setImage_voiture(RS.getString(6)); 
                 v.setEnergie(RS.getString(7)); 
                  v.setEtat(RS.getString(8)); 
-                    v.setId_client(RS.getInt(9));
+                    v.setId_locateur(RS.getInt(9));
              
              list.add(v);
             }
