@@ -25,8 +25,7 @@
                     <children>
                         <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                             <children>
-                        <Button fx:id="c" mnemonicParsing="false" onAction="#c" text="captcha" />
-                                <Label prefHeight="50.0" prefWidth="194.0" text="Trippie" textFill="#878787">
+                                <Label prefHeight="50.0" prefWidth="194.0" text="Locateur" textFill="#878787">
                                     <font>
                                         <Font name="Cambria Bold" size="40.0" />
                                     </font>
@@ -182,17 +181,16 @@
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
                                 <Pane prefHeight="84.0" prefWidth="96.0" />
-                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@style.css">
+                                <HBox alignment="CENTER" onMouseClicked="#new_car" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@style.css">
                                     <children>
                                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" stylesheets="@style.css">
                                             <children>
-                                    <Button mnemonicParsing="false" onAction="#addcar" text="add a new car" />
-                                                <Label prefHeight="29.0" prefWidth="190.0" stylesheets="@style.css" text="voiture" textFill="#878787">
+                                                <Label prefHeight="29.0" prefWidth="190.0" stylesheets="@style.css" text="add a new car" textFill="#878787">
                                                     <font>
                                                         <Font name="Cambria Bold" size="18.0" />
                                                     </font>
                                                 </Label>
-                                                <Label prefHeight="16.0" prefWidth="190.0" text="System tri" textFill="#878787">
+                                                <Label prefHeight="16.0" prefWidth="190.0" textFill="#878787">
                                                     <font>
                                                         <Font name="Cambria" size="15.0" />
                                                     </font>

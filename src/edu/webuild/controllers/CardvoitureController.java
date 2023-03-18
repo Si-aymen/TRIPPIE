@@ -90,10 +90,9 @@ public class CardvoitureController implements Initializable {
         InterfaceCRUD inter = new voitureCRUD();
         List<voiture> L = new ArrayList<>();
         myListener.onClick(vo);
-        //covt.setId_co(Integer.parseInt(id_co.getText()));
-        System.out.println(Integer.parseInt(id_voit.getText()));
+     
         L = inter.rechVoiture(Integer.parseInt(id_voit.getText()));
-        System.out.println(L);
+
         vo.setId(L.get(0).getId());
         vo.setMatricule(L.get(0).getMatricule());
         vo.setMarque(L.get(0).getMarque());

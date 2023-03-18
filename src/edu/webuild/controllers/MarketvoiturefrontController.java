@@ -11,9 +11,6 @@ import edu.webuild.model.voiture;
 import edu.webuild.services.voitureCRUD;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -29,12 +26,12 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -69,24 +66,19 @@ public class MarketvoiturefrontController implements Initializable {
     private List<voiture> voitDataList = FXCollections.observableArrayList();
     private InterfaceCRUD voitureCRUD = new voitureCRUD();
     private MyListener myListener;
-    @FXML
-    private Button c;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        System.out.println("hello");
         voitDataList.addAll(voitureCRUD.affichervoitures1());
-        System.out.println("load data");
         if (voitDataList.size() > 0) {
             setChosenvoit(voitDataList.get(0));
             myListener = new MyListener() {
                 @Override
                 public void onClick(voiture v) {
-                    System.out.println("mouse clicked");
+           
                     setChosenvoit(v);
                 }
             };
@@ -118,7 +110,7 @@ public class MarketvoiturefrontController implements Initializable {
 
                 GridPane.setMargin(anchorPane, new Insets(10));
             } catch (IOException e) {
-                System.out.println("problem");
+             
                 e.printStackTrace();
             }
         }
@@ -145,10 +137,10 @@ public class MarketvoiturefrontController implements Initializable {
     }
 
     private void setChosenvoit(voiture voi) {
-        System.out.println(CardvoitureController.vo.getId());
+        
 
         det_dep.setText(CardvoitureController.vo.getMarque());
-        System.out.println(CardvoitureController.vo.getMarque());
+      
         det_dest.setText(CardvoitureController.vo.getPuissance());
         String imagePath = "C:\\xampp\\htdocs\\image_trippie_cov\\" + CardvoitureController.vo.getImage_voiture();
         try {
@@ -159,23 +151,10 @@ public class MarketvoiturefrontController implements Initializable {
 
     }
 
-    @FXML
-    private void c(ActionEvent event) { try {
-
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/captchametier.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
-    }
 
     @FXML
-    private void addcar(ActionEvent event) {
-        try {
+    private void new_car(MouseEvent event) {
+         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajoutervoiturefront.fxml"));
             Scene scene = new Scene(page1);
@@ -186,6 +165,5 @@ public class MarketvoiturefrontController implements Initializable {
             Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
-        
     }
 }

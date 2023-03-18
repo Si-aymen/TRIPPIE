@@ -5,7 +5,7 @@
  */
 package edu.webuild.controllers;
 
-import static edu.webuild.controllers.Ajouter_voitureController.url_image;
+import static edu.webuild.controllers.AjoutervoiturefrontController.url_image;
 import edu.webuild.model.voiture;
 import edu.webuild.services.voitureCRUD;
 import java.io.File;
@@ -53,12 +53,16 @@ public class AjoutervoiturefrontController implements Initializable {
     private ChoiceBox<String> fx_energie;
     @FXML
     private TextField fx_prix_jours;
+     static String url_image;
     
     @FXML
     private Button ajouter;
      private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
     private final String[] fx_puissancee = {"5ch", "6ch", "7ch", "8ch", "9ch", "10ch", "11ch", "12ch", "13ch"};
-    private final String[] fx_energiee = {"energie", "gazoil", "gpl"};
+    private final String[] fx_energiee = {"essence", "gazoil", "gpl"};
+    private TextField id_client;
+    @FXML
+    private TextField fx_id_client;
 
     /**
      * Initializes the controller class.
@@ -118,8 +122,13 @@ public class AjoutervoiturefrontController implements Initializable {
         String puissance = fx_puissance.getValue();
         String energie = fx_energie.getValue();
         int prix_jours = Integer.parseInt(fx_prix_jours.getText());
-        String cov_img = url_image;
+        
         String etat = "non reservé";
+            int id_client = Integer.parseInt(fx_id_client.getText());
+              String cov_img = url_image;
+        
+      
+        
 
         int position1 = matricule.indexOf("tunis");
   //    String partie1 = matricule.substring(0, position1);
@@ -184,7 +193,7 @@ public class AjoutervoiturefrontController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
 
-                voiture v = new voiture(matricule, marque, puissance, prix_jours, cov_img, energie);
+                voiture v = new voiture(matricule, marque, puissance, prix_jours, cov_img, energie,id_client);
                 voitureCRUD voit = new voitureCRUD();
                 voit.ajoutervoiture(v);
                  showAlert("car added successfully");}

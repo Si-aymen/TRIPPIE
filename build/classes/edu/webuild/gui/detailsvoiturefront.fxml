@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.DetailsvoiturefrontController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.DetailsvoiturefrontController">
     <children>
         <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
@@ -33,7 +33,7 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <Pane prefHeight="0.0" prefWidth="0.0" VBox.vgrow="ALWAYS" />
+                        <Pane prefHeight="0.0" prefWidth="0.0" stylesheets="@style.css" VBox.vgrow="ALWAYS" />
                     </children>
                 </VBox>
             </left>
@@ -348,7 +348,6 @@
                                                                   <VBox prefHeight="56.0" prefWidth="200.0">
                                                                      <children>
                                                                         <Button mnemonicParsing="false" onAction="#delete_car" text="delete car" />
-                                                                        <Button mnemonicParsing="false" onAction="#reserve" text="reserve" />
                                                                      </children>
                                                                   </VBox>
                                                                   <Button mnemonicParsing="false" onAction="#update_car" text="update car" />
@@ -371,11 +370,5 @@
                 </VBox>
             </center>
         </BorderPane>
-      <Button layoutX="71.0" layoutY="225.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="User" />
-      <Button layoutX="71.0" layoutY="281.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Voiture" />
-      <Button layoutX="71.0" layoutY="335.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Reservation Voiture" />
-      <Button fx:id="cov_btu" layoutX="71.0" layoutY="391.0" mnemonicParsing="false" onAction="#cov_btu" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Co_Voiturage" />
-      <Button layoutX="71.0" layoutY="446.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Participation Co_Voiturage" />
-      <Button layoutX="71.0" layoutY="507.0" mnemonicParsing="false" onAction="#stats" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Stats" />
     </children>
 </AnchorPane>

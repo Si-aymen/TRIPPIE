@@ -32,6 +32,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -72,7 +73,7 @@ public class MarketvoiturebackController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("hello");
+        
         voitDataList.addAll(voitureCRUD.affichervoitures());
         System.out.println("load data");
         if (voitDataList.size() > 0) {
@@ -80,7 +81,7 @@ public class MarketvoiturebackController implements Initializable {
             myListener = new MyListener() {
                 @Override
                 public void onClick(voiture v) {
-                    System.out.println("mouse clicked");
+                
                     setChosenvoit(v);
                 }
             };
@@ -153,9 +154,14 @@ public class MarketvoiturebackController implements Initializable {
 
     }
 
-    private void c(ActionEvent event) { try {
+  
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/captchametier.fxml"));
+
+    @FXML
+    private void add_car(MouseEvent event) {
+         try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajoutervoitureback.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -167,10 +173,10 @@ public class MarketvoiturebackController implements Initializable {
     }
 
     @FXML
-    private void addcar(ActionEvent event) {
-        try {
+    private void liste_reservation(MouseEvent event) {
+          try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ajoutervoitureback.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketreservationback.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

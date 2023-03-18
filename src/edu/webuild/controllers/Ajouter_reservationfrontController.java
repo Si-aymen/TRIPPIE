@@ -6,8 +6,6 @@
 package edu.webuild.controllers;
 
 import com.twilio.Twilio;
-import static edu.webuild.controllers.AjouterreservationController.ACCOUNT_SID;
-import static edu.webuild.controllers.AjouterreservationController.AUTH_TOKEN;
 import edu.webuild.interfaces.InterfaceCRUD;
 import edu.webuild.interfaces.InterfaceCRUD2;
 import edu.webuild.model.reservation;
@@ -71,20 +69,10 @@ public class Ajouter_reservationfrontController implements Initializable {
         int comparaison2 = datebuts.compareTo(dateStringlocal);
         int comparaison3 = datefin.compareTo(dateStringlocal);
         if (comparaison2 < 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("date debut est inferieur");
-            alert.show();
+            showAlert("start date is greater than system date");
         }
         if (comparaison3 < 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("date debut est inferieur");
-            alert.show();
+            showAlert("start date is less than system date");
         }
 
         String etat = CardvoitureController.vo.getEtat();
@@ -92,24 +80,11 @@ public class Ajouter_reservationfrontController implements Initializable {
         int comparison = date_debut.compareTo(date_fin);
 
         if (comparison > 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("date debut est apres date de retour de voiture");
-            alert.show();
+            showAlert("reservation start date is greater than reservation end date");
         } else if (comparison == 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("date debut est egale au date fin de reservation");
-            alert.show();
+            showAlert("date debut de reservation est egale a date fin  de reservation");
         } else if ("reservé".equals(etat)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("impossible de faire reservation ");
-            alert.show();
+            showAlert("impossible to make reservation");
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");

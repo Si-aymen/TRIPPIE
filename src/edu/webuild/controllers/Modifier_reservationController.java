@@ -98,7 +98,7 @@ public class Modifier_reservationController implements Initializable {
         } else {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                reservation res = new reservation(date_debut, date_fin, Affichage_reservationController.voiture);
+                reservation res = new reservation(date_debut, date_fin, MarketreservationbackController.voiture);
                 inter.modifierreservation(res);
                 showAlert("successfully updated");
             }

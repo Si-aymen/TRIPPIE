@@ -5,7 +5,7 @@
  */
 package edu.webuild.controllers;
 
-import static edu.webuild.controllers.Ajouter_voitureController.url_image;
+import static edu.webuild.controllers.AjoutervoiturefrontController.url_image;
 import edu.webuild.model.voiture;
 import edu.webuild.services.voitureCRUD;
 import java.io.File;
@@ -15,9 +15,15 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -47,6 +53,7 @@ public class AjoutervoiturebackController implements Initializable {
     private ChoiceBox<String> fx_energie;
     @FXML
     private TextField fx_prix_jours;
+    static String image_voiture ; 
     
     @FXML
     private Button ajouter;
@@ -62,7 +69,7 @@ public class AjoutervoiturebackController implements Initializable {
          fx_marque.getItems().addAll(fx_marquee);
         fx_puissance.getItems().addAll(fx_puissancee);
         fx_energie.getItems().addAll(fx_energiee); 
-        String image_voiture = url_image;
+ String image_voiture = url_image;
         // TODO
     }    
 
@@ -116,57 +123,14 @@ public class AjoutervoiturebackController implements Initializable {
         String etat = "non reservé";
 
         int position1 = matricule.indexOf("tunis");
-  //    String partie1 = matricule.substring(0, position1);
-//      String partie2 = matricule.substring(position1 + 5, matricule.length() - position1 + 4);
-    //   int convert1 = Integer.parseInt(partie1);
-      //  int convert2 = Integer.parseInt(partie2);
-     
-        
-
-        if (prix_jours < 100) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("erreur le prix est negatif");
-            alert.show();
-        } else if (matricule.indexOf("tunis") == -1) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("erreur il faut contenir tunis");
-            alert.show();
+  
+      
+        if (matricule.indexOf("tunis") == -1) {
+            showAlert("the registration number must contain tunis");
         } else if (marque.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("la marque est vide !");
-            alert.show();
+            showAlert("the registration number is empty ");
         } else if (puissance.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("la puissance est vide !");
-            alert.show();
-        } else if (matricule.indexOf("tunis") == -1) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("erreur il faut contenir tunis");
-            alert.show();
-//        } else if (convert1>9999) {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Information Dialog");
-//            alert.setHeaderText(null);
-//            alert.setContentText("pb matricule");
-//            alert.show();
-//        }
-//            else if (convert2>999) {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Information Dialog");
-//            alert.setHeaderText(null);
-//            alert.setContentText("pb matricule");
-//            alert.show();
-                    
+           showAlert("the registration power is empty ");
         } else {
            {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -182,6 +146,17 @@ public class AjoutervoiturebackController implements Initializable {
                 voitureCRUD voit = new voitureCRUD();
                 voit.ajoutervoiture(v);
                  showAlert("car added successfully");}
+              try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoitureback.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
                
             }
         }

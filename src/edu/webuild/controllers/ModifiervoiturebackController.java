@@ -5,19 +5,28 @@
  */
 package edu.webuild.controllers;
 
-import static edu.webuild.controllers.Ajouter_voitureController.url_image;
+
+import static edu.webuild.controllers.AjoutervoiturefrontController.url_image;
 import edu.webuild.interfaces.InterfaceCRUD;
 import edu.webuild.model.voiture;
 import edu.webuild.services.voitureCRUD;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -41,6 +50,7 @@ public class ModifiervoiturebackController implements Initializable {
     private ChoiceBox<String> fx_puissance;
     @FXML
     private ImageView lab_image;
+    //  private ImageView imageView;
     @FXML
     private ChoiceBox<String> fx_energie;
     @FXML
@@ -49,9 +59,10 @@ public class ModifiervoiturebackController implements Initializable {
     private Button ajouter;
      private final String[] fx_marquee = {"BMW", "Mercedes", "Audi", "clio", "porshe", "peugeot", "hamer"};
     private final String[] fx_puissancee = {"5ch", "6ch", "7ch", "8ch", "9ch", "10ch", "11ch", "12ch", "13ch"};
-    private final String[] fx_energiee = {"energie", "gazoil", "gpl"};
+    private final String[] fx_energiee = {"essence", "gazoil", "gpl"};
     @FXML
     private Button picture_add;
+        static String image_voiture ; 
     
 
     /**
@@ -59,9 +70,22 @@ public class ModifiervoiturebackController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
         fx_marque.getItems().addAll(fx_marquee);
         fx_puissance.getItems().addAll(fx_puissancee);
         fx_energie.getItems().addAll(fx_energiee);
+          fxmatricule.setText(String.valueOf(CardvoitureController.vo.getMatricule()));
+          fx_prix_jours.setText(String.valueOf(CardvoitureController.vo.getPrix_jours()));
+          fx_puissance.setValue(String.valueOf(CardvoitureController.vo.getPuissance()));
+          fx_energie.setValue(String.valueOf(CardvoitureController.vo.getEnergie()));
+          fx_marque.setValue(String.valueOf(CardvoitureController.vo.getMarque()));
+          String imagePath = "C:\\xampp\\htdocs\\image_trippie_cov\\" + CardvoitureController.vo.getImage_voiture();
+          try {
+            lab_image.setImage(new Image(new FileInputStream(imagePath)));
+        } catch (FileNotFoundException e) {
+            System.err.println("Error loading image: " + e.getMessage());
+        }
+  
 
         // TODO
     }    
@@ -115,15 +139,31 @@ public class ModifiervoiturebackController implements Initializable {
         String marque = fx_marque.getValue();
         String puissance = fx_puissance.getValue();
         String energie = fx_energie.getValue();
-        int prix_jours=CardvoitureController.vo.getPrix_jours();
+int prix_jours = Integer.parseInt(fx_prix_jours.getText());   
+        String cov_img = url_image; 
         
        
      
                 
          InterfaceCRUD inter = new voitureCRUD();
-   voiture v = new voiture(CardvoitureController.vo.getId(),matricule, marque, puissance, prix_jours,energie);
+   voiture v = new voiture(CardvoitureController.vo.getId(),matricule, marque, puissance, prix_jours, cov_img ,energie);
+ 
+   
         inter.modifiervoiture(v);
-        
+    
+  
+         try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoitureback.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(MarketreservationbackController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }        
         
     }
     

@@ -200,12 +200,12 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="ajouter" mnemonicParsing="false" onAction="#ajouter" prefHeight="72.0" prefWidth="136.0" text="confirm" />
-                           </children>
-                        </HBox>
+                              <TextField fx:id="fx_id_client" />
+                           </children></HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                        <Button fx:id="ajouter" mnemonicParsing="false" onAction="#ajouter" prefHeight="72.0" prefWidth="136.0" text="confirm" />
                      </children>
                   </HBox>
                     </children>

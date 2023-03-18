@@ -58,6 +58,14 @@ public class DetailsvoiturefrontController implements Initializable {
     private Label energy_lab;
     @FXML
     private Label staus_lab;
+static  String matricule ; 
+static  String marque ; 
+static  String puissance ; 
+static  String prix_jours ; 
+static  String energie ; 
+static  String etat ; 
+static String imagePath ; 
+
 
     /**
      * Initializes the controller class.
@@ -66,14 +74,21 @@ public class DetailsvoiturefrontController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
       
         String imagePath = "C:\\xampp\\htdocs\\image_trippie_cov\\" + CardvoitureController.vo.getImage_voiture();
-        System.out.println(imagePath);
-        //id_co_TF.setText(String.valueOf(Afficher_CovController.id_co));
         matricule_lab.setText(String.valueOf(CardvoitureController.vo.getMatricule()));
         brand_lab.setText(String.valueOf(CardvoitureController.vo.getMarque()));
         power_lab.setText(String.valueOf(CardvoitureController.vo.getPuissance()));
         price_lab.setText(String.valueOf(CardvoitureController.vo.getPrix_jours()));
         energy_lab.setText(String.valueOf(CardvoitureController.vo.getEnergie()));
         staus_lab.setText(String.valueOf(CardvoitureController.vo.getEtat()));
+        String matricule=String.valueOf(CardvoitureController.vo.getMatricule()) ;
+        String marque=String.valueOf(CardvoitureController.vo.getMarque()) ;
+        String puissance=String.valueOf(CardvoitureController.vo.getPuissance()) ;
+        String prix_jours=String.valueOf(CardvoitureController.vo.getPrix_jours()) ;
+        String energie=String.valueOf(CardvoitureController.vo.getEnergie()) ;
+        String etat=String.valueOf(CardvoitureController.vo.getEtat()) ;
+
+
+           
        
     
    

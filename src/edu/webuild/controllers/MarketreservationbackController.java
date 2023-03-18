@@ -5,7 +5,6 @@
  */
 package edu.webuild.controllers;
 
-import static edu.webuild.controllers.Affichage_reservationController.voiture;
 import edu.webuild.interfaces.InterfaceCRUD2;
 import edu.webuild.model.reservation;
 import edu.webuild.model.voiture;
@@ -32,8 +31,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
@@ -163,7 +160,7 @@ public class MarketreservationbackController implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(Location_voitureController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MarketreservationbackController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }
