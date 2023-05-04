@@ -48,8 +48,8 @@ import javafx.stage.Stage;
  * @author aymen
  */
 public class ProfilClientController implements Initializable {
-        public static int client_id;
 
+    public static int client_id;
 
     @FXML
     private Button exitBtn;
@@ -67,16 +67,15 @@ public class ProfilClientController implements Initializable {
     @FXML
     private ImageView fximg;
 
-
     private List<Client> clientDataList = FXCollections.observableArrayList();
 
     private InterfaceClientCRUD ClientCRUD = new ClientCRUD();
 
     public void setEmail_lbl(String email) throws SQLException, IOException {
-         this.email_lbl.setText(email);
+        this.email_lbl.setText(email);
         ClientCRUD u = new ClientCRUD();
         Client p = u.getClient(email);
-        client_id=p.getId_client();
+        client_id = p.getId_client();
         email_lbl.setText(email);
         nom_lbl.setText(p.getId_role().getId_user().getNom());
         genre_lbl.setText(p.getId_role().getId_user().getPrenom());
@@ -155,6 +154,21 @@ public class ProfilClientController implements Initializable {
         try {
             System.out.println("now 2");
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Market_cov.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ProfilClientController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void RentCar(MouseEvent event) {
+
+        try {
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Market_voitureclientfront.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
