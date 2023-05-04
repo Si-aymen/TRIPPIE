@@ -16,7 +16,7 @@
     <children>
         <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
-                <VBox prefHeight="800.0" prefWidth="300.0" styleClass="right-bar" stylesheets="@../../../style.css" BorderPane.alignment="CENTER">
+                <VBox prefHeight="800.0" prefWidth="300.0" styleClass="right-bar" stylesheets="@../../../../style.css" BorderPane.alignment="CENTER">
                     <children>
                         <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                             <children>
@@ -73,11 +73,11 @@
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
                                 <Pane prefHeight="84.0" prefWidth="96.0" />
-                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../../../style.css">
+                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../../../../style.css">
                                     <children>
-                                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" stylesheets="@../../../style.css">
+                                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" stylesheets="@../../../../style.css">
                                             <children>
-                                                <Label prefHeight="29.0" prefWidth="190.0" stylesheets="@../../../style.css" text="Co voiturage" textFill="#878787">
+                                                <Label prefHeight="29.0" prefWidth="190.0" stylesheets="@../../../../style.css" text="Co voiturage" textFill="#878787">
                                                     <font>
                                                         <Font name="Cambria Bold" size="18.0" />
                                                     </font>
@@ -93,7 +93,7 @@
                                     </children>
                                 </HBox>
                                 <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
-                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../../../style.css">
+                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../../../../style.css">
                                     <children>
                                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
                                             <children>

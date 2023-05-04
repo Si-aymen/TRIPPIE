@@ -29,6 +29,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -54,16 +55,15 @@ public class ProfilLocateurController implements Initializable {
     private Button modif;
     @FXML
     private ImageView fximg;
-    @FXML
-    private ScrollPane scroll;
-    @FXML
-    private GridPane grid;
+    
+    public static  Locateur L; 
 
     public void setEmail_lbl(String email) throws SQLException, FileNotFoundException {
         this.email_lbl.setText(email);
         // TODO
         LocateurCRUD u = new LocateurCRUD();
         Locateur p = u.getLocateur(email);
+        L=p;
         email_lbl.setText(email);
         System.out.println(email);
         nom_lbl.setText(p.getId_role().getId_user().getNom());  // Récupérer l'utilisateur connecté
@@ -130,6 +130,23 @@ public class ProfilLocateurController implements Initializable {
             email_lbl.getScene().setRoot(root);
             controller.setLocateur(email);
             Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ProfilLocateurController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void RentCar(MouseEvent event) {
+        
+                try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Marketvoiturefront.fxml"));
+            Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();

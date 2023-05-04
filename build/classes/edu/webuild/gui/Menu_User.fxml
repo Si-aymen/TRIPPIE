@@ -14,5 +14,6 @@
             </children>
         </AnchorPane>
       <Button fx:id="ajouter_cov1" layoutX="477.0" layoutY="368.0" mnemonicParsing="false" onAction="#carpool" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Display Car Pool" />
+      <Button fx:id="ajouter_cov11" layoutX="477.0" layoutY="469.0" mnemonicParsing="false" onAction="#RentCars" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Display Rent Cars" />
     </children>
 </AnchorPane>

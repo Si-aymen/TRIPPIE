@@ -35,6 +35,8 @@ public class Menu_UserController implements Initializable {
     private Button afficher_Part;
     @FXML
     private Button ajouter_cov1;
+    @FXML
+    private Button ajouter_cov11;
 
     /**
      * Initializes the controller class.
@@ -121,6 +123,22 @@ public class Menu_UserController implements Initializable {
 
         }
 
+    }
+
+    @FXML
+    private void RentCars(ActionEvent event) {
+
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Marketvoitureback.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
 }

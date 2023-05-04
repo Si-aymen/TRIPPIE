@@ -48,6 +48,8 @@ import javafx.stage.Stage;
  * @author aymen
  */
 public class ProfilClientController implements Initializable {
+        public static int client_id;
+
 
     @FXML
     private Button exitBtn;
@@ -65,27 +67,21 @@ public class ProfilClientController implements Initializable {
     @FXML
     private ImageView fximg;
 
-    public static Client clientt;
 
     private List<Client> clientDataList = FXCollections.observableArrayList();
 
     private InterfaceClientCRUD ClientCRUD = new ClientCRUD();
 
     public void setEmail_lbl(String email) throws SQLException, IOException {
-        this.email_lbl.setText(email);
+         this.email_lbl.setText(email);
         ClientCRUD u = new ClientCRUD();
         Client p = u.getClient(email);
-
-        System.out.println("now");
-
+        client_id=p.getId_client();
         email_lbl.setText(email);
-        System.out.println(email);
-        nom_lbl.setText(p.getId_role().getId_user().getNom());  // Récupérer l'utilisateur connecté
+        nom_lbl.setText(p.getId_role().getId_user().getNom());
         genre_lbl.setText(p.getId_role().getId_user().getPrenom());
-        String fullurl = "C:\\xampp\\htdocs\\image" + p.getImg();
-        System.out.println(p.getImg());
+        String fullurl = "C:\\xampp\\htdocs\\" + p.getImg();
         File file = new File(fullurl);
-        System.out.println(p.getImg());
         FileInputStream fileInputStream = new FileInputStream(file);
         Image image = new Image(fileInputStream);
         fximg.setImage(image);
@@ -94,8 +90,7 @@ public class ProfilClientController implements Initializable {
         circle.setRadius(fximg.getFitWidth() / 2);
         circle.setCenterX(fximg.getFitWidth() / 2);
         circle.setCenterY(fximg.getFitHeight() / 2);
-
-// Utiliser le Circle comme clip
+        // Utiliser le Circle comme clip
         fximg.setClip(circle);
 
 // Définir la taille de l'ImageView pour qu'elle soit égale au diamètre du cercle
@@ -156,17 +151,9 @@ public class ProfilClientController implements Initializable {
 
     @FXML
     private void cov_btu(MouseEvent event) {
-        String em = email_lbl.getText();
-        ClientCRUD u = new ClientCRUD();
-        try {
-            clientt = u.getClient(em);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProfilClientController.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
         try {
             System.out.println("now 2");
-            System.out.println(clientt.getId_client());
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Market_cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

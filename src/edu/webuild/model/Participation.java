@@ -59,11 +59,12 @@ public class Participation {
         this.id_co = id_co;
     }
 
-    public Participation(int id_part, int nmbr_place_part, int id_co) {
-        this.id_part = id_part;
+    public Participation(int nmbr_place_part, int id_co, int id_client) {
         this.nmbr_place_part = nmbr_place_part;
         this.id_co = id_co;
+        this.id_client = id_client;
     }
+
 
     public Participation(int nmbr_place_part, int id_co) {
         this.nmbr_place_part = nmbr_place_part;

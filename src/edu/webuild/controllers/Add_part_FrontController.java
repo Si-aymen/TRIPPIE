@@ -44,7 +44,7 @@ public class Add_part_FrontController implements Initializable {
     @FXML
     private ChoiceBox<Integer> nmbr_place_part;
 
-    private static Client client;
+    public static int client_id;
 
     /**
      * Initializes the controller class.
@@ -52,24 +52,8 @@ public class Add_part_FrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         nmbr_place_part.getItems().addAll(nmbr_place_list);
-
         nmbr_place_Lab.setText(String.valueOf(Item_covController.covt.getNmbr_place()));
-        
-                System.out.println(client.getId_client());
 
-
-    }
-
-    @FXML
-    private void cov_btu(ActionEvent event) {
-    }
-
-    @FXML
-    private void stats(ActionEvent event) {
-    }
-
-    @FXML
-    private void Add_btu(ActionEvent event) {
     }
 
     @FXML
@@ -77,8 +61,7 @@ public class Add_part_FrontController implements Initializable {
         int nmbr_place_prat = nmbr_place_part.getValue();
         System.out.println(Item_covController.covt.getId_co());
         InterfaceParticipation inter_part = new ParticipationCrud();
-        client = ProfilClientController.clientt;
-        Participation part = new Participation(nmbr_place_prat, nmbr_place_prat, nmbr_place_prat, client.getId_client());
+        Participation part = new Participation(nmbr_place_prat, Item_covController.covt.getId_co(), client_id);
         int nmbr_place_cov = Item_covController.covt.getNmbr_place();
 
         if (nmbr_place_prat > nmbr_place_cov) {
@@ -109,6 +92,18 @@ public class Add_part_FrontController implements Initializable {
             Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+    }
+
+    @FXML
+    private void cov_btu(ActionEvent event) {
+    }
+
+    @FXML
+    private void stats(ActionEvent event) {
+    }
+
+    @FXML
+    private void Add_btu(ActionEvent event) {
     }
 
 }
