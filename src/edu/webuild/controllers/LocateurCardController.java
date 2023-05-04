@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -44,6 +45,8 @@ public class LocateurCardController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -68,6 +71,10 @@ public class LocateurCardController implements Initializable {
                 LocateurCRUD cc = new LocateurCRUD();
                 Locateur c = cc.getLocateurCard(nom_agence);
                 cc.disableLocateur(c.getNom_agence());
+                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Disable user");
+                    alert.setHeaderText("You are about to disable user ");
+                    alert.setContentText("Are you sure you want to continue ?");
             } catch (SQLException ex) {
                 Logger.getLogger(ChauffeurCardController.class.getName()).log(Level.SEVERE, null, ex);
             }

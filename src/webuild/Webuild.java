@@ -67,20 +67,7 @@ public class Webuild {
         //System.out.println(ps.afficherUtilisateur());
         //rc.modifierRole(r3);
         //System.out.println(rc.afficherRole());
-        //rc.supprimerRole(1);
-        /*------------------------------Utilisateur-------------------------------------------------------------------------------*/
-        Utilisateur u1 = new Utilisateur("12345678", "Zouari", "Aymen", "Homme", 44);
-        Utilisateur u2 = new Utilisateur("12345677", "zwaaaw", "zzaa", "Femme", 24);
-        Utilisateur u3 = new Utilisateur("22245679", "Zouari", "Aymen", "Homme", 25);
-        Utilisateur u4 = new Utilisateur("23456789", "Saidi", "Fatma", "Femme", 28);
-        Utilisateur u5 = new Utilisateur("34567890", "Boudali", "Ali", "Homme", 35);
-        Utilisateur u6 = new Utilisateur("45678901", "Ghazi", "Nour", "Femme", 22);
-        Utilisateur u7 = new Utilisateur("56789012", "Hamdi", "Karim", "Homme", 31);
-        Utilisateur u8 = new Utilisateur("67890123", "Fakhfakh", "Nada", "Femme", 26);
-        Utilisateur u9 = new Utilisateur("78901234", "Ben Hamouda", "Marwen", "Homme", 29);
-        Utilisateur u10 = new Utilisateur("89012345", "Moussa", "Hela", "Femme", 37);
-        Utilisateur u11 = new Utilisateur("90123456", "Kouki", "Samir", "Homme", 41);
-        Utilisateur u12 = new Utilisateur("01234567", "Ben Ammar", "Safa", "Femme", 24);
+
         //uc.ajouterUtilisateur(u1);
         //uc.ajouterUtilisateur(u2);
         //uc.ajouterUtilisateur(u3);

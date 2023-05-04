@@ -44,7 +44,7 @@ public class ChoixResetController implements Initializable {
     private void mail(ActionEvent event) {
          try {
 
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/GetPassword.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Role_mail.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

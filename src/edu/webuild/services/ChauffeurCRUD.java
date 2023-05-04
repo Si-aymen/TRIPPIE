@@ -71,6 +71,24 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
             System.out.println(ex.getMessage());
         }
     }
+    
+      public List<Chauffeur> getChauffeurByEmail(String email) throws SQLException {
+        String query = "SELECT * FROM chauffeur WHERE email = ?";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setString(1, email);
+        ResultSet rs = preparedStatement.executeQuery();
+        List<Chauffeur> clients = new ArrayList<>();
+        while (rs.next()) {
+            Chauffeur client = new Chauffeur();
+            Role role = new Role();
+            client.setId_role(role);
+            client.setId_ch(rs.getInt("id_ch"));
+            client.setEmail(rs.getString("email"));
+            client.setPassword(rs.getString("Password"));
+            clients.add(client);
+        }
+        return clients;
+    }
 
 //    @Override
 //    public void modifierChauffeur2(Chauffeur ch) {
@@ -288,6 +306,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                     String nom = rs.getString("nom");
                     String prenom = rs.getString("prenom");
                     String img = rs.getString("img");
+                    String password=rs.getString("password");
                     Etat etat = Etat.valueOf(rs.getString("etat"));
                     int id_role = rs.getInt("id_role");
                     int id_client = rs.getInt("id_ch");
@@ -310,6 +329,7 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
                     client.setEmail(email);
                     client.setImg(img);
                     client.setId_ch(id_client);
+                    client.setPassword(password);
                     client.setId_role(role);
                     client.setEtat(etat);
 
@@ -371,6 +391,21 @@ public class ChauffeurCRUD implements InterfaceChauffeurCRUD {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    
+    
+     public void changePassword(String mdp, String email) throws SQLException {
+        String req = "UPDATE chauffeur SET password = ?  WHERE email = ?";
+        PreparedStatement pst = conn.prepareStatement(req);
+        pst.setString(1, mdp);
+        pst.setString(2, email);
+        int rowUpdated = pst.executeUpdate();
+        if (rowUpdated > 0) {
+            System.out.println("Mdp modifié");
+        } else {
+            System.out.println("ERR");
+        }
     }
 
     public Chauffeur getChauffeurUpdate(String email) throws SQLException {

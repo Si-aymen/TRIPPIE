@@ -73,9 +73,9 @@ public class SendPasswordController implements Initializable {
                 String mdp = txtpass.getText();
                 cc.changePassword(mdp, email);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Succès");
-                alert.setHeaderText("Modifié");
-                alert.setContentText("Mot de passe changé avec succès");
+                alert.setTitle("Success");
+                alert.setHeaderText("Updated");
+                alert.setContentText("Password updated successfully");
                 alert.showAndWait();
 
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
@@ -96,9 +96,9 @@ public class SendPasswordController implements Initializable {
         Client c = cc.getClient(Ssemail2);
         if (txtusername.getText().isEmpty() || txtpass.getText().isEmpty() || txtpass1.getText().isEmpty()) {
             Alert alert1 = new Alert(Alert.AlertType.WARNING);
-            alert1.setTitle("Erreur");
-            alert1.setContentText("Veuillez remplir tous les champs");
-            alert1.setHeaderText("Controle de saisie");
+            alert1.setTitle("Error");
+            alert1.setContentText("Please complete all fields");
+            alert1.setHeaderText("Input control");
             alert1.show();
             return false;
         } else if (!(txtpass.getText().equals(txtpass1.getText()))) {

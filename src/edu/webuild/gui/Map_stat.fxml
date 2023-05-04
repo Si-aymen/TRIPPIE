@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="mapPane" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Map_statController">
+   <children>
+      <Button fx:id="plus_btu" layoutX="1300.0" layoutY="48.0" mnemonicParsing="false" onAction="#plus_btu" text="+" />
+      <Button fx:id="moin_btu" layoutX="1300.0" layoutY="92.0" mnemonicParsing="false" onAction="#moin_btu" text=" -" />
+   </children>
+</AnchorPane>

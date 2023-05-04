@@ -21,7 +21,7 @@
             
             <AnchorPane prefHeight="810.0" prefWidth="386.0" style="-fx-background-color: #828CA7">
                <children>
-                  <Label layoutX="98.0" layoutY="405.0" text="Bienvenue à notre application" textFill="BLACK">
+                  <Label layoutX="98.0" layoutY="405.0" text="Welcome to our application" textFill="BLACK">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -44,7 +44,7 @@
                   <Font name="Microsoft YaHei Bold" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="722.0" layoutY="505.0" mnemonicParsing="false" onAction="#signupScene" style="-fx-background-color: transparent;" text="Creer un compte" />
+            <Button layoutX="753.0" layoutY="501.0" mnemonicParsing="false" onAction="#signupScene" style="-fx-background-color: transparent;" text="Sign up" />
             <ChoiceBox fx:id="fxchoice" layoutX="699.0" layoutY="410.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black;" />
             <ToggleButton fx:id="showbtnnewnew" layoutX="864.0" layoutY="324.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="👁" />
          </children>

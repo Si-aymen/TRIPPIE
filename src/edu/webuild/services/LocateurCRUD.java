@@ -53,6 +53,38 @@ public class LocateurCRUD implements InterfaceLocateurCRUD {
             System.out.println(ex.getMessage());
         }
     }
+    
+    
+     public void changePassword(String mdp, String email) throws SQLException {
+        String req = "UPDATE locateur SET password = ?  WHERE email = ?";
+        PreparedStatement pst = conn.prepareStatement(req);
+        pst.setString(1, mdp);
+        pst.setString(2, email);
+        int rowUpdated = pst.executeUpdate();
+        if (rowUpdated > 0) {
+            System.out.println("Mdp modifié");
+        } else {
+            System.out.println("ERR");
+        }
+    }
+     
+     public List<Locateur> getLocateurByEmail(String email) throws SQLException {
+        String query = "SELECT * FROM locateur WHERE email = ?";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setString(1, email);
+        ResultSet rs = preparedStatement.executeQuery();
+        List<Locateur> clients = new ArrayList<>();
+        while (rs.next()) {
+            Locateur client = new Locateur();
+            Role role = new Role();
+            client.setId_role(role);
+            client.setId_loc(rs.getInt("id_loc"));
+            client.setEmail(rs.getString("email"));
+            client.setPassword(rs.getString("Password"));
+            clients.add(client);
+        }
+        return clients;
+    }
 
     @Override
     public void supprimerLocateur(int id_loc) {
@@ -231,6 +263,7 @@ public class LocateurCRUD implements InterfaceLocateurCRUD {
                     String nom = rs.getString("nom");
                     String img = rs.getString("img");
                     String prenom = rs.getString("prenom");
+                    String password=rs.getString("password");
                     Etat etat = Etat.valueOf(rs.getString("etat"));
                     int id_role = rs.getInt("id_role");
                     int id_loc = rs.getInt("id_loc");
@@ -251,6 +284,7 @@ public class LocateurCRUD implements InterfaceLocateurCRUD {
                     Locateur client = new Locateur();
                     client.setImg(img);
                     client.setEmail(email);
+                    client.setPassword(password);
                     client.setEtat(etat);
                     client.setId_loc(id_loc);
                     client.setId_role(role);
@@ -267,6 +301,8 @@ public class LocateurCRUD implements InterfaceLocateurCRUD {
         return null;
     }
 
+    
+    
     @Override
     public List<Locateur> afficherLocateur2() {
         List<Locateur> list = new ArrayList<>();

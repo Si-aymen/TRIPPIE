@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -73,6 +74,10 @@ public class ClientCardController implements Initializable {
                 ClientCRUD cc = new ClientCRUD();
                 Client c = cc.getClientCard(email);
                 cc.disableClient(c.getEmail());
+                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Disable user");
+                    alert.setHeaderText("You are about to disable user ");
+                    alert.setContentText("Are you sure you want to continue ?");
               
             } catch (SQLException ex) {
                 Logger.getLogger(ClientCardController.class.getName()).log(Level.SEVERE, null, ex);

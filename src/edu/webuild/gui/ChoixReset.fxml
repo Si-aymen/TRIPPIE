@@ -9,7 +9,7 @@
       <AnchorPane prefHeight="800.0" prefWidth="267.0" style="-fx-background-color: #828CA7;" />
       <Button fx:id="btnmail" layoutX="807.0" layoutY="355.0" mnemonicParsing="false" onAction="#mail" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: BLACK;" text="Mail" textFill="WHITE" />
       <Button fx:id="btnsms" layoutX="813.0" layoutY="406.0" mnemonicParsing="false" onAction="#sms" prefHeight="26.0" prefWidth="63.0" style="-fx-background-color: BLACK;" text="SMS" textFill="WHITE" />
-      <Label layoutX="693.0" layoutY="359.0" text="Reset password by:" />
-      <Label layoutX="699.0" layoutY="410.0" text="Reset password by:" />
+      <Label layoutX="648.0" layoutY="359.0" text="Reset password by:" />
+      <Label layoutX="648.0" layoutY="410.0" text="Reset password by:" />
    </children>
 </AnchorPane>

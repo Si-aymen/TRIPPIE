@@ -110,9 +110,9 @@ public class IdentifierCompteController implements Initializable {
                 if (newValue != null) {
                     // Display an alert to confirm password reset
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Confirmation de la réinitialisation de mot de passe");
-                    alert.setHeaderText("Vous êtes sur le point de réinitialiser le mot de passe de l'utilisateur " + newValue.getEmail());
-                    alert.setContentText("Êtes-vous sûr de vouloir continuer ?");
+                    alert.setTitle("Password reset confirmation");
+                    alert.setHeaderText("You are about to reset the user's password " + newValue.getEmail());
+                    alert.setContentText("Are you sure you want to continue ?");
 
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -239,13 +239,6 @@ public class IdentifierCompteController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void gotologin(ActionEvent event) throws IOException {
-        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
-        Scene scene = new Scene(page1);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
+   
 
 }

@@ -64,15 +64,16 @@ public class ProfilChauffeurController implements Initializable {
     @FXML
     private Button modif;
     @FXML
-    private ScrollPane scroll;
-    @FXML
-    private GridPane grid;
+    private Button ajouter_cov;
+
+    public static Chauffeur ch;
 
     public void setEmail_lbl(String email) throws SQLException, FileNotFoundException {
 
         this.email_lbl.setText(email);
         ChauffeurCRUD u = new ChauffeurCRUD();
         Chauffeur p = u.getChauffeur(email);
+        ch=p;
         email_lbl.setText(email);
         nom_lbl.setText(p.getId_role().getId_user().getNom());
         genre_lbl.setText(p.getId_role().getId_user().getPrenom());
@@ -143,6 +144,22 @@ public class ProfilChauffeurController implements Initializable {
 
     @FXML
     private void Update(ActionEvent event) {
+    }
+
+    @FXML
+    private void cov_btu(ActionEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Market_cov.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
     }
 
 }

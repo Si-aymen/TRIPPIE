@@ -39,12 +39,14 @@ public class Stat_utilisateurController implements Initializable {
 
     @FXML
     private PieChart pie;
-    private PieChart pie2;
+  
     @FXML
     private Button cov_btu1;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

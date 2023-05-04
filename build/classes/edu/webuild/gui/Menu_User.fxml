@@ -5,13 +5,14 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Menu_UserController">
     <children>
-        <Button fx:id="afficher_coc" layoutX="477.0" layoutY="317.0" mnemonicParsing="false" onAction="#afficher_cov" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Display Client" />
-        <Button fx:id="ajouter_cov" layoutX="477.0" layoutY="198.0" mnemonicParsing="false" onAction="#ajouter_cov" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Display Chauffeur" />
-        <Button fx:id="afficher_Part" layoutX="477.0" layoutY="435.0" mnemonicParsing="false" onAction="#afficher_Part" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Display Locateur" />
+        <Button fx:id="afficher_coc" layoutX="477.0" layoutY="166.0" mnemonicParsing="false" onAction="#afficher_cov" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Display Client" />
+        <Button fx:id="ajouter_cov" layoutX="477.0" layoutY="80.0" mnemonicParsing="false" onAction="#ajouter_cov" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Display Chauffeur" />
+        <Button fx:id="afficher_Part" layoutX="477.0" layoutY="269.0" mnemonicParsing="false" onAction="#afficher_Part" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Display Locateur" />
         <AnchorPane layoutY="-3.0" prefHeight="653.0" prefWidth="236.0" styleClass="right-bar" stylesheets="@style.css">
             <children>
             <Button layoutX="49.0" layoutY="296.0" mnemonicParsing="false" onAction="#statttt" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Stat" />
             </children>
         </AnchorPane>
+      <Button fx:id="ajouter_cov1" layoutX="477.0" layoutY="368.0" mnemonicParsing="false" onAction="#carpool" prefHeight="77.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Display Car Pool" />
     </children>
 </AnchorPane>

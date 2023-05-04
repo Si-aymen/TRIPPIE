@@ -32,8 +32,7 @@ public class GetPasswordController implements Initializable {
     @FXML
     private Button btnRechercher;
     Client c = new Client();
-    Chauffeur ch = new Chauffeur();
-    Locateur loc = new Locateur();
+  
 
     /**
      * Initializes the controller class.
@@ -62,7 +61,7 @@ public class GetPasswordController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez saisir une adresse e-mail valide.");
+            alert.setContentText("Please enter a valid email address.");
             alert.showAndWait();
         } else {
             dc.setUserInformation(email);

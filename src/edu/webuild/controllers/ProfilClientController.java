@@ -35,6 +35,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -63,25 +64,25 @@ public class ProfilClientController implements Initializable {
     static String url;
     @FXML
     private ImageView fximg;
+
+    public static Client clientt;
+
     private List<Client> clientDataList = FXCollections.observableArrayList();
 
     private InterfaceClientCRUD ClientCRUD = new ClientCRUD();
-    @FXML
-    private ScrollPane scroll;
-    @FXML
-    private GridPane grid;
 
     public void setEmail_lbl(String email) throws SQLException, IOException {
         this.email_lbl.setText(email);
-        // TODO
         ClientCRUD u = new ClientCRUD();
         Client p = u.getClient(email);
+
+        System.out.println("now");
 
         email_lbl.setText(email);
         System.out.println(email);
         nom_lbl.setText(p.getId_role().getId_user().getNom());  // Récupérer l'utilisateur connecté
         genre_lbl.setText(p.getId_role().getId_user().getPrenom());
-        String fullurl = "C:\\xampp\\htdocs\\" + p.getImg();
+        String fullurl = "C:\\xampp\\htdocs\\image" + p.getImg();
         System.out.println(p.getImg());
         File file = new File(fullurl);
         System.out.println(p.getImg());
@@ -110,49 +111,7 @@ public class ProfilClientController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        try {
-//          
-//            String email = null;
-//            this.email_lbl.setText(email);
-//          
-//            ClientCRUD u = new ClientCRUD();
-//            Client p = u.getClient(email);
-//            System.out.println(p);
-//            clientDataList.add(p);
-//            
-//            int column = 0;
-//            int row = 3;
-//            for (int i = 0; i < clientDataList.size(); i++) {
-//                try {
-//                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/ClientCardFront.fxml"));
-//                    AnchorPane anchorPane = fxmlLoader.load();
-//                    
-//                    ClientCardFrontController item = fxmlLoader.getController();
-//                    
-//                    item.setDataClient(clientDataList.get(i).getId_role().getId_user().getNom(),clientDataList.get(i).getId_role().getId_user().getPrenom(), clientDataList.get(i).getImg());
-//                    
-//                    if (column == 1) {
-//                        column = 0;
-//                        row++;
-//                    }
-//                    
-//                    grid.add(anchorPane, column++, row);
-//                    grid.setMinWidth(Region.USE_COMPUTED_SIZE);
-//                    grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-//                    grid.setMaxWidth(Region.USE_PREF_SIZE);
-//                    grid.setMinHeight(Region.USE_COMPUTED_SIZE);
-//                    grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-//                    grid.setMaxHeight(Region.USE_PREF_SIZE);
-//                    
-//                    GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
-//                } catch (IOException e) {
-//                    System.out.println("problem");
-//                    e.printStackTrace();
-//                }
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ProfilClientController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
     }
 
     @FXML
@@ -186,6 +145,30 @@ public class ProfilClientController implements Initializable {
             email_lbl.getScene().setRoot(root);
             controller.setClient(email);
             Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ProfilClientController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void cov_btu(MouseEvent event) {
+        String em = email_lbl.getText();
+        ClientCRUD u = new ClientCRUD();
+        try {
+            clientt = u.getClient(em);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProfilClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            System.out.println("now 2");
+            System.out.println(clientt.getId_client());
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Market_cov.fxml"));
+            Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();

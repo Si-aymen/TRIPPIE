@@ -43,6 +43,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -55,6 +56,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import static javax.mail.Message.RecipientType.TO;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
@@ -146,7 +148,7 @@ public class Ajouter_locateurController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.setContentText("Please enter a valid email address.");
             alert.show();
 
         } else if (!email.matches(regex)) {
@@ -154,21 +156,22 @@ public class Ajouter_locateurController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez saisir une adresse e-mail valide.");
+            alert.setContentText("Please enter a valid email address.");
             alert.showAndWait();
         } else if (!(fxpass.getText().equals(fxpass1.getText()))) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez saisir une adresse e-mail valide.");
+            alert.setContentText("Wrong password.");
             alert.showAndWait();
 
         } else {
             Locateur loc = new Locateur(r, img, nom_agence, tel, email, password);
             rc.affecterRole3(loc, r);
+
             String subject = "Tripee";
-            String message = "Inscription avec succée";
+            String message = "Registration successfully";
             sendMail(subject, message);
 
         }

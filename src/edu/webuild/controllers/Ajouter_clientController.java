@@ -44,6 +44,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -57,6 +58,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import static javax.mail.Message.RecipientType.TO;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
@@ -86,14 +88,15 @@ public class Ajouter_clientController implements Initializable {
     private ToggleButton showbtnnewnew1;
     @FXML
     private TextField fxtel;
-  private static final String TEST_EMAIL = "zouari.aymen@esprit.tn";
-   private Gmail service;
+    private static final String TEST_EMAIL = "zouari.aymen@esprit.tn";
+    private Gmail service;
     @FXML
     private Button btnimg;
     @FXML
     private ImageView fximg;
-        static String url_image;
+    static String url_image;
     static String image;
+
     /**
      *
      * @param id
@@ -108,7 +111,7 @@ public class Ajouter_clientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-          image = url_image;
+        image = url_image;
         showbtnnewnew.setOnAction(event -> {
             if (showbtnnewnew.isSelected()) {
                 fxpass.setPromptText(fxpass.getText());
@@ -139,44 +142,50 @@ public class Ajouter_clientController implements Initializable {
         int tel = Integer.parseInt(fxtel.getText());
         String email = fxmail.getText();
         String password = fxpass.getText();
-        
 
         // Définir la regex pour valider l'adresse e-mail
         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
 
 // Vérifier que la chaîne saisie correspond à la regex
-        if (!email.matches(regex)) {
+        if (email.isEmpty() || password.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Please complete all fields.");
+            alert.show();
+
+        }
+        else if (!email.matches(regex)) {
             // Afficher un message d'erreur si la saisie est invalide
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Erreur de saisie");
+            alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez saisir une adresse e-mail valide.");
+            alert.setContentText("Please enter a valid email address.");
             alert.showAndWait();
         } else if (!(fxpass.getText().equals(fxpass1.getText()))) {
 
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Erreur de saisie");
+            alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez saisir une adresse e-mail valide.");
+            alert.setContentText("Wrong password");
             alert.showAndWait();
 
         } else {
             Client cli = new Client(r, img, tel, email, password);
             rc.affecterRole2(cli, r);
-            
+
             try {
-                 String subject="Tripee";
-            String message="Inscription avec succée";
-            sendMail(subject, message);
+                String subject = "Tripee";
+                String message = "Registration successfully";
+                sendMail(subject, message);
             } catch (Exception e) {
-                
+
             }
-            
-           
 
         }
     }
-     public void sendMail(String subject, String message) throws Exception, EncoderException {
+
+    public void sendMail(String subject, String message) throws Exception, EncoderException {
 
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
@@ -215,8 +224,8 @@ public class Ajouter_clientController implements Initializable {
             }
         }
     }
-      
-      public void GMailer() throws Exception {
+
+    public void GMailer() throws Exception {
         System.out.println("gmail");
         NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
         GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
@@ -250,7 +259,7 @@ public class Ajouter_clientController implements Initializable {
 
     @FXML
     private void image(ActionEvent event) {
-           ImageView imageView = fximg;
+        ImageView imageView = fximg;
 
         // Create a FileChooser
         FileChooser fileChooser = new FileChooser();

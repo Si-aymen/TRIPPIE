@@ -81,9 +81,9 @@ public class PhoneController implements Initializable {
         if (!(codeEntered.equals(code))) {
             System.out.println(codeEntered);
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Code incorrect");
+            alert.setTitle("Wrong code");
             alert.setHeaderText(null);
-            alert.setContentText("Le code que vous avez entré est incorrect. Veuillez réessayer.");
+            alert.setContentText("The code that you have entered is incorrect. Try Again.");
             alert.showAndWait();
         } else {
             try {

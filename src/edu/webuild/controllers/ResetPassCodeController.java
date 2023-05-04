@@ -73,9 +73,9 @@ public class ResetPassCodeController implements Initializable {
                     // Récupérez le code envoyé par SMS en utilisant l'API Twilio
                     cc.changePassword2(pass, gsm);
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Succès");
-                    alert.setHeaderText("Modifié");
-                    alert.setContentText("Mot de passe changé avec succès");
+                    alert.setTitle("Success");
+                    alert.setHeaderText("Updated");
+                    alert.setContentText("Password successfully changed");
                     alert.showAndWait();
                     try {
                         Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Login.fxml"));
@@ -93,9 +93,9 @@ public class ResetPassCodeController implements Initializable {
                     // Récupérez le code envoyé par SMS en utilisant l'API Twilio
                     ch.changePassword2(pass, gsm);
                     Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert2.setTitle("Succès");
-                    alert2.setHeaderText("Modifié");
-                    alert2.setContentText("Mot de passe changé avec succès");
+                    alert2.setTitle("Success");
+                    alert2.setHeaderText("Updated");
+                    alert2.setContentText("Password successfully changed");
                     alert2.showAndWait();
                     try {
 
@@ -116,9 +116,9 @@ public class ResetPassCodeController implements Initializable {
                     // Récupérez le code envoyé par SMS en utilisant l'API Twilio
                     loc.changePassword2(pass, gsm);
                     Alert alert3 = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert3.setTitle("Succès");
-                    alert3.setHeaderText("Modifié");
-                    alert3.setContentText("Mot de passe changé avec succès");
+                    alert3.setTitle("Success");
+                    alert3.setHeaderText("Updated");
+                    alert3.setContentText("Password successfully changed");
                     alert3.showAndWait();
                     try {
 
@@ -146,18 +146,18 @@ public class ResetPassCodeController implements Initializable {
 
         if (fxpass1.getText().isEmpty() || fxpass2.getText().isEmpty() || fxnum.getText().isEmpty()) {
             Alert alert1 = new Alert(Alert.AlertType.WARNING);
-            alert1.setTitle("Erreur");
-            alert1.setContentText("Veuillez remplir tous les champs");
-            alert1.setHeaderText("Controle de saisie");
+            alert1.setTitle("Error");
+            alert1.setContentText("Please complete all fields");
+            alert1.setHeaderText("Input control");
             alert1.show();
             return false;
 
         }
         else if (!fxpass1.getText().equals(fxpass2.getText())){
              Alert alert1 = new Alert(Alert.AlertType.WARNING);
-            alert1.setTitle("Erreur");
-            alert1.setContentText("Veuillez remplir tous les champs");
-            alert1.setHeaderText("Controle de saisie");
+            alert1.setTitle("Error");
+            alert1.setContentText("Please verify your password");
+            alert1.setHeaderText("Input control");
             alert1.show();
             return false;
 

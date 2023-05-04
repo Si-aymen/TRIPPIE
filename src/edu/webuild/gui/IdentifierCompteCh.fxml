@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="810.0" prefWidth="1315.0" style="-fx-background-color: #B4A7D6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.IdentifierCompteChController">
+   <children>
+      <ListView fx:id="cli" layoutX="413.0" layoutY="323.0" onMouseClicked="#EnvoyerToken" prefHeight="212.0" prefWidth="445.0" style="-fx-background-color: #828CA7;" />
+      <Text layoutX="409.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Identify your account-email">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Line endX="338.0" layoutX="507.0" layoutY="270.0" startX="-97.0" />
+      <Label fx:id="ssemails" layoutX="410.0" layoutY="280.0" prefHeight="18.0" prefWidth="285.0" />
+      <Button layoutX="564.0" layoutY="554.0" mnemonicParsing="false" onAction="#connecter" prefHeight="26.0" prefWidth="143.0" style="-fx-background-color: black;" text="Change password" textFill="WHITE" />
+   </children>
+</AnchorPane>

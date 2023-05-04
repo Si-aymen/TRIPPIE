@@ -54,9 +54,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.util.Duration;
 import static javax.mail.Message.RecipientType.TO;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
@@ -169,14 +171,15 @@ public class Ajouter_chauffeurController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez saisir une adresse e-mail valide.");
+            alert.setContentText("Wrong password.");
             alert.showAndWait();
 
         } else {
             Chauffeur ch = new Chauffeur(r, img, num_permis, tel, email, password);
             rc.affecterRole(ch, r);
+
             String subject="Tripee";
-            String message="Inscription avec succée";
+            String message="Registration successfully";
             sendMail(subject, message);
          
           
