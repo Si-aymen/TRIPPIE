@@ -54,7 +54,7 @@ public class Add_PartController implements Initializable {
         int nmbr_place_prat = Integer.parseInt(nmbr_place_part.getText());
         System.out.println(Item_covController.covt.getId_co());
         InterfaceParticipation inter_part = new ParticipationCrud();
-        Participation part = new Participation(nmbr_place_prat, Item_covController.covt.getId_co());
+        Participation part = new Participation(nmbr_place_prat, Item_covController.covt.getId_co(),ProfilClientController.client_id);
         int nmbr_place_cov = Item_covController.covt.getNmbr_place();
 
         if (nmbr_place_prat > nmbr_place_cov) {

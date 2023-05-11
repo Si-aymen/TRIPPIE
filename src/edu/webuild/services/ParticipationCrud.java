@@ -31,7 +31,7 @@ public class ParticipationCrud implements InterfaceParticipation {
         try {
             List<CoVoiturage> list1 = new ArrayList<>();
             String req;
-            req = "INSERT INTO `participation`(`nmbr_place_part`,`id_co`,`id_client`) VALUES ('" + p.getNmbr_place_part() + "','" + p.getId_co() + "','" + p.getId_client() + "') ";
+            req = "INSERT INTO `participation`(`nmbr_place_part`,`id_co_id`,`id_client`) VALUES ('" + p.getNmbr_place_part() + "','" + p.getId_co() + "','" + p.getId_client() + "') ";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Participation  ajouté!!!");
@@ -55,7 +55,7 @@ public class ParticipationCrud implements InterfaceParticipation {
     @Override
     public void ajouterParticipation2(Participation p) {
         try {
-            String req = "INSERT INTO `participation` (`nmbr_place_part`,`id_co` ) VALUES (?,?)";
+            String req = "INSERT INTO `participation` (`nmbr_place_part`,`id_co_id` ) VALUES (?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setInt(1, p.getNmbr_place_part());
             ps.setInt(2, p.getId_co());
@@ -93,7 +93,7 @@ public class ParticipationCrud implements InterfaceParticipation {
     public void modifierParticipation(Participation p, int id) {
         try {
 
-            String req = "UPDATE `participation` SET `nmbr_place_part`='" + p.getNmbr_place_part() + "',`id_co`='" + p.getId_co() + "' WHERE  `id_part`= " + id;
+            String req = "UPDATE `participation` SET `nmbr_place_part`='" + p.getNmbr_place_part() + "',`id_co_id`='" + p.getId_co() + "' WHERE  `id`= " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Participation updated !");
@@ -106,7 +106,7 @@ public class ParticipationCrud implements InterfaceParticipation {
     @Override
     public void supprimerParticipation(int id) {
         try {
-            String req = "DELETE FROM `participation` WHERE id_part = " + id;
+            String req = "DELETE FROM `participation` WHERE id = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("participation deleted ! ");
@@ -119,7 +119,7 @@ public class ParticipationCrud implements InterfaceParticipation {
     public List<Participation> rechParticipation(int id) {
         List<Participation> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM `participation` WHERE id_part= " + id;
+            String req = "SELECT * FROM `participation` WHERE id= " + id;
             Statement st = conn.createStatement();
 
             ResultSet RS = st.executeQuery(req);
@@ -165,7 +165,7 @@ public class ParticipationCrud implements InterfaceParticipation {
     public List<Participation> tri() {
 
         List<Participation> list = new ArrayList<>();
-        String req = " select * from participation order by id_part";
+        String req = " select * from participation order by id";
         try {
             Statement pst = conn.prepareStatement(req);
 

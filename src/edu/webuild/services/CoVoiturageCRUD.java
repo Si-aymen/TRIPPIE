@@ -111,7 +111,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
     @Override
     public void supprimerCoVoiturage(int id) {
         try {
-            String req = "DELETE FROM `co_voiturage` WHERE id_co = " + id;
+            String req = "DELETE FROM `co_voiturage` WHERE id = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("co voiturage deleted ! ");
@@ -124,8 +124,8 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
     public void modifierCoVoiturage(CoVoiturage v, int id) {
         try {
             //String req = "UPDATE `co_voiturage` SET `nom` = '" + p.getNom() + "', `prenom` = '" + p.getPrenom() + "' WHERE `personne`.`id` = " + p.getId();
-            //UPDATE `co_voiturage` SET `id_co`='[value-1]',`depart`='[value-2]',`destination`='[value-3]',`date_dep`='[value-4]',`nmbr_place`='[value-5]' WHERE
-            String req = "UPDATE `co_voiturage` SET `depart`='" + v.getDepart() + "',`destination`='" + v.getDestination() + "',`date_dep`='" + v.getDate_dep() + "',`nmbr_place`='" + v.getNmbr_place() + "' WHERE  `id_co`= " + id;
+            //UPDATE `co_voiturage` SET `id`='[value-1]',`depart`='[value-2]',`destination`='[value-3]',`date_dep`='[value-4]',`nmbr_place`='[value-5]' WHERE
+            String req = "UPDATE `co_voiturage` SET `depart`='" + v.getDepart() + "',`destination`='" + v.getDestination() + "',`date_dep`='" + v.getDate_dep() + "',`nmbr_place`='" + v.getNmbr_place() + "' WHERE  `id`= " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("co voiturage updated !");
@@ -140,12 +140,12 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
     public List<CoVoiturage> rechCoVoiturage(int id) {
         List<CoVoiturage> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM `co_voiturage` WHERE id_co= " + id;
+            String req = "SELECT * FROM `co_voiturage` WHERE id= " + id;
             Statement st = conn.createStatement();
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
                 CoVoiturage v = new CoVoiturage();
-                v.setId_co(RS.getInt("id_co"));
+                v.setId_co(RS.getInt("id"));
                 v.setDepart(RS.getString("depart"));
                 v.setDestination(RS.getString("destination"));
                 v.setDate_dep(RS.getDate("date_dep"));
@@ -165,14 +165,14 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
     public List<CoVoiturage> Filter_CoVoiturage(String S, String SS) {
         List<CoVoiturage> list = new ArrayList<>();
         try {
-            if (S.equals("id_co") || S.equals("nmbr_place")) {
+            if (S.equals("id") || S.equals("nmbr_place")) {
                 int temp = Integer.parseInt(SS);
                 String req = "SELECT * FROM `co_voiturage` WHERE " + S + " =" + temp;
                 Statement st = conn.createStatement();
                 ResultSet RS = st.executeQuery(req);
                 while (RS.next()) {
                     CoVoiturage v = new CoVoiturage();
-                    v.setId_co(RS.getInt("id_co"));
+                    v.setId_co(RS.getInt("id"));
                     v.setDepart(RS.getString("depart"));
                     v.setDestination(RS.getString("destination"));
                     v.setDate_dep(RS.getDate("date_dep"));
@@ -186,7 +186,7 @@ public class CoVoiturageCRUD implements InterfaceCoVoiturage {
                 ResultSet RS = st.executeQuery(req);
                 while (RS.next()) {
                     CoVoiturage v = new CoVoiturage();
-                    v.setId_co(RS.getInt("id_co"));
+                    v.setId_co(RS.getInt("id"));
                     v.setDepart(RS.getString("depart"));
                     v.setDestination(RS.getString("destination"));
                     v.setDate_dep(RS.getDate("date_dep"));

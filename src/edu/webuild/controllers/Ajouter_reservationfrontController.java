@@ -49,8 +49,6 @@ public class Ajouter_reservationfrontController implements Initializable {
     public static final String ACCOUNT_SID = "AC0578c30cc6dca5aaa242984635afc216";
     public static final String AUTH_TOKEN = "95eaaf34d104da9bc14f86f54b8de054";
     private TextField fx_id_reservation;
-    @FXML
-    private TextField fx_id_client;
 
     /**
      * Initializes the controller class.
@@ -65,7 +63,6 @@ public class Ajouter_reservationfrontController implements Initializable {
     private void ajouter_reservation(ActionEvent event) {
         Date date_debut = java.sql.Date.valueOf(date_debut_pk.getValue());
         Date date_fin = java.sql.Date.valueOf(date_fin_pk1.getValue());
-        int id_client = Integer.parseInt(fx_id_client.getText());
 
         LocalDate currentDate = LocalDate.now(); // Gets the current date
         String dateStringlocal = currentDate.toString();

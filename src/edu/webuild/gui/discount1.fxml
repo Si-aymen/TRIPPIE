@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Discount1Controller">
+   <children>
+      <Label layoutX="146.0" layoutY="119.0" prefHeight="17.0" prefWidth="102.0" text="price " />
+      <Label layoutX="146.0" layoutY="162.0" text="Discount " />
+      <TextField fx:id="prix" layoutX="209.0" layoutY="115.0" />
+      <TextField fx:id="discount" layoutX="209.0" layoutY="158.0" prefHeight="25.0" prefWidth="154.0" />
+      <Button fx:id="pres" layoutX="209.0" layoutY="208.0" mnemonicParsing="false" onAction="#press" text="press" />
+      <Label fx:id="discountshow" layoutX="157.0" layoutY="225.0" />
+      <Label fx:id="test" layoutX="393.0" layoutY="208.0" />
+   </children>
+</AnchorPane>

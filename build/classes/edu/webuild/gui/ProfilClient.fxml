@@ -105,9 +105,9 @@
                         <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" onMouseClicked="#cov_btu" prefHeight="100.0" prefWidth="380.0">
+                  <HBox alignment="CENTER" onMouseClicked="#cov_btu" prefHeight="28.0" prefWidth="909.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" />
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" onMouseClicked="#RentCar" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@style.css">
@@ -129,7 +129,7 @@
                         <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" onMouseClicked="#cov_btu" prefHeight="100.0" prefWidth="380.0">
+                  <HBox alignment="CENTER" onMouseClicked="#cov_btu" prefHeight="28.0" prefWidth="909.0">
                      <children>
                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" />
                      </children>
@@ -139,6 +139,54 @@
                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
                            <children>
                               <Label prefHeight="29.0" prefWidth="190.0" stylesheets="@style.css" text="Reclamation" textFill="#878787">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="16.0" prefWidth="190.0" text="System tri" textFill="#878787">
+                                 <font>
+                                    <Font name="Cambria" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#cov_btu" prefHeight="28.0" prefWidth="909.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#Game" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@style.css">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
+                           <children>
+                              <Label prefHeight="29.0" prefWidth="190.0" stylesheets="@style.css" text="Play Game" textFill="#878787">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="16.0" prefWidth="190.0" text="System tri" textFill="#878787">
+                                 <font>
+                                    <Font name="Cambria" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#cov_btu" prefHeight="28.0" prefWidth="909.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#Wheel" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@style.css">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
+                           <children>
+                              <Label prefHeight="29.0" prefWidth="190.0" stylesheets="@style.css" text="Wheel" textFill="#878787">
                                  <font>
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>

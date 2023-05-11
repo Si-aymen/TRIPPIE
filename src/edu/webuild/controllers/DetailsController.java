@@ -86,10 +86,6 @@ public class DetailsController implements Initializable {
         }
     }
 
-    @FXML
-    private void Modify_btu(ActionEvent event) {
-        
-    }
 
     @FXML
     private void delete_btu(ActionEvent event) {

@@ -17,7 +17,7 @@ public class Client {
     int tel;
     String email;
     String password;
-     Etat etat;
+    Etat etat;
 
     public Client(int id_client, Role id_role, String img, int tel, String email, String password) {
         this.id_client = id_client;
@@ -45,9 +45,6 @@ public class Client {
 
     public Client() {
     }
-    
-
-   
 
     public Client(String email, String password) {
         this.email = email;
@@ -110,9 +107,6 @@ public class Client {
         this.etat = etat;
     }
 
-    
-   
-
     public Client(Role id_role, int tel, String email, String password) {
         this.id_role = id_role;
         this.tel = tel;
@@ -124,7 +118,5 @@ public class Client {
     public String toString() {
         return "Client{" + "id_client=" + id_client + ", id_role=" + id_role + ", img=" + img + ", tel=" + tel + ", email=" + email + ", password=" + password + '}';
     }
-
-   
 
 }

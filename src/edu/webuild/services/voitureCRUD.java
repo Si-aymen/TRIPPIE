@@ -26,7 +26,7 @@ public class voitureCRUD implements InterfaceCRUD{
     @Override
     public void ajoutervoiture(voiture v) {
         try {
-            String req = "INSERT INTO `voiture`(`matricule`,`marque`,`puissance`,`prix_jours`,`picture`,`energie`,`etat`,`id_locateur`) VALUES ('"+v.getMatricule()+"','"+v.getMarque()+"','"+v.getPuissance()+"','"+v.getPrix_jours()+"','"+v.getImage_voiture()+"','"+v.getEnergie()+"','non reservé','"+v.getId_locateur()+"')";
+            String req = "INSERT INTO `voiture`(`matricule`,`marque`,`puissance`,`prix_jours`,`picture`,`energie`,`etat`,`id_loc`) VALUES ('"+v.getMatricule()+"','"+v.getMarque()+"','"+v.getPuissance()+"','"+v.getPrix_jours()+"','"+v.getImage_voiture()+"','"+v.getEnergie()+"','non reservé','"+v.getId_locateur()+"')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("voiture ajouté!!!");
@@ -132,7 +132,7 @@ public class voitureCRUD implements InterfaceCRUD{
     public List<voiture> affichervoitures2(int id) {
        List<voiture> list = new ArrayList<>();
         try {
-            String req = "Select * from voiture WHERE id_locateur = " + id;
+            String req = "Select * from voiture WHERE id_loc = " + id;
             Statement st = conn.createStatement();
            
             ResultSet RS= st.executeQuery(req);

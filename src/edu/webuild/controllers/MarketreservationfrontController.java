@@ -59,7 +59,7 @@ public class MarketreservationfrontController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ListView<reservation> list1 = affichage_reservation;
         InterfaceCRUD2 inter = new reservationCRUD();
-        List<reservation> list2 = inter.afficherreservations2(44);
+        List<reservation> list2 = inter.afficherreservations2(ProfilClientController.client_id);
         for (int i = 0; i < list2.size(); i++) {
             reservation r = list2.get(i);
             list1.getItems().add(r);

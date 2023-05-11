@@ -60,7 +60,7 @@ public class Item_covController implements Initializable {
         this.id_co.setText(Integer.toString(id_coo));
         depart.setText(departt);
         destination.setText(destinationn);
-        temps.setText(d.toString());
+      //  temps.setText(d.toString());
         String fullurl = "C:\\xampp\\htdocs\\image_trippie_cov\\" + url;
         System.out.println("full url " + fullurl);
         nb_plc.setText(nmbr_place);

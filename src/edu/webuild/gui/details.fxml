@@ -262,11 +262,7 @@
                                                       <Button mnemonicParsing="false" onAction="#repondre" text="Repondre" />
                                                    </children>
                                                 </HBox>
-                                                <HBox prefHeight="100.0" prefWidth="200.0">
-                                                   <children>
-                                                      <Button mnemonicParsing="false" onAction="#Modify_btu" text="Modify" />
-                                                   </children>
-                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" />
                                                 <Button mnemonicParsing="false" onAction="#delete_btu" text="Delete" />
                                              </children>
                                           </HBox>

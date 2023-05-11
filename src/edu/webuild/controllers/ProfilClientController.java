@@ -5,24 +5,22 @@
  */
 package edu.webuild.controllers;
 
-import edu.webuild.gui.LoginController;
+import edu.webuild.frog.Menu;
 import edu.webuild.interfaces.InterfaceClientCRUD;
 import edu.webuild.model.Client;
 import edu.webuild.model.Role;
 import edu.webuild.services.ClientCRUD;
 import edu.webuild.services.reclamationCRUD;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Base64;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -34,14 +32,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
+import edu.webuild.controllers.Main;
 import javafx.stage.Stage;
 
 /**
@@ -53,6 +49,12 @@ public class ProfilClientController implements Initializable {
 
     public static int client_id;
     public static int var_client_id;
+    private Pane root;
+    private Button startButton;
+    private Button howItWorksButton;
+    private AnimationTimer timer;
+
+    private Label quoteLabel;
     @FXML
     private Button exitBtn;
     @FXML
@@ -72,9 +74,9 @@ public class ProfilClientController implements Initializable {
     private List<Client> clientDataList = FXCollections.observableArrayList();
 
     private InterfaceClientCRUD ClientCRUD = new ClientCRUD();
-    
+
     public static int id_util;
-    
+
     public static Role role = new Role();
 
     public void setEmail_lbl(String email) throws SQLException, IOException {
@@ -196,11 +198,11 @@ public class ProfilClientController implements Initializable {
 
     @FXML
     private void Reclamation(MouseEvent event) throws IOException {
-        
+
         id_util = client_id;
 
         Client cl = new Client();
-        
+
         reclamationCRUD rc = new reclamationCRUD();
 
         cl = rc.getByIdClient(id_util);
@@ -212,6 +214,18 @@ public class ProfilClientController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void Game(MouseEvent event) throws Exception {
+        Menu main = new Menu();
+        main.start(new Stage());
+    }
+
+    @FXML
+    private void Wheel(MouseEvent event) {
+        Main main = new Main();
+          main.start(new Stage());
     }
 
 }

@@ -157,4 +157,34 @@ public class Menu_UserController implements Initializable {
         }
     }
 
+    @FXML
+    private void Display_coupon(ActionEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/market_couponBack.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void Display_gifts(ActionEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketcadeau_back.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
 }

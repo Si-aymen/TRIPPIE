@@ -1,0 +1,27 @@
+0000000000000000000000000000000000000000 850eb6a92bc6b893c9c32088f567f17669fcf52b Aymen Rihem <zouari.aymen@esprit.tn> 1676243964 +0100	branch: Created from HEAD
+850eb6a92bc6b893c9c32088f567f17669fcf52b 632eab4e868a9f585741616d12f3816012d6203b Aymen Rihem <zouari.aymen@esprit.tn> 1676246053 +0100	commit: modification
+632eab4e868a9f585741616d12f3816012d6203b 074dd87a1911245845d9a844f311254e1795c37a Aymen Rihem <zouari.aymen@esprit.tn> 1676307812 +0100	commit: ajout client locateur chauffeur
+074dd87a1911245845d9a844f311254e1795c37a 524ddb0769a896c37bd9d26d4cb0eabe64b21fd4 Aymen Rihem <zouari.aymen@esprit.tn> 1676326345 +0100	commit: CRUD Tous les tables
+524ddb0769a896c37bd9d26d4cb0eabe64b21fd4 49ed328bbe9d218973a7e5fb61a92d40794d0ba7 Aymen Rihem <zouari.aymen@esprit.tn> 1676398011 +0100	commit: Filter Tri GetbyId user
+49ed328bbe9d218973a7e5fb61a92d40794d0ba7 70c1c72e40620f46713297789c4fc1366bfebe22 Aymen Rihem <zouari.aymen@esprit.tn> 1676467675 +0100	commit: All
+70c1c72e40620f46713297789c4fc1366bfebe22 6db37cc8271c8e5a096c71e30664745fdbd049b5 Aymen Rihem <zouari.aymen@esprit.tn> 1676891628 +0100	commit: Gui Crud user
+6db37cc8271c8e5a096c71e30664745fdbd049b5 7fec94d0a0380f5354c5669c06abd65d84253480 Aymen Rihem <zouari.aymen@esprit.tn> 1677029348 +0100	commit: recuperer id_user
+7fec94d0a0380f5354c5669c06abd65d84253480 19321e68a3789a835a3960c84b8b99913762645f Aymen Rihem <zouari.aymen@esprit.tn> 1677104308 +0100	commit: 2 CRUD role:fixe modif
+19321e68a3789a835a3960c84b8b99913762645f f66f8da900c34d6503d975c4cfa41b3afe591397 Aymen Rihem <zouari.aymen@esprit.tn> 1677176936 +0100	commit: 2CRUD+3CR
+f66f8da900c34d6503d975c4cfa41b3afe591397 a8abd64c8aeba1531d068ec27fd867c6f69576e4 Aymen Rihem <zouari.aymen@esprit.tn> 1677199612 +0100	commit: 5CRUD :'( sans Controle saisie
+a8abd64c8aeba1531d068ec27fd867c6f69576e4 e3292d628cb29c79bc0ad2f9c59c9c1a0f46a1b4 Aymen Rihem <zouari.aymen@esprit.tn> 1677241885 +0100	commit: 5CRUD avec Controle saisie avec on dirait jointure
+e3292d628cb29c79bc0ad2f9c59c9c1a0f46a1b4 60fdc6b1d805407eabf95ecf4ec05ac690483cf5 Aymen Rihem <zouari.aymen@esprit.tn> 1677427823 +0100	commit: login
+60fdc6b1d805407eabf95ecf4ec05ac690483cf5 da01706188d3308b22feeb784575cd4f36286813 Aymen Rihem <zouari.aymen@esprit.tn> 1677511883 +0100	commit: ajoutsansfield
+da01706188d3308b22feeb784575cd4f36286813 b4dadabf6d07f2934012a467e2309194f358e5b9 Aymen Rihem <zouari.aymen@esprit.tn> 1677536715 +0100	commit: login multiuser
+b4dadabf6d07f2934012a467e2309194f358e5b9 35fac121e71494a7f5af1f337424957b474a04e7 Aymen Rihem <zouari.aymen@esprit.tn> 1677615893 +0100	commit: mail mara barka maghire reset
+35fac121e71494a7f5af1f337424957b474a04e7 2da9b13799f46b643140490772bd687c2dfdac90 Aymen Rihem <zouari.aymen@esprit.tn> 1677686245 +0100	commit: start profile
+2da9b13799f46b643140490772bd687c2dfdac90 99f896d3cc4be58012ae0a90c21b4c78a26820f7 Aymen Rihem <zouari.aymen@esprit.tn> 1677712104 +0100	commit: webuild
+99f896d3cc4be58012ae0a90c21b4c78a26820f7 f400f7f7dca8c2dfd1e7586cb6b2846a18aa0ae8 Aymen Rihem <zouari.aymen@esprit.tn> 1677713301 +0100	commit: visibilité password sauf locateur
+f400f7f7dca8c2dfd1e7586cb6b2846a18aa0ae8 133274403cc8ded8d715b9912efaa8f84143a71c Aymen Rihem <zouari.aymen@esprit.tn> 1677757648 +0100	commit: webuild
+133274403cc8ded8d715b9912efaa8f84143a71c 8641b65853713bd64dd42a3aecfb94b7996254b4 Aymen Rihem <zouari.aymen@esprit.tn> 1677815963 +0100	commit: next time img prof null bd
+8641b65853713bd64dd42a3aecfb94b7996254b4 2b2ec43cb6dd6ed99fb7bd94f0479c3529c3706c Aymen Rihem <zouari.aymen@esprit.tn> 1677848342 +0100	commit: mail apres inscri
+2b2ec43cb6dd6ed99fb7bd94f0479c3529c3706c 174fd001e0a7b8dcb668d4c4936fed92a97d7921 Aymen Rihem <zouari.aymen@esprit.tn> 1678059977 +0100	commit: start twilio + cardusersback
+174fd001e0a7b8dcb668d4c4936fed92a97d7921 e1a5568f630b1793e6ab6a9e891cdc991b73a5cb Aymen Rihem <zouari.aymen@esprit.tn> 1678137545 +0100	commit: RESET PAR SMS + UPDATE CHAUFFEUR PROFILE
+e1a5568f630b1793e6ab6a9e891cdc991b73a5cb 1dadec162013961d7de2a0378e02852fc74bc993 Aymen Rihem <zouari.aymen@esprit.tn> 1678191786 +0100	commit: Img profile
+1dadec162013961d7de2a0378e02852fc74bc993 97b38be1d5cf9bce92a4f7e65b876f2bec4c83b8 Aymen Rihem <zouari.aymen@esprit.tn> 1678226297 +0100	commit: disable for only chauffeur
+97b38be1d5cf9bce92a4f7e65b876f2bec4c83b8 86f631627a8ee2d0083d29de6b5c858caec1a85e Aymen Rihem <zouari.aymen@esprit.tn> 1678284416 +0100	commit: all good

@@ -5,7 +5,6 @@
  */
 package edu.webuild.controllers;
 
- 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -23,6 +22,7 @@ import static com.google.api.services.gmail.GmailScopes.GMAIL_SEND;
 import com.google.api.services.gmail.model.Message;
 import static edu.webuild.controllers.GetPasswordController.Ssemail2;
 import edu.webuild.controllers.IdentifierCompteController;
+import edu.webuild.frog.FroggerApp;
 import edu.webuild.model.Client;
 import edu.webuild.model.Role;
 import edu.webuild.services.roleCRUD;
@@ -31,8 +31,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -155,8 +158,7 @@ public class Ajouter_clientController implements Initializable {
             alert.setContentText("Please complete all fields.");
             alert.show();
 
-        }
-        else if (!email.matches(regex)) {
+        } else if (!email.matches(regex)) {
             // Afficher un message d'erreur si la saisie est invalide
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
@@ -174,10 +176,13 @@ public class Ajouter_clientController implements Initializable {
         } else {
             Client cli = new Client(r, img, tel, email, password);
             rc.affecterRole2(cli, r);
+            FroggerApp app = new FroggerApp();
+            app.updateHighScore(0);
 
             try {
                 String subject = "Tripee";
                 String message = "Registration successfully";
+
                 sendMail(subject, message);
             } catch (Exception e) {
 
@@ -185,6 +190,8 @@ public class Ajouter_clientController implements Initializable {
 
         }
     }
+
+   
 
     public void sendMail(String subject, String message) throws Exception, EncoderException {
 

@@ -50,7 +50,11 @@ public class Item_recController implements Initializable {
         this.myListener = myListener;
         type_rec.setText(type);
         etat_rec.setText(etat);
-        date.setText(date_creation.toString());
+        if (date_creation != null) {
+            date.setText(date_creation.toString());
+        } else {
+            date.setText(""); // Ou vous pouvez mettre un texte différent pour représenter une date null
+        }
         String fullurl = "C:\\xampp\\htdocs\\image_trippie_reclamation\\" + url;
         System.out.println("full url " + fullurl);
         commentaire_rec.setText(commentaire);
@@ -65,12 +69,11 @@ public class Item_recController implements Initializable {
         }
     }
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
+
     public void onClick() {
         myListener.onClick(re);
     }
@@ -94,7 +97,7 @@ public class Item_recController implements Initializable {
         r.setDate_creation(L.get(0).getDate_creation());
         r.setUrl_image(L.get(0).getUrl_image());
     }
-    
+
     public interface MyListener {
 
         void onClick(reclamation re);

@@ -33,7 +33,7 @@ public class reclamationCRUD implements InterfaceCRUDrec {
     @Override
     public void ajouterReclamation(reclamation reclamation) {
         try {
-            String query = "INSERT INTO reclamation (type_rec, commentaire, etat,id_utilisateur,date_creation,image) VALUES (?, ?, ?,?,?,?)";
+            String query = "INSERT INTO reclamation (type, commentaire, etat,id_user,date_creation,image) VALUES (?, ?, ?,?,?,?)";
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1, reclamation.getType_rec());
             preparedStatement.setString(2, reclamation.getCommentaire());
@@ -49,7 +49,7 @@ public class reclamationCRUD implements InterfaceCRUDrec {
 
     /*public void ajouterReclamation(reclamation r) {
         try {
-            String req = "INSERT INTO `reclamation`(`type_rec`,`commentaire`,`etat`,`id_utilisateur`,`date_creation`) VALUES ('" + r.getType_rec() + "',"
+            String req = "INSERT INTO `reclamation`(`type`,`commentaire`,`etat`,`id_user`,`date_creation`) VALUES ('" + r.getType_rec() + "',"
                     + "'" + r.getCommentaire() + "','non traité','" + r.getId_utilisateur() + "','" + r.getDate_creation().toString()+ "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
@@ -61,7 +61,7 @@ public class reclamationCRUD implements InterfaceCRUDrec {
     @Override
     public void modifierReclamation(reclamation r, int id) {
         try {
-            String req = "UPDATE `reclamation` SET `type_rec` = '" + r.getType_rec() + "', `commentaire` = '" + r.getCommentaire() + "' WHERE `id_rec` = " + id;
+            String req = "UPDATE `reclamation` SET `type` = '" + r.getType_rec() + "', `commentaire` = '" + r.getCommentaire() + "' WHERE `id` = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Reclamation updated !");
@@ -73,7 +73,7 @@ public class reclamationCRUD implements InterfaceCRUDrec {
     
         public void modifierReclamation2(reclamation r, int id) {
         try {
-            String req = "UPDATE `reclamation` SET `etat` = 'traité' WHERE `id_rec` = " + id;
+            String req = "UPDATE `reclamation` SET `etat` = 'traité' WHERE `id` = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Reclamation updated !");
@@ -84,7 +84,7 @@ public class reclamationCRUD implements InterfaceCRUDrec {
     @Override
     public void supprimerReclamation(int id) {
         try {
-            String req = "DELETE FROM `reclamation` WHERE id_rec = " + id;
+            String req = "DELETE FROM `reclamation` WHERE id = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("reclamation deleted !");
@@ -97,7 +97,7 @@ public class reclamationCRUD implements InterfaceCRUDrec {
     public List<reclamation> afficherReclamation(int id) {
         List<reclamation> list = new ArrayList<>();
         try {
-            String req = "Select * from reclamation WHERE `id_utilisateur` = " + id;
+            String req = "Select * from reclamation WHERE `id_user` = " + id;
             Statement st = conn.createStatement();
 
             ResultSet RS = st.executeQuery(req);
@@ -124,7 +124,7 @@ public class reclamationCRUD implements InterfaceCRUDrec {
     public reclamation getById_rec(int id) {
         reclamation r = new reclamation();
         try {
-            String req = "Select * from reclamation  WHERE `id_rec` = " + id;
+            String req = "Select * from reclamation  WHERE `id` = " + id;
             Statement st = conn.createStatement();
 
             ResultSet RS = st.executeQuery(req);
@@ -146,7 +146,7 @@ public class reclamationCRUD implements InterfaceCRUDrec {
     @Override
     public void traite(reclamation r) {
         try {
-            String req = "UPDATE `reclamation` SET `etat` = " + "traité" + "  WHERE `reclamation`.`id_rec` = " + r.getId_rec();
+            String req = "UPDATE `reclamation` SET `etat` = " + "traité" + "  WHERE `reclamation`.`id` = " + r.getId_rec();
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Reclamation traité!!!");
@@ -161,7 +161,7 @@ public class reclamationCRUD implements InterfaceCRUDrec {
         reclamation r = new reclamation();
 
         try {
-            String req = "Select * from reclamation where id_rec = " + id;
+            String req = "Select * from reclamation where id = " + id;
             Statement st = conn.createStatement();
 
             ResultSet RS = st.executeQuery(req);
@@ -181,7 +181,7 @@ public class reclamationCRUD implements InterfaceCRUDrec {
     public int countRec(String type) {
         int count = 0;
         try {
-            String req = "SELECT COUNT(*) FROM reclamation WHERE type_rec = '" + type + "'";
+            String req = "SELECT COUNT(*) FROM reclamation WHERE type = '" + type + "'";
             PreparedStatement pst = conn.prepareStatement(req);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
@@ -228,16 +228,16 @@ public class reclamationCRUD implements InterfaceCRUDrec {
     public List<reclamation> rechReclamation(int id) {
         List<reclamation> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM `reclamation` WHERE id_rec= " + id;
+            String req = "SELECT * FROM `reclamation` WHERE id= " + id;
             Statement st = conn.createStatement();
             ResultSet RS = st.executeQuery(req);
             while (RS.next()) {
                 reclamation r = new reclamation();
-                r.setId_rec(RS.getInt("id_rec"));
-                r.setType_rec(RS.getString("type_rec"));
+                r.setId_rec(RS.getInt("id"));
+                r.setType_rec(RS.getString("type"));
                 r.setCommentaire(RS.getString("commentaire"));
                 r.setEtat(RS.getString("etat"));
-                r.setId_utilisateur(RS.getInt("id_utilisateur"));
+                r.setId_utilisateur(RS.getInt("id_user"));
                 r.setDate_creation(RS.getDate("date_creation"));
                 r.setUrl_image(RS.getString("image"));
 

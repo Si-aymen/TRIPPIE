@@ -28,8 +28,8 @@ public class reponseCRUD implements InterfaceCRUDrec {
     @Override
     public void ajouterReponse(reponse r) {
         try {
-            String req = "INSERT INTO `reponse`(`reponse`,`id_rec`,`etat`) VALUES ('" + r.getReponse() + "','" + r.getId_rec() + "','" + r.getEtat() + "')";
-            String req2 = "UPDATE `reclamation` SET `etat` = 'en cours de traitement'  WHERE `reclamation`.`id_rec` = " + r.getId_rec();
+            String req = "INSERT INTO `reponse`(`reponse`,`id_rec_id_id_id`,`etat`) VALUES ('" + r.getReponse() + "','" + r.getId_rec() + "','" + r.getEtat() + "')";
+            String req2 = "UPDATE `reclamation` SET `etat` = 'en cours de traitement'  WHERE `reclamation`.`id_rec_id_id_id` = " + r.getId_rec();
             ste = conn.createStatement();
             ste.executeUpdate(req);
             ste.executeUpdate(req2);
@@ -42,7 +42,7 @@ public class reponseCRUD implements InterfaceCRUDrec {
     @Override
     public void modifierReponse(reponse r, int id) {
         try {
-            String req = "UPDATE `reponse` SET `reponse` = '" + r.getReponse() + "', `etat` = '" + r.getEtat() + "'  WHERE `reponse`.`id_rep` = " + id;
+            String req = "UPDATE `reponse` SET `reponse` = '" + r.getReponse() + "', `etat` = '" + r.getEtat() + "'  WHERE `reponse`.`id` = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Reponse updated !");
@@ -54,7 +54,7 @@ public class reponseCRUD implements InterfaceCRUDrec {
     @Override
     public void supprimerReponse(int id) {
         try {
-            String req = "DELETE FROM `reponse` WHERE id_rep = " + id;
+            String req = "DELETE FROM `reponse` WHERE id = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Reponse deleted !");
@@ -91,7 +91,7 @@ public class reponseCRUD implements InterfaceCRUDrec {
     public List<reponse> getById_rep(int id) {
         List<reponse> list = new ArrayList<>();
         try {
-            String req = "Select * from reponse  WHERE `id_rec` = " + id;
+            String req = "Select * from reponse  WHERE `id` = " + id;
             Statement st = conn.createStatement();
 
             ResultSet RS = st.executeQuery(req);
