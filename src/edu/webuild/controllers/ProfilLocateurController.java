@@ -6,7 +6,9 @@
 package edu.webuild.controllers;
 
 import edu.webuild.model.Locateur;
+import edu.webuild.model.Role;
 import edu.webuild.services.LocateurCRUD;
+import edu.webuild.services.reclamationCRUD;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -57,6 +59,10 @@ public class ProfilLocateurController implements Initializable {
     private ImageView fximg;
     
     public static  Locateur L; 
+    
+    public static int id_util;
+    
+    public static Role role = new Role();
 
     public void setEmail_lbl(String email) throws SQLException, FileNotFoundException {
         this.email_lbl.setText(email);
@@ -154,6 +160,26 @@ public class ProfilLocateurController implements Initializable {
             Logger.getLogger(ProfilLocateurController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+    }
+
+    @FXML
+    private void reclamation(MouseEvent event) throws IOException {
+        
+        id_util = L.getId_loc();
+
+        Locateur loc = new Locateur();
+        
+        reclamationCRUD rc = new reclamationCRUD();
+
+        loc = rc.getByIdLoc(id_util);
+
+        role = loc.getId_role();
+
+        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Front.fxml"));
+        Scene scene = new Scene(page1);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

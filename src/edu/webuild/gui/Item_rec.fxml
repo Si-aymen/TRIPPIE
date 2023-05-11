@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onMouseClicked="#Click" prefHeight="360.0" prefWidth="395.0" stylesheets="@../../../../../TRIPPIE-co_voiturage/src/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.webuild.controllers.Item_recController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="63.0" prefHeight="360.0" prefWidth="395.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="51.0" prefWidth="185.0">
+               <children>
+                  <Label fx:id="type_rec" prefHeight="49.0" prefWidth="137.0" text="Type">
+                     <font>
+                        <Font name="Cambria" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="etat_rec" prefHeight="49.0" prefWidth="101.0" text="Etat">
+                     <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="date" prefHeight="49.0" prefWidth="137.0" text="Date">
+                     <font>
+                        <Font name="Cambria" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <ImageView fx:id="img" fitHeight="223.0" fitWidth="322.0" pickOnBounds="true" preserveRatio="true" />
+            <Label text="Commentaire :" />
+            <Label fx:id="commentaire_rec" text="Label" />
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="fruit-item" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>

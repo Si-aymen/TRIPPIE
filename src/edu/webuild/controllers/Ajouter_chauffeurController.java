@@ -178,9 +178,9 @@ public class Ajouter_chauffeurController implements Initializable {
             Chauffeur ch = new Chauffeur(r, img, num_permis, tel, email, password);
             rc.affecterRole(ch, r);
 
-            String subject="Tripee";
-            String message="Registration successfully";
-            sendMail(subject, message);
+//            String subject="Tripee";
+//            String message="Registration successfully";
+//            sendMail(subject, message);
          
           
         }

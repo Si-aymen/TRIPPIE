@@ -8,7 +8,9 @@ package edu.webuild.controllers;
 import edu.webuild.gui.LoginController;
 import edu.webuild.interfaces.InterfaceClientCRUD;
 import edu.webuild.model.Client;
+import edu.webuild.model.Role;
 import edu.webuild.services.ClientCRUD;
+import edu.webuild.services.reclamationCRUD;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -50,7 +52,7 @@ import javafx.stage.Stage;
 public class ProfilClientController implements Initializable {
 
     public static int client_id;
-
+    public static int var_client_id;
     @FXML
     private Button exitBtn;
     @FXML
@@ -70,12 +72,17 @@ public class ProfilClientController implements Initializable {
     private List<Client> clientDataList = FXCollections.observableArrayList();
 
     private InterfaceClientCRUD ClientCRUD = new ClientCRUD();
+    
+    public static int id_util;
+    
+    public static Role role = new Role();
 
     public void setEmail_lbl(String email) throws SQLException, IOException {
         this.email_lbl.setText(email);
         ClientCRUD u = new ClientCRUD();
         Client p = u.getClient(email);
         client_id = p.getId_client();
+        System.out.println("client id " + client_id);
         email_lbl.setText(email);
         nom_lbl.setText(p.getId_role().getId_user().getNom());
         genre_lbl.setText(p.getId_role().getId_user().getPrenom());
@@ -95,6 +102,8 @@ public class ProfilClientController implements Initializable {
 // Définir la taille de l'ImageView pour qu'elle soit égale au diamètre du cercle
         fximg.setFitWidth(circle.getRadius() * 2);
         fximg.setFitHeight(circle.getRadius() * 2);
+        System.out.println("client id " + client_id);
+
     }
 
     /**
@@ -149,10 +158,13 @@ public class ProfilClientController implements Initializable {
     }
 
     @FXML
+
     private void cov_btu(MouseEvent event) {
+        System.out.println("now 2");
+        System.out.println("client id " + client_id);
+        var_client_id = client_id;
 
         try {
-            System.out.println("now 2");
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Market_cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -166,6 +178,9 @@ public class ProfilClientController implements Initializable {
 
     @FXML
     private void RentCar(MouseEvent event) {
+        System.out.println("now 2");
+        System.out.println("client id " + client_id);
+        var_client_id = client_id;
 
         try {
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Market_voitureclientfront.fxml"));
@@ -177,6 +192,26 @@ public class ProfilClientController implements Initializable {
             Logger.getLogger(ProfilClientController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+    }
+
+    @FXML
+    private void Reclamation(MouseEvent event) throws IOException {
+        
+        id_util = client_id;
+
+        Client cl = new Client();
+        
+        reclamationCRUD rc = new reclamationCRUD();
+
+        cl = rc.getByIdClient(id_util);
+
+        role = cl.getId_role();
+
+        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Front.fxml"));
+        Scene scene = new Scene(page1);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,7 +6,9 @@
 package edu.webuild.controllers;
 
 import edu.webuild.model.Chauffeur;
+import edu.webuild.model.Role;
 import edu.webuild.services.ChauffeurCRUD;
+import edu.webuild.services.reclamationCRUD;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -67,13 +69,17 @@ public class ProfilChauffeurController implements Initializable {
     private Button ajouter_cov;
 
     public static Chauffeur ch;
+    
+    public static int id_util;
+    
+    public static Role role = new Role();
 
     public void setEmail_lbl(String email) throws SQLException, FileNotFoundException {
 
         this.email_lbl.setText(email);
         ChauffeurCRUD u = new ChauffeurCRUD();
         Chauffeur p = u.getChauffeur(email);
-        ch=p;
+        ch = p;
         email_lbl.setText(email);
         nom_lbl.setText(p.getId_role().getId_user().getNom());
         genre_lbl.setText(p.getId_role().getId_user().getPrenom());
@@ -160,6 +166,26 @@ public class ProfilChauffeurController implements Initializable {
 
         }
 
+    }
+
+    @FXML
+    private void reclamation(ActionEvent event) throws IOException {
+
+        id_util = ch.getId_ch();
+
+        Chauffeur cha = new Chauffeur();
+        
+        reclamationCRUD rc = new reclamationCRUD();
+
+        cha = rc.getByIdChauffeur(id_util);
+
+        role = cha.getId_role();
+
+        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Front.fxml"));
+        Scene scene = new Scene(page1);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

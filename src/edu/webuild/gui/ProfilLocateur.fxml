@@ -106,6 +106,21 @@
                         <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <HBox alignment="CENTER" onMouseClicked="#reclamation" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../../style.css">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
+                           <children>
+                              <Label prefHeight="29.0" prefWidth="190.0" text="Reclamation" textFill="#878787">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </center>

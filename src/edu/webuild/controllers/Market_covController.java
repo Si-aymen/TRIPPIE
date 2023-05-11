@@ -62,7 +62,7 @@ public class Market_covController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("hello");
+        System.out.println("profil client  id "+ProfilClientController.var_client_id);
         covDataList.addAll(coVoiturageCRUDService.afficherCoVoiturage());
         System.out.println("load data");
         if (covDataList.size() > 0) {

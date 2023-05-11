@@ -76,6 +76,8 @@ public class LoginController {
     @FXML
     private ToggleButton showbtnnewnew;
     Chauffeur c;
+    
+    public static int test;
 
     public void setMain(FirstWindow main) {
         this.main = main;
@@ -266,6 +268,7 @@ public class LoginController {
         if (validateInput()) {
             switch (userType) {
                 case "Client":
+                    test = 1;
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilClient.fxml"));
                     Parent root = loader.load();
                     ProfilClientController dc = loader.getController();
@@ -277,7 +280,7 @@ public class LoginController {
                     stage.show();
                     break;
                 case "Chauffeur":
-
+                    test = 2;
                     FXMLLoader loader2 = new FXMLLoader(getClass().getResource("ProfilChauffeur.fxml"));
                     Parent root2 = loader2.load();
                     ProfilChauffeurController pc = loader2.getController();
@@ -290,7 +293,7 @@ public class LoginController {
 
                     break;
                 case "Locateur":
-
+                    test = 3;
                     // ouvrir la fenêtre d'accueil pour les locateurs
                     FXMLLoader loader3 = new FXMLLoader(getClass().getResource("ProfilLocateur.fxml"));
                     Parent root3 = loader3.load();
@@ -304,6 +307,7 @@ public class LoginController {
 
                     break;
                 case "Admin":
+                    test = 4;
                     String email1 = "zouari.aymen@esprit.tn";
                     String password1 = "aymenzouari1";
                     if (txtusername.getText().equals(email1) && txtpass.getText().equals(password1)) {

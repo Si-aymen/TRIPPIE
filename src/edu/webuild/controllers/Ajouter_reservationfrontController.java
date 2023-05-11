@@ -57,7 +57,8 @@ public class Ajouter_reservationfrontController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
+        System.out.println("ajouter reservation page client id = "+ ProfilClientController.var_client_id);
     }
 
     @FXML
@@ -96,7 +97,7 @@ public class Ajouter_reservationfrontController implements Initializable {
             alert.setContentText("Are you sure you want to add this reservation ?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                reservation res = new reservation(date_debut, date_fin, CardvoitureController.vo, id_client);
+                reservation res = new reservation(date_debut, date_fin, CardvoitureController.vo, ProfilClientController.var_client_id);
                 InterfaceCRUD2 inter = new reservationCRUD();
                 inter.ajouterreservation(res);
                 InterfaceCRUD inter2 = new voitureCRUD();

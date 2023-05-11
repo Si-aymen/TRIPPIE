@@ -51,6 +51,7 @@ public class Add_part_FrontController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println("add part page id client = "+ProfilClientController.var_client_id);
         nmbr_place_part.getItems().addAll(nmbr_place_list);
         nmbr_place_Lab.setText(String.valueOf(Item_covController.covt.getNmbr_place()));
 
@@ -61,7 +62,7 @@ public class Add_part_FrontController implements Initializable {
         int nmbr_place_prat = nmbr_place_part.getValue();
         System.out.println(Item_covController.covt.getId_co());
         InterfaceParticipation inter_part = new ParticipationCrud();
-        Participation part = new Participation(nmbr_place_prat, Item_covController.covt.getId_co(), client_id);
+        Participation part = new Participation(nmbr_place_prat, Item_covController.covt.getId_co(),ProfilClientController.var_client_id);
         int nmbr_place_cov = Item_covController.covt.getNmbr_place();
 
         if (nmbr_place_prat > nmbr_place_cov) {

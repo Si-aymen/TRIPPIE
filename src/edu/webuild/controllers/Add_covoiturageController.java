@@ -72,6 +72,7 @@ public class Add_covoiturageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println("add cov page id client = "+ ProfilClientController.var_client_id);
         depart_box.getItems().addAll(places_dep);
         destination_box.getItems().addAll(places_dest);
         nmbr_place_box.getItems().addAll(nmbr_place_list);
