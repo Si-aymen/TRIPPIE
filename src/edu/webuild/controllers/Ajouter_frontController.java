@@ -12,6 +12,7 @@ import edu.webuild.model.Client;
 import edu.webuild.model.Locateur;
 import edu.webuild.model.Role;
 import edu.webuild.model.reclamation;
+import edu.webuild.services.EmailSender;
 import edu.webuild.services.reclamationCRUD;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -72,13 +73,13 @@ public class Ajouter_frontController implements Initializable {
     private ImageView imageV;
     @FXML
     private Button cov_btu;
-    
+
     File selectedFile;
     public String url_image;
     private String path;
     @FXML
     private JFXButton image;
-    
+
     private String type, commentaire;
     private int id_util;
 
@@ -157,18 +158,17 @@ public class Ajouter_frontController implements Initializable {
                 });
             }
         });
-    }    
+    }
 
     @FXML
     private void bu_add(ActionEvent event) throws IOException {
-        
+
         reclamationCRUD rc = new reclamationCRUD();
         type = typ_box.getValue();
         commentaire = comment.getText();
         LocalDate localDate = LocalDate.now();
         Date date_creation = Date.valueOf(localDate);
-        
-        
+        String mailClient;
 
         if (type.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -183,25 +183,22 @@ public class Ajouter_frontController implements Initializable {
             alert.setContentText("Commentaire manquant");
             alert.showAndWait();
         } else {
-            
-            
-            
-            if (LoginController.test == 1)
-            {
+
+            if (LoginController.test == 1) {
                 id_util = ProfilClientController.role.getId_role();
-            }
-            else if (LoginController.test == 2)
-            {
+                mailClient = ProfilClientController.mailC;
+            } else if (LoginController.test == 2) {
                 id_util = ProfilChauffeurController.role.getId_role();
-            }
-            else if (LoginController.test == 3)
-            {
+            } else if (LoginController.test == 3) {
                 id_util = ProfilLocateurController.role.getId_role();
             }
-            
+
             reclamation r = new reclamation(type, commentaire, "non traité", date_creation, id_util, url_image);
 
             rc.ajouterReclamation(r);
+
+            String message = "Votre réclamation est bien reçu";
+            EmailSender.sendEmail_add("manouch2001.ra@gmail.com", message);
 
             Notifications n = Notifications.create()
                     .title("WeBuild")
@@ -216,9 +213,9 @@ public class Ajouter_frontController implements Initializable {
 
             if (count > 2) {
                 try {
-                    
+
                     typ_box.getItems().remove("Autre");
-                    
+
                     // ouvre le fichier "choix.txt" en mode écriture
                     BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\manou\\Desktop\\webuild\\src\\edu\\webuild\\controllers\\choix.txt"));
 
@@ -237,7 +234,7 @@ public class Ajouter_frontController implements Initializable {
                     e.printStackTrace();
                 }
             }
-            
+
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Rec_Front.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -291,5 +288,5 @@ public class Ajouter_frontController implements Initializable {
 
         }
     }
-    
+
 }

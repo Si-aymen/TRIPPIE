@@ -78,11 +78,14 @@ public class ProfilClientController implements Initializable {
     public static int id_util;
 
     public static Role role = new Role();
+    
+    public static String mailC;
 
     public void setEmail_lbl(String email) throws SQLException, IOException {
         this.email_lbl.setText(email);
         ClientCRUD u = new ClientCRUD();
         Client p = u.getClient(email);
+        mailC = p.getEmail();
         client_id = p.getId_client();
         System.out.println("client id " + client_id);
         email_lbl.setText(email);

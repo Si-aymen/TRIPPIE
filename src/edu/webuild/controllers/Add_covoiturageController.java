@@ -144,7 +144,7 @@ public class Add_covoiturageController implements Initializable {
 
         String emailto = email.getText();
 //        EmailSender.sendEmail_add(emailto, message);
-  //      EmailSender.sendEmail_add("manouch2001.ra@gmail.com", message);
+       EmailSender.sendEmail_add("manouch2001.ra@gmail.com", message);
         //send.send_message("+21692554097", message);
 
         Call_Cov test_call = new Call_Cov();

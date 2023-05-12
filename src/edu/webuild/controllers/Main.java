@@ -1,7 +1,6 @@
 package edu.webuild.controllers;
 
-
-
+import edu.webuild.services.EmailSender;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -36,8 +35,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-
 public class Main extends Application {
+
     private static final int NUM_SECTIONS = 8;
     private static final double START_ANGLE = 0;
     private static final double ARC_LENGTH = 360.0 / NUM_SECTIONS;
@@ -45,7 +44,7 @@ public class Main extends Application {
 
     private Group root;
     private Random random;
-     private Connection conn;
+    private Connection conn;
     private PreparedStatement stmt;
     private ResultSet rs;
 
@@ -53,17 +52,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         root = new Group();
         random = new Random();
-        
-  // create the image
 
-  
-  
-
-
-
-
-
-      // Create the sections of the wheel with random colors
+        // create the image
+        // Create the sections of the wheel with random colors
         for (int i = 0; i < NUM_SECTIONS; i++) {
             Color color = Color.rgb(random.nextInt(256), random.nextInt(256), random.nextInt(256));
             Arc arc = new Arc(200, 200, 150, 150, START_ANGLE + i * ARC_LENGTH, ARC_LENGTH);
@@ -131,8 +122,7 @@ public class Main extends Application {
             if (!rotateTransition.getStatus().equals(Animation.Status.RUNNING)) {
                 rotateTransition.setByAngle(random.nextInt(360 * 5) + 360 * 5);
                 rotateTransition.play();// Play the music when the animation starts
-                 
-                 
+
             }
         });
         root.getChildren().add(rotateButton);
@@ -154,107 +144,114 @@ public class Main extends Application {
                 rotateTransition.play();
             }
         });
-        
+
         //to stop the music
         rotateTransition.setOnFinished(event -> {
-    rotateTransition.stop();
-   // Stop the music when the animation stops
-     // Display a message to the user indicating whether they have won or not
-     
-      // Determine which section of the wheel the arrow is pointing to
-     // Determine which section of the wheel the arrow is pointing to
-    double arrowAngle = root.getRotate() % 360;
-    int sectionIndex = (int) Math.floor(arrowAngle / ARC_LENGTH);
-      // Retrieve the taux_reduction value for the section from the database
-   double taux_reduction = 0.0;
-String code_coupon = "";
+            rotateTransition.stop();
+            // Stop the music when the animation stops
+            // Display a message to the user indicating whether they have won or not
 
-try {
-    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webuild3", "root", "");
-    stmt = conn.prepareStatement("SELECT taux,code_coupon,type FROM coupon where type in ('simple','vip')  LIMIT ?, 1");
+            // Determine which section of the wheel the arrow is pointing to
+            // Determine which section of the wheel the arrow is pointing to
+            double arrowAngle = root.getRotate() % 360;
+            int sectionIndex = (int) Math.floor(arrowAngle / ARC_LENGTH);
+            // Retrieve the taux_reduction value for the section from the database
+            double taux_reduction = 0.0;
+            String code_coupon = "";
 
-    stmt.setInt(1, sectionIndex);
-    rs = stmt.executeQuery();
-
-    if (rs.next()) {
-        taux_reduction = rs.getDouble("taux");
-        code_coupon = rs.getString("code_coupon");
-        String couponType = rs.getString("type");
-
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Congratulations!");
-        alert.setHeaderText("You've won a discount!");
-        alert.setContentText("You've won a " + taux_reduction + "% discount !");
-        String finalCodeCoupon = code_coupon;
-        Button navigateButton = new Button("click here to see what you get");
-
-        navigateButton.setOnAction(ok -> {
             try {
-                if (couponType.equals("vip")) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/vipshop.fxml"));
-                    Parent root = loader.load();
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                } else if (couponType.equals("simple")) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/qr.fxml"));
-                    Parent root = loader.load();
-                    QrController qrController = loader.getController();
-                    qrController.setCodeCoupon(finalCodeCoupon);
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root));
-                    stage.show();
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webuild3", "root", "");
+                stmt = conn.prepareStatement("SELECT taux,code_coupon,type FROM coupon where type in ('simple','vip')  LIMIT ?, 1");
+
+                stmt.setInt(1, sectionIndex);
+                rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    taux_reduction = rs.getDouble("taux");
+                    code_coupon = rs.getString("code_coupon");
+                    String couponType = rs.getString("type");
+
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Congratulations!");
+                    alert.setHeaderText("You've won a discount!");
+                    alert.setContentText("You've won a " + taux_reduction + "% discount !");
+                    String finalCodeCoupon = code_coupon;
+                    Button navigateButton = new Button("click here to see what you get");
+
+                    navigateButton.setOnAction(ok -> {
+                        try {
+                            if (couponType.equals("vip")) {
+                                String message = "test";
+                                EmailSender.sendEmail_add("manouch2001.ra@gmail.com", message);
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/vipshop.fxml"));
+                                Parent root = loader.load();
+                                Stage stage = new Stage();
+                                stage.setScene(new Scene(root));
+                                stage.show();
+                            } else if (couponType.equals("simple")) {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/qr.fxml"));
+                                Parent root = loader.load();
+                                QrController qrController = loader.getController();
+                                qrController.setCodeCoupon(finalCodeCoupon);
+                                Stage stage = new Stage();
+                                stage.setScene(new Scene(root));
+                                stage.show();
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+                    // Add the navigate button to the alert dialog
+                    ((ButtonBar) alert.getDialogPane().lookup(".button-bar")).getButtons().add(navigateButton);
+                    alert.show();
+
+                } else {
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Sorry!");
+                    alert.setHeaderText("Better luck next time!");
+                    alert.setContentText("Unfortunately, you didn't win this time.");
+                    alert.show();
                 }
-            } catch (IOException e) {
+
+            } catch (SQLException e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    if (rs != null) {
+                        rs.close();
+                    }
+                    if (stmt != null) {
+                        stmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
+
         });
-
-        // Add the navigate button to the alert dialog
-        ((ButtonBar) alert.getDialogPane().lookup(".button-bar")).getButtons().add(navigateButton);
-        alert.show();
-
-    } else {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Sorry!");
-        alert.setHeaderText("Better luck next time!");
-        alert.setContentText("Unfortunately, you didn't win this time.");
-        alert.show();
     }
 
-} catch (SQLException e) {
-    e.printStackTrace();
-} finally {
-    try {
-        if (rs != null) {
-            rs.close();
-        }
-        if (stmt != null) {
-            stmt.close();
-        }
-        if (conn != null) {
-            conn.close();
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-}
-        
-   });}
     /**
-     * Calculates the X position of a text element at the specified radius and angle.
+     * Calculates the X position of a text element at the specified radius and
+     * angle.
      */
     private double getTextX(double radius, double angle) {
         return 170 + radius * Math.cos(Math.toRadians(angle));
     }
 
     /**
-     * Calculates the Y position of a text element at the specified radius and angle.
+     * Calculates the Y position of a text element at the specified radius and
+     * angle.
      */
     private double getTextY(double radius, double angle) {
         return 200 + radius * Math.sin(Math.toRadians(angle));
-    } 
-   public static void main(String[] args) {
+    }
+
+    public static void main(String[] args) {
         launch(args);
     }
 }

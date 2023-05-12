@@ -33,6 +33,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -45,12 +46,11 @@ import javafx.stage.Stage;
  * @author aymen
  */
 public class CardsController implements Initializable {
- private List<Client> clientDataList = FXCollections.observableArrayList();
 
+    private List<Client> clientDataList = FXCollections.observableArrayList();
 
     private InterfaceClientCRUD ClientCRUD = new ClientCRUD();
-  
-  
+
     @FXML
     private ScrollPane scroll;
     @FXML
@@ -60,28 +60,26 @@ public class CardsController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         clientDataList.addAll(ClientCRUD.afficherClient3());
-     
-         
+        clientDataList.addAll(ClientCRUD.afficherClient3());
+
         int column = 0;
         int row = 3;
-        for (int i = 0; i < clientDataList.size() ; i++) {
+        for (int i = 0; i < clientDataList.size(); i++) {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/edu/webuild/gui/ClientCard.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 ClientCardController item = fxmlLoader.getController();
-              
-                
-                item.setDataClient(clientDataList.get(i).getEmail(),clientDataList.get(i).getId_role().getId_user().getNom(), clientDataList.get(i).getId_role().getId_user().getPrenom(),clientDataList.get(i).getId_role().getLibelle(),clientDataList.get(i).getImg());
-                
+
+                item.setDataClient(clientDataList.get(i).getEmail(), clientDataList.get(i).getId_role().getId_user().getNom(), clientDataList.get(i).getId_role().getId_user().getPrenom(), clientDataList.get(i).getId_role().getLibelle(), clientDataList.get(i).getImg());
+
                 if (column == 2) {
                     column = 0;
                     row++;
@@ -101,14 +99,12 @@ public class CardsController implements Initializable {
                 e.printStackTrace();
             }
         }
-        
-     
-        
-    }    
+
+    }
 
     @FXML
     private void cov_btu(ActionEvent event) {
-         try {
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_User.fxml"));
             Scene scene = new Scene(page1);
@@ -122,7 +118,7 @@ public class CardsController implements Initializable {
     }
 
     @FXML
-    private void stats(ActionEvent event) { 
+    private void stats(ActionEvent event) {
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Stat_utilisateur.fxml"));
@@ -136,7 +132,19 @@ public class CardsController implements Initializable {
         }
     }
 
+    @FXML
+    private void retour(MouseEvent event) {
+        try {
 
-   
-    
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_User.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
 }

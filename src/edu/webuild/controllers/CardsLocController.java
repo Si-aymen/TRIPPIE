@@ -27,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -55,7 +56,7 @@ public class CardsLocController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-            locateurDataList.addAll(LocateurCRUD.afficherLocateur3());
+        locateurDataList.addAll(LocateurCRUD.afficherLocateur3());
         int column = 0;
         int row = 3;
         for (int i = 0; i < locateurDataList.size(); i++) {
@@ -90,9 +91,9 @@ public class CardsLocController implements Initializable {
 
     }
 
-     @FXML
+    @FXML
     private void cov_btu(ActionEvent event) {
-         try {
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_User.fxml"));
             Scene scene = new Scene(page1);
@@ -106,7 +107,7 @@ public class CardsLocController implements Initializable {
     }
 
     @FXML
-    private void stats(ActionEvent event) { 
+    private void stats(ActionEvent event) {
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Stat_utilisateur.fxml"));
@@ -120,5 +121,19 @@ public class CardsLocController implements Initializable {
         }
     }
 
+    @FXML
+    private void retour(MouseEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Menu_User.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_UserController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
 
 }

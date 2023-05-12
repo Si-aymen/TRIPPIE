@@ -7,6 +7,7 @@ package edu.webuild.controller;
 
 import com.jfoenix.controls.JFXButton;
 import edu.webuild.model.reclamation;
+import edu.webuild.services.EmailSender;
 import edu.webuild.services.reclamationCRUD;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -213,6 +214,9 @@ public class Ajouter_backController implements Initializable {
             reclamationCRUD rc = new reclamationCRUD();
 
             rc.ajouterReclamation(r);
+            
+            String message = "Votre réclamation est bien reçu";
+            EmailSender.sendEmail_add("manouch2001.ra@gmail.com", message);
 
             Notifications n = Notifications.create()
                     .title("WeBuild")

@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/Item_recController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/Add_CovController.java</file>
+            <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/CardsChController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/Ajouter_clientController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/services/AbonnementCRUD.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/model/AbonnementCarteFidelite.java</file>
@@ -16,6 +17,8 @@
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/gui/wheel.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/gui/ajouterAbonnement.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/Modifier_reservationController.java</file>
+            <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/MarketreservationbackController.java</file>
+            <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/services/EmailSender.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/DetailsvoitureclientController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/Ajouter_chauffeurController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/model/CoVoiturage.java</file>
@@ -39,6 +42,7 @@
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/model/abonnement.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/AjoutervoiturefrontController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/Main.java</file>
+            <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/CardsLocController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/CardsController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/CarteController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/Afficher_CovController.java</file>
@@ -46,6 +50,7 @@
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/AjoutController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/BuyAbonnementController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/Modifier_reservationfrontController.java</file>
+            <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/IdentifierCompteController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/Menu_CoVoiturageController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/Add_covoiturageController.java</file>
             <file>file:/C:/Users/manou/Desktop/webuild/src/edu/webuild/controllers/Rec_FrontController.java</file>

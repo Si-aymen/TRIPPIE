@@ -13,7 +13,7 @@ public class EmailSender {
 
     public static void sendEmail_add(String toEmail, String message) {
         //String toEmail = "manouch2001.ra@gmail.com";
-        String subject = "Trippie Add Cov_voiturage ";
+        String subject = "Trippie";
         //String message = "confirmation email";
 
         Properties props = new Properties();
