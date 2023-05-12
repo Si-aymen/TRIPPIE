@@ -153,9 +153,6 @@ public class Market_voitureclientfrontController implements Initializable {
 
     }
 
-    @FXML
-    private void add_car(MouseEvent event) {
-    }
 
     @FXML
     private void liste_reservation(MouseEvent event) {
@@ -185,6 +182,36 @@ public class Market_voitureclientfrontController implements Initializable {
                     Logger.getLogger(DetailsvoiturefrontController.class.getName()).log(Level.SEVERE, null, ex);
 
                 }
+    }
+
+    @FXML
+    private void retour(MouseEvent event) {
+          try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ProfilClient.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void reservationlist(MouseEvent event) {
+         try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketreservationfront.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
   

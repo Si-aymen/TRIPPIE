@@ -34,6 +34,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -173,5 +174,20 @@ public class ModifiervoiturefrontController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
 
+    }
+
+    @FXML
+    private void retour(MouseEvent event) {
+          try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/ProfilLocateur.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 }

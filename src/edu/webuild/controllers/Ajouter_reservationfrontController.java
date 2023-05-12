@@ -31,6 +31,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -103,7 +104,7 @@ public class Ajouter_reservationfrontController implements Initializable {
                 showAlert("your reservation has been successfully completed ");
                 try {
 
-                    Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/market_voitureclientfront.fxml"));
+                    Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketreservationfront.fxml"));
                     Scene scene = new Scene(page1);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     stage.setScene(scene);
@@ -148,6 +149,21 @@ public class Ajouter_reservationfrontController implements Initializable {
                 .setUrl("http://demo.twilio.com/docs/voice.xml")
                 .create();
          */
+    }
+
+    @FXML
+    private void retour(MouseEvent event) {
+          try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/detailsvoitureclient.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
 }

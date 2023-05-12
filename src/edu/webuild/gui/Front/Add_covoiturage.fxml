@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -35,7 +36,10 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <Pane prefHeight="0.0" prefWidth="0.0" VBox.vgrow="ALWAYS" />
+                        <Pane prefHeight="0.0" prefWidth="0.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <FontAwesomeIconView glyphName="ARROW_CIRCLE_LEFT" layoutX="141.0" layoutY="716.0" onMouseClicked="#retour" size="35" />
+                     </children></Pane>
                     </children>
                 </VBox>
             </left>
@@ -343,11 +347,5 @@
                 </VBox>
             </center>
         </BorderPane>
-      <Button layoutX="71.0" layoutY="225.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="User" />
-      <Button layoutX="71.0" layoutY="281.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Voiture" />
-      <Button layoutX="71.0" layoutY="335.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Reservation Voiture" />
-      <Button fx:id="cov_btu" layoutX="71.0" layoutY="391.0" mnemonicParsing="false" onAction="#cov_btu" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Co_Voiturage" />
-      <Button layoutX="71.0" layoutY="446.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Participation Co_Voiturage" />
-      <Button layoutX="71.0" layoutY="507.0" mnemonicParsing="false" onAction="#stats" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" stylesheets="@../../../../style.css" text="Stats" />
     </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -33,7 +34,10 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <Pane prefHeight="0.0" prefWidth="0.0" VBox.vgrow="ALWAYS" />
+                        <Pane prefHeight="0.0" prefWidth="0.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <FontAwesomeIconView glyphName="ARROW_CIRCLE_LEFT" layoutX="118.0" layoutY="705.0" onMouseClicked="#retour" size="35" />
+                     </children></Pane>
                     </children>
                 </VBox>
             </left>
@@ -84,45 +88,7 @@
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
                                 <Pane prefHeight="84.0" prefWidth="96.0" />
-                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../../../style.css">
-                                    <children>
-                                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" stylesheets="@../../../style.css">
-                                            <children>
-                                                <Label prefHeight="29.0" prefWidth="190.0" stylesheets="@../../../style.css" text="Co voiturage" textFill="#878787">
-                                                    <font>
-                                                        <Font name="Cambria Bold" size="18.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label prefHeight="16.0" prefWidth="190.0" text="System tri" textFill="#878787">
-                                                    <font>
-                                                        <Font name="Cambria" size="15.0" />
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </VBox>
-                                        <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
-                                    </children>
-                                </HBox>
                                 <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
-                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../../../style.css">
-                                    <children>
-                                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
-                                            <children>
-                                                <Label prefHeight="29.0" prefWidth="190.0" text="Participation" textFill="#878787">
-                                                    <font>
-                                                        <Font name="Cambria Bold" size="18.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label prefHeight="20.0" prefWidth="207.0" text="Get your participation here" textFill="#878787">
-                                                    <font>
-                                                        <Font name="Cambria" size="15.0" />
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </VBox>
-                                        <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
-                                    </children>
-                                </HBox>
                                 <Pane prefHeight="84.0" prefWidth="96.0" />
                             </children>
                             <VBox.margin>

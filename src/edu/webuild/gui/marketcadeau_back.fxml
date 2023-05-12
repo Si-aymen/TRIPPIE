@@ -19,7 +19,10 @@
                 <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
                     <children>
                         <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0" />
-                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <FontAwesomeIconView glyphName="ARROW_CIRCLE_LEFT" layoutX="166.0" layoutY="654.0" onMouseClicked="#retour" size="35" />
+                     </children></Pane>
                     </children>
                 </VBox>
             </left>

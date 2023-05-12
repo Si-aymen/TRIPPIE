@@ -82,13 +82,13 @@
                      <children>
                         <Pane prefHeight="84.0" prefWidth="96.0" />
                         <Pane prefHeight="84.0" prefWidth="96.0" />
-                        <Button fx:id="ajouter_cov" mnemonicParsing="false" onAction="#cov_btu" prefHeight="78.0" prefWidth="343.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Ajouter Co_Voiturage" />
-                        <Button mnemonicParsing="false" onAction="#reclamation" prefHeight="78.0" prefWidth="343.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Ajouter Reclamation" />
                      </children>
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <Button fx:id="ajouter_cov" mnemonicParsing="false" onAction="#cov_btu" prefHeight="78.0" prefWidth="343.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Ajouter Co_Voiturage" />
+                  <Button mnemonicParsing="false" onAction="#reclamation" prefHeight="78.0" prefWidth="343.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" styleClass="add-btn" stylesheets="@style.css" text="Ajouter Reclamation" />
                </children>
             </VBox>
          </center>

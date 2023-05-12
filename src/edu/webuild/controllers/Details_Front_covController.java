@@ -30,6 +30,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -41,8 +42,6 @@ public class Details_Front_covController implements Initializable {
 
     @FXML
     private TextField search_bar;
-    @FXML
-    private Button cov_btu;
     @FXML
     private Label depart_co_lab;
     @FXML
@@ -110,14 +109,6 @@ public class Details_Front_covController implements Initializable {
     }
 
     @FXML
-    private void cov_btu(ActionEvent event) {
-    }
-
-    @FXML
-    private void stats(ActionEvent event) {
-    }
-
-    @FXML
     private void Modify_btu(ActionEvent event) {
 
         try {
@@ -156,6 +147,21 @@ public class Details_Front_covController implements Initializable {
         try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Add_part_Front.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+
+    @FXML
+    private void retour(MouseEvent event) {
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Back/Show_cov.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

@@ -8,18 +8,27 @@ package edu.webuild.controllers;
 import edu.webuild.inter.interfacecoupon;
 import edu.webuild.model.coupon;
 import edu.webuild.services.couponCrud;
+import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -59,7 +68,6 @@ public class Modifier_couponBackController implements Initializable {
         fxtypem.setText(String.valueOf(Market_couponBackController.type));
         
     }    
-   @FXML
 private void generateCouponCode() {
     String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     int codeLength = 5;
@@ -104,6 +112,21 @@ private void generateCouponCode() {
 
         coupon v = new coupon(Market_couponBackController.id_coupon,date_debut, date_expe, taux, code, nbr, type);
         inter.modifier(v);
+    }
+
+    @FXML
+    private void retour(MouseEvent event) {
+          try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Market_cov.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_CoVoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
    
