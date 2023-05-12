@@ -185,26 +185,10 @@
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
                                 <Pane prefHeight="84.0" prefWidth="96.0" />
-                                <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
-                                <HBox alignment="CENTER" onMouseClicked="#reservationlist" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@style.css">
-                                    <children>
-                                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
-                                            <children>
-                                                <Label onMouseClicked="#liste_reservation" prefHeight="29.0" prefWidth="190.0" text="Reservation List" textFill="#878787">
-                                                    <font>
-                                                        <Font name="Cambria Bold" size="18.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label onMouseClicked="#list_reservation" prefHeight="20.0" prefWidth="207.0" textFill="#878787">
-                                                    <font>
-                                                        <Font name="Cambria" size="15.0" />
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </VBox>
-                                        <ImageView fitHeight="49.0" fitWidth="56.0" onMouseClicked="#list_reservation" pickOnBounds="true" preserveRatio="true" />
-                                    </children>
-                                </HBox>
+                                <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button layoutX="71.0" layoutY="14.0" mnemonicParsing="false" onAction="#liste" text="liste reservation" />
+                           </children></Pane>
                                 <Pane prefHeight="84.0" prefWidth="96.0" />
                             </children>
                             <VBox.margin>

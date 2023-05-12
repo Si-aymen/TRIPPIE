@@ -34,7 +34,7 @@
                         </HBox>
                         <Pane prefHeight="57.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <FontAwesomeIconView glyphName="ARROW_CIRCLE_LEFT" layoutX="97.0" layoutY="657.0" onMouseClicked="#retour" size="35" />
+                        <FontAwesomeIconView fx:id="retour" glyphName="ARROW_CIRCLE_LEFT" layoutX="97.0" layoutY="657.0" onMouseClicked="#retour" size="35" />
                      </children></Pane>
                     </children>
                 </VBox>
