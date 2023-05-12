@@ -71,7 +71,7 @@ public class Add_covoiturageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("add cov page id client = "+ ProfilClientController.var_client_id);
+        System.out.println("add cov page id client = " + ProfilClientController.var_client_id);
         depart_box.getItems().addAll(places_dep);
         destination_box.getItems().addAll(places_dest);
         nmbr_place_box.getItems().addAll(nmbr_place_list);
@@ -82,6 +82,7 @@ public class Add_covoiturageController implements Initializable {
         id_ch = ProfilChauffeurController.ch.getId_ch();
 
         SmS_Cov send = new SmS_Cov();
+        send.send_message("", "Covoiturage ajoutée");
         //String depart = depart_TF.getText();
         String depart = depart_box.getValue();
         //String destination = destination_TF.getText();
@@ -144,7 +145,7 @@ public class Add_covoiturageController implements Initializable {
 
         String emailto = email.getText();
 //        EmailSender.sendEmail_add(emailto, message);
-       EmailSender.sendEmail_add("manouch2001.ra@gmail.com", message);
+        EmailSender.sendEmail_add("manouch2001.ra@gmail.com", message);
         //send.send_message("+21692554097", message);
 
         Call_Cov test_call = new Call_Cov();
@@ -207,8 +208,8 @@ public class Add_covoiturageController implements Initializable {
 
     @FXML
     private void retour(MouseEvent event) {
-        
-                        try {
+
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/Front/Market_cov.fxml"));
             Scene scene = new Scene(page1);
@@ -220,6 +221,5 @@ public class Add_covoiturageController implements Initializable {
 
         }
     }
-
 
 }

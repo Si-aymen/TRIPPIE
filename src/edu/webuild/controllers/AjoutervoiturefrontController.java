@@ -11,6 +11,7 @@ import edu.webuild.services.voitureCRUD;
 import edu.webuild.model.Locateur;
 import edu.webuild.services.LocateurCRUD;
 import edu.webuild.controllers.*;
+import edu.webuild.services.SmS_Cov;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -127,7 +128,7 @@ public class AjoutervoiturefrontController implements Initializable {
         String puissance = fx_puissance.getValue();
         String energie = fx_energie.getValue();
         int prix_jours = Integer.parseInt(fx_prix_jours.getText());
-        locateur = ProfilLocateurController.L ; 
+        locateur = ProfilLocateurController.L;
 
         String etat = "non reservé";
         String cov_img = url_image;
@@ -183,6 +184,8 @@ public class AjoutervoiturefrontController implements Initializable {
                     voiture v = new voiture(matricule, marque, puissance, prix_jours, cov_img, energie, locateur.getId_loc());
                     voitureCRUD voit = new voitureCRUD();
                     voit.ajoutervoiture(v);
+                    SmS_Cov send = new SmS_Cov();
+                    send.send_message("", "Voiture ajoutée");
                     showAlert("car added successfully");
                 }
                 try {
@@ -211,7 +214,7 @@ public class AjoutervoiturefrontController implements Initializable {
 
     @FXML
     private void retour(MouseEvent event) {
-          try {
+        try {
 
             Parent page1 = FXMLLoader.load(getClass().getResource("/edu/webuild/gui/marketvoiturefront.fxml"));
             Scene scene = new Scene(page1);
